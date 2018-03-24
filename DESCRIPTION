@@ -1,0 +1,31 @@
+Type: Package
+Package: groupedstats
+Title: Statistical Tests For Multiple Variables Across Multiple Grouping Levels
+Version: 0.0.1.9000
+Authors@R: person(given = "Indrajeet", 
+  family = "Patil", 
+  email = "patilindrajeet.science@gmail.com", 
+  role = c("aut", "cre"))
+Maintainer: Indrajeet Patil <patilindrajeet.science@gmail.com>
+Description: Collection of functions to run statistical tests for multiple variable across multiple groups.
+License: GPL-3
+BugReports: https://github.com/IndrajeetPatil/groupedstats/issues
+Imports: 
+    broom,
+    dplyr,
+    magrittr,
+    purrr,
+    rlang (>= 0.1.2),
+    stats,
+    tibble,
+    tidyr,
+    glue
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1.9000
+Suggests: 
+    covr,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
