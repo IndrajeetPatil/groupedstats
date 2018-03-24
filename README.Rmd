@@ -1,55 +1,95 @@
 ---
-output: github_document
+  output: github_document
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+  <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r setup, include = FALSE}
+  ```{r, echo = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
+  fig.path = "man/figures/README-"
 )
 ```
-# groupedstats
+# groupedstats: Grouped statistical analysis in a tidy way
 
-The goal of groupedstats is to ...
+[![packageversion](https://img.shields.io/badge/Package%20version-0.0.1.9000-orange.svg?style=flat-square)](commits/master)
+[![Travis Build Status](https://travis-ci.org/IndrajeetPatil/groupedstats.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/groupedstats) 
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupedstats?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/groupedstats) 
+[![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![Last-changedate](https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-yellowgreen.svg)](/commits/master)
+[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![minimal R version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
+<!-- [![Coverage Status](https://img.shields.io/codecov/c/github/IndrajeetPatil/groupedstats/master.svg)](https://codecov.io/github/IndrajeetPatil/groupedstats?branch=master)
+[![Dependency Status](http://img.shields.io/gemnasium/IndrajeetPatil/groupedstats.svg)](https://gemnasium.com/IndrajeetPatil/groupedstats) -->
+
+## Overview
+
+`groupedstats` package provides a collection of functions to run statistical
+operations on multiple variables across multiple grouping variables in a
+dataframe.
 
 ## Installation
 
-You can install the released version of groupedstats from [CRAN](https://CRAN.R-project.org) with:
+You can get the development version from GitHub. If you are in hurry and want to reduce the time of installation, prefer-
 
-``` r
-install.packages("groupedstats")
+```{r installation1, eval = FALSE}
+# install.packages("devtools")                                # needed package to download from GitHub repo
+devtools::install_github(repo = "IndrajeetPatil/groupedstats", # package path on GitHub
+                         quick = TRUE)                        # skips docs, demos, and vignettes
 ```
 
-And the development version from [GitHub](https://github.com/) with:
-
-``` r
-# install.packages("devtools")
-devtools::install_github("IndrajeetPatil/groupedstats")
-```
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-```{r example}
-## basic example code
+If time is not a constraint-
+```{r installation2, eval = FALSE}
+devtools::install_github(repo = "IndrajeetPatil/groupedstats", # package path on GitHub
+                         dependencies = TRUE,                 # installs packages which groupedstats depends on
+                         upgrade_dependencies = TRUE          # updates any out of date dependencies
+)
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+## Help
 
-```{r cars}
-summary(cars)
+Documentation for any function can be accessed with the standard `help` command-
+```{r help, eval = FALSE}
+?grouped_lm
+?grouped_summary
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
+## Usage
 
-You can also embed plots, for example:
+* `grouped_summary`
 
-```{r pressure, echo = FALSE}
-plot(pressure)
+Getting summary for multiple variables across multiple grouping variables.
+
+```{r grouped_summary}
+library(datasets)
+
+groupedstats::grouped_summary( data = mtcars,
+                          grouping.vars = c(am, cyl),
+                          measures = c(disp, wt, mpg))
 ```
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!
+* `grouped_lm`
+
+This function can be used to run linear regression between different pairs of variables across multiple levels of grouping variables. For example, if we want to assess the linear relationship between `Sepal.Length` and `Sepal.Width`, **and** `Sepal.Length` and `Sepal.Width` (notice the order in which variables are being entered) for all levels of `Species`:    
+
+```{r grouped_lm1}
+library(datasets)
+
+groupedstats::grouped_lm(data = iris,
+                         crit.vars = c(Sepal.Length, Petal.Length),
+                         pred.vars = c(Sepal.Width, Petal.Width),
+                         grouping.vars = Species)
+```
+
+This can be done with multiple grouping variables-
+
+```{r grouped_lm2}
+library(datasets)
+
+groupedstats::grouped_lm( data = mtcars,
+                          crit.vars = c(wt, mpg),
+                          pred.vars = c(drat, disp),
+                          grouping.vars = c(am, cyl))
+```

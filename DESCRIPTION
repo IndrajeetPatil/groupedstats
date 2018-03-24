@@ -10,6 +10,8 @@ Maintainer: Indrajeet Patil <patilindrajeet.science@gmail.com>
 Description: Collection of functions to run statistical tests for multiple variable across multiple groups.
 License: GPL-3
 BugReports: https://github.com/IndrajeetPatil/groupedstats/issues
+Depends: 
+    R (>= 3.3.0)
 Imports: 
     broom,
     dplyr,
@@ -19,7 +21,8 @@ Imports:
     stats,
     tibble,
     tidyr,
-    glue
+    glue,
+    skimr
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
