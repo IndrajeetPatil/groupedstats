@@ -152,7 +152,8 @@ grouped_lm <- function(data,
     dplyr::bind_rows(.) %>%
     dplyr::left_join(x = ., y = df, by = "group") %>%
     dplyr::select(.data = ., !!!grouping.vars, dplyr::everything()) %>%
-    dplyr::select(.data = ., -group, -data, -term)
+    dplyr::select(.data = ., -group, -data, -term) %>%
+    signif_column(data = ., p = `p.value`)
 
   #============================== output ==================================
 

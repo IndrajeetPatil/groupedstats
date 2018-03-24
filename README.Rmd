@@ -65,9 +65,9 @@ Getting summary for multiple variables across multiple grouping variables.
 ```{r grouped_summary}
 library(datasets)
 
-groupedstats::grouped_summary( data = mtcars,
-                          grouping.vars = c(am, cyl),
-                          measures = c(disp, wt, mpg))
+groupedstats::grouped_summary(data = mtcars,
+                              grouping.vars = c(am, cyl),
+                              measures = c(disp, wt, mpg))
 ```
 
 * `grouped_lm`
@@ -88,8 +88,20 @@ This can be done with multiple grouping variables-
 ```{r grouped_lm2}
 library(datasets)
 
-groupedstats::grouped_lm( data = mtcars,
-                          crit.vars = c(wt, mpg),
-                          pred.vars = c(drat, disp),
-                          grouping.vars = c(am, cyl))
+groupedstats::grouped_lm(data = mtcars,
+                         crit.vars = c(wt, mpg),
+                         pred.vars = c(drat, disp),
+                         grouping.vars = c(am, cyl))
+```
+
+* `grouped_proptest`
+
+This function helps carry out one-sample proportion tests with a unique variable for multiple grouping variables-
+
+```{r grouped_proptest}
+library(datasets)
+
+groupedstats::grouped_proptest(data = mtcars,
+                               grouping.vars = cyl,
+                               measure = am)
 ```
