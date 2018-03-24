@@ -110,43 +110,48 @@ groupedstats::grouped_lm(data = iris,
                          crit.vars = c(Sepal.Length, Petal.Length),
                          pred.vars = c(Sepal.Width, Petal.Width),
                          grouping.vars = Species)
-#> # A tibble: 6 x 7
-#>   Species    formula        estimate std.error     t  p.value significance
-#>   <fct>      <chr>             <dbl>     <dbl> <dbl>    <dbl> <chr>       
-#> 1 setosa     Sepal.Length ~    0.743    0.0967  7.68 6.71e-10 ***         
-#> 2 versicolor Sepal.Length ~    0.526    0.123   4.28 8.77e- 5 ***         
-#> 3 virginica  Sepal.Length ~    0.457    0.128   3.56 8.43e- 4 ***         
-#> 4 setosa     Petal.Length ~    0.332    0.136   2.44 1.86e- 2 *           
-#> 5 versicolor Petal.Length ~    0.787    0.0891  8.83 1.27e-11 ***         
-#> 6 virginica  Petal.Length ~    0.322    0.137   2.36 2.25e- 2 *
+#> # A tibble: 6 x 9
+#>   Species  formula    estimate conf.low conf.high std.error     t  p.value
+#>   <fct>    <chr>         <dbl>    <dbl>     <dbl>     <dbl> <dbl>    <dbl>
+#> 1 setosa   Sepal.Len~    0.743   0.548      0.937    0.0967  7.68 6.71e-10
+#> 2 versico~ Sepal.Len~    0.526   0.279      0.773    0.123   4.28 8.77e- 5
+#> 3 virgini~ Sepal.Len~    0.457   0.199      0.715    0.128   3.56 8.43e- 4
+#> 4 setosa   Petal.Len~    0.332   0.0578     0.605    0.136   2.44 1.86e- 2
+#> 5 versico~ Petal.Len~    0.787   0.607      0.966    0.0891  8.83 1.27e-11
+#> 6 virgini~ Petal.Len~    0.322   0.0474     0.597    0.137   2.36 2.25e- 2
+#> # ... with 1 more variable: significance <chr>
 ```
 
-This can be done with multiple grouping variables-
+This can be done with multiple grouping variables. For example, in the
+following example, we use the
+[`gapminder`](https://cran.r-project.org/web/packages/gapminder/index.html)
+dataset to regress life expectency and population on GDP per capita for
+each continent and for each country.
 
 ``` r
-library(datasets)
+library(gapminder)
+library(dplyr)
 
-groupedstats::grouped_lm(data = mtcars,
-                         crit.vars = c(wt, mpg),
-                         pred.vars = c(drat, disp),
-                         grouping.vars = c(am, cyl))
-#> Warning in summary.lm(x): essentially perfect fit: summary may be
-#> unreliable
-#> # A tibble: 12 x 8
-#>       am   cyl formula  estimate std.error        t   p.value significance
-#>    <dbl> <dbl> <chr>       <dbl>     <dbl>    <dbl>     <dbl> <chr>       
-#>  1    1.    6. wt ~ dr~   -0.101     0.995   -0.102   0.935   ns          
-#>  2    1.    4. wt ~ dr~   -0.226     0.398   -0.568   0.591   ns          
-#>  3    0.    6. wt ~ dr~    0.307     0.673    0.456   0.693   ns          
-#>  4    0.    8. wt ~ dr~   -0.119     0.314   -0.379   0.713   ns          
-#>  5    0.    4. wt ~ dr~    0.422     0.906    0.466   0.722   ns          
-#>  6    1.    8. wt ~ dr~   -1.00    NaN      NaN     NaN       <NA>        
-#>  7    1.    6. mpg ~ d~    1.00      0.     Inf       0.      ***         
-#>  8    1.    4. mpg ~ d~   -0.835     0.225   -3.72    0.00991 **          
-#>  9    0.    6. mpg ~ d~    0.670     0.525    1.28    0.330   ns          
-#> 10    0.    8. mpg ~ d~   -0.535     0.267   -2.00    0.0729  ns          
-#> 11    0.    4. mpg ~ d~    0.932     0.362    2.57    0.236   ns          
-#> 12    1.    8. mpg ~ d~    1.00    NaN      NaN     NaN       <NA>
+groupedstats::grouped_lm(data = gapminder::gapminder,
+                         crit.vars = c(lifeExp, pop),
+                         pred.vars = c(gdpPercap, gdpPercap),
+                         grouping.vars = c(continent, country)) %>%
+  dplyr::arrange(.data = ., continent, country)
+#> # A tibble: 284 x 10
+#>    continent country    formula      estimate conf.low conf.high std.error
+#>    <fct>     <fct>      <chr>           <dbl>    <dbl>     <dbl>     <dbl>
+#>  1 Africa    Algeria    lifeExp ~ g~  0.904      0.604     1.21     0.135 
+#>  2 Africa    Algeria    pop ~ gdpPe~  0.847      0.473     1.22     0.168 
+#>  3 Africa    Angola     lifeExp ~ g~ -0.301     -0.973     0.371    0.302 
+#>  4 Africa    Angola     pop ~ gdpPe~ -0.292     -0.966     0.382    0.302 
+#>  5 Africa    Benin      lifeExp ~ g~  0.844      0.466     1.22     0.170 
+#>  6 Africa    Benin      pop ~ gdpPe~  0.911      0.620     1.20     0.131 
+#>  7 Africa    Botswana   lifeExp ~ g~  0.00560   -0.699     0.710    0.316 
+#>  8 Africa    Botswana   pop ~ gdpPe~  0.985      0.865     1.11     0.0539
+#>  9 Africa    Burkina F~ lifeExp ~ g~  0.882      0.549     1.21     0.149 
+#> 10 Africa    Burkina F~ pop ~ gdpPe~  0.920      0.644     1.20     0.124 
+#> # ... with 274 more rows, and 3 more variables: t <dbl>, p.value <dbl>,
+#> #   significance <chr>
 ```
 
   - `grouped_proptest`

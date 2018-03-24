@@ -83,15 +83,20 @@ groupedstats::grouped_lm(data = iris,
                          grouping.vars = Species)
 ```
 
-This can be done with multiple grouping variables-
+This can be done with multiple grouping variables. For example, in the following
+example, we use the
+[`gapminder`](https://cran.r-project.org/web/packages/gapminder/index.html)
+dataset to regress life expectency and population on GDP per capita for each continent and for each country. 
 
-```{r grouped_lm2}
-library(datasets)
+```{r grouped_lm2, warning = FALSE, message = FALSE}
+library(gapminder)
+library(dplyr)
 
-groupedstats::grouped_lm(data = mtcars,
-                         crit.vars = c(wt, mpg),
-                         pred.vars = c(drat, disp),
-                         grouping.vars = c(am, cyl))
+groupedstats::grouped_lm(data = gapminder::gapminder,
+                         crit.vars = c(lifeExp, pop),
+                         pred.vars = c(gdpPercap, gdpPercap),
+                         grouping.vars = c(continent, country)) %>%
+  dplyr::arrange(.data = ., continent, country)
 ```
 
 * `grouped_proptest`

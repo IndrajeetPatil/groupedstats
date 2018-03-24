@@ -13,6 +13,8 @@
 #' @import rlang
 #' @import tibble
 #'
+#' @importFrom broom tidy
+#' @importFrom broom confint_tidy
 #' @importFrom glue glue
 #' @importFrom purrr map
 #' @importFrom purrr map2_dfr
@@ -40,15 +42,19 @@
 
 
 # defining global variables and functions to quient the R CMD check notes
-utils::globalVariables(c(
-  "estimate",
-  "formula",
-  "group",
-  "p.value",
-  "statistic",
-  "std.error",
-  "term"
-))
+utils::globalVariables(
+  c(
+    "estimate",
+    "formula",
+    "group",
+    "p.value",
+    "statistic",
+    "std.error",
+    "term",
+    "conf.low",
+    "conf.high"
+  )
+)
 
 # defining the function
 grouped_lm <- function(data,
@@ -115,9 +121,11 @@ grouped_lm <- function(data,
       purrr::map(.x = .,
                  .f = ~ stats::lm(formula = stats::as.formula(fx),
                                   data = (.))) %>% # tidying up the output with broom
-      purrr::map_dfr(.x = .,
-                     .f = ~ broom::tidy(x = .),
-                     .id = "group") %>% # remove intercept terms
+      purrr::map_dfr(
+        .x = .,
+        .f = ~ dplyr::bind_cols(broom::tidy(x = .), broom::confint_tidy(x = .)),
+        .id = "group"
+      ) %>% # remove intercept terms
       dplyr::filter(.data = ., term == !!filter_name) %>% # add formula as a character
       dplyr::mutate(.data = ., formula = as.character(fx_plain)) %>% # rearrange the dataframe
       dplyr::select(
@@ -126,6 +134,8 @@ grouped_lm <- function(data,
         formula,
         term,
         estimate,
+        conf.low,
+        conf.high,
         std.error,
         t = statistic,
         p.value
