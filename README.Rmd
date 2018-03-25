@@ -53,6 +53,8 @@ devtools::install_github(repo = "IndrajeetPatil/groupedstats", # package path on
 Documentation for any function can be accessed with the standard `help` command-
 ```{r help, eval = FALSE}
 ?grouped_lm
+?grouped_robustlm
+?grouped_proptest
 ?grouped_summary
 ```
 
@@ -84,15 +86,29 @@ groupedstats::grouped_lm(data = iris,
 ```
 
 This can be done with multiple grouping variables. For example, in the following
-example, we use the
-[`gapminder`](https://cran.r-project.org/web/packages/gapminder/index.html)
-dataset to regress life expectency and population on GDP per capita for each continent and for each country. 
+example, we use the `gapminder` dataset to regress life expectency and
+population on GDP per capita for each continent and for each country.
 
 ```{r grouped_lm2, warning = FALSE, message = FALSE}
 library(gapminder)
 library(dplyr)
 
 groupedstats::grouped_lm(data = gapminder::gapminder,
+                         crit.vars = c(lifeExp, pop),
+                         pred.vars = c(gdpPercap, gdpPercap),
+                         grouping.vars = c(continent, country)) %>%
+  dplyr::arrange(.data = ., continent, country)
+```
+
+* `grouped_robustlm`
+
+There is also robust variant of linear regression (as implemented in `robust::lmRob`)-
+
+```{r grouped_robustlm, warning = FALSE, message = FALSE}
+library(gapminder)
+library(dplyr)
+
+groupedstats::grouped_robustlm(data = gapminder::gapminder,
                          crit.vars = c(lifeExp, pop),
                          pred.vars = c(gdpPercap, gdpPercap),
                          grouping.vars = c(continent, country)) %>%

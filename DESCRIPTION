@@ -1,7 +1,7 @@
 Type: Package
 Package: groupedstats
-Title: Statistical Tests For Multiple Variables Across Multiple Grouping Levels
-Version: 0.0.1.9000
+Title: Statistical Tests for Multiple Variables Across Multiple Grouping Levels
+Version: 0.0.1
 Authors@R: person(given = "Indrajeet", 
   family = "Patil", 
   email = "patilindrajeet.science@gmail.com", 
@@ -23,7 +23,8 @@ Imports:
     tidyr,
     glue,
     skimr,
-    crayon
+    crayon,
+    robust
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

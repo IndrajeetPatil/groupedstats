@@ -12,7 +12,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--03--24-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--03--25-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
@@ -54,6 +54,8 @@ command-
 
 ``` r
 ?grouped_lm
+?grouped_robustlm
+?grouped_proptest
 ?grouped_summary
 ```
 
@@ -123,10 +125,9 @@ groupedstats::grouped_lm(data = iris,
 ```
 
 This can be done with multiple grouping variables. For example, in the
-following example, we use the
-[`gapminder`](https://cran.r-project.org/web/packages/gapminder/index.html)
-dataset to regress life expectency and population on GDP per capita for
-each continent and for each country.
+following example, we use the `gapminder` dataset to regress life
+expectency and population on GDP per capita for each continent and for
+each country.
 
 ``` r
 library(gapminder)
@@ -152,6 +153,36 @@ groupedstats::grouped_lm(data = gapminder::gapminder,
 #> 10 Africa    Burkina F~ pop ~ gdpPe~  0.920      0.644     1.20     0.124 
 #> # ... with 274 more rows, and 3 more variables: t <dbl>, p.value <dbl>,
 #> #   significance <chr>
+```
+
+  - `grouped_robustlm`
+
+There is also robust variant of linear regression (as implemented in
+`robust::lmRob`)-
+
+``` r
+library(gapminder)
+library(dplyr)
+
+groupedstats::grouped_robustlm(data = gapminder::gapminder,
+                         crit.vars = c(lifeExp, pop),
+                         pred.vars = c(gdpPercap, gdpPercap),
+                         grouping.vars = c(continent, country)) %>%
+  dplyr::arrange(.data = ., continent, country)
+#> # A tibble: 284 x 8
+#>    continent country    formula       estimate std.error       t   p.value
+#>    <fct>     <fct>      <chr>            <dbl>     <dbl>   <dbl>     <dbl>
+#>  1 Africa    Algeria    lifeExp ~ gd~    0.904    0.155    5.82    1.68e-4
+#>  2 Africa    Algeria    pop ~ gdpPer~    0.869    0.349    2.49    3.19e-2
+#>  3 Africa    Angola     lifeExp ~ gd~   -0.413    0.563   -0.734   4.80e-1
+#>  4 Africa    Angola     pop ~ gdpPer~   -0.541    0.221   -2.45    3.44e-2
+#>  5 Africa    Benin      lifeExp ~ gd~    0.773    0.315    2.46    3.38e-2
+#>  6 Africa    Benin      pop ~ gdpPer~    0.929    0.129    7.18    2.99e-5
+#>  7 Africa    Botswana   lifeExp ~ gd~    1.47     0.332    4.42    1.30e-3
+#>  8 Africa    Botswana   pop ~ gdpPer~    1.08     0.0706  15.3     2.94e-8
+#>  9 Africa    Burkina F~ lifeExp ~ gd~    0.882    0.413    2.14    5.83e-2
+#> 10 Africa    Burkina F~ pop ~ gdpPer~    0.920    0.128    7.17    3.04e-5
+#> # ... with 274 more rows, and 1 more variable: significance <chr>
 ```
 
   - `grouped_proptest`
