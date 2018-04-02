@@ -15,15 +15,15 @@ Depends:
     R (>= 3.3.0)
 Imports: 
     broom (>= 0.4.4),
-    dplyr,
+    dplyr (>= 0.7.4),
     magrittr,
-    purrr,
+    purrr (>= 0.2.4),
     rlang (>= 0.1.2),
     stats,
     tibble,
-    tidyr,
+    tidyr (>= 0.8.0),
     glue (>= 1.2.0),
-    skimr,
+    skimr (>= 1.0.2),
     crayon,
     robust
 Encoding: UTF-8
