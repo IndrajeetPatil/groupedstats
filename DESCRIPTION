@@ -14,7 +14,7 @@ BugReports: https://github.com/IndrajeetPatil/groupedstats/issues
 Depends: 
     R (>= 3.3.0)
 Imports: 
-    broom,
+    broom (>= 0.4.4),
     dplyr,
     magrittr,
     purrr,
@@ -22,8 +22,8 @@ Imports:
     stats,
     tibble,
     tidyr,
-    glue,
-    skimr,
+    glue (>= 1.2.0),
+    skimr (>= 1.0.2),
     crayon,
     robust
 Encoding: UTF-8

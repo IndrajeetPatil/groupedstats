@@ -12,7 +12,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--03--25-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--04--02-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
@@ -66,35 +66,56 @@ command-
 Getting summary for multiple variables across multiple grouping
 variables.
 
+This is a handy tool if you have just one grouping variable and multiple
+variables for which summary statistics are to be computed-
+
 ``` r
 library(datasets)
 
-groupedstats::grouped_summary(data = mtcars,
-                              grouping.vars = c(am, cyl),
-                              measures = c(disp, wt, mpg))
-#> # A tibble: 18 x 14
-#>       am   cyl type   variable missing complete n     mean    sd    p0    
-#>    <dbl> <dbl> <chr>  <chr>    <chr>   <chr>    <chr> <chr>   <chr> <chr> 
-#>  1    1.    6. numer~ disp     0       3        3     "155  ~ 8.66  "145 ~
-#>  2    1.    6. numer~ mpg      0       3        3     " 20.5~ 0.75  " 19.~
-#>  3    1.    6. numer~ wt       0       3        3     "  2.7~ 0.13  "  2.~
-#>  4    1.    4. numer~ disp     0       8        8     93.61   20.48 "71.1~
-#>  5    1.    4. numer~ mpg      0       8        8     28.07   " 4.~ "21.4~
-#>  6    1.    4. numer~ wt       0       8        8     " 2.04" " 0.~ " 1.5~
-#>  7    0.    6. numer~ disp     0       4        4     204.55  44.74 "167.~
-#>  8    0.    6. numer~ mpg      0       4        4     " 19.1~ " 1.~ " 17.~
-#>  9    0.    6. numer~ wt       0       4        4     "  3.3~ " 0.~ "  3.~
-#> 10    0.    8. numer~ disp     0       12       12    357.62  71.82 "275.~
-#> 11    0.    8. numer~ mpg      0       12       12    " 15.0~ " 2.~ " 10.~
-#> 12    0.    8. numer~ wt       0       12       12    "  4.1~ " 0.~ "  3.~
-#> 13    0.    4. numer~ disp     0       3        3     135.87  13.97 "120.~
-#> 14    0.    4. numer~ mpg      0       3        3     " 22.9~ " 1.~ " 21.~
-#> 15    0.    4. numer~ wt       0       3        3     "  2.9~ " 0.~ "  2.~
-#> 16    1.    8. numer~ disp     0       2        2     "326  ~ 35.36 "301 ~
-#> 17    1.    8. numer~ mpg      0       2        2     " 15.4~ " 0.~ " 15 ~
-#> 18    1.    8. numer~ wt       0       2        2     "  3.3~ " 0.~ "  3.~
-#> # ... with 4 more variables: p25 <chr>, p50 <chr>, p75 <chr>, p100 <chr>
+groupedstats::grouped_summary(data = datasets::iris,
+                              grouping.vars = Species,
+                              measures = c(Sepal.Length:Petal.Width))
+#> # A tibble: 12 x 13
+#>    Species  type   variable missing complete     n  mean    sd   min   p25
+#>    <fct>    <fct>  <fct>      <dbl>    <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+#>  1 setosa   numer~ Petal.L~      0.      50.   50. 1.46  0.170 1.00  1.40 
+#>  2 setosa   numer~ Petal.W~      0.      50.   50. 0.250 0.110 0.100 0.200
+#>  3 setosa   numer~ Sepal.L~      0.      50.   50. 5.01  0.350 4.30  4.80 
+#>  4 setosa   numer~ Sepal.W~      0.      50.   50. 3.43  0.380 2.30  3.20 
+#>  5 versico~ numer~ Petal.L~      0.      50.   50. 4.26  0.470 3.00  4.00 
+#>  6 versico~ numer~ Petal.W~      0.      50.   50. 1.33  0.200 1.00  1.20 
+#>  7 versico~ numer~ Sepal.L~      0.      50.   50. 5.94  0.520 4.90  5.60 
+#>  8 versico~ numer~ Sepal.W~      0.      50.   50. 2.77  0.310 2.00  2.52 
+#>  9 virgini~ numer~ Petal.L~      0.      50.   50. 5.55  0.550 4.50  5.10 
+#> 10 virgini~ numer~ Petal.W~      0.      50.   50. 2.03  0.270 1.40  1.80 
+#> 11 virgini~ numer~ Sepal.L~      0.      50.   50. 6.59  0.640 4.90  6.23 
+#> 12 virgini~ numer~ Sepal.W~      0.      50.   50. 2.97  0.320 2.20  2.80 
+#> # ... with 3 more variables: median <dbl>, p75 <dbl>, max <dbl>
 ```
+
+Or multiple grouping variables and multiple variables of interest-
+
+``` r
+library(datasets)
+library(tidyverse)
+
+groupedstats::grouped_summary(
+  data = datasets::mtcars,
+  grouping.vars = c(am, cyl),
+  measures = c(disp, wt, mpg)
+) %>%                                                         # further modification with the pipe operator
+  dplyr::select(.data = ., -type, -missing, -complete) %>%    # feeding the output into another function
+  ggplot2::ggplot(data = .,                                   # note that `.` is just a placeholder for data here
+                  mapping = ggplot2::aes(x = as.factor(cyl), y = mean, color = variable)) +
+  ggplot2::geom_jitter() +
+  ggplot2::labs(x = "No. of cylinders", y = "mean")
+```
+
+![](man/figures/README-grouped_summary2-1.png)<!-- -->
+
+As demonstrated, the output from the function is further modifiable and
+can be directly outputed into other routines (e.g., preparing a plot of
+`mean` and `sd` values in `ggplot2`).
 
   - `grouped_lm`
 
@@ -108,7 +129,7 @@ for all levels of `Species`:
 ``` r
 library(datasets)
 
-groupedstats::grouped_lm(data = iris,
+groupedstats::grouped_lm(data = datasets::iris,
                          crit.vars = c(Sepal.Length, Petal.Length),
                          pred.vars = c(Sepal.Width, Petal.Width),
                          grouping.vars = Species)

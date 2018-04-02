@@ -98,21 +98,20 @@ grouped_summary <- function(data,
     tidyr::unnest(data = .) %>% # unnesting the data
     tibble::as_data_frame(x = .) # converting to tibble dataframe
 
-  # uncomment this when next version of skimr is released
   # # changing class of summary variables
-  # df_summary <-
-  #   df_summary %>%
-  #   dplyr::mutate_at(
-  #     .tbl = .,
-  #     .vars = dplyr::vars(missing, complete, n, mean, sd, p0, p25, p50, p75, p100),
-  #     .funs = ~ as.numeric(as.character(.)) # change summary variables to numeric
-  #   ) %>%
-  #   dplyr::rename(.data = ., min = p0, median = p50, max = p100) %>% # renaming columns to minimum and maximum
-  #   dplyr::mutate_if(
-  #     .tbl = .,
-  #     .predicate = is.character,
-  #     .funs = as.factor
-  #   ) # change grouping variables to factors (tibble won't have it though)
+  df_summary <-
+    df_summary %>%
+    dplyr::mutate_at(
+      .tbl = .,
+      .vars = dplyr::vars(missing, complete, n, mean, sd, p0, p25, p50, p75, p100),
+      .funs = ~ as.numeric(as.character(.)) # change summary variables to numeric
+    ) %>%
+    dplyr::rename(.data = ., min = p0, median = p50, max = p100) %>% # renaming columns to minimum and maximum
+    dplyr::mutate_if(
+      .tbl = .,
+      .predicate = is.character,
+      .funs = as.factor
+    ) # change grouping variables to factors (tibble won't have it though)
 
   # return the summary dataframe
   return(df_summary)

@@ -64,13 +64,35 @@ Documentation for any function can be accessed with the standard `help` command-
 
 Getting summary for multiple variables across multiple grouping variables.
 
-```{r grouped_summary}
+This is a handy tool if you have just one grouping variable and multiple variables for which summary statistics are to be computed-
+
+```{r grouped_summary1}
 library(datasets)
 
-groupedstats::grouped_summary(data = mtcars,
-                              grouping.vars = c(am, cyl),
-                              measures = c(disp, wt, mpg))
+groupedstats::grouped_summary(data = datasets::iris,
+                              grouping.vars = Species,
+                              measures = c(Sepal.Length:Petal.Width))
 ```
+
+Or multiple grouping variables and multiple variables of interest-
+
+```{r grouped_summary2, warning = FALSE, message = FALSE}
+library(datasets)
+library(tidyverse)
+
+groupedstats::grouped_summary(
+  data = datasets::mtcars,
+  grouping.vars = c(am, cyl),
+  measures = c(disp, wt, mpg)
+) %>%                                                         # further modification with the pipe operator
+  dplyr::select(.data = ., -type, -missing, -complete) %>%    # feeding the output into another function
+  ggplot2::ggplot(data = .,                                   # note that `.` is just a placeholder for data here
+                  mapping = ggplot2::aes(x = as.factor(cyl), y = mean, color = variable)) +
+  ggplot2::geom_jitter() +
+  ggplot2::labs(x = "No. of cylinders", y = "mean")
+```
+
+As demonstrated, the output from the function is further modifiable and can be directly outputed into other routines (e.g., preparing a plot of `mean` and `sd` values in `ggplot2`).
 
 * `grouped_lm`
 
@@ -79,7 +101,7 @@ This function can be used to run linear regression between different pairs of va
 ```{r grouped_lm1}
 library(datasets)
 
-groupedstats::grouped_lm(data = iris,
+groupedstats::grouped_lm(data = datasets::iris,
                          crit.vars = c(Sepal.Length, Petal.Length),
                          pred.vars = c(Sepal.Width, Petal.Width),
                          grouping.vars = Species)
