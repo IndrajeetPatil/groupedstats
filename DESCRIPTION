@@ -23,7 +23,7 @@ Imports:
     tibble,
     tidyr,
     glue (>= 1.2.0),
-    skimr (>= 1.0.2),
+    skimr,
     crayon,
     robust
 Encoding: UTF-8
