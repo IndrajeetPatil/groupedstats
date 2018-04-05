@@ -14,8 +14,6 @@
 #' @param grouping.vars List of grouping variables.
 #' @param paired A logical indicating whether you want a paired two-sample
 #'   Wilcoxon tests (Dafault: `paired = FALSE`).
-#' @param exact A logical indicating whether an exact p-value should be computed
-#'   (Default: `exact = NULL`).
 #' @param correct A logical indicating whether to apply continuity correction in
 #'   the normal approximation for the p-value (Default: `correct = TRUE`).
 #'
@@ -35,7 +33,7 @@
 #' @importFrom tidyr nest
 #'
 #
-#'
+#' @export
 
 
 # defining global variables and functions to quient the R CMD check notes
@@ -63,7 +61,6 @@ grouped_wilcox <- function(data,
                            indep.vars,
                            grouping.vars,
                            paired = FALSE,
-                           exact = NULL,
                            correct = TRUE) {
   #================== preparing dataframe ==================
   #
@@ -113,8 +110,7 @@ grouped_wilcox <- function(data,
              x_name,
              y_name,
              paired,
-             correct,
-             exact) {
+             correct) {
       # plain version of the formula to return
       fx <- glue::glue("{y_name} ~ {x_name}")
 
@@ -130,7 +126,7 @@ grouped_wilcox <- function(data,
             alternative = "two.sided",
             conf.level = 0.95,
             na.action = na.omit,
-            exact = exact,
+            exact = NULL,
             correct = correct,
             conf.int = TRUE,
             data = (.)
@@ -172,18 +168,15 @@ grouped_wilcox <- function(data,
       y_name = purrr::map(.x = dep.vars,
                           .f = ~ rlang::quo_name(quo = .)),
       paired = paired,
-      correct = correct,
-      exact = exact
+      correct = correct
     ),
     .f = lm_listed
-  )
-
-  # %>%
-  # dplyr::bind_rows(.) %>%
-  #   dplyr::left_join(x = ., y = df, by = "group") %>%
-  #   dplyr::select(.data = ., !!!grouping.vars, dplyr::everything()) %>%
-  #   dplyr::select(.data = ., -group, -data, -alternative) %>%
-  #   signif_column(data = ., p = `p.value`)
+  )  %>%
+    dplyr::bind_rows(.) %>%
+    dplyr::left_join(x = ., y = df, by = "group") %>%
+    dplyr::select(.data = ., !!!grouping.vars, dplyr::everything()) %>%
+    dplyr::select(.data = ., -group, -data, -alternative) %>%
+    signif_column(data = ., p = `p.value`)
 
   #============================== output ==================================
 

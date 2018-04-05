@@ -204,19 +204,83 @@ groupedstats::grouped_ttest(
 )
 ```
 
-<!-- * `grouped_wilcox` -->
+* `grouped_wilcox`
 
-<!-- This function is just non-parametric variant of the `grouped_ttest`: -->
-<!-- ```{r grouped_wilcox} -->
-<!-- # checking if the Sepal part has different dimentions (value) than Petal part -->
-<!-- # for each Species and for each type of measurement (Length and Width) -->
-<!-- options(tibble.width = Inf)            # show me all columns -->
+This function is just non-parametric variant of the `grouped_ttest`:
 
-<!-- groupedstats::grouped_wilcox( -->
-<!--   data = iris_long, -->
-<!--   dep.vars = value,                    # dependent variable -->
-<!--   indep.vars = part,                   # independent variable -->
-<!--   grouping.vars = c(Species, measure), # for each Species and for each measurement -->
-<!--   paired = TRUE                        # paired Wilcoxon signed rank test with continuity correction -->
-<!-- ) -->
-<!-- ``` -->
+```{r grouped_wilcox}
+# checking if the Sepal part has different dimentions (value) than Petal part
+# for each Species and for each type of measurement (Length and Width)
+options(tibble.width = Inf)            # show me all columns
+
+groupedstats::grouped_wilcox(
+  data = iris_long,
+  dep.vars = value,                    # dependent variable
+  indep.vars = part,                   # independent variable
+  grouping.vars = c(Species, measure), # for each Species and for each measurement
+  paired = TRUE                        # paired Wilcoxon signed rank test with continuity correction
+)
+```
+
+While we are at it, let's also check out examples for `t-test` and `Wilcox test`
+in case of between-subjects designs.
+
+We will use `diamonds` dataset from `ggplot2` and will see if the price and
+depth of a diamond is different for two of our favorite colors (say `E` and `J`)
+for each type of clarity.
+
+```{r grouped_wilcox2}
+
+# subset the dataframe with two colors of interest to us
+diamonds_short <-
+  dplyr::filter(.data = ggplot2::diamonds, color == "E" |
+                  color == "J")
+
+options(tibble.width = Inf, tibble.print_max = Inf)             # show me all rows and columns
+
+# t-test
+groupedstats::grouped_ttest(
+  data = diamonds_short,
+  dep.vars = c(carat, price, depth),             # note that there three independent variables 
+  indep.vars = color,                            # and just one dependent variable 
+  grouping.vars = clarity,                       # one grouping variable
+  paired = FALSE,
+  var.equal = FALSE
+)
+
+# wilcox test (aka Mann-Whitney U-test)
+groupedstats::grouped_wilcox(
+  data = diamonds_short,
+  dep.vars = depth:price,                        # note that you can select variables in a range
+  indep.vars = color,                            # again, just one dependent variable
+  grouping.vars = clarity,                       # one grouping variable
+  paired = FALSE
+)
+```
+
+We can further focus just on two levels of clarity to further elucidate another
+aspect of entering the arguments-
+
+```{r grouped_wilcox3}
+# subset the dataframe even further to just select two levels of clarity
+diamonds_short2 <-
+  dplyr::filter(.data = diamonds_short, clarity == "SI2" |
+                  clarity == "SI1")
+
+# wilcox test (aka Mann-Whitney U-test)
+groupedstats::grouped_wilcox(
+ data = diamonds_short2,
+  dep.vars = c(carat, price),                    # two independent variables
+  indep.vars = c(color, clarity),                # and just one dependent variable 
+  grouping.vars = cut,                           # one grouping variable
+  paired = FALSE
+)
+
+```
+
+In these examples, two things are worth noting that generalize to **all**
+functions in this package and stem from how [`tidy evaluation`](https://adv-r.hadley.nz/evaluation.html) works: <br />
+**1.** If just one independent variable is provided for multiple dependent
+variables, it will be used as a common variable.  <br />
+**2.** If you want to use a selection of variables, you shouldn't use `c()`.
+
