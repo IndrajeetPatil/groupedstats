@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • groupedstats</title>
+<title>Setting Working Directory to where the R Script is — set_cwd • groupedstats</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,7 +25,11 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Setting Working Directory to where the R Script is — set_cwd" />
+
+<meta property="og:description" content="This function will change the current working directoy to whichever directory the R script you are currently
+working on is located. This preempts the trouble of setting the working directory manually." />
+<meta name="twitter:card" content="summary" />
 
 
 <!-- mathjax -->
@@ -42,7 +46,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -83,97 +87,43 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Setting Working Directory to where the R Script is</h1>
+    
+    <p class="hidden name"><code>set_cwd.Rd</code></p>
     </div>
 
-    <table class="ref-index">
+    
+    <p>This function will change the current working directoy to whichever directory the R script you are currently
+working on is located. This preempts the trouble of setting the working directory manually.</p>
+    
 
-    <colgroup>
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>set_cwd</span>()</pre>
+        
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="groupedstats.html">groupedstats</a></code> </p>
-        </td>
-        <td><p><code>groupedstats</code></p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="grouped_lm.html">grouped_lm</a></code> </p>
-        </td>
-        <td><p>Function to run linear regression on multiple variables across multiple grouping variables.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="grouped_proptest.html">grouped_proptest</a></code> </p>
-        </td>
-        <td><p>Function to run proportion test on grouped data.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="grouped_robustlm.html">grouped_robustlm</a></code> </p>
-        </td>
-        <td><p>Function to run robust linear regression on multiple variables across multiple grouping variables.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="grouped_summary.html">grouped_summary</a></code> </p>
-        </td>
-        <td><p>Function to get descriptive statistics for multiple variables for all grouping variable levels</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="grouped_ttest.html">grouped_ttest</a></code> </p>
-        </td>
-        <td><p>Function to run t-test on multiple variables across multiple grouping
-variables.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="grouped_wilcox.html">grouped_wilcox</a></code> </p>
-        </td>
-        <td><p>Function to run two-sample Wilcoxon tests on multiple variables across
-multiple grouping variables.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="set_cwd.html">set_cwd()</a></code> </p>
-        </td>
-        <td><p>Setting Working Directory to where the R Script is</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="signif_column.html">signif_column()</a></code> </p>
-        </td>
-        <td><p>creating a column with significance labels</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="specify_decimal_p.html">specify_decimal_p()</a></code> </p>
-        </td>
-        <td><p>custom function for getting specified number of decimal places in results for p-value</p></td>
-      </tr>
-    </tbody>
-    </table>
+    <p>Path to changed working directory.</p>
+    
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>From: https://eranraviv.com/r-tips-and-tricks-working-directory/</p>
+    
+
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
-    </ul>
+      
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#note">Note</a></li>
+          </ul>
+
+    <h2>Author</h2>
+    
+Indrajeet Patil
+
   </div>
 </div>
 

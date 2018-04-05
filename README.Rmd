@@ -28,7 +28,7 @@ knitr::opts_chunk$set(
 
 `groupedstats` package provides a collection of functions to run statistical
 operations on multiple variables across multiple grouping variables in a
-dataframe.
+dataframe. **This package is still in development. Use at your own risk!**
 
 ## Installation
 
@@ -52,10 +52,11 @@ devtools::install_github(repo = "IndrajeetPatil/groupedstats", # package path on
 
 Documentation for any function can be accessed with the standard `help` command-
 ```{r help, eval = FALSE}
+?grouped_summary
 ?grouped_lm
 ?grouped_robustlm
 ?grouped_proptest
-?grouped_summary
+?grouped_ttest
 ```
 
 ## Usage
@@ -68,6 +69,7 @@ This is a handy tool if you have just one grouping variable and multiple variabl
 
 ```{r grouped_summary1}
 library(datasets)
+options(tibble.width = Inf)            # show me all columns
 
 groupedstats::grouped_summary(data = datasets::iris,
                               grouping.vars = Species,
@@ -87,7 +89,9 @@ groupedstats::grouped_summary(
 ) %>%                                                         # further modification with the pipe operator
   dplyr::select(.data = ., -type, -missing, -complete) %>%    # feeding the output into another function
   ggplot2::ggplot(data = .,                                   # note that `.` is just a placeholder for data here
-                  mapping = ggplot2::aes(x = as.factor(cyl), y = mean, color = variable)) +
+                  mapping = ggplot2::aes(x = as.factor(cyl), 
+                                         y = mean, 
+                                         color = variable)) +
   ggplot2::geom_jitter() +
   ggplot2::labs(x = "No. of cylinders", y = "mean")
 ```
@@ -100,10 +104,11 @@ This function can be used to run linear regression between different pairs of va
 
 ```{r grouped_lm1}
 library(datasets)
+options(tibble.width = Inf)            # show me all columns
 
 groupedstats::grouped_lm(data = datasets::iris,
-                         crit.vars = c(Sepal.Length, Petal.Length),
-                         pred.vars = c(Sepal.Width, Petal.Width),
+                         dep.vars = c(Sepal.Length, Petal.Length),
+                         indep.vars = c(Sepal.Width, Petal.Width),
                          grouping.vars = Species)
 ```
 
@@ -114,10 +119,11 @@ population on GDP per capita for each continent and for each country.
 ```{r grouped_lm2, warning = FALSE, message = FALSE}
 library(gapminder)
 library(dplyr)
+options(tibble.width = Inf)            # show me all columns
 
 groupedstats::grouped_lm(data = gapminder::gapminder,
-                         crit.vars = c(lifeExp, pop),
-                         pred.vars = c(gdpPercap, gdpPercap),
+                         dep.vars = c(lifeExp, pop),
+                         indep.vars = c(gdpPercap, gdpPercap),
                          grouping.vars = c(continent, country)) %>%
   dplyr::arrange(.data = ., continent, country)
 ```
@@ -129,10 +135,11 @@ There is also robust variant of linear regression (as implemented in `robust::lm
 ```{r grouped_robustlm, warning = FALSE, message = FALSE}
 library(gapminder)
 library(dplyr)
+options(tibble.width = Inf)            # show me all columns
 
 groupedstats::grouped_robustlm(data = gapminder::gapminder,
-                         crit.vars = c(lifeExp, pop),
-                         pred.vars = c(gdpPercap, gdpPercap),
+                         dep.vars = c(lifeExp, pop),
+                         indep.vars = c(gdpPercap, gdpPercap),
                          grouping.vars = c(continent, country)) %>%
   dplyr::arrange(.data = ., continent, country)
 ```
@@ -143,8 +150,73 @@ This function helps carry out one-sample proportion tests with a unique variable
 
 ```{r grouped_proptest}
 library(datasets)
+options(tibble.width = Inf)            # show me all columns
 
 groupedstats::grouped_proptest(data = mtcars,
                                grouping.vars = cyl,
                                measure = am)
 ```
+
+* `grouped_ttest`
+
+This function can help you carry out t-tests, paired or independent, on multiple
+variables across multiple groups. Deomostrating how to use this function is
+going to first require getting the `iris` dataset into long format. Let's say we
+want to investigate if `Sepal` part of the flower has greater measurement
+(length or width) than `Petal` part of the flower for **each** *Iris* species.
+
+```{r grouped_ttest1}
+# loading the necessary libraries
+library(tidyverse)
+
+# converting the iris dataset to long format
+iris_long <- datasets::iris %>%
+  dplyr::mutate(.data = ., id = dplyr::row_number(x = Species)) %>%
+  tidyr::gather(
+    data = .,
+    key = "condition",
+    value = "value",
+    Sepal.Length:Petal.Width,
+    convert = TRUE,
+    factor_key = TRUE
+  ) %>%
+  tidyr::separate(
+    col = "condition",
+    into = c("part", "measure"),
+    sep = "\\.",
+    convert = TRUE
+  ) %>%
+  tibble::as_data_frame(x = .)
+
+# check the long format iris dataset
+iris_long
+
+# checking if the Sepal part has different dimentions (value) than Petal part
+# for each Species and for each type of measurement (Length and Width)
+options(tibble.width = Inf)            # show me all columns
+
+groupedstats::grouped_ttest(
+  data = iris_long,
+  dep.vars = value,                    # dependent variable
+  indep.vars = part,                   # independent variable
+  grouping.vars = c(Species, measure), # for each Species and for each measurement
+  paired = TRUE                        # paired t-test
+)
+```
+
+<!-- * `grouped_wilcox` -->
+
+<!-- This function is just non-parametric variant of the `grouped_ttest`: -->
+<!-- ```{r grouped_wilcox} -->
+<!-- # checking if the Sepal part has different dimentions (value) than Petal part -->
+<!-- # for each Species and for each type of measurement (Length and Width) -->
+<!-- options(tibble.width = Inf)            # show me all columns -->
+
+<!-- groupedstats::grouped_wilcox( -->
+<!--   data = iris_long, -->
+<!--   dep.vars = value,                    # dependent variable -->
+<!--   indep.vars = part,                   # independent variable -->
+<!--   grouping.vars = c(Species, measure), # for each Species and for each measurement -->
+<!--   paired = TRUE                        # paired Wilcoxon signed rank test with continuity correction -->
+<!-- ) -->
+<!-- ``` -->

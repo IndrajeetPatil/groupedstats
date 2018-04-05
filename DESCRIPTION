@@ -25,7 +25,8 @@ Imports:
     glue (>= 1.2.0),
     skimr (>= 1.0.2),
     crayon,
-    robust
+    robust,
+    rstudioapi
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

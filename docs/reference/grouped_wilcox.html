@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • groupedstats</title>
+<title>Function to run two-sample Wilcoxon tests on multiple variables across
+multiple grouping variables. — grouped_wilcox • groupedstats</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,7 +26,12 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Function to run two-sample Wilcoxon tests on multiple variables across
+multiple grouping variables. — grouped_wilcox" />
+
+<meta property="og:description" content="Function to run two-sample Wilcoxon tests on multiple variables across
+multiple grouping variables." />
+<meta name="twitter:card" content="summary" />
 
 
 <!-- mathjax -->
@@ -42,7 +48,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -83,97 +89,77 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Function to run two-sample Wilcoxon tests on multiple variables across
+multiple grouping variables.</h1>
+    
+    <p class="hidden name"><code>grouped_wilcox.Rd</code></p>
     </div>
 
-    <table class="ref-index">
+    
+    <p>Function to run two-sample Wilcoxon tests on multiple variables across
+multiple grouping variables.</p>
+    
 
-    <colgroup>
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="groupedstats.html">groupedstats</a></code> </p>
-        </td>
-        <td><p><code>groupedstats</code></p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="grouped_lm.html">grouped_lm</a></code> </p>
-        </td>
-        <td><p>Function to run linear regression on multiple variables across multiple grouping variables.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="grouped_proptest.html">grouped_proptest</a></code> </p>
-        </td>
-        <td><p>Function to run proportion test on grouped data.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="grouped_robustlm.html">grouped_robustlm</a></code> </p>
-        </td>
-        <td><p>Function to run robust linear regression on multiple variables across multiple grouping variables.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="grouped_summary.html">grouped_summary</a></code> </p>
-        </td>
-        <td><p>Function to get descriptive statistics for multiple variables for all grouping variable levels</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="grouped_ttest.html">grouped_ttest</a></code> </p>
-        </td>
-        <td><p>Function to run t-test on multiple variables across multiple grouping
-variables.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="grouped_wilcox.html">grouped_wilcox</a></code> </p>
-        </td>
-        <td><p>Function to run two-sample Wilcoxon tests on multiple variables across
-multiple grouping variables.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="set_cwd.html">set_cwd()</a></code> </p>
-        </td>
-        <td><p>Setting Working Directory to where the R Script is</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="signif_column.html">signif_column()</a></code> </p>
-        </td>
-        <td><p>creating a column with significance labels</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="specify_decimal_p.html">specify_decimal_p()</a></code> </p>
-        </td>
-        <td><p>custom function for getting specified number of decimal places in results for p-value</p></td>
-      </tr>
-    </tbody>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>data</th>
+      <td><p>Dataframe from which variables are to be taken.</p></td>
+    </tr>
+    <tr>
+      <th>dep.vars</th>
+      <td><p>List dependent variables for a two-sample Wilcoxon tests (<code>y</code>
+in <code>y ~ x</code>).</p></td>
+    </tr>
+    <tr>
+      <th>indep.vars</th>
+      <td><p>List independent variables for a two-sample Wilcoxon tests
+(<code>x</code> in <code>y ~ x</code>).</p></td>
+    </tr>
+    <tr>
+      <th>grouping.vars</th>
+      <td><p>List of grouping variables.</p></td>
+    </tr>
+    <tr>
+      <th>paired</th>
+      <td><p>A logical indicating whether you want a paired two-sample
+Wilcoxon tests (Dafault: <code>paired = FALSE</code>).</p></td>
+    </tr>
+    <tr>
+      <th>exact</th>
+      <td><p>A logical indicating whether an exact p-value should be computed
+(Default: <code>exact = NULL</code>).</p></td>
+    </tr>
+    <tr>
+      <th>correct</th>
+      <td><p>A logical indicating whether to apply continuity correction in
+the normal approximation for the p-value (Default: <code>correct = TRUE</code>).</p></td>
+    </tr>
     </table>
-  </div>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>A tibble dataframe with tidy results from two-sample Wilcoxon tests
+analyses.</p>
+    
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
-    </ul>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
+
+    <h2>Author</h2>
+    
+Indrajeet Patil
+
   </div>
 </div>
 

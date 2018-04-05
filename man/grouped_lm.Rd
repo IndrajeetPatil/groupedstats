@@ -8,9 +8,9 @@
 
 \item{grouping.vars}{List of grouping variables.}
 
-\item{crit.vars}{List criterion or dependent variables for regression (\code{y} in \code{y ~ x}).}
+\item{dep.vars}{List criterion or dependent variables for regression (\code{y} in \code{y ~ x}).}
 
-\item{pred.vars}{List predictor or independent variables for regression (\code{x} in \code{y ~ x}).}
+\item{indep.vars}{List predictor or independent variables for regression (\code{x} in \code{y ~ x}).}
 }
 \value{
 A tibble dataframe with tidy results from linear regression analyses.

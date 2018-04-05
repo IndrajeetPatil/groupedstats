@@ -1,13 +1,21 @@
 #'
-#' @title Function to run linear regression on multiple variables across multiple grouping variables.
-#' @name grouped_lm
+#' @title Function to run t-test on multiple variables across multiple grouping
+#'   variables.
+#' @name grouped_ttest
 #' @author Indrajeet Patil
-#' @return A tibble dataframe with tidy results from linear regression analyses.
+#' @return A tibble dataframe with tidy results from t-test analyses.
 #'
 #' @param data Dataframe from which variables are to be taken.
+#' @param dep.vars List dependent variables for a t-test (`y` in `y ~ x`).
+#' @param indep.vars List independent variables for a t-test (`x` in `y ~ x`).
 #' @param grouping.vars List of grouping variables.
-#' @param dep.vars List criterion or dependent variables for regression (`y` in `y ~ x`).
-#' @param indep.vars List predictor or independent variables for regression (`x` in `y ~ x`).
+#' @param paired A logical indicating whether you want a paired t-test (Dafault:
+#'   `paired = FALSE`; independent t-test, i.e.).
+#' @param var.equal A logical variable indicating whether to treat the two
+#'   variances as being equal. If `TRUE`, then the pooled variance is used to
+#'   estimate the variance otherwise the Welch (or Satterthwaite) approximation
+#'   to the degrees of freedom is used (Dafault: `var.equal = FALSE`; Welch's
+#'   t-test, i.e.).
 #'
 #' @import dplyr
 #' @import rlang
@@ -19,24 +27,11 @@
 #' @importFrom purrr map
 #' @importFrom purrr map2_dfr
 #' @importFrom purrr pmap
-#' @importFrom stats lm
+#' @importFrom stats t.test
 #' @importFrom stats as.formula
 #' @importFrom tibble as_data_frame
 #' @importFrom tidyr nest
 #'
-#' @examples
-#
-# # in case of just one grouping variable
-# groupedstats::grouped_lm(data = iris,
-# dep.vars = c(Sepal.Length, Petal.Length),
-# indep.vars = c(Sepal.Width, Petal.Width),
-# grouping.vars = Species)
-#
-# # in case of multiple grouping variables
-# groupedstats::grouped_lm( data = mtcars,
-# dep.vars = c(wt, mpg),
-# indep.vars = c(drat, disp),
-# grouping.vars = c(am, cyl))
 #
 #' @export
 
@@ -52,15 +47,21 @@ utils::globalVariables(
     "std.error",
     "term",
     "conf.low",
-    "conf.high"
+    "conf.high",
+    "df",
+    "parameter",
+    "method",
+    "alternative"
   )
 )
 
 # defining the function
-grouped_lm <- function(data,
-                       dep.vars,
-                       indep.vars,
-                       grouping.vars) {
+grouped_ttest <- function(data,
+                          dep.vars,
+                          indep.vars,
+                          grouping.vars,
+                          paired = FALSE,
+                          var.equal = FALSE) {
   #================== preparing dataframe ==================
   #
   # check how many variables were entered for criterion variables vector
@@ -104,41 +105,44 @@ grouped_lm <- function(data,
   #============== custom function ================
 
   # custom function to run linear regression for every element of a list for two variables
-  lm_listed <- function(list.col, x_name, y_name) {
-    #
-    # creating a formula out of entered variables
-    fx <- glue::glue("scale({y_name}) ~ scale({x_name})")
-
+  lm_listed <- function(list.col, x_name, y_name, paired, var.equal) {
     # plain version of the formula to return
-    fx_plain <- glue::glue("{y_name} ~ {x_name}")
-
-    # this tags any names that are not predictor variables (used to remove intercept terms)
-    filter_name <- glue::glue("scale({x_name})")
+    fx <- glue::glue("{y_name} ~ {x_name}")
 
     # dataframe with results from lm
     results_df <-
-      list.col %>% # running linear regression on each individual group with purrr
-      purrr::map(.x = .,
-                 .f = ~ stats::lm(formula = stats::as.formula(fx),
-                                  data = (.))) %>% # tidying up the output with broom
+      list.col %>% # running t-test on each individual group with purrr
+      purrr::map(
+        .x = .,
+        .f = ~ stats::t.test(
+          formula = stats::as.formula(fx),
+          mu = 0,
+          paired = paired,
+          var.equal = var.equal,
+          alternative = "two.sided",
+          conf.level = 0.95,
+          na.action = na.omit,
+          data = (.)
+        )
+      ) %>% # tidying up the output with broom
       purrr::map_dfr(
         .x = .,
-        .f = ~ dplyr::bind_cols(broom::tidy(x = .), broom::confint_tidy(x = .)),
+        .f = ~ broom::tidy(x = .),
         .id = "group"
-      ) %>% # remove intercept terms
-      dplyr::filter(.data = ., term == !!filter_name) %>% # add formula as a character
-      dplyr::mutate(.data = ., formula = as.character(fx_plain)) %>% # rearrange the dataframe
+      ) %>% # add formula as a character
+      dplyr::mutate(.data = ., formula = as.character(fx)) %>% # rearrange the dataframe
       dplyr::select(
         .data = .,
         group,
         formula,
-        term,
-        t.value = statistic,
+        method,
+        t.test = statistic,
         estimate,
         conf.low,
         conf.high,
-        std.error,
-        p.value
+        parameter,
+        p.value,
+        alternative
       ) %>% # convert to a tibble dataframe
       tibble::as_data_frame(x = .)
 
@@ -156,13 +160,15 @@ grouped_lm <- function(data,
     x_name = purrr::map(.x = indep.vars,
                         .f = ~ rlang::quo_name(quo = .)),
     y_name = purrr::map(.x = dep.vars,
-                        .f = ~ rlang::quo_name(quo = .))
+                        .f = ~ rlang::quo_name(quo = .)),
+    paired = paired,
+    var.equal = var.equal
   ),
   .f = lm_listed) %>%
     dplyr::bind_rows(.) %>%
     dplyr::left_join(x = ., y = df, by = "group") %>%
     dplyr::select(.data = ., !!!grouping.vars, dplyr::everything()) %>%
-    dplyr::select(.data = ., -group, -data, -term) %>%
+    dplyr::select(.data = ., -group, -data, -alternative) %>%
     signif_column(data = ., p = `p.value`)
 
   #============================== output ==================================

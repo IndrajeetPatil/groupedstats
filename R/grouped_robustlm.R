@@ -6,8 +6,8 @@
 #'
 #' @param data Dataframe from which variables are to be taken.
 #' @param grouping.vars List of grouping variables.
-#' @param crit.vars List criterion or dependent variables for regression (`y` in `y ~ x`).
-#' @param pred.vars List predictor or independent variables for regression (`x` in `y ~ x`).
+#' @param dep.vars List criterion or dependent variables for regression (`y` in `y ~ x`).
+#' @param indep.vars List predictor or independent variables for regression (`x` in `y ~ x`).
 #'
 #' @import dplyr
 #' @import rlang
@@ -27,14 +27,14 @@
 #
 # # in case of just one grouping variable
 # groupedstats::grouped_robustlm(data = iris,
-# crit.vars = c(Sepal.Length, Petal.Length),
-# pred.vars = c(Sepal.Width, Petal.Width),
+# dep.vars = c(Sepal.Length, Petal.Length),
+# indep.vars = c(Sepal.Width, Petal.Width),
 # grouping.vars = Species)
 #
 # # in case of multiple grouping variables
 # groupedstats::grouped_robustlm( data = mtcars,
-# crit.vars = c(wt, mpg),
-# pred.vars = c(drat, disp),
+# dep.vars = c(wt, mpg),
+# indep.vars = c(drat, disp),
 # grouping.vars = c(am, cyl))
 #
 #' @export
@@ -57,29 +57,29 @@ utils::globalVariables(
 
 # defining the function
 grouped_robustlm <- function(data,
-                       crit.vars,
-                       pred.vars,
+                       dep.vars,
+                       indep.vars,
                        grouping.vars) {
   #================== preparing dataframe ==================
   #
   # check how many variables were entered for criterion variables vector
-  crit.vars <-
-    as.list(rlang::quo_squash(rlang::enquo(crit.vars)))
-  crit.vars <-
-    if (length(crit.vars) == 1) {
-      crit.vars
+  dep.vars <-
+    as.list(rlang::quo_squash(rlang::enquo(dep.vars)))
+  dep.vars <-
+    if (length(dep.vars) == 1) {
+      dep.vars
     } else {
-      crit.vars[-1]
+      dep.vars[-1]
     }
 
   # check how many variables were entered for predictor variables vector
-  pred.vars <-
-    as.list(rlang::quo_squash(rlang::enquo(pred.vars)))
-  pred.vars <-
-    if (length(pred.vars) == 1) {
-      pred.vars
+  indep.vars <-
+    as.list(rlang::quo_squash(rlang::enquo(indep.vars)))
+  indep.vars <-
+    if (length(indep.vars) == 1) {
+      indep.vars
     } else {
-      pred.vars[-1]
+      indep.vars[-1]
     }
 
   # check how many variables were entered for grouping variable vector
@@ -95,8 +95,8 @@ grouped_robustlm <- function(data,
   # getting the dataframe ready
   df <- dplyr::select(.data = data,
                       !!!grouping.vars,
-                      !!!crit.vars,
-                      !!!pred.vars) %>%
+                      !!!dep.vars,
+                      !!!indep.vars) %>%
     dplyr::group_by(.data = ., !!!grouping.vars) %>%
     tidyr::nest(data = .)
 
@@ -132,9 +132,9 @@ grouped_robustlm <- function(data,
         group,
         formula,
         term,
+        t.value = statistic,
         estimate,
         std.error,
-        t = statistic,
         p.value
       ) %>% # convert to a tibble dataframe
       tibble::as_data_frame(x = .)
@@ -149,10 +149,10 @@ grouped_robustlm <- function(data,
     tibble::rownames_to_column(df = ., var = 'group')
   # running custom function for each element of the created list column
   df_lm <- purrr::pmap(.l = list(
-    l = list(df$data),
-    x_name = purrr::map(.x = pred.vars,
+    list.col = list(df$data),
+    x_name = purrr::map(.x = indep.vars,
                         .f = ~ rlang::quo_name(quo = .)),
-    y_name = purrr::map(.x = crit.vars,
+    y_name = purrr::map(.x = dep.vars,
                         .f = ~ rlang::quo_name(quo = .))
   ),
   .f = lm_listed) %>%
