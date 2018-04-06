@@ -1,24 +1,24 @@
 #'
-#'@title Function to run proportion test on grouped data.
-#'@name grouped_proptest
-#'@author Indrajeet Patil
-#'@return Dataframe with percentages and statistical details from a proportion
+#' @title Function to run proportion test on grouped data.
+#' @name grouped_proptest
+#' @author Indrajeet Patil
+#' @return Dataframe with percentages and statistical details from a proportion
 #'  test.
 #'
-#'@param data Dataframe from which variables are to be drawn.
-#'@param grouping.vars List of grouping variables
-#'@param measure A variable for which proportion test needs to be carried out
+#' @param data Dataframe from which variables are to be drawn.
+#' @param grouping.vars List of grouping variables
+#' @param measure A variable for which proportion test needs to be carried out
 #'  for each combination of levels of factors entered in `grouping.vars`.
 #'
-#'@import dplyr
-#'@import rlang
+#' @import dplyr
+#' @import rlang
 #'
-#'@importFrom purrr map
-#'@importFrom tidyr nest
-#'@importFrom tidyr unnest
-#'@importFrom tidyr spread
+#' @importFrom purrr map
+#' @importFrom tidyr nest
+#' @importFrom tidyr unnest
+#' @importFrom tidyr spread
 #'
-#'@export
+#' @export
 
 # defining global variables and functions to quient the R CMD check notes
 utils::globalVariables(
@@ -71,9 +71,11 @@ grouped_proptest <- function(data,
     }
 
   # getting the dataframe ready
-  df <- dplyr::select(.data = data,
-                      !!!grouping.vars,
-                      measure = !!rlang::enquo(measure))
+  df <- dplyr::select(
+    .data = data,
+    !!!grouping.vars,
+    measure = !!rlang::enquo(measure)
+  )
 
   # creating a nested dataframe
   df_nest <- df %>%
@@ -86,7 +88,7 @@ grouped_proptest <- function(data,
       .data = .,
       percentage = data %>% purrr::map(
         .x = .,
-        .f = ~  dplyr::group_by(.data = ., measure) %>%
+        .f = ~dplyr::group_by(.data = ., measure) %>%
           dplyr::summarize(.data = ., counts = length(measure)) %>%
           dplyr::mutate(
             .data = .,
@@ -102,28 +104,32 @@ grouped_proptest <- function(data,
           )
       )
     ) %>%
-    dplyr::mutate(.data = .,
-                  chi_sq = data %>% purrr::map(
-                    .x = .,
-                    .f = ~ stats::chisq.test(x = base::table(.$measure))
-                  )) %>%
+    dplyr::mutate(
+      .data = .,
+      chi_sq = data %>% purrr::map(
+        .x = .,
+        .f = ~stats::chisq.test(x = base::table(.$measure))
+      )
+    ) %>%
     dplyr::mutate(
       .data = .,
       results = chi_sq %>% purrr::map(
         .x = .,
         .f = ~
-          base::cbind.data.frame(
-            "Chi-squared" = as.numeric(as.character(
-              specify_decimal_p(x = .$statistic, k = 3)
-            )),
-            "df" = as.numeric(as.character(
-              specify_decimal_p(x = .$parameter, k = 0)
-            )),
-            "p-value" = as.numeric(as.character(
-              specify_decimal_p(x = .$p.value,
-                                             k = 3)
-            ))
-          )
+        base::cbind.data.frame(
+          "Chi-squared" = as.numeric(as.character(
+            specify_decimal_p(x = .$statistic, k = 3)
+          )),
+          "df" = as.numeric(as.character(
+            specify_decimal_p(x = .$parameter, k = 0)
+          )),
+          "p-value" = as.numeric(as.character(
+            specify_decimal_p(
+              x = .$p.value,
+              k = 3
+            )
+          ))
+        )
       )
     ) %>%
     dplyr::select(.data = ., -data, -chi_sq) %>%

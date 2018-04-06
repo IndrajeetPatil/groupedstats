@@ -40,7 +40,7 @@ signif_column <- function(data = NULL, p) {
       base::cbind.data.frame(p = p) # column corresponding to p-values
   }
 
-  #make sure the p-value column is numeric; if not, convert it to numeric and give a warning to the user
+  # make sure the p-value column is numeric; if not, convert it to numeric and give a warning to the user
   if (!is.numeric(df$p)) {
     df$p <- as.numeric(as.character(df$p))
     # base::message(cat(

@@ -57,10 +57,10 @@ utils::globalVariables(
 
 # defining the function
 grouped_robustlm <- function(data,
-                       dep.vars,
-                       indep.vars,
-                       grouping.vars) {
-  #================== preparing dataframe ==================
+                             dep.vars,
+                             indep.vars,
+                             grouping.vars) {
+  # ================== preparing dataframe ==================
   #
   # check how many variables were entered for criterion variables vector
   dep.vars <-
@@ -93,14 +93,16 @@ grouped_robustlm <- function(data,
     }
 
   # getting the dataframe ready
-  df <- dplyr::select(.data = data,
-                      !!!grouping.vars,
-                      !!!dep.vars,
-                      !!!indep.vars) %>%
+  df <- dplyr::select(
+    .data = data,
+    !!!grouping.vars,
+    !!!dep.vars,
+    !!!indep.vars
+  ) %>%
     dplyr::group_by(.data = ., !!!grouping.vars) %>%
     tidyr::nest(data = .)
 
-  #============== custom function ================
+  # ============== custom function ================
 
   # custom function to run linear regression for every element of a list for two variables
   lm_listed <- function(list.col, x_name, y_name) {
@@ -117,12 +119,16 @@ grouped_robustlm <- function(data,
     # dataframe with results from lm
     results_df <-
       list.col %>% # running linear regression on each individual group with purrr
-      purrr::map(.x = .,
-                 .f = ~ robust::lmRob(formula = stats::as.formula(fx),
-                                  data = (.))) %>% # tidying up the output with broom
+      purrr::map(
+        .x = .,
+        .f = ~robust::lmRob(
+          formula = stats::as.formula(fx),
+          data = (.)
+        )
+      ) %>% # tidying up the output with broom
       purrr::map_dfr(
         .x = .,
-        .f = ~ broom::tidy(x = .),
+        .f = ~broom::tidy(x = .),
         .id = "group"
       ) %>% # remove intercept terms
       dplyr::filter(.data = ., term == !!filter_name) %>% # add formula as a character
@@ -143,28 +149,33 @@ grouped_robustlm <- function(data,
     return(results_df)
   }
 
-  #========= using  custom function on entered dataframe =================
+  # ========= using  custom function on entered dataframe =================
 
   df <- df %>%
-    tibble::rownames_to_column(df = ., var = 'group')
+    tibble::rownames_to_column(df = ., var = "group")
   # running custom function for each element of the created list column
-  df_lm <- purrr::pmap(.l = list(
-    list.col = list(df$data),
-    x_name = purrr::map(.x = indep.vars,
-                        .f = ~ rlang::quo_name(quo = .)),
-    y_name = purrr::map(.x = dep.vars,
-                        .f = ~ rlang::quo_name(quo = .))
-  ),
-  .f = lm_listed) %>%
+  df_lm <- purrr::pmap(
+    .l = list(
+      list.col = list(df$data),
+      x_name = purrr::map(
+        .x = indep.vars,
+        .f = ~rlang::quo_name(quo = .)
+      ),
+      y_name = purrr::map(
+        .x = dep.vars,
+        .f = ~rlang::quo_name(quo = .)
+      )
+    ),
+    .f = lm_listed
+  ) %>%
     dplyr::bind_rows(.) %>%
     dplyr::left_join(x = ., y = df, by = "group") %>%
     dplyr::select(.data = ., !!!grouping.vars, dplyr::everything()) %>%
     dplyr::select(.data = ., -group, -data, -term) %>%
     signif_column(data = ., p = `p.value`)
 
-  #============================== output ==================================
+  # ============================== output ==================================
 
   # return the final dataframe with results
   return(df_lm)
-
 }
