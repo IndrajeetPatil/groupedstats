@@ -11,6 +11,7 @@
 #' @import dplyr
 #' @import rlang
 #'
+#' @importFrom magrittr "%<>%"
 #' @importFrom skimr skim_to_wide
 #' @importFrom tibble as_data_frame
 #' @importFrom purrr map
@@ -46,8 +47,8 @@ utils::globalVariables(
 
 # function body
 grouped_summary <- function(data,
-                         grouping.vars,
-                         measures) {
+                            grouping.vars,
+                            measures) {
   # check how many variables were entered for this grouping variable
   grouping.vars <-
     as.list(rlang::quo_squash(rlang::enquo(grouping.vars)))
@@ -61,11 +62,9 @@ grouped_summary <- function(data,
     }
 
   # getting the dataframe ready
-  df <- dplyr::select(
-    .data = data,
-    !!!grouping.vars,
-    !!rlang::enquo(measures)
-  )
+  df <- dplyr::select(.data = data,
+                      !!!grouping.vars,
+                      !!rlang::enquo(measures))
 
   # creating a nested dataframe
   df_nest <- df %>%
@@ -77,42 +76,38 @@ grouped_summary <- function(data,
     dplyr::mutate(
       .data = .,
       summary = data %>% # 'data' variable is automatically created by tidyr::nest function
-        purrr::map(
-          .x = .,
-          .f = skimr::skim_to_wide
-        )
+        purrr::map(.x = .,
+                   .f = skimr::skim_to_wide)
     )
 
   # tidying up the skimr output by removing unnecessary information and renaming certain columns
-  df_summary <- df_summary %>%
+  df_summary %<>%
     dplyr::select(.data = ., -data) %>% # removing the redudant data column
-    dplyr::mutate(
-      .data = .,
-      summary = summary %>%
-        purrr::map(
-          .x = .,
-          .f = dplyr::select,
-          -hist # remove the histograms since they are not that helpful
-        )
-    ) %>%
-    tidyr::unnest(data = .) %>% # unnesting the data
-    tibble::as_data_frame(x = .) # converting to tibble dataframe
+    dplyr::mutate(.data = .,
+                  summary = summary %>%
+                    purrr::map(.x = .,
+                               .f = dplyr::select,
+                               -hist)) %>% # remove the histograms since they are not that helpful
+  tidyr::unnest(data = .) %>% # unnesting the data
+  tibble::as_data_frame(x = .) # converting to tibble dataframe
 
-  # # changing class of summary variables
-  df_summary <-
-    df_summary %>%
-    dplyr::mutate_at(
-      .tbl = .,
-      .vars = dplyr::vars(missing, complete, n, mean, sd, p0, p25, p50, p75, p100),
-      .funs = ~ as.numeric(as.character(.)) # change summary variables to numeric
-    ) %>%
-    dplyr::rename(.data = ., min = p0, median = p50, max = p100) %>% # renaming columns to minimum and maximum
-    dplyr::mutate_if(
-      .tbl = .,
-      .predicate = is.character,
-      .funs = as.factor
-    ) # change grouping variables to factors (tibble won't have it though)
+      # changing class of summary variables
+      df_summary %<>%
+        dplyr::mutate_at(
+          .tbl = .,
+          .vars = dplyr::vars(missing, complete, n, mean, sd, p0, p25, p50, p75, p100),
+          .funs = ~ as.numeric(as.character(.)) # change summary variables to numeric
+        ) %>%
+        dplyr::rename(
+          .data = .,
+          min = p0,
+          median = p50,
+          max = p100
+        ) %>% # renaming columns to minimum and maximum
+        dplyr::mutate_if(.tbl = .,
+                         .predicate = is.character,
+                         .funs = as.factor) # change grouping variables to factors (tibble won't have it though)
 
-  # return the summary dataframe
-  return(df_summary)
+      # return the summary dataframe
+      return(df_summary)
 }

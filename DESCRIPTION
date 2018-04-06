@@ -1,7 +1,7 @@
 Type: Package
 Package: groupedstats
 Title: Statistical Tests for Multiple Variables Across Multiple Grouping Levels
-Version: 0.0.1
+Version: 0.0.1.9000
 Authors@R: person(given = "Indrajeet", 
   family = "Patil", 
   email = "patilindrajeet.science@gmail.com", 
@@ -22,7 +22,7 @@ Imports:
     purrr (>= 0.2.4),
     rlang (>= 0.1.2),
     robust (>= 0.4.18),
-    rstudioapi (>= 0.7.0.9000),
+    rstudioapi (>= 0.7.0),
     skimr (>= 1.0.2),
     stats (>= 3.4.4),
     tibble (>= 1.4.2),

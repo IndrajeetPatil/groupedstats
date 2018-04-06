@@ -18,9 +18,6 @@ in \code{y ~ x}).}
 \item{paired}{A logical indicating whether you want a paired two-sample
 Wilcoxon tests (Dafault: \code{paired = FALSE}).}
 
-\item{exact}{A logical indicating whether an exact p-value should be computed
-(Default: \code{exact = NULL}).}
-
 \item{correct}{A logical indicating whether to apply continuity correction in
 the normal approximation for the p-value (Default: \code{correct = TRUE}).}
 }
