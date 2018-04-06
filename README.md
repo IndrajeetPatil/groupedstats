@@ -12,7 +12,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--04--05-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--04--06-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
@@ -584,7 +584,8 @@ groupedstats::grouped_wilcox(
 
 In these examples, two things are worth noting that generalize to
 **all** functions in this package and stem from how [`tidy
-evaluation`](https://adv-r.hadley.nz/evaluation.html) works: <br />
+evaluation`](https://adv-r.hadley.nz/evaluation.html) works: <br /> -
 **1.** If just one independent variable is provided for multiple
-dependent variables, it will be used as a common variable. <br /> **2.**
-If you want to use a selection of variables, you shouldn’t use `c()`.
+dependent variables, it will be used as a common variable. <br /> -
+**2.** If you want to use a selection of variables, you shouldn’t use
+`c()`.

@@ -280,7 +280,7 @@ groupedstats::grouped_wilcox(
 
 In these examples, two things are worth noting that generalize to **all**
 functions in this package and stem from how [`tidy evaluation`](https://adv-r.hadley.nz/evaluation.html) works: <br />
-**1.** If just one independent variable is provided for multiple dependent
+- **1.** If just one independent variable is provided for multiple dependent
 variables, it will be used as a common variable.  <br />
-**2.** If you want to use a selection of variables, you shouldn't use `c()`.
+- **2.** If you want to use a selection of variables, you shouldn't use `c()`.
 
