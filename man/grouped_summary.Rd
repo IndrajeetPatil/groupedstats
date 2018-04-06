@@ -2,26 +2,55 @@
 % Please edit documentation in R/grouped_summary.R
 \name{grouped_summary}
 \alias{grouped_summary}
-\title{Function to get descriptive statistics for multiple variables for all grouping variable levels}
+\title{Function to get descriptive statistics for multiple variables for all
+grouping variable levels}
 \arguments{
 \item{data}{Dataframe from which variables need to be taken.}
 
 \item{grouping.vars}{A list of grouping variables.}
 
-\item{measures}{List variables for which summary needs to computed (only \emph{numeric} variables should be entered).}
+\item{measures}{List variables for which summary needs to computed.}
+
+\item{measures.type}{A character indicating whether summary for \emph{numeric}
+("numeric") or \emph{factor/character} ("factor") variables is expected
+(Default: \code{measures.type = "numeric"}). This function can't be used for
+both numeric \strong{and} variables simultaneously.}
 }
 \value{
-Dataframe with descriptive statistics for numeric variables (n, mean, sd, median, min, max)
+Dataframe with descriptive statistics for numeric variables (n, mean,
+sd, median, min, max)
 }
 \description{
-Function to get descriptive statistics for multiple variables for all grouping variable levels
+Function to get descriptive statistics for multiple variables for all
+grouping variable levels
 }
 \examples{
 
+library(datasets)
+
 # if you have multiple variable for each argument
-grouped_summary(data = mtcars, grouping.vars = c(am, cyl), measures = c(wt, mpg))
-# if you have just one variable per argument
-grouped_summary(data = mtcars, grouping.vars = am, measures = wt)
+groupedstats::grouped_summary(
+data = datasets::mtcars,
+grouping.vars = c(am, cyl),
+measures = c(wt, mpg)
+)
+
+# another possibility
+groupedstats::grouped_summary(
+data = datasets::iris,
+grouping.vars = Species,
+measures = Sepal.Length:Petal.Width,
+measures.type = "numeric"
+)
+
+# if you have just one variable per argument, you can also not use `c()`
+groupedstats::grouped_summary(
+data = datasets::ToothGrowth,
+grouping.vars = supp,
+measures = len,
+measures.type = "numeric"
+)
+
 
 }
 \author{

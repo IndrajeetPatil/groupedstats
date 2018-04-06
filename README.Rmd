@@ -63,9 +63,11 @@ Documentation for any function can be accessed with the standard `help` command-
 
 * `grouped_summary`
 
-Getting summary for multiple variables across multiple grouping variables.
+Getting summary for multiple variables across multiple grouping variables. This
+function is a wrapper around [`skimr::skim_to_wide()`](https://www.rdocumentation.org/packages/skimr/versions/1.0.1/topics/skim_to_wide).
 
-This is a handy tool if you have just one grouping variable and multiple variables for which summary statistics are to be computed-
+It is supposed to be a handy summarizing tool if you have just one grouping
+variable and multiple variables for which summary statistics are to be computed-
 
 ```{r grouped_summary1}
 library(datasets)
@@ -73,19 +75,35 @@ options(tibble.width = Inf)            # show me all columns
 
 groupedstats::grouped_summary(data = datasets::iris,
                               grouping.vars = Species,
-                              measures = c(Sepal.Length:Petal.Width))
+                              measures = Sepal.Length:Petal.Width,
+                              measures.type = "numeric")
 ```
 
-Or multiple grouping variables and multiple variables of interest-
+This function can be used to get summary of either numeric **or** factor
+varibles, but **not** both. If you want summary of variables of factor type-
 
-```{r grouped_summary2, warning = FALSE, message = FALSE}
+```{r grouped_summary2}
+library(ggplot2)
+options(tibble.width = Inf)            # show me all columns
+
+groupedstats::grouped_summary(data = ggplot2::diamonds,
+                              grouping.vars = c(cut, clarity),
+                              measures = color,
+                              measures.type = "factor")
+```
+
+The benefit of formatted summary output is that, it can be directly fed into
+other routines (e.g., preparing a plot of `mean` and `sd` values in `ggplot2`).
+
+```{r grouped_summary3, warning = FALSE, message = FALSE}
 library(datasets)
 library(tidyverse)
 
 groupedstats::grouped_summary(
   data = datasets::mtcars,
   grouping.vars = c(am, cyl),
-  measures = c(disp, wt, mpg)
+  measures = c(disp, wt, mpg),
+  measures.type = "numeric"
 ) %>%                                                         # further modification with the pipe operator
   dplyr::select(.data = ., -type, -missing, -complete) %>%    # feeding the output into another function
   ggplot2::ggplot(data = .,                                   # note that `.` is just a placeholder for data here
@@ -96,7 +114,7 @@ groupedstats::grouped_summary(
   ggplot2::labs(x = "No. of cylinders", y = "mean")
 ```
 
-As demonstrated, the output from the function is further modifiable and can be directly outputed into other routines (e.g., preparing a plot of `mean` and `sd` values in `ggplot2`).
+As demonstrated, 
 
 * `grouped_lm`
 
@@ -280,7 +298,7 @@ groupedstats::grouped_wilcox(
 
 In these examples, two things are worth noting that generalize to **all**
 functions in this package and stem from how [`tidy evaluation`](https://adv-r.hadley.nz/evaluation.html) works: <br />
-- **1.** If just one independent variable is provided for multiple dependent
+ **1.** If just one independent variable is provided for multiple dependent
 variables, it will be used as a common variable.  <br />
-- **2.** If you want to use a selection of variables, you shouldn't use `c()`.
+ **2.** If you want to use a selection of variables, you shouldn't use `c()`.
 
