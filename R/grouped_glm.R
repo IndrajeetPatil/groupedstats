@@ -14,7 +14,7 @@
 #' @param family A description of the error distribution and link function to be
 #'   used in the model. For glm this can be a character string naming a `family`
 #'   function, a `family` function or the result of a call to a family function.
-#'   For more, see `?stats::family.glm`.
+#'   For more, see `?stats::family`.
 #'
 #' @import dplyr
 #' @import rlang

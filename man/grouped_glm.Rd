@@ -18,7 +18,7 @@ in \code{y ~ x}).}
 \item{family}{A description of the error distribution and link function to be
 used in the model. For glm this can be a character string naming a \code{family}
 function, a \code{family} function or the result of a call to a family function.
-For more, see \code{?stats::family.glm}.}
+For more, see \code{?stats::family}.}
 }
 \value{
 A tibble dataframe with tidy results from linear regression analyses.
