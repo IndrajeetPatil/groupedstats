@@ -28,7 +28,22 @@ knitr::opts_chunk$set(
 
 `groupedstats` package provides a collection of functions to run statistical
 operations on multiple variables across multiple grouping variables in a
-dataframe. **This package is still in development. Use at your own risk!**
+dataframe. This is a common situation in the following example cases-
+
+1.  If you have combined multiple studies in a single dataframe and want to run
+    a common operation (e.g., linear regression) on **each study**. In this
+    case, column corresponding to `study` will be the grouping variable.
+2.  If you have multiple groups in your dataframe (e.g., clinical disorder
+    groups and controls group) and you want to carry out a common operation for
+    **each group** (e.g., planned t-test to check for differences in reaction
+    time in condition 1 versus condition 2). In this case, `group` will be the
+    grouping variable.
+3.  If you have multiple conditions in a given study (e.g., six types of videos
+    participants saw) and want to run a common operation between different
+    measures of interest for **each condition** (e.g., correlation between
+    subjective rating of emotional intensity and reaction time).
+
+**This package is still in development. Use at your own risk!**
 
 ## Installation
 
@@ -96,7 +111,6 @@ The benefit of formatted summary output is that, it can be directly fed into
 other routines (e.g., preparing a plot of `mean` and `sd` values in `ggplot2`).
 
 ```{r grouped_summary3, warning = FALSE, message = FALSE}
-library(datasets)
 library(tidyverse)
 
 groupedstats::grouped_summary(
@@ -118,32 +132,43 @@ As demonstrated,
 
 * `grouped_lm`
 
-This function can be used to run linear regression between different pairs of variables across multiple levels of grouping variables. For example, if we want to assess the linear relationship between `Sepal.Length` and `Sepal.Width`, **and** `Sepal.Length` and `Sepal.Width` (notice the order in which variables are being entered) for all levels of `Species`:    
+This function can be used to run linear regression between different pairs of
+variables across multiple levels of grouping variable(s). For example, we can use
+the `gapminder` dataset to study two relationships of interest for **each country** across years:
+1.  life expectency and GDP (per capita)
+2.  population GDP (per capita)
+Thus, in this case we have two regression models and one grouping variable with 142 levels (countries)
 
 ```{r grouped_lm1}
-library(datasets)
-options(tibble.width = Inf)            # show me all columns
-
-groupedstats::grouped_lm(data = datasets::iris,
-                         dep.vars = c(Sepal.Length, Petal.Length),
-                         indep.vars = c(Sepal.Width, Petal.Width),
-                         grouping.vars = Species)
-```
-
-This can be done with multiple grouping variables. For example, in the following
-example, we use the `gapminder` dataset to regress life expectency and
-population on GDP per capita for each continent and for each country.
-
-```{r grouped_lm2, warning = FALSE, message = FALSE}
 library(gapminder)
-library(dplyr)
 options(tibble.width = Inf)            # show me all columns
 
 groupedstats::grouped_lm(data = gapminder::gapminder,
                          dep.vars = c(lifeExp, pop),
                          indep.vars = c(gdpPercap, gdpPercap),
-                         grouping.vars = c(continent, country)) %>%
-  dplyr::arrange(.data = ., continent, country)
+                         grouping.vars = country)
+```
+
+Notice the order in which the dependent and independent variables are entered.
+If this order is incorrect, the result will also be incorrect. So it is always a
+good idea to check the *formula* column to see if you have run the correct
+regression models. 
+
+We saw example with one grouping variable. This can be done with multiple
+grouping variables as well. For example, with the `diamonds` dataset from
+`ggplot2` library to see the relation between carat and price of a diamond for
+each type of clarity and cut-
+
+```{r grouped_lm2, warning = FALSE, message = FALSE}
+library(ggplot2)
+library(dplyr)
+options(tibble.width = Inf)            # show me all columns
+
+groupedstats::grouped_lm(data = ggplot2::diamonds,
+                         dep.vars = price,
+                         indep.vars = carat,
+                         grouping.vars = c(cut, clarity)) %>%
+  dplyr::arrange(.data = ., cut)
 ```
 
 * `grouped_robustlm`
@@ -259,8 +284,8 @@ options(tibble.width = Inf, tibble.print_max = Inf)             # show me all ro
 # t-test
 groupedstats::grouped_ttest(
   data = diamonds_short,
-  dep.vars = c(carat, price, depth),             # note that there three independent variables 
-  indep.vars = color,                            # and just one dependent variable 
+  dep.vars = c(carat, price, depth),             # note that there three dependent variables 
+  indep.vars = color,                            # and just one independent variable 
   grouping.vars = clarity,                       # one grouping variable
   paired = FALSE,
   var.equal = FALSE
@@ -269,8 +294,8 @@ groupedstats::grouped_ttest(
 # wilcox test (aka Mann-Whitney U-test)
 groupedstats::grouped_wilcox(
   data = diamonds_short,
-  dep.vars = depth:price,                        # note that you can select variables in a range
-  indep.vars = color,                            # again, just one dependent variable
+  dep.vars = depth:price,                        # note that you can select variables in range
+  indep.vars = color,                            # again, just one independent, multiple dependent variables case
   grouping.vars = clarity,                       # one grouping variable
   paired = FALSE
 )
@@ -288,8 +313,8 @@ diamonds_short2 <-
 # wilcox test (aka Mann-Whitney U-test)
 groupedstats::grouped_wilcox(
  data = diamonds_short2,
-  dep.vars = c(carat, price),                    # two independent variables
-  indep.vars = c(color, clarity),                # and just one dependent variable 
+  dep.vars = c(carat, price),                    # two dependent variables
+  indep.vars = c(color, clarity),                # two independent variables
   grouping.vars = cut,                           # one grouping variable
   paired = FALSE
 )

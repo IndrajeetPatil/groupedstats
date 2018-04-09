@@ -12,7 +12,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--04--06-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--04--08-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
@@ -23,8 +23,25 @@ version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-
 
 `groupedstats` package provides a collection of functions to run
 statistical operations on multiple variables across multiple grouping
-variables in a dataframe. **This package is still in development. Use at
-your own risk\!**
+variables in a dataframe. This is a common situation in the following
+example cases-
+
+1.  If you have combined multiple studies in a single dataframe and want
+    to run a common operation (e.g., linear regression) on **each
+    study**. In this case, column corresponding to `study` will be the
+    grouping variable.
+2.  If you have multiple groups in your dataframe (e.g., clinical
+    disorder groups and controls group) and you want to carry out a
+    common operation for **each group** (e.g., planned t-test to check
+    for differences in reaction time in condition 1 versus condition 2).
+    In this case, `group` will be the grouping variable.
+3.  If you have multiple conditions in a given study (e.g., six types of
+    videos participants saw) and want to run a common operation between
+    different measures of interest for **each condition** (e.g.,
+    correlation between subjective rating of emotional intensity and
+    reaction time).
+
+**This package is still in development. Use at your own risk\!**
 
 ## Installation
 
@@ -157,7 +174,6 @@ into other routines (e.g., preparing a plot of `mean` and `sd` values in
 `ggplot2`).
 
 ``` r
-library(datasets)
 library(tidyverse)
 
 groupedstats::grouped_summary(
@@ -182,80 +198,95 @@ As demonstrated,
   - `grouped_lm`
 
 This function can be used to run linear regression between different
-pairs of variables across multiple levels of grouping variables. For
-example, if we want to assess the linear relationship between
-`Sepal.Length` and `Sepal.Width`, **and** `Sepal.Length` and
-`Sepal.Width` (notice the order in which variables are being entered)
-for all levels of `Species`:
-
-``` r
-library(datasets)
-options(tibble.width = Inf)            # show me all columns
-
-groupedstats::grouped_lm(data = datasets::iris,
-                         dep.vars = c(Sepal.Length, Petal.Length),
-                         indep.vars = c(Sepal.Width, Petal.Width),
-                         grouping.vars = Species)
-#> # A tibble: 6 x 9
-#>   Species    formula                    t.value estimate conf.low
-#>   <fct>      <chr>                        <dbl>    <dbl>    <dbl>
-#> 1 setosa     Sepal.Length ~ Sepal.Width    7.68    0.743   0.548 
-#> 2 versicolor Sepal.Length ~ Sepal.Width    4.28    0.526   0.279 
-#> 3 virginica  Sepal.Length ~ Sepal.Width    3.56    0.457   0.199 
-#> 4 setosa     Petal.Length ~ Petal.Width    2.44    0.332   0.0578
-#> 5 versicolor Petal.Length ~ Petal.Width    8.83    0.787   0.607 
-#> 6 virginica  Petal.Length ~ Petal.Width    2.36    0.322   0.0474
-#>   conf.high std.error  p.value significance
-#>       <dbl>     <dbl>    <dbl> <chr>       
-#> 1     0.937    0.0967 6.71e-10 ***         
-#> 2     0.773    0.123  8.77e- 5 ***         
-#> 3     0.715    0.128  8.43e- 4 ***         
-#> 4     0.605    0.136  1.86e- 2 *           
-#> 5     0.966    0.0891 1.27e-11 ***         
-#> 6     0.597    0.137  2.25e- 2 *
-```
-
-This can be done with multiple grouping variables. For example, in the
-following example, we use the `gapminder` dataset to regress life
-expectency and population on GDP per capita for each continent and for
-each country.
+pairs of variables across multiple levels of grouping variable(s). For
+example, we can use the `gapminder` dataset to study two relationships
+of interest for **each country** across years: 1. life expectency and
+GDP (per capita) 2. population GDP (per capita) Thus, in this case we
+have two regression models and one grouping variable with 142 levels
+(countries)
 
 ``` r
 library(gapminder)
-library(dplyr)
 options(tibble.width = Inf)            # show me all columns
 
 groupedstats::grouped_lm(data = gapminder::gapminder,
                          dep.vars = c(lifeExp, pop),
                          indep.vars = c(gdpPercap, gdpPercap),
-                         grouping.vars = c(continent, country)) %>%
-  dplyr::arrange(.data = ., continent, country)
-#> # A tibble: 284 x 10
-#>    continent country      formula              t.value estimate conf.low
-#>    <fct>     <fct>        <chr>                  <dbl>    <dbl>    <dbl>
-#>  1 Africa    Algeria      lifeExp ~ gdpPercap   6.71    0.904      0.604
-#>  2 Africa    Algeria      pop ~ gdpPercap       5.04    0.847      0.473
-#>  3 Africa    Angola       lifeExp ~ gdpPercap  -0.998  -0.301     -0.973
-#>  4 Africa    Angola       pop ~ gdpPercap      -0.964  -0.292     -0.966
-#>  5 Africa    Benin        lifeExp ~ gdpPercap   4.98    0.844      0.466
-#>  6 Africa    Benin        pop ~ gdpPercap       6.97    0.911      0.620
-#>  7 Africa    Botswana     lifeExp ~ gdpPercap   0.0177  0.00560   -0.699
-#>  8 Africa    Botswana     pop ~ gdpPercap      18.3     0.985      0.865
-#>  9 Africa    Burkina Faso lifeExp ~ gdpPercap   5.91    0.882      0.549
-#> 10 Africa    Burkina Faso pop ~ gdpPercap       7.43    0.920      0.644
-#>    conf.high std.error       p.value significance
-#>        <dbl>     <dbl>         <dbl> <chr>       
-#>  1     1.21     0.135  0.0000533     ***         
-#>  2     1.22     0.168  0.000503      ***         
-#>  3     0.371    0.302  0.342         ns          
-#>  4     0.382    0.302  0.358         ns          
-#>  5     1.22     0.170  0.000557      ***         
-#>  6     1.20     0.131  0.0000386     ***         
-#>  7     0.710    0.316  0.986         ns          
-#>  8     1.11     0.0539 0.00000000515 ***         
-#>  9     1.21     0.149  0.000149      ***         
-#> 10     1.20     0.124  0.0000223     ***         
+                         grouping.vars = country)
+#> # A tibble: 284 x 9
+#>    country     formula             t.value estimate conf.low conf.high
+#>    <fct>       <chr>                 <dbl>    <dbl>    <dbl>     <dbl>
+#>  1 Afghanistan lifeExp ~ gdpPercap  -0.151  -0.0475   -0.751     0.656
+#>  2 Albania     lifeExp ~ gdpPercap   4.84    0.837     0.452     1.22 
+#>  3 Algeria     lifeExp ~ gdpPercap   6.71    0.904     0.604     1.21 
+#>  4 Angola      lifeExp ~ gdpPercap  -0.998  -0.301    -0.973     0.371
+#>  5 Argentina   lifeExp ~ gdpPercap   4.74    0.832     0.440     1.22 
+#>  6 Australia   lifeExp ~ gdpPercap  19.0     0.986     0.871     1.10 
+#>  7 Austria     lifeExp ~ gdpPercap  26.5     0.993     0.910     1.08 
+#>  8 Bahrain     lifeExp ~ gdpPercap   6.45    0.898     0.587     1.21 
+#>  9 Bangladesh  lifeExp ~ gdpPercap   5.05    0.847     0.473     1.22 
+#> 10 Belgium     lifeExp ~ gdpPercap  26.1     0.993     0.908     1.08 
+#>    std.error  p.value significance
+#>        <dbl>    <dbl> <chr>       
+#>  1    0.316  8.83e- 1 ns          
+#>  2    0.173  6.82e- 4 ***         
+#>  3    0.135  5.33e- 5 ***         
+#>  4    0.302  3.42e- 1 ns          
+#>  5    0.176  7.97e- 4 ***         
+#>  6    0.0519 3.52e- 9 ***         
+#>  7    0.0374 1.34e-10 ***         
+#>  8    0.139  7.38e- 5 ***         
+#>  9    0.168  5.03e- 4 ***         
+#> 10    0.0380 1.56e-10 ***         
 #> # ... with 274 more rows
+```
+
+Notice the order in which the dependent and independent variables are
+entered. If this order is incorrect, the result will also be incorrect.
+So it is always a good idea to check the *formula* column to see if you
+have run the correct regression models.
+
+We saw example with one grouping variable. This can be done with
+multiple grouping variables as well. For example, with the `diamonds`
+dataset from `ggplot2` library to see the relation between carat and
+price of a diamond for each type of clarity and cut-
+
+``` r
+library(ggplot2)
+library(dplyr)
+options(tibble.width = Inf)            # show me all columns
+
+groupedstats::grouped_lm(data = ggplot2::diamonds,
+                         dep.vars = price,
+                         indep.vars = carat,
+                         grouping.vars = c(cut, clarity)) %>%
+  dplyr::arrange(.data = ., cut)
+#> # A tibble: 40 x 10
+#>    cut   clarity formula       t.value estimate conf.low conf.high
+#>    <ord> <ord>   <chr>           <dbl>    <dbl>    <dbl>     <dbl>
+#>  1 Fair  VS2     price ~ carat   42.0     0.934    0.890     0.978
+#>  2 Fair  SI2     price ~ carat   69.1     0.955    0.928     0.982
+#>  3 Fair  SI1     price ~ carat   58.9     0.946    0.915     0.978
+#>  4 Fair  I1      price ~ carat   58.7     0.971    0.939     1.00 
+#>  5 Fair  VVS1    price ~ carat    8.58    0.911    0.685     1.14 
+#>  6 Fair  VS1     price ~ carat   36.6     0.943    0.892     0.994
+#>  7 Fair  IF      price ~ carat    8.22    0.952    0.678     1.23 
+#>  8 Fair  VVS2    price ~ carat   13.6     0.857    0.732     0.983
+#>  9 Good  VS1     price ~ carat   74.0     0.946    0.921     0.971
+#> 10 Good  SI2     price ~ carat  103.      0.953    0.934     0.971
+#>    std.error   p.value significance
+#>        <dbl>     <dbl> <chr>       
+#>  1   0.0222  1.55e-117 ***         
+#>  2   0.0138  1.96e-246 ***         
+#>  3   0.0161  4.58e-201 ***         
+#>  4   0.0165  1.86e-131 ***         
+#>  5   0.106   3.59e-  7 ***         
+#>  6   0.0257  5.40e- 82 ***         
+#>  7   0.116   7.67e-  5 ***         
+#>  8   0.0629  5.54e- 21 ***         
+#>  9   0.0128  9.62e-318 ***         
+#> 10   0.00926 0.        ***         
+#> # ... with 30 more rows
 ```
 
   - `grouped_robustlm`
@@ -463,8 +494,8 @@ options(tibble.width = Inf, tibble.print_max = Inf)             # show me all ro
 # t-test
 groupedstats::grouped_ttest(
   data = diamonds_short,
-  dep.vars = c(carat, price, depth),             # note that there three independent variables 
-  indep.vars = color,                            # and just one dependent variable 
+  dep.vars = c(carat, price, depth),             # note that there three dependent variables 
+  indep.vars = color,                            # and just one independent variable 
   grouping.vars = clarity,                       # one grouping variable
   paired = FALSE,
   var.equal = FALSE
@@ -526,8 +557,8 @@ groupedstats::grouped_ttest(
 # wilcox test (aka Mann-Whitney U-test)
 groupedstats::grouped_wilcox(
   data = diamonds_short,
-  dep.vars = depth:price,                        # note that you can select variables in a range
-  indep.vars = color,                            # again, just one dependent variable
+  dep.vars = depth:price,                        # note that you can select variables in range
+  indep.vars = color,                            # again, just one independent, multiple dependent variables case
   grouping.vars = clarity,                       # one grouping variable
   paired = FALSE
 )
@@ -582,8 +613,8 @@ diamonds_short2 <-
 # wilcox test (aka Mann-Whitney U-test)
 groupedstats::grouped_wilcox(
  data = diamonds_short2,
-  dep.vars = c(carat, price),                    # two independent variables
-  indep.vars = c(color, clarity),                # and just one dependent variable 
+  dep.vars = c(carat, price),                    # two dependent variables
+  indep.vars = c(color, clarity),                # two independent variables
   grouping.vars = cut,                           # one grouping variable
   paired = FALSE
 )
