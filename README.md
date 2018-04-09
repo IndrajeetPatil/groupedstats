@@ -12,7 +12,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--04--08-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--04--09-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
@@ -330,6 +330,30 @@ groupedstats::grouped_robustlm(data = gapminder::gapminder,
 #>  9 0.0583       ns          
 #> 10 0.0000304    ***         
 #> # ... with 274 more rows
+```
+
+  - `grouped_glm`
+
+The option to run generalized linear model across different levels of
+the grouping variable-
+
+``` r
+groupedstats::grouped_glm(data = datasets::mtcars,
+                          dep.vars = am,
+                          indep.vars = wt,
+                          grouping.vars = cyl,
+                          family = "gaussian")
+#> # A tibble: 3 x 9
+#>     cyl formula statistic estimate conf.low conf.high std.error p.value
+#>   <dbl> <chr>       <dbl>    <dbl>    <dbl>     <dbl>     <dbl>   <dbl>
+#> 1    6. am ~ wt     -6.85   -1.43    -1.83    -1.02       0.208 0.00101
+#> 2    4. am ~ wt     -3.22   -0.600   -0.965   -0.235      0.186 0.0104 
+#> 3    8. am ~ wt     -1.30   -0.168   -0.421    0.0855     0.129 0.218  
+#>   significance
+#>   <chr>       
+#> 1 **          
+#> 2 *           
+#> 3 ns
 ```
 
   - `grouped_proptest`

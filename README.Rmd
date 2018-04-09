@@ -187,6 +187,18 @@ groupedstats::grouped_robustlm(data = gapminder::gapminder,
   dplyr::arrange(.data = ., continent, country)
 ```
 
+* `grouped_glm`
+
+The option to run generalized linear model across different levels of the grouping variable-
+
+```{r grouped_glm}
+groupedstats::grouped_glm(data = datasets::mtcars,
+                          dep.vars = am,
+                          indep.vars = wt,
+                          grouping.vars = cyl,
+                          family = "gaussian")
+```
+
 * `grouped_proptest`
 
 This function helps carry out one-sample proportion tests with a unique variable for multiple grouping variables-

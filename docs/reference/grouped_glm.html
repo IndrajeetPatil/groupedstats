@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tidy eval helpers — tidyeval • groupedstats</title>
+<title>Function to run generalized linear model on multiple variables across
+multiple grouping variables. — grouped_glm • groupedstats</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,11 +26,11 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-<meta property="og:title" content="Tidy eval helpers — tidyeval" />
+<meta property="og:title" content="Function to run generalized linear model on multiple variables across
+multiple grouping variables. — grouped_glm" />
 
-<meta property="og:description" content="These functions provide tidy eval-compatible ways to capture
-symbols (sym(), syms(), ensym()), expressions (expr(),
-exprs(), enexpr()), and quosures (quo(), quos(), enquo())." />
+<meta property="og:description" content="Function to run generalized linear model on multiple variables across
+multiple grouping variables." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -95,24 +96,65 @@ exprs(), enexpr()), and quosures (quo(), quos(), enquo())." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Tidy eval helpers</h1>
-    <small>Source: <a href='https://github.com/IndrajeetPatil/groupedstats/blob/master/R/utils-tidy-eval.R'><code>R/utils-tidy-eval.R</code></a></small>
-    <div class="hidden name"><code>tidyeval.Rd</code></div>
+    <h1>Function to run generalized linear model on multiple variables across
+multiple grouping variables.</h1>
+    <small>Source: <a href='https://github.com/IndrajeetPatil/groupedstats/blob/master/R/grouped_glm.R'><code>R/grouped_glm.R</code></a></small>
+    <div class="hidden name"><code>grouped_glm.Rd</code></div>
     </div>
 
     
-    <p>These functions provide tidy eval-compatible ways to capture
-symbols (<code>sym()</code>, <code>syms()</code>, <code>ensym()</code>), expressions (<code>expr()</code>,
-<code>exprs()</code>, <code>enexpr()</code>), and quosures (<code>quo()</code>, <code>quos()</code>, <code>enquo()</code>).</p>
+    <p>Function to run generalized linear model on multiple variables across
+multiple grouping variables.</p>
     
 
-        
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>data</th>
+      <td><p>Dataframe from which variables are to be taken.</p></td>
+    </tr>
+    <tr>
+      <th>grouping.vars</th>
+      <td><p>List of grouping variables.</p></td>
+    </tr>
+    <tr>
+      <th>dep.vars</th>
+      <td><p>List criterion or dependent variables for regression (<code>y</code> in
+<code>y ~ x</code>).</p></td>
+    </tr>
+    <tr>
+      <th>indep.vars</th>
+      <td><p>List predictor or independent variables for regression (<code>x</code>
+in <code>y ~ x</code>).</p></td>
+    </tr>
+    <tr>
+      <th>family</th>
+      <td><p>A description of the error distribution and link function to be
+used in the model. For glm this can be a character string naming a <code>family</code>
+function, a <code>family</code> function or the result of a call to a family function.
+For more, see <code><a href='http://www.rdocumentation.org/packages/stats/topics/glm.summaries'>?stats::family.glm</a></code>.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A tibble dataframe with tidy results from linear regression analyses.</p>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-                </ul>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
+
+    <h2>Author</h2>
+    
+Indrajeet Patil
 
   </div>
 </div>
