@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function to get descriptive statistics for multiple variables for all grouping variable levels — grouped_summary • groupedstats</title>
+<title>Function to get descriptive statistics for multiple variables for all
+grouping variable levels — grouped_summary • groupedstats</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,9 +26,11 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-<meta property="og:title" content="Function to get descriptive statistics for multiple variables for all grouping variable levels — grouped_summary" />
+<meta property="og:title" content="Function to get descriptive statistics for multiple variables for all
+grouping variable levels — grouped_summary" />
 
-<meta property="og:description" content="Function to get descriptive statistics for multiple variables for all grouping variable levels" />
+<meta property="og:description" content="Function to get descriptive statistics for multiple variables for all
+grouping variable levels" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -57,7 +60,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">groupedstats</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.1.9000</span>
       </span>
     </div>
 
@@ -88,13 +91,15 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Function to get descriptive statistics for multiple variables for all grouping variable levels</h1>
+    <h1>Function to get descriptive statistics for multiple variables for all
+grouping variable levels</h1>
     
-    <p class="hidden name"><code>grouped_summary.Rd</code></p>
+    <div class="hidden name"><code>grouped_summary.Rd</code></div>
     </div>
 
     
-    <p>Function to get descriptive statistics for multiple variables for all grouping variable levels</p>
+    <p>Function to get descriptive statistics for multiple variables for all
+grouping variable levels</p>
     
 
     
@@ -111,19 +116,33 @@
     </tr>
     <tr>
       <th>measures</th>
-      <td><p>List variables for which summary needs to computed (only <em>numeric</em> variables should be entered).</p></td>
+      <td><p>List variables for which summary needs to computed.</p></td>
+    </tr>
+    <tr>
+      <th>measures.type</th>
+      <td><p>A character indicating whether summary for <em>numeric</em>
+("numeric") or <em>factor/character</em> ("factor") variables is expected
+(Default: <code>measures.type = "numeric"</code>). This function can't be used for
+both numeric <strong>and</strong> variables simultaneously.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Dataframe with descriptive statistics for numeric variables (n, mean, sd, median, min, max)</p>
+    <p>Dataframe with descriptive statistics for numeric variables (n, mean,
+sd, median, min, max)</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
+<span class='fu'>library</span>(<span class='no'>datasets</span>)
+
 <span class='co'># if you have multiple variable for each argument</span>
-<span class='fu'>grouped_summary</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>, <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>am</span>, <span class='no'>cyl</span>), <span class='kw'>measures</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>wt</span>, <span class='no'>mpg</span>))</div><div class='output co'>#&gt; # A tibble: 12 x 14
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_summary'>grouped_summary</a></span>(
+<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/mtcars'>mtcars</a></span>,
+<span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>am</span>, <span class='no'>cyl</span>),
+<span class='kw'>measures</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>wt</span>, <span class='no'>mpg</span>)
+)</div><div class='output co'>#&gt; # A tibble: 12 x 14
 #&gt;       am   cyl type    variable missing complete     n  mean    sd   min   p25
 #&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;   &lt;fct&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 #&gt;  1    1.    6. numeric mpg           0.       3.    3. 20.6  0.750 19.7  20.4 
@@ -138,13 +157,42 @@
 #&gt; 10    0.    4. numeric wt            0.       3.    3.  2.94 0.410  2.46  2.81
 #&gt; 11    1.    8. numeric mpg           0.       2.    2. 15.4  0.570 15.0  15.2 
 #&gt; 12    1.    8. numeric wt            0.       2.    2.  3.37 0.280  3.17  3.27
-#&gt; # ... with 3 more variables: median &lt;dbl&gt;, p75 &lt;dbl&gt;, max &lt;dbl&gt;</div><div class='input'><span class='co'># if you have just one variable per argument</span>
-<span class='fu'>grouped_summary</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>, <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>am</span>, <span class='kw'>measures</span> <span class='kw'>=</span> <span class='no'>wt</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 13
-#&gt;      am type    variable missing complete     n  mean    sd   min   p25 median
-#&gt;   &lt;dbl&gt; &lt;fct&gt;   &lt;fct&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
-#&gt; 1    1. numeric wt            0.      13.   13.  2.41 0.620  1.51  1.94   2.32
-#&gt; 2    0. numeric wt            0.      19.   19.  3.77 0.780  2.46  3.44   3.52
+#&gt; # ... with 3 more variables: median &lt;dbl&gt;, p75 &lt;dbl&gt;, max &lt;dbl&gt;</div><div class='input'>
+<span class='co'># another possibility</span>
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_summary'>grouped_summary</a></span>(
+<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/iris'>iris</a></span>,
+<span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>Species</span>,
+<span class='kw'>measures</span> <span class='kw'>=</span> <span class='no'>Sepal.Length</span>:<span class='no'>Petal.Width</span>,
+<span class='kw'>measures.type</span> <span class='kw'>=</span> <span class='st'>"numeric"</span>
+)</div><div class='output co'>#&gt; # A tibble: 12 x 13
+#&gt;    Species type  variable missing complete     n  mean    sd   min   p25 median
+#&gt;    &lt;fct&gt;   &lt;fct&gt; &lt;fct&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+#&gt;  1 setosa  nume~ Petal.L~      0.      50.   50. 1.46  0.170 1.00  1.40   1.50 
+#&gt;  2 setosa  nume~ Petal.W~      0.      50.   50. 0.250 0.110 0.100 0.200  0.200
+#&gt;  3 setosa  nume~ Sepal.L~      0.      50.   50. 5.01  0.350 4.30  4.80   5.00 
+#&gt;  4 setosa  nume~ Sepal.W~      0.      50.   50. 3.43  0.380 2.30  3.20   3.40 
+#&gt;  5 versic~ nume~ Petal.L~      0.      50.   50. 4.26  0.470 3.00  4.00   4.35 
+#&gt;  6 versic~ nume~ Petal.W~      0.      50.   50. 1.33  0.200 1.00  1.20   1.30 
+#&gt;  7 versic~ nume~ Sepal.L~      0.      50.   50. 5.94  0.520 4.90  5.60   5.90 
+#&gt;  8 versic~ nume~ Sepal.W~      0.      50.   50. 2.77  0.310 2.00  2.52   2.80 
+#&gt;  9 virgin~ nume~ Petal.L~      0.      50.   50. 5.55  0.550 4.50  5.10   5.55 
+#&gt; 10 virgin~ nume~ Petal.W~      0.      50.   50. 2.03  0.270 1.40  1.80   2.00 
+#&gt; 11 virgin~ nume~ Sepal.L~      0.      50.   50. 6.59  0.640 4.90  6.23   6.50 
+#&gt; 12 virgin~ nume~ Sepal.W~      0.      50.   50. 2.97  0.320 2.20  2.80   3.00 
 #&gt; # ... with 2 more variables: p75 &lt;dbl&gt;, max &lt;dbl&gt;</div><div class='input'>
+<span class='co'># if you have just one variable per argument, you can also not use `c()`</span>
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_summary'>grouped_summary</a></span>(
+<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/ToothGrowth'>ToothGrowth</a></span>,
+<span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>supp</span>,
+<span class='kw'>measures</span> <span class='kw'>=</span> <span class='no'>len</span>,
+<span class='kw'>measures.type</span> <span class='kw'>=</span> <span class='st'>"numeric"</span>
+)</div><div class='output co'>#&gt; # A tibble: 2 x 13
+#&gt;   supp  type    variable missing complete     n  mean    sd   min   p25 median
+#&gt;   &lt;fct&gt; &lt;fct&gt;   &lt;fct&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+#&gt; 1 VC    numeric len           0.      30.   30.  17.0  8.27  4.20  11.2   16.5
+#&gt; 2 OJ    numeric len           0.      30.   30.  20.7  6.61  8.20  15.5   22.7
+#&gt; # ... with 2 more variables: p75 &lt;dbl&gt;, max &lt;dbl&gt;</div><div class='input'>
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

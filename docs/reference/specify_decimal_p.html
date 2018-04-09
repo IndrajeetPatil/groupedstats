@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>custom function for getting specified number of decimal places in results for p-value — specify_decimal_p • groupedstats</title>
+<title>Custom function for getting specified number of decimal places in
+results for p-value — specify_decimal_p • groupedstats</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,10 +26,12 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-<meta property="og:title" content="custom function for getting specified number of decimal places in results for p-value — specify_decimal_p" />
+<meta property="og:title" content="Custom function for getting specified number of decimal places in
+results for p-value — specify_decimal_p" />
 
-<meta property="og:description" content="Function to format an R object for pretty printing with a specified number of decimal places. The
-function also allows highly significant p-values to be denoted as "p &lt; 0.001" rather than "p = 0.000"." />
+<meta property="og:description" content="Function to format an R object for pretty printing with a
+specified (k) number of decimal places. The function also allows highly
+significant p-values to be denoted as "p &lt; 0.001" rather than "p = 0.000"." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -58,7 +61,7 @@ function also allows highly significant p-values to be denoted as "p &lt; 0.001"
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">groupedstats</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.1.9000</span>
       </span>
     </div>
 
@@ -89,14 +92,16 @@ function also allows highly significant p-values to be denoted as "p &lt; 0.001"
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>custom function for getting specified number of decimal places in results for p-value</h1>
+    <h1>Custom function for getting specified number of decimal places in
+results for p-value</h1>
     
-    <p class="hidden name"><code>specify_decimal_p.Rd</code></p>
+    <div class="hidden name"><code>specify_decimal_p.Rd</code></div>
     </div>
 
     
-    <p>Function to format an R object for pretty printing with a specified number of decimal places. The
-function also allows highly significant p-values to be denoted as "p &lt; 0.001" rather than "p = 0.000".</p>
+    <p>Function to format an R object for pretty printing with a
+specified (<code>k</code>) number of decimal places. The function also allows highly
+significant p-values to be denoted as "p &lt; 0.001" rather than "p = 0.000".</p>
     
 
     <pre class="usage"><span class='fu'>specify_decimal_p</span>(<span class='no'>x</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>p.value</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
@@ -120,7 +125,13 @@ function also allows highly significant p-values to be denoted as "p &lt; 0.001"
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>formatted p-values from statistical tests</p>
+    <p>Formatted numeric values.</p>
+    
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>This is a helper function used internally in the package and not
+exported. In case you want to use it, you can do so by
+<code>groupedstats:::specify_decimal_p</code>. Note that it is <code>:::</code> and not <code>::</code>.</p>
     
 
   </div>
@@ -130,6 +141,8 @@ function also allows highly significant p-values to be denoted as "p &lt; 0.001"
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#note">Note</a></li>
           </ul>
 
     <h2>Author</h2>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>creating a column with significance labels — signif_column • groupedstats</title>
+<title>Creating a new character type column with significance labels — signif_column • groupedstats</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,9 +25,10 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-<meta property="og:title" content="creating a column with significance labels — signif_column" />
+<meta property="og:title" content="Creating a new character type column with significance labels — signif_column" />
 
-<meta property="og:description" content="This function will add a new column to a dataframe containing p-values" />
+<meta property="og:description" content="This function will add a new column to a dataframe containing
+p-values" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -57,7 +58,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">groupedstats</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.1.9000</span>
       </span>
     </div>
 
@@ -88,13 +89,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>creating a column with significance labels</h1>
+    <h1>Creating a new character type column with significance labels</h1>
     
-    <p class="hidden name"><code>signif_column.Rd</code></p>
+    <div class="hidden name"><code>signif_column.Rd</code></div>
     </div>
 
     
-    <p>This function will add a new column to a dataframe containing p-values</p>
+    <p>This function will add a new column to a dataframe containing
+p-values</p>
     
 
     <pre class="usage"><span class='fu'>signif_column</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>p</span>)</pre>
@@ -104,18 +106,26 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>data frame from which variables specified are preferentially to be taken</p></td>
+      <td><p>Data frame from which variables specified are preferentially to
+be taken.</p></td>
     </tr>
     <tr>
       <th>p</th>
-      <td><p>the column containing p-values</p></td>
+      <td><p>The column containing p-values.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns the originally entered object (either a vector or a dataframe) in tibble format with
-an additional column corresponding to statistical significance.</p>
+    <p>Returns the originally entered object (either a vector or a
+dataframe) in tibble format with an additional column corresponding to
+statistical significance.</p>
+    
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>This is a helper function used internally in the package and not
+exported. In case you want to use it, you can do so by
+<code>groupedstats:::signif_column</code>. Note that it is <code>:::</code> and not <code>::</code>.</p>
     
 
   </div>
@@ -125,6 +135,8 @@ an additional column corresponding to statistical significance.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#note">Note</a></li>
           </ul>
 
     <h2>Author</h2>
