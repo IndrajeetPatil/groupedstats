@@ -97,7 +97,7 @@ groupedstats::grouped_summary(data = datasets::iris,
 This function can be used to get summary of either numeric **or** factor
 varibles, but **not** both. If you want summary of variables of factor type-
 
-```{r grouped_summary2}
+```{r grouped_summary2, warning = FALSE, message = FALSE}
 library(ggplot2)
 options(tibble.width = Inf)            # show me all columns
 
@@ -112,25 +112,46 @@ in case you, let's say, want to plot these counts. But this column is of
 `character` type and in wide format. The solution is to set an additional
 argument provided for this function:
 
-```{r grouped_summary3}
-library(ggplot2)
+```{r grouped_summary3, warning = FALSE, message = FALSE}
+
+library(tidyverse)
+library(magrittr)
+library(ggstatsplot)
+
 options(tibble.width = Inf)            # show me all columns
 
-groupedstats::grouped_summary(data = ggplot2::diamonds,
-                              grouping.vars = cut,         # for simplicity, let's just use one grouping variable
-                              measures = color,
-                              measures.type = "factor",
-                              topcount.long = TRUE)
+groupedstats::grouped_summary(
+  data = ggplot2::diamonds,
+  grouping.vars = cut,                          # for simplicity, let's just use one grouping variable
+  measures = color,
+  measures.type = "factor",
+  topcount.long = TRUE
+) %>% 
+  ggplot2::ggplot(
+  data = .,                                     # placeholder for summary dataframe we just created 
+  mapping = ggplot2::aes(
+    x = forcats::fct_inorder(factor.level),
+    y = count,
+    fill = factor.level
+  )
+) +
+  ggplot2::geom_bar(stat = "identity") +
+  ggplot2::labs(x = "color", y = "count") +
+  ggplot2::facet_grid(facets = ~ cut) +         # for each level of the factor level
+  ggstatsplot::theme_mprl() +
+  ggplot2::theme(legend.position = "none")
 ```
 
 As seen, this produces a long format table with two new columns `factor.level`
-and its corresponding `count`.
+and its corresponding `count`, which can then be immediately fed into other
+pipelines.
 
 The benefit of formatted summary output is that, it can be directly fed into
 other routines (e.g., preparing a plot of `mean` and `sd` values in `ggplot2`).
 
 ```{r grouped_summary4, warning = FALSE, message = FALSE}
 library(tidyverse)
+library(ggstatsplot)
 
 groupedstats::grouped_summary(
   data = datasets::mtcars,
@@ -144,7 +165,8 @@ groupedstats::grouped_summary(
                                          y = mean, 
                                          color = variable)) +
   ggplot2::geom_jitter() +
-  ggplot2::labs(x = "No. of cylinders", y = "mean")
+  ggplot2::labs(x = "No. of cylinders", y = "mean") +
+  ggstatsplot::theme_mprl()
 ```
 
 * `grouped_lm`

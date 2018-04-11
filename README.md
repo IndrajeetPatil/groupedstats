@@ -175,64 +175,40 @@ this column is of `character` type and in wide format. The solution is
 to set an additional argument provided for this function:
 
 ``` r
-library(ggplot2)
+
+library(tidyverse)
+library(magrittr)
+library(ggstatsplot)
+
 options(tibble.width = Inf)            # show me all columns
 
-groupedstats::grouped_summary(data = ggplot2::diamonds,
-                              grouping.vars = cut,         # for simplicity, let's just use one grouping variable
-                              measures = color,
-                              measures.type = "factor",
-                              topcount.long = TRUE)
-#> Joining, by = "cut"
-#> # A tibble: 20 x 11
-#>    cut       type   variable missing complete n     n_unique
-#>    <ord>     <chr>  <chr>    <chr>   <chr>    <chr> <chr>   
-#>  1 Ideal     factor color    0       21551    21551 7       
-#>  2 Ideal     factor color    0       21551    21551 7       
-#>  3 Ideal     factor color    0       21551    21551 7       
-#>  4 Ideal     factor color    0       21551    21551 7       
-#>  5 Premium   factor color    0       13791    13791 7       
-#>  6 Premium   factor color    0       13791    13791 7       
-#>  7 Premium   factor color    0       13791    13791 7       
-#>  8 Premium   factor color    0       13791    13791 7       
-#>  9 Good      factor color    0       4906     4906  7       
-#> 10 Good      factor color    0       4906     4906  7       
-#> 11 Good      factor color    0       4906     4906  7       
-#> 12 Good      factor color    0       4906     4906  7       
-#> 13 Very Good factor color    0       12082    12082 7       
-#> 14 Very Good factor color    0       12082    12082 7       
-#> 15 Very Good factor color    0       12082    12082 7       
-#> 16 Very Good factor color    0       12082    12082 7       
-#> 17 Fair      factor color    0       1610     1610  7       
-#> 18 Fair      factor color    0       1610     1610  7       
-#> 19 Fair      factor color    0       1610     1610  7       
-#> 20 Fair      factor color    0       1610     1610  7       
-#>    top_counts                         ordered factor.level count
-#>    <chr>                              <chr>   <chr>        <int>
-#>  1 G: 4884, E: 3903, F: 3826, H: 3115 TRUE    G             4884
-#>  2 G: 4884, E: 3903, F: 3826, H: 3115 TRUE    E             3903
-#>  3 G: 4884, E: 3903, F: 3826, H: 3115 TRUE    F             3826
-#>  4 G: 4884, E: 3903, F: 3826, H: 3115 TRUE    H             3115
-#>  5 G: 2924, H: 2360, E: 2337, F: 2331 TRUE    G             2924
-#>  6 G: 2924, H: 2360, E: 2337, F: 2331 TRUE    H             2360
-#>  7 G: 2924, H: 2360, E: 2337, F: 2331 TRUE    E             2337
-#>  8 G: 2924, H: 2360, E: 2337, F: 2331 TRUE    F             2331
-#>  9 E: 933, F: 909, G: 871, H: 702     TRUE    E              933
-#> 10 E: 933, F: 909, G: 871, H: 702     TRUE    F              909
-#> 11 E: 933, F: 909, G: 871, H: 702     TRUE    G              871
-#> 12 E: 933, F: 909, G: 871, H: 702     TRUE    H              702
-#> 13 E: 2400, G: 2299, F: 2164, H: 1824 TRUE    E             2400
-#> 14 E: 2400, G: 2299, F: 2164, H: 1824 TRUE    G             2299
-#> 15 E: 2400, G: 2299, F: 2164, H: 1824 TRUE    F             2164
-#> 16 E: 2400, G: 2299, F: 2164, H: 1824 TRUE    H             1824
-#> 17 G: 314, F: 312, H: 303, E: 224     TRUE    G              314
-#> 18 G: 314, F: 312, H: 303, E: 224     TRUE    F              312
-#> 19 G: 314, F: 312, H: 303, E: 224     TRUE    H              303
-#> 20 G: 314, F: 312, H: 303, E: 224     TRUE    E              224
+groupedstats::grouped_summary(
+  data = ggplot2::diamonds,
+  grouping.vars = cut,                          # for simplicity, let's just use one grouping variable
+  measures = color,
+  measures.type = "factor",
+  topcount.long = TRUE
+) %>% 
+  ggplot2::ggplot(
+  data = .,                                     # placeholder for summary dataframe we just created 
+  mapping = ggplot2::aes(
+    x = forcats::fct_inorder(factor.level),
+    y = count,
+    fill = factor.level
+  )
+) +
+  ggplot2::geom_bar(stat = "identity") +
+  ggplot2::labs(x = "color", y = "count") +
+  ggplot2::facet_grid(facets = ~ cut) +         # for each level of the factor level
+  ggstatsplot::theme_mprl() +
+  ggplot2::theme(legend.position = "none")
 ```
 
+![](man/figures/README-grouped_summary3-1.png)<!-- -->
+
 As seen, this produces a long format table with two new columns
-`factor.level` and its corresponding `count`.
+`factor.level` and its corresponding `count`, which can then be
+immediately fed into other pipelines.
 
 The benefit of formatted summary output is that, it can be directly fed
 into other routines (e.g., preparing a plot of `mean` and `sd` values in
@@ -240,6 +216,7 @@ into other routines (e.g., preparing a plot of `mean` and `sd` values in
 
 ``` r
 library(tidyverse)
+library(ggstatsplot)
 
 groupedstats::grouped_summary(
   data = datasets::mtcars,
@@ -253,7 +230,8 @@ groupedstats::grouped_summary(
                                          y = mean, 
                                          color = variable)) +
   ggplot2::geom_jitter() +
-  ggplot2::labs(x = "No. of cylinders", y = "mean")
+  ggplot2::labs(x = "No. of cylinders", y = "mean") +
+  ggstatsplot::theme_mprl()
 ```
 
 ![](man/figures/README-grouped_summary4-1.png)<!-- -->
