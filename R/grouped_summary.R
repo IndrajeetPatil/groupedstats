@@ -13,6 +13,8 @@
 #'   ("numeric") or *factor/character* ("factor") variables is expected
 #'   (Default: `measures.type = "numeric"`). This function can't be used for
 #'   both numeric **and** variables simultaneously.
+#' @param topcount.long If `measures.type = factor`, you can get the top counts
+#'   in long format for plotting purposes. (Default: `topcount.long = FALSE`).
 #'
 #' @import dplyr
 #' @import rlang
@@ -23,9 +25,11 @@
 #' @importFrom purrr is_bare_numeric
 #' @importFrom purrr is_bare_character
 #' @importFrom purrr map_lgl
+#' @importFrom purrr map_dfr
 #' @importFrom purrr map
 #' @importFrom tidyr nest
 #' @importFrom tidyr unnest
+#' @importFrom tidyr separate
 #' @importFrom crayon blue
 #' @importFrom crayon red
 #'
@@ -81,7 +85,8 @@ utils::globalVariables(
 grouped_summary <- function(data,
                             grouping.vars,
                             measures,
-                            measures.type = "numeric") {
+                            measures.type = "numeric",
+                            topcount.long = FALSE) {
   #================================================== data ===========================================================
   # check how many variables were entered for this grouping variable
   grouping.vars <-
@@ -159,7 +164,7 @@ grouped_summary <- function(data,
   #
   # creating a nested dataframe
   df_nest <- df %>%
-    dplyr::group_by(!!!grouping.vars) %>%
+    dplyr::group_by(.data = ., !!!grouping.vars) %>%
     tidyr::nest(data = .)
 
   # computing summary
@@ -185,6 +190,43 @@ grouped_summary <- function(data,
                       )) %>% # remove the histograms since they are not that helpful
       tidyr::unnest(data = .) %>% # unnesting the data
       tibble::as_data_frame(x = .) # converting to tibble dataframe
+    #=========================================== factor long format conversion ==========================================
+    if (isTRUE(topcount.long)) {
+      # custom function used to convert counts into long format
+      count_long_format_fn <- function(top_counts) {
+        purrr::map_dfr(
+          .x = base::strsplit(x = top_counts, split = ","),
+          .f = ~ tibble::as_data_frame(x = .) %>%
+            dplyr::mutate_all(.tbl = ., .funs = base::trimws) %>%
+            tidyr::separate(
+              data = .,
+              col = "value",
+              into = c("factor.level", "count"),
+              sep = ":",
+              convert = TRUE
+            )
+        )
+      }
+      #
+      # converting to long format using the custom function
+      df_summary_long <- df_summary %>%
+        dplyr::group_by(!!!grouping.vars) %>%
+        tidyr::nest(data = .) %>%
+        dplyr::mutate(
+          .data = .,
+          long.counts = data %>%
+            purrr::map(
+              .x = .,
+              .f = ~ count_long_format_fn(top_counts = .$top_counts)
+            )
+        ) %>%
+        dplyr::select(.data = ., -data) %>%
+        tidyr::unnest(data = .)
+      #
+      # joining the wide and long format datasets together
+      df_summary <-
+        dplyr::full_join(x =  df_summary, y = df_summary_long)
+    }
   }
   #================================================== numeric ===========================================================
   #

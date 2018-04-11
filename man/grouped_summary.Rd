@@ -15,6 +15,9 @@ grouping variable levels}
 ("numeric") or \emph{factor/character} ("factor") variables is expected
 (Default: \code{measures.type = "numeric"}). This function can't be used for
 both numeric \strong{and} variables simultaneously.}
+
+\item{topcount.long}{If \code{measures.type = factor}, you can get the top counts
+in long format for plotting purposes. (Default: \code{topcount.long = FALSE}).}
 }
 \value{
 Dataframe with descriptive statistics for numeric variables (n, mean,
