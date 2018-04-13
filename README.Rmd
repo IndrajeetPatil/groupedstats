@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 ```
 # groupedstats: Grouped statistical analysis in a tidy way
 
-[![packageversion](https://img.shields.io/badge/Package%20version-0.0.1.9000-orange.svg?style=flat-square)](commits/master)
+[![packageversion](https://img.shields.io/badge/Package%20version-0.0.0.9000-orange.svg?style=flat-square)](commits/master)
 [![Travis Build Status](https://travis-ci.org/IndrajeetPatil/groupedstats.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/groupedstats) 
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupedstats?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/groupedstats) 
 [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
@@ -142,31 +142,21 @@ groupedstats::grouped_summary(
   ggplot2::theme(legend.position = "none")
 ```
 
-As seen, this produces a long format table with two new columns `factor.level`
-and its corresponding `count`, which can then be immediately fed into other
-pipelines.
+This produces a long format table with two new columns `factor.level` and its
+corresponding `count`, which can then be immediately fed into other pipelines.
+As demonstrated here, the benefit of formatted summary output is that, it can be
+directly fed into other routines (e.g., preparing a plot of `mean` and `sd`
+values in `ggplot2`).
 
-The benefit of formatted summary output is that, it can be directly fed into
-other routines (e.g., preparing a plot of `mean` and `sd` values in `ggplot2`).
+Another thing to note about `grouped_summary` function is that if no `measures` are specified, the function will compute summary for all variables of the specified type (`numeric` or `factor`).
 
 ```{r grouped_summary4, warning = FALSE, message = FALSE}
-library(tidyverse)
-library(ggstatsplot)
+options(tibble.width = Inf)            # show me all columns
 
 groupedstats::grouped_summary(
-  data = datasets::mtcars,
-  grouping.vars = c(am, cyl),
-  measures = c(disp, wt, mpg),
-  measures.type = "numeric"
-) %>%                                                         # further modification with the pipe operator
-  dplyr::select(.data = ., -type, -missing, -complete) %>%    # feeding the output into another function
-  ggplot2::ggplot(data = .,                                   # note that `.` is just a placeholder for data here
-                  mapping = ggplot2::aes(x = as.factor(cyl), 
-                                         y = mean, 
-                                         color = variable)) +
-  ggplot2::geom_jitter() +
-  ggplot2::labs(x = "No. of cylinders", y = "mean") +
-  ggstatsplot::theme_mprl()
+  data = ggplot2::diamonds,
+  grouping.vars = c(cut, clarity)
+)
 ```
 
 * `grouped_lm`

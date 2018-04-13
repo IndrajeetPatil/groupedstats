@@ -1,7 +1,7 @@
 Type: Package
 Package: groupedstats
 Title: Statistical Tests for Multiple Variables Across Multiple Grouping Levels
-Version: 0.0.1.9000
+Version: 0.0.0.9000
 Authors@R: person(given = "Indrajeet", 
   family = "Patil", 
   email = "patilindrajeet.science@gmail.com", 

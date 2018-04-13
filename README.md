@@ -3,7 +3,7 @@
 
 # groupedstats: Grouped statistical analysis in a tidy way
 
-[![packageversion](https://img.shields.io/badge/Package%20version-0.0.1.9000-orange.svg?style=flat-square)](commits/master)
+[![packageversion](https://img.shields.io/badge/Package%20version-0.0.0.9000-orange.svg?style=flat-square)](commits/master)
 [![Travis Build
 Status](https://travis-ci.org/IndrajeetPatil/groupedstats.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/groupedstats)
 [![AppVeyor Build
@@ -12,7 +12,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--04--11-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--04--13-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
@@ -206,35 +206,50 @@ groupedstats::grouped_summary(
 
 ![](man/figures/README-grouped_summary3-1.png)<!-- -->
 
-As seen, this produces a long format table with two new columns
-`factor.level` and its corresponding `count`, which can then be
-immediately fed into other pipelines.
+This produces a long format table with two new columns `factor.level`
+and its corresponding `count`, which can then be immediately fed into
+other pipelines. As demonstrated here, the benefit of formatted summary
+output is that, it can be directly fed into other routines (e.g.,
+preparing a plot of `mean` and `sd` values in `ggplot2`).
 
-The benefit of formatted summary output is that, it can be directly fed
-into other routines (e.g., preparing a plot of `mean` and `sd` values in
-`ggplot2`).
+Another thing to note about `grouped_summary` function is that if no
+`measures` are specified, the function will compute summary for all
+variables of the specified type (`numeric` or `factor`).
 
 ``` r
-library(tidyverse)
-library(ggstatsplot)
+options(tibble.width = Inf)            # show me all columns
 
 groupedstats::grouped_summary(
-  data = datasets::mtcars,
-  grouping.vars = c(am, cyl),
-  measures = c(disp, wt, mpg),
-  measures.type = "numeric"
-) %>%                                                         # further modification with the pipe operator
-  dplyr::select(.data = ., -type, -missing, -complete) %>%    # feeding the output into another function
-  ggplot2::ggplot(data = .,                                   # note that `.` is just a placeholder for data here
-                  mapping = ggplot2::aes(x = as.factor(cyl), 
-                                         y = mean, 
-                                         color = variable)) +
-  ggplot2::geom_jitter() +
-  ggplot2::labs(x = "No. of cylinders", y = "mean") +
-  ggstatsplot::theme_mprl()
+  data = ggplot2::diamonds,
+  grouping.vars = c(cut, clarity)
+)
+#> # A tibble: 280 x 14
+#>    cut     clarity type    variable missing complete     n     mean
+#>    <ord>   <ord>   <fct>   <fct>      <dbl>    <dbl> <dbl>    <dbl>
+#>  1 Ideal   SI2     integer price         0.    2598. 2598. 4756.   
+#>  2 Ideal   SI2     numeric carat         0.    2598. 2598.    1.01 
+#>  3 Ideal   SI2     numeric depth         0.    2598. 2598.   61.7  
+#>  4 Ideal   SI2     numeric table         0.    2598. 2598.   56.1  
+#>  5 Ideal   SI2     numeric x             0.    2598. 2598.    6.26 
+#>  6 Ideal   SI2     numeric y             0.    2598. 2598.    6.27 
+#>  7 Ideal   SI2     numeric z             0.    2598. 2598.    3.87 
+#>  8 Premium SI1     integer price         0.    3575. 3575. 4455.   
+#>  9 Premium SI1     numeric carat         0.    3575. 3575.    0.910
+#> 10 Premium SI1     numeric depth         0.    3575. 3575.   61.3  
+#>          sd     min      p25   median     p75      max
+#>       <dbl>   <dbl>    <dbl>    <dbl>   <dbl>    <dbl>
+#>  1 4252.    326.    1443.    4060.    5402.   18804.  
+#>  2    0.510   0.230    0.620    1.00     1.20     3.01
+#>  3    0.820  58.3     61.2     61.8     62.3     65.5 
+#>  4    1.30   52.0     55.0     56.0     57.0     62.0 
+#>  5    1.07    0.       5.50     6.40     6.82     9.25
+#>  6    1.05    3.98     5.53     6.40     6.82     9.20
+#>  7    0.660   0.       3.38     3.95     4.21     5.69
+#>  8 4071.    326.    1200.    3618.    5597.   18797.  
+#>  9    0.480   0.210    0.500    0.900    1.15     2.57
+#> 10    1.17   58.0     60.5     61.5     62.3     63.0 
+#> # ... with 270 more rows
 ```
-
-![](man/figures/README-grouped_summary4-1.png)<!-- -->
 
   - `grouped_lm`
 

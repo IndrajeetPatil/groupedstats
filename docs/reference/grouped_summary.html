@@ -60,7 +60,7 @@ grouping variable levels" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">groupedstats</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.1.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.0.9000</span>
       </span>
     </div>
 
@@ -116,7 +116,11 @@ grouping variable levels</p>
     </tr>
     <tr>
       <th>measures</th>
-      <td><p>List variables for which summary needs to computed.</p></td>
+      <td><p>List variables for which summary needs to computed. If not
+spcified, all variables of type specified in the argument <code>measures.type</code>
+will be used to calculate summaries. <strong>Don't</strong> explicitly set
+<code>measures.type = NULL</code> in function call, which will produce an error
+because the function will try to find a column in a dataframe named "NULL".</p></td>
     </tr>
     <tr>
       <th>measures.type</th>
@@ -140,29 +144,6 @@ sd, median, min, max)</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'>library</span>(<span class='no'>datasets</span>)
-
-<span class='co'># if you have multiple variable for each argument</span>
-<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_summary'>grouped_summary</a></span>(
-<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/mtcars'>mtcars</a></span>,
-<span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>am</span>, <span class='no'>cyl</span>),
-<span class='kw'>measures</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>wt</span>, <span class='no'>mpg</span>)
-)</div><div class='output co'>#&gt; # A tibble: 12 x 14
-#&gt;       am   cyl type    variable missing complete     n  mean    sd   min   p25
-#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;   &lt;fct&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt;  1    1.    6. numeric mpg           0.       3.    3. 20.6  0.750 19.7  20.4 
-#&gt;  2    1.    6. numeric wt            0.       3.    3.  2.75 0.130  2.62  2.70
-#&gt;  3    1.    4. numeric mpg           0.       8.    8. 28.1  4.48  21.4  25.2 
-#&gt;  4    1.    4. numeric wt            0.       8.    8.  2.04 0.410  1.51  1.78
-#&gt;  5    0.    6. numeric mpg           0.       4.    4. 19.1  1.63  17.8  18.0 
-#&gt;  6    0.    6. numeric wt            0.       4.    4.  3.39 0.120  3.21  3.38
-#&gt;  7    0.    8. numeric mpg           0.      12.   12. 15.0  2.77  10.4  14.0 
-#&gt;  8    0.    8. numeric wt            0.      12.   12.  4.10 0.770  3.44  3.56
-#&gt;  9    0.    4. numeric mpg           0.       3.    3. 22.9  1.45  21.5  22.2 
-#&gt; 10    0.    4. numeric wt            0.       3.    3.  2.94 0.410  2.46  2.81
-#&gt; 11    1.    8. numeric mpg           0.       2.    2. 15.4  0.570 15.0  15.2 
-#&gt; 12    1.    8. numeric wt            0.       2.    2.  3.37 0.280  3.17  3.27
-#&gt; # ... with 3 more variables: median &lt;dbl&gt;, p75 &lt;dbl&gt;, max &lt;dbl&gt;</div><div class='input'>
 <span class='co'># another possibility</span>
 <span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_summary'>grouped_summary</a></span>(
 <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/iris'>iris</a></span>,
@@ -197,7 +178,6 @@ sd, median, min, max)</p>
 #&gt; 1 VC    numeric len           0.      30.   30.  17.0  8.27  4.20  11.2   16.5
 #&gt; 2 OJ    numeric len           0.      30.   30.  20.7  6.61  8.20  15.5   22.7
 #&gt; # ... with 2 more variables: p75 &lt;dbl&gt;, max &lt;dbl&gt;</div><div class='input'>
-
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
