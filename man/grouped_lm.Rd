@@ -2,21 +2,28 @@
 % Please edit documentation in R/grouped_lm.R
 \name{grouped_lm}
 \alias{grouped_lm}
-\title{Function to run linear regression on multiple variables across multiple grouping variables.}
+\title{Function to run linear regression on multiple variables across
+multiple grouping variables.}
 \arguments{
 \item{data}{Dataframe from which variables are to be taken.}
 
 \item{grouping.vars}{List of grouping variables.}
 
-\item{dep.vars}{List criterion or dependent variables for regression (\code{y} in \code{y ~ x}).}
+\item{dep.vars}{List criterion or \strong{dependent} variables for simple linear
+model (\code{y} in \code{y ~ x}).}
 
-\item{indep.vars}{List predictor or independent variables for regression (\code{x} in \code{y ~ x}).}
+\item{indep.vars}{List predictor or \strong{independent} variables for simple
+linear model (\code{x} in \code{y ~ x}).}
+
+\item{nboot}{Number of bootstrap samples to construct 95% confidence
+intervals for partial eta-squared and omega-squared. Default is \code{nboot = 100}.}
 }
 \value{
 A tibble dataframe with tidy results from linear regression analyses.
 }
 \description{
-Function to run linear regression on multiple variables across multiple grouping variables.
+Function to run linear regression on multiple variables across
+multiple grouping variables.
 }
 \author{
 Indrajeet Patil

@@ -1,18 +1,25 @@
 #'
-#' @title Function to run linear regression on multiple variables across multiple grouping variables.
+#' @title Function to run linear regression on multiple variables across
+#'   multiple grouping variables.
 #' @name grouped_lm
 #' @author Indrajeet Patil
 #' @return A tibble dataframe with tidy results from linear regression analyses.
 #'
 #' @param data Dataframe from which variables are to be taken.
 #' @param grouping.vars List of grouping variables.
-#' @param dep.vars List criterion or dependent variables for regression (`y` in `y ~ x`).
-#' @param indep.vars List predictor or independent variables for regression (`x` in `y ~ x`).
+#' @param dep.vars List criterion or **dependent** variables for simple linear
+#'   model (`y` in `y ~ x`).
+#' @param indep.vars List predictor or **independent** variables for simple
+#'   linear model (`x` in `y ~ x`).
+#' @param nboot Number of bootstrap samples to construct 95% confidence
+#'   intervals for partial eta-squared and omega-squared. Default is `nboot =
+#'   100`.
 #'
 #' @import dplyr
 #' @import rlang
 #' @import tibble
 #'
+#' @importFrom magrittr "%<>%"
 #' @importFrom broom tidy
 #' @importFrom broom confint_tidy
 #' @importFrom glue glue
@@ -51,8 +58,15 @@ utils::globalVariables(
     "statistic",
     "std.error",
     "term",
+    "beta",
     "conf.low",
-    "conf.high"
+    "conf.high",
+    "partial.etasq",
+    "partial.etasq.conf.low",
+    "partial.etasq.conf.high",
+    "partial.omegasq",
+    "partial.omegasq.conf.low",
+    "partial.omegasq.conf.high"
   )
 )
 
@@ -60,7 +74,8 @@ utils::globalVariables(
 grouped_lm <- function(data,
                        dep.vars,
                        indep.vars,
-                       grouping.vars) {
+                       grouping.vars,
+                       nboot = 100) {
   # ================== preparing dataframe ==================
   #
   # check how many variables were entered for criterion variables vector
@@ -94,12 +109,10 @@ grouped_lm <- function(data,
     }
 
   # getting the dataframe ready
-  df <- dplyr::select(
-    .data = data,
-    !!!grouping.vars,
-    !!!dep.vars,
-    !!!indep.vars
-  ) %>%
+  df <- dplyr::select(.data = data,
+                      !!!grouping.vars,
+                      !!!dep.vars,
+                      !!!indep.vars) %>%
     dplyr::group_by(.data = ., !!!grouping.vars) %>%
     tidyr::nest(data = .)
 
@@ -122,52 +135,94 @@ grouped_lm <- function(data,
       list.col %>% # running linear regression on each individual group with purrr
       purrr::map(
         .x = .,
-        .f = ~stats::lm(
+        .f = ~ stats::lm(
           formula = stats::as.formula(fx),
-          data = (.)
+          data = (.),
+          na.action = na.omit
         )
       ) %>% # tidying up the output with broom
       purrr::map_dfr(
         .x = .,
-        .f = ~dplyr::bind_cols(broom::tidy(x = .), broom::confint_tidy(x = .)),
+        .f = ~ dplyr::bind_cols(
+          dplyr::filter(.data = broom::tidy(x = .), term == !!filter_name),
+          broom::confint_tidy(x = .)[-c(1), ]
+        ),
         .id = "group"
-      ) %>% # remove intercept terms
-      dplyr::filter(.data = ., term == !!filter_name) %>% # add formula as a character
+      ) %>% # removing the unnecessary term column
+      dplyr::select(.data = ., -term) %>% # convert to a tibble dataframe
+      tibble::as_data_frame(x = .)
+
+    # dataframe with results from lm
+    effsize_df <-
+      list.col %>% # running linear regression on each individual group with purrr
+      purrr::map(
+        .x = .,
+        .f = ~ stats::lm(
+          formula = stats::as.formula(fx_plain),
+          data = (.),
+          na.action = na.omit
+        )
+      ) %>% # tidying up the output with broom
+      purrr::map_dfr(
+        .x = .,
+        .f = ~ lm_effsize_ci(
+          lm_object = .,
+          conf.level = 0.95,
+          nboot = nboot
+        ),
+        .id = "group"
+      ) %>% # convert to a tibble dataframe
+      tibble::as_data_frame(x = .)
+
+    # combining summary results and effect size results in a single dataframe
+    combined_df <-
+      dplyr::full_join(x = results_df,
+                       y = effsize_df,
+                       by = "group") %>% # remove intercept terms
+      #dplyr::filter(.data = ., term == !!filter_name) %>% # add formula as a character
       dplyr::mutate(.data = ., formula = as.character(fx_plain)) %>% # rearrange the dataframe
       dplyr::select(
         .data = .,
         group,
-        formula,
         term,
+        formula,
         t.value = statistic,
-        estimate,
+        beta = estimate,
         conf.low,
         conf.high,
         std.error,
-        p.value
+        p.value,
+        `F value`,
+        df1,
+        df2,
+        `Pr(>F)`,
+        partial.etasq,
+        partial.etasq.conf.low,
+        partial.etasq.conf.high,
+        partial.omegasq,
+        partial.omegasq.conf.low,
+        partial.omegasq.conf.high
       ) %>% # convert to a tibble dataframe
       tibble::as_data_frame(x = .)
 
     # return the dataframe
-    return(results_df)
+    return(combined_df)
   }
 
   # ========= using  custom function on entered dataframe =================
 
-  df <- df %>%
+  # converting the original dataframe to have a grouping variable column
+  df %<>%
     tibble::rownames_to_column(df = ., var = "group")
+
   # running custom function for each element of the created list column
   df_lm <- purrr::pmap(
     .l = list(
       list.col = list(df$data),
-      x_name = purrr::map(
-        .x = indep.vars,
-        .f = ~rlang::quo_name(quo = .)
-      ),
-      y_name = purrr::map(
-        .x = dep.vars,
-        .f = ~rlang::quo_name(quo = .)
-      )
+      x_name = purrr::map(.x = indep.vars,
+                          .f = ~ rlang::quo_name(quo = .)),
+      y_name = purrr::map(.x = dep.vars,
+                          .f = ~ rlang::quo_name(quo = .))
     ),
     .f = lm_listed
   ) %>%

@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function to run linear regression on multiple variables across
-multiple grouping variables. — grouped_lm • groupedstats</title>
+<title>Confidence intervals for partial eta-squared and omega-squared for linear models. — lm_effsize_ci • groupedstats</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -26,11 +25,11 @@ multiple grouping variables. — grouped_lm • groupedstats</title>
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-<meta property="og:title" content="Function to run linear regression on multiple variables across
-multiple grouping variables. — grouped_lm" />
+<meta property="og:title" content="Confidence intervals for partial eta-squared and omega-squared for linear models. — lm_effsize_ci" />
 
-<meta property="og:description" content="Function to run linear regression on multiple variables across
-multiple grouping variables." />
+<meta property="og:description" content="This function will convert a linear model object to a dataframe
+containing statistical details for all effects along with partial
+eta-squared effect size and its confidence interval." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -91,15 +90,15 @@ multiple grouping variables." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Function to run linear regression on multiple variables across
-multiple grouping variables.</h1>
+    <h1>Confidence intervals for partial eta-squared and omega-squared for linear models.</h1>
     
-    <div class="hidden name"><code>grouped_lm.Rd</code></div>
+    <div class="hidden name"><code>lm_effsize_ci.Rd</code></div>
     </div>
 
     
-    <p>Function to run linear regression on multiple variables across
-multiple grouping variables.</p>
+    <p>This function will convert a linear model object to a dataframe
+containing statistical details for all effects along with partial
+eta-squared effect size and its confidence interval.</p>
     
 
     
@@ -107,33 +106,24 @@ multiple grouping variables.</p>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>Dataframe from which variables are to be taken.</p></td>
+      <th>lm_object</th>
+      <td><p>The <code><a href='http://www.rdocumentation.org/packages/stats/topics/lm'>stats::lm</a></code> linear model object.</p></td>
     </tr>
     <tr>
-      <th>grouping.vars</th>
-      <td><p>List of grouping variables.</p></td>
-    </tr>
-    <tr>
-      <th>dep.vars</th>
-      <td><p>List criterion or <strong>dependent</strong> variables for simple linear
-model (<code>y</code> in <code>y ~ x</code>).</p></td>
-    </tr>
-    <tr>
-      <th>indep.vars</th>
-      <td><p>List predictor or <strong>independent</strong> variables for simple
-linear model (<code>x</code> in <code>y ~ x</code>).</p></td>
+      <th>conf.level</th>
+      <td><p>Level of confidence for the confidence interval.</p></td>
     </tr>
     <tr>
       <th>nboot</th>
-      <td><p>Number of bootstrap samples to construct 95<!-- % confidence -->
-intervals for partial eta-squared and omega-squared. Default is <code>nboot = 100</code>.</p></td>
+      <td><p>Number of bootstrap samples for confidence intervals for partial
+eta-squared and omega-squared.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble dataframe with tidy results from linear regression analyses.</p>
+    <p>A dataframe with results from <code><a href='http://www.rdocumentation.org/packages/stats/topics/lm'>stats::lm()</a></code> with partial eta-squared,
+omega-squared, and bootstrapped confidence interval for the same.</p>
     
 
   </div>

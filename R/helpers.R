@@ -110,13 +110,9 @@ specify_decimal_p <- function(x,
   }
   # formatting the output properly
   output <-
-    base::trimws(
-      x = base::format(
-        x = base::round(x = x, digits = k),
-        nsmall = k
-      ),
-      which = "both"
-    )
+    base::trimws(x = base::format(x = base::round(x = x, digits = k),
+                                  nsmall = k),
+                 which = "both")
   # if it's a p-value, then format it properly
   if (isTRUE(p.value)) {
     # determing the class of output
@@ -127,3 +123,149 @@ specify_decimal_p <- function(x,
   # this will return a character
   return(output)
 }
+
+
+#'
+#' @title Confidence intervals for partial eta-squared and omega-squared for linear models.
+#' @name lm_effsize_ci
+#' @author Indrajeet Patil
+#' @description This function will convert a linear model object to a dataframe
+#'   containing statistical details for all effects along with partial
+#'   eta-squared effect size and its confidence interval.
+#' @return A dataframe with results from `stats::lm()` with partial eta-squared,
+#'   omega-squared, and bootstrapped confidence interval for the same.
+#'
+#' @param lm_object The `stats::lm` linear model object.
+#' @param conf.level Level of confidence for the confidence interval.
+#' @param nboot Number of bootstrap samples for confidence intervals for partial
+#'   eta-squared and omega-squared.
+#'
+#' @import dplyr
+#'
+#' @importFrom sjstats eta_sq
+#' @importFrom sjstats omega_sq
+#' @importFrom stats anova
+#' @importFrom stats na.omit
+#' @importFrom stats lm
+#' @importFrom tibble as_data_frame
+#' @importFrom tibble rownames_to_column
+#'
+
+# defining global variables and functions to quient the R CMD check notes
+utils::globalVariables(
+  c(
+    "Df",
+    "F value",
+    "F.value",
+    "LL",
+    "Pr(>F)",
+    "UL",
+    "complete",
+    "data",
+    "df1",
+    "df2",
+    "effect",
+    "term",
+    "effsize",
+    "formula",
+    "hist",
+    "median",
+    "p0",
+    "p100",
+    "p25",
+    "p50",
+    "p75",
+    "sd",
+    "significance",
+    "type",
+    "conf.high",
+    "conf.low",
+    "term",
+    "partial.etasq",
+    "partial.etasq.conf.low",
+    "partial.etasq.conf.high",
+    "partial.omegasq",
+    "partial.omegasq.conf.low",
+    "partial.omegasq.conf.high"
+  )
+)
+
+# defining the function body
+lm_effsize_ci <-
+  function(lm_object,
+           conf.level = 0.95,
+           nboot = 1000) {
+    # get the linear model object and turn it into a matrix and turn row names into a variable called "effect"
+    # compute partial eta-squared for each effect
+    # add additional columns containing data and formula that was used to create these effects
+    # details from the anova results
+    aov_df <-
+      base::as.data.frame(as.matrix(stats::anova(object = lm_object))) %>%
+      tibble::rownames_to_column(df = ., var = "term")
+
+    # create a new column for residual degrees of freedom
+    aov_df$df2 <- aov_df$Df[aov_df$term == "Residuals"]
+
+    aov_df %<>%
+      dplyr::select(.data = .,
+                    -c(base::grep(pattern = "Sq",
+                                  x = names(.)))) %>% # rename to something more meaningful and tidy
+      dplyr::rename(.data = .,
+                    df1 = Df) %>% # remove NAs, which would remove the row containing Residuals (redundant at this point)
+      stats::na.omit(.) %>%
+      tibble::as_data_frame(x = .)
+
+     # creating dataframe of partial eta-squared effect size and its CI with sjstats
+    etasq_df <- sjstats::eta_sq(
+      model = lm_object,
+      partial = TRUE,
+      ci.lvl = conf.level,
+      n = nboot
+    ) %>%
+      dplyr::rename(
+        .data = .,
+        partial.etasq.conf.low = conf.low,
+        partial.etasq.conf.high = conf.high
+      )
+
+    # creating dataframe of partial omega-squared effect size and its CI with sjstats
+    omegasq_df <- sjstats::omega_sq(
+      model = lm_object,
+      partial = TRUE,
+      ci.lvl = conf.level,
+      n = nboot
+    ) %>%
+      dplyr::rename(
+        .data = .,
+        partial.omegasq.conf.low = conf.low,
+        partial.omegasq.conf.high = conf.high
+      )
+
+    # combining all effect sizes into the dataframe
+    effsize_df <- dplyr::full_join(x = etasq_df,
+                                   y = omegasq_df,
+                                   by = "term")
+
+    # combining the dataframes (erge the two preceding pieces of information by the common element of Effect
+    combined_df <- dplyr::left_join(x = aov_df,
+                                    y = effsize_df,
+                                    by = "term") %>% # reordering columns
+      dplyr::select(
+        .data = .,
+        term,
+        `F value`,
+        df1,
+        df2,
+        `Pr(>F)`,
+        partial.etasq,
+        partial.etasq.conf.low,
+        partial.etasq.conf.high,
+        partial.omegasq,
+        partial.omegasq.conf.low,
+        partial.omegasq.conf.high
+      ) %>%
+      tibble::as_data_frame(x = .)
+
+    # returning the final dataframe
+    return(combined_df)
+  }

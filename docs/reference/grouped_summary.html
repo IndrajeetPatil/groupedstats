@@ -151,21 +151,34 @@ sd, median, min, max)</p>
 <span class='kw'>measures</span> <span class='kw'>=</span> <span class='no'>Sepal.Length</span>:<span class='no'>Petal.Width</span>,
 <span class='kw'>measures.type</span> <span class='kw'>=</span> <span class='st'>"numeric"</span>
 )</div><div class='output co'>#&gt; # A tibble: 12 x 13
-#&gt;    Species type  variable missing complete     n  mean    sd   min   p25 median
-#&gt;    &lt;fct&gt;   &lt;fct&gt; &lt;fct&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
-#&gt;  1 setosa  nume~ Petal.L~      0.      50.   50. 1.46  0.170 1.00  1.40   1.50 
-#&gt;  2 setosa  nume~ Petal.W~      0.      50.   50. 0.250 0.110 0.100 0.200  0.200
-#&gt;  3 setosa  nume~ Sepal.L~      0.      50.   50. 5.01  0.350 4.30  4.80   5.00 
-#&gt;  4 setosa  nume~ Sepal.W~      0.      50.   50. 3.43  0.380 2.30  3.20   3.40 
-#&gt;  5 versic~ nume~ Petal.L~      0.      50.   50. 4.26  0.470 3.00  4.00   4.35 
-#&gt;  6 versic~ nume~ Petal.W~      0.      50.   50. 1.33  0.200 1.00  1.20   1.30 
-#&gt;  7 versic~ nume~ Sepal.L~      0.      50.   50. 5.94  0.520 4.90  5.60   5.90 
-#&gt;  8 versic~ nume~ Sepal.W~      0.      50.   50. 2.77  0.310 2.00  2.52   2.80 
-#&gt;  9 virgin~ nume~ Petal.L~      0.      50.   50. 5.55  0.550 4.50  5.10   5.55 
-#&gt; 10 virgin~ nume~ Petal.W~      0.      50.   50. 2.03  0.270 1.40  1.80   2.00 
-#&gt; 11 virgin~ nume~ Sepal.L~      0.      50.   50. 6.59  0.640 4.90  6.23   6.50 
-#&gt; 12 virgin~ nume~ Sepal.W~      0.      50.   50. 2.97  0.320 2.20  2.80   3.00 
-#&gt; # ... with 2 more variables: p75 &lt;dbl&gt;, max &lt;dbl&gt;</div><div class='input'>
+#&gt;    Species    type    variable     missing complete     n  mean    sd   min
+#&gt;    &lt;fct&gt;      &lt;fct&gt;   &lt;fct&gt;          &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt;  1 setosa     numeric Petal.Length      0.      50.   50. 1.46  0.170 1.00 
+#&gt;  2 setosa     numeric Petal.Width       0.      50.   50. 0.250 0.110 0.100
+#&gt;  3 setosa     numeric Sepal.Length      0.      50.   50. 5.01  0.350 4.30 
+#&gt;  4 setosa     numeric Sepal.Width       0.      50.   50. 3.43  0.380 2.30 
+#&gt;  5 versicolor numeric Petal.Length      0.      50.   50. 4.26  0.470 3.00 
+#&gt;  6 versicolor numeric Petal.Width       0.      50.   50. 1.33  0.200 1.00 
+#&gt;  7 versicolor numeric Sepal.Length      0.      50.   50. 5.94  0.520 4.90 
+#&gt;  8 versicolor numeric Sepal.Width       0.      50.   50. 2.77  0.310 2.00 
+#&gt;  9 virginica  numeric Petal.Length      0.      50.   50. 5.55  0.550 4.50 
+#&gt; 10 virginica  numeric Petal.Width       0.      50.   50. 2.03  0.270 1.40 
+#&gt; 11 virginica  numeric Sepal.Length      0.      50.   50. 6.59  0.640 4.90 
+#&gt; 12 virginica  numeric Sepal.Width       0.      50.   50. 2.97  0.320 2.20 
+#&gt;      p25 median   p75   max
+#&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt;  1 1.40   1.50  1.58  1.90 
+#&gt;  2 0.200  0.200 0.300 0.600
+#&gt;  3 4.80   5.00  5.20  5.80 
+#&gt;  4 3.20   3.40  3.68  4.40 
+#&gt;  5 4.00   4.35  4.60  5.10 
+#&gt;  6 1.20   1.30  1.50  1.80 
+#&gt;  7 5.60   5.90  6.30  7.00 
+#&gt;  8 2.52   2.80  3.00  3.40 
+#&gt;  9 5.10   5.55  5.88  6.90 
+#&gt; 10 1.80   2.00  2.30  2.50 
+#&gt; 11 6.23   6.50  6.90  7.90 
+#&gt; 12 2.80   3.00  3.18  3.80 </div><div class='input'>
 <span class='co'># if you have just one variable per argument, you can also not use `c()`</span>
 <span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_summary'>grouped_summary</a></span>(
 <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/ToothGrowth'>ToothGrowth</a></span>,
@@ -177,7 +190,10 @@ sd, median, min, max)</p>
 #&gt;   &lt;fct&gt; &lt;fct&gt;   &lt;fct&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
 #&gt; 1 VC    numeric len           0.      30.   30.  17.0  8.27  4.20  11.2   16.5
 #&gt; 2 OJ    numeric len           0.      30.   30.  20.7  6.61  8.20  15.5   22.7
-#&gt; # ... with 2 more variables: p75 &lt;dbl&gt;, max &lt;dbl&gt;</div><div class='input'>
+#&gt;     p75   max
+#&gt;   &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1  23.1  33.9
+#&gt; 2  25.7  30.9</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

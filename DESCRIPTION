@@ -24,6 +24,7 @@ Imports:
     rlang (>= 0.1.2),
     robust (>= 0.4.18),
     rstudioapi (>= 0.7.0),
+    sjstats (>= 0.14.2-3),
     skimr (>= 1.0.2),
     stats,
     tibble (>= 1.4.2),

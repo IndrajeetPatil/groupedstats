@@ -181,12 +181,12 @@ groupedstats::grouped_lm(data = gapminder::gapminder,
 Notice the order in which the dependent and independent variables are entered.
 If this order is incorrect, the result will also be incorrect. So it is always a
 good idea to check the *formula* column to see if you have run the correct
-regression models. 
+linear models. 
 
 We saw example with one grouping variable. This can be done with multiple
 grouping variables as well. For example, with the `diamonds` dataset from
-`ggplot2` library to see the relation between carat and price of a diamond for
-each type of clarity and cut-
+`ggplot2` library, let's assess the relation between carat *and* price of a
+diamond for each type of clarity *and* cut-
 
 ```{r grouped_lm2, warning = FALSE, message = FALSE}
 library(ggplot2)
