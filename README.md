@@ -12,7 +12,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--04--15-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--04--20-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
@@ -101,32 +101,32 @@ groupedstats::grouped_summary(data = datasets::iris,
 #> # A tibble: 12 x 13
 #>    Species    type    variable     missing complete     n  mean    sd
 #>    <fct>      <fct>   <fct>          <dbl>    <dbl> <dbl> <dbl> <dbl>
-#>  1 setosa     numeric Petal.Length      0.      50.   50. 1.46  0.170
-#>  2 setosa     numeric Petal.Width       0.      50.   50. 0.250 0.110
-#>  3 setosa     numeric Sepal.Length      0.      50.   50. 5.01  0.350
-#>  4 setosa     numeric Sepal.Width       0.      50.   50. 3.43  0.380
-#>  5 versicolor numeric Petal.Length      0.      50.   50. 4.26  0.470
-#>  6 versicolor numeric Petal.Width       0.      50.   50. 1.33  0.200
-#>  7 versicolor numeric Sepal.Length      0.      50.   50. 5.94  0.520
-#>  8 versicolor numeric Sepal.Width       0.      50.   50. 2.77  0.310
-#>  9 virginica  numeric Petal.Length      0.      50.   50. 5.55  0.550
-#> 10 virginica  numeric Petal.Width       0.      50.   50. 2.03  0.270
-#> 11 virginica  numeric Sepal.Length      0.      50.   50. 6.59  0.640
-#> 12 virginica  numeric Sepal.Width       0.      50.   50. 2.97  0.320
+#>  1 setosa     numeric Petal.Length       0       50    50  1.46  0.17
+#>  2 setosa     numeric Petal.Width        0       50    50  0.25  0.11
+#>  3 setosa     numeric Sepal.Length       0       50    50  5.01  0.35
+#>  4 setosa     numeric Sepal.Width        0       50    50  3.43  0.38
+#>  5 versicolor numeric Petal.Length       0       50    50  4.26  0.47
+#>  6 versicolor numeric Petal.Width        0       50    50  1.33  0.2 
+#>  7 versicolor numeric Sepal.Length       0       50    50  5.94  0.52
+#>  8 versicolor numeric Sepal.Width        0       50    50  2.77  0.31
+#>  9 virginica  numeric Petal.Length       0       50    50  5.55  0.55
+#> 10 virginica  numeric Petal.Width        0       50    50  2.03  0.27
+#> 11 virginica  numeric Sepal.Length       0       50    50  6.59  0.64
+#> 12 virginica  numeric Sepal.Width        0       50    50  2.97  0.32
 #>      min   p25 median   p75   max
 #>    <dbl> <dbl>  <dbl> <dbl> <dbl>
-#>  1 1.00  1.40   1.50  1.58  1.90 
-#>  2 0.100 0.200  0.200 0.300 0.600
-#>  3 4.30  4.80   5.00  5.20  5.80 
-#>  4 2.30  3.20   3.40  3.68  4.40 
-#>  5 3.00  4.00   4.35  4.60  5.10 
-#>  6 1.00  1.20   1.30  1.50  1.80 
-#>  7 4.90  5.60   5.90  6.30  7.00 
-#>  8 2.00  2.52   2.80  3.00  3.40 
-#>  9 4.50  5.10   5.55  5.88  6.90 
-#> 10 1.40  1.80   2.00  2.30  2.50 
-#> 11 4.90  6.23   6.50  6.90  7.90 
-#> 12 2.20  2.80   3.00  3.18  3.80
+#>  1   1    1.4    1.5   1.58   1.9
+#>  2   0.1  0.2    0.2   0.3    0.6
+#>  3   4.3  4.8    5     5.2    5.8
+#>  4   2.3  3.2    3.4   3.68   4.4
+#>  5   3    4      4.35  4.6    5.1
+#>  6   1    1.2    1.3   1.5    1.8
+#>  7   4.9  5.6    5.9   6.3    7  
+#>  8   2    2.52   2.8   3      3.4
+#>  9   4.5  5.1    5.55  5.88   6.9
+#> 10   1.4  1.8    2     2.3    2.5
+#> 11   4.9  6.23   6.5   6.9    7.9
+#> 12   2.2  2.8    3     3.18   3.8
 ```
 
 This function can be used to get summary of either numeric **or** factor
@@ -177,7 +177,23 @@ to set an additional argument provided for this function:
 ``` r
 
 library(tidyverse)
+#> -- Attaching packages ------------------------------------------------------------------------------------------------- tidyverse 1.2.1 --
+#> v tibble  1.4.2          v purrr   0.2.4.9000
+#> v tidyr   0.8.0          v dplyr   0.7.5     
+#> v readr   1.2.0          v stringr 1.3.0.9000
+#> v tibble  1.4.2          v forcats 0.3.0
+#> -- Conflicts ---------------------------------------------------------------------------------------------------- tidyverse_conflicts() --
+#> x dplyr::filter() masks stats::filter()
+#> x dplyr::lag()    masks stats::lag()
 library(magrittr)
+#> 
+#> Attaching package: 'magrittr'
+#> The following object is masked from 'package:purrr':
+#> 
+#>     set_names
+#> The following object is masked from 'package:tidyr':
+#> 
+#>     extract
 library(ggstatsplot)
 
 options(tibble.width = Inf)            # show me all columns
@@ -192,7 +208,7 @@ groupedstats::grouped_summary(
   ggplot2::ggplot(
   data = .,                                     # placeholder for summary dataframe we just created 
   mapping = ggplot2::aes(
-    x = forcats::fct_inorder(factor.level),
+    x = forcats::fct_inorder(f = factor.level),
     y = count,
     fill = factor.level
   )
@@ -202,9 +218,10 @@ groupedstats::grouped_summary(
   ggplot2::facet_grid(facets = ~ cut) +         # for each level of the factor level
   ggstatsplot::theme_mprl() +
   ggplot2::theme(legend.position = "none")
+#> Joining, by = "cut"
 ```
 
-![](man/figures/README-grouped_summary3-1.png)<!-- -->
+<img src="man/figures/README-grouped_summary3-1.png" width="70%" style="display: block; margin: auto;" />
 
 This produces a long format table with two new columns `factor.level`
 and its corresponding `count`, which can then be immediately fed into
@@ -224,30 +241,30 @@ groupedstats::grouped_summary(
   grouping.vars = c(cut, clarity)
 )
 #> # A tibble: 280 x 14
-#>    cut     clarity type    variable missing complete     n     mean
-#>    <ord>   <ord>   <fct>   <fct>      <dbl>    <dbl> <dbl>    <dbl>
-#>  1 Ideal   SI2     integer price         0.    2598. 2598. 4756.   
-#>  2 Ideal   SI2     numeric carat         0.    2598. 2598.    1.01 
-#>  3 Ideal   SI2     numeric depth         0.    2598. 2598.   61.7  
-#>  4 Ideal   SI2     numeric table         0.    2598. 2598.   56.1  
-#>  5 Ideal   SI2     numeric x             0.    2598. 2598.    6.26 
-#>  6 Ideal   SI2     numeric y             0.    2598. 2598.    6.27 
-#>  7 Ideal   SI2     numeric z             0.    2598. 2598.    3.87 
-#>  8 Premium SI1     integer price         0.    3575. 3575. 4455.   
-#>  9 Premium SI1     numeric carat         0.    3575. 3575.    0.910
-#> 10 Premium SI1     numeric depth         0.    3575. 3575.   61.3  
-#>          sd     min      p25   median     p75      max
-#>       <dbl>   <dbl>    <dbl>    <dbl>   <dbl>    <dbl>
-#>  1 4252.    326.    1443.    4060.    5402.   18804.  
-#>  2    0.510   0.230    0.620    1.00     1.20     3.01
-#>  3    0.820  58.3     61.2     61.8     62.3     65.5 
-#>  4    1.30   52.0     55.0     56.0     57.0     62.0 
-#>  5    1.07    0.       5.50     6.40     6.82     9.25
-#>  6    1.05    3.98     5.53     6.40     6.82     9.20
-#>  7    0.660   0.       3.38     3.95     4.21     5.69
-#>  8 4071.    326.    1200.    3618.    5597.   18797.  
-#>  9    0.480   0.210    0.500    0.900    1.15     2.57
-#> 10    1.17   58.0     60.5     61.5     62.3     63.0 
+#>    cut     clarity type    variable missing complete     n    mean      sd
+#>    <ord>   <ord>   <fct>   <fct>      <dbl>    <dbl> <dbl>   <dbl>   <dbl>
+#>  1 Ideal   SI2     integer price          0     2598  2598 4756.   4252.  
+#>  2 Ideal   SI2     numeric carat          0     2598  2598    1.01    0.51
+#>  3 Ideal   SI2     numeric depth          0     2598  2598   61.7     0.82
+#>  4 Ideal   SI2     numeric table          0     2598  2598   56.1     1.3 
+#>  5 Ideal   SI2     numeric x              0     2598  2598    6.26    1.07
+#>  6 Ideal   SI2     numeric y              0     2598  2598    6.27    1.05
+#>  7 Ideal   SI2     numeric z              0     2598  2598    3.87    0.66
+#>  8 Premium SI1     integer price          0     3575  3575 4455.   4071.  
+#>  9 Premium SI1     numeric carat          0     3575  3575    0.91    0.48
+#> 10 Premium SI1     numeric depth          0     3575  3575   61.3     1.17
+#>       min     p25  median     p75      max
+#>     <dbl>   <dbl>   <dbl>   <dbl>    <dbl>
+#>  1 326    1443    4060.   5402.   18804   
+#>  2   0.23    0.62    1       1.2      3.01
+#>  3  58.3    61.2    61.8    62.3     65.5 
+#>  4  52      55      56      57       62   
+#>  5   0       5.5     6.4     6.82     9.25
+#>  6   3.98    5.53    6.4     6.82     9.2 
+#>  7   0       3.38    3.95    4.21     5.69
+#>  8 326    1200.   3618    5597    18797   
+#>  9   0.21    0.5     0.9     1.15     2.57
+#> 10  58      60.5    61.5    62.3     63   
 #> # ... with 270 more rows
 ```
 
@@ -284,22 +301,22 @@ groupedstats::grouped_lm(data = gapminder::gapminder,
 #> 10 Belgium     lifeExp ~ gdpPercap  26.1    0.993     0.908     1.08 
 #>    std.error `F value`   df1   df2 `Pr(>F)` partial.etasq
 #>        <dbl>     <dbl> <dbl> <dbl>    <dbl>         <dbl>
-#>  1    0.316     0.0227    1.   10. 8.83e- 1       0.00226
-#>  2    0.173    23.4       1.   10. 6.82e- 4       0.701  
-#>  3    0.135    45.0       1.   10. 5.33e- 5       0.818  
-#>  4    0.302     0.997     1.   10. 3.42e- 1       0.0906 
-#>  5    0.176    22.4       1.   10. 7.97e- 4       0.692  
-#>  6    0.0519  361.        1.   10. 3.52e- 9       0.973  
-#>  7    0.0374  703.        1.   10. 1.34e-10       0.986  
-#>  8    0.139    41.6       1.   10. 7.38e- 5       0.806  
-#>  9    0.168    25.5       1.   10. 5.03e- 4       0.718  
-#> 10    0.0380  682.        1.   10. 1.56e-10       0.986  
+#>  1    0.316     0.0227     1    10 8.83e- 1       0.00226
+#>  2    0.173    23.4        1    10 6.82e- 4       0.701  
+#>  3    0.135    45.0        1    10 5.33e- 5       0.818  
+#>  4    0.302     0.997      1    10 3.42e- 1       0.0906 
+#>  5    0.176    22.4        1    10 7.97e- 4       0.692  
+#>  6    0.0519  361.         1    10 3.52e- 9       0.973  
+#>  7    0.0374  703.         1    10 1.34e-10       0.986  
+#>  8    0.139    41.6        1    10 7.38e- 5       0.806  
+#>  9    0.168    25.5        1    10 5.03e- 4       0.718  
+#> 10    0.0380  682.         1    10 1.56e-10       0.986  
 #>    partial.etasq.conf.low partial.etasq.conf.high partial.omegasq
 #>                     <dbl>                   <dbl>           <dbl>
-#>  1                  0.                      0.206       -0.0887  
+#>  1                  0                       0.206       -0.0887  
 #>  2                  0.235                   0.830        0.651   
 #>  3                  0.454                   0.896        0.786   
-#>  4                  0.                      0.425       -0.000262
+#>  4                  0                       0.425       -0.000262
 #>  5                  0.221                   0.825        0.641   
 #>  6                  0.903                   0.984        0.968   
 #>  7                  0.949                   0.992        0.983   
@@ -308,16 +325,16 @@ groupedstats::grouped_lm(data = gapminder::gapminder,
 #> 10                  0.947                   0.992        0.983   
 #>    partial.omegasq.conf.low partial.omegasq.conf.high  p.value
 #>                       <dbl>                     <dbl>    <dbl>
-#>  1                   -0.249                     0.231 8.83e- 1
-#>  2                    0.430                     0.969 6.82e- 4
-#>  3                    0.494                     1.03  5.33e- 5
-#>  4                   -0.258                     0.449 3.42e- 1
-#>  5                    0.245                     0.985 7.97e- 4
-#>  6                    0.943                     0.997 3.52e- 9
-#>  7                    0.964                     0.999 1.34e-10
-#>  8                    0.564                     1.02  7.38e- 5
-#>  9                    0.437                     0.925 5.03e- 4
-#> 10                    0.961                     1.00  1.56e-10
+#>  1                   -0.276                     0.282 8.83e- 1
+#>  2                    0.359                     0.998 6.82e- 4
+#>  3                    0.620                     0.978 5.33e- 5
+#>  4                   -0.318                     0.459 3.42e- 1
+#>  5                    0.239                     0.990 7.97e- 4
+#>  6                    0.941                     0.999 3.52e- 9
+#>  7                    0.960                     1.01  1.34e-10
+#>  8                    0.584                     0.996 7.38e- 5
+#>  9                    0.517                     0.873 5.03e- 4
+#> 10                    0.965                     1.00  1.56e-10
 #>    significance
 #>    <chr>       
 #>  1 ns          
@@ -368,39 +385,39 @@ groupedstats::grouped_lm(data = ggplot2::diamonds,
 #> 10 Good  SI2     price ~ carat  103.   0.953    0.934     0.971   0.00926
 #>    `F value`   df1   df2  `Pr(>F)` partial.etasq partial.etasq.conf.low
 #>        <dbl> <dbl> <dbl>     <dbl>         <dbl>                  <dbl>
-#>  1    1761.     1.  259. 1.55e-117         0.872                  0.846
-#>  2    4778.     1.  464. 1.96e-246         0.911                  0.899
-#>  3    3472.     1.  406. 4.58e-201         0.895                  0.879
-#>  4    3449.     1.  208. 1.86e-131         0.943                  0.930
-#>  5      73.6    1.   15. 3.59e-  7         0.831                  0.588
-#>  6    1341.     1.  168. 5.40e- 82         0.889                  0.859
-#>  7      67.5    1.    7. 7.67e-  5         0.906                  0.582
-#>  8     186.     1.   67. 5.54e- 21         0.735                  0.619
-#>  9    5479.     1.  646. 9.62e-318         0.895                  0.882
-#> 10   10593.     1. 1079. 0.                0.908                  0.899
+#>  1    1761.      1   259 1.55e-117         0.872                  0.846
+#>  2    4778.      1   464 1.96e-246         0.911                  0.899
+#>  3    3472.      1   406 4.58e-201         0.895                  0.879
+#>  4    3449.      1   208 1.86e-131         0.943                  0.930
+#>  5      73.6     1    15 3.59e-  7         0.831                  0.588
+#>  6    1341.      1   168 5.40e- 82         0.889                  0.859
+#>  7      67.5     1     7 7.67e-  5         0.906                  0.582
+#>  8     186.      1    67 5.54e- 21         0.735                  0.619
+#>  9    5479.      1   646 9.62e-318         0.895                  0.882
+#> 10   10593.      1  1079 0.                0.908                  0.899
 #>    partial.etasq.conf.high partial.omegasq partial.omegasq.conf.low
 #>                      <dbl>           <dbl>                    <dbl>
-#>  1                   0.890           0.871                    0.852
-#>  2                   0.922           0.911                    0.892
-#>  3                   0.908           0.895                    0.880
-#>  4                   0.952           0.943                    0.923
-#>  5                   0.897           0.810                    0.666
-#>  6                   0.908           0.887                    0.854
-#>  7                   0.948           0.881                    0.697
-#>  8                   0.800           0.728                    0.658
-#>  9                   0.905           0.894                    0.879
-#> 10                   0.915           0.907                    0.896
+#>  1                   0.890           0.871                    0.844
+#>  2                   0.922           0.911                    0.891
+#>  3                   0.908           0.895                    0.877
+#>  4                   0.952           0.943                    0.917
+#>  5                   0.897           0.810                    0.674
+#>  6                   0.908           0.887                    0.852
+#>  7                   0.948           0.881                    0.704
+#>  8                   0.800           0.728                    0.661
+#>  9                   0.905           0.894                    0.877
+#> 10                   0.915           0.907                    0.895
 #>    partial.omegasq.conf.high   p.value significance
 #>                        <dbl>     <dbl> <chr>       
-#>  1                     0.898 1.55e-117 ***         
-#>  2                     0.931 1.96e-246 ***         
-#>  3                     0.915 4.58e-201 ***         
-#>  4                     0.963 1.86e-131 ***         
-#>  5                     0.940 3.59e-  7 ***         
-#>  6                     0.921 5.40e- 82 ***         
-#>  7                     1.05  7.67e-  5 ***         
-#>  8                     0.824 5.54e- 21 ***         
-#>  9                     0.909 9.62e-318 ***         
+#>  1                     0.899 1.55e-117 ***         
+#>  2                     0.930 1.96e-246 ***         
+#>  3                     0.914 4.58e-201 ***         
+#>  4                     0.964 1.86e-131 ***         
+#>  5                     0.964 3.59e-  7 ***         
+#>  6                     0.923 5.40e- 82 ***         
+#>  7                     1.04  7.67e-  5 ***         
+#>  8                     0.812 5.54e- 21 ***         
+#>  9                     0.911 9.62e-318 ***         
 #> 10                     0.918 0.        ***         
 #> # ... with 30 more rows
 ```
@@ -462,9 +479,9 @@ groupedstats::grouped_glm(data = datasets::mtcars,
 #> # A tibble: 3 x 9
 #>     cyl formula statistic estimate conf.low conf.high std.error p.value
 #>   <dbl> <chr>       <dbl>    <dbl>    <dbl>     <dbl>     <dbl>   <dbl>
-#> 1    6. am ~ wt     -6.85   -1.43    -1.83    -1.02       0.208 0.00101
-#> 2    4. am ~ wt     -3.22   -0.600   -0.965   -0.235      0.186 0.0104 
-#> 3    8. am ~ wt     -1.30   -0.168   -0.421    0.0855     0.129 0.218  
+#> 1     6 am ~ wt     -6.85   -1.43    -1.83    -1.02       0.208 0.00101
+#> 2     4 am ~ wt     -3.22   -0.600   -0.965   -0.235      0.186 0.0104 
+#> 3     8 am ~ wt     -1.30   -0.168   -0.421    0.0855     0.129 0.218  
 #>   significance
 #>   <chr>       
 #> 1 **          
@@ -487,9 +504,9 @@ groupedstats::grouped_proptest(data = mtcars,
 #> # A tibble: 3 x 7
 #>     cyl `0`    `1`    `Chi-squared`    df `p-value` significance
 #>   <dbl> <chr>  <chr>          <dbl> <dbl>     <dbl> <chr>       
-#> 1    6. 57.14% 42.86%         0.143    1.   0.705   ns          
-#> 2    4. 27.27% 72.73%         2.27     1.   0.132   ns          
-#> 3    8. 85.71% 14.29%         7.14     1.   0.00800 **
+#> 1     6 57.14% 42.86%         0.143     1     0.705 ns          
+#> 2     4 27.27% 72.73%         2.27      1     0.132 ns          
+#> 3     8 85.71% 14.29%         7.14      1     0.008 **
 ```
 
   - `grouped_ttest`
@@ -529,16 +546,16 @@ iris_long
 #> # A tibble: 600 x 5
 #>    Species    id part  measure value
 #>    <fct>   <int> <chr> <chr>   <dbl>
-#>  1 setosa      1 Sepal Length   5.10
-#>  2 setosa      2 Sepal Length   4.90
-#>  3 setosa      3 Sepal Length   4.70
-#>  4 setosa      4 Sepal Length   4.60
-#>  5 setosa      5 Sepal Length   5.00
-#>  6 setosa      6 Sepal Length   5.40
-#>  7 setosa      7 Sepal Length   4.60
-#>  8 setosa      8 Sepal Length   5.00
-#>  9 setosa      9 Sepal Length   4.40
-#> 10 setosa     10 Sepal Length   4.90
+#>  1 setosa      1 Sepal Length    5.1
+#>  2 setosa      2 Sepal Length    4.9
+#>  3 setosa      3 Sepal Length    4.7
+#>  4 setosa      4 Sepal Length    4.6
+#>  5 setosa      5 Sepal Length    5  
+#>  6 setosa      6 Sepal Length    5.4
+#>  7 setosa      7 Sepal Length    4.6
+#>  8 setosa      8 Sepal Length    5  
+#>  9 setosa      9 Sepal Length    4.4
+#> 10 setosa     10 Sepal Length    4.9
 #> # ... with 590 more rows
 
 # checking if the Sepal part has different dimentions (value) than Petal part
@@ -563,17 +580,17 @@ groupedstats::grouped_ttest(
 #> 6 virginica  Width   value ~ part Paired t-test  -23.1   -0.948    -1.03
 #>   conf.high parameter  p.value significance
 #>       <dbl>     <dbl>    <dbl> <chr>       
-#> 1    -3.44        49. 2.54e-51 ***         
-#> 2    -1.58        49. 9.67e-36 ***         
-#> 3    -0.945       49. 7.99e-28 ***         
-#> 4    -3.08        49. 7.21e-48 ***         
-#> 5    -1.38        49. 8.42e-41 ***         
-#> 6    -0.866       49. 5.34e-28 ***
+#> 1    -3.44         49 2.54e-51 ***         
+#> 2    -1.58         49 9.67e-36 ***         
+#> 3    -0.945        49 7.99e-28 ***         
+#> 4    -3.08         49 7.21e-48 ***         
+#> 5    -1.38         49 8.42e-41 ***         
+#> 6    -0.866        49 5.34e-28 ***
 ```
 
   - `grouped_wilcox`
 
-This function is just non-parametric variant of the
+This function is just a non-parametric variant of the
 `grouped_ttest`:
 
 ``` r
@@ -599,12 +616,12 @@ groupedstats::grouped_wilcox(
 #> 6 virginica  Width   value ~ part
 #>   method                                               statistic estimate
 #>   <fct>                                                    <dbl>    <dbl>
-#> 1 Wilcoxon signed rank test with continuity correction        0.   -3.55 
-#> 2 Wilcoxon signed rank test with continuity correction        0.   -1.70 
-#> 3 Wilcoxon signed rank test with continuity correction        0.   -1.05 
-#> 4 Wilcoxon signed rank test with continuity correction        0.   -3.15 
-#> 5 Wilcoxon signed rank test with continuity correction        0.   -1.45 
-#> 6 Wilcoxon signed rank test with continuity correction        0.   -0.950
+#> 1 Wilcoxon signed rank test with continuity correction         0   -3.55 
+#> 2 Wilcoxon signed rank test with continuity correction         0   -1.70 
+#> 3 Wilcoxon signed rank test with continuity correction         0   -1.05 
+#> 4 Wilcoxon signed rank test with continuity correction         0   -3.15 
+#> 5 Wilcoxon signed rank test with continuity correction         0   -1.45 
+#> 6 Wilcoxon signed rank test with continuity correction         0   -0.950
 #>   conf.low conf.high  p.value significance
 #>      <dbl>     <dbl>    <dbl> <chr>       
 #> 1    -3.65    -3.45  7.62e-10 ***         
@@ -723,22 +740,22 @@ groupedstats::grouped_wilcox(
 #> 16 IF      price ~ color Wilcoxon rank sum test with continuity correction
 #>    statistic      estimate   conf.low     conf.high  p.value significance
 #>        <dbl>         <dbl>      <dbl>         <dbl>    <dbl> <chr>       
-#>  1   380600.    -0.200        -0.300     -0.0000364 1.54e- 2 *           
-#>  2   918892.     0.0000393    -0.1000     0.100     6.77e- 1 ns          
-#>  3   276743.    -0.400        -0.500     -0.300     7.03e-12 ***         
-#>  4    52618.    -0.400        -0.600     -0.200     4.18e- 4 ***         
+#>  1   380600     -0.200        -0.300     -0.0000364 1.54e- 2 *           
+#>  2   918892      0.0000393    -0.1000     0.100     6.77e- 1 ns          
+#>  3   276743     -0.400        -0.500     -0.300     7.03e-12 ***         
+#>  4    52618     -0.400        -0.600     -0.200     4.18e- 4 ***         
 #>  5   816784.    -0.200        -0.300     -0.1000    8.86e- 5 ***         
 #>  6     1570.    -2.00         -3.00      -1.000     1.21e- 4 ***         
-#>  7    19455.    -0.300        -0.500     -0.1000    5.07e- 3 **          
-#>  8     3286.    -0.300        -0.700     -0.0000251 4.79e- 2 *           
-#>  9   269016. -1844.        -2182.     -1505.        8.82e-31 ***         
+#>  7    19455     -0.300        -0.500     -0.1000    5.07e- 3 **          
+#>  8     3286     -0.300        -0.700     -0.0000251 4.79e- 2 *           
+#>  9   269016  -1844.        -2182.     -1505.        8.82e-31 ***         
 #> 10   608724. -1510.        -1789.     -1312.        8.20e-43 ***         
-#> 11   277389. -1095.        -1414.      -745.        1.11e-11 ***         
-#> 12    42795. -1764.        -2920.     -1205.        2.23e-10 ***         
-#> 13   560930. -1888.        -2228.     -1539.        1.08e-54 ***         
-#> 14     2017. -1150.        -1832.       -79.0       3.68e- 2 *           
-#> 15    19086.  -362.         -859.      -107.        2.57e- 3 **          
-#> 16     5085.   296.          125.       449.        4.94e- 3 **
+#> 11   277389  -1095.        -1414.      -745.        1.11e-11 ***         
+#> 12    42795  -1764.        -2920.     -1205.        2.23e-10 ***         
+#> 13   560930  -1888.        -2228.     -1539.        1.08e-54 ***         
+#> 14     2017  -1150.        -1832.       -79.0       3.68e- 2 *           
+#> 15    19086   -362.         -859.      -107.        2.57e- 3 **          
+#> 16     5085    296.          125.       449.        4.94e- 3 **
 ```
 
 We can further focus just on two levels of clarity to further elucidate
@@ -774,15 +791,15 @@ groupedstats::grouped_wilcox(
 #>    method                                            statistic estimate
 #>    <fct>                                                 <dbl>    <dbl>
 #>  1 Wilcoxon rank sum test with continuity correction   103150.   -0.440
-#>  2 Wilcoxon rank sum test with continuity correction    91748.   -0.540
-#>  3 Wilcoxon rank sum test with continuity correction    20752.   -0.400
-#>  4 Wilcoxon rank sum test with continuity correction    87590.   -0.390
+#>  2 Wilcoxon rank sum test with continuity correction    91748    -0.540
+#>  3 Wilcoxon rank sum test with continuity correction    20752    -0.400
+#>  4 Wilcoxon rank sum test with continuity correction    87590    -0.390
 #>  5 Wilcoxon rank sum test with continuity correction     2356.   -0.230
 #>  6 Wilcoxon rank sum test with continuity correction   344274.  774.   
 #>  7 Wilcoxon rank sum test with continuity correction   329276.  876.   
 #>  8 Wilcoxon rank sum test with continuity correction    64082.  516.   
-#>  9 Wilcoxon rank sum test with continuity correction   272064.  752.   
-#> 10 Wilcoxon rank sum test with continuity correction     5113.  170.   
+#>  9 Wilcoxon rank sum test with continuity correction   272064   752.   
+#> 10 Wilcoxon rank sum test with continuity correction     5113   170.   
 #>    conf.low conf.high  p.value significance
 #>       <dbl>     <dbl>    <dbl> <chr>       
 #>  1   -0.500    -0.380 1.28e-51 ***         

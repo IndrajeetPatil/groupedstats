@@ -22,6 +22,8 @@ grouping variable levels — grouped_summary • groupedstats</title>
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -97,10 +99,12 @@ grouping variable levels</h1>
     <div class="hidden name"><code>grouped_summary.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Function to get descriptive statistics for multiple variables for all
 grouping variable levels</p>
     
+    </div>
 
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -151,34 +155,21 @@ sd, median, min, max)</p>
 <span class='kw'>measures</span> <span class='kw'>=</span> <span class='no'>Sepal.Length</span>:<span class='no'>Petal.Width</span>,
 <span class='kw'>measures.type</span> <span class='kw'>=</span> <span class='st'>"numeric"</span>
 )</div><div class='output co'>#&gt; # A tibble: 12 x 13
-#&gt;    Species    type    variable     missing complete     n  mean    sd   min
-#&gt;    &lt;fct&gt;      &lt;fct&gt;   &lt;fct&gt;          &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt;  1 setosa     numeric Petal.Length      0.      50.   50. 1.46  0.170 1.00 
-#&gt;  2 setosa     numeric Petal.Width       0.      50.   50. 0.250 0.110 0.100
-#&gt;  3 setosa     numeric Sepal.Length      0.      50.   50. 5.01  0.350 4.30 
-#&gt;  4 setosa     numeric Sepal.Width       0.      50.   50. 3.43  0.380 2.30 
-#&gt;  5 versicolor numeric Petal.Length      0.      50.   50. 4.26  0.470 3.00 
-#&gt;  6 versicolor numeric Petal.Width       0.      50.   50. 1.33  0.200 1.00 
-#&gt;  7 versicolor numeric Sepal.Length      0.      50.   50. 5.94  0.520 4.90 
-#&gt;  8 versicolor numeric Sepal.Width       0.      50.   50. 2.77  0.310 2.00 
-#&gt;  9 virginica  numeric Petal.Length      0.      50.   50. 5.55  0.550 4.50 
-#&gt; 10 virginica  numeric Petal.Width       0.      50.   50. 2.03  0.270 1.40 
-#&gt; 11 virginica  numeric Sepal.Length      0.      50.   50. 6.59  0.640 4.90 
-#&gt; 12 virginica  numeric Sepal.Width       0.      50.   50. 2.97  0.320 2.20 
-#&gt;      p25 median   p75   max
-#&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt;  1 1.40   1.50  1.58  1.90 
-#&gt;  2 0.200  0.200 0.300 0.600
-#&gt;  3 4.80   5.00  5.20  5.80 
-#&gt;  4 3.20   3.40  3.68  4.40 
-#&gt;  5 4.00   4.35  4.60  5.10 
-#&gt;  6 1.20   1.30  1.50  1.80 
-#&gt;  7 5.60   5.90  6.30  7.00 
-#&gt;  8 2.52   2.80  3.00  3.40 
-#&gt;  9 5.10   5.55  5.88  6.90 
-#&gt; 10 1.80   2.00  2.30  2.50 
-#&gt; 11 6.23   6.50  6.90  7.90 
-#&gt; 12 2.80   3.00  3.18  3.80 </div><div class='input'>
+#&gt;    Species type  variable missing complete     n  mean    sd   min   p25 median
+#&gt;    &lt;fct&gt;   &lt;fct&gt; &lt;fct&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+#&gt;  1 setosa  nume~ Petal.L~       0       50    50  1.46  0.17   1    1.4    1.5 
+#&gt;  2 setosa  nume~ Petal.W~       0       50    50  0.25  0.11   0.1  0.2    0.2 
+#&gt;  3 setosa  nume~ Sepal.L~       0       50    50  5.01  0.35   4.3  4.8    5   
+#&gt;  4 setosa  nume~ Sepal.W~       0       50    50  3.43  0.38   2.3  3.2    3.4 
+#&gt;  5 versic~ nume~ Petal.L~       0       50    50  4.26  0.47   3    4      4.35
+#&gt;  6 versic~ nume~ Petal.W~       0       50    50  1.33  0.2    1    1.2    1.3 
+#&gt;  7 versic~ nume~ Sepal.L~       0       50    50  5.94  0.52   4.9  5.6    5.9 
+#&gt;  8 versic~ nume~ Sepal.W~       0       50    50  2.77  0.31   2    2.52   2.8 
+#&gt;  9 virgin~ nume~ Petal.L~       0       50    50  5.55  0.55   4.5  5.1    5.55
+#&gt; 10 virgin~ nume~ Petal.W~       0       50    50  2.03  0.27   1.4  1.8    2   
+#&gt; 11 virgin~ nume~ Sepal.L~       0       50    50  6.59  0.64   4.9  6.23   6.5 
+#&gt; 12 virgin~ nume~ Sepal.W~       0       50    50  2.97  0.32   2.2  2.8    3   
+#&gt; # ... with 2 more variables: p75 &lt;dbl&gt;, max &lt;dbl&gt;</div><div class='input'>
 <span class='co'># if you have just one variable per argument, you can also not use `c()`</span>
 <span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_summary'>grouped_summary</a></span>(
 <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/ToothGrowth'>ToothGrowth</a></span>,
@@ -188,12 +179,9 @@ sd, median, min, max)</p>
 )</div><div class='output co'>#&gt; # A tibble: 2 x 13
 #&gt;   supp  type    variable missing complete     n  mean    sd   min   p25 median
 #&gt;   &lt;fct&gt; &lt;fct&gt;   &lt;fct&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
-#&gt; 1 VC    numeric len           0.      30.   30.  17.0  8.27  4.20  11.2   16.5
-#&gt; 2 OJ    numeric len           0.      30.   30.  20.7  6.61  8.20  15.5   22.7
-#&gt;     p75   max
-#&gt;   &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1  23.1  33.9
-#&gt; 2  25.7  30.9</div><div class='input'>
+#&gt; 1 VC    numeric len            0       30    30  17.0  8.27   4.2  11.2   16.5
+#&gt; 2 OJ    numeric len            0       30    30  20.7  6.61   8.2  15.5   22.7
+#&gt; # ... with 2 more variables: p75 &lt;dbl&gt;, max &lt;dbl&gt;</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
