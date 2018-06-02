@@ -19,7 +19,7 @@ variables.}
 \item{var.equal}{A logical variable indicating whether to treat the two
 variances as being equal. If \code{TRUE}, then the pooled variance is used to
 estimate the variance otherwise the Welch (or Satterthwaite) approximation
-to the degrees of freedom is used (Dafault: \code{var.equal = FALSE}; Welch's
+to the degrees of freedom is used (Default: \code{var.equal = FALSE}; Welch's
 t-test, i.e.).}
 }
 \value{

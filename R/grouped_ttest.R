@@ -14,7 +14,7 @@
 #' @param var.equal A logical variable indicating whether to treat the two
 #'   variances as being equal. If `TRUE`, then the pooled variance is used to
 #'   estimate the variance otherwise the Welch (or Satterthwaite) approximation
-#'   to the degrees of freedom is used (Dafault: `var.equal = FALSE`; Welch's
+#'   to the degrees of freedom is used (Default: `var.equal = FALSE`; Welch's
 #'   t-test, i.e.).
 #'
 #' @import dplyr

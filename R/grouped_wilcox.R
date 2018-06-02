@@ -13,7 +13,7 @@
 #'   (`x` in `y ~ x`).
 #' @param grouping.vars List of grouping variables.
 #' @param paired A logical indicating whether you want a paired two-sample
-#'   Wilcoxon tests (Dafault: `paired = FALSE`).
+#'   Wilcoxon tests (Default: `paired = FALSE`).
 #' @param correct A logical indicating whether to apply continuity correction in
 #'   the normal approximation for the p-value (Default: `correct = TRUE`).
 #'

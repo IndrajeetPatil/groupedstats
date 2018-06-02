@@ -91,7 +91,7 @@ signif_column <- function(data = NULL, p) {
 #'
 #' @param x A numeric variable.
 #' @param k Number of digits after decimal point (should be an integer).
-#' @param p.value Decides whether the number is a p-value (Dafault: `FALSE`).
+#' @param p.value Decides whether the number is a p-value (Default: `FALSE`).
 #'
 #' @return Formatted numeric values.
 #'

@@ -16,7 +16,7 @@ in \code{y ~ x}).}
 \item{grouping.vars}{List of grouping variables.}
 
 \item{paired}{A logical indicating whether you want a paired two-sample
-Wilcoxon tests (Dafault: \code{paired = FALSE}).}
+Wilcoxon tests (Default: \code{paired = FALSE}).}
 
 \item{correct}{A logical indicating whether to apply continuity correction in
 the normal approximation for the p-value (Default: \code{correct = TRUE}).}

@@ -12,7 +12,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--04--20-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--06--01-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
@@ -177,12 +177,12 @@ to set an additional argument provided for this function:
 ``` r
 
 library(tidyverse)
-#> -- Attaching packages ------------------------------------------------------------------------------------------------- tidyverse 1.2.1 --
-#> v tibble  1.4.2          v purrr   0.2.4.9000
-#> v tidyr   0.8.0          v dplyr   0.7.5     
-#> v readr   1.2.0          v stringr 1.3.0.9000
-#> v tibble  1.4.2          v forcats 0.3.0
-#> -- Conflicts ---------------------------------------------------------------------------------------------------- tidyverse_conflicts() --
+#> -- Attaching packages ------------------------------------------------------------------------------------------ tidyverse 1.2.1 --
+#> v tibble  1.4.2     v purrr   0.2.5
+#> v tidyr   0.8.1     v dplyr   0.7.5
+#> v readr   1.2.0     v stringr 1.3.1
+#> v tibble  1.4.2     v forcats 0.3.0
+#> -- Conflicts --------------------------------------------------------------------------------------------- tidyverse_conflicts() --
 #> x dplyr::filter() masks stats::filter()
 #> x dplyr::lag()    masks stats::lag()
 library(magrittr)
@@ -221,7 +221,7 @@ groupedstats::grouped_summary(
 #> Joining, by = "cut"
 ```
 
-<img src="man/figures/README-grouped_summary3-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="man/figures/README-grouped_summary3-1.png" width="100%" />
 
 This produces a long format table with two new columns `factor.level`
 and its corresponding `count`, which can then be immediately fed into
@@ -273,10 +273,14 @@ groupedstats::grouped_summary(
 This function can be used to run linear regression between different
 pairs of variables across multiple levels of grouping variable(s). For
 example, we can use the `gapminder` dataset to study two relationships
-of interest for **each country** across years: 1. life expectency and
-GDP (per capita) 2. population GDP (per capita) Thus, in this case we
-have two regression models and one grouping variable with 142 levels
-(countries)
+of interest for **each country** across years:
+
+1.  life expectency and GDP (per capita)
+2.  population GDP (per capita) Thus, in this case we have two
+    regression models and one grouping variable with 142 levels
+    (countries)
+
+<!-- end list -->
 
 ``` r
 library(gapminder)
@@ -325,16 +329,16 @@ groupedstats::grouped_lm(data = gapminder::gapminder,
 #> 10                  0.947                   0.992        0.983   
 #>    partial.omegasq.conf.low partial.omegasq.conf.high  p.value
 #>                       <dbl>                     <dbl>    <dbl>
-#>  1                   -0.276                     0.282 8.83e- 1
-#>  2                    0.359                     0.998 6.82e- 4
-#>  3                    0.620                     0.978 5.33e- 5
-#>  4                   -0.318                     0.459 3.42e- 1
-#>  5                    0.239                     0.990 7.97e- 4
-#>  6                    0.941                     0.999 3.52e- 9
-#>  7                    0.960                     1.01  1.34e-10
-#>  8                    0.584                     0.996 7.38e- 5
-#>  9                    0.517                     0.873 5.03e- 4
-#> 10                    0.965                     1.00  1.56e-10
+#>  1                   -0.330                     0.354 8.83e- 1
+#>  2                    0.321                     0.978 6.82e- 4
+#>  3                    0.482                     1.04  5.33e- 5
+#>  4                   -0.309                     0.427 3.42e- 1
+#>  5                    0.168                     1.05  7.97e- 4
+#>  6                    0.942                     0.999 3.52e- 9
+#>  7                    0.966                     0.999 1.34e-10
+#>  8                    0.613                     1.00  7.38e- 5
+#>  9                    0.420                     0.930 5.03e- 4
+#> 10                    0.960                     1.00  1.56e-10
 #>    significance
 #>    <chr>       
 #>  1 ns          
@@ -397,28 +401,28 @@ groupedstats::grouped_lm(data = ggplot2::diamonds,
 #> 10   10593.      1  1079 0.                0.908                  0.899
 #>    partial.etasq.conf.high partial.omegasq partial.omegasq.conf.low
 #>                      <dbl>           <dbl>                    <dbl>
-#>  1                   0.890           0.871                    0.844
-#>  2                   0.922           0.911                    0.891
-#>  3                   0.908           0.895                    0.877
-#>  4                   0.952           0.943                    0.917
-#>  5                   0.897           0.810                    0.674
-#>  6                   0.908           0.887                    0.852
-#>  7                   0.948           0.881                    0.704
-#>  8                   0.800           0.728                    0.661
-#>  9                   0.905           0.894                    0.877
-#> 10                   0.915           0.907                    0.895
+#>  1                   0.890           0.871                    0.847
+#>  2                   0.922           0.911                    0.892
+#>  3                   0.908           0.895                    0.875
+#>  4                   0.952           0.943                    0.920
+#>  5                   0.897           0.810                    0.669
+#>  6                   0.908           0.887                    0.849
+#>  7                   0.948           0.881                    0.679
+#>  8                   0.800           0.728                    0.669
+#>  9                   0.905           0.894                    0.879
+#> 10                   0.915           0.907                    0.898
 #>    partial.omegasq.conf.high   p.value significance
 #>                        <dbl>     <dbl> <chr>       
-#>  1                     0.899 1.55e-117 ***         
-#>  2                     0.930 1.96e-246 ***         
-#>  3                     0.914 4.58e-201 ***         
-#>  4                     0.964 1.86e-131 ***         
-#>  5                     0.964 3.59e-  7 ***         
-#>  6                     0.923 5.40e- 82 ***         
+#>  1                     0.902 1.55e-117 ***         
+#>  2                     0.929 1.96e-246 ***         
+#>  3                     0.917 4.58e-201 ***         
+#>  4                     0.967 1.86e-131 ***         
+#>  5                     0.958 3.59e-  7 ***         
+#>  6                     0.926 5.40e- 82 ***         
 #>  7                     1.04  7.67e-  5 ***         
-#>  8                     0.812 5.54e- 21 ***         
+#>  8                     0.820 5.54e- 21 ***         
 #>  9                     0.911 9.62e-318 ***         
-#> 10                     0.918 0.        ***         
+#> 10                     0.917 0.        ***         
 #> # ... with 30 more rows
 ```
 

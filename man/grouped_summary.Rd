@@ -10,7 +10,7 @@ grouping variable levels}
 \item{grouping.vars}{A list of grouping variables.}
 
 \item{measures}{List variables for which summary needs to computed. If not
-spcified, all variables of type specified in the argument \code{measures.type}
+specified, all variables of type specified in the argument \code{measures.type}
 will be used to calculate summaries. \strong{Don't} explicitly set
 \code{measures.type = NULL} in function call, which will produce an error
 because the function will try to find a column in a dataframe named "NULL".}

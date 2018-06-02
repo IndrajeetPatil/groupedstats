@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Statistical Tests for Multiple Variables Across Multiple Grouping Levels • groupedstats</title>
+<title>Repeated Statistical Tests Across Multiple Grouping Levels • groupedstats</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><meta property="og:title" content="Statistical Tests for Multiple Variables Across Multiple Grouping Levels">
+<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><meta property="og:title" content="Repeated Statistical Tests Across Multiple Grouping Levels">
 <meta property="og:description" content="Collection of functions to run statistical tests for multiple variable across multiple groups.">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -64,7 +64,7 @@
 <div id="groupedstats-grouped-statistical-analysis-in-a-tidy-way" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#groupedstats-grouped-statistical-analysis-in-a-tidy-way" class="anchor"></a>groupedstats: Grouped statistical analysis in a tidy way</h1></div>
-<p><a href="commits/master"><img src="https://img.shields.io/badge/Package%20version-0.0.0.9000-orange.svg?style=flat-square" alt="packageversion"></a> <a href="https://travis-ci.org/IndrajeetPatil/groupedstats"><img src="https://travis-ci.org/IndrajeetPatil/groupedstats.svg?branch=master" alt="Travis Build Status"></a> <a href="https://ci.appveyor.com/project/IndrajeetPatil/groupedstats"><img src="https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupedstats?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a> <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a> <a href="http://www.repostatus.org/#active"><img src="http://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active - The project has reached a stable, usable state and is being actively developed."></a> <a href="/commits/master"><img src="https://img.shields.io/badge/last%20change-2018--04--20-yellowgreen.svg" alt="Last-changedate"></a> <a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-red.svg" alt="lifecycle"></a> <a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg" alt="minimal R version"></a> <!-- [![Coverage Status](https://img.shields.io/codecov/c/github/IndrajeetPatil/groupedstats/master.svg)](https://codecov.io/github/IndrajeetPatil/groupedstats?branch=master)
+<p><a href="commits/master"><img src="https://img.shields.io/badge/Package%20version-0.0.0.9000-orange.svg?style=flat-square" alt="packageversion"></a> <a href="https://travis-ci.org/IndrajeetPatil/groupedstats"><img src="https://travis-ci.org/IndrajeetPatil/groupedstats.svg?branch=master" alt="Travis Build Status"></a> <a href="https://ci.appveyor.com/project/IndrajeetPatil/groupedstats"><img src="https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupedstats?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a> <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a> <a href="http://www.repostatus.org/#active"><img src="http://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active - The project has reached a stable, usable state and is being actively developed."></a> <a href="/commits/master"><img src="https://img.shields.io/badge/last%20change-2018--06--01-yellowgreen.svg" alt="Last-changedate"></a> <a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-red.svg" alt="lifecycle"></a> <a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg" alt="minimal R version"></a> <!-- [![Coverage Status](https://img.shields.io/codecov/c/github/IndrajeetPatil/groupedstats/master.svg)](https://codecov.io/github/IndrajeetPatil/groupedstats?branch=master)
 [![Dependency Status](http://img.shields.io/gemnasium/IndrajeetPatil/groupedstats.svg)](https://gemnasium.com/IndrajeetPatil/groupedstats) --></p>
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
@@ -181,12 +181,12 @@
 <p>Note that there is a column corresponding to <code>top_counts</code> which is really useful in case you, let’s say, want to plot these counts. But this column is of <code>character</code> type and in wide format. The solution is to set an additional argument provided for this function:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; -- Attaching packages ------------------------------------------------------------------------------------------------- tidyverse 1.2.1 --</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; v tibble  1.4.2          v purrr   0.2.4.9000</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; v tidyr   0.8.0          v dplyr   0.7.5     </span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; v readr   1.2.0          v stringr 1.3.0.9000</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; v tibble  1.4.2          v forcats 0.3.0</span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; -- Conflicts ---------------------------------------------------------------------------------------------------- tidyverse_conflicts() --</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; -- Attaching packages ------------------------------------------------------------------------------------------ tidyverse 1.2.1 --</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; v tibble  1.4.2     v purrr   0.2.5</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; v tidyr   0.8.1     v dplyr   0.7.5</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; v readr   1.2.0     v stringr 1.3.1</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; v tibble  1.4.2     v forcats 0.3.0</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; -- Conflicts --------------------------------------------------------------------------------------------- tidyverse_conflicts() --</span></a>
 <a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; x dplyr::filter() masks stats::filter()</span></a>
 <a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span></a>
 <a class="sourceLine" id="cb6-11" data-line-number="11"><span class="kw">library</span>(magrittr)</a>
@@ -223,7 +223,7 @@
 <a class="sourceLine" id="cb6-42" data-line-number="42"><span class="st">  </span>ggstatsplot<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggstatsplot/topics/theme_mprl">theme_mprl</a></span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb6-43" data-line-number="43"><span class="st">  </span>ggplot2<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"none"</span>)</a>
 <a class="sourceLine" id="cb6-44" data-line-number="44"><span class="co">#&gt; Joining, by = "cut"</span></a></code></pre></div>
-<p><img src="../../../Indrajeet%20Patil/Documents/groupedstats/man/figures/README-grouped_summary3-1.png" width="70%" style="display: block; margin: auto;"></p>
+<p><img src="../../../Indrajeet%20Patil/Documents/groupedstats/man/figures/README-grouped_summary3-1.png" width="100%"></p>
 <p>This produces a long format table with two new columns <code>factor.level</code> and its corresponding <code>count</code>, which can then be immediately fed into other pipelines. As demonstrated here, the benefit of formatted summary output is that, it can be directly fed into other routines (e.g., preparing a plot of <code>mean</code> and <code>sd</code> values in <code>ggplot2</code>).</p>
 <p>Another thing to note about <code>grouped_summary</code> function is that if no <code>measures</code> are specified, the function will compute summary for all variables of the specified type (<code>numeric</code> or <code>factor</code>).</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>)            <span class="co"># show me all columns</span></a>
@@ -261,7 +261,11 @@
 <ul>
 <li><code>grouped_lm</code></li>
 </ul>
-<p>This function can be used to run linear regression between different pairs of variables across multiple levels of grouping variable(s). For example, we can use the <code>gapminder</code> dataset to study two relationships of interest for <strong>each country</strong> across years: 1. life expectency and GDP (per capita) 2. population GDP (per capita) Thus, in this case we have two regression models and one grouping variable with 142 levels (countries)</p>
+<p>This function can be used to run linear regression between different pairs of variables across multiple levels of grouping variable(s). For example, we can use the <code>gapminder</code> dataset to study two relationships of interest for <strong>each country</strong> across years:</p>
+<ol style="list-style-type: decimal">
+<li>life expectency and GDP (per capita)</li>
+<li>population GDP (per capita) Thus, in this case we have two regression models and one grouping variable with 142 levels (countries)</li>
+</ol>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">library</span>(gapminder)</a>
 <a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>)            <span class="co"># show me all columns</span></a>
 <a class="sourceLine" id="cb8-3" data-line-number="3"></a>
@@ -308,16 +312,16 @@
 <a class="sourceLine" id="cb8-44" data-line-number="44"><span class="co">#&gt; 10                  0.947                   0.992        0.983   </span></a>
 <a class="sourceLine" id="cb8-45" data-line-number="45"><span class="co">#&gt;    partial.omegasq.conf.low partial.omegasq.conf.high  p.value</span></a>
 <a class="sourceLine" id="cb8-46" data-line-number="46"><span class="co">#&gt;                       &lt;dbl&gt;                     &lt;dbl&gt;    &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb8-47" data-line-number="47"><span class="co">#&gt;  1                   -0.279                     0.283 8.83e- 1</span></a>
-<a class="sourceLine" id="cb8-48" data-line-number="48"><span class="co">#&gt;  2                    0.374                     1.02  6.82e- 4</span></a>
-<a class="sourceLine" id="cb8-49" data-line-number="49"><span class="co">#&gt;  3                    0.557                     1.02  5.33e- 5</span></a>
-<a class="sourceLine" id="cb8-50" data-line-number="50"><span class="co">#&gt;  4                   -0.253                     0.383 3.42e- 1</span></a>
-<a class="sourceLine" id="cb8-51" data-line-number="51"><span class="co">#&gt;  5                    0.212                     1.02  7.97e- 4</span></a>
-<a class="sourceLine" id="cb8-52" data-line-number="52"><span class="co">#&gt;  6                    0.936                     1.00  3.52e- 9</span></a>
-<a class="sourceLine" id="cb8-53" data-line-number="53"><span class="co">#&gt;  7                    0.961                     1.00  1.34e-10</span></a>
-<a class="sourceLine" id="cb8-54" data-line-number="54"><span class="co">#&gt;  8                    0.555                     1.01  7.38e- 5</span></a>
-<a class="sourceLine" id="cb8-55" data-line-number="55"><span class="co">#&gt;  9                    0.490                     0.877 5.03e- 4</span></a>
-<a class="sourceLine" id="cb8-56" data-line-number="56"><span class="co">#&gt; 10                    0.968                     0.997 1.56e-10</span></a>
+<a class="sourceLine" id="cb8-47" data-line-number="47"><span class="co">#&gt;  1                   -0.257                     0.262 8.83e- 1</span></a>
+<a class="sourceLine" id="cb8-48" data-line-number="48"><span class="co">#&gt;  2                    0.349                     0.978 6.82e- 4</span></a>
+<a class="sourceLine" id="cb8-49" data-line-number="49"><span class="co">#&gt;  3                    0.571                     1.03  5.33e- 5</span></a>
+<a class="sourceLine" id="cb8-50" data-line-number="50"><span class="co">#&gt;  4                   -0.321                     0.524 3.42e- 1</span></a>
+<a class="sourceLine" id="cb8-51" data-line-number="51"><span class="co">#&gt;  5                    0.156                     1.03  7.97e- 4</span></a>
+<a class="sourceLine" id="cb8-52" data-line-number="52"><span class="co">#&gt;  6                    0.911                     1.02  3.52e- 9</span></a>
+<a class="sourceLine" id="cb8-53" data-line-number="53"><span class="co">#&gt;  7                    0.965                     0.999 1.34e-10</span></a>
+<a class="sourceLine" id="cb8-54" data-line-number="54"><span class="co">#&gt;  8                    0.558                     1.02  7.38e- 5</span></a>
+<a class="sourceLine" id="cb8-55" data-line-number="55"><span class="co">#&gt;  9                    0.500                     0.926 5.03e- 4</span></a>
+<a class="sourceLine" id="cb8-56" data-line-number="56"><span class="co">#&gt; 10                    0.965                     0.998 1.56e-10</span></a>
 <a class="sourceLine" id="cb8-57" data-line-number="57"><span class="co">#&gt;    significance</span></a>
 <a class="sourceLine" id="cb8-58" data-line-number="58"><span class="co">#&gt;    &lt;chr&gt;       </span></a>
 <a class="sourceLine" id="cb8-59" data-line-number="59"><span class="co">#&gt;  1 ns          </span></a>
@@ -369,28 +373,28 @@
 <a class="sourceLine" id="cb9-34" data-line-number="34"><span class="co">#&gt; 10   10593.      1  1079 0.                0.908                  0.899</span></a>
 <a class="sourceLine" id="cb9-35" data-line-number="35"><span class="co">#&gt;    partial.etasq.conf.high partial.omegasq partial.omegasq.conf.low</span></a>
 <a class="sourceLine" id="cb9-36" data-line-number="36"><span class="co">#&gt;                      &lt;dbl&gt;           &lt;dbl&gt;                    &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb9-37" data-line-number="37"><span class="co">#&gt;  1                   0.890           0.871                    0.842</span></a>
-<a class="sourceLine" id="cb9-38" data-line-number="38"><span class="co">#&gt;  2                   0.922           0.911                    0.890</span></a>
-<a class="sourceLine" id="cb9-39" data-line-number="39"><span class="co">#&gt;  3                   0.908           0.895                    0.872</span></a>
-<a class="sourceLine" id="cb9-40" data-line-number="40"><span class="co">#&gt;  4                   0.952           0.943                    0.920</span></a>
-<a class="sourceLine" id="cb9-41" data-line-number="41"><span class="co">#&gt;  5                   0.897           0.810                    0.668</span></a>
-<a class="sourceLine" id="cb9-42" data-line-number="42"><span class="co">#&gt;  6                   0.908           0.887                    0.853</span></a>
-<a class="sourceLine" id="cb9-43" data-line-number="43"><span class="co">#&gt;  7                   0.948           0.881                    0.628</span></a>
-<a class="sourceLine" id="cb9-44" data-line-number="44"><span class="co">#&gt;  8                   0.800           0.728                    0.665</span></a>
-<a class="sourceLine" id="cb9-45" data-line-number="45"><span class="co">#&gt;  9                   0.905           0.894                    0.881</span></a>
-<a class="sourceLine" id="cb9-46" data-line-number="46"><span class="co">#&gt; 10                   0.915           0.907                    0.898</span></a>
+<a class="sourceLine" id="cb9-37" data-line-number="37"><span class="co">#&gt;  1                   0.890           0.871                    0.839</span></a>
+<a class="sourceLine" id="cb9-38" data-line-number="38"><span class="co">#&gt;  2                   0.922           0.911                    0.891</span></a>
+<a class="sourceLine" id="cb9-39" data-line-number="39"><span class="co">#&gt;  3                   0.908           0.895                    0.873</span></a>
+<a class="sourceLine" id="cb9-40" data-line-number="40"><span class="co">#&gt;  4                   0.952           0.943                    0.923</span></a>
+<a class="sourceLine" id="cb9-41" data-line-number="41"><span class="co">#&gt;  5                   0.897           0.810                    0.680</span></a>
+<a class="sourceLine" id="cb9-42" data-line-number="42"><span class="co">#&gt;  6                   0.908           0.887                    0.856</span></a>
+<a class="sourceLine" id="cb9-43" data-line-number="43"><span class="co">#&gt;  7                   0.948           0.881                    0.591</span></a>
+<a class="sourceLine" id="cb9-44" data-line-number="44"><span class="co">#&gt;  8                   0.800           0.728                    0.653</span></a>
+<a class="sourceLine" id="cb9-45" data-line-number="45"><span class="co">#&gt;  9                   0.905           0.894                    0.877</span></a>
+<a class="sourceLine" id="cb9-46" data-line-number="46"><span class="co">#&gt; 10                   0.915           0.907                    0.897</span></a>
 <a class="sourceLine" id="cb9-47" data-line-number="47"><span class="co">#&gt;    partial.omegasq.conf.high   p.value significance</span></a>
 <a class="sourceLine" id="cb9-48" data-line-number="48"><span class="co">#&gt;                        &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       </span></a>
 <a class="sourceLine" id="cb9-49" data-line-number="49"><span class="co">#&gt;  1                     0.899 1.55e-117 ***         </span></a>
-<a class="sourceLine" id="cb9-50" data-line-number="50"><span class="co">#&gt;  2                     0.928 1.96e-246 ***         </span></a>
-<a class="sourceLine" id="cb9-51" data-line-number="51"><span class="co">#&gt;  3                     0.917 4.58e-201 ***         </span></a>
-<a class="sourceLine" id="cb9-52" data-line-number="52"><span class="co">#&gt;  4                     0.962 1.86e-131 ***         </span></a>
-<a class="sourceLine" id="cb9-53" data-line-number="53"><span class="co">#&gt;  5                     0.953 3.59e-  7 ***         </span></a>
-<a class="sourceLine" id="cb9-54" data-line-number="54"><span class="co">#&gt;  6                     0.924 5.40e- 82 ***         </span></a>
-<a class="sourceLine" id="cb9-55" data-line-number="55"><span class="co">#&gt;  7                     1.08  7.67e-  5 ***         </span></a>
-<a class="sourceLine" id="cb9-56" data-line-number="56"><span class="co">#&gt;  8                     0.804 5.54e- 21 ***         </span></a>
-<a class="sourceLine" id="cb9-57" data-line-number="57"><span class="co">#&gt;  9                     0.912 9.62e-318 ***         </span></a>
-<a class="sourceLine" id="cb9-58" data-line-number="58"><span class="co">#&gt; 10                     0.920 0.        ***         </span></a>
+<a class="sourceLine" id="cb9-50" data-line-number="50"><span class="co">#&gt;  2                     0.931 1.96e-246 ***         </span></a>
+<a class="sourceLine" id="cb9-51" data-line-number="51"><span class="co">#&gt;  3                     0.916 4.58e-201 ***         </span></a>
+<a class="sourceLine" id="cb9-52" data-line-number="52"><span class="co">#&gt;  4                     0.964 1.86e-131 ***         </span></a>
+<a class="sourceLine" id="cb9-53" data-line-number="53"><span class="co">#&gt;  5                     0.944 3.59e-  7 ***         </span></a>
+<a class="sourceLine" id="cb9-54" data-line-number="54"><span class="co">#&gt;  6                     0.923 5.40e- 82 ***         </span></a>
+<a class="sourceLine" id="cb9-55" data-line-number="55"><span class="co">#&gt;  7                     1.13  7.67e-  5 ***         </span></a>
+<a class="sourceLine" id="cb9-56" data-line-number="56"><span class="co">#&gt;  8                     0.812 5.54e- 21 ***         </span></a>
+<a class="sourceLine" id="cb9-57" data-line-number="57"><span class="co">#&gt;  9                     0.911 9.62e-318 ***         </span></a>
+<a class="sourceLine" id="cb9-58" data-line-number="58"><span class="co">#&gt; 10                     0.918 0.        ***         </span></a>
 <a class="sourceLine" id="cb9-59" data-line-number="59"><span class="co">#&gt; # ... with 30 more rows</span></a></code></pre></div>
 <ul>
 <li><code>grouped_robustlm</code></li>

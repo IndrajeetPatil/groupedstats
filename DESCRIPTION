@@ -1,6 +1,6 @@
 Type: Package
 Package: groupedstats
-Title: Statistical Tests for Multiple Variables Across Multiple Grouping Levels
+Title: Repeated Statistical Tests Across Multiple Grouping Levels
 Version: 0.0.0.9000
 Authors@R: person(given = "Indrajeet", 
   family = "Patil", 
@@ -17,18 +17,18 @@ Depends:
 Imports: 
     broom (>= 0.4.4),
     crayon (>= 1.3.4),
-    dplyr (>= 0.7.4),
+    dplyr (>= 0.7.5),
     glue (>= 1.2.0),
     magrittr (>= 1.5),
-    purrr (>= 0.2.4),
-    rlang (>= 0.1.2),
-    robust (>= 0.4.18),
-    rstudioapi (>= 0.7.0),
-    sjstats (>= 0.14.2-3),
+    purrr (>= 0.2.5),
+    rlang (>= 0.2.1),
+    robust (>= 0.4-18),
+    rstudioapi (>= 0.7),
+    sjstats (>= 0.14.3),
     skimr (>= 1.0.2),
     stats,
     tibble (>= 1.4.2),
-    tidyr (>= 0.8.0)
+    tidyr (>= 0.8.1)
 Suggests: 
     covr (>= 3.0.1),
     knitr (>= 1.20),

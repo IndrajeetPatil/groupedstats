@@ -7,14 +7,10 @@
   ```{r, echo = FALSE, warning = FALSE, messsage = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
   dpi = 300,
-  fig.show = "hold",
-  fig.width = 6,
-  fig.asp = 0.618,
-  fig.align = "center",
-  out.width = "70%"
+  out.width = "100%",
+  comment = "#>",
+  fig.path = "man/figures/README-"
 )
 ```
 # groupedstats: Grouped statistical analysis in a tidy way
@@ -154,7 +150,9 @@ As demonstrated here, the benefit of formatted summary output is that, it can be
 directly fed into other routines (e.g., preparing a plot of `mean` and `sd`
 values in `ggplot2`).
 
-Another thing to note about `grouped_summary` function is that if no `measures` are specified, the function will compute summary for all variables of the specified type (`numeric` or `factor`).
+Another thing to note about `grouped_summary` function is that if no `measures`
+are specified, the function will compute summary for all variables of the
+specified type (`numeric` or `factor`).
 
 ```{r grouped_summary4, warning = FALSE, messsage = FALSE}
 options(tibble.width = Inf)            # show me all columns
@@ -168,11 +166,13 @@ groupedstats::grouped_summary(
 * `grouped_lm`
 
 This function can be used to run linear regression between different pairs of
-variables across multiple levels of grouping variable(s). For example, we can use
-the `gapminder` dataset to study two relationships of interest for **each country** across years:
+variables across multiple levels of grouping variable(s). For example, we can
+use the `gapminder` dataset to study two relationships of interest for **each country** 
+across years:
+
 1.  life expectency and GDP (per capita)
-2.  population GDP (per capita)
-Thus, in this case we have two regression models and one grouping variable with 142 levels (countries)
+2.  population GDP (per capita) Thus, in this case we have two regression models
+    and one grouping variable with 142 levels (countries)
 
 ```{r grouped_lm1, warning = FALSE, messsage = FALSE}
 library(gapminder)
@@ -236,7 +236,8 @@ groupedstats::grouped_glm(data = datasets::mtcars,
 
 * `grouped_proptest`
 
-This function helps carry out one-sample proportion tests with a unique variable for multiple grouping variables-
+This function helps carry out one-sample proportion tests with a unique variable
+for multiple grouping variables-
 
 ```{r grouped_proptest, warning = FALSE, messsage = FALSE}
 library(datasets)

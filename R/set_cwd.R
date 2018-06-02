@@ -2,12 +2,15 @@
 #' @title Setting Working Directory to where the R Script is
 #' @name set_cwd
 #' @author Indrajeet Patil
-#' @description This function will change the current working directoy to whichever directory the R script you are currently
-#' working on is located. This preempts the trouble of setting the working directory manually.
+#' @description This function will change the current working directory to
+#'   whichever directory the R script you are currently working on is located.
+#'   This preempts the trouble of setting the working directory manually.
 #' @return Path to changed working directory.
 #' @note From: https://eranraviv.com/r-tips-and-tricks-working-directory/
 #'
 #' @importFrom rstudioapi getActiveDocumentContext
+#'
+#' @keywords internal
 #'
 
 set_cwd <- function() {

@@ -9,7 +9,7 @@
 #' @param data Dataframe from which variables need to be taken.
 #' @param grouping.vars A list of grouping variables.
 #' @param measures List variables for which summary needs to computed. If not
-#'   spcified, all variables of type specified in the argument `measures.type`
+#'   specified, all variables of type specified in the argument `measures.type`
 #'   will be used to calculate summaries. **Don't** explicitly set
 #'   `measures.type = NULL` in function call, which will produce an error
 #'   because the function will try to find a column in a dataframe named "NULL".
