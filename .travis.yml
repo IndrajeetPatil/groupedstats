@@ -25,7 +25,6 @@ matrix:
         - openssl
         - rlang
         - utf8
-        - gss
         - haven
         - data.table
         - dplyr
@@ -35,11 +34,9 @@ matrix:
         - minqa
         - mvtnorm
         - nloptr
-        - SparseM
         - lme4
         - httpuv
         - markdown
-        - sem
         - readxl
         - openxlsx
         - pander
