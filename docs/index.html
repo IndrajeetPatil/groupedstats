@@ -8,8 +8,8 @@
 <title>Repeated Statistical Tests Across Multiple Grouping Levels • groupedstats</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><meta property="og:title" content="Repeated Statistical Tests Across Multiple Grouping Levels">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="pkgdown.js"></script><meta property="og:title" content="Repeated Statistical Tests Across Multiple Grouping Levels">
 <meta property="og:description" content="Collection of functions to run statistical tests for multiple variable across multiple groups.">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -44,6 +44,9 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="news/index.html">Changelog</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right"></ul>
 </div>
@@ -64,7 +67,7 @@
 <div id="groupedstats-grouped-statistical-analysis-in-a-tidy-way" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#groupedstats-grouped-statistical-analysis-in-a-tidy-way" class="anchor"></a>groupedstats: Grouped statistical analysis in a tidy way</h1></div>
-<p><a href="commits/master"><img src="https://img.shields.io/badge/Package%20version-0.0.0.9000-orange.svg?style=flat-square" alt="packageversion"></a> <a href="https://travis-ci.org/IndrajeetPatil/groupedstats"><img src="https://travis-ci.org/IndrajeetPatil/groupedstats.svg?branch=master" alt="Travis Build Status"></a> <a href="https://ci.appveyor.com/project/IndrajeetPatil/groupedstats"><img src="https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupedstats?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a> <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a> <a href="http://www.repostatus.org/#active"><img src="http://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active - The project has reached a stable, usable state and is being actively developed."></a> <a href="/commits/master"><img src="https://img.shields.io/badge/last%20change-2018--06--01-yellowgreen.svg" alt="Last-changedate"></a> <a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-red.svg" alt="lifecycle"></a> <a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg" alt="minimal R version"></a> <!-- [![Coverage Status](https://img.shields.io/codecov/c/github/IndrajeetPatil/groupedstats/master.svg)](https://codecov.io/github/IndrajeetPatil/groupedstats?branch=master)
+<p><a href="commits/master"><img src="https://img.shields.io/badge/Package%20version-0.0.0.9000-orange.svg?style=flat-square" alt="packageversion"></a> <a href="https://travis-ci.org/IndrajeetPatil/groupedstats"><img src="https://travis-ci.org/IndrajeetPatil/groupedstats.svg?branch=master" alt="Travis Build Status"></a> <a href="https://ci.appveyor.com/project/IndrajeetPatil/groupedstats"><img src="https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupedstats?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a> <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a> <a href="http://www.repostatus.org/#active"><img src="http://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active - The project has reached a stable, usable state and is being actively developed."></a> <a href="/commits/master"><img src="https://img.shields.io/badge/last%20change-2018--06--05-yellowgreen.svg" alt="Last-changedate"></a> <a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-red.svg" alt="lifecycle"></a> <a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg" alt="minimal R version"></a> <!-- [![Coverage Status](https://img.shields.io/codecov/c/github/IndrajeetPatil/groupedstats/master.svg)](https://codecov.io/github/IndrajeetPatil/groupedstats?branch=master)
 [![Dependency Status](http://img.shields.io/gemnasium/IndrajeetPatil/groupedstats.svg)](https://gemnasium.com/IndrajeetPatil/groupedstats) --></p>
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
@@ -81,24 +84,24 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can get the development version from GitHub. If you are in hurry and want to reduce the time of installation, prefer-</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("devtools")                                # needed package to download from GitHub repo</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="dt">repo =</span> <span class="st">"IndrajeetPatil/groupedstats"</span>, <span class="co"># package path on GitHub</span></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">                         <span class="dt">quick =</span> <span class="ot">TRUE</span>)                        <span class="co"># skips docs, demos, and vignettes</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")                                # needed package to download from GitHub repo</span>
+devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="dt">repo =</span> <span class="st">"IndrajeetPatil/groupedstats"</span>, <span class="co"># package path on GitHub</span>
+                         <span class="dt">quick =</span> <span class="ot">TRUE</span>)                        <span class="co"># skips docs, demos, and vignettes</span></code></pre></div>
 <p>If time is not a constraint-</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="dt">repo =</span> <span class="st">"IndrajeetPatil/groupedstats"</span>, <span class="co"># package path on GitHub</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">                         <span class="dt">dependencies =</span> <span class="ot">TRUE</span>,                 <span class="co"># installs packages which groupedstats depends on</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">                         <span class="dt">upgrade_dependencies =</span> <span class="ot">TRUE</span>          <span class="co"># updates any out of date dependencies</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">)</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="dt">repo =</span> <span class="st">"IndrajeetPatil/groupedstats"</span>, <span class="co"># package path on GitHub</span>
+                         <span class="dt">dependencies =</span> <span class="ot">TRUE</span>,                 <span class="co"># installs packages which groupedstats depends on</span>
+                         <span class="dt">upgrade_dependencies =</span> <span class="ot">TRUE</span>          <span class="co"># updates any out of date dependencies</span>
+)</code></pre></div>
 </div>
 <div id="help" class="section level2">
 <h2 class="hasAnchor">
 <a href="#help" class="anchor"></a>Help</h2>
 <p>Documentation for any function can be accessed with the standard <code>help</code> command-</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">?grouped_summary</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">?grouped_lm</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">?grouped_robustlm</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">?grouped_proptest</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">?grouped_ttest</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?grouped_summary
+?grouped_lm
+?grouped_robustlm
+?grouped_proptest
+?grouped_ttest</code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
@@ -108,156 +111,156 @@
 </ul>
 <p>Getting summary for multiple variables across multiple grouping variables. This function is a wrapper around <a href="https://www.rdocumentation.org/packages/skimr/versions/1.0.1/topics/skim_to_wide"><code><a href="http://www.rdocumentation.org/packages/skimr/topics/wide">skimr::skim_to_wide()</a></code></a>.</p>
 <p>It is supposed to be a handy summarizing tool if you have just one grouping variable and multiple variables for which summary statistics are to be computed-</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">library</span>(datasets)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>)            <span class="co"># show me all columns</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_summary">grouped_summary</a></span>(<span class="dt">data =</span> datasets<span class="op">::</span>iris,</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">                              <span class="dt">grouping.vars =</span> Species,</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">                              <span class="dt">measures =</span> Sepal.Length<span class="op">:</span>Petal.Width,</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7">                              <span class="dt">measures.type =</span> <span class="st">"numeric"</span>)</a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; # A tibble: 12 x 13</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt;    Species    type    variable     missing complete     n  mean    sd</span></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;    &lt;fct&gt;      &lt;fct&gt;   &lt;fct&gt;          &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt;  1 setosa     numeric Petal.Length       0       50    50  1.46  0.17</span></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt;  2 setosa     numeric Petal.Width        0       50    50  0.25  0.11</span></a>
-<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt;  3 setosa     numeric Sepal.Length       0       50    50  5.01  0.35</span></a>
-<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt;  4 setosa     numeric Sepal.Width        0       50    50  3.43  0.38</span></a>
-<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt;  5 versicolor numeric Petal.Length       0       50    50  4.26  0.47</span></a>
-<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt;  6 versicolor numeric Petal.Width        0       50    50  1.33  0.2 </span></a>
-<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt;  7 versicolor numeric Sepal.Length       0       50    50  5.94  0.52</span></a>
-<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co">#&gt;  8 versicolor numeric Sepal.Width        0       50    50  2.77  0.31</span></a>
-<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co">#&gt;  9 virginica  numeric Petal.Length       0       50    50  5.55  0.55</span></a>
-<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="co">#&gt; 10 virginica  numeric Petal.Width        0       50    50  2.03  0.27</span></a>
-<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co">#&gt; 11 virginica  numeric Sepal.Length       0       50    50  6.59  0.64</span></a>
-<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co">#&gt; 12 virginica  numeric Sepal.Width        0       50    50  2.97  0.32</span></a>
-<a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">#&gt;      min   p25 median   p75   max</span></a>
-<a class="sourceLine" id="cb4-24" data-line-number="24"><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb4-25" data-line-number="25"><span class="co">#&gt;  1   1    1.4    1.5   1.58   1.9</span></a>
-<a class="sourceLine" id="cb4-26" data-line-number="26"><span class="co">#&gt;  2   0.1  0.2    0.2   0.3    0.6</span></a>
-<a class="sourceLine" id="cb4-27" data-line-number="27"><span class="co">#&gt;  3   4.3  4.8    5     5.2    5.8</span></a>
-<a class="sourceLine" id="cb4-28" data-line-number="28"><span class="co">#&gt;  4   2.3  3.2    3.4   3.68   4.4</span></a>
-<a class="sourceLine" id="cb4-29" data-line-number="29"><span class="co">#&gt;  5   3    4      4.35  4.6    5.1</span></a>
-<a class="sourceLine" id="cb4-30" data-line-number="30"><span class="co">#&gt;  6   1    1.2    1.3   1.5    1.8</span></a>
-<a class="sourceLine" id="cb4-31" data-line-number="31"><span class="co">#&gt;  7   4.9  5.6    5.9   6.3    7  </span></a>
-<a class="sourceLine" id="cb4-32" data-line-number="32"><span class="co">#&gt;  8   2    2.52   2.8   3      3.4</span></a>
-<a class="sourceLine" id="cb4-33" data-line-number="33"><span class="co">#&gt;  9   4.5  5.1    5.55  5.88   6.9</span></a>
-<a class="sourceLine" id="cb4-34" data-line-number="34"><span class="co">#&gt; 10   1.4  1.8    2     2.3    2.5</span></a>
-<a class="sourceLine" id="cb4-35" data-line-number="35"><span class="co">#&gt; 11   4.9  6.23   6.5   6.9    7.9</span></a>
-<a class="sourceLine" id="cb4-36" data-line-number="36"><span class="co">#&gt; 12   2.2  2.8    3     3.18   3.8</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(datasets)
+<span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>)            <span class="co"># show me all columns</span>
+
+groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_summary">grouped_summary</a></span>(<span class="dt">data =</span> datasets<span class="op">::</span>iris,
+                              <span class="dt">grouping.vars =</span> Species,
+                              <span class="dt">measures =</span> Sepal.Length<span class="op">:</span>Petal.Width,
+                              <span class="dt">measures.type =</span> <span class="st">"numeric"</span>)
+<span class="co">#&gt; # A tibble: 12 x 13</span>
+<span class="co">#&gt;    Species    type    variable     missing complete     n  mean    sd</span>
+<span class="co">#&gt;    &lt;fct&gt;      &lt;fct&gt;   &lt;fct&gt;          &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 setosa     numeric Petal.Length       0       50    50  1.46  0.17</span>
+<span class="co">#&gt;  2 setosa     numeric Petal.Width        0       50    50  0.25  0.11</span>
+<span class="co">#&gt;  3 setosa     numeric Sepal.Length       0       50    50  5.01  0.35</span>
+<span class="co">#&gt;  4 setosa     numeric Sepal.Width        0       50    50  3.43  0.38</span>
+<span class="co">#&gt;  5 versicolor numeric Petal.Length       0       50    50  4.26  0.47</span>
+<span class="co">#&gt;  6 versicolor numeric Petal.Width        0       50    50  1.33  0.2 </span>
+<span class="co">#&gt;  7 versicolor numeric Sepal.Length       0       50    50  5.94  0.52</span>
+<span class="co">#&gt;  8 versicolor numeric Sepal.Width        0       50    50  2.77  0.31</span>
+<span class="co">#&gt;  9 virginica  numeric Petal.Length       0       50    50  5.55  0.55</span>
+<span class="co">#&gt; 10 virginica  numeric Petal.Width        0       50    50  2.03  0.27</span>
+<span class="co">#&gt; 11 virginica  numeric Sepal.Length       0       50    50  6.59  0.64</span>
+<span class="co">#&gt; 12 virginica  numeric Sepal.Width        0       50    50  2.97  0.32</span>
+<span class="co">#&gt;      min   p25 median   p75   max</span>
+<span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1   1    1.4    1.5   1.58   1.9</span>
+<span class="co">#&gt;  2   0.1  0.2    0.2   0.3    0.6</span>
+<span class="co">#&gt;  3   4.3  4.8    5     5.2    5.8</span>
+<span class="co">#&gt;  4   2.3  3.2    3.4   3.68   4.4</span>
+<span class="co">#&gt;  5   3    4      4.35  4.6    5.1</span>
+<span class="co">#&gt;  6   1    1.2    1.3   1.5    1.8</span>
+<span class="co">#&gt;  7   4.9  5.6    5.9   6.3    7  </span>
+<span class="co">#&gt;  8   2    2.52   2.8   3      3.4</span>
+<span class="co">#&gt;  9   4.5  5.1    5.55  5.88   6.9</span>
+<span class="co">#&gt; 10   1.4  1.8    2     2.3    2.5</span>
+<span class="co">#&gt; 11   4.9  6.23   6.5   6.9    7.9</span>
+<span class="co">#&gt; 12   2.2  2.8    3     3.18   3.8</span></code></pre></div>
 <p>This function can be used to get summary of either numeric <strong>or</strong> factor varibles, but <strong>not</strong> both. If you want summary of variables of factor type-</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>)            <span class="co"># show me all columns</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_summary">grouped_summary</a></span>(<span class="dt">data =</span> ggplot2<span class="op">::</span>diamonds,</a>
-<a class="sourceLine" id="cb5-5" data-line-number="5">                              <span class="dt">grouping.vars =</span> <span class="kw">c</span>(cut, clarity),</a>
-<a class="sourceLine" id="cb5-6" data-line-number="6">                              <span class="dt">measures =</span> color,</a>
-<a class="sourceLine" id="cb5-7" data-line-number="7">                              <span class="dt">measures.type =</span> <span class="st">"factor"</span>)</a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; # A tibble: 40 x 10</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt;    cut       clarity type   variable missing complete n     n_unique</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt;    &lt;ord&gt;     &lt;ord&gt;   &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;   </span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt;  1 Ideal     SI2     factor color    0       2598     2598  7       </span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;  2 Premium   SI1     factor color    0       3575     3575  7       </span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt;  3 Good      VS1     factor color    0       648      648   7       </span></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt;  4 Premium   VS2     factor color    0       3357     3357  7       </span></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt;  5 Good      SI2     factor color    0       1081     1081  7       </span></a>
-<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt;  6 Very Good VVS2    factor color    0       1235     1235  7       </span></a>
-<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt;  7 Very Good VVS1    factor color    0       789      789   7       </span></a>
-<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt;  8 Very Good SI1     factor color    0       3240     3240  7       </span></a>
-<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt;  9 Fair      VS2     factor color    0       261      261   7       </span></a>
-<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt; 10 Very Good VS1     factor color    0       1775     1775  7       </span></a>
-<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt;    top_counts                     ordered</span></a>
-<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt;    &lt;chr&gt;                          &lt;chr&gt;  </span></a>
-<a class="sourceLine" id="cb5-23" data-line-number="23"><span class="co">#&gt;  1 G: 486, E: 469, F: 453, H: 450 TRUE   </span></a>
-<a class="sourceLine" id="cb5-24" data-line-number="24"><span class="co">#&gt;  2 H: 655, E: 614, F: 608, G: 566 TRUE   </span></a>
-<a class="sourceLine" id="cb5-25" data-line-number="25"><span class="co">#&gt;  3 G: 152, F: 132, I: 103, E: 89  TRUE   </span></a>
-<a class="sourceLine" id="cb5-26" data-line-number="26"><span class="co">#&gt;  4 G: 721, E: 629, F: 619, H: 532 TRUE   </span></a>
-<a class="sourceLine" id="cb5-27" data-line-number="27"><span class="co">#&gt;  5 D: 223, E: 202, F: 201, G: 163 TRUE   </span></a>
-<a class="sourceLine" id="cb5-28" data-line-number="28"><span class="co">#&gt;  6 G: 302, E: 298, F: 249, H: 145 TRUE   </span></a>
-<a class="sourceLine" id="cb5-29" data-line-number="29"><span class="co">#&gt;  7 G: 190, F: 174, E: 170, H: 115 TRUE   </span></a>
-<a class="sourceLine" id="cb5-30" data-line-number="30"><span class="co">#&gt;  8 E: 626, F: 559, H: 547, D: 494 TRUE   </span></a>
-<a class="sourceLine" id="cb5-31" data-line-number="31"><span class="co">#&gt;  9 F: 53, G: 45, E: 42, H: 41     TRUE   </span></a>
-<a class="sourceLine" id="cb5-32" data-line-number="32"><span class="co">#&gt; 10 G: 432, E: 293, F: 293, H: 257 TRUE   </span></a>
-<a class="sourceLine" id="cb5-33" data-line-number="33"><span class="co">#&gt; # ... with 30 more rows</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>)            <span class="co"># show me all columns</span>
+
+groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_summary">grouped_summary</a></span>(<span class="dt">data =</span> ggplot2<span class="op">::</span>diamonds,
+                              <span class="dt">grouping.vars =</span> <span class="kw">c</span>(cut, clarity),
+                              <span class="dt">measures =</span> color,
+                              <span class="dt">measures.type =</span> <span class="st">"factor"</span>)
+<span class="co">#&gt; # A tibble: 40 x 10</span>
+<span class="co">#&gt;    cut       clarity type   variable missing complete n     n_unique</span>
+<span class="co">#&gt;    &lt;ord&gt;     &lt;ord&gt;   &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;   </span>
+<span class="co">#&gt;  1 Ideal     SI2     factor color    0       2598     2598  7       </span>
+<span class="co">#&gt;  2 Premium   SI1     factor color    0       3575     3575  7       </span>
+<span class="co">#&gt;  3 Good      VS1     factor color    0       648      648   7       </span>
+<span class="co">#&gt;  4 Premium   VS2     factor color    0       3357     3357  7       </span>
+<span class="co">#&gt;  5 Good      SI2     factor color    0       1081     1081  7       </span>
+<span class="co">#&gt;  6 Very Good VVS2    factor color    0       1235     1235  7       </span>
+<span class="co">#&gt;  7 Very Good VVS1    factor color    0       789      789   7       </span>
+<span class="co">#&gt;  8 Very Good SI1     factor color    0       3240     3240  7       </span>
+<span class="co">#&gt;  9 Fair      VS2     factor color    0       261      261   7       </span>
+<span class="co">#&gt; 10 Very Good VS1     factor color    0       1775     1775  7       </span>
+<span class="co">#&gt;    top_counts                     ordered</span>
+<span class="co">#&gt;    &lt;chr&gt;                          &lt;chr&gt;  </span>
+<span class="co">#&gt;  1 G: 486, E: 469, F: 453, H: 450 TRUE   </span>
+<span class="co">#&gt;  2 H: 655, E: 614, F: 608, G: 566 TRUE   </span>
+<span class="co">#&gt;  3 G: 152, F: 132, I: 103, E: 89  TRUE   </span>
+<span class="co">#&gt;  4 G: 721, E: 629, F: 619, H: 532 TRUE   </span>
+<span class="co">#&gt;  5 D: 223, E: 202, F: 201, G: 163 TRUE   </span>
+<span class="co">#&gt;  6 G: 302, E: 298, F: 249, H: 145 TRUE   </span>
+<span class="co">#&gt;  7 G: 190, F: 174, E: 170, H: 115 TRUE   </span>
+<span class="co">#&gt;  8 E: 626, F: 559, H: 547, D: 494 TRUE   </span>
+<span class="co">#&gt;  9 F: 53, G: 45, E: 42, H: 41     TRUE   </span>
+<span class="co">#&gt; 10 G: 432, E: 293, F: 293, H: 257 TRUE   </span>
+<span class="co">#&gt; # ... with 30 more rows</span></code></pre></div>
 <p>Note that there is a column corresponding to <code>top_counts</code> which is really useful in case you, let’s say, want to plot these counts. But this column is of <code>character</code> type and in wide format. The solution is to set an additional argument provided for this function:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; -- Attaching packages ------------------------------------------------------------------------------------------ tidyverse 1.2.1 --</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; v tibble  1.4.2     v purrr   0.2.5</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; v tidyr   0.8.1     v dplyr   0.7.5</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; v readr   1.2.0     v stringr 1.3.1</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; v tibble  1.4.2     v forcats 0.3.0</span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; -- Conflicts --------------------------------------------------------------------------------------------- tidyverse_conflicts() --</span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; x dplyr::filter() masks stats::filter()</span></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span></a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="kw">library</span>(magrittr)</a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt; Attaching package: 'magrittr'</span></a>
-<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; The following object is masked from 'package:purrr':</span></a>
-<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt;     set_names</span></a>
-<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt; The following object is masked from 'package:tidyr':</span></a>
-<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt;     extract</span></a>
-<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="kw">library</span>(ggstatsplot)</a>
-<a class="sourceLine" id="cb6-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>)            <span class="co"># show me all columns</span></a>
-<a class="sourceLine" id="cb6-23" data-line-number="23"></a>
-<a class="sourceLine" id="cb6-24" data-line-number="24">groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_summary">grouped_summary</a></span>(</a>
-<a class="sourceLine" id="cb6-25" data-line-number="25">  <span class="dt">data =</span> ggplot2<span class="op">::</span>diamonds,</a>
-<a class="sourceLine" id="cb6-26" data-line-number="26">  <span class="dt">grouping.vars =</span> cut,                          <span class="co"># for simplicity, let's just use one grouping variable</span></a>
-<a class="sourceLine" id="cb6-27" data-line-number="27">  <span class="dt">measures =</span> color,</a>
-<a class="sourceLine" id="cb6-28" data-line-number="28">  <span class="dt">measures.type =</span> <span class="st">"factor"</span>,</a>
-<a class="sourceLine" id="cb6-29" data-line-number="29">  <span class="dt">topcount.long =</span> <span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb6-30" data-line-number="30">) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-31" data-line-number="31"><span class="st">  </span>ggplot2<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(</a>
-<a class="sourceLine" id="cb6-32" data-line-number="32">  <span class="dt">data =</span> .,                                     <span class="co"># placeholder for summary dataframe we just created </span></a>
-<a class="sourceLine" id="cb6-33" data-line-number="33">  <span class="dt">mapping =</span> ggplot2<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(</a>
-<a class="sourceLine" id="cb6-34" data-line-number="34">    <span class="dt">x =</span> forcats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/forcats/topics/fct_inorder">fct_inorder</a></span>(<span class="dt">f =</span> factor.level),</a>
-<a class="sourceLine" id="cb6-35" data-line-number="35">    <span class="dt">y =</span> count,</a>
-<a class="sourceLine" id="cb6-36" data-line-number="36">    <span class="dt">fill =</span> factor.level</a>
-<a class="sourceLine" id="cb6-37" data-line-number="37">  )</a>
-<a class="sourceLine" id="cb6-38" data-line-number="38">) <span class="op">+</span></a>
-<a class="sourceLine" id="cb6-39" data-line-number="39"><span class="st">  </span>ggplot2<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_bar">geom_bar</a></span>(<span class="dt">stat =</span> <span class="st">"identity"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb6-40" data-line-number="40"><span class="st">  </span>ggplot2<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labs">labs</a></span>(<span class="dt">x =</span> <span class="st">"color"</span>, <span class="dt">y =</span> <span class="st">"count"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb6-41" data-line-number="41"><span class="st">  </span>ggplot2<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/facet_grid">facet_grid</a></span>(<span class="dt">facets =</span> <span class="op">~</span><span class="st"> </span>cut) <span class="op">+</span><span class="st">         </span><span class="co"># for each level of the factor level</span></a>
-<a class="sourceLine" id="cb6-42" data-line-number="42"><span class="st">  </span>ggstatsplot<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggstatsplot/topics/theme_mprl">theme_mprl</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb6-43" data-line-number="43"><span class="st">  </span>ggplot2<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"none"</span>)</a>
-<a class="sourceLine" id="cb6-44" data-line-number="44"><span class="co">#&gt; Joining, by = "cut"</span></a></code></pre></div>
-<p><img src="../../../Indrajeet%20Patil/Documents/groupedstats/man/figures/README-grouped_summary3-1.png" width="100%"></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+<span class="kw">library</span>(tidyverse)
+<span class="co">#&gt; -- Attaching packages -------------------------------------------------------------------------------------------------------------------- tidyverse 1.2.1 --</span>
+<span class="co">#&gt; v tibble  1.4.2     v purrr   0.2.5</span>
+<span class="co">#&gt; v tidyr   0.8.1     v dplyr   0.7.5</span>
+<span class="co">#&gt; v readr   1.1.1     v stringr 1.3.1</span>
+<span class="co">#&gt; v tibble  1.4.2     v forcats 0.3.0</span>
+<span class="co">#&gt; -- Conflicts ----------------------------------------------------------------------------------------------------------------------- tidyverse_conflicts() --</span>
+<span class="co">#&gt; x dplyr::filter() masks stats::filter()</span>
+<span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span>
+<span class="kw">library</span>(magrittr)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: 'magrittr'</span>
+<span class="co">#&gt; The following object is masked from 'package:purrr':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     set_names</span>
+<span class="co">#&gt; The following object is masked from 'package:tidyr':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     extract</span>
+<span class="kw">library</span>(ggstatsplot)
+
+<span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>)            <span class="co"># show me all columns</span>
+
+groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_summary">grouped_summary</a></span>(
+  <span class="dt">data =</span> ggplot2<span class="op">::</span>diamonds,
+  <span class="dt">grouping.vars =</span> cut,                          <span class="co"># for simplicity, let's just use one grouping variable</span>
+  <span class="dt">measures =</span> color,
+  <span class="dt">measures.type =</span> <span class="st">"factor"</span>,
+  <span class="dt">topcount.long =</span> <span class="ot">TRUE</span>
+) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span>ggplot2<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(
+  <span class="dt">data =</span> .,                                     <span class="co"># placeholder for summary dataframe we just created </span>
+  <span class="dt">mapping =</span> ggplot2<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(
+    <span class="dt">x =</span> forcats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/forcats/topics/fct_inorder">fct_inorder</a></span>(<span class="dt">f =</span> factor.level),
+    <span class="dt">y =</span> count,
+    <span class="dt">fill =</span> factor.level
+  )
+) <span class="op">+</span>
+<span class="st">  </span>ggplot2<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_bar">geom_bar</a></span>(<span class="dt">stat =</span> <span class="st">"identity"</span>) <span class="op">+</span>
+<span class="st">  </span>ggplot2<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labs">labs</a></span>(<span class="dt">x =</span> <span class="st">"color"</span>, <span class="dt">y =</span> <span class="st">"count"</span>) <span class="op">+</span>
+<span class="st">  </span>ggplot2<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/facet_grid">facet_grid</a></span>(<span class="dt">facets =</span> <span class="op">~</span><span class="st"> </span>cut) <span class="op">+</span><span class="st">         </span><span class="co"># for each level of the factor level</span>
+<span class="st">  </span>ggstatsplot<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggstatsplot/topics/theme_mprl">theme_mprl</a></span>() <span class="op">+</span>
+<span class="st">  </span>ggplot2<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(<span class="dt">legend.position =</span> <span class="st">"none"</span>)
+<span class="co">#&gt; Joining, by = "cut"</span></code></pre></div>
+<p><img src="reference/figures/README-grouped_summary3-1.png" width="100%"></p>
 <p>This produces a long format table with two new columns <code>factor.level</code> and its corresponding <code>count</code>, which can then be immediately fed into other pipelines. As demonstrated here, the benefit of formatted summary output is that, it can be directly fed into other routines (e.g., preparing a plot of <code>mean</code> and <code>sd</code> values in <code>ggplot2</code>).</p>
 <p>Another thing to note about <code>grouped_summary</code> function is that if no <code>measures</code> are specified, the function will compute summary for all variables of the specified type (<code>numeric</code> or <code>factor</code>).</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>)            <span class="co"># show me all columns</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3">groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_summary">grouped_summary</a></span>(</a>
-<a class="sourceLine" id="cb7-4" data-line-number="4">  <span class="dt">data =</span> ggplot2<span class="op">::</span>diamonds,</a>
-<a class="sourceLine" id="cb7-5" data-line-number="5">  <span class="dt">grouping.vars =</span> <span class="kw">c</span>(cut, clarity)</a>
-<a class="sourceLine" id="cb7-6" data-line-number="6">)</a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt; # A tibble: 280 x 14</span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt;    cut     clarity type    variable missing complete     n    mean      sd</span></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt;    &lt;ord&gt;   &lt;ord&gt;   &lt;fct&gt;   &lt;fct&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt;  1 Ideal   SI2     integer price          0     2598  2598 4756.   4252.  </span></a>
-<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt;  2 Ideal   SI2     numeric carat          0     2598  2598    1.01    0.51</span></a>
-<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">#&gt;  3 Ideal   SI2     numeric depth          0     2598  2598   61.7     0.82</span></a>
-<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co">#&gt;  4 Ideal   SI2     numeric table          0     2598  2598   56.1     1.3 </span></a>
-<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="co">#&gt;  5 Ideal   SI2     numeric x              0     2598  2598    6.26    1.07</span></a>
-<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="co">#&gt;  6 Ideal   SI2     numeric y              0     2598  2598    6.27    1.05</span></a>
-<a class="sourceLine" id="cb7-16" data-line-number="16"><span class="co">#&gt;  7 Ideal   SI2     numeric z              0     2598  2598    3.87    0.66</span></a>
-<a class="sourceLine" id="cb7-17" data-line-number="17"><span class="co">#&gt;  8 Premium SI1     integer price          0     3575  3575 4455.   4071.  </span></a>
-<a class="sourceLine" id="cb7-18" data-line-number="18"><span class="co">#&gt;  9 Premium SI1     numeric carat          0     3575  3575    0.91    0.48</span></a>
-<a class="sourceLine" id="cb7-19" data-line-number="19"><span class="co">#&gt; 10 Premium SI1     numeric depth          0     3575  3575   61.3     1.17</span></a>
-<a class="sourceLine" id="cb7-20" data-line-number="20"><span class="co">#&gt;       min     p25  median     p75      max</span></a>
-<a class="sourceLine" id="cb7-21" data-line-number="21"><span class="co">#&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb7-22" data-line-number="22"><span class="co">#&gt;  1 326    1443    4060.   5402.   18804   </span></a>
-<a class="sourceLine" id="cb7-23" data-line-number="23"><span class="co">#&gt;  2   0.23    0.62    1       1.2      3.01</span></a>
-<a class="sourceLine" id="cb7-24" data-line-number="24"><span class="co">#&gt;  3  58.3    61.2    61.8    62.3     65.5 </span></a>
-<a class="sourceLine" id="cb7-25" data-line-number="25"><span class="co">#&gt;  4  52      55      56      57       62   </span></a>
-<a class="sourceLine" id="cb7-26" data-line-number="26"><span class="co">#&gt;  5   0       5.5     6.4     6.82     9.25</span></a>
-<a class="sourceLine" id="cb7-27" data-line-number="27"><span class="co">#&gt;  6   3.98    5.53    6.4     6.82     9.2 </span></a>
-<a class="sourceLine" id="cb7-28" data-line-number="28"><span class="co">#&gt;  7   0       3.38    3.95    4.21     5.69</span></a>
-<a class="sourceLine" id="cb7-29" data-line-number="29"><span class="co">#&gt;  8 326    1200.   3618    5597    18797   </span></a>
-<a class="sourceLine" id="cb7-30" data-line-number="30"><span class="co">#&gt;  9   0.21    0.5     0.9     1.15     2.57</span></a>
-<a class="sourceLine" id="cb7-31" data-line-number="31"><span class="co">#&gt; 10  58      60.5    61.5    62.3     63   </span></a>
-<a class="sourceLine" id="cb7-32" data-line-number="32"><span class="co">#&gt; # ... with 270 more rows</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>)            <span class="co"># show me all columns</span>
+
+groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_summary">grouped_summary</a></span>(
+  <span class="dt">data =</span> ggplot2<span class="op">::</span>diamonds,
+  <span class="dt">grouping.vars =</span> <span class="kw">c</span>(cut, clarity)
+)
+<span class="co">#&gt; # A tibble: 280 x 14</span>
+<span class="co">#&gt;    cut     clarity type    variable missing complete     n    mean      sd</span>
+<span class="co">#&gt;    &lt;ord&gt;   &lt;ord&gt;   &lt;fct&gt;   &lt;fct&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Ideal   SI2     integer price          0     2598  2598 4756.   4252.  </span>
+<span class="co">#&gt;  2 Ideal   SI2     numeric carat          0     2598  2598    1.01    0.51</span>
+<span class="co">#&gt;  3 Ideal   SI2     numeric depth          0     2598  2598   61.7     0.82</span>
+<span class="co">#&gt;  4 Ideal   SI2     numeric table          0     2598  2598   56.1     1.3 </span>
+<span class="co">#&gt;  5 Ideal   SI2     numeric x              0     2598  2598    6.26    1.07</span>
+<span class="co">#&gt;  6 Ideal   SI2     numeric y              0     2598  2598    6.27    1.05</span>
+<span class="co">#&gt;  7 Ideal   SI2     numeric z              0     2598  2598    3.87    0.66</span>
+<span class="co">#&gt;  8 Premium SI1     integer price          0     3575  3575 4455.   4071.  </span>
+<span class="co">#&gt;  9 Premium SI1     numeric carat          0     3575  3575    0.91    0.48</span>
+<span class="co">#&gt; 10 Premium SI1     numeric depth          0     3575  3575   61.3     1.17</span>
+<span class="co">#&gt;       min     p25  median     p75      max</span>
+<span class="co">#&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 326    1443    4060.   5402.   18804   </span>
+<span class="co">#&gt;  2   0.23    0.62    1       1.2      3.01</span>
+<span class="co">#&gt;  3  58.3    61.2    61.8    62.3     65.5 </span>
+<span class="co">#&gt;  4  52      55      56      57       62   </span>
+<span class="co">#&gt;  5   0       5.5     6.4     6.82     9.25</span>
+<span class="co">#&gt;  6   3.98    5.53    6.4     6.82     9.2 </span>
+<span class="co">#&gt;  7   0       3.38    3.95    4.21     5.69</span>
+<span class="co">#&gt;  8 326    1200.   3618    5597    18797   </span>
+<span class="co">#&gt;  9   0.21    0.5     0.9     1.15     2.57</span>
+<span class="co">#&gt; 10  58      60.5    61.5    62.3     63   </span>
+<span class="co">#&gt; # ... with 270 more rows</span></code></pre></div>
 <ul>
 <li><code>grouped_lm</code></li>
 </ul>
@@ -266,491 +269,491 @@
 <li>life expectency and GDP (per capita)</li>
 <li>population GDP (per capita) Thus, in this case we have two regression models and one grouping variable with 142 levels (countries)</li>
 </ol>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">library</span>(gapminder)</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>)            <span class="co"># show me all columns</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_lm">grouped_lm</a></span>(<span class="dt">data =</span> gapminder<span class="op">::</span>gapminder,</a>
-<a class="sourceLine" id="cb8-5" data-line-number="5">                         <span class="dt">dep.vars =</span> <span class="kw">c</span>(lifeExp, pop),</a>
-<a class="sourceLine" id="cb8-6" data-line-number="6">                         <span class="dt">indep.vars =</span> <span class="kw">c</span>(gdpPercap, gdpPercap),</a>
-<a class="sourceLine" id="cb8-7" data-line-number="7">                         <span class="dt">grouping.vars =</span> country)</a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; # A tibble: 284 x 19</span></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt;    country     formula             t.value    beta conf.low conf.high</span></a>
-<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt;    &lt;fct&gt;       &lt;chr&gt;                 &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt;  1 Afghanistan lifeExp ~ gdpPercap  -0.151 -0.0475   -0.751     0.656</span></a>
-<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt;  2 Albania     lifeExp ~ gdpPercap   4.84   0.837     0.452     1.22 </span></a>
-<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="co">#&gt;  3 Algeria     lifeExp ~ gdpPercap   6.71   0.904     0.604     1.21 </span></a>
-<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">#&gt;  4 Angola      lifeExp ~ gdpPercap  -0.998 -0.301    -0.973     0.371</span></a>
-<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="co">#&gt;  5 Argentina   lifeExp ~ gdpPercap   4.74   0.832     0.440     1.22 </span></a>
-<a class="sourceLine" id="cb8-16" data-line-number="16"><span class="co">#&gt;  6 Australia   lifeExp ~ gdpPercap  19.0    0.986     0.871     1.10 </span></a>
-<a class="sourceLine" id="cb8-17" data-line-number="17"><span class="co">#&gt;  7 Austria     lifeExp ~ gdpPercap  26.5    0.993     0.910     1.08 </span></a>
-<a class="sourceLine" id="cb8-18" data-line-number="18"><span class="co">#&gt;  8 Bahrain     lifeExp ~ gdpPercap   6.45   0.898     0.587     1.21 </span></a>
-<a class="sourceLine" id="cb8-19" data-line-number="19"><span class="co">#&gt;  9 Bangladesh  lifeExp ~ gdpPercap   5.05   0.847     0.473     1.22 </span></a>
-<a class="sourceLine" id="cb8-20" data-line-number="20"><span class="co">#&gt; 10 Belgium     lifeExp ~ gdpPercap  26.1    0.993     0.908     1.08 </span></a>
-<a class="sourceLine" id="cb8-21" data-line-number="21"><span class="co">#&gt;    std.error `F value`   df1   df2 `Pr(&gt;F)` partial.etasq</span></a>
-<a class="sourceLine" id="cb8-22" data-line-number="22"><span class="co">#&gt;        &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb8-23" data-line-number="23"><span class="co">#&gt;  1    0.316     0.0227     1    10 8.83e- 1       0.00226</span></a>
-<a class="sourceLine" id="cb8-24" data-line-number="24"><span class="co">#&gt;  2    0.173    23.4        1    10 6.82e- 4       0.701  </span></a>
-<a class="sourceLine" id="cb8-25" data-line-number="25"><span class="co">#&gt;  3    0.135    45.0        1    10 5.33e- 5       0.818  </span></a>
-<a class="sourceLine" id="cb8-26" data-line-number="26"><span class="co">#&gt;  4    0.302     0.997      1    10 3.42e- 1       0.0906 </span></a>
-<a class="sourceLine" id="cb8-27" data-line-number="27"><span class="co">#&gt;  5    0.176    22.4        1    10 7.97e- 4       0.692  </span></a>
-<a class="sourceLine" id="cb8-28" data-line-number="28"><span class="co">#&gt;  6    0.0519  361.         1    10 3.52e- 9       0.973  </span></a>
-<a class="sourceLine" id="cb8-29" data-line-number="29"><span class="co">#&gt;  7    0.0374  703.         1    10 1.34e-10       0.986  </span></a>
-<a class="sourceLine" id="cb8-30" data-line-number="30"><span class="co">#&gt;  8    0.139    41.6        1    10 7.38e- 5       0.806  </span></a>
-<a class="sourceLine" id="cb8-31" data-line-number="31"><span class="co">#&gt;  9    0.168    25.5        1    10 5.03e- 4       0.718  </span></a>
-<a class="sourceLine" id="cb8-32" data-line-number="32"><span class="co">#&gt; 10    0.0380  682.         1    10 1.56e-10       0.986  </span></a>
-<a class="sourceLine" id="cb8-33" data-line-number="33"><span class="co">#&gt;    partial.etasq.conf.low partial.etasq.conf.high partial.omegasq</span></a>
-<a class="sourceLine" id="cb8-34" data-line-number="34"><span class="co">#&gt;                     &lt;dbl&gt;                   &lt;dbl&gt;           &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb8-35" data-line-number="35"><span class="co">#&gt;  1                  0                       0.206       -0.0887  </span></a>
-<a class="sourceLine" id="cb8-36" data-line-number="36"><span class="co">#&gt;  2                  0.235                   0.830        0.651   </span></a>
-<a class="sourceLine" id="cb8-37" data-line-number="37"><span class="co">#&gt;  3                  0.454                   0.896        0.786   </span></a>
-<a class="sourceLine" id="cb8-38" data-line-number="38"><span class="co">#&gt;  4                  0                       0.425       -0.000262</span></a>
-<a class="sourceLine" id="cb8-39" data-line-number="39"><span class="co">#&gt;  5                  0.221                   0.825        0.641   </span></a>
-<a class="sourceLine" id="cb8-40" data-line-number="40"><span class="co">#&gt;  6                  0.903                   0.984        0.968   </span></a>
-<a class="sourceLine" id="cb8-41" data-line-number="41"><span class="co">#&gt;  7                  0.949                   0.992        0.983   </span></a>
-<a class="sourceLine" id="cb8-42" data-line-number="42"><span class="co">#&gt;  8                  0.427                   0.889        0.772   </span></a>
-<a class="sourceLine" id="cb8-43" data-line-number="43"><span class="co">#&gt;  9                  0.261                   0.839        0.671   </span></a>
-<a class="sourceLine" id="cb8-44" data-line-number="44"><span class="co">#&gt; 10                  0.947                   0.992        0.983   </span></a>
-<a class="sourceLine" id="cb8-45" data-line-number="45"><span class="co">#&gt;    partial.omegasq.conf.low partial.omegasq.conf.high  p.value</span></a>
-<a class="sourceLine" id="cb8-46" data-line-number="46"><span class="co">#&gt;                       &lt;dbl&gt;                     &lt;dbl&gt;    &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb8-47" data-line-number="47"><span class="co">#&gt;  1                   -0.257                     0.262 8.83e- 1</span></a>
-<a class="sourceLine" id="cb8-48" data-line-number="48"><span class="co">#&gt;  2                    0.349                     0.978 6.82e- 4</span></a>
-<a class="sourceLine" id="cb8-49" data-line-number="49"><span class="co">#&gt;  3                    0.571                     1.03  5.33e- 5</span></a>
-<a class="sourceLine" id="cb8-50" data-line-number="50"><span class="co">#&gt;  4                   -0.321                     0.524 3.42e- 1</span></a>
-<a class="sourceLine" id="cb8-51" data-line-number="51"><span class="co">#&gt;  5                    0.156                     1.03  7.97e- 4</span></a>
-<a class="sourceLine" id="cb8-52" data-line-number="52"><span class="co">#&gt;  6                    0.911                     1.02  3.52e- 9</span></a>
-<a class="sourceLine" id="cb8-53" data-line-number="53"><span class="co">#&gt;  7                    0.965                     0.999 1.34e-10</span></a>
-<a class="sourceLine" id="cb8-54" data-line-number="54"><span class="co">#&gt;  8                    0.558                     1.02  7.38e- 5</span></a>
-<a class="sourceLine" id="cb8-55" data-line-number="55"><span class="co">#&gt;  9                    0.500                     0.926 5.03e- 4</span></a>
-<a class="sourceLine" id="cb8-56" data-line-number="56"><span class="co">#&gt; 10                    0.965                     0.998 1.56e-10</span></a>
-<a class="sourceLine" id="cb8-57" data-line-number="57"><span class="co">#&gt;    significance</span></a>
-<a class="sourceLine" id="cb8-58" data-line-number="58"><span class="co">#&gt;    &lt;chr&gt;       </span></a>
-<a class="sourceLine" id="cb8-59" data-line-number="59"><span class="co">#&gt;  1 ns          </span></a>
-<a class="sourceLine" id="cb8-60" data-line-number="60"><span class="co">#&gt;  2 ***         </span></a>
-<a class="sourceLine" id="cb8-61" data-line-number="61"><span class="co">#&gt;  3 ***         </span></a>
-<a class="sourceLine" id="cb8-62" data-line-number="62"><span class="co">#&gt;  4 ns          </span></a>
-<a class="sourceLine" id="cb8-63" data-line-number="63"><span class="co">#&gt;  5 ***         </span></a>
-<a class="sourceLine" id="cb8-64" data-line-number="64"><span class="co">#&gt;  6 ***         </span></a>
-<a class="sourceLine" id="cb8-65" data-line-number="65"><span class="co">#&gt;  7 ***         </span></a>
-<a class="sourceLine" id="cb8-66" data-line-number="66"><span class="co">#&gt;  8 ***         </span></a>
-<a class="sourceLine" id="cb8-67" data-line-number="67"><span class="co">#&gt;  9 ***         </span></a>
-<a class="sourceLine" id="cb8-68" data-line-number="68"><span class="co">#&gt; 10 ***         </span></a>
-<a class="sourceLine" id="cb8-69" data-line-number="69"><span class="co">#&gt; # ... with 274 more rows</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(gapminder)
+<span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>)            <span class="co"># show me all columns</span>
+
+groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_lm">grouped_lm</a></span>(<span class="dt">data =</span> gapminder<span class="op">::</span>gapminder,
+                         <span class="dt">dep.vars =</span> <span class="kw">c</span>(lifeExp, pop),
+                         <span class="dt">indep.vars =</span> <span class="kw">c</span>(gdpPercap, gdpPercap),
+                         <span class="dt">grouping.vars =</span> country)
+<span class="co">#&gt; # A tibble: 284 x 19</span>
+<span class="co">#&gt;    country     formula             t.value    beta conf.low conf.high</span>
+<span class="co">#&gt;    &lt;fct&gt;       &lt;chr&gt;                 &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Afghanistan lifeExp ~ gdpPercap  -0.151 -0.0475   -0.751     0.656</span>
+<span class="co">#&gt;  2 Albania     lifeExp ~ gdpPercap   4.84   0.837     0.452     1.22 </span>
+<span class="co">#&gt;  3 Algeria     lifeExp ~ gdpPercap   6.71   0.904     0.604     1.21 </span>
+<span class="co">#&gt;  4 Angola      lifeExp ~ gdpPercap  -0.998 -0.301    -0.973     0.371</span>
+<span class="co">#&gt;  5 Argentina   lifeExp ~ gdpPercap   4.74   0.832     0.440     1.22 </span>
+<span class="co">#&gt;  6 Australia   lifeExp ~ gdpPercap  19.0    0.986     0.871     1.10 </span>
+<span class="co">#&gt;  7 Austria     lifeExp ~ gdpPercap  26.5    0.993     0.910     1.08 </span>
+<span class="co">#&gt;  8 Bahrain     lifeExp ~ gdpPercap   6.45   0.898     0.587     1.21 </span>
+<span class="co">#&gt;  9 Bangladesh  lifeExp ~ gdpPercap   5.05   0.847     0.473     1.22 </span>
+<span class="co">#&gt; 10 Belgium     lifeExp ~ gdpPercap  26.1    0.993     0.908     1.08 </span>
+<span class="co">#&gt;    std.error `F value`   df1   df2 `Pr(&gt;F)` partial.etasq</span>
+<span class="co">#&gt;        &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;</span>
+<span class="co">#&gt;  1    0.316     0.0227     1    10 8.83e- 1       0.00226</span>
+<span class="co">#&gt;  2    0.173    23.4        1    10 6.82e- 4       0.701  </span>
+<span class="co">#&gt;  3    0.135    45.0        1    10 5.33e- 5       0.818  </span>
+<span class="co">#&gt;  4    0.302     0.997      1    10 3.42e- 1       0.0906 </span>
+<span class="co">#&gt;  5    0.176    22.4        1    10 7.97e- 4       0.692  </span>
+<span class="co">#&gt;  6    0.0519  361.         1    10 3.52e- 9       0.973  </span>
+<span class="co">#&gt;  7    0.0374  703.         1    10 1.34e-10       0.986  </span>
+<span class="co">#&gt;  8    0.139    41.6        1    10 7.38e- 5       0.806  </span>
+<span class="co">#&gt;  9    0.168    25.5        1    10 5.03e- 4       0.718  </span>
+<span class="co">#&gt; 10    0.0380  682.         1    10 1.56e-10       0.986  </span>
+<span class="co">#&gt;    partial.etasq.conf.low partial.etasq.conf.high partial.omegasq</span>
+<span class="co">#&gt;                     &lt;dbl&gt;                   &lt;dbl&gt;           &lt;dbl&gt;</span>
+<span class="co">#&gt;  1                  0                       0.206       -0.0887  </span>
+<span class="co">#&gt;  2                  0.235                   0.830        0.651   </span>
+<span class="co">#&gt;  3                  0.454                   0.896        0.786   </span>
+<span class="co">#&gt;  4                  0                       0.425       -0.000262</span>
+<span class="co">#&gt;  5                  0.221                   0.825        0.641   </span>
+<span class="co">#&gt;  6                  0.903                   0.984        0.968   </span>
+<span class="co">#&gt;  7                  0.949                   0.992        0.983   </span>
+<span class="co">#&gt;  8                  0.427                   0.889        0.772   </span>
+<span class="co">#&gt;  9                  0.261                   0.839        0.671   </span>
+<span class="co">#&gt; 10                  0.947                   0.992        0.983   </span>
+<span class="co">#&gt;    partial.omegasq.conf.low partial.omegasq.conf.high  p.value</span>
+<span class="co">#&gt;                       &lt;dbl&gt;                     &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt;  1                   -0.351                     0.388 8.83e- 1</span>
+<span class="co">#&gt;  2                    0.364                     0.957 6.82e- 4</span>
+<span class="co">#&gt;  3                    0.527                     0.988 5.33e- 5</span>
+<span class="co">#&gt;  4                   -0.274                     0.456 3.42e- 1</span>
+<span class="co">#&gt;  5                    0.223                     0.998 7.97e- 4</span>
+<span class="co">#&gt;  6                    0.948                     0.996 3.52e- 9</span>
+<span class="co">#&gt;  7                    0.966                     1.000 1.34e-10</span>
+<span class="co">#&gt;  8                    0.587                     1.02  7.38e- 5</span>
+<span class="co">#&gt;  9                    0.514                     0.872 5.03e- 4</span>
+<span class="co">#&gt; 10                    0.968                     0.999 1.56e-10</span>
+<span class="co">#&gt;    significance</span>
+<span class="co">#&gt;    &lt;chr&gt;       </span>
+<span class="co">#&gt;  1 ns          </span>
+<span class="co">#&gt;  2 ***         </span>
+<span class="co">#&gt;  3 ***         </span>
+<span class="co">#&gt;  4 ns          </span>
+<span class="co">#&gt;  5 ***         </span>
+<span class="co">#&gt;  6 ***         </span>
+<span class="co">#&gt;  7 ***         </span>
+<span class="co">#&gt;  8 ***         </span>
+<span class="co">#&gt;  9 ***         </span>
+<span class="co">#&gt; 10 ***         </span>
+<span class="co">#&gt; # ... with 274 more rows</span></code></pre></div>
 <p>Notice the order in which the dependent and independent variables are entered. If this order is incorrect, the result will also be incorrect. So it is always a good idea to check the <em>formula</em> column to see if you have run the correct linear models.</p>
 <p>We saw example with one grouping variable. This can be done with multiple grouping variables as well. For example, with the <code>diamonds</code> dataset from <code>ggplot2</code> library, let’s assess the relation between carat <em>and</em> price of a diamond for each type of clarity <em>and</em> cut-</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>)            <span class="co"># show me all columns</span></a>
-<a class="sourceLine" id="cb9-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5">groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_lm">grouped_lm</a></span>(<span class="dt">data =</span> ggplot2<span class="op">::</span>diamonds,</a>
-<a class="sourceLine" id="cb9-6" data-line-number="6">                         <span class="dt">dep.vars =</span> price,</a>
-<a class="sourceLine" id="cb9-7" data-line-number="7">                         <span class="dt">indep.vars =</span> carat,</a>
-<a class="sourceLine" id="cb9-8" data-line-number="8">                         <span class="dt">grouping.vars =</span> <span class="kw">c</span>(cut, clarity)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="dt">.data =</span> ., cut)</a>
-<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co">#&gt; # A tibble: 40 x 20</span></a>
-<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="co">#&gt;    cut   clarity formula       t.value  beta conf.low conf.high std.error</span></a>
-<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="co">#&gt;    &lt;ord&gt; &lt;ord&gt;   &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb9-13" data-line-number="13"><span class="co">#&gt;  1 Fair  VS2     price ~ carat   42.0  0.934    0.890     0.978   0.0222 </span></a>
-<a class="sourceLine" id="cb9-14" data-line-number="14"><span class="co">#&gt;  2 Fair  SI2     price ~ carat   69.1  0.955    0.928     0.982   0.0138 </span></a>
-<a class="sourceLine" id="cb9-15" data-line-number="15"><span class="co">#&gt;  3 Fair  SI1     price ~ carat   58.9  0.946    0.915     0.978   0.0161 </span></a>
-<a class="sourceLine" id="cb9-16" data-line-number="16"><span class="co">#&gt;  4 Fair  I1      price ~ carat   58.7  0.971    0.939     1.00    0.0165 </span></a>
-<a class="sourceLine" id="cb9-17" data-line-number="17"><span class="co">#&gt;  5 Fair  VVS1    price ~ carat    8.58 0.911    0.685     1.14    0.106  </span></a>
-<a class="sourceLine" id="cb9-18" data-line-number="18"><span class="co">#&gt;  6 Fair  VS1     price ~ carat   36.6  0.943    0.892     0.994   0.0257 </span></a>
-<a class="sourceLine" id="cb9-19" data-line-number="19"><span class="co">#&gt;  7 Fair  IF      price ~ carat    8.22 0.952    0.678     1.23    0.116  </span></a>
-<a class="sourceLine" id="cb9-20" data-line-number="20"><span class="co">#&gt;  8 Fair  VVS2    price ~ carat   13.6  0.857    0.732     0.983   0.0629 </span></a>
-<a class="sourceLine" id="cb9-21" data-line-number="21"><span class="co">#&gt;  9 Good  VS1     price ~ carat   74.0  0.946    0.921     0.971   0.0128 </span></a>
-<a class="sourceLine" id="cb9-22" data-line-number="22"><span class="co">#&gt; 10 Good  SI2     price ~ carat  103.   0.953    0.934     0.971   0.00926</span></a>
-<a class="sourceLine" id="cb9-23" data-line-number="23"><span class="co">#&gt;    `F value`   df1   df2  `Pr(&gt;F)` partial.etasq partial.etasq.conf.low</span></a>
-<a class="sourceLine" id="cb9-24" data-line-number="24"><span class="co">#&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;                  &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb9-25" data-line-number="25"><span class="co">#&gt;  1    1761.      1   259 1.55e-117         0.872                  0.846</span></a>
-<a class="sourceLine" id="cb9-26" data-line-number="26"><span class="co">#&gt;  2    4778.      1   464 1.96e-246         0.911                  0.899</span></a>
-<a class="sourceLine" id="cb9-27" data-line-number="27"><span class="co">#&gt;  3    3472.      1   406 4.58e-201         0.895                  0.879</span></a>
-<a class="sourceLine" id="cb9-28" data-line-number="28"><span class="co">#&gt;  4    3449.      1   208 1.86e-131         0.943                  0.930</span></a>
-<a class="sourceLine" id="cb9-29" data-line-number="29"><span class="co">#&gt;  5      73.6     1    15 3.59e-  7         0.831                  0.588</span></a>
-<a class="sourceLine" id="cb9-30" data-line-number="30"><span class="co">#&gt;  6    1341.      1   168 5.40e- 82         0.889                  0.859</span></a>
-<a class="sourceLine" id="cb9-31" data-line-number="31"><span class="co">#&gt;  7      67.5     1     7 7.67e-  5         0.906                  0.582</span></a>
-<a class="sourceLine" id="cb9-32" data-line-number="32"><span class="co">#&gt;  8     186.      1    67 5.54e- 21         0.735                  0.619</span></a>
-<a class="sourceLine" id="cb9-33" data-line-number="33"><span class="co">#&gt;  9    5479.      1   646 9.62e-318         0.895                  0.882</span></a>
-<a class="sourceLine" id="cb9-34" data-line-number="34"><span class="co">#&gt; 10   10593.      1  1079 0.                0.908                  0.899</span></a>
-<a class="sourceLine" id="cb9-35" data-line-number="35"><span class="co">#&gt;    partial.etasq.conf.high partial.omegasq partial.omegasq.conf.low</span></a>
-<a class="sourceLine" id="cb9-36" data-line-number="36"><span class="co">#&gt;                      &lt;dbl&gt;           &lt;dbl&gt;                    &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb9-37" data-line-number="37"><span class="co">#&gt;  1                   0.890           0.871                    0.839</span></a>
-<a class="sourceLine" id="cb9-38" data-line-number="38"><span class="co">#&gt;  2                   0.922           0.911                    0.891</span></a>
-<a class="sourceLine" id="cb9-39" data-line-number="39"><span class="co">#&gt;  3                   0.908           0.895                    0.873</span></a>
-<a class="sourceLine" id="cb9-40" data-line-number="40"><span class="co">#&gt;  4                   0.952           0.943                    0.923</span></a>
-<a class="sourceLine" id="cb9-41" data-line-number="41"><span class="co">#&gt;  5                   0.897           0.810                    0.680</span></a>
-<a class="sourceLine" id="cb9-42" data-line-number="42"><span class="co">#&gt;  6                   0.908           0.887                    0.856</span></a>
-<a class="sourceLine" id="cb9-43" data-line-number="43"><span class="co">#&gt;  7                   0.948           0.881                    0.591</span></a>
-<a class="sourceLine" id="cb9-44" data-line-number="44"><span class="co">#&gt;  8                   0.800           0.728                    0.653</span></a>
-<a class="sourceLine" id="cb9-45" data-line-number="45"><span class="co">#&gt;  9                   0.905           0.894                    0.877</span></a>
-<a class="sourceLine" id="cb9-46" data-line-number="46"><span class="co">#&gt; 10                   0.915           0.907                    0.897</span></a>
-<a class="sourceLine" id="cb9-47" data-line-number="47"><span class="co">#&gt;    partial.omegasq.conf.high   p.value significance</span></a>
-<a class="sourceLine" id="cb9-48" data-line-number="48"><span class="co">#&gt;                        &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       </span></a>
-<a class="sourceLine" id="cb9-49" data-line-number="49"><span class="co">#&gt;  1                     0.899 1.55e-117 ***         </span></a>
-<a class="sourceLine" id="cb9-50" data-line-number="50"><span class="co">#&gt;  2                     0.931 1.96e-246 ***         </span></a>
-<a class="sourceLine" id="cb9-51" data-line-number="51"><span class="co">#&gt;  3                     0.916 4.58e-201 ***         </span></a>
-<a class="sourceLine" id="cb9-52" data-line-number="52"><span class="co">#&gt;  4                     0.964 1.86e-131 ***         </span></a>
-<a class="sourceLine" id="cb9-53" data-line-number="53"><span class="co">#&gt;  5                     0.944 3.59e-  7 ***         </span></a>
-<a class="sourceLine" id="cb9-54" data-line-number="54"><span class="co">#&gt;  6                     0.923 5.40e- 82 ***         </span></a>
-<a class="sourceLine" id="cb9-55" data-line-number="55"><span class="co">#&gt;  7                     1.13  7.67e-  5 ***         </span></a>
-<a class="sourceLine" id="cb9-56" data-line-number="56"><span class="co">#&gt;  8                     0.812 5.54e- 21 ***         </span></a>
-<a class="sourceLine" id="cb9-57" data-line-number="57"><span class="co">#&gt;  9                     0.911 9.62e-318 ***         </span></a>
-<a class="sourceLine" id="cb9-58" data-line-number="58"><span class="co">#&gt; 10                     0.918 0.        ***         </span></a>
-<a class="sourceLine" id="cb9-59" data-line-number="59"><span class="co">#&gt; # ... with 30 more rows</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(dplyr)
+<span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>)            <span class="co"># show me all columns</span>
+
+groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_lm">grouped_lm</a></span>(<span class="dt">data =</span> ggplot2<span class="op">::</span>diamonds,
+                         <span class="dt">dep.vars =</span> price,
+                         <span class="dt">indep.vars =</span> carat,
+                         <span class="dt">grouping.vars =</span> <span class="kw">c</span>(cut, clarity)) <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="dt">.data =</span> ., cut)
+<span class="co">#&gt; # A tibble: 40 x 20</span>
+<span class="co">#&gt;    cut   clarity formula       t.value  beta conf.low conf.high std.error</span>
+<span class="co">#&gt;    &lt;ord&gt; &lt;ord&gt;   &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Fair  VS2     price ~ carat   42.0  0.934    0.890     0.978   0.0222 </span>
+<span class="co">#&gt;  2 Fair  SI2     price ~ carat   69.1  0.955    0.928     0.982   0.0138 </span>
+<span class="co">#&gt;  3 Fair  SI1     price ~ carat   58.9  0.946    0.915     0.978   0.0161 </span>
+<span class="co">#&gt;  4 Fair  I1      price ~ carat   58.7  0.971    0.939     1.00    0.0165 </span>
+<span class="co">#&gt;  5 Fair  VVS1    price ~ carat    8.58 0.911    0.685     1.14    0.106  </span>
+<span class="co">#&gt;  6 Fair  VS1     price ~ carat   36.6  0.943    0.892     0.994   0.0257 </span>
+<span class="co">#&gt;  7 Fair  IF      price ~ carat    8.22 0.952    0.678     1.23    0.116  </span>
+<span class="co">#&gt;  8 Fair  VVS2    price ~ carat   13.6  0.857    0.732     0.983   0.0629 </span>
+<span class="co">#&gt;  9 Good  VS1     price ~ carat   74.0  0.946    0.921     0.971   0.0128 </span>
+<span class="co">#&gt; 10 Good  SI2     price ~ carat  103.   0.953    0.934     0.971   0.00926</span>
+<span class="co">#&gt;    `F value`   df1   df2  `Pr(&gt;F)` partial.etasq partial.etasq.conf.low</span>
+<span class="co">#&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;                  &lt;dbl&gt;</span>
+<span class="co">#&gt;  1    1761.      1   259 1.55e-117         0.872                  0.846</span>
+<span class="co">#&gt;  2    4778.      1   464 1.96e-246         0.911                  0.899</span>
+<span class="co">#&gt;  3    3472.      1   406 4.58e-201         0.895                  0.879</span>
+<span class="co">#&gt;  4    3449.      1   208 1.86e-131         0.943                  0.930</span>
+<span class="co">#&gt;  5      73.6     1    15 3.59e-  7         0.831                  0.588</span>
+<span class="co">#&gt;  6    1341.      1   168 5.40e- 82         0.889                  0.859</span>
+<span class="co">#&gt;  7      67.5     1     7 7.67e-  5         0.906                  0.582</span>
+<span class="co">#&gt;  8     186.      1    67 5.54e- 21         0.735                  0.619</span>
+<span class="co">#&gt;  9    5479.      1   646 9.62e-318         0.895                  0.882</span>
+<span class="co">#&gt; 10   10593.      1  1079 0.                0.908                  0.899</span>
+<span class="co">#&gt;    partial.etasq.conf.high partial.omegasq partial.omegasq.conf.low</span>
+<span class="co">#&gt;                      &lt;dbl&gt;           &lt;dbl&gt;                    &lt;dbl&gt;</span>
+<span class="co">#&gt;  1                   0.890           0.871                    0.843</span>
+<span class="co">#&gt;  2                   0.922           0.911                    0.893</span>
+<span class="co">#&gt;  3                   0.908           0.895                    0.874</span>
+<span class="co">#&gt;  4                   0.952           0.943                    0.923</span>
+<span class="co">#&gt;  5                   0.897           0.810                    0.673</span>
+<span class="co">#&gt;  6                   0.908           0.887                    0.852</span>
+<span class="co">#&gt;  7                   0.948           0.881                    0.688</span>
+<span class="co">#&gt;  8                   0.800           0.728                    0.655</span>
+<span class="co">#&gt;  9                   0.905           0.894                    0.877</span>
+<span class="co">#&gt; 10                   0.915           0.907                    0.897</span>
+<span class="co">#&gt;    partial.omegasq.conf.high   p.value significance</span>
+<span class="co">#&gt;                        &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt;  1                     0.896 1.55e-117 ***         </span>
+<span class="co">#&gt;  2                     0.931 1.96e-246 ***         </span>
+<span class="co">#&gt;  3                     0.915 4.58e-201 ***         </span>
+<span class="co">#&gt;  4                     0.963 1.86e-131 ***         </span>
+<span class="co">#&gt;  5                     0.951 3.59e-  7 ***         </span>
+<span class="co">#&gt;  6                     0.924 5.40e- 82 ***         </span>
+<span class="co">#&gt;  7                     1.05  7.67e-  5 ***         </span>
+<span class="co">#&gt;  8                     0.816 5.54e- 21 ***         </span>
+<span class="co">#&gt;  9                     0.913 9.62e-318 ***         </span>
+<span class="co">#&gt; 10                     0.916 0.        ***         </span>
+<span class="co">#&gt; # ... with 30 more rows</span></code></pre></div>
 <ul>
 <li><code>grouped_robustlm</code></li>
 </ul>
 <p>There is also robust variant of linear regression (as implemented in <code><a href="http://www.rdocumentation.org/packages/robust/topics/lmRob">robust::lmRob</a></code>)-</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">library</span>(gapminder)</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>)            <span class="co"># show me all columns</span></a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb10-5" data-line-number="5">groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_robustlm">grouped_robustlm</a></span>(<span class="dt">data =</span> gapminder<span class="op">::</span>gapminder,</a>
-<a class="sourceLine" id="cb10-6" data-line-number="6">                         <span class="dt">dep.vars =</span> <span class="kw">c</span>(lifeExp, pop),</a>
-<a class="sourceLine" id="cb10-7" data-line-number="7">                         <span class="dt">indep.vars =</span> <span class="kw">c</span>(gdpPercap, gdpPercap),</a>
-<a class="sourceLine" id="cb10-8" data-line-number="8">                         <span class="dt">grouping.vars =</span> <span class="kw">c</span>(continent, country)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="dt">.data =</span> ., continent, country)</a>
-<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co">#&gt; # A tibble: 284 x 8</span></a>
-<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co">#&gt;    continent country      formula             t.value estimate std.error</span></a>
-<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co">#&gt;    &lt;fct&gt;     &lt;fct&gt;        &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb10-13" data-line-number="13"><span class="co">#&gt;  1 Africa    Algeria      lifeExp ~ gdpPercap   5.82     0.904    0.155 </span></a>
-<a class="sourceLine" id="cb10-14" data-line-number="14"><span class="co">#&gt;  2 Africa    Algeria      pop ~ gdpPercap       2.49     0.869    0.349 </span></a>
-<a class="sourceLine" id="cb10-15" data-line-number="15"><span class="co">#&gt;  3 Africa    Angola       lifeExp ~ gdpPercap  -0.734   -0.413    0.563 </span></a>
-<a class="sourceLine" id="cb10-16" data-line-number="16"><span class="co">#&gt;  4 Africa    Angola       pop ~ gdpPercap      -2.45    -0.541    0.221 </span></a>
-<a class="sourceLine" id="cb10-17" data-line-number="17"><span class="co">#&gt;  5 Africa    Benin        lifeExp ~ gdpPercap   2.46     0.773    0.315 </span></a>
-<a class="sourceLine" id="cb10-18" data-line-number="18"><span class="co">#&gt;  6 Africa    Benin        pop ~ gdpPercap       7.18     0.929    0.129 </span></a>
-<a class="sourceLine" id="cb10-19" data-line-number="19"><span class="co">#&gt;  7 Africa    Botswana     lifeExp ~ gdpPercap   4.42     1.47     0.332 </span></a>
-<a class="sourceLine" id="cb10-20" data-line-number="20"><span class="co">#&gt;  8 Africa    Botswana     pop ~ gdpPercap      15.3      1.08     0.0706</span></a>
-<a class="sourceLine" id="cb10-21" data-line-number="21"><span class="co">#&gt;  9 Africa    Burkina Faso lifeExp ~ gdpPercap   2.14     0.882    0.413 </span></a>
-<a class="sourceLine" id="cb10-22" data-line-number="22"><span class="co">#&gt; 10 Africa    Burkina Faso pop ~ gdpPercap       7.17     0.920    0.128 </span></a>
-<a class="sourceLine" id="cb10-23" data-line-number="23"><span class="co">#&gt;         p.value significance</span></a>
-<a class="sourceLine" id="cb10-24" data-line-number="24"><span class="co">#&gt;           &lt;dbl&gt; &lt;chr&gt;       </span></a>
-<a class="sourceLine" id="cb10-25" data-line-number="25"><span class="co">#&gt;  1 0.000168     ***         </span></a>
-<a class="sourceLine" id="cb10-26" data-line-number="26"><span class="co">#&gt;  2 0.0319       *           </span></a>
-<a class="sourceLine" id="cb10-27" data-line-number="27"><span class="co">#&gt;  3 0.480        ns          </span></a>
-<a class="sourceLine" id="cb10-28" data-line-number="28"><span class="co">#&gt;  4 0.0344       *           </span></a>
-<a class="sourceLine" id="cb10-29" data-line-number="29"><span class="co">#&gt;  5 0.0338       *           </span></a>
-<a class="sourceLine" id="cb10-30" data-line-number="30"><span class="co">#&gt;  6 0.0000299    ***         </span></a>
-<a class="sourceLine" id="cb10-31" data-line-number="31"><span class="co">#&gt;  7 0.00130      **          </span></a>
-<a class="sourceLine" id="cb10-32" data-line-number="32"><span class="co">#&gt;  8 0.0000000294 ***         </span></a>
-<a class="sourceLine" id="cb10-33" data-line-number="33"><span class="co">#&gt;  9 0.0583       ns          </span></a>
-<a class="sourceLine" id="cb10-34" data-line-number="34"><span class="co">#&gt; 10 0.0000304    ***         </span></a>
-<a class="sourceLine" id="cb10-35" data-line-number="35"><span class="co">#&gt; # ... with 274 more rows</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(gapminder)
+<span class="kw">library</span>(dplyr)
+<span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>)            <span class="co"># show me all columns</span>
+
+groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_robustlm">grouped_robustlm</a></span>(<span class="dt">data =</span> gapminder<span class="op">::</span>gapminder,
+                         <span class="dt">dep.vars =</span> <span class="kw">c</span>(lifeExp, pop),
+                         <span class="dt">indep.vars =</span> <span class="kw">c</span>(gdpPercap, gdpPercap),
+                         <span class="dt">grouping.vars =</span> <span class="kw">c</span>(continent, country)) <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="dt">.data =</span> ., continent, country)
+<span class="co">#&gt; # A tibble: 284 x 8</span>
+<span class="co">#&gt;    continent country      formula             t.value estimate std.error</span>
+<span class="co">#&gt;    &lt;fct&gt;     &lt;fct&gt;        &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Africa    Algeria      lifeExp ~ gdpPercap   5.82     0.904    0.155 </span>
+<span class="co">#&gt;  2 Africa    Algeria      pop ~ gdpPercap       2.49     0.869    0.349 </span>
+<span class="co">#&gt;  3 Africa    Angola       lifeExp ~ gdpPercap  -0.734   -0.413    0.563 </span>
+<span class="co">#&gt;  4 Africa    Angola       pop ~ gdpPercap      -2.45    -0.541    0.221 </span>
+<span class="co">#&gt;  5 Africa    Benin        lifeExp ~ gdpPercap   2.46     0.773    0.315 </span>
+<span class="co">#&gt;  6 Africa    Benin        pop ~ gdpPercap       7.18     0.929    0.129 </span>
+<span class="co">#&gt;  7 Africa    Botswana     lifeExp ~ gdpPercap   4.42     1.47     0.332 </span>
+<span class="co">#&gt;  8 Africa    Botswana     pop ~ gdpPercap      15.3      1.08     0.0706</span>
+<span class="co">#&gt;  9 Africa    Burkina Faso lifeExp ~ gdpPercap   2.14     0.882    0.413 </span>
+<span class="co">#&gt; 10 Africa    Burkina Faso pop ~ gdpPercap       7.17     0.920    0.128 </span>
+<span class="co">#&gt;         p.value significance</span>
+<span class="co">#&gt;           &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt;  1 0.000168     ***         </span>
+<span class="co">#&gt;  2 0.0319       *           </span>
+<span class="co">#&gt;  3 0.480        ns          </span>
+<span class="co">#&gt;  4 0.0344       *           </span>
+<span class="co">#&gt;  5 0.0338       *           </span>
+<span class="co">#&gt;  6 0.0000299    ***         </span>
+<span class="co">#&gt;  7 0.00130      **          </span>
+<span class="co">#&gt;  8 0.0000000294 ***         </span>
+<span class="co">#&gt;  9 0.0583       ns          </span>
+<span class="co">#&gt; 10 0.0000304    ***         </span>
+<span class="co">#&gt; # ... with 274 more rows</span></code></pre></div>
 <ul>
 <li><code>grouped_glm</code></li>
 </ul>
 <p>The option to run generalized linear model across different levels of the grouping variable-</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_glm">grouped_glm</a></span>(<span class="dt">data =</span> datasets<span class="op">::</span>mtcars,</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2">                          <span class="dt">dep.vars =</span> am,</a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">                          <span class="dt">indep.vars =</span> wt,</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4">                          <span class="dt">grouping.vars =</span> cyl,</a>
-<a class="sourceLine" id="cb11-5" data-line-number="5">                          <span class="dt">family =</span> <span class="st">"gaussian"</span>)</a>
-<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="co">#&gt; # A tibble: 3 x 9</span></a>
-<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="co">#&gt;     cyl formula statistic estimate conf.low conf.high std.error p.value</span></a>
-<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt; 1     6 am ~ wt     -6.85   -1.43    -1.83    -1.02       0.208 0.00101</span></a>
-<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="co">#&gt; 2     4 am ~ wt     -3.22   -0.600   -0.965   -0.235      0.186 0.0104 </span></a>
-<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="co">#&gt; 3     8 am ~ wt     -1.30   -0.168   -0.421    0.0855     0.129 0.218  </span></a>
-<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">#&gt;   significance</span></a>
-<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="co">#&gt;   &lt;chr&gt;       </span></a>
-<a class="sourceLine" id="cb11-14" data-line-number="14"><span class="co">#&gt; 1 **          </span></a>
-<a class="sourceLine" id="cb11-15" data-line-number="15"><span class="co">#&gt; 2 *           </span></a>
-<a class="sourceLine" id="cb11-16" data-line-number="16"><span class="co">#&gt; 3 ns</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_glm">grouped_glm</a></span>(<span class="dt">data =</span> datasets<span class="op">::</span>mtcars,
+                          <span class="dt">dep.vars =</span> am,
+                          <span class="dt">indep.vars =</span> wt,
+                          <span class="dt">grouping.vars =</span> cyl,
+                          <span class="dt">family =</span> <span class="st">"gaussian"</span>)
+<span class="co">#&gt; # A tibble: 3 x 9</span>
+<span class="co">#&gt;     cyl formula statistic estimate conf.low conf.high std.error p.value</span>
+<span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;</span>
+<span class="co">#&gt; 1     6 am ~ wt     -6.85   -1.43    -1.83    -1.02       0.208 0.00101</span>
+<span class="co">#&gt; 2     4 am ~ wt     -3.22   -0.600   -0.965   -0.235      0.186 0.0104 </span>
+<span class="co">#&gt; 3     8 am ~ wt     -1.30   -0.168   -0.421    0.0855     0.129 0.218  </span>
+<span class="co">#&gt;   significance</span>
+<span class="co">#&gt;   &lt;chr&gt;       </span>
+<span class="co">#&gt; 1 **          </span>
+<span class="co">#&gt; 2 *           </span>
+<span class="co">#&gt; 3 ns</span></code></pre></div>
 <ul>
 <li><code>grouped_proptest</code></li>
 </ul>
 <p>This function helps carry out one-sample proportion tests with a unique variable for multiple grouping variables-</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">library</span>(datasets)</a>
-<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>)            <span class="co"># show me all columns</span></a>
-<a class="sourceLine" id="cb12-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb12-4" data-line-number="4">groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_proptest">grouped_proptest</a></span>(<span class="dt">data =</span> mtcars,</a>
-<a class="sourceLine" id="cb12-5" data-line-number="5">                               <span class="dt">grouping.vars =</span> cyl,</a>
-<a class="sourceLine" id="cb12-6" data-line-number="6">                               <span class="dt">measure =</span> am)</a>
-<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt; # A tibble: 3 x 7</span></a>
-<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt;     cyl `0`    `1`    `Chi-squared`    df `p-value` significance</span></a>
-<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       </span></a>
-<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="co">#&gt; 1     6 57.14% 42.86%         0.143     1     0.705 ns          </span></a>
-<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="co">#&gt; 2     4 27.27% 72.73%         2.27      1     0.132 ns          </span></a>
-<a class="sourceLine" id="cb12-12" data-line-number="12"><span class="co">#&gt; 3     8 85.71% 14.29%         7.14      1     0.008 **</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(datasets)
+<span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>)            <span class="co"># show me all columns</span>
+
+groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_proptest">grouped_proptest</a></span>(<span class="dt">data =</span> mtcars,
+                               <span class="dt">grouping.vars =</span> cyl,
+                               <span class="dt">measure =</span> am)
+<span class="co">#&gt; # A tibble: 3 x 7</span>
+<span class="co">#&gt;     cyl `0`    `1`    `Chi-squared`    df `p-value` significance</span>
+<span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt; 1     6 57.14% 42.86%         0.143     1     0.705 ns          </span>
+<span class="co">#&gt; 2     4 27.27% 72.73%         2.27      1     0.132 ns          </span>
+<span class="co">#&gt; 3     8 85.71% 14.29%         7.14      1     0.008 **</span></code></pre></div>
 <ul>
 <li><code>grouped_ttest</code></li>
 </ul>
 <p>This function can help you carry out t-tests, paired or independent, on multiple variables across multiple groups. Deomostrating how to use this function is going to first require getting the <code>iris</code> dataset into long format. Let’s say we want to investigate if <code>Sepal</code> part of the flower has greater measurement (length or width) than <code>Petal</code> part of the flower for <strong>each</strong> <em>Iris</em> species.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co"># loading the necessary libraries</span></a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co"># converting the iris dataset to long format</span></a>
-<a class="sourceLine" id="cb13-5" data-line-number="5">iris_long &lt;-<span class="st"> </span>datasets<span class="op">::</span>iris <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">.data =</span> ., <span class="dt">id =</span> dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/ranking.html">row_number</a></span>(<span class="dt">x =</span> Species)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="st">  </span>tidyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/gather">gather</a></span>(</a>
-<a class="sourceLine" id="cb13-8" data-line-number="8">    <span class="dt">data =</span> .,</a>
-<a class="sourceLine" id="cb13-9" data-line-number="9">    <span class="dt">key =</span> <span class="st">"condition"</span>,</a>
-<a class="sourceLine" id="cb13-10" data-line-number="10">    <span class="dt">value =</span> <span class="st">"value"</span>,</a>
-<a class="sourceLine" id="cb13-11" data-line-number="11">    Sepal.Length<span class="op">:</span>Petal.Width,</a>
-<a class="sourceLine" id="cb13-12" data-line-number="12">    <span class="dt">convert =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb13-13" data-line-number="13">    <span class="dt">factor_key =</span> <span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb13-14" data-line-number="14">  ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb13-15" data-line-number="15"><span class="st">  </span>tidyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/separate">separate</a></span>(</a>
-<a class="sourceLine" id="cb13-16" data-line-number="16">    <span class="dt">col =</span> <span class="st">"condition"</span>,</a>
-<a class="sourceLine" id="cb13-17" data-line-number="17">    <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">"part"</span>, <span class="st">"measure"</span>),</a>
-<a class="sourceLine" id="cb13-18" data-line-number="18">    <span class="dt">sep =</span> <span class="st">"</span><span class="ch">\\</span><span class="st">."</span>,</a>
-<a class="sourceLine" id="cb13-19" data-line-number="19">    <span class="dt">convert =</span> <span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb13-20" data-line-number="20">  ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb13-21" data-line-number="21"><span class="st">  </span>tibble<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/as_tibble">as_data_frame</a></span>(<span class="dt">x =</span> .)</a>
-<a class="sourceLine" id="cb13-22" data-line-number="22"></a>
-<a class="sourceLine" id="cb13-23" data-line-number="23"><span class="co"># check the long format iris dataset</span></a>
-<a class="sourceLine" id="cb13-24" data-line-number="24">iris_long</a>
-<a class="sourceLine" id="cb13-25" data-line-number="25"><span class="co">#&gt; # A tibble: 600 x 5</span></a>
-<a class="sourceLine" id="cb13-26" data-line-number="26"><span class="co">#&gt;    Species    id part  measure value</span></a>
-<a class="sourceLine" id="cb13-27" data-line-number="27"><span class="co">#&gt;    &lt;fct&gt;   &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb13-28" data-line-number="28"><span class="co">#&gt;  1 setosa      1 Sepal Length    5.1</span></a>
-<a class="sourceLine" id="cb13-29" data-line-number="29"><span class="co">#&gt;  2 setosa      2 Sepal Length    4.9</span></a>
-<a class="sourceLine" id="cb13-30" data-line-number="30"><span class="co">#&gt;  3 setosa      3 Sepal Length    4.7</span></a>
-<a class="sourceLine" id="cb13-31" data-line-number="31"><span class="co">#&gt;  4 setosa      4 Sepal Length    4.6</span></a>
-<a class="sourceLine" id="cb13-32" data-line-number="32"><span class="co">#&gt;  5 setosa      5 Sepal Length    5  </span></a>
-<a class="sourceLine" id="cb13-33" data-line-number="33"><span class="co">#&gt;  6 setosa      6 Sepal Length    5.4</span></a>
-<a class="sourceLine" id="cb13-34" data-line-number="34"><span class="co">#&gt;  7 setosa      7 Sepal Length    4.6</span></a>
-<a class="sourceLine" id="cb13-35" data-line-number="35"><span class="co">#&gt;  8 setosa      8 Sepal Length    5  </span></a>
-<a class="sourceLine" id="cb13-36" data-line-number="36"><span class="co">#&gt;  9 setosa      9 Sepal Length    4.4</span></a>
-<a class="sourceLine" id="cb13-37" data-line-number="37"><span class="co">#&gt; 10 setosa     10 Sepal Length    4.9</span></a>
-<a class="sourceLine" id="cb13-38" data-line-number="38"><span class="co">#&gt; # ... with 590 more rows</span></a>
-<a class="sourceLine" id="cb13-39" data-line-number="39"></a>
-<a class="sourceLine" id="cb13-40" data-line-number="40"><span class="co"># checking if the Sepal part has different dimentions (value) than Petal part</span></a>
-<a class="sourceLine" id="cb13-41" data-line-number="41"><span class="co"># for each Species and for each type of measurement (Length and Width)</span></a>
-<a class="sourceLine" id="cb13-42" data-line-number="42"><span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>)            <span class="co"># show me all columns</span></a>
-<a class="sourceLine" id="cb13-43" data-line-number="43"></a>
-<a class="sourceLine" id="cb13-44" data-line-number="44">groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_ttest">grouped_ttest</a></span>(</a>
-<a class="sourceLine" id="cb13-45" data-line-number="45">  <span class="dt">data =</span> iris_long,</a>
-<a class="sourceLine" id="cb13-46" data-line-number="46">  <span class="dt">dep.vars =</span> value,                    <span class="co"># dependent variable</span></a>
-<a class="sourceLine" id="cb13-47" data-line-number="47">  <span class="dt">indep.vars =</span> part,                   <span class="co"># independent variable</span></a>
-<a class="sourceLine" id="cb13-48" data-line-number="48">  <span class="dt">grouping.vars =</span> <span class="kw">c</span>(Species, measure), <span class="co"># for each Species and for each measurement</span></a>
-<a class="sourceLine" id="cb13-49" data-line-number="49">  <span class="dt">paired =</span> <span class="ot">TRUE</span>                        <span class="co"># paired t-test</span></a>
-<a class="sourceLine" id="cb13-50" data-line-number="50">)</a>
-<a class="sourceLine" id="cb13-51" data-line-number="51"><span class="co">#&gt; # A tibble: 6 x 11</span></a>
-<a class="sourceLine" id="cb13-52" data-line-number="52"><span class="co">#&gt;   Species    measure formula      method        t.test estimate conf.low</span></a>
-<a class="sourceLine" id="cb13-53" data-line-number="53"><span class="co">#&gt;   &lt;fct&gt;      &lt;chr&gt;   &lt;chr&gt;        &lt;fct&gt;          &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb13-54" data-line-number="54"><span class="co">#&gt; 1 setosa     Length  value ~ part Paired t-test  -71.8   -3.54     -3.64</span></a>
-<a class="sourceLine" id="cb13-55" data-line-number="55"><span class="co">#&gt; 2 versicolor Length  value ~ part Paired t-test  -34.0   -1.68     -1.78</span></a>
-<a class="sourceLine" id="cb13-56" data-line-number="56"><span class="co">#&gt; 3 virginica  Length  value ~ part Paired t-test  -22.9   -1.04     -1.13</span></a>
-<a class="sourceLine" id="cb13-57" data-line-number="57"><span class="co">#&gt; 4 setosa     Width   value ~ part Paired t-test  -61.0   -3.18     -3.29</span></a>
-<a class="sourceLine" id="cb13-58" data-line-number="58"><span class="co">#&gt; 5 versicolor Width   value ~ part Paired t-test  -43.5   -1.44     -1.51</span></a>
-<a class="sourceLine" id="cb13-59" data-line-number="59"><span class="co">#&gt; 6 virginica  Width   value ~ part Paired t-test  -23.1   -0.948    -1.03</span></a>
-<a class="sourceLine" id="cb13-60" data-line-number="60"><span class="co">#&gt;   conf.high parameter  p.value significance</span></a>
-<a class="sourceLine" id="cb13-61" data-line-number="61"><span class="co">#&gt;       &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span></a>
-<a class="sourceLine" id="cb13-62" data-line-number="62"><span class="co">#&gt; 1    -3.44         49 2.54e-51 ***         </span></a>
-<a class="sourceLine" id="cb13-63" data-line-number="63"><span class="co">#&gt; 2    -1.58         49 9.67e-36 ***         </span></a>
-<a class="sourceLine" id="cb13-64" data-line-number="64"><span class="co">#&gt; 3    -0.945        49 7.99e-28 ***         </span></a>
-<a class="sourceLine" id="cb13-65" data-line-number="65"><span class="co">#&gt; 4    -3.08         49 7.21e-48 ***         </span></a>
-<a class="sourceLine" id="cb13-66" data-line-number="66"><span class="co">#&gt; 5    -1.38         49 8.42e-41 ***         </span></a>
-<a class="sourceLine" id="cb13-67" data-line-number="67"><span class="co">#&gt; 6    -0.866        49 5.34e-28 ***</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># loading the necessary libraries</span>
+<span class="kw">library</span>(tidyverse)
+
+<span class="co"># converting the iris dataset to long format</span>
+iris_long &lt;-<span class="st"> </span>datasets<span class="op">::</span>iris <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">.data =</span> ., <span class="dt">id =</span> dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/ranking.html">row_number</a></span>(<span class="dt">x =</span> Species)) <span class="op">%&gt;%</span>
+<span class="st">  </span>tidyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/gather">gather</a></span>(
+    <span class="dt">data =</span> .,
+    <span class="dt">key =</span> <span class="st">"condition"</span>,
+    <span class="dt">value =</span> <span class="st">"value"</span>,
+    Sepal.Length<span class="op">:</span>Petal.Width,
+    <span class="dt">convert =</span> <span class="ot">TRUE</span>,
+    <span class="dt">factor_key =</span> <span class="ot">TRUE</span>
+  ) <span class="op">%&gt;%</span>
+<span class="st">  </span>tidyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/separate">separate</a></span>(
+    <span class="dt">col =</span> <span class="st">"condition"</span>,
+    <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">"part"</span>, <span class="st">"measure"</span>),
+    <span class="dt">sep =</span> <span class="st">"</span><span class="ch">\\</span><span class="st">."</span>,
+    <span class="dt">convert =</span> <span class="ot">TRUE</span>
+  ) <span class="op">%&gt;%</span>
+<span class="st">  </span>tibble<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/as_tibble">as_data_frame</a></span>(<span class="dt">x =</span> .)
+
+<span class="co"># check the long format iris dataset</span>
+iris_long
+<span class="co">#&gt; # A tibble: 600 x 5</span>
+<span class="co">#&gt;    Species    id part  measure value</span>
+<span class="co">#&gt;    &lt;fct&gt;   &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 setosa      1 Sepal Length    5.1</span>
+<span class="co">#&gt;  2 setosa      2 Sepal Length    4.9</span>
+<span class="co">#&gt;  3 setosa      3 Sepal Length    4.7</span>
+<span class="co">#&gt;  4 setosa      4 Sepal Length    4.6</span>
+<span class="co">#&gt;  5 setosa      5 Sepal Length    5  </span>
+<span class="co">#&gt;  6 setosa      6 Sepal Length    5.4</span>
+<span class="co">#&gt;  7 setosa      7 Sepal Length    4.6</span>
+<span class="co">#&gt;  8 setosa      8 Sepal Length    5  </span>
+<span class="co">#&gt;  9 setosa      9 Sepal Length    4.4</span>
+<span class="co">#&gt; 10 setosa     10 Sepal Length    4.9</span>
+<span class="co">#&gt; # ... with 590 more rows</span>
+
+<span class="co"># checking if the Sepal part has different dimentions (value) than Petal part</span>
+<span class="co"># for each Species and for each type of measurement (Length and Width)</span>
+<span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>)            <span class="co"># show me all columns</span>
+
+groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_ttest">grouped_ttest</a></span>(
+  <span class="dt">data =</span> iris_long,
+  <span class="dt">dep.vars =</span> value,                    <span class="co"># dependent variable</span>
+  <span class="dt">indep.vars =</span> part,                   <span class="co"># independent variable</span>
+  <span class="dt">grouping.vars =</span> <span class="kw">c</span>(Species, measure), <span class="co"># for each Species and for each measurement</span>
+  <span class="dt">paired =</span> <span class="ot">TRUE</span>                        <span class="co"># paired t-test</span>
+)
+<span class="co">#&gt; # A tibble: 6 x 11</span>
+<span class="co">#&gt;   Species    measure formula      method        t.test estimate conf.low</span>
+<span class="co">#&gt;   &lt;fct&gt;      &lt;chr&gt;   &lt;chr&gt;        &lt;fct&gt;          &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 setosa     Length  value ~ part Paired t-test  -71.8   -3.54     -3.64</span>
+<span class="co">#&gt; 2 versicolor Length  value ~ part Paired t-test  -34.0   -1.68     -1.78</span>
+<span class="co">#&gt; 3 virginica  Length  value ~ part Paired t-test  -22.9   -1.04     -1.13</span>
+<span class="co">#&gt; 4 setosa     Width   value ~ part Paired t-test  -61.0   -3.18     -3.29</span>
+<span class="co">#&gt; 5 versicolor Width   value ~ part Paired t-test  -43.5   -1.44     -1.51</span>
+<span class="co">#&gt; 6 virginica  Width   value ~ part Paired t-test  -23.1   -0.948    -1.03</span>
+<span class="co">#&gt;   conf.high parameter  p.value significance</span>
+<span class="co">#&gt;       &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt; 1    -3.44         49 2.54e-51 ***         </span>
+<span class="co">#&gt; 2    -1.58         49 9.67e-36 ***         </span>
+<span class="co">#&gt; 3    -0.945        49 7.99e-28 ***         </span>
+<span class="co">#&gt; 4    -3.08         49 7.21e-48 ***         </span>
+<span class="co">#&gt; 5    -1.38         49 8.42e-41 ***         </span>
+<span class="co">#&gt; 6    -0.866        49 5.34e-28 ***</span></code></pre></div>
 <ul>
 <li><code>grouped_wilcox</code></li>
 </ul>
 <p>This function is just a non-parametric variant of the <code>grouped_ttest</code>:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co"># checking if the Sepal part has different dimentions (value) than Petal part</span></a>
-<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co"># for each Species and for each type of measurement (Length and Width)</span></a>
-<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>)            <span class="co"># show me all columns</span></a>
-<a class="sourceLine" id="cb14-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb14-5" data-line-number="5">groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_wilcox">grouped_wilcox</a></span>(</a>
-<a class="sourceLine" id="cb14-6" data-line-number="6">  <span class="dt">data =</span> iris_long,</a>
-<a class="sourceLine" id="cb14-7" data-line-number="7">  <span class="dt">dep.vars =</span> value,                    <span class="co"># dependent variable</span></a>
-<a class="sourceLine" id="cb14-8" data-line-number="8">  <span class="dt">indep.vars =</span> part,                   <span class="co"># independent variable</span></a>
-<a class="sourceLine" id="cb14-9" data-line-number="9">  <span class="dt">grouping.vars =</span> <span class="kw">c</span>(Species, measure), <span class="co"># for each Species and for each measurement</span></a>
-<a class="sourceLine" id="cb14-10" data-line-number="10">  <span class="dt">paired =</span> <span class="ot">TRUE</span>                        <span class="co"># paired Wilcoxon signed rank test with continuity correction</span></a>
-<a class="sourceLine" id="cb14-11" data-line-number="11">)</a>
-<a class="sourceLine" id="cb14-12" data-line-number="12"><span class="co">#&gt; # A tibble: 6 x 10</span></a>
-<a class="sourceLine" id="cb14-13" data-line-number="13"><span class="co">#&gt;   Species    measure formula     </span></a>
-<a class="sourceLine" id="cb14-14" data-line-number="14"><span class="co">#&gt;   &lt;fct&gt;      &lt;chr&gt;   &lt;chr&gt;       </span></a>
-<a class="sourceLine" id="cb14-15" data-line-number="15"><span class="co">#&gt; 1 setosa     Length  value ~ part</span></a>
-<a class="sourceLine" id="cb14-16" data-line-number="16"><span class="co">#&gt; 2 versicolor Length  value ~ part</span></a>
-<a class="sourceLine" id="cb14-17" data-line-number="17"><span class="co">#&gt; 3 virginica  Length  value ~ part</span></a>
-<a class="sourceLine" id="cb14-18" data-line-number="18"><span class="co">#&gt; 4 setosa     Width   value ~ part</span></a>
-<a class="sourceLine" id="cb14-19" data-line-number="19"><span class="co">#&gt; 5 versicolor Width   value ~ part</span></a>
-<a class="sourceLine" id="cb14-20" data-line-number="20"><span class="co">#&gt; 6 virginica  Width   value ~ part</span></a>
-<a class="sourceLine" id="cb14-21" data-line-number="21"><span class="co">#&gt;   method                                               statistic estimate</span></a>
-<a class="sourceLine" id="cb14-22" data-line-number="22"><span class="co">#&gt;   &lt;fct&gt;                                                    &lt;dbl&gt;    &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb14-23" data-line-number="23"><span class="co">#&gt; 1 Wilcoxon signed rank test with continuity correction         0   -3.55 </span></a>
-<a class="sourceLine" id="cb14-24" data-line-number="24"><span class="co">#&gt; 2 Wilcoxon signed rank test with continuity correction         0   -1.70 </span></a>
-<a class="sourceLine" id="cb14-25" data-line-number="25"><span class="co">#&gt; 3 Wilcoxon signed rank test with continuity correction         0   -1.05 </span></a>
-<a class="sourceLine" id="cb14-26" data-line-number="26"><span class="co">#&gt; 4 Wilcoxon signed rank test with continuity correction         0   -3.15 </span></a>
-<a class="sourceLine" id="cb14-27" data-line-number="27"><span class="co">#&gt; 5 Wilcoxon signed rank test with continuity correction         0   -1.45 </span></a>
-<a class="sourceLine" id="cb14-28" data-line-number="28"><span class="co">#&gt; 6 Wilcoxon signed rank test with continuity correction         0   -0.950</span></a>
-<a class="sourceLine" id="cb14-29" data-line-number="29"><span class="co">#&gt;   conf.low conf.high  p.value significance</span></a>
-<a class="sourceLine" id="cb14-30" data-line-number="30"><span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span></a>
-<a class="sourceLine" id="cb14-31" data-line-number="31"><span class="co">#&gt; 1    -3.65    -3.45  7.62e-10 ***         </span></a>
-<a class="sourceLine" id="cb14-32" data-line-number="32"><span class="co">#&gt; 2    -1.80    -1.60  7.45e-10 ***         </span></a>
-<a class="sourceLine" id="cb14-33" data-line-number="33"><span class="co">#&gt; 3    -1.15    -0.950 7.48e-10 ***         </span></a>
-<a class="sourceLine" id="cb14-34" data-line-number="34"><span class="co">#&gt; 4    -3.25    -3.10  7.40e-10 ***         </span></a>
-<a class="sourceLine" id="cb14-35" data-line-number="35"><span class="co">#&gt; 5    -1.55    -1.40  7.58e-10 ***         </span></a>
-<a class="sourceLine" id="cb14-36" data-line-number="36"><span class="co">#&gt; 6    -1.00    -0.850 7.67e-10 ***</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># checking if the Sepal part has different dimentions (value) than Petal part</span>
+<span class="co"># for each Species and for each type of measurement (Length and Width)</span>
+<span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>)            <span class="co"># show me all columns</span>
+
+groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_wilcox">grouped_wilcox</a></span>(
+  <span class="dt">data =</span> iris_long,
+  <span class="dt">dep.vars =</span> value,                    <span class="co"># dependent variable</span>
+  <span class="dt">indep.vars =</span> part,                   <span class="co"># independent variable</span>
+  <span class="dt">grouping.vars =</span> <span class="kw">c</span>(Species, measure), <span class="co"># for each Species and for each measurement</span>
+  <span class="dt">paired =</span> <span class="ot">TRUE</span>                        <span class="co"># paired Wilcoxon signed rank test with continuity correction</span>
+)
+<span class="co">#&gt; # A tibble: 6 x 10</span>
+<span class="co">#&gt;   Species    measure formula     </span>
+<span class="co">#&gt;   &lt;fct&gt;      &lt;chr&gt;   &lt;chr&gt;       </span>
+<span class="co">#&gt; 1 setosa     Length  value ~ part</span>
+<span class="co">#&gt; 2 versicolor Length  value ~ part</span>
+<span class="co">#&gt; 3 virginica  Length  value ~ part</span>
+<span class="co">#&gt; 4 setosa     Width   value ~ part</span>
+<span class="co">#&gt; 5 versicolor Width   value ~ part</span>
+<span class="co">#&gt; 6 virginica  Width   value ~ part</span>
+<span class="co">#&gt;   method                                               statistic estimate</span>
+<span class="co">#&gt;   &lt;fct&gt;                                                    &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Wilcoxon signed rank test with continuity correction         0   -3.55 </span>
+<span class="co">#&gt; 2 Wilcoxon signed rank test with continuity correction         0   -1.70 </span>
+<span class="co">#&gt; 3 Wilcoxon signed rank test with continuity correction         0   -1.05 </span>
+<span class="co">#&gt; 4 Wilcoxon signed rank test with continuity correction         0   -3.15 </span>
+<span class="co">#&gt; 5 Wilcoxon signed rank test with continuity correction         0   -1.45 </span>
+<span class="co">#&gt; 6 Wilcoxon signed rank test with continuity correction         0   -0.950</span>
+<span class="co">#&gt;   conf.low conf.high  p.value significance</span>
+<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt; 1    -3.65    -3.45  7.62e-10 ***         </span>
+<span class="co">#&gt; 2    -1.80    -1.60  7.45e-10 ***         </span>
+<span class="co">#&gt; 3    -1.15    -0.950 7.48e-10 ***         </span>
+<span class="co">#&gt; 4    -3.25    -3.10  7.40e-10 ***         </span>
+<span class="co">#&gt; 5    -1.55    -1.40  7.58e-10 ***         </span>
+<span class="co">#&gt; 6    -1.00    -0.850 7.67e-10 ***</span></code></pre></div>
 <p>While we are at it, let’s also check out examples for <code>t-test</code> and <code>Wilcox test</code> in case of between-subjects designs.</p>
 <p>We will use <code>diamonds</code> dataset from <code>ggplot2</code> and will see if the price and depth of a diamond is different for two of our favorite colors (say <code>E</code> and <code>J</code>) for each type of clarity.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="co"># subset the dataframe with two colors of interest to us</span></a>
-<a class="sourceLine" id="cb15-3" data-line-number="3">diamonds_short &lt;-</a>
-<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="dt">.data =</span> ggplot2<span class="op">::</span>diamonds, color <span class="op">==</span><span class="st"> "E"</span> <span class="op">|</span></a>
-<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="st">                  </span>color <span class="op">==</span><span class="st"> "J"</span>)</a>
-<a class="sourceLine" id="cb15-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb15-7" data-line-number="7"><span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>, <span class="dt">tibble.print_max =</span> <span class="ot">Inf</span>)             <span class="co"># show me all rows and columns</span></a>
-<a class="sourceLine" id="cb15-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb15-9" data-line-number="9"><span class="co"># t-test</span></a>
-<a class="sourceLine" id="cb15-10" data-line-number="10">groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_ttest">grouped_ttest</a></span>(</a>
-<a class="sourceLine" id="cb15-11" data-line-number="11">  <span class="dt">data =</span> diamonds_short,</a>
-<a class="sourceLine" id="cb15-12" data-line-number="12">  <span class="dt">dep.vars =</span> <span class="kw">c</span>(carat, price, depth),             <span class="co"># note that there three dependent variables </span></a>
-<a class="sourceLine" id="cb15-13" data-line-number="13">  <span class="dt">indep.vars =</span> color,                            <span class="co"># and just one independent variable </span></a>
-<a class="sourceLine" id="cb15-14" data-line-number="14">  <span class="dt">grouping.vars =</span> clarity,                       <span class="co"># one grouping variable</span></a>
-<a class="sourceLine" id="cb15-15" data-line-number="15">  <span class="dt">paired =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb15-16" data-line-number="16">  <span class="dt">var.equal =</span> <span class="ot">FALSE</span></a>
-<a class="sourceLine" id="cb15-17" data-line-number="17">)</a>
-<a class="sourceLine" id="cb15-18" data-line-number="18"><span class="co">#&gt; # A tibble: 24 x 10</span></a>
-<a class="sourceLine" id="cb15-19" data-line-number="19"><span class="co">#&gt;    clarity formula       method                   t.test   estimate</span></a>
-<a class="sourceLine" id="cb15-20" data-line-number="20"><span class="co">#&gt;    &lt;ord&gt;   &lt;chr&gt;         &lt;fct&gt;                     &lt;dbl&gt;      &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb15-21" data-line-number="21"><span class="co">#&gt;  1 SI2     carat ~ color Welch Two Sample t-test -18.0      -0.503 </span></a>
-<a class="sourceLine" id="cb15-22" data-line-number="22"><span class="co">#&gt;  2 SI1     carat ~ color Welch Two Sample t-test -22.1      -0.462 </span></a>
-<a class="sourceLine" id="cb15-23" data-line-number="23"><span class="co">#&gt;  3 VS1     carat ~ color Welch Two Sample t-test -16.8      -0.444 </span></a>
-<a class="sourceLine" id="cb15-24" data-line-number="24"><span class="co">#&gt;  4 VVS2    carat ~ color Welch Two Sample t-test -12.0      -0.553 </span></a>
-<a class="sourceLine" id="cb15-25" data-line-number="25"><span class="co">#&gt;  5 VS2     carat ~ color Welch Two Sample t-test -24.6      -0.542 </span></a>
-<a class="sourceLine" id="cb15-26" data-line-number="26"><span class="co">#&gt;  6 I1      carat ~ color Welch Two Sample t-test  -4.48     -0.644 </span></a>
-<a class="sourceLine" id="cb15-27" data-line-number="27"><span class="co">#&gt;  7 VVS1    carat ~ color Welch Two Sample t-test  -6.53     -0.417 </span></a>
-<a class="sourceLine" id="cb15-28" data-line-number="28"><span class="co">#&gt;  8 IF      carat ~ color Welch Two Sample t-test  -2.38     -0.198 </span></a>
-<a class="sourceLine" id="cb15-29" data-line-number="29"><span class="co">#&gt;  9 SI2     price ~ color Welch Two Sample t-test -10.6   -2347.    </span></a>
-<a class="sourceLine" id="cb15-30" data-line-number="30"><span class="co">#&gt; 10 SI1     price ~ color Welch Two Sample t-test -12.6   -2024.    </span></a>
-<a class="sourceLine" id="cb15-31" data-line-number="31"><span class="co">#&gt; 11 VS1     price ~ color Welch Two Sample t-test  -9.26  -2028.    </span></a>
-<a class="sourceLine" id="cb15-32" data-line-number="32"><span class="co">#&gt; 12 VVS2    price ~ color Welch Two Sample t-test  -6.83  -2643.    </span></a>
-<a class="sourceLine" id="cb15-33" data-line-number="33"><span class="co">#&gt; 13 VS2     price ~ color Welch Two Sample t-test -14.3   -2560.    </span></a>
-<a class="sourceLine" id="cb15-34" data-line-number="34"><span class="co">#&gt; 14 I1      price ~ color Welch Two Sample t-test  -2.76  -1766.    </span></a>
-<a class="sourceLine" id="cb15-35" data-line-number="35"><span class="co">#&gt; 15 VVS1    price ~ color Welch Two Sample t-test  -3.35  -1814.    </span></a>
-<a class="sourceLine" id="cb15-36" data-line-number="36"><span class="co">#&gt; 16 IF      price ~ color Welch Two Sample t-test   0.378   305.    </span></a>
-<a class="sourceLine" id="cb15-37" data-line-number="37"><span class="co">#&gt; 17 SI2     depth ~ color Welch Two Sample t-test  -2.64     -0.231 </span></a>
-<a class="sourceLine" id="cb15-38" data-line-number="38"><span class="co">#&gt; 18 SI1     depth ~ color Welch Two Sample t-test   0.333     0.0208</span></a>
-<a class="sourceLine" id="cb15-39" data-line-number="39"><span class="co">#&gt; 19 VS1     depth ~ color Welch Two Sample t-test  -6.61     -0.417 </span></a>
-<a class="sourceLine" id="cb15-40" data-line-number="40"><span class="co">#&gt; 20 VVS2    depth ~ color Welch Two Sample t-test  -2.20     -0.277 </span></a>
-<a class="sourceLine" id="cb15-41" data-line-number="41"><span class="co">#&gt; 21 VS2     depth ~ color Welch Two Sample t-test  -2.28     -0.145 </span></a>
-<a class="sourceLine" id="cb15-42" data-line-number="42"><span class="co">#&gt; 22 I1      depth ~ color Welch Two Sample t-test  -3.96     -2.10  </span></a>
-<a class="sourceLine" id="cb15-43" data-line-number="43"><span class="co">#&gt; 23 VVS1    depth ~ color Welch Two Sample t-test  -2.53     -0.370 </span></a>
-<a class="sourceLine" id="cb15-44" data-line-number="44"><span class="co">#&gt; 24 IF      depth ~ color Welch Two Sample t-test  -2.16     -0.386 </span></a>
-<a class="sourceLine" id="cb15-45" data-line-number="45"><span class="co">#&gt;     conf.low  conf.high parameter   p.value significance</span></a>
-<a class="sourceLine" id="cb15-46" data-line-number="46"><span class="co">#&gt;        &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       </span></a>
-<a class="sourceLine" id="cb15-47" data-line-number="47"><span class="co">#&gt;  1    -0.558    -0.448      634.  9.24e- 59 ***         </span></a>
-<a class="sourceLine" id="cb15-48" data-line-number="48"><span class="co">#&gt;  2    -0.503    -0.420      948.  2.47e- 87 ***         </span></a>
-<a class="sourceLine" id="cb15-49" data-line-number="49"><span class="co">#&gt;  3    -0.496    -0.392      663.  2.91e- 53 ***         </span></a>
-<a class="sourceLine" id="cb15-50" data-line-number="50"><span class="co">#&gt;  4    -0.644    -0.461      140.  3.81e- 23 ***         </span></a>
-<a class="sourceLine" id="cb15-51" data-line-number="51"><span class="co">#&gt;  5    -0.586    -0.499      856.  1.51e-101 ***         </span></a>
-<a class="sourceLine" id="cb15-52" data-line-number="52"><span class="co">#&gt;  6    -0.932    -0.357       60.6 3.34e-  5 ***         </span></a>
-<a class="sourceLine" id="cb15-53" data-line-number="53"><span class="co">#&gt;  7    -0.545    -0.290       76.1 6.68e-  9 ***         </span></a>
-<a class="sourceLine" id="cb15-54" data-line-number="54"><span class="co">#&gt;  8    -0.364    -0.0318      60.1 2.03e-  2 *           </span></a>
-<a class="sourceLine" id="cb15-55" data-line-number="55"><span class="co">#&gt;  9 -2782.    -1913.         676.  2.02e- 24 ***         </span></a>
-<a class="sourceLine" id="cb15-56" data-line-number="56"><span class="co">#&gt; 10 -2339.    -1709.        1031.  5.75e- 34 ***         </span></a>
-<a class="sourceLine" id="cb15-57" data-line-number="57"><span class="co">#&gt; 11 -2458.    -1598.         794.  1.86e- 19 ***         </span></a>
-<a class="sourceLine" id="cb15-58" data-line-number="58"><span class="co">#&gt; 12 -3407.    -1878.         151.  1.94e- 10 ***         </span></a>
-<a class="sourceLine" id="cb15-59" data-line-number="59"><span class="co">#&gt; 13 -2911.    -2209.         943.  3.07e- 42 ***         </span></a>
-<a class="sourceLine" id="cb15-60" data-line-number="60"><span class="co">#&gt; 14 -3044.     -487.          62.0 7.58e-  3 **          </span></a>
-<a class="sourceLine" id="cb15-61" data-line-number="61"><span class="co">#&gt; 15 -2893.     -735.          81.2 1.24e-  3 **          </span></a>
-<a class="sourceLine" id="cb15-62" data-line-number="62"><span class="co">#&gt; 16 -1299.     1909.          81.0 7.07e-  1 ns          </span></a>
-<a class="sourceLine" id="cb15-63" data-line-number="63"><span class="co">#&gt; 17    -0.402    -0.0588     772.  8.58e-  3 **          </span></a>
-<a class="sourceLine" id="cb15-64" data-line-number="64"><span class="co">#&gt; 18    -0.102     0.143     1245.  7.39e-  1 ns          </span></a>
-<a class="sourceLine" id="cb15-65" data-line-number="65"><span class="co">#&gt; 19    -0.541    -0.293     1040.  6.08e- 11 ***         </span></a>
-<a class="sourceLine" id="cb15-66" data-line-number="66"><span class="co">#&gt; 20    -0.526    -0.0279     158.  2.95e-  2 *           </span></a>
-<a class="sourceLine" id="cb15-67" data-line-number="67"><span class="co">#&gt; 21    -0.271    -0.0203    1084.  2.28e-  2 *           </span></a>
-<a class="sourceLine" id="cb15-68" data-line-number="68"><span class="co">#&gt; 22    -3.16     -1.05        81.6 1.61e-  4 ***         </span></a>
-<a class="sourceLine" id="cb15-69" data-line-number="69"><span class="co">#&gt; 23    -0.661    -0.0792      88.1 1.32e-  2 *           </span></a>
-<a class="sourceLine" id="cb15-70" data-line-number="70"><span class="co">#&gt; 24    -0.739    -0.0321     111.  3.28e-  2 *</span></a>
-<a class="sourceLine" id="cb15-71" data-line-number="71"></a>
-<a class="sourceLine" id="cb15-72" data-line-number="72"><span class="co"># wilcox test (aka Mann-Whitney U-test)</span></a>
-<a class="sourceLine" id="cb15-73" data-line-number="73">groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_wilcox">grouped_wilcox</a></span>(</a>
-<a class="sourceLine" id="cb15-74" data-line-number="74">  <span class="dt">data =</span> diamonds_short,</a>
-<a class="sourceLine" id="cb15-75" data-line-number="75">  <span class="dt">dep.vars =</span> depth<span class="op">:</span>price,                        <span class="co"># note that you can select variables in range</span></a>
-<a class="sourceLine" id="cb15-76" data-line-number="76">  <span class="dt">indep.vars =</span> color,                            <span class="co"># again, just one independent, multiple dependent variables case</span></a>
-<a class="sourceLine" id="cb15-77" data-line-number="77">  <span class="dt">grouping.vars =</span> clarity,                       <span class="co"># one grouping variable</span></a>
-<a class="sourceLine" id="cb15-78" data-line-number="78">  <span class="dt">paired =</span> <span class="ot">FALSE</span></a>
-<a class="sourceLine" id="cb15-79" data-line-number="79">)</a>
-<a class="sourceLine" id="cb15-80" data-line-number="80"><span class="co">#&gt; # A tibble: 16 x 9</span></a>
-<a class="sourceLine" id="cb15-81" data-line-number="81"><span class="co">#&gt;    clarity formula       method                                           </span></a>
-<a class="sourceLine" id="cb15-82" data-line-number="82"><span class="co">#&gt;    &lt;ord&gt;   &lt;chr&gt;         &lt;fct&gt;                                            </span></a>
-<a class="sourceLine" id="cb15-83" data-line-number="83"><span class="co">#&gt;  1 SI2     depth ~ color Wilcoxon rank sum test with continuity correction</span></a>
-<a class="sourceLine" id="cb15-84" data-line-number="84"><span class="co">#&gt;  2 SI1     depth ~ color Wilcoxon rank sum test with continuity correction</span></a>
-<a class="sourceLine" id="cb15-85" data-line-number="85"><span class="co">#&gt;  3 VS1     depth ~ color Wilcoxon rank sum test with continuity correction</span></a>
-<a class="sourceLine" id="cb15-86" data-line-number="86"><span class="co">#&gt;  4 VVS2    depth ~ color Wilcoxon rank sum test with continuity correction</span></a>
-<a class="sourceLine" id="cb15-87" data-line-number="87"><span class="co">#&gt;  5 VS2     depth ~ color Wilcoxon rank sum test with continuity correction</span></a>
-<a class="sourceLine" id="cb15-88" data-line-number="88"><span class="co">#&gt;  6 I1      depth ~ color Wilcoxon rank sum test with continuity correction</span></a>
-<a class="sourceLine" id="cb15-89" data-line-number="89"><span class="co">#&gt;  7 VVS1    depth ~ color Wilcoxon rank sum test with continuity correction</span></a>
-<a class="sourceLine" id="cb15-90" data-line-number="90"><span class="co">#&gt;  8 IF      depth ~ color Wilcoxon rank sum test with continuity correction</span></a>
-<a class="sourceLine" id="cb15-91" data-line-number="91"><span class="co">#&gt;  9 SI2     price ~ color Wilcoxon rank sum test with continuity correction</span></a>
-<a class="sourceLine" id="cb15-92" data-line-number="92"><span class="co">#&gt; 10 SI1     price ~ color Wilcoxon rank sum test with continuity correction</span></a>
-<a class="sourceLine" id="cb15-93" data-line-number="93"><span class="co">#&gt; 11 VS1     price ~ color Wilcoxon rank sum test with continuity correction</span></a>
-<a class="sourceLine" id="cb15-94" data-line-number="94"><span class="co">#&gt; 12 VVS2    price ~ color Wilcoxon rank sum test with continuity correction</span></a>
-<a class="sourceLine" id="cb15-95" data-line-number="95"><span class="co">#&gt; 13 VS2     price ~ color Wilcoxon rank sum test with continuity correction</span></a>
-<a class="sourceLine" id="cb15-96" data-line-number="96"><span class="co">#&gt; 14 I1      price ~ color Wilcoxon rank sum test with continuity correction</span></a>
-<a class="sourceLine" id="cb15-97" data-line-number="97"><span class="co">#&gt; 15 VVS1    price ~ color Wilcoxon rank sum test with continuity correction</span></a>
-<a class="sourceLine" id="cb15-98" data-line-number="98"><span class="co">#&gt; 16 IF      price ~ color Wilcoxon rank sum test with continuity correction</span></a>
-<a class="sourceLine" id="cb15-99" data-line-number="99"><span class="co">#&gt;    statistic      estimate   conf.low     conf.high  p.value significance</span></a>
-<a class="sourceLine" id="cb15-100" data-line-number="100"><span class="co">#&gt;        &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span></a>
-<a class="sourceLine" id="cb15-101" data-line-number="101"><span class="co">#&gt;  1   380600     -0.200        -0.300     -0.0000364 1.54e- 2 *           </span></a>
-<a class="sourceLine" id="cb15-102" data-line-number="102"><span class="co">#&gt;  2   918892      0.0000393    -0.1000     0.100     6.77e- 1 ns          </span></a>
-<a class="sourceLine" id="cb15-103" data-line-number="103"><span class="co">#&gt;  3   276743     -0.400        -0.500     -0.300     7.03e-12 ***         </span></a>
-<a class="sourceLine" id="cb15-104" data-line-number="104"><span class="co">#&gt;  4    52618     -0.400        -0.600     -0.200     4.18e- 4 ***         </span></a>
-<a class="sourceLine" id="cb15-105" data-line-number="105"><span class="co">#&gt;  5   816784.    -0.200        -0.300     -0.1000    8.86e- 5 ***         </span></a>
-<a class="sourceLine" id="cb15-106" data-line-number="106"><span class="co">#&gt;  6     1570.    -2.00         -3.00      -1.000     1.21e- 4 ***         </span></a>
-<a class="sourceLine" id="cb15-107" data-line-number="107"><span class="co">#&gt;  7    19455     -0.300        -0.500     -0.1000    5.07e- 3 **          </span></a>
-<a class="sourceLine" id="cb15-108" data-line-number="108"><span class="co">#&gt;  8     3286     -0.300        -0.700     -0.0000251 4.79e- 2 *           </span></a>
-<a class="sourceLine" id="cb15-109" data-line-number="109"><span class="co">#&gt;  9   269016  -1844.        -2182.     -1505.        8.82e-31 ***         </span></a>
-<a class="sourceLine" id="cb15-110" data-line-number="110"><span class="co">#&gt; 10   608724. -1510.        -1789.     -1312.        8.20e-43 ***         </span></a>
-<a class="sourceLine" id="cb15-111" data-line-number="111"><span class="co">#&gt; 11   277389  -1095.        -1414.      -745.        1.11e-11 ***         </span></a>
-<a class="sourceLine" id="cb15-112" data-line-number="112"><span class="co">#&gt; 12    42795  -1764.        -2920.     -1205.        2.23e-10 ***         </span></a>
-<a class="sourceLine" id="cb15-113" data-line-number="113"><span class="co">#&gt; 13   560930  -1888.        -2228.     -1539.        1.08e-54 ***         </span></a>
-<a class="sourceLine" id="cb15-114" data-line-number="114"><span class="co">#&gt; 14     2017  -1150.        -1832.       -79.0       3.68e- 2 *           </span></a>
-<a class="sourceLine" id="cb15-115" data-line-number="115"><span class="co">#&gt; 15    19086   -362.         -859.      -107.        2.57e- 3 **          </span></a>
-<a class="sourceLine" id="cb15-116" data-line-number="116"><span class="co">#&gt; 16     5085    296.          125.       449.        4.94e- 3 **</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+<span class="co"># subset the dataframe with two colors of interest to us</span>
+diamonds_short &lt;-
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="dt">.data =</span> ggplot2<span class="op">::</span>diamonds, color <span class="op">==</span><span class="st"> "E"</span> <span class="op">|</span>
+<span class="st">                  </span>color <span class="op">==</span><span class="st"> "J"</span>)
+
+<span class="kw">options</span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>, <span class="dt">tibble.print_max =</span> <span class="ot">Inf</span>)             <span class="co"># show me all rows and columns</span>
+
+<span class="co"># t-test</span>
+groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_ttest">grouped_ttest</a></span>(
+  <span class="dt">data =</span> diamonds_short,
+  <span class="dt">dep.vars =</span> <span class="kw">c</span>(carat, price, depth),             <span class="co"># note that there three dependent variables </span>
+  <span class="dt">indep.vars =</span> color,                            <span class="co"># and just one independent variable </span>
+  <span class="dt">grouping.vars =</span> clarity,                       <span class="co"># one grouping variable</span>
+  <span class="dt">paired =</span> <span class="ot">FALSE</span>,
+  <span class="dt">var.equal =</span> <span class="ot">FALSE</span>
+)
+<span class="co">#&gt; # A tibble: 24 x 10</span>
+<span class="co">#&gt;    clarity formula       method                   t.test   estimate</span>
+<span class="co">#&gt;    &lt;ord&gt;   &lt;chr&gt;         &lt;fct&gt;                     &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 SI2     carat ~ color Welch Two Sample t-test -18.0      -0.503 </span>
+<span class="co">#&gt;  2 SI1     carat ~ color Welch Two Sample t-test -22.1      -0.462 </span>
+<span class="co">#&gt;  3 VS1     carat ~ color Welch Two Sample t-test -16.8      -0.444 </span>
+<span class="co">#&gt;  4 VVS2    carat ~ color Welch Two Sample t-test -12.0      -0.553 </span>
+<span class="co">#&gt;  5 VS2     carat ~ color Welch Two Sample t-test -24.6      -0.542 </span>
+<span class="co">#&gt;  6 I1      carat ~ color Welch Two Sample t-test  -4.48     -0.644 </span>
+<span class="co">#&gt;  7 VVS1    carat ~ color Welch Two Sample t-test  -6.53     -0.417 </span>
+<span class="co">#&gt;  8 IF      carat ~ color Welch Two Sample t-test  -2.38     -0.198 </span>
+<span class="co">#&gt;  9 SI2     price ~ color Welch Two Sample t-test -10.6   -2347.    </span>
+<span class="co">#&gt; 10 SI1     price ~ color Welch Two Sample t-test -12.6   -2024.    </span>
+<span class="co">#&gt; 11 VS1     price ~ color Welch Two Sample t-test  -9.26  -2028.    </span>
+<span class="co">#&gt; 12 VVS2    price ~ color Welch Two Sample t-test  -6.83  -2643.    </span>
+<span class="co">#&gt; 13 VS2     price ~ color Welch Two Sample t-test -14.3   -2560.    </span>
+<span class="co">#&gt; 14 I1      price ~ color Welch Two Sample t-test  -2.76  -1766.    </span>
+<span class="co">#&gt; 15 VVS1    price ~ color Welch Two Sample t-test  -3.35  -1814.    </span>
+<span class="co">#&gt; 16 IF      price ~ color Welch Two Sample t-test   0.378   305.    </span>
+<span class="co">#&gt; 17 SI2     depth ~ color Welch Two Sample t-test  -2.64     -0.231 </span>
+<span class="co">#&gt; 18 SI1     depth ~ color Welch Two Sample t-test   0.333     0.0208</span>
+<span class="co">#&gt; 19 VS1     depth ~ color Welch Two Sample t-test  -6.61     -0.417 </span>
+<span class="co">#&gt; 20 VVS2    depth ~ color Welch Two Sample t-test  -2.20     -0.277 </span>
+<span class="co">#&gt; 21 VS2     depth ~ color Welch Two Sample t-test  -2.28     -0.145 </span>
+<span class="co">#&gt; 22 I1      depth ~ color Welch Two Sample t-test  -3.96     -2.10  </span>
+<span class="co">#&gt; 23 VVS1    depth ~ color Welch Two Sample t-test  -2.53     -0.370 </span>
+<span class="co">#&gt; 24 IF      depth ~ color Welch Two Sample t-test  -2.16     -0.386 </span>
+<span class="co">#&gt;     conf.low  conf.high parameter   p.value significance</span>
+<span class="co">#&gt;        &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt;  1    -0.558    -0.448      634.  9.24e- 59 ***         </span>
+<span class="co">#&gt;  2    -0.503    -0.420      948.  2.47e- 87 ***         </span>
+<span class="co">#&gt;  3    -0.496    -0.392      663.  2.91e- 53 ***         </span>
+<span class="co">#&gt;  4    -0.644    -0.461      140.  3.81e- 23 ***         </span>
+<span class="co">#&gt;  5    -0.586    -0.499      856.  1.51e-101 ***         </span>
+<span class="co">#&gt;  6    -0.932    -0.357       60.6 3.34e-  5 ***         </span>
+<span class="co">#&gt;  7    -0.545    -0.290       76.1 6.68e-  9 ***         </span>
+<span class="co">#&gt;  8    -0.364    -0.0318      60.1 2.03e-  2 *           </span>
+<span class="co">#&gt;  9 -2782.    -1913.         676.  2.02e- 24 ***         </span>
+<span class="co">#&gt; 10 -2339.    -1709.        1031.  5.75e- 34 ***         </span>
+<span class="co">#&gt; 11 -2458.    -1598.         794.  1.86e- 19 ***         </span>
+<span class="co">#&gt; 12 -3407.    -1878.         151.  1.94e- 10 ***         </span>
+<span class="co">#&gt; 13 -2911.    -2209.         943.  3.07e- 42 ***         </span>
+<span class="co">#&gt; 14 -3044.     -487.          62.0 7.58e-  3 **          </span>
+<span class="co">#&gt; 15 -2893.     -735.          81.2 1.24e-  3 **          </span>
+<span class="co">#&gt; 16 -1299.     1909.          81.0 7.07e-  1 ns          </span>
+<span class="co">#&gt; 17    -0.402    -0.0588     772.  8.58e-  3 **          </span>
+<span class="co">#&gt; 18    -0.102     0.143     1245.  7.39e-  1 ns          </span>
+<span class="co">#&gt; 19    -0.541    -0.293     1040.  6.08e- 11 ***         </span>
+<span class="co">#&gt; 20    -0.526    -0.0279     158.  2.95e-  2 *           </span>
+<span class="co">#&gt; 21    -0.271    -0.0203    1084.  2.28e-  2 *           </span>
+<span class="co">#&gt; 22    -3.16     -1.05        81.6 1.61e-  4 ***         </span>
+<span class="co">#&gt; 23    -0.661    -0.0792      88.1 1.32e-  2 *           </span>
+<span class="co">#&gt; 24    -0.739    -0.0321     111.  3.28e-  2 *</span>
+
+<span class="co"># wilcox test (aka Mann-Whitney U-test)</span>
+groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_wilcox">grouped_wilcox</a></span>(
+  <span class="dt">data =</span> diamonds_short,
+  <span class="dt">dep.vars =</span> depth<span class="op">:</span>price,                        <span class="co"># note that you can select variables in range</span>
+  <span class="dt">indep.vars =</span> color,                            <span class="co"># again, just one independent, multiple dependent variables case</span>
+  <span class="dt">grouping.vars =</span> clarity,                       <span class="co"># one grouping variable</span>
+  <span class="dt">paired =</span> <span class="ot">FALSE</span>
+)
+<span class="co">#&gt; # A tibble: 16 x 9</span>
+<span class="co">#&gt;    clarity formula       method                                           </span>
+<span class="co">#&gt;    &lt;ord&gt;   &lt;chr&gt;         &lt;fct&gt;                                            </span>
+<span class="co">#&gt;  1 SI2     depth ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  2 SI1     depth ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  3 VS1     depth ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  4 VVS2    depth ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  5 VS2     depth ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  6 I1      depth ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  7 VVS1    depth ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  8 IF      depth ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  9 SI2     price ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt; 10 SI1     price ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt; 11 VS1     price ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt; 12 VVS2    price ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt; 13 VS2     price ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt; 14 I1      price ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt; 15 VVS1    price ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt; 16 IF      price ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;    statistic      estimate   conf.low     conf.high  p.value significance</span>
+<span class="co">#&gt;        &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt;  1   380600     -0.200        -0.300     -0.0000364 1.54e- 2 *           </span>
+<span class="co">#&gt;  2   918892      0.0000393    -0.1000     0.100     6.77e- 1 ns          </span>
+<span class="co">#&gt;  3   276743     -0.400        -0.500     -0.300     7.03e-12 ***         </span>
+<span class="co">#&gt;  4    52618     -0.400        -0.600     -0.200     4.18e- 4 ***         </span>
+<span class="co">#&gt;  5   816784.    -0.200        -0.300     -0.1000    8.86e- 5 ***         </span>
+<span class="co">#&gt;  6     1570.    -2.00         -3.00      -1.000     1.21e- 4 ***         </span>
+<span class="co">#&gt;  7    19455     -0.300        -0.500     -0.1000    5.07e- 3 **          </span>
+<span class="co">#&gt;  8     3286     -0.300        -0.700     -0.0000251 4.79e- 2 *           </span>
+<span class="co">#&gt;  9   269016  -1844.        -2182.     -1505.        8.82e-31 ***         </span>
+<span class="co">#&gt; 10   608724. -1510.        -1789.     -1312.        8.20e-43 ***         </span>
+<span class="co">#&gt; 11   277389  -1095.        -1414.      -745.        1.11e-11 ***         </span>
+<span class="co">#&gt; 12    42795  -1764.        -2920.     -1205.        2.23e-10 ***         </span>
+<span class="co">#&gt; 13   560930  -1888.        -2228.     -1539.        1.08e-54 ***         </span>
+<span class="co">#&gt; 14     2017  -1150.        -1832.       -79.0       3.68e- 2 *           </span>
+<span class="co">#&gt; 15    19086   -362.         -859.      -107.        2.57e- 3 **          </span>
+<span class="co">#&gt; 16     5085    296.          125.       449.        4.94e- 3 **</span></code></pre></div>
 <p>We can further focus just on two levels of clarity to further elucidate another aspect of entering the arguments-</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="co"># subset the dataframe even further to just select two levels of clarity</span></a>
-<a class="sourceLine" id="cb16-2" data-line-number="2">diamonds_short2 &lt;-</a>
-<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="dt">.data =</span> diamonds_short, clarity <span class="op">==</span><span class="st"> "SI2"</span> <span class="op">|</span></a>
-<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="st">                  </span>clarity <span class="op">==</span><span class="st"> "SI1"</span>)</a>
-<a class="sourceLine" id="cb16-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="co"># wilcox test (aka Mann-Whitney U-test)</span></a>
-<a class="sourceLine" id="cb16-7" data-line-number="7">groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_wilcox">grouped_wilcox</a></span>(</a>
-<a class="sourceLine" id="cb16-8" data-line-number="8"> <span class="dt">data =</span> diamonds_short2,</a>
-<a class="sourceLine" id="cb16-9" data-line-number="9">  <span class="dt">dep.vars =</span> <span class="kw">c</span>(carat, price),                    <span class="co"># two dependent variables</span></a>
-<a class="sourceLine" id="cb16-10" data-line-number="10">  <span class="dt">indep.vars =</span> <span class="kw">c</span>(color, clarity),                <span class="co"># two independent variables</span></a>
-<a class="sourceLine" id="cb16-11" data-line-number="11">  <span class="dt">grouping.vars =</span> cut,                           <span class="co"># one grouping variable</span></a>
-<a class="sourceLine" id="cb16-12" data-line-number="12">  <span class="dt">paired =</span> <span class="ot">FALSE</span></a>
-<a class="sourceLine" id="cb16-13" data-line-number="13">)</a>
-<a class="sourceLine" id="cb16-14" data-line-number="14"><span class="co">#&gt; # A tibble: 10 x 9</span></a>
-<a class="sourceLine" id="cb16-15" data-line-number="15"><span class="co">#&gt;    cut       formula        </span></a>
-<a class="sourceLine" id="cb16-16" data-line-number="16"><span class="co">#&gt;    &lt;ord&gt;     &lt;chr&gt;          </span></a>
-<a class="sourceLine" id="cb16-17" data-line-number="17"><span class="co">#&gt;  1 Ideal     carat ~ color  </span></a>
-<a class="sourceLine" id="cb16-18" data-line-number="18"><span class="co">#&gt;  2 Premium   carat ~ color  </span></a>
-<a class="sourceLine" id="cb16-19" data-line-number="19"><span class="co">#&gt;  3 Good      carat ~ color  </span></a>
-<a class="sourceLine" id="cb16-20" data-line-number="20"><span class="co">#&gt;  4 Very Good carat ~ color  </span></a>
-<a class="sourceLine" id="cb16-21" data-line-number="21"><span class="co">#&gt;  5 Fair      carat ~ color  </span></a>
-<a class="sourceLine" id="cb16-22" data-line-number="22"><span class="co">#&gt;  6 Ideal     price ~ clarity</span></a>
-<a class="sourceLine" id="cb16-23" data-line-number="23"><span class="co">#&gt;  7 Premium   price ~ clarity</span></a>
-<a class="sourceLine" id="cb16-24" data-line-number="24"><span class="co">#&gt;  8 Good      price ~ clarity</span></a>
-<a class="sourceLine" id="cb16-25" data-line-number="25"><span class="co">#&gt;  9 Very Good price ~ clarity</span></a>
-<a class="sourceLine" id="cb16-26" data-line-number="26"><span class="co">#&gt; 10 Fair      price ~ clarity</span></a>
-<a class="sourceLine" id="cb16-27" data-line-number="27"><span class="co">#&gt;    method                                            statistic estimate</span></a>
-<a class="sourceLine" id="cb16-28" data-line-number="28"><span class="co">#&gt;    &lt;fct&gt;                                                 &lt;dbl&gt;    &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb16-29" data-line-number="29"><span class="co">#&gt;  1 Wilcoxon rank sum test with continuity correction   103150.   -0.440</span></a>
-<a class="sourceLine" id="cb16-30" data-line-number="30"><span class="co">#&gt;  2 Wilcoxon rank sum test with continuity correction    91748    -0.540</span></a>
-<a class="sourceLine" id="cb16-31" data-line-number="31"><span class="co">#&gt;  3 Wilcoxon rank sum test with continuity correction    20752    -0.400</span></a>
-<a class="sourceLine" id="cb16-32" data-line-number="32"><span class="co">#&gt;  4 Wilcoxon rank sum test with continuity correction    87590    -0.390</span></a>
-<a class="sourceLine" id="cb16-33" data-line-number="33"><span class="co">#&gt;  5 Wilcoxon rank sum test with continuity correction     2356.   -0.230</span></a>
-<a class="sourceLine" id="cb16-34" data-line-number="34"><span class="co">#&gt;  6 Wilcoxon rank sum test with continuity correction   344274.  774.   </span></a>
-<a class="sourceLine" id="cb16-35" data-line-number="35"><span class="co">#&gt;  7 Wilcoxon rank sum test with continuity correction   329276.  876.   </span></a>
-<a class="sourceLine" id="cb16-36" data-line-number="36"><span class="co">#&gt;  8 Wilcoxon rank sum test with continuity correction    64082.  516.   </span></a>
-<a class="sourceLine" id="cb16-37" data-line-number="37"><span class="co">#&gt;  9 Wilcoxon rank sum test with continuity correction   272064   752.   </span></a>
-<a class="sourceLine" id="cb16-38" data-line-number="38"><span class="co">#&gt; 10 Wilcoxon rank sum test with continuity correction     5113   170.   </span></a>
-<a class="sourceLine" id="cb16-39" data-line-number="39"><span class="co">#&gt;    conf.low conf.high  p.value significance</span></a>
-<a class="sourceLine" id="cb16-40" data-line-number="40"><span class="co">#&gt;       &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span></a>
-<a class="sourceLine" id="cb16-41" data-line-number="41"><span class="co">#&gt;  1   -0.500    -0.380 1.28e-51 ***         </span></a>
-<a class="sourceLine" id="cb16-42" data-line-number="42"><span class="co">#&gt;  2   -0.600    -0.490 1.82e-59 ***         </span></a>
-<a class="sourceLine" id="cb16-43" data-line-number="43"><span class="co">#&gt;  3   -0.500    -0.310 4.49e-18 ***         </span></a>
-<a class="sourceLine" id="cb16-44" data-line-number="44"><span class="co">#&gt;  4   -0.460    -0.320 7.06e-37 ***         </span></a>
-<a class="sourceLine" id="cb16-45" data-line-number="45"><span class="co">#&gt;  5   -0.370    -0.110 1.21e- 5 ***         </span></a>
-<a class="sourceLine" id="cb16-46" data-line-number="46"><span class="co">#&gt;  6  536.     1075.    3.00e- 9 ***         </span></a>
-<a class="sourceLine" id="cb16-47" data-line-number="47"><span class="co">#&gt;  7  538.     1278.    3.52e- 9 ***         </span></a>
-<a class="sourceLine" id="cb16-48" data-line-number="48"><span class="co">#&gt;  8  141.      921.    3.05e- 3 **          </span></a>
-<a class="sourceLine" id="cb16-49" data-line-number="49"><span class="co">#&gt;  9  486.     1098.    2.76e- 8 ***         </span></a>
-<a class="sourceLine" id="cb16-50" data-line-number="50"><span class="co">#&gt; 10 -411.      802.    5.68e- 1 ns</span></a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># subset the dataframe even further to just select two levels of clarity</span>
+diamonds_short2 &lt;-
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="dt">.data =</span> diamonds_short, clarity <span class="op">==</span><span class="st"> "SI2"</span> <span class="op">|</span>
+<span class="st">                  </span>clarity <span class="op">==</span><span class="st"> "SI1"</span>)
+
+<span class="co"># wilcox test (aka Mann-Whitney U-test)</span>
+groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_wilcox">grouped_wilcox</a></span>(
+ <span class="dt">data =</span> diamonds_short2,
+  <span class="dt">dep.vars =</span> <span class="kw">c</span>(carat, price),                    <span class="co"># two dependent variables</span>
+  <span class="dt">indep.vars =</span> <span class="kw">c</span>(color, clarity),                <span class="co"># two independent variables</span>
+  <span class="dt">grouping.vars =</span> cut,                           <span class="co"># one grouping variable</span>
+  <span class="dt">paired =</span> <span class="ot">FALSE</span>
+)
+<span class="co">#&gt; # A tibble: 10 x 9</span>
+<span class="co">#&gt;    cut       formula        </span>
+<span class="co">#&gt;    &lt;ord&gt;     &lt;chr&gt;          </span>
+<span class="co">#&gt;  1 Ideal     carat ~ color  </span>
+<span class="co">#&gt;  2 Premium   carat ~ color  </span>
+<span class="co">#&gt;  3 Good      carat ~ color  </span>
+<span class="co">#&gt;  4 Very Good carat ~ color  </span>
+<span class="co">#&gt;  5 Fair      carat ~ color  </span>
+<span class="co">#&gt;  6 Ideal     price ~ clarity</span>
+<span class="co">#&gt;  7 Premium   price ~ clarity</span>
+<span class="co">#&gt;  8 Good      price ~ clarity</span>
+<span class="co">#&gt;  9 Very Good price ~ clarity</span>
+<span class="co">#&gt; 10 Fair      price ~ clarity</span>
+<span class="co">#&gt;    method                                            statistic estimate</span>
+<span class="co">#&gt;    &lt;fct&gt;                                                 &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Wilcoxon rank sum test with continuity correction   103150.   -0.440</span>
+<span class="co">#&gt;  2 Wilcoxon rank sum test with continuity correction    91748    -0.540</span>
+<span class="co">#&gt;  3 Wilcoxon rank sum test with continuity correction    20752    -0.400</span>
+<span class="co">#&gt;  4 Wilcoxon rank sum test with continuity correction    87590    -0.390</span>
+<span class="co">#&gt;  5 Wilcoxon rank sum test with continuity correction     2356.   -0.230</span>
+<span class="co">#&gt;  6 Wilcoxon rank sum test with continuity correction   344274.  774.   </span>
+<span class="co">#&gt;  7 Wilcoxon rank sum test with continuity correction   329276.  876.   </span>
+<span class="co">#&gt;  8 Wilcoxon rank sum test with continuity correction    64082.  516.   </span>
+<span class="co">#&gt;  9 Wilcoxon rank sum test with continuity correction   272064   752.   </span>
+<span class="co">#&gt; 10 Wilcoxon rank sum test with continuity correction     5113   170.   </span>
+<span class="co">#&gt;    conf.low conf.high  p.value significance</span>
+<span class="co">#&gt;       &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt;  1   -0.500    -0.380 1.28e-51 ***         </span>
+<span class="co">#&gt;  2   -0.600    -0.490 1.82e-59 ***         </span>
+<span class="co">#&gt;  3   -0.500    -0.310 4.49e-18 ***         </span>
+<span class="co">#&gt;  4   -0.460    -0.320 7.06e-37 ***         </span>
+<span class="co">#&gt;  5   -0.370    -0.110 1.21e- 5 ***         </span>
+<span class="co">#&gt;  6  536.     1075.    3.00e- 9 ***         </span>
+<span class="co">#&gt;  7  538.     1278.    3.52e- 9 ***         </span>
+<span class="co">#&gt;  8  141.      921.    3.05e- 3 **          </span>
+<span class="co">#&gt;  9  486.     1098.    2.76e- 8 ***         </span>
+<span class="co">#&gt; 10 -411.      802.    5.68e- 1 ns</span></code></pre></div>
 <p>In these examples, two things are worth noting that generalize to <strong>all</strong> functions in this package and stem from how <a href="https://adv-r.hadley.nz/evaluation.html"><code>tidy evaluation</code></a> works: <br><strong>1.</strong> If just one independent variable is provided for multiple dependent variables, it will be used as a common variable. <br><strong>2.</strong> If you want to use a selection of variables, you shouldn’t use <code>c()</code>.</p>
 </div>
 </div>
