@@ -1,14 +1,15 @@
 Type: Package
 Package: groupedstats
-Title: Repeated Statistical Tests Across Multiple Grouping Levels
-Version: 0.0.0.9000
+Title: Grouped Statistical Analyses in a Tidy Way
+Version: 0.0.1
 Authors@R: person(given = "Indrajeet", 
   family = "Patil", 
   email = "patilindrajeet.science@gmail.com", 
   role = c("aut", "cre"), 
   comment = c(ORCID = "0000-0003-1995-6531"))
 Maintainer: Indrajeet Patil <patilindrajeet.science@gmail.com>
-Description: Collection of functions to run statistical tests for multiple variable across multiple groups.
+Description: Collection of functions to run statistical tests across all levels
+  of multiple grouping variables.
 License: GPL-3
 URL: https://indrajeetpatil.github.io/groupedstats/
 BugReports: https://github.com/IndrajeetPatil/groupedstats/issues
@@ -31,7 +32,7 @@ Imports:
     tidyr (>= 0.8.1)
 Suggests: 
     covr (>= 3.0.1),
-    ggplot2,
+    ggplot2 (>= 2.2.1),
     ggstatsplot (>= 0.0.3),
     knitr (>= 1.20),
     rmarkdown (>= 1.9),
