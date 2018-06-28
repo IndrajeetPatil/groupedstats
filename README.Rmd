@@ -4,7 +4,7 @@
 
   <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-  ```{r, echo = FALSE, warning = FALSE, messsage = FALSE}
+```{r, echo = FALSE, warning = FALSE, messsage = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   dpi = 300,
@@ -15,7 +15,13 @@ knitr::opts_chunk$set(
 ```
 # groupedstats: Grouped statistical analysis in a tidy way
 
+[![CRAN_Release_Badge](http://www.r-pkg.org/badges/version-ago/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
+[![CRAN Checks](https://cranchecks.info/badges/summary/groupedstats)](https://cran.r-project.org/web/checks/check_results_groupedstats.html)
 [![packageversion](https://img.shields.io/badge/Package%20version-0.0.0.9000-orange.svg?style=flat-square)](commits/master)
+[![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
+[![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
+[![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
+[![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
 [![Travis Build Status](https://travis-ci.org/IndrajeetPatil/groupedstats.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/groupedstats) 
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupedstats?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/groupedstats) 
 [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
@@ -23,29 +29,30 @@ knitr::opts_chunk$set(
 [![Last-changedate](https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
-<!-- [![Coverage Status](https://img.shields.io/codecov/c/github/IndrajeetPatil/groupedstats/master.svg)](https://codecov.io/github/IndrajeetPatil/groupedstats?branch=master)
-[![Dependency Status](http://img.shields.io/gemnasium/IndrajeetPatil/groupedstats.svg)](https://gemnasium.com/IndrajeetPatil/groupedstats) -->
+[![Coverage Status](https://img.shields.io/codecov/c/github/IndrajeetPatil/groupedstats/master.svg)](https://codecov.io/github/IndrajeetPatil/groupedstats?branch=master)
 
 ## Overview
 
 `groupedstats` package provides a collection of functions to run statistical
 operations on multiple variables across multiple grouping variables in a
-dataframe. This is a common situation in the following example cases-
+dataframe. This is a common situation, as illustrated by few example cases-
 
 1.  If you have combined multiple studies in a single dataframe and want to run
     a common operation (e.g., linear regression) on **each study**. In this
     case, column corresponding to `study` will be the grouping variable.
 2.  If you have multiple groups in your dataframe (e.g., clinical disorder
-    groups and controls group) and you want to carry out a common operation for
+    groups and controls group) and you want to carry out the same operation for
     **each group** (e.g., planned t-test to check for differences in reaction
-    time in condition 1 versus condition 2). In this case, `group` will be the
-    grouping variable.
+    time in condition 1 versus condition 2 for both groups). In this case,
+    `group` will be the grouping variable.
 3.  If you have multiple conditions in a given study (e.g., six types of videos
     participants saw) and want to run a common operation between different
     measures of interest for **each condition** (e.g., correlation between
     subjective rating of emotional intensity and reaction time).
 
-**This package is still in development. Use at your own risk!**
+This is first installment of the package that provides only the most basic
+statistical operations. The next releases will expand on the existing
+functionality. 
 
 ## Installation
 
@@ -70,10 +77,11 @@ devtools::install_github(repo = "IndrajeetPatil/groupedstats", # package path on
 Documentation for any function can be accessed with the standard `help` command-
 ```{r help, eval = FALSE, warning = FALSE, messsage = FALSE}
 ?grouped_summary
-?grouped_lm
-?grouped_robustlm
+?grouped_slr
+?grouped_robustslr
 ?grouped_proptest
 ?grouped_ttest
+?grouped_wilcox
 ```
 
 ## Usage
@@ -83,8 +91,8 @@ Documentation for any function can be accessed with the standard `help` command-
 Getting summary for multiple variables across multiple grouping variables. This
 function is a wrapper around [`skimr::skim_to_wide()`](https://www.rdocumentation.org/packages/skimr/versions/1.0.1/topics/skim_to_wide).
 
-It is supposed to be a handy summarizing tool if you have just one grouping
-variable and multiple variables for which summary statistics are to be computed-
+It is supposed to be a handy summarizing tool if you have multiple grouping
+variables and multiple variables for which summary statistics are to be computed-
 
 ```{r grouped_summary1, warning = FALSE, messsage = FALSE}
 library(datasets)
@@ -97,7 +105,10 @@ groupedstats::grouped_summary(data = datasets::iris,
 ```
 
 This function can be used to get summary of either numeric **or** factor
-varibles, but **not** both. If you want summary of variables of factor type-
+varibles, but **not** both. This is by design. If no `measures` are specified, the function will
+compute summary for all variables of the specified type (`numeric` or `factor`).
+
+If you want summary of variables of `factor` type-
 
 ```{r grouped_summary2, warning = FALSE, messsage = FALSE}
 library(ggplot2)
@@ -111,12 +122,11 @@ groupedstats::grouped_summary(data = ggplot2::diamonds,
 
 Note that there is a column corresponding to `top_counts` which is really useful
 in case you, let's say, want to plot these counts. But this column is of
-`character` type and in wide format. The solution is to set an additional
+`character` type and in wide format. The solution is to use an additional
 argument provided for this function:
 
 ```{r grouped_summary3, fig.width = 8, warning = FALSE, messsage = FALSE}
-
-library(tidyverse)
+library(ggplot2)
 library(magrittr)
 library(ggstatsplot)
 
@@ -145,14 +155,8 @@ groupedstats::grouped_summary(
 ```
 
 This produces a long format table with two new columns `factor.level` and its
-corresponding `count`, which can then be immediately fed into other pipelines.
-As demonstrated here, the benefit of formatted summary output is that, it can be
-directly fed into other routines (e.g., preparing a plot of `mean` and `sd`
-values in `ggplot2`).
-
-Another thing to note about `grouped_summary` function is that if no `measures`
-are specified, the function will compute summary for all variables of the
-specified type (`numeric` or `factor`).
+corresponding `count`, which can then be immediately fed into other pipelines,
+e.g., preparing a plot of `mean` and `sd` values in `ggplot2`).
 
 ```{r grouped_summary4, warning = FALSE, messsage = FALSE}
 options(tibble.width = Inf)            # show me all columns
@@ -163,64 +167,71 @@ groupedstats::grouped_summary(
 )
 ```
 
-* `grouped_lm`
+* `grouped_slr`
 
-This function can be used to run linear regression between different pairs of
-variables across multiple levels of grouping variable(s). For example, we can
-use the `gapminder` dataset to study two relationships of interest for **each country** 
-across years:
+This function can be used to run **simple linear regression** (slr) between
+different pairs of variables across multiple levels of grouping variable(s). For
+example, we can use the `gapminder` dataset to study two relationships of
+interest for **each country** across years:
 
 1.  life expectency and GDP (per capita)
 2.  population GDP (per capita) Thus, in this case we have two regression models
     and one grouping variable with 142 levels (countries)
 
-```{r grouped_lm1, warning = FALSE, messsage = FALSE}
+```{r grouped_slr1, warning = FALSE, messsage = FALSE}
 library(gapminder)
 options(tibble.width = Inf)            # show me all columns
 
-groupedstats::grouped_lm(data = gapminder::gapminder,
+groupedstats::grouped_slr(data = gapminder::gapminder,
                          dep.vars = c(lifeExp, pop),
                          indep.vars = c(gdpPercap, gdpPercap),
                          grouping.vars = country)
 ```
 
-Notice the order in which the dependent and independent variables are entered.
-If this order is incorrect, the result will also be incorrect. So it is always a
-good idea to check the *formula* column to see if you have run the correct
-linear models. 
+Notice the order in which the dependent and independent variables are entered;
+there are two regression models being run here: `lifeExp ~ gdpPercap` and `pop ~
+gdpPercap` If this order is incorrect, the result will also be incorrect. So it
+is always a good idea to check the *formula* column to see if you have run the
+correct linear models. Also, note that the estimates are already standardized,
+i.e. estimates are standardized regression coefficients (betas, i.e.). 
 
-We saw example with one grouping variable. This can be done with multiple
+The prior example was with just one grouping variable. This can be done with multiple
 grouping variables as well. For example, with the `diamonds` dataset from
 `ggplot2` library, let's assess the relation between carat *and* price of a
 diamond for each type of clarity *and* cut-
 
-```{r grouped_lm2, warning = FALSE, messsage = FALSE}
+```{r grouped_slr2, warning = FALSE, messsage = FALSE}
 library(ggplot2)
 library(dplyr)
 options(tibble.width = Inf)            # show me all columns
 
-groupedstats::grouped_lm(data = ggplot2::diamonds,
+groupedstats::grouped_slr(data = ggplot2::diamonds,
                          dep.vars = price,
                          indep.vars = carat,
                          grouping.vars = c(cut, clarity)) %>%
   dplyr::arrange(.data = ., cut)
 ```
 
-* `grouped_robustlm`
+A more general version of this function (`grouped_lm`) will be implemented in
+future that will utilize the formula interface of `stats::lm`.
 
-There is also robust variant of linear regression (as implemented in `robust::lmRob`)-
+* `grouped_robustslr`
 
-```{r grouped_robustlm, warning = FALSE, messsage = FALSE}
+There is also robust variant of **simple linear regression** (as implemented in `robust::lmRob`)-
+
+```{r grouped_robustslr, warning = FALSE, messsage = FALSE}
 library(gapminder)
 library(dplyr)
 options(tibble.width = Inf)            # show me all columns
 
-groupedstats::grouped_robustlm(data = gapminder::gapminder,
+groupedstats::grouped_robustslr(data = gapminder::gapminder,
                          dep.vars = c(lifeExp, pop),
                          indep.vars = c(gdpPercap, gdpPercap),
                          grouping.vars = c(continent, country)) %>%
   dplyr::arrange(.data = ., continent, country)
 ```
+A more general version of this function (`grouped_robustlm`) will be implemented in
+future that will utilize the formula interface of `robust::lmRob`.
 
 * `grouped_glm`
 
@@ -257,8 +268,6 @@ want to investigate if `Sepal` part of the flower has greater measurement
 (length or width) than `Petal` part of the flower for **each** *Iris* species.
 
 ```{r grouped_ttest1, warning = FALSE, messsage = FALSE}
-# loading the necessary libraries
-library(tidyverse)
 
 # converting the iris dataset to long format
 iris_long <- datasets::iris %>%
@@ -342,7 +351,7 @@ groupedstats::grouped_ttest(
 # wilcox test (aka Mann-Whitney U-test)
 groupedstats::grouped_wilcox(
   data = diamonds_short,
-  dep.vars = depth:price,                        # note that you can select variables in range
+  dep.vars = depth:price,                        # note that you can select variables in range with `:`
   indep.vars = color,                            # again, just one independent, multiple dependent variables case
   grouping.vars = clarity,                       # one grouping variable
   paired = FALSE
@@ -373,5 +382,10 @@ In these examples, two things are worth noting that generalize to **all**
 functions in this package and stem from how [`tidy evaluation`](https://adv-r.hadley.nz/evaluation.html) works: <br />
  **1.** If just one independent variable is provided for multiple dependent
 variables, it will be used as a common variable.  <br />
- **2.** If you want to use a selection of variables, you shouldn't use `c()`.
+ **2.** If you want to use a selection of variables, you need not use `c()`.
+ 
+* Suggestions
+
+If you find any bugs or have any suggestions/remarks, please file an issue on
+GitHub: <https://github.com/IndrajeetPatil/groupedstats/issues>
 

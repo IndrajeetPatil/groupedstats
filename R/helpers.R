@@ -12,7 +12,6 @@
 #'   be taken.
 #' @param p The column containing p-values.
 #'
-#' @import dplyr
 #'
 #' @importFrom broom tidy
 #' @importFrom crayon red
@@ -80,6 +79,7 @@ signif_column <- function(data = NULL, p) {
 }
 
 
+#'
 #' @title Custom function for getting specified number of decimal places in
 #'   results for p-value
 #' @name specify_decimal_p
@@ -100,6 +100,7 @@ signif_column <- function(data = NULL, p) {
 #' @note This is a helper function used internally in the package and not
 #'   exported. In case you want to use it, you can do so by
 #'   `groupedstats:::specify_decimal_p`. Note that it is `:::` and not `::`.
+#'
 
 specify_decimal_p <- function(x,
                               k = NULL,
@@ -140,8 +141,6 @@ specify_decimal_p <- function(x,
 #' @param nboot Number of bootstrap samples for confidence intervals for partial
 #'   eta-squared and omega-squared.
 #'
-#' @import dplyr
-#'
 #' @importFrom sjstats eta_sq
 #' @importFrom sjstats omega_sq
 #' @importFrom stats anova
@@ -150,45 +149,6 @@ specify_decimal_p <- function(x,
 #' @importFrom tibble as_data_frame
 #' @importFrom tibble rownames_to_column
 #'
-
-# defining global variables and functions to quient the R CMD check notes
-utils::globalVariables(
-  c(
-    "Df",
-    "F value",
-    "F.value",
-    "LL",
-    "Pr(>F)",
-    "UL",
-    "complete",
-    "data",
-    "df1",
-    "df2",
-    "effect",
-    "term",
-    "effsize",
-    "formula",
-    "hist",
-    "median",
-    "p0",
-    "p100",
-    "p25",
-    "p50",
-    "p75",
-    "sd",
-    "significance",
-    "type",
-    "conf.high",
-    "conf.low",
-    "term",
-    "partial.etasq",
-    "partial.etasq.conf.low",
-    "partial.etasq.conf.high",
-    "partial.omegasq",
-    "partial.omegasq.conf.low",
-    "partial.omegasq.conf.high"
-  )
-)
 
 # defining the function body
 lm_effsize_ci <-

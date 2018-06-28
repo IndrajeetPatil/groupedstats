@@ -111,6 +111,8 @@ grouping variable levels</p>
     
     </div>
 
+    <pre class="usage"><span class='fu'>grouped_summary</span>(<span class='no'>data</span>, <span class='no'>grouping.vars</span>, <span class='kw'>measures</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>measures.type</span> <span class='kw'>=</span> <span class='st'>"numeric"</span>, <span class='kw'>topcount.long</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -175,7 +177,7 @@ sd, median, min, max)</p>
 #&gt; 11 virgin~ nume~ Sepal.L~       0       50    50  6.59  0.64   4.9  6.23   6.5 
 #&gt; 12 virgin~ nume~ Sepal.W~       0       50    50  2.97  0.32   2.2  2.8    3   
 #&gt; # ... with 2 more variables: p75 &lt;dbl&gt;, max &lt;dbl&gt;</div><div class='input'>
-<span class='co'># if you have just one variable per argument, you can also not use `c()`</span>
+<span class='co'># if you have just one variable per argument, you need not use `c()`</span>
 <span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_summary'>grouped_summary</a></span>(
 <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/ToothGrowth'>ToothGrowth</a></span>,
 <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>supp</span>,

@@ -4,16 +4,19 @@
 \alias{grouped_glm}
 \title{Function to run generalized linear model on multiple variables across
 multiple grouping variables.}
+\usage{
+grouped_glm(data, dep.vars, indep.vars, grouping.vars, family)
+}
 \arguments{
 \item{data}{Dataframe from which variables are to be taken.}
-
-\item{grouping.vars}{List of grouping variables.}
 
 \item{dep.vars}{List criterion or dependent variables for regression (\code{y} in
 \code{y ~ x}).}
 
 \item{indep.vars}{List predictor or independent variables for regression (\code{x}
 in \code{y ~ x}).}
+
+\item{grouping.vars}{List of grouping variables.}
 
 \item{family}{A description of the error distribution and link function to be
 used in the model. For glm this can be a character string naming a \code{family}
@@ -26,6 +29,15 @@ A tibble dataframe with tidy results from linear regression analyses.
 \description{
 Function to run generalized linear model on multiple variables across
 multiple grouping variables.
+}
+\examples{
+
+groupedstats::grouped_glm(data = datasets::mtcars,
+ dep.vars = am,
+ indep.vars = wt,
+ grouping.vars = cyl,
+ family = "gaussian"
+)
 }
 \author{
 Indrajeet Patil

@@ -111,6 +111,8 @@ variables.</p>
     
     </div>
 
+    <pre class="usage"><span class='fu'>grouped_ttest</span>(<span class='no'>data</span>, <span class='no'>dep.vars</span>, <span class='no'>indep.vars</span>, <span class='no'>grouping.vars</span>, <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>var.equal</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -133,7 +135,7 @@ variables.</p>
     </tr>
     <tr>
       <th>paired</th>
-      <td><p>A logical indicating whether you want a paired t-test (Dafault:
+      <td><p>A logical indicating whether you want a paired t-test (Default:
 <code>paired = FALSE</code>; independent t-test, i.e.).</p></td>
     </tr>
     <tr>
@@ -151,6 +153,31 @@ t-test, i.e.).</p></td>
     <p>A tibble dataframe with tidy results from t-test analyses.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_ttest'>grouped_ttest</a></span>(
+ <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='kw'>.data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/diamonds'>diamonds</a></span>, <span class='no'>color</span> <span class='kw'>==</span> <span class='st'>"E"</span> <span class='kw'>|</span> <span class='no'>color</span> <span class='kw'>==</span> <span class='st'>"J"</span>),
+ <span class='kw'>dep.vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>carat</span>, <span class='no'>price</span>, <span class='no'>depth</span>),
+ <span class='kw'>indep.vars</span> <span class='kw'>=</span> <span class='no'>color</span>,
+ <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>clarity</span>,
+ <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+ <span class='kw'>var.equal</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</div><div class='output co'>#&gt; # A tibble: 24 x 10
+#&gt;    clarity formula    method       t.test estimate conf.low conf.high parameter
+#&gt;    &lt;ord&gt;   &lt;chr&gt;      &lt;fct&gt;         &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+#&gt;  1 SI2     carat ~ c~ Welch Two S~ -18.0  -5.03e-1 -5.58e-1  -4.48e-1     634. 
+#&gt;  2 SI1     carat ~ c~ Welch Two S~ -22.1  -4.62e-1 -5.03e-1  -4.20e-1     948. 
+#&gt;  3 VS1     carat ~ c~ Welch Two S~ -16.8  -4.44e-1 -4.96e-1  -3.92e-1     663. 
+#&gt;  4 VVS2    carat ~ c~ Welch Two S~ -12.0  -5.53e-1 -6.44e-1  -4.61e-1     140. 
+#&gt;  5 VS2     carat ~ c~ Welch Two S~ -24.6  -5.42e-1 -5.86e-1  -4.99e-1     856. 
+#&gt;  6 I1      carat ~ c~ Welch Two S~  -4.48 -6.44e-1 -9.32e-1  -3.57e-1      60.6
+#&gt;  7 VVS1    carat ~ c~ Welch Two S~  -6.53 -4.17e-1 -5.45e-1  -2.90e-1      76.1
+#&gt;  8 IF      carat ~ c~ Welch Two S~  -2.38 -1.98e-1 -3.64e-1  -3.18e-2      60.1
+#&gt;  9 SI2     price ~ c~ Welch Two S~ -10.6  -2.35e+3 -2.78e+3  -1.91e+3     676. 
+#&gt; 10 SI1     price ~ c~ Welch Two S~ -12.6  -2.02e+3 -2.34e+3  -1.71e+3    1031. 
+#&gt; # ... with 14 more rows, and 2 more variables: p.value &lt;dbl&gt;,
+#&gt; #   significance &lt;chr&gt;</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -158,7 +185,9 @@ t-test, i.e.).</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
     <h2>Author</h2>
     

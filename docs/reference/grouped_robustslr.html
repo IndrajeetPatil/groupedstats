@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function to run proportion test on grouped data. — grouped_proptest • groupedstats</title>
+<title>Function to run robust simple linear regression (slr) on multiple variables across
+multiple grouping variables. — grouped_robustslr • groupedstats</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +31,11 @@
 
 
 
-<meta property="og:title" content="Function to run proportion test on grouped data. — grouped_proptest" />
+<meta property="og:title" content="Function to run robust simple linear regression (slr) on multiple variables across
+multiple grouping variables. — grouped_robustslr" />
 
-<meta property="og:description" content="Function to run proportion test on grouped data." />
+<meta property="og:description" content="Function to run robust simple linear regression (slr) on multiple variables across
+multiple grouping variables." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -95,55 +98,66 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Function to run proportion test on grouped data.</h1>
+    <h1>Function to run robust simple linear regression (slr) on multiple variables across
+multiple grouping variables.</h1>
     
-    <div class="hidden name"><code>grouped_proptest.Rd</code></div>
+    <div class="hidden name"><code>grouped_robustslr.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Function to run proportion test on grouped data.</p>
+    <p>Function to run robust simple linear regression (slr) on multiple variables across
+multiple grouping variables.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>grouped_proptest</span>(<span class='no'>data</span>, <span class='no'>grouping.vars</span>, <span class='no'>measure</span>)</pre>
+    <pre class="usage"><span class='fu'>grouped_robustslr</span>(<span class='no'>data</span>, <span class='no'>dep.vars</span>, <span class='no'>indep.vars</span>, <span class='no'>grouping.vars</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>Dataframe from which variables are to be drawn.</p></td>
+      <td><p>Dataframe from which variables are to be taken.</p></td>
+    </tr>
+    <tr>
+      <th>dep.vars</th>
+      <td><p>List criterion or dependent variables for regression (<code>y</code> in
+<code>y ~ x</code>).</p></td>
+    </tr>
+    <tr>
+      <th>indep.vars</th>
+      <td><p>List predictor or independent variables for regression (<code>x</code>
+in <code>y ~ x</code>).</p></td>
     </tr>
     <tr>
       <th>grouping.vars</th>
-      <td><p>List of grouping variables</p></td>
-    </tr>
-    <tr>
-      <th>measure</th>
-      <td><p>A variable for which proportion test needs to be carried out
-for each combination of levels of factors entered in <code>grouping.vars</code>.</p></td>
+      <td><p>List of grouping variables.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Dataframe with percentages and statistical details from a proportion
-test.</p>
+    <p>A tibble dataframe with tidy results from robust linear regression
+analyses. The esimates are standardized, i.e. the <code>lm</code> model used is
+<code>scale(y) ~ scale(x)</code>, and not <code>y ~ x</code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_proptest'>grouped_proptest</a></span>(
- <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>,
- <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>cyl</span>,
- <span class='kw'>measure</span> <span class='kw'>=</span> <span class='no'>am</span>
-)</div><div class='output co'>#&gt; # A tibble: 3 x 7
-#&gt;     cyl `0`    `1`    `Chi-squared`    df `p-value` significance
-#&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       
-#&gt; 1     6 57.14% 42.86%         0.143     1     0.705 ns          
-#&gt; 2     4 27.27% 72.73%         2.27      1     0.132 ns          
-#&gt; 3     8 85.71% 14.29%         7.14      1     0.008 **          </div><div class='input'>
+<span class='co'># in case of just one grouping variable</span>
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_robustslr'>grouped_robustslr</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>,
+<span class='kw'>dep.vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>Sepal.Length</span>, <span class='no'>Petal.Length</span>),
+<span class='kw'>indep.vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>Sepal.Width</span>, <span class='no'>Petal.Width</span>),
+<span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>Species</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 7
+#&gt;   Species    formula          t.value estimate std.error   p.value significance
+#&gt;   &lt;fct&gt;      &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       
+#&gt; 1 setosa     Sepal.Length ~ ~    5.39    0.747     0.139   2.12e-6 ***         
+#&gt; 2 versicolor Sepal.Length ~ ~    3.41    0.526     0.154   1.31e-3 **          
+#&gt; 3 virginica  Sepal.Length ~ ~    3.62    0.521     0.144   6.98e-4 ***         
+#&gt; 4 setosa     Petal.Length ~ ~    2.18    0.301     0.138   3.40e-2 *           
+#&gt; 5 versicolor Petal.Length ~ ~    6.75    0.749     0.111   1.77e-8 ***         
+#&gt; 6 virginica  Petal.Length ~ ~    1.23    0.286     0.232   2.23e-1 ns          </div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

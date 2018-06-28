@@ -3,7 +3,18 @@
 
 # groupedstats: Grouped statistical analysis in a tidy way
 
+[![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
+[![CRAN
+Checks](https://cranchecks.info/badges/summary/groupedstats)](https://cran.r-project.org/web/checks/check_results_groupedstats.html)
 [![packageversion](https://img.shields.io/badge/Package%20version-0.0.0.9000-orange.svg?style=flat-square)](commits/master)
+[![Daily downloads
+badge](https://cranlogs.r-pkg.org/badges/last-day/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
+[![Weekly downloads
+badge](https://cranlogs.r-pkg.org/badges/last-week/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
+[![Monthly downloads
+badge](https://cranlogs.r-pkg.org/badges/last-month/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
+[![Total downloads
+badge](https://cranlogs.r-pkg.org/badges/grand-total/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
 [![Travis Build
 Status](https://travis-ci.org/IndrajeetPatil/groupedstats.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/groupedstats)
 [![AppVeyor Build
@@ -12,7 +23,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--06--01-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--06--27-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
@@ -23,25 +34,27 @@ version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-
 
 `groupedstats` package provides a collection of functions to run
 statistical operations on multiple variables across multiple grouping
-variables in a dataframe. This is a common situation in the following
-example cases-
+variables in a dataframe. This is a common situation, as illustrated by
+few example cases-
 
 1.  If you have combined multiple studies in a single dataframe and want
     to run a common operation (e.g., linear regression) on **each
     study**. In this case, column corresponding to `study` will be the
     grouping variable.
 2.  If you have multiple groups in your dataframe (e.g., clinical
-    disorder groups and controls group) and you want to carry out a
-    common operation for **each group** (e.g., planned t-test to check
-    for differences in reaction time in condition 1 versus condition 2).
-    In this case, `group` will be the grouping variable.
+    disorder groups and controls group) and you want to carry out the
+    same operation for **each group** (e.g., planned t-test to check for
+    differences in reaction time in condition 1 versus condition 2 for
+    both groups). In this case, `group` will be the grouping variable.
 3.  If you have multiple conditions in a given study (e.g., six types of
     videos participants saw) and want to run a common operation between
     different measures of interest for **each condition** (e.g.,
     correlation between subjective rating of emotional intensity and
     reaction time).
 
-**This package is still in development. Use at your own risk\!**
+This is first installment of the package that provides only the most
+basic statistical operations. The next releases will expand on the
+existing functionality.
 
 ## Installation
 
@@ -72,10 +85,11 @@ command-
 
 ``` r
 ?grouped_summary
-?grouped_lm
-?grouped_robustlm
+?grouped_slr
+?grouped_robustslr
 ?grouped_proptest
 ?grouped_ttest
+?grouped_wilcox
 ```
 
 ## Usage
@@ -86,8 +100,8 @@ Getting summary for multiple variables across multiple grouping
 variables. This function is a wrapper around
 [`skimr::skim_to_wide()`](https://www.rdocumentation.org/packages/skimr/versions/1.0.1/topics/skim_to_wide).
 
-It is supposed to be a handy summarizing tool if you have just one
-grouping variable and multiple variables for which summary statistics
+It is supposed to be a handy summarizing tool if you have multiple
+grouping variables and multiple variables for which summary statistics
 are to be computed-
 
 ``` r
@@ -130,8 +144,11 @@ groupedstats::grouped_summary(data = datasets::iris,
 ```
 
 This function can be used to get summary of either numeric **or** factor
-varibles, but **not** both. If you want summary of variables of factor
-type-
+varibles, but **not** both. This is by design. If no `measures` are
+specified, the function will compute summary for all variables of the
+specified type (`numeric` or `factor`).
+
+If you want summary of variables of `factor` type-
 
 ``` r
 library(ggplot2)
@@ -172,28 +189,11 @@ groupedstats::grouped_summary(data = ggplot2::diamonds,
 Note that there is a column corresponding to `top_counts` which is
 really useful in case you, let’s say, want to plot these counts. But
 this column is of `character` type and in wide format. The solution is
-to set an additional argument provided for this function:
+to use an additional argument provided for this function:
 
 ``` r
-
-library(tidyverse)
-#> -- Attaching packages ------------------------------------------------------------------------------------------ tidyverse 1.2.1 --
-#> v tibble  1.4.2     v purrr   0.2.5
-#> v tidyr   0.8.1     v dplyr   0.7.5
-#> v readr   1.2.0     v stringr 1.3.1
-#> v tibble  1.4.2     v forcats 0.3.0
-#> -- Conflicts --------------------------------------------------------------------------------------------- tidyverse_conflicts() --
-#> x dplyr::filter() masks stats::filter()
-#> x dplyr::lag()    masks stats::lag()
+library(ggplot2)
 library(magrittr)
-#> 
-#> Attaching package: 'magrittr'
-#> The following object is masked from 'package:purrr':
-#> 
-#>     set_names
-#> The following object is masked from 'package:tidyr':
-#> 
-#>     extract
 library(ggstatsplot)
 
 options(tibble.width = Inf)            # show me all columns
@@ -225,13 +225,8 @@ groupedstats::grouped_summary(
 
 This produces a long format table with two new columns `factor.level`
 and its corresponding `count`, which can then be immediately fed into
-other pipelines. As demonstrated here, the benefit of formatted summary
-output is that, it can be directly fed into other routines (e.g.,
-preparing a plot of `mean` and `sd` values in `ggplot2`).
-
-Another thing to note about `grouped_summary` function is that if no
-`measures` are specified, the function will compute summary for all
-variables of the specified type (`numeric` or `factor`).
+other pipelines, e.g., preparing a plot of `mean` and `sd` values in
+`ggplot2`).
 
 ``` r
 options(tibble.width = Inf)            # show me all columns
@@ -268,12 +263,12 @@ groupedstats::grouped_summary(
 #> # ... with 270 more rows
 ```
 
-  - `grouped_lm`
+  - `grouped_slr`
 
-This function can be used to run linear regression between different
-pairs of variables across multiple levels of grouping variable(s). For
-example, we can use the `gapminder` dataset to study two relationships
-of interest for **each country** across years:
+This function can be used to run **simple linear regression** (slr)
+between different pairs of variables across multiple levels of grouping
+variable(s). For example, we can use the `gapminder` dataset to study
+two relationships of interest for **each country** across years:
 
 1.  life expectency and GDP (per capita)
 2.  population GDP (per capita) Thus, in this case we have two
@@ -286,157 +281,113 @@ of interest for **each country** across years:
 library(gapminder)
 options(tibble.width = Inf)            # show me all columns
 
-groupedstats::grouped_lm(data = gapminder::gapminder,
+groupedstats::grouped_slr(data = gapminder::gapminder,
                          dep.vars = c(lifeExp, pop),
                          indep.vars = c(gdpPercap, gdpPercap),
                          grouping.vars = country)
-#> # A tibble: 284 x 19
-#>    country     formula             t.value    beta conf.low conf.high
-#>    <fct>       <chr>                 <dbl>   <dbl>    <dbl>     <dbl>
-#>  1 Afghanistan lifeExp ~ gdpPercap  -0.151 -0.0475   -0.751     0.656
-#>  2 Albania     lifeExp ~ gdpPercap   4.84   0.837     0.452     1.22 
-#>  3 Algeria     lifeExp ~ gdpPercap   6.71   0.904     0.604     1.21 
-#>  4 Angola      lifeExp ~ gdpPercap  -0.998 -0.301    -0.973     0.371
-#>  5 Argentina   lifeExp ~ gdpPercap   4.74   0.832     0.440     1.22 
-#>  6 Australia   lifeExp ~ gdpPercap  19.0    0.986     0.871     1.10 
-#>  7 Austria     lifeExp ~ gdpPercap  26.5    0.993     0.910     1.08 
-#>  8 Bahrain     lifeExp ~ gdpPercap   6.45   0.898     0.587     1.21 
-#>  9 Bangladesh  lifeExp ~ gdpPercap   5.05   0.847     0.473     1.22 
-#> 10 Belgium     lifeExp ~ gdpPercap  26.1    0.993     0.908     1.08 
-#>    std.error `F value`   df1   df2 `Pr(>F)` partial.etasq
-#>        <dbl>     <dbl> <dbl> <dbl>    <dbl>         <dbl>
-#>  1    0.316     0.0227     1    10 8.83e- 1       0.00226
-#>  2    0.173    23.4        1    10 6.82e- 4       0.701  
-#>  3    0.135    45.0        1    10 5.33e- 5       0.818  
-#>  4    0.302     0.997      1    10 3.42e- 1       0.0906 
-#>  5    0.176    22.4        1    10 7.97e- 4       0.692  
-#>  6    0.0519  361.         1    10 3.52e- 9       0.973  
-#>  7    0.0374  703.         1    10 1.34e-10       0.986  
-#>  8    0.139    41.6        1    10 7.38e- 5       0.806  
-#>  9    0.168    25.5        1    10 5.03e- 4       0.718  
-#> 10    0.0380  682.         1    10 1.56e-10       0.986  
-#>    partial.etasq.conf.low partial.etasq.conf.high partial.omegasq
-#>                     <dbl>                   <dbl>           <dbl>
-#>  1                  0                       0.206       -0.0887  
-#>  2                  0.235                   0.830        0.651   
-#>  3                  0.454                   0.896        0.786   
-#>  4                  0                       0.425       -0.000262
-#>  5                  0.221                   0.825        0.641   
-#>  6                  0.903                   0.984        0.968   
-#>  7                  0.949                   0.992        0.983   
-#>  8                  0.427                   0.889        0.772   
-#>  9                  0.261                   0.839        0.671   
-#> 10                  0.947                   0.992        0.983   
-#>    partial.omegasq.conf.low partial.omegasq.conf.high  p.value
-#>                       <dbl>                     <dbl>    <dbl>
-#>  1                   -0.330                     0.354 8.83e- 1
-#>  2                    0.321                     0.978 6.82e- 4
-#>  3                    0.482                     1.04  5.33e- 5
-#>  4                   -0.309                     0.427 3.42e- 1
-#>  5                    0.168                     1.05  7.97e- 4
-#>  6                    0.942                     0.999 3.52e- 9
-#>  7                    0.966                     0.999 1.34e-10
-#>  8                    0.613                     1.00  7.38e- 5
-#>  9                    0.420                     0.930 5.03e- 4
-#> 10                    0.960                     1.00  1.56e-10
-#>    significance
-#>    <chr>       
-#>  1 ns          
-#>  2 ***         
-#>  3 ***         
-#>  4 ns          
-#>  5 ***         
-#>  6 ***         
-#>  7 ***         
-#>  8 ***         
-#>  9 ***         
-#> 10 ***         
+#> # A tibble: 284 x 9
+#>    country     formula             t.value estimate conf.low conf.high
+#>    <fct>       <chr>                 <dbl>    <dbl>    <dbl>     <dbl>
+#>  1 Afghanistan lifeExp ~ gdpPercap  -0.151  -0.0475   -0.751     0.656
+#>  2 Albania     lifeExp ~ gdpPercap   4.84    0.837     0.452     1.22 
+#>  3 Algeria     lifeExp ~ gdpPercap   6.71    0.904     0.604     1.21 
+#>  4 Angola      lifeExp ~ gdpPercap  -0.998  -0.301    -0.973     0.371
+#>  5 Argentina   lifeExp ~ gdpPercap   4.74    0.832     0.440     1.22 
+#>  6 Australia   lifeExp ~ gdpPercap  19.0     0.986     0.871     1.10 
+#>  7 Austria     lifeExp ~ gdpPercap  26.5     0.993     0.910     1.08 
+#>  8 Bahrain     lifeExp ~ gdpPercap   6.45    0.898     0.587     1.21 
+#>  9 Bangladesh  lifeExp ~ gdpPercap   5.05    0.847     0.473     1.22 
+#> 10 Belgium     lifeExp ~ gdpPercap  26.1     0.993     0.908     1.08 
+#>    std.error  p.value significance
+#>        <dbl>    <dbl> <chr>       
+#>  1    0.316  8.83e- 1 ns          
+#>  2    0.173  6.82e- 4 ***         
+#>  3    0.135  5.33e- 5 ***         
+#>  4    0.302  3.42e- 1 ns          
+#>  5    0.176  7.97e- 4 ***         
+#>  6    0.0519 3.52e- 9 ***         
+#>  7    0.0374 1.34e-10 ***         
+#>  8    0.139  7.38e- 5 ***         
+#>  9    0.168  5.03e- 4 ***         
+#> 10    0.0380 1.56e-10 ***         
 #> # ... with 274 more rows
 ```
 
 Notice the order in which the dependent and independent variables are
-entered. If this order is incorrect, the result will also be incorrect.
-So it is always a good idea to check the *formula* column to see if you
-have run the correct linear models.
+entered; there are two regression models being run here: `lifeExp ~
+gdpPercap` and `pop ~ gdpPercap` If this order is incorrect, the result
+will also be incorrect. So it is always a good idea to check the
+*formula* column to see if you have run the correct linear models. Also,
+note that the estimates are already standardized, i.e. estimates are
+standardized regression coefficients (betas, i.e.).
 
-We saw example with one grouping variable. This can be done with
-multiple grouping variables as well. For example, with the `diamonds`
-dataset from `ggplot2` library, let’s assess the relation between carat
-*and* price of a diamond for each type of clarity *and* cut-
+The prior example was with just one grouping variable. This can be done
+with multiple grouping variables as well. For example, with the
+`diamonds` dataset from `ggplot2` library, let’s assess the relation
+between carat *and* price of a diamond for each type of clarity *and*
+cut-
 
 ``` r
 library(ggplot2)
 library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
 options(tibble.width = Inf)            # show me all columns
 
-groupedstats::grouped_lm(data = ggplot2::diamonds,
+groupedstats::grouped_slr(data = ggplot2::diamonds,
                          dep.vars = price,
                          indep.vars = carat,
                          grouping.vars = c(cut, clarity)) %>%
   dplyr::arrange(.data = ., cut)
-#> # A tibble: 40 x 20
-#>    cut   clarity formula       t.value  beta conf.low conf.high std.error
-#>    <ord> <ord>   <chr>           <dbl> <dbl>    <dbl>     <dbl>     <dbl>
-#>  1 Fair  VS2     price ~ carat   42.0  0.934    0.890     0.978   0.0222 
-#>  2 Fair  SI2     price ~ carat   69.1  0.955    0.928     0.982   0.0138 
-#>  3 Fair  SI1     price ~ carat   58.9  0.946    0.915     0.978   0.0161 
-#>  4 Fair  I1      price ~ carat   58.7  0.971    0.939     1.00    0.0165 
-#>  5 Fair  VVS1    price ~ carat    8.58 0.911    0.685     1.14    0.106  
-#>  6 Fair  VS1     price ~ carat   36.6  0.943    0.892     0.994   0.0257 
-#>  7 Fair  IF      price ~ carat    8.22 0.952    0.678     1.23    0.116  
-#>  8 Fair  VVS2    price ~ carat   13.6  0.857    0.732     0.983   0.0629 
-#>  9 Good  VS1     price ~ carat   74.0  0.946    0.921     0.971   0.0128 
-#> 10 Good  SI2     price ~ carat  103.   0.953    0.934     0.971   0.00926
-#>    `F value`   df1   df2  `Pr(>F)` partial.etasq partial.etasq.conf.low
-#>        <dbl> <dbl> <dbl>     <dbl>         <dbl>                  <dbl>
-#>  1    1761.      1   259 1.55e-117         0.872                  0.846
-#>  2    4778.      1   464 1.96e-246         0.911                  0.899
-#>  3    3472.      1   406 4.58e-201         0.895                  0.879
-#>  4    3449.      1   208 1.86e-131         0.943                  0.930
-#>  5      73.6     1    15 3.59e-  7         0.831                  0.588
-#>  6    1341.      1   168 5.40e- 82         0.889                  0.859
-#>  7      67.5     1     7 7.67e-  5         0.906                  0.582
-#>  8     186.      1    67 5.54e- 21         0.735                  0.619
-#>  9    5479.      1   646 9.62e-318         0.895                  0.882
-#> 10   10593.      1  1079 0.                0.908                  0.899
-#>    partial.etasq.conf.high partial.omegasq partial.omegasq.conf.low
-#>                      <dbl>           <dbl>                    <dbl>
-#>  1                   0.890           0.871                    0.847
-#>  2                   0.922           0.911                    0.892
-#>  3                   0.908           0.895                    0.875
-#>  4                   0.952           0.943                    0.920
-#>  5                   0.897           0.810                    0.669
-#>  6                   0.908           0.887                    0.849
-#>  7                   0.948           0.881                    0.679
-#>  8                   0.800           0.728                    0.669
-#>  9                   0.905           0.894                    0.879
-#> 10                   0.915           0.907                    0.898
-#>    partial.omegasq.conf.high   p.value significance
-#>                        <dbl>     <dbl> <chr>       
-#>  1                     0.902 1.55e-117 ***         
-#>  2                     0.929 1.96e-246 ***         
-#>  3                     0.917 4.58e-201 ***         
-#>  4                     0.967 1.86e-131 ***         
-#>  5                     0.958 3.59e-  7 ***         
-#>  6                     0.926 5.40e- 82 ***         
-#>  7                     1.04  7.67e-  5 ***         
-#>  8                     0.820 5.54e- 21 ***         
-#>  9                     0.911 9.62e-318 ***         
-#> 10                     0.917 0.        ***         
+#> # A tibble: 40 x 10
+#>    cut   clarity formula       t.value estimate conf.low conf.high
+#>    <ord> <ord>   <chr>           <dbl>    <dbl>    <dbl>     <dbl>
+#>  1 Fair  VS2     price ~ carat   42.0     0.934    0.890     0.978
+#>  2 Fair  SI2     price ~ carat   69.1     0.955    0.928     0.982
+#>  3 Fair  SI1     price ~ carat   58.9     0.946    0.915     0.978
+#>  4 Fair  I1      price ~ carat   58.7     0.971    0.939     1.00 
+#>  5 Fair  VVS1    price ~ carat    8.58    0.911    0.685     1.14 
+#>  6 Fair  VS1     price ~ carat   36.6     0.943    0.892     0.994
+#>  7 Fair  IF      price ~ carat    8.22    0.952    0.678     1.23 
+#>  8 Fair  VVS2    price ~ carat   13.6     0.857    0.732     0.983
+#>  9 Good  VS1     price ~ carat   74.0     0.946    0.921     0.971
+#> 10 Good  SI2     price ~ carat  103.      0.953    0.934     0.971
+#>    std.error   p.value significance
+#>        <dbl>     <dbl> <chr>       
+#>  1   0.0222  1.55e-117 ***         
+#>  2   0.0138  1.96e-246 ***         
+#>  3   0.0161  4.58e-201 ***         
+#>  4   0.0165  1.86e-131 ***         
+#>  5   0.106   3.59e-  7 ***         
+#>  6   0.0257  5.40e- 82 ***         
+#>  7   0.116   7.67e-  5 ***         
+#>  8   0.0629  5.54e- 21 ***         
+#>  9   0.0128  9.62e-318 ***         
+#> 10   0.00926 0.        ***         
 #> # ... with 30 more rows
 ```
 
-  - `grouped_robustlm`
+A more general version of this function (`grouped_lm`) will be
+implemented in future that will utilize the formula interface of
+`stats::lm`.
 
-There is also robust variant of linear regression (as implemented in
-`robust::lmRob`)-
+  - `grouped_robustslr`
+
+There is also robust variant of **simple linear regression** (as
+implemented in `robust::lmRob`)-
 
 ``` r
 library(gapminder)
 library(dplyr)
 options(tibble.width = Inf)            # show me all columns
 
-groupedstats::grouped_robustlm(data = gapminder::gapminder,
+groupedstats::grouped_robustslr(data = gapminder::gapminder,
                          dep.vars = c(lifeExp, pop),
                          indep.vars = c(gdpPercap, gdpPercap),
                          grouping.vars = c(continent, country)) %>%
@@ -468,6 +419,10 @@ groupedstats::grouped_robustlm(data = gapminder::gapminder,
 #> 10 0.0000304    ***         
 #> # ... with 274 more rows
 ```
+
+A more general version of this function (`grouped_robustlm`) will be
+implemented in future that will utilize the formula interface of
+`robust::lmRob`.
 
   - `grouped_glm`
 
@@ -523,8 +478,6 @@ has greater measurement (length or width) than `Petal` part of the
 flower for **each** *Iris* species.
 
 ``` r
-# loading the necessary libraries
-library(tidyverse)
 
 # converting the iris dataset to long format
 iris_long <- datasets::iris %>%
@@ -718,7 +671,7 @@ groupedstats::grouped_ttest(
 # wilcox test (aka Mann-Whitney U-test)
 groupedstats::grouped_wilcox(
   data = diamonds_short,
-  dep.vars = depth:price,                        # note that you can select variables in range
+  dep.vars = depth:price,                        # note that you can select variables in range with `:`
   indep.vars = color,                            # again, just one independent, multiple dependent variables case
   grouping.vars = clarity,                       # one grouping variable
   paired = FALSE
@@ -823,4 +776,9 @@ In these examples, two things are worth noting that generalize to
 evaluation`](https://adv-r.hadley.nz/evaluation.html) works: <br />
 **1.** If just one independent variable is provided for multiple
 dependent variables, it will be used as a common variable. <br /> **2.**
-If you want to use a selection of variables, you shouldn’t use `c()`.
+If you want to use a selection of variables, you need not use `c()`.
+
+  - Suggestions
+
+If you find any bugs or have any suggestions/remarks, please file an
+issue on GitHub: <https://github.com/IndrajeetPatil/groupedstats/issues>

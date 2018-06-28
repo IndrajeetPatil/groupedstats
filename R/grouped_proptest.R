@@ -10,48 +10,21 @@
 #' @param measure A variable for which proportion test needs to be carried out
 #'  for each combination of levels of factors entered in `grouping.vars`.
 #'
-#' @import dplyr
-#' @import rlang
-#'
 #' @importFrom purrr map
 #' @importFrom tidyr nest
 #' @importFrom tidyr unnest
 #' @importFrom tidyr spread
 #'
+#' @examples
+#'
+#' groupedstats::grouped_proptest(
+#'  data = mtcars,
+#'  grouping.vars = cyl,
+#'  measure = am
+#' )
+#'
 #' @export
-
-# defining global variables and functions to quient the R CMD check notes
-utils::globalVariables(
-  c(
-    "Df",
-    "F value",
-    "F.value",
-    "LL",
-    "Pr(>F)",
-    "UL",
-    "complete",
-    "data",
-    "df1",
-    "df2",
-    "effect",
-    "effsize",
-    "formula",
-    "hist",
-    "median",
-    "p0",
-    "p100",
-    "p50",
-    "p25",
-    "p75",
-    "sd",
-    "type",
-    "Chi-squared",
-    "df",
-    "p-value",
-    "chi_sq",
-    "significance"
-  )
-)
+#'
 
 grouped_proptest <- function(data,
                              grouping.vars,
@@ -79,14 +52,15 @@ grouped_proptest <- function(data,
 
   # creating a nested dataframe
   df_nest <- df %>%
-    dplyr::group_by(!!!grouping.vars) %>%
+    dplyr::group_by(.data = ., !!!grouping.vars) %>%
     tidyr::nest(data = .)
 
   # creating the final results with the
   df_results <- df_nest %>%
     dplyr::mutate(
       .data = .,
-      percentage = data %>% purrr::map(
+      percentage = data %>%
+        purrr::map(
         .x = .,
         .f = ~dplyr::group_by(.data = ., measure) %>%
           dplyr::summarize(.data = ., counts = length(measure)) %>%

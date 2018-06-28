@@ -4,6 +4,10 @@
 \alias{grouped_summary}
 \title{Function to get descriptive statistics for multiple variables for all
 grouping variable levels}
+\usage{
+grouped_summary(data, grouping.vars, measures = NULL,
+  measures.type = "numeric", topcount.long = FALSE)
+}
 \arguments{
 \item{data}{Dataframe from which variables need to be taken.}
 
@@ -41,7 +45,7 @@ measures = Sepal.Length:Petal.Width,
 measures.type = "numeric"
 )
 
-# if you have just one variable per argument, you can also not use `c()`
+# if you have just one variable per argument, you need not use `c()`
 groupedstats::grouped_summary(
 data = datasets::ToothGrowth,
 grouping.vars = supp,

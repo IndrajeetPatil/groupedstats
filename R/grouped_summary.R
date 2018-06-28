@@ -20,9 +20,6 @@
 #' @param topcount.long If `measures.type = factor`, you can get the top counts
 #'   in long format for plotting purposes. (Default: `topcount.long = FALSE`).
 #'
-#' @import dplyr
-#' @import rlang
-#'
 #' @importFrom magrittr "%<>%"
 #' @importFrom skimr skim_to_wide
 #' @importFrom tibble as_data_frame
@@ -48,7 +45,7 @@
 #' measures.type = "numeric"
 #' )
 #'
-#' # if you have just one variable per argument, you can also not use `c()`
+#' # if you have just one variable per argument, you need not use `c()`
 #' groupedstats::grouped_summary(
 #' data = datasets::ToothGrowth,
 #' grouping.vars = supp,
@@ -58,24 +55,6 @@
 #'
 #' @export
 #'
-
-# defining global variables and functions to quient the R CMD check notes
-utils::globalVariables(
-  c(
-    "complete",
-    "missing",
-    "data",
-    "hist",
-    "median",
-    "p0",
-    "p100",
-    "p50",
-    "p25",
-    "p75",
-    "sd",
-    "type"
-  )
-)
 
 # function body
 grouped_summary <- function(data,
@@ -282,7 +261,7 @@ grouped_summary <- function(data,
       #
       # converting to long format using the custom function
       df_summary_long <- df_summary %>%
-        dplyr::group_by(!!!grouping.vars) %>%
+        dplyr::group_by(.data = ., !!!grouping.vars) %>%
         tidyr::nest(data = .) %>%
         dplyr::mutate(
           .data = .,

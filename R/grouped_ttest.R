@@ -9,17 +9,13 @@
 #' @param dep.vars List dependent variables for a t-test (`y` in `y ~ x`).
 #' @param indep.vars List independent variables for a t-test (`x` in `y ~ x`).
 #' @param grouping.vars List of grouping variables.
-#' @param paired A logical indicating whether you want a paired t-test (Dafault:
+#' @param paired A logical indicating whether you want a paired t-test (Default:
 #'   `paired = FALSE`; independent t-test, i.e.).
 #' @param var.equal A logical variable indicating whether to treat the two
 #'   variances as being equal. If `TRUE`, then the pooled variance is used to
 #'   estimate the variance otherwise the Welch (or Satterthwaite) approximation
 #'   to the degrees of freedom is used (Default: `var.equal = FALSE`; Welch's
 #'   t-test, i.e.).
-#'
-#' @import dplyr
-#' @import rlang
-#' @import tibble
 #'
 #' @importFrom broom tidy
 #' @importFrom broom confint_tidy
@@ -32,28 +28,19 @@
 #' @importFrom tibble as_data_frame
 #' @importFrom tidyr nest
 #'
-#
+#' @examples
+#'
+#' groupedstats::grouped_ttest(
+#'  data = dplyr::filter(.data = ggplot2::diamonds, color == "E" | color == "J"),
+#'  dep.vars = c(carat, price, depth),
+#'  indep.vars = color,
+#'  grouping.vars = clarity,
+#'  paired = FALSE,
+#'  var.equal = FALSE
+#' )
+#'
 #' @export
-
-
-# defining global variables and functions to quient the R CMD check notes
-utils::globalVariables(
-  c(
-    "estimate",
-    "formula",
-    "group",
-    "p.value",
-    "statistic",
-    "std.error",
-    "term",
-    "conf.low",
-    "conf.high",
-    "df",
-    "parameter",
-    "method",
-    "alternative"
-  )
-)
+#'
 
 # defining the function
 grouped_ttest <- function(data,

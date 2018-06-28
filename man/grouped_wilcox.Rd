@@ -4,6 +4,10 @@
 \alias{grouped_wilcox}
 \title{Function to run two-sample Wilcoxon tests on multiple variables across
 multiple grouping variables.}
+\usage{
+grouped_wilcox(data, dep.vars, indep.vars, grouping.vars, paired = FALSE,
+  correct = TRUE)
+}
 \arguments{
 \item{data}{Dataframe from which variables are to be taken.}
 
@@ -28,6 +32,18 @@ analyses.
 \description{
 Function to run two-sample Wilcoxon tests on multiple variables across
 multiple grouping variables.
+}
+\examples{
+
+# only with one grouping variable
+groupedstats::grouped_wilcox(
+  data = dplyr::filter(.data = ggplot2::diamonds, color == "E" | color == "J"),
+  dep.vars = depth:price,
+  indep.vars = color,
+  grouping.vars = clarity,
+  paired = FALSE
+)
+
 }
 \author{
 Indrajeet Patil

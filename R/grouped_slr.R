@@ -1,9 +1,12 @@
 #'
-#' @title Function to run linear regression on multiple variables across
+#' @title Function to run simple linear regression (slr) on multiple variables across
 #'   multiple grouping variables.
-#' @name grouped_lm
+#' @name grouped_slr
+#' @aliases grouped_simplelm
 #' @author Indrajeet Patil
-#' @return A tibble dataframe with tidy results from linear regression analyses.
+#' @return A tibble dataframe with tidy results from simple linear regression
+#'   analyses. The esimates are standardized, i.e. the `lm` model used is
+#'   `scale(y) ~ scale(x)`, and not `y ~ x`.
 #'
 #' @param data Dataframe from which variables are to be taken.
 #' @param grouping.vars List of grouping variables.
@@ -11,13 +14,6 @@
 #'   model (`y` in `y ~ x`).
 #' @param indep.vars List predictor or **independent** variables for simple
 #'   linear model (`x` in `y ~ x`).
-#' @param nboot Number of bootstrap samples to construct 95% confidence
-#'   intervals for partial eta-squared and omega-squared. Default is `nboot =
-#'   100`.
-#'
-#' @import dplyr
-#' @import rlang
-#' @import tibble
 #'
 #' @importFrom magrittr "%<>%"
 #' @importFrom broom tidy
@@ -30,52 +26,39 @@
 #' @importFrom stats as.formula
 #' @importFrom tibble as_data_frame
 #' @importFrom tidyr nest
+#' @importFrom dplyr select
+#' @importFrom dplyr group_by
+#' @importFrom dplyr arrange
+#' @importFrom dplyr mutate
+#' @importFrom dplyr mutate_at
+#' @importFrom dplyr mutate_if
+#' @importFrom dplyr select
+#' @importFrom rlang quo_squash
+#' @importFrom rlang enquo
+#' @importFrom rlang quo
 #'
 #' @examples
-#
-# # in case of just one grouping variable
-# groupedstats::grouped_lm(data = iris,
-# dep.vars = c(Sepal.Length, Petal.Length),
-# indep.vars = c(Sepal.Width, Petal.Width),
-# grouping.vars = Species)
-#
-# # in case of multiple grouping variables
-# groupedstats::grouped_lm( data = mtcars,
-# dep.vars = c(wt, mpg),
-# indep.vars = c(drat, disp),
-# grouping.vars = c(am, cyl))
-#
+#'
+#' # in case of just one grouping variable
+#' groupedstats::grouped_slr(data = iris,
+#' dep.vars = c(Sepal.Length, Petal.Length),
+#' indep.vars = c(Sepal.Width, Petal.Width),
+#' grouping.vars = Species)
+#'
+#' # in case of multiple grouping variables
+#' groupedstats::grouped_slr( data = mtcars,
+#' dep.vars = c(wt, mpg),
+#' indep.vars = c(drat, disp),
+#' grouping.vars = c(am, cyl))
+#'
 #' @export
-
-
-# defining global variables and functions to quient the R CMD check notes
-utils::globalVariables(
-  c(
-    "estimate",
-    "formula",
-    "group",
-    "p.value",
-    "statistic",
-    "std.error",
-    "term",
-    "beta",
-    "conf.low",
-    "conf.high",
-    "partial.etasq",
-    "partial.etasq.conf.low",
-    "partial.etasq.conf.high",
-    "partial.omegasq",
-    "partial.omegasq.conf.low",
-    "partial.omegasq.conf.high"
-  )
-)
+#'
 
 # defining the function
-grouped_lm <- function(data,
+grouped_slr <- function(data,
                        dep.vars,
                        indep.vars,
-                       grouping.vars,
-                       nboot = 100) {
+                       grouping.vars) {
   # ================== preparing dataframe ==================
   #
   # check how many variables were entered for criterion variables vector
@@ -144,7 +127,7 @@ grouped_lm <- function(data,
       purrr::map_dfr(
         .x = .,
         .f = ~ dplyr::bind_cols(
-          dplyr::filter(.data = broom::tidy(x = .), term == !!filter_name),
+          dplyr::filter(.data = broom::tidy(x = .), term == !!filter_name), # remove intercept terms
           broom::confint_tidy(x = .)[-c(1), ]
         ),
         .id = "group"
@@ -152,61 +135,24 @@ grouped_lm <- function(data,
       dplyr::select(.data = ., -term) %>% # convert to a tibble dataframe
       tibble::as_data_frame(x = .)
 
-    # dataframe with results from lm
-    effsize_df <-
-      list.col %>% # running linear regression on each individual group with purrr
-      purrr::map(
-        .x = .,
-        .f = ~ stats::lm(
-          formula = stats::as.formula(fx_plain),
-          data = (.),
-          na.action = na.omit
-        )
-      ) %>% # tidying up the output with broom
-      purrr::map_dfr(
-        .x = .,
-        .f = ~ lm_effsize_ci(
-          lm_object = .,
-          conf.level = 0.95,
-          nboot = nboot
-        ),
-        .id = "group"
-      ) %>% # convert to a tibble dataframe
-      tibble::as_data_frame(x = .)
-
-    # combining summary results and effect size results in a single dataframe
-    combined_df <-
-      dplyr::full_join(x = results_df,
-                       y = effsize_df,
-                       by = "group") %>% # remove intercept terms
-      #dplyr::filter(.data = ., term == !!filter_name) %>% # add formula as a character
+    # preparing the final dataframe to be returned
+    results_df %<>%
       dplyr::mutate(.data = ., formula = as.character(fx_plain)) %>% # rearrange the dataframe
       dplyr::select(
         .data = .,
         group,
-        term,
         formula,
         t.value = statistic,
-        beta = estimate,
+        estimate,
         conf.low,
         conf.high,
         std.error,
-        p.value,
-        `F value`,
-        df1,
-        df2,
-        `Pr(>F)`,
-        partial.etasq,
-        partial.etasq.conf.low,
-        partial.etasq.conf.high,
-        partial.omegasq,
-        partial.omegasq.conf.low,
-        partial.omegasq.conf.high
+        p.value
       ) %>% # convert to a tibble dataframe
       tibble::as_data_frame(x = .)
 
     # return the dataframe
-    return(combined_df)
+    return(results_df)
   }
 
   # ========= using  custom function on entered dataframe =================
@@ -229,7 +175,7 @@ grouped_lm <- function(data,
     dplyr::bind_rows(.) %>%
     dplyr::left_join(x = ., y = df, by = "group") %>%
     dplyr::select(.data = ., !!!grouping.vars, dplyr::everything()) %>%
-    dplyr::select(.data = ., -group, -data, -term) %>%
+    dplyr::select(.data = ., -group, -data) %>%
     signif_column(data = ., p = `p.value`)
 
   # ============================== output ==================================

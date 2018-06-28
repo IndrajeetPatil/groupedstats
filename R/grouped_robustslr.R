@@ -1,17 +1,18 @@
 #'
-#' @title Function to run robust linear regression on multiple variables across multiple grouping variables.
-#' @name grouped_robustlm
+#' @title Function to run robust simple linear regression (slr) on multiple variables across
+#'   multiple grouping variables.
+#' @name grouped_robustslr
 #' @author Indrajeet Patil
-#' @return A tibble dataframe with tidy results from robust linear regression analyses.
+#' @return A tibble dataframe with tidy results from robust linear regression
+#'   analyses. The esimates are standardized, i.e. the `lm` model used is
+#'   `scale(y) ~ scale(x)`, and not `y ~ x`.
 #'
 #' @param data Dataframe from which variables are to be taken.
 #' @param grouping.vars List of grouping variables.
-#' @param dep.vars List criterion or dependent variables for regression (`y` in `y ~ x`).
-#' @param indep.vars List predictor or independent variables for regression (`x` in `y ~ x`).
-#'
-#' @import dplyr
-#' @import rlang
-#' @import tibble
+#' @param dep.vars List criterion or dependent variables for regression (`y` in
+#'   `y ~ x`).
+#' @param indep.vars List predictor or independent variables for regression (`x`
+#'   in `y ~ x`).
 #'
 #' @importFrom broom tidy
 #' @importFrom glue glue
@@ -24,39 +25,18 @@
 #' @importFrom tidyr nest
 #'
 #' @examples
-#
-# # in case of just one grouping variable
-# groupedstats::grouped_robustlm(data = iris,
-# dep.vars = c(Sepal.Length, Petal.Length),
-# indep.vars = c(Sepal.Width, Petal.Width),
-# grouping.vars = Species)
-#
-# # in case of multiple grouping variables
-# groupedstats::grouped_robustlm( data = mtcars,
-# dep.vars = c(wt, mpg),
-# indep.vars = c(drat, disp),
-# grouping.vars = c(am, cyl))
-#
+#'
+#' # in case of just one grouping variable
+#' groupedstats::grouped_robustslr(data = iris,
+#' dep.vars = c(Sepal.Length, Petal.Length),
+#' indep.vars = c(Sepal.Width, Petal.Width),
+#' grouping.vars = Species)
+#'
 #' @export
-
-
-# defining global variables and functions to quient the R CMD check notes
-utils::globalVariables(
-  c(
-    "estimate",
-    "formula",
-    "group",
-    "p.value",
-    "statistic",
-    "std.error",
-    "term",
-    "conf.low",
-    "conf.high"
-  )
-)
+#'
 
 # defining the function
-grouped_robustlm <- function(data,
+grouped_robustslr <- function(data,
                              dep.vars,
                              indep.vars,
                              grouping.vars) {

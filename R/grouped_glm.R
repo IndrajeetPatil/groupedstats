@@ -16,10 +16,6 @@
 #'   function, a `family` function or the result of a call to a family function.
 #'   For more, see `?stats::family`.
 #'
-#' @import dplyr
-#' @import rlang
-#' @import tibble
-#'
 #' @importFrom broom tidy
 #' @importFrom broom confint_tidy
 #' @importFrom glue glue
@@ -30,33 +26,22 @@
 #' @importFrom stats as.formula
 #' @importFrom tibble as_data_frame
 #' @importFrom tidyr nest
+#' @importFrom dplyr bind_cols
+#' @importFrom dplyr bind_rows
+#' @importFrom dplyr everything
+#' @importFrom dplyr left_join
 #'
 #' @examples
-#
-# groupedstats::grouped_glm(data = datasets::mtcars,
-# dep.vars = am,
-# indep.vars = wt,
-# grouping.vars = cyl,
-# family = "gaussian")
+#'
+#' groupedstats::grouped_glm(data = datasets::mtcars,
+#'  dep.vars = am,
+#'  indep.vars = wt,
+#'  grouping.vars = cyl,
+#'  family = "gaussian"
+#' )
 #
 #' @export
 #'
-
-
-# defining global variables and functions to quient the R CMD check notes
-utils::globalVariables(
-  c(
-    "estimate",
-    "formula",
-    "group",
-    "p.value",
-    "statistic",
-    "std.error",
-    "term",
-    "conf.low",
-    "conf.high"
-  )
-)
 
 # defining the function
 grouped_glm <- function(data,

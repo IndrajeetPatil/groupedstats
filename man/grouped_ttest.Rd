@@ -4,6 +4,10 @@
 \alias{grouped_ttest}
 \title{Function to run t-test on multiple variables across multiple grouping
 variables.}
+\usage{
+grouped_ttest(data, dep.vars, indep.vars, grouping.vars, paired = FALSE,
+  var.equal = FALSE)
+}
 \arguments{
 \item{data}{Dataframe from which variables are to be taken.}
 
@@ -13,7 +17,7 @@ variables.}
 
 \item{grouping.vars}{List of grouping variables.}
 
-\item{paired}{A logical indicating whether you want a paired t-test (Dafault:
+\item{paired}{A logical indicating whether you want a paired t-test (Default:
 \code{paired = FALSE}; independent t-test, i.e.).}
 
 \item{var.equal}{A logical variable indicating whether to treat the two
@@ -28,6 +32,18 @@ A tibble dataframe with tidy results from t-test analyses.
 \description{
 Function to run t-test on multiple variables across multiple grouping
 variables.
+}
+\examples{
+
+groupedstats::grouped_ttest(
+ data = dplyr::filter(.data = ggplot2::diamonds, color == "E" | color == "J"),
+ dep.vars = c(carat, price, depth),
+ indep.vars = color,
+ grouping.vars = clarity,
+ paired = FALSE,
+ var.equal = FALSE
+)
+
 }
 \author{
 Indrajeet Patil

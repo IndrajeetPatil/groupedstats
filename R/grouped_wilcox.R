@@ -17,10 +17,6 @@
 #' @param correct A logical indicating whether to apply continuity correction in
 #'   the normal approximation for the p-value (Default: `correct = TRUE`).
 #'
-#' @import dplyr
-#' @import rlang
-#' @import tibble
-#'
 #' @importFrom broom tidy
 #' @importFrom broom confint_tidy
 #' @importFrom glue glue
@@ -32,28 +28,19 @@
 #' @importFrom tibble as_data_frame
 #' @importFrom tidyr nest
 #'
-#
+#' @examples
+#'
+#' # only with one grouping variable
+#' groupedstats::grouped_wilcox(
+#'   data = dplyr::filter(.data = ggplot2::diamonds, color == "E" | color == "J"),
+#'   dep.vars = depth:price,
+#'   indep.vars = color,
+#'   grouping.vars = clarity,
+#'   paired = FALSE
+#' )
+#'
 #' @export
-
-
-# defining global variables and functions to quient the R CMD check notes
-utils::globalVariables(
-  c(
-    "estimate",
-    "formula",
-    "group",
-    "p.value",
-    "statistic",
-    "std.error",
-    "term",
-    "conf.low",
-    "conf.high",
-    "df",
-    "parameter",
-    "method",
-    "alternative"
-  )
-)
+#'
 
 # defining the function
 grouped_wilcox <- function(data,

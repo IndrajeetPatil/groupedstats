@@ -111,6 +111,8 @@ multiple grouping variables.</p>
     
     </div>
 
+    <pre class="usage"><span class='fu'>grouped_wilcox</span>(<span class='no'>data</span>, <span class='no'>dep.vars</span>, <span class='no'>indep.vars</span>, <span class='no'>grouping.vars</span>, <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>correct</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -151,6 +153,36 @@ the normal approximation for the p-value (Default: <code>correct = TRUE</code>).
 analyses.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='co'># only with one grouping variable</span>
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_wilcox'>grouped_wilcox</a></span>(
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='kw'>.data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/diamonds'>diamonds</a></span>, <span class='no'>color</span> <span class='kw'>==</span> <span class='st'>"E"</span> <span class='kw'>|</span> <span class='no'>color</span> <span class='kw'>==</span> <span class='st'>"J"</span>),
+  <span class='kw'>dep.vars</span> <span class='kw'>=</span> <span class='no'>depth</span>:<span class='no'>price</span>,
+  <span class='kw'>indep.vars</span> <span class='kw'>=</span> <span class='no'>color</span>,
+  <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>clarity</span>,
+  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</div><div class='output co'>#&gt; # A tibble: 16 x 9
+#&gt;    clarity formula  method      statistic estimate  conf.low conf.high  p.value
+#&gt;    &lt;ord&gt;   &lt;chr&gt;    &lt;fct&gt;           &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+#&gt;  1 SI2     depth ~~ Wilcoxon r~   380600  -2.00e-1  -3.00e-1  -3.64e-5 1.54e- 2
+#&gt;  2 SI1     depth ~~ Wilcoxon r~   918892   3.93e-5 -10.00e-2   1.00e-1 6.77e- 1
+#&gt;  3 VS1     depth ~~ Wilcoxon r~   276743  -4.00e-1  -5.00e-1  -3.00e-1 7.03e-12
+#&gt;  4 VVS2    depth ~~ Wilcoxon r~    52618  -4.00e-1  -6.00e-1  -2.00e-1 4.18e- 4
+#&gt;  5 VS2     depth ~~ Wilcoxon r~   816784. -2.00e-1  -3.00e-1 -10.00e-2 8.86e- 5
+#&gt;  6 I1      depth ~~ Wilcoxon r~     1570. -2.00e+0  -3.00e+0 -10.00e-1 1.21e- 4
+#&gt;  7 VVS1    depth ~~ Wilcoxon r~    19455  -3.00e-1  -5.00e-1 -10.00e-2 5.07e- 3
+#&gt;  8 IF      depth ~~ Wilcoxon r~     3286  -3.00e-1  -7.00e-1  -2.51e-5 4.79e- 2
+#&gt;  9 SI2     price ~~ Wilcoxon r~   269016  -1.84e+3  -2.18e+3  -1.50e+3 8.82e-31
+#&gt; 10 SI1     price ~~ Wilcoxon r~   608724. -1.51e+3  -1.79e+3  -1.31e+3 8.20e-43
+#&gt; 11 VS1     price ~~ Wilcoxon r~   277389  -1.10e+3  -1.41e+3  -7.45e+2 1.11e-11
+#&gt; 12 VVS2    price ~~ Wilcoxon r~    42795  -1.76e+3  -2.92e+3  -1.20e+3 2.23e-10
+#&gt; 13 VS2     price ~~ Wilcoxon r~   560930  -1.89e+3  -2.23e+3  -1.54e+3 1.08e-54
+#&gt; 14 I1      price ~~ Wilcoxon r~     2017  -1.15e+3  -1.83e+3  -7.90e+1 3.68e- 2
+#&gt; 15 VVS1    price ~~ Wilcoxon r~    19086  -3.62e+2  -8.59e+2  -1.07e+2 2.57e- 3
+#&gt; 16 IF      price ~~ Wilcoxon r~     5085   2.96e+2   1.25e+2   4.49e+2 4.94e- 3
+#&gt; # ... with 1 more variable: significance &lt;chr&gt;</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -158,7 +190,9 @@ analyses.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
     <h2>Author</h2>
     

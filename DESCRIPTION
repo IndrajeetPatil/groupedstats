@@ -25,15 +25,19 @@ Imports:
     robust (>= 0.4-18),
     rstudioapi (>= 0.7),
     sjstats (>= 0.14.3),
-    skimr (>= 1.0.2),
+    skimr (>= 1.0.3),
     stats,
     tibble (>= 1.4.2),
     tidyr (>= 0.8.1)
 Suggests: 
     covr (>= 3.0.1),
+    ggplot2,
+    ggstatsplot (>= 0.0.3),
     knitr (>= 1.20),
-    rmarkdown (>= 1.9)
+    rmarkdown (>= 1.9),
+    spelling
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1.9000
+Language: en-US
