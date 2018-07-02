@@ -20,7 +20,7 @@ in \code{y ~ x}).}
 }
 \value{
 A tibble dataframe with tidy results from robust linear regression
-analyses. The esimates are standardized, i.e. the \code{lm} model used is
+analyses. The estimates are standardized, i.e. the \code{lm} model used is
 \code{scale(y) ~ scale(x)}, and not \code{y ~ x}.
 }
 \description{

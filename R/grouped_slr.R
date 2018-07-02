@@ -5,7 +5,7 @@
 #' @aliases grouped_simplelm
 #' @author Indrajeet Patil
 #' @return A tibble dataframe with tidy results from simple linear regression
-#'   analyses. The esimates are standardized, i.e. the `lm` model used is
+#'   analyses. The estimates are standardized, i.e. the `lm` model used is
 #'   `scale(y) ~ scale(x)`, and not `y ~ x`.
 #'
 #' @param data Dataframe from which variables are to be taken.
