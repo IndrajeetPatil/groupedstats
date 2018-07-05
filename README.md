@@ -23,7 +23,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--06--28-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--07--05-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
@@ -528,7 +528,7 @@ groupedstats::grouped_ttest(
 )
 #> # A tibble: 6 x 11
 #>   Species    measure formula      method        t.test estimate conf.low
-#>   <fct>      <chr>   <chr>        <fct>          <dbl>    <dbl>    <dbl>
+#>   <fct>      <chr>   <chr>        <chr>          <dbl>    <dbl>    <dbl>
 #> 1 setosa     Length  value ~ part Paired t-test  -71.8   -3.54     -3.64
 #> 2 versicolor Length  value ~ part Paired t-test  -34.0   -1.68     -1.78
 #> 3 virginica  Length  value ~ part Paired t-test  -22.9   -1.04     -1.13
@@ -572,7 +572,7 @@ groupedstats::grouped_wilcox(
 #> 5 versicolor Width   value ~ part
 #> 6 virginica  Width   value ~ part
 #>   method                                               statistic estimate
-#>   <fct>                                                    <dbl>    <dbl>
+#>   <chr>                                                    <dbl>    <dbl>
 #> 1 Wilcoxon signed rank test with continuity correction         0   -3.55 
 #> 2 Wilcoxon signed rank test with continuity correction         0   -1.70 
 #> 3 Wilcoxon signed rank test with continuity correction         0   -1.05 
@@ -616,7 +616,7 @@ groupedstats::grouped_ttest(
 )
 #> # A tibble: 24 x 10
 #>    clarity formula       method                   t.test   estimate
-#>    <ord>   <chr>         <fct>                     <dbl>      <dbl>
+#>    <ord>   <chr>         <chr>                     <dbl>      <dbl>
 #>  1 SI2     carat ~ color Welch Two Sample t-test -18.0      -0.503 
 #>  2 SI1     carat ~ color Welch Two Sample t-test -22.1      -0.462 
 #>  3 VS1     carat ~ color Welch Two Sample t-test -16.8      -0.444 
@@ -678,7 +678,7 @@ groupedstats::grouped_wilcox(
 )
 #> # A tibble: 16 x 9
 #>    clarity formula       method                                           
-#>    <ord>   <chr>         <fct>                                            
+#>    <ord>   <chr>         <chr>                                            
 #>  1 SI2     depth ~ color Wilcoxon rank sum test with continuity correction
 #>  2 SI1     depth ~ color Wilcoxon rank sum test with continuity correction
 #>  3 VS1     depth ~ color Wilcoxon rank sum test with continuity correction
@@ -746,7 +746,7 @@ groupedstats::grouped_wilcox(
 #>  9 Very Good price ~ clarity
 #> 10 Fair      price ~ clarity
 #>    method                                            statistic estimate
-#>    <fct>                                                 <dbl>    <dbl>
+#>    <chr>                                                 <dbl>    <dbl>
 #>  1 Wilcoxon rank sum test with continuity correction   103150.   -0.440
 #>  2 Wilcoxon rank sum test with continuity correction    91748    -0.540
 #>  3 Wilcoxon rank sum test with continuity correction    20752    -0.400

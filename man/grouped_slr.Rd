@@ -36,12 +36,6 @@ dep.vars = c(Sepal.Length, Petal.Length),
 indep.vars = c(Sepal.Width, Petal.Width),
 grouping.vars = Species)
 
-# in case of multiple grouping variables
-groupedstats::grouped_slr( data = mtcars,
-dep.vars = c(wt, mpg),
-indep.vars = c(drat, disp),
-grouping.vars = c(am, cyl))
-
 }
 \author{
 Indrajeet Patil

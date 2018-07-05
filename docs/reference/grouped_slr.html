@@ -159,26 +159,6 @@ analyses. The estimates are standardized, i.e. the <code>lm</code> model used is
 #&gt; 5 versico~ Petal.Length~    8.83    0.787   0.607      0.966    0.0891 1.27e-11
 #&gt; 6 virgini~ Petal.Length~    2.36    0.322   0.0474     0.597    0.137  2.25e- 2
 #&gt; # ... with 1 more variable: significance &lt;chr&gt;</div><div class='input'>
-<span class='co'># in case of multiple grouping variables</span>
-<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_slr'>grouped_slr</a></span>( <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>,
-<span class='kw'>dep.vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>wt</span>, <span class='no'>mpg</span>),
-<span class='kw'>indep.vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>drat</span>, <span class='no'>disp</span>),
-<span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>am</span>, <span class='no'>cyl</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: NaNs produced</span></div><div class='output co'>#&gt; <span class='warning'>Warning: essentially perfect fit: summary may be unreliable</span></div><div class='output co'>#&gt; <span class='warning'>Warning: essentially perfect fit: summary may be unreliable</span></div><div class='output co'>#&gt; <span class='warning'>Warning: NaNs produced</span></div><div class='output co'>#&gt; # A tibble: 12 x 10
-#&gt;       am   cyl formula  t.value estimate conf.low conf.high std.error   p.value
-#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-#&gt;  1     1     6 wt ~ d~   -0.102   -0.101  -12.7     12.5        0.995   0.935  
-#&gt;  2     1     4 wt ~ d~   -0.568   -0.226   -1.20     0.747      0.398   0.591  
-#&gt;  3     0     6 wt ~ d~    0.456    0.307   -2.59     3.20       0.673   0.693  
-#&gt;  4     0     8 wt ~ d~   -0.379   -0.119   -0.819    0.581      0.314   0.713  
-#&gt;  5     0     4 wt ~ d~    0.466    0.422  -11.1     11.9        0.906   0.722  
-#&gt;  6     1     8 wt ~ d~  NaN       -1      NaN      NaN        NaN     NaN      
-#&gt;  7     1     6 mpg ~ ~  Inf        1.       1.       1.         0       0      
-#&gt;  8     1     4 mpg ~ ~   -3.72    -0.835   -1.38    -0.285      0.225   0.00991
-#&gt;  9     0     6 mpg ~ ~    1.28     0.670   -1.59     2.93       0.525   0.330  
-#&gt; 10     0     8 mpg ~ ~   -2.00    -0.535   -1.13     0.0598     0.267   0.0729 
-#&gt; 11     0     4 mpg ~ ~    2.57     0.932   -3.67     5.53       0.362   0.236  
-#&gt; 12     1     8 mpg ~ ~  NaN        1      NaN      NaN        NaN     NaN      
-#&gt; # ... with 1 more variable: significance &lt;chr&gt;</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
