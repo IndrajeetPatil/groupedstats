@@ -23,7 +23,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--07--05-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--07--11-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
@@ -51,6 +51,7 @@ few example cases-
     different measures of interest for **each condition** (e.g.,
     correlation between subjective rating of emotional intensity and
     reaction time).
+4.  Combination of all of the above.
 
 This is first installment of the package that provides only the most
 basic statistical operations. The next releases will expand on the
@@ -58,14 +59,21 @@ existing functionality.
 
 ## Installation
 
-You can get the development version from GitHub. If you are in hurry and
-want to reduce the time of installation,
-prefer-
+To get the latest, stable CRAN release (0.0.1):
 
 ``` r
-# install.packages("devtools")                                # needed package to download from GitHub repo
-devtools::install_github(repo = "IndrajeetPatil/groupedstats", # package path on GitHub
-                         quick = TRUE)                        # skips docs, demos, and vignettes
+utils::install.packages(pkgs = "groupedstats") 
+```
+
+You can get the development version from GitHub. If you are in hurry and
+want to reduce the time of installation, prefer-
+
+``` r
+# needed package to download from GitHub repo
+utils::install.packages(pkgs = "devtools")                 
+
+devtools::install_github(repo = "IndrajeetPatil/groupedstats",  # package path on GitHub
+                         quick = TRUE)                          # skips docs, demos, and vignettes
 ```
 
 If time is not a
@@ -73,8 +81,8 @@ constraint-
 
 ``` r
 devtools::install_github(repo = "IndrajeetPatil/groupedstats", # package path on GitHub
-                         dependencies = TRUE,                 # installs packages which groupedstats depends on
-                         upgrade_dependencies = TRUE          # updates any out of date dependencies
+                         dependencies = TRUE,                  # installs packages which groupedstats depends on
+                         upgrade_dependencies = TRUE           # updates any out of date dependencies
 )
 ```
 
@@ -84,6 +92,7 @@ Documentation for any function can be accessed with the standard `help`
 command-
 
 ``` r
+?grouped_lm
 ?grouped_summary
 ?grouped_slr
 ?grouped_robustslr

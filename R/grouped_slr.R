@@ -37,6 +37,8 @@
 #' @importFrom rlang enquo
 #' @importFrom rlang quo
 #'
+#' @seealso grouped_lm
+#'
 #' @examples
 #'
 #' # in case of just one grouping variable

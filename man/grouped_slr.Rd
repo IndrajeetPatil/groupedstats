@@ -37,6 +37,9 @@ indep.vars = c(Sepal.Width, Petal.Width),
 grouping.vars = Species)
 
 }
+\seealso{
+grouped_lm
+}
 \author{
 Indrajeet Patil
 }

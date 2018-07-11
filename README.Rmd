@@ -49,6 +49,7 @@ dataframe. This is a common situation, as illustrated by few example cases-
     participants saw) and want to run a common operation between different
     measures of interest for **each condition** (e.g., correlation between
     subjective rating of emotional intensity and reaction time).
+4. Combination of all of the above.
 
 This is first installment of the package that provides only the most basic
 statistical operations. The next releases will expand on the existing
@@ -56,19 +57,27 @@ functionality.
 
 ## Installation
 
-You can get the development version from GitHub. If you are in hurry and want to reduce the time of installation, prefer-
-
+To get the latest, stable CRAN release (0.0.1):
 ```{r installation1, eval = FALSE, warning = FALSE, messsage = FALSE}
-# install.packages("devtools")                                # needed package to download from GitHub repo
-devtools::install_github(repo = "IndrajeetPatil/groupedstats", # package path on GitHub
-                         quick = TRUE)                        # skips docs, demos, and vignettes
+utils::install.packages(pkgs = "groupedstats") 
+```
+
+You can get the development version from GitHub. If you are in hurry and want to
+reduce the time of installation, prefer-
+
+```{r installation2, eval = FALSE, warning = FALSE, messsage = FALSE}
+# needed package to download from GitHub repo
+utils::install.packages(pkgs = "devtools")                 
+
+devtools::install_github(repo = "IndrajeetPatil/groupedstats",  # package path on GitHub
+                         quick = TRUE)                          # skips docs, demos, and vignettes
 ```
 
 If time is not a constraint-
-```{r installation2, eval = FALSE, warning = FALSE, messsage = FALSE}
+```{r installation3, eval = FALSE, warning = FALSE, messsage = FALSE}
 devtools::install_github(repo = "IndrajeetPatil/groupedstats", # package path on GitHub
-                         dependencies = TRUE,                 # installs packages which groupedstats depends on
-                         upgrade_dependencies = TRUE          # updates any out of date dependencies
+                         dependencies = TRUE,                  # installs packages which groupedstats depends on
+                         upgrade_dependencies = TRUE           # updates any out of date dependencies
 )
 ```
 
@@ -76,6 +85,7 @@ devtools::install_github(repo = "IndrajeetPatil/groupedstats", # package path on
 
 Documentation for any function can be accessed with the standard `help` command-
 ```{r help, eval = FALSE, warning = FALSE, messsage = FALSE}
+?grouped_lm
 ?grouped_summary
 ?grouped_slr
 ?grouped_robustslr
