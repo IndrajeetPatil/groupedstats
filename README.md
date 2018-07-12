@@ -547,6 +547,8 @@ Linear mixed effects analyses (`lme4::lmer`) for all combinations of
 grouping variable levels can be carried out using `grouped_lmer`:
 
 ``` r
+library(gapminder)
+
 # getting tidy output of results
 groupedstats::grouped_lmer(
   data = gapminder,

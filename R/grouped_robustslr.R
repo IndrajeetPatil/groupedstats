@@ -109,13 +109,13 @@ grouped_robustslr <- function(data,
       purrr::map_dfr(
         .x = .,
         .f = ~broom::tidy(x = .),
-        .id = "group"
+        .id = "..group"
       ) %>% # remove intercept terms
       dplyr::filter(.data = ., term == !!filter_name) %>% # add formula as a character
       dplyr::mutate(.data = ., formula = as.character(fx_plain)) %>% # rearrange the dataframe
       dplyr::select(
         .data = .,
-        group,
+        `..group`,
         formula,
         term,
         t.value = statistic,
@@ -132,7 +132,7 @@ grouped_robustslr <- function(data,
   # ========= using  custom function on entered dataframe =================
 
   df <- df %>%
-    tibble::rownames_to_column(df = ., var = "group")
+    tibble::rownames_to_column(df = ., var = "..group")
   # running custom function for each element of the created list column
   df_lm <- purrr::pmap(
     .l = list(
@@ -149,9 +149,9 @@ grouped_robustslr <- function(data,
     .f = lm_listed
   ) %>%
     dplyr::bind_rows(.) %>%
-    dplyr::left_join(x = ., y = df, by = "group") %>%
+    dplyr::left_join(x = ., y = df, by = "..group") %>%
     dplyr::select(.data = ., !!!grouping.vars, dplyr::everything()) %>%
-    dplyr::select(.data = ., -group, -data, -term) %>%
+    dplyr::select(.data = ., -`..group`, -data, -term) %>%
     signif_column(data = ., p = `p.value`)
 
   # ============================== output ==================================

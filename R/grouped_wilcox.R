@@ -124,12 +124,12 @@ grouped_wilcox <- function(data,
         purrr::map_dfr(
           .x = .,
           .f = ~broom::tidy(x = .),
-          .id = "group"
+          .id = "..group"
         ) %>% # add formula as a character
         dplyr::mutate(.data = ., formula = as.character(fx)) %>% # rearrange the dataframe
         dplyr::select(
           .data = .,
-          group,
+          `..group`,
           formula,
           method,
           statistic,
@@ -148,7 +148,7 @@ grouped_wilcox <- function(data,
   # ========= using  custom function on entered dataframe =================
 
   df <- df %>%
-    tibble::rownames_to_column(df = ., var = "group")
+    tibble::rownames_to_column(df = ., var = "..group")
 
   # running custom function for each element of the created list column
   df_lm <- purrr::pmap(
@@ -168,9 +168,9 @@ grouped_wilcox <- function(data,
     .f = lm_listed
   ) %>%
     dplyr::bind_rows(.) %>%
-    dplyr::left_join(x = ., y = df, by = "group") %>%
+    dplyr::left_join(x = ., y = df, by = "..group") %>%
     dplyr::select(.data = ., !!!grouping.vars, dplyr::everything()) %>%
-    dplyr::select(.data = ., -group, -data, -alternative) %>%
+    dplyr::select(.data = ., -`..group`, -data, -alternative) %>%
     signif_column(data = ., p = `p.value`)
 
   # ============================== output ==================================

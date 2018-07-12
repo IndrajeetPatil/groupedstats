@@ -478,17 +478,17 @@
 <li><code>grouped_lmer</code></li>
 </ul>
 <p>Linear mixed effects analyses (<code><a href="http://www.rdocumentation.org/packages/lme4/topics/lmer">lme4::lmer</a></code>) for all combinations of grouping variable levels can be carried out using <code>grouped_lmer</code>:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="co"># getting tidy output of results</span></a>
-<a class="sourceLine" id="cb15-2" data-line-number="2">groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_lmer">grouped_lmer</a></span>(</a>
-<a class="sourceLine" id="cb15-3" data-line-number="3">  <span class="dt">data =</span> gapminder,</a>
-<a class="sourceLine" id="cb15-4" data-line-number="4">  <span class="dt">formula =</span> <span class="kw">scale</span>(lifeExp) <span class="op">~</span><span class="st"> </span><span class="kw">scale</span>(gdpPercap) <span class="op">+</span><span class="st"> </span>(gdpPercap <span class="op">|</span></a>
-<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="st">                                                   </span>continent),</a>
-<a class="sourceLine" id="cb15-6" data-line-number="6">  <span class="dt">grouping.vars =</span> year,</a>
-<a class="sourceLine" id="cb15-7" data-line-number="7">  <span class="dt">REML =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb15-8" data-line-number="8">  <span class="dt">output =</span> <span class="st">"tidy"</span></a>
-<a class="sourceLine" id="cb15-9" data-line-number="9">)</a>
-<a class="sourceLine" id="cb15-10" data-line-number="10"><span class="co">#&gt; Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></a>
-<a class="sourceLine" id="cb15-11" data-line-number="11"><span class="co">#&gt; Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></a>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">library</span>(gapminder)</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="co"># getting tidy output of results</span></a>
+<a class="sourceLine" id="cb15-4" data-line-number="4">groupedstats<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/groupedstats/topics/grouped_lmer">grouped_lmer</a></span>(</a>
+<a class="sourceLine" id="cb15-5" data-line-number="5">  <span class="dt">data =</span> gapminder,</a>
+<a class="sourceLine" id="cb15-6" data-line-number="6">  <span class="dt">formula =</span> <span class="kw">scale</span>(lifeExp) <span class="op">~</span><span class="st"> </span><span class="kw">scale</span>(gdpPercap) <span class="op">+</span><span class="st"> </span>(gdpPercap <span class="op">|</span></a>
+<a class="sourceLine" id="cb15-7" data-line-number="7"><span class="st">                                                   </span>continent),</a>
+<a class="sourceLine" id="cb15-8" data-line-number="8">  <span class="dt">grouping.vars =</span> year,</a>
+<a class="sourceLine" id="cb15-9" data-line-number="9">  <span class="dt">REML =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb15-10" data-line-number="10">  <span class="dt">output =</span> <span class="st">"tidy"</span></a>
+<a class="sourceLine" id="cb15-11" data-line-number="11">)</a>
 <a class="sourceLine" id="cb15-12" data-line-number="12"><span class="co">#&gt; Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></a>
 <a class="sourceLine" id="cb15-13" data-line-number="13"><span class="co">#&gt; Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></a>
 <a class="sourceLine" id="cb15-14" data-line-number="14"><span class="co">#&gt; Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></a>
@@ -499,32 +499,34 @@
 <a class="sourceLine" id="cb15-19" data-line-number="19"><span class="co">#&gt; Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></a>
 <a class="sourceLine" id="cb15-20" data-line-number="20"><span class="co">#&gt; Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></a>
 <a class="sourceLine" id="cb15-21" data-line-number="21"><span class="co">#&gt; Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></a>
-<a class="sourceLine" id="cb15-22" data-line-number="22"><span class="co">#&gt; # A tibble: 24 x 9</span></a>
-<a class="sourceLine" id="cb15-23" data-line-number="23"><span class="co">#&gt;     year term             estimate std.error statistic conf.low conf.high</span></a>
-<a class="sourceLine" id="cb15-24" data-line-number="24"><span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb15-25" data-line-number="25"><span class="co">#&gt;  1  1952 (Intercept)         0.215     0.293     0.736   -0.358     0.789</span></a>
-<a class="sourceLine" id="cb15-26" data-line-number="26"><span class="co">#&gt;  2  1952 scale(gdpPercap)    0.930     0.302     3.07     0.337     1.52 </span></a>
-<a class="sourceLine" id="cb15-27" data-line-number="27"><span class="co">#&gt;  3  1957 (Intercept)         0.254     0.342     0.743   -0.416     0.923</span></a>
-<a class="sourceLine" id="cb15-28" data-line-number="28"><span class="co">#&gt;  4  1957 scale(gdpPercap)    0.815     0.282     2.89     0.262     1.37 </span></a>
-<a class="sourceLine" id="cb15-29" data-line-number="29"><span class="co">#&gt;  5  1962 (Intercept)         0.255     0.333     0.766   -0.397     0.908</span></a>
-<a class="sourceLine" id="cb15-30" data-line-number="30"><span class="co">#&gt;  6  1962 scale(gdpPercap)    0.591     0.210     2.82     0.180     1.00 </span></a>
-<a class="sourceLine" id="cb15-31" data-line-number="31"><span class="co">#&gt;  7  1967 (Intercept)         0.249     0.361     0.689   -0.459     0.956</span></a>
-<a class="sourceLine" id="cb15-32" data-line-number="32"><span class="co">#&gt;  8  1967 scale(gdpPercap)    0.387     0.120     3.24     0.153     0.622</span></a>
-<a class="sourceLine" id="cb15-33" data-line-number="33"><span class="co">#&gt;  9  1972 (Intercept)         0.276     0.366     0.753   -0.442     0.994</span></a>
-<a class="sourceLine" id="cb15-34" data-line-number="34"><span class="co">#&gt; 10  1972 scale(gdpPercap)    0.431     0.150     2.88     0.137     0.724</span></a>
-<a class="sourceLine" id="cb15-35" data-line-number="35"><span class="co">#&gt;    p.value significance</span></a>
-<a class="sourceLine" id="cb15-36" data-line-number="36"><span class="co">#&gt;      &lt;dbl&gt; &lt;chr&gt;       </span></a>
-<a class="sourceLine" id="cb15-37" data-line-number="37"><span class="co">#&gt;  1 0.462   ns          </span></a>
-<a class="sourceLine" id="cb15-38" data-line-number="38"><span class="co">#&gt;  2 0.00211 **          </span></a>
-<a class="sourceLine" id="cb15-39" data-line-number="39"><span class="co">#&gt;  3 0.457   ns          </span></a>
-<a class="sourceLine" id="cb15-40" data-line-number="40"><span class="co">#&gt;  4 0.00389 **          </span></a>
-<a class="sourceLine" id="cb15-41" data-line-number="41"><span class="co">#&gt;  5 0.444   ns          </span></a>
-<a class="sourceLine" id="cb15-42" data-line-number="42"><span class="co">#&gt;  6 0.00479 **          </span></a>
-<a class="sourceLine" id="cb15-43" data-line-number="43"><span class="co">#&gt;  7 0.491   ns          </span></a>
-<a class="sourceLine" id="cb15-44" data-line-number="44"><span class="co">#&gt;  8 0.00120 **          </span></a>
-<a class="sourceLine" id="cb15-45" data-line-number="45"><span class="co">#&gt;  9 0.451   ns          </span></a>
-<a class="sourceLine" id="cb15-46" data-line-number="46"><span class="co">#&gt; 10 0.00402 **          </span></a>
-<a class="sourceLine" id="cb15-47" data-line-number="47"><span class="co">#&gt; # ... with 14 more rows</span></a></code></pre></div>
+<a class="sourceLine" id="cb15-22" data-line-number="22"><span class="co">#&gt; Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></a>
+<a class="sourceLine" id="cb15-23" data-line-number="23"><span class="co">#&gt; Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></a>
+<a class="sourceLine" id="cb15-24" data-line-number="24"><span class="co">#&gt; # A tibble: 24 x 9</span></a>
+<a class="sourceLine" id="cb15-25" data-line-number="25"><span class="co">#&gt;     year term             estimate std.error statistic conf.low conf.high</span></a>
+<a class="sourceLine" id="cb15-26" data-line-number="26"><span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb15-27" data-line-number="27"><span class="co">#&gt;  1  1952 (Intercept)         0.215     0.293     0.736   -0.358     0.789</span></a>
+<a class="sourceLine" id="cb15-28" data-line-number="28"><span class="co">#&gt;  2  1952 scale(gdpPercap)    0.930     0.302     3.07     0.337     1.52 </span></a>
+<a class="sourceLine" id="cb15-29" data-line-number="29"><span class="co">#&gt;  3  1957 (Intercept)         0.254     0.342     0.743   -0.416     0.923</span></a>
+<a class="sourceLine" id="cb15-30" data-line-number="30"><span class="co">#&gt;  4  1957 scale(gdpPercap)    0.815     0.282     2.89     0.262     1.37 </span></a>
+<a class="sourceLine" id="cb15-31" data-line-number="31"><span class="co">#&gt;  5  1962 (Intercept)         0.255     0.333     0.766   -0.397     0.908</span></a>
+<a class="sourceLine" id="cb15-32" data-line-number="32"><span class="co">#&gt;  6  1962 scale(gdpPercap)    0.591     0.210     2.82     0.180     1.00 </span></a>
+<a class="sourceLine" id="cb15-33" data-line-number="33"><span class="co">#&gt;  7  1967 (Intercept)         0.249     0.361     0.689   -0.459     0.956</span></a>
+<a class="sourceLine" id="cb15-34" data-line-number="34"><span class="co">#&gt;  8  1967 scale(gdpPercap)    0.387     0.120     3.24     0.153     0.622</span></a>
+<a class="sourceLine" id="cb15-35" data-line-number="35"><span class="co">#&gt;  9  1972 (Intercept)         0.276     0.366     0.753   -0.442     0.994</span></a>
+<a class="sourceLine" id="cb15-36" data-line-number="36"><span class="co">#&gt; 10  1972 scale(gdpPercap)    0.431     0.150     2.88     0.137     0.724</span></a>
+<a class="sourceLine" id="cb15-37" data-line-number="37"><span class="co">#&gt;    p.value significance</span></a>
+<a class="sourceLine" id="cb15-38" data-line-number="38"><span class="co">#&gt;      &lt;dbl&gt; &lt;chr&gt;       </span></a>
+<a class="sourceLine" id="cb15-39" data-line-number="39"><span class="co">#&gt;  1 0.462   ns          </span></a>
+<a class="sourceLine" id="cb15-40" data-line-number="40"><span class="co">#&gt;  2 0.00211 **          </span></a>
+<a class="sourceLine" id="cb15-41" data-line-number="41"><span class="co">#&gt;  3 0.457   ns          </span></a>
+<a class="sourceLine" id="cb15-42" data-line-number="42"><span class="co">#&gt;  4 0.00389 **          </span></a>
+<a class="sourceLine" id="cb15-43" data-line-number="43"><span class="co">#&gt;  5 0.444   ns          </span></a>
+<a class="sourceLine" id="cb15-44" data-line-number="44"><span class="co">#&gt;  6 0.00479 **          </span></a>
+<a class="sourceLine" id="cb15-45" data-line-number="45"><span class="co">#&gt;  7 0.491   ns          </span></a>
+<a class="sourceLine" id="cb15-46" data-line-number="46"><span class="co">#&gt;  8 0.00120 **          </span></a>
+<a class="sourceLine" id="cb15-47" data-line-number="47"><span class="co">#&gt;  9 0.451   ns          </span></a>
+<a class="sourceLine" id="cb15-48" data-line-number="48"><span class="co">#&gt; 10 0.00402 **          </span></a>
+<a class="sourceLine" id="cb15-49" data-line-number="49"><span class="co">#&gt; # ... with 14 more rows</span></a></code></pre></div>
 <ul>
 <li><code>grouped_proptest</code></li>
 </ul>

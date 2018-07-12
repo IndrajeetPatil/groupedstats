@@ -102,7 +102,7 @@ grouped_lm <- function(data,
             conf.int = TRUE,
             conf.level = 0.95
           ),
-          .id = "group"
+          .id = "..group"
         )
     } else {
       # dataframe with results from lm
@@ -115,7 +115,7 @@ grouped_lm <- function(data,
             data = (.),
             na.action = na.omit
           )),
-          .id = "group"
+          .id = "..group"
         )
     }
     return(results_df)
@@ -126,16 +126,16 @@ grouped_lm <- function(data,
 
   # converting the original dataframe to have a grouping variable column
   df %<>%
-    tibble::rownames_to_column(df = ., var = "group")
+    tibble::rownames_to_column(df = ., var = "..group")
 
   combined_df <- purrr::pmap(.l = list(list.col = list(df$data),
                                        formula = list(formula),
                                        output = list(output)),
                              .f = fnlisted) %>%
     dplyr::bind_rows(.) %>%
-    dplyr::left_join(x = ., y = df, by = "group") %>%
+    dplyr::left_join(x = ., y = df, by = "..group") %>%
     dplyr::select(.data = ., !!!grouping.vars, dplyr::everything()) %>%
-    dplyr::select(.data = ., -group, -data) %>%
+    dplyr::select(.data = ., -`..group`, -data) %>%
     ggstatsplot:::signif_column(data = ., p = p.value)
 
   return(combined_df)

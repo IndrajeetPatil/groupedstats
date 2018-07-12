@@ -115,7 +115,7 @@ grouped_lmer <- function(data,
             conf.method = "Wald",
             effects = "fixed"
           ),
-          .id = "group"
+          .id = "..group"
         ) %>%
         dplyr::mutate_at(.tbl = .,
                          .vars = "term",
@@ -136,7 +136,7 @@ grouped_lmer <- function(data,
             ),
             p.kr = p.kr
           ),
-          .id = "group"
+          .id = "..group"
         ) %>%
         dplyr::select(.data = ., -std.error) %>%
         dplyr::mutate_at(.tbl = .,
@@ -145,7 +145,7 @@ grouped_lmer <- function(data,
 
       # combining the two dataframes
       results_df %<>%
-        dplyr::full_join(x = ., y = pval_df, by = c("term", "group"))
+        dplyr::full_join(x = ., y = pval_df, by = c("term", "..group"))
 
 
     } else {
@@ -161,7 +161,7 @@ grouped_lmer <- function(data,
             control = control,
             na.action = na.omit
           )),
-          .id = "group"
+          .id = "..group"
         )
     }
     return(results_df)
@@ -171,7 +171,7 @@ grouped_lmer <- function(data,
 
   # converting the original dataframe to have a grouping variable column
   df %<>%
-    tibble::rownames_to_column(df = ., var = "group")
+    tibble::rownames_to_column(df = ., var = "..group")
 
   # running the custom function and cleaning the dataframe
   combined_df <- purrr::pmap(
@@ -186,9 +186,9 @@ grouped_lmer <- function(data,
     .f = fnlisted
   ) %>%
     dplyr::bind_rows(.) %>%
-    dplyr::left_join(x = ., y = df, by = "group") %>%
+    dplyr::left_join(x = ., y = df, by = "..group") %>%
     dplyr::select(.data = ., !!!grouping.vars, dplyr::everything()) %>%
-    dplyr::select(.data = ., -group, -data)
+    dplyr::select(.data = ., -`..group`, -data)
 
   # add a column with significance labels if p-values are present
   if ("p.value" %in% names(combined_df)) {
