@@ -1,6 +1,5 @@
 #'
-#' @title Function to run linear model (lm) on across multiple grouping
-#'   variables.
+#' @title Function to run linear model (lm) across multiple grouping variables.
 #' @name grouped_lm
 #' @aliases grouped_lm
 #' @author Indrajeet Patil
@@ -39,6 +38,10 @@
 #'
 #' @examples
 #'
+#' # loading needed libraries
+#' library(ggplot2)
+#'
+#' # getting tidy output of results
 #' grouped_lm(
 #'   data = mtcars,
 #'   grouping.vars = cyl,
@@ -46,10 +49,12 @@
 #'   output = "tidy"
 #' )
 #'
+#' # getting model summaries
+#' # diamonds dataset from ggplot2
 #' grouped_lm(
-#'   data = ggplot2::diamonds,
+#'   data = diamonds,
 #'   grouping.vars = c(cut, color),
-#'   formula = price ~ carat,
+#'   formula = price ~ carat * clarity,
 #'   output = "glance"
 #' )
 #'
@@ -91,7 +96,8 @@ grouped_lm <- function(data,
           .f = ~ broom::tidy(
             x = stats::lm(
               formula = stats::as.formula(formula),
-              data = (.)
+              data = (.),
+              na.action = na.omit
             ),
             conf.int = TRUE,
             conf.level = 0.95
@@ -106,7 +112,8 @@ grouped_lm <- function(data,
           .x = .,
           .f = ~ broom::glance(x = stats::lm(
             formula = stats::as.formula(formula),
-            data = (.)
+            data = (.),
+            na.action = na.omit
           )),
           .id = "group"
         )

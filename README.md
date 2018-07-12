@@ -93,6 +93,7 @@ command-
 
 ``` r
 ?grouped_lm
+?grouped_lmer
 ?grouped_summary
 ?grouped_slr
 ?grouped_robustslr
@@ -106,12 +107,10 @@ command-
   - `grouped_summary`
 
 Getting summary for multiple variables across multiple grouping
-variables. This function is a wrapper around
-[`skimr::skim_to_wide()`](https://www.rdocumentation.org/packages/skimr/versions/1.0.1/topics/skim_to_wide).
-
-It is supposed to be a handy summarizing tool if you have multiple
-grouping variables and multiple variables for which summary statistics
-are to be computed-
+variables. This function is a wrapper around `skimr::skim_to_wide()`. It
+is supposed to be a handy summarizing tool if you have multiple grouping
+variables and multiple variables for which summary statistics are to be
+computed-
 
 ``` r
 library(datasets)
@@ -433,6 +432,91 @@ A more general version of this function (`grouped_robustlm`) will be
 implemented in future that will utilize the formula interface of
 `robust::lmRob`.
 
+  - `grouped_lm`
+
+A more general version of simple linear regression is `stats::lm`,
+implemented in `grouped_lm`:
+
+``` r
+library(groupedstats)
+
+groupedstats::grouped_lm(
+  data = mtcars,
+  grouping.vars = cyl,        # grouping variable (just one in this case)
+  formula = mpg ~ am*wt,      # note that this function takes a formula
+  output = "tidy"             # tidy dataframe containing results
+)
+#> # A tibble: 12 x 9
+#>      cyl term        estimate std.error statistic conf.low conf.high
+#>    <dbl> <chr>          <dbl>     <dbl>     <dbl>    <dbl>     <dbl>
+#>  1     6 (Intercept)   63.6      14.1      4.51      18.7    109.   
+#>  2     6 am           -41.4      19.0     -2.18    -102.      19.1  
+#>  3     6 wt           -13.1       4.16    -3.16     -26.4      0.113
+#>  4     6 am:wt         12.5       6.22     2.02      -7.26    32.4  
+#>  5     4 (Intercept)   13.9      16.1      0.865    -24.1     51.9  
+#>  6     4 am            30.3      17.2      1.77     -10.3     70.9  
+#>  7     4 wt             3.07      5.44     0.564     -9.79    15.9  
+#>  8     4 am:wt        -11.0       6.16    -1.78     -25.5      3.61 
+#>  9     8 (Intercept)   25.1       3.51     7.14      17.2     32.9  
+#> 10     8 am            -2.92     25.9     -0.113    -60.5     54.7  
+#> 11     8 wt            -2.44      0.842   -2.90      -4.32    -0.563
+#> 12     8 am:wt          0.439     7.63     0.0575   -16.6     17.4  
+#>      p.value significance
+#>        <dbl> <chr>       
+#>  1 0.0204    *           
+#>  2 0.117     ns          
+#>  3 0.0511    ns          
+#>  4 0.137     ns          
+#>  5 0.416     ns          
+#>  6 0.121     ns          
+#>  7 0.590     ns          
+#>  8 0.118     ns          
+#>  9 0.0000315 ***         
+#> 10 0.912     ns          
+#> 11 0.0159    *           
+#> 12 0.955     ns
+```
+
+The same function can also be used to get model summaries instead of
+tidy dataframe containing results-
+
+``` r
+library(groupedstats)
+
+groupedstats::grouped_lm(
+  data = ggplot2::diamonds,
+  grouping.vars = c(cut, color),            # grouping variables
+  formula = price ~ carat * clarity,        # formula
+  output = "glance"                         # dataframe with model summaries
+)
+#> # A tibble: 35 x 14
+#>    cut       color r.squared adj.r.squared sigma statistic    df  logLik
+#>    <ord>     <ord>     <dbl>         <dbl> <dbl>     <dbl> <int>   <dbl>
+#>  1 Ideal     E         0.931         0.931  776.     3516.    16 -31501.
+#>  2 Premium   E         0.927         0.927 1028.     1968.    16 -19516.
+#>  3 Good      E         0.927         0.926  905.      781.    16  -7667.
+#>  4 Premium   I         0.934         0.934 1303.     1338.    16 -12260.
+#>  5 Good      J         0.946         0.943  885.      363.    15  -2511.
+#>  6 Very Good J         0.957         0.957  862.      994.    16  -5537.
+#>  7 Very Good I         0.946         0.945 1100.     1378.    16 -10132.
+#>  8 Very Good H         0.940         0.939 1032.     1880.    16 -15237.
+#>  9 Fair      E         0.917         0.912  883.      179.    14  -1830.
+#> 10 Ideal     J         0.955         0.955  953.     1259.    16  -7409.
+#>       AIC    BIC    deviance df.residual   p.value significance
+#>     <dbl>  <dbl>       <dbl>       <int>     <dbl> <chr>       
+#>  1 63036. 63142. 2340281648.        3887 0.        ***         
+#>  2 39066. 39163. 2452401685.        2321 0.        ***         
+#>  3 15369. 15451.  750592238.         917 0.        ***         
+#>  4 24554. 24644. 2396212809.        1412 0.        ***         
+#>  5  5054.  5114.  228805662.         292 2.70e-175 ***         
+#>  6 11108. 11185.  492442592.         662 0.        ***         
+#>  7 20297. 20384. 1436458762.        1188 0.        ***         
+#>  8 30508. 30601. 1924549052.        1808 0.        ***         
+#>  9  3690.  3741.  163677866.         210 8.70e-106 ***         
+#> 10 14852. 14934.  798454816.         880 0.        ***         
+#> # ... with 25 more rows
+```
+
   - `grouped_glm`
 
 The option to run generalized linear model across different levels of
@@ -455,6 +539,61 @@ groupedstats::grouped_glm(data = datasets::mtcars,
 #> 1 **          
 #> 2 *           
 #> 3 ns
+```
+
+  - `grouped_lmer`
+
+Linear mixed effects analyses (`lme4::lmer`) for all combinations of
+grouping variable levels can be carried out using `grouped_lmer`:
+
+``` r
+# getting tidy output of results
+groupedstats::grouped_lmer(
+  data = gapminder,
+  formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap |
+                                                   continent),
+  grouping.vars = year,
+  REML = FALSE,
+  output = "tidy"
+)
+#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
+#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
+#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
+#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
+#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
+#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
+#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
+#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
+#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
+#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
+#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
+#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
+#> # A tibble: 24 x 9
+#>     year term             estimate std.error statistic conf.low conf.high
+#>    <int> <chr>               <dbl>     <dbl>     <dbl>    <dbl>     <dbl>
+#>  1  1952 (Intercept)         0.215     0.293     0.736   -0.358     0.789
+#>  2  1952 scale(gdpPercap)    0.930     0.302     3.07     0.337     1.52 
+#>  3  1957 (Intercept)         0.254     0.342     0.743   -0.416     0.923
+#>  4  1957 scale(gdpPercap)    0.815     0.282     2.89     0.262     1.37 
+#>  5  1962 (Intercept)         0.255     0.333     0.766   -0.397     0.908
+#>  6  1962 scale(gdpPercap)    0.591     0.210     2.82     0.180     1.00 
+#>  7  1967 (Intercept)         0.249     0.361     0.689   -0.459     0.956
+#>  8  1967 scale(gdpPercap)    0.387     0.120     3.24     0.153     0.622
+#>  9  1972 (Intercept)         0.276     0.366     0.753   -0.442     0.994
+#> 10  1972 scale(gdpPercap)    0.431     0.150     2.88     0.137     0.724
+#>    p.value significance
+#>      <dbl> <chr>       
+#>  1 0.462   ns          
+#>  2 0.00211 **          
+#>  3 0.457   ns          
+#>  4 0.00389 **          
+#>  5 0.444   ns          
+#>  6 0.00479 **          
+#>  7 0.491   ns          
+#>  8 0.00120 **          
+#>  9 0.451   ns          
+#> 10 0.00402 **          
+#> # ... with 14 more rows
 ```
 
   - `grouped_proptest`

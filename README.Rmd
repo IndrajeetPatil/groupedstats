@@ -86,6 +86,7 @@ devtools::install_github(repo = "IndrajeetPatil/groupedstats", # package path on
 Documentation for any function can be accessed with the standard `help` command-
 ```{r help, eval = FALSE, warning = FALSE, messsage = FALSE}
 ?grouped_lm
+?grouped_lmer
 ?grouped_summary
 ?grouped_slr
 ?grouped_robustslr
@@ -99,10 +100,9 @@ Documentation for any function can be accessed with the standard `help` command-
 * `grouped_summary`
 
 Getting summary for multiple variables across multiple grouping variables. This
-function is a wrapper around [`skimr::skim_to_wide()`](https://www.rdocumentation.org/packages/skimr/versions/1.0.1/topics/skim_to_wide).
-
-It is supposed to be a handy summarizing tool if you have multiple grouping
-variables and multiple variables for which summary statistics are to be computed-
+function is a wrapper around `skimr::skim_to_wide()`. It is supposed to be a
+handy summarizing tool if you have multiple grouping variables and multiple
+variables for which summary statistics are to be computed-
 
 ```{r grouped_summary1, warning = FALSE, messsage = FALSE}
 library(datasets)
@@ -243,6 +243,36 @@ groupedstats::grouped_robustslr(data = gapminder::gapminder,
 A more general version of this function (`grouped_robustlm`) will be implemented in
 future that will utilize the formula interface of `robust::lmRob`.
 
+* `grouped_lm`
+
+A more general version of simple linear regression is `stats::lm`, implemented
+in `grouped_lm`:
+
+```{r grouped_lm1, warning = FALSE, messsage = FALSE}
+library(groupedstats)
+
+groupedstats::grouped_lm(
+  data = mtcars,
+  grouping.vars = cyl,        # grouping variable (just one in this case)
+  formula = mpg ~ am*wt,      # note that this function takes a formula
+  output = "tidy"             # tidy dataframe containing results
+)
+```
+
+The same function can also be used to get model summaries instead of tidy
+dataframe containing results-
+
+```{r grouped_lm2, warning = FALSE, messsage = FALSE}
+library(groupedstats)
+
+groupedstats::grouped_lm(
+  data = ggplot2::diamonds,
+  grouping.vars = c(cut, color),            # grouping variables
+  formula = price ~ carat * clarity,        # formula
+  output = "glance"                         # dataframe with model summaries
+)
+```
+
 * `grouped_glm`
 
 The option to run generalized linear model across different levels of the grouping variable-
@@ -253,6 +283,23 @@ groupedstats::grouped_glm(data = datasets::mtcars,
                           indep.vars = wt,
                           grouping.vars = cyl,
                           family = "gaussian")
+```
+
+* `grouped_lmer`
+
+Linear mixed effects analyses (`lme4::lmer`) for all combinations of grouping
+variable levels can be carried out using `grouped_lmer`:
+
+```{r grouped_lmer1, warning = FALSE, messsage = FALSE}
+# getting tidy output of results
+groupedstats::grouped_lmer(
+  data = gapminder,
+  formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap |
+                                                   continent),
+  grouping.vars = year,
+  REML = FALSE,
+  output = "tidy"
+)
 ```
 
 * `grouped_proptest`

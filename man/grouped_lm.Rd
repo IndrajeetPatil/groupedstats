@@ -2,8 +2,7 @@
 % Please edit documentation in R/grouped_lm.R
 \name{grouped_lm}
 \alias{grouped_lm}
-\title{Function to run linear model (lm) on across multiple grouping
-variables.}
+\title{Function to run linear model (lm) across multiple grouping variables.}
 \usage{
 grouped_lm(data, grouping.vars, formula, output = "tidy")
 }
@@ -25,11 +24,14 @@ which will return model summaries.}
 A tibble dataframe with tidy results from linear model.
 }
 \description{
-Function to run linear model (lm) on across multiple grouping
-variables.
+Function to run linear model (lm) across multiple grouping variables.
 }
 \examples{
 
+# loading needed libraries
+library(ggplot2)
+
+# getting tidy output of results
 grouped_lm(
   data = mtcars,
   grouping.vars = cyl,
@@ -37,10 +39,12 @@ grouped_lm(
   output = "tidy"
 )
 
+# getting model summaries
+# diamonds dataset from ggplot2
 grouped_lm(
-  data = ggplot2::diamonds,
+  data = diamonds,
   grouping.vars = c(cut, color),
-  formula = price ~ carat,
+  formula = price ~ carat * clarity,
   output = "glance"
 )
 

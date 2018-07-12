@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function to run linear model (lm) on across multiple grouping
-variables. — grouped_lm • groupedstats</title>
+<title>Function to run linear model (lm) across multiple grouping variables. — grouped_lm • groupedstats</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -31,11 +30,9 @@ variables. — grouped_lm • groupedstats</title>
 
 
 
-<meta property="og:title" content="Function to run linear model (lm) on across multiple grouping
-variables. — grouped_lm" />
+<meta property="og:title" content="Function to run linear model (lm) across multiple grouping variables. — grouped_lm" />
 
-<meta property="og:description" content="Function to run linear model (lm) on across multiple grouping
-variables." />
+<meta property="og:description" content="Function to run linear model (lm) across multiple grouping variables." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -98,16 +95,14 @@ variables." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Function to run linear model (lm) on across multiple grouping
-variables.</h1>
+    <h1>Function to run linear model (lm) across multiple grouping variables.</h1>
     
     <div class="hidden name"><code>grouped_lm.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Function to run linear model (lm) on across multiple grouping
-variables.</p>
+    <p>Function to run linear model (lm) across multiple grouping variables.</p>
     
     </div>
 
@@ -150,6 +145,10 @@ which will return model summaries.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
+<span class='co'># loading needed libraries</span>
+<span class='fu'>library</span>(<span class='no'>ggplot2</span>)
+
+<span class='co'># getting tidy output of results</span>
 <span class='fu'>grouped_lm</span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>,
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>cyl</span>,
@@ -171,24 +170,26 @@ which will return model summaries.</p></td>
 #&gt; 11     8 wt            -2.44      0.842   -2.90      -4.32    -0.563 0.0159   
 #&gt; 12     8 am:wt          0.439     7.63     0.0575   -16.6     17.4   0.955    
 #&gt; # ... with 1 more variable: significance &lt;chr&gt;</div><div class='input'>
+<span class='co'># getting model summaries</span>
+<span class='co'># diamonds dataset from ggplot2</span>
 <span class='fu'>grouped_lm</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/diamonds'>diamonds</a></span>,
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>diamonds</span>,
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>cut</span>, <span class='no'>color</span>),
-  <span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>price</span> ~ <span class='no'>carat</span>,
+  <span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>price</span> ~ <span class='no'>carat</span> * <span class='no'>clarity</span>,
   <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"glance"</span>
 )</div><div class='output co'>#&gt; # A tibble: 35 x 14
 #&gt;    cut       color r.squared adj.r.squared sigma statistic    df  logLik    AIC
 #&gt;    &lt;ord&gt;     &lt;ord&gt;     &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;  &lt;dbl&gt;
-#&gt;  1 Ideal     E         0.827         0.827 1230.    18621.     2 -33307. 66621.
-#&gt;  2 Premium   E         0.843         0.843 1503.    12550.     2 -20411. 40829.
-#&gt;  3 Good      E         0.830         0.830 1374.     4548.     2  -8064. 16134.
-#&gt;  4 Premium   I         0.892         0.892 1661.    11779.     2 -12614. 25235.
-#&gt;  5 Good      J         0.918         0.918 1064.     3410.     2  -2574.  5155.
-#&gt;  6 Very Good J         0.935         0.935 1058.     9670.     2  -5683. 11371.
-#&gt;  7 Very Good I         0.914         0.914 1377.    12734.     2 -10410. 20825.
-#&gt;  8 Very Good H         0.903         0.903 1304.    16949.     2 -15672. 31349.
-#&gt;  9 Fair      E         0.810         0.809 1300.      947.     2  -1923.  3852.
-#&gt; 10 Ideal     J         0.940         0.939 1101.    13895.     2  -7546. 15098.
+#&gt;  1 Ideal     E         0.931         0.931  776.     3516.    16 -31501. 63036.
+#&gt;  2 Premium   E         0.927         0.927 1028.     1968.    16 -19516. 39066.
+#&gt;  3 Good      E         0.927         0.926  905.      781.    16  -7667. 15369.
+#&gt;  4 Premium   I         0.934         0.934 1303.     1338.    16 -12260. 24554.
+#&gt;  5 Good      J         0.946         0.943  885.      363.    15  -2511.  5054.
+#&gt;  6 Very Good J         0.957         0.957  862.      994.    16  -5537. 11108.
+#&gt;  7 Very Good I         0.946         0.945 1100.     1378.    16 -10132. 20297.
+#&gt;  8 Very Good H         0.940         0.939 1032.     1880.    16 -15237. 30508.
+#&gt;  9 Fair      E         0.917         0.912  883.      179.    14  -1830.  3690.
+#&gt; 10 Ideal     J         0.955         0.955  953.     1259.    16  -7409. 14852.
 #&gt; # ... with 25 more rows, and 5 more variables: BIC &lt;dbl&gt;, deviance &lt;dbl&gt;,
 #&gt; #   df.residual &lt;int&gt;, p.value &lt;dbl&gt;, significance &lt;chr&gt;</div><div class='input'>
 </div></pre>
