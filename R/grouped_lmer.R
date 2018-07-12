@@ -1,10 +1,11 @@
 #'
-#' @title Function to run linear mixed-effects model (lmer) across multiple grouping
-#'   variables.
+#' @title Function to run linear mixed-effects model (lmer) across multiple
+#'   grouping variables.
 #' @name grouped_lmer
 #' @aliases grouped_lmer
 #' @author Indrajeet Patil
-#' @return A tibble dataframe with tidy results from linear model.
+#' @return A tibble dataframe with tidy results from linear model or model
+#'   summaries.
 #'
 #' @param data Dataframe from which variables are to be taken.
 #' @param grouping.vars List of grouping variables.
@@ -117,6 +118,7 @@ grouped_lmer <- function(data,
           ),
           .id = "..group"
         ) %>%
+        dplyr::rename(.data = ., t.value = statistic) %>%
         dplyr::mutate_at(.tbl = .,
                          .vars = "term",
                          .funs = ~as.character(.))

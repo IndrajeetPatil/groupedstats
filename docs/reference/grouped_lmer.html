@@ -6,8 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function to run linear mixed-effects model (lmer) across multiple grouping
-variables. — grouped_lmer • groupedstats</title>
+<title>Function to run linear mixed-effects model (lmer) across multiple
+grouping variables. — grouped_lmer • groupedstats</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -31,11 +31,11 @@ variables. — grouped_lmer • groupedstats</title>
 
 
 
-<meta property="og:title" content="Function to run linear mixed-effects model (lmer) across multiple grouping
-variables. — grouped_lmer" />
+<meta property="og:title" content="Function to run linear mixed-effects model (lmer) across multiple
+grouping variables. — grouped_lmer" />
 
-<meta property="og:description" content="Function to run linear mixed-effects model (lmer) across multiple grouping
-variables." />
+<meta property="og:description" content="Function to run linear mixed-effects model (lmer) across multiple
+grouping variables." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -98,16 +98,16 @@ variables." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Function to run linear mixed-effects model (lmer) across multiple grouping
-variables.</h1>
+    <h1>Function to run linear mixed-effects model (lmer) across multiple
+grouping variables.</h1>
     
     <div class="hidden name"><code>grouped_lmer.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Function to run linear mixed-effects model (lmer) across multiple grouping
-variables.</p>
+    <p>Function to run linear mixed-effects model (lmer) across multiple
+grouping variables.</p>
     
     </div>
 
@@ -173,7 +173,8 @@ which will return model summaries.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble dataframe with tidy results from linear model.</p>
+    <p>A tibble dataframe with tidy results from linear model or model
+summaries.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -187,18 +188,18 @@ which will return model summaries.</p></td>
              <span class='kw'>formula</span> <span class='kw'>=</span> <span class='fu'>scale</span>(<span class='no'>lifeExp</span>) ~ <span class='fu'>scale</span>(<span class='no'>gdpPercap</span>) + (<span class='no'>gdpPercap</span> <span class='kw'>|</span> <span class='no'>continent</span>),
              <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>year</span>,
              <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>)</div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; # A tibble: 24 x 9
-#&gt;     year term           estimate std.error statistic conf.low conf.high p.value
-#&gt;    &lt;int&gt; &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-#&gt;  1  1952 (Intercept)       0.230     0.354     0.651   -0.463     0.923 0.515  
-#&gt;  2  1952 scale(gdpPerc~    0.952     0.336     2.83     0.292     1.61  0.00467
-#&gt;  3  1957 (Intercept)       0.234     0.305     0.767   -0.364     0.831 0.443  
-#&gt;  4  1957 scale(gdpPerc~    0.851     0.307     2.77     0.250     1.45  0.00555
-#&gt;  5  1962 (Intercept)       0.250     0.339     0.736   -0.415     0.915 0.462  
-#&gt;  6  1962 scale(gdpPerc~    0.615     0.235     2.62     0.154     1.08  0.00888
-#&gt;  7  1967 (Intercept)       0.227     0.310     0.731   -0.381     0.835 0.465  
-#&gt;  8  1967 scale(gdpPerc~    0.418     0.137     3.05     0.149     0.687 0.00231
-#&gt;  9  1972 (Intercept)       0.262     0.340     0.771   -0.405     0.929 0.441  
-#&gt; 10  1972 scale(gdpPerc~    0.461     0.167     2.76     0.133     0.788 0.00582
+#&gt;     year term             estimate std.error t.value conf.low conf.high p.value
+#&gt;    &lt;int&gt; &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+#&gt;  1  1952 (Intercept)         0.230     0.354   0.651   -0.463     0.923 0.515  
+#&gt;  2  1952 scale(gdpPercap)    0.952     0.336   2.83     0.292     1.61  0.00467
+#&gt;  3  1957 (Intercept)         0.234     0.305   0.767   -0.364     0.831 0.443  
+#&gt;  4  1957 scale(gdpPercap)    0.851     0.307   2.77     0.250     1.45  0.00555
+#&gt;  5  1962 (Intercept)         0.250     0.339   0.736   -0.415     0.915 0.462  
+#&gt;  6  1962 scale(gdpPercap)    0.615     0.235   2.62     0.154     1.08  0.00888
+#&gt;  7  1967 (Intercept)         0.227     0.310   0.731   -0.381     0.835 0.465  
+#&gt;  8  1967 scale(gdpPercap)    0.418     0.137   3.05     0.149     0.687 0.00231
+#&gt;  9  1972 (Intercept)         0.262     0.340   0.771   -0.405     0.929 0.441  
+#&gt; 10  1972 scale(gdpPercap)    0.461     0.167   2.76     0.133     0.788 0.00582
 #&gt; # ... with 14 more rows, and 1 more variable: significance &lt;chr&gt;</div><div class='input'>
 <span class='co'># getting model summaries</span>
 <span class='fu'>grouped_lmer</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>diamonds</span>,

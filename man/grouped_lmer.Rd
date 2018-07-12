@@ -2,8 +2,8 @@
 % Please edit documentation in R/grouped_lmer.R
 \name{grouped_lmer}
 \alias{grouped_lmer}
-\title{Function to run linear mixed-effects model (lmer) across multiple grouping
-variables.}
+\title{Function to run linear mixed-effects model (lmer) across multiple
+grouping variables.}
 \usage{
 grouped_lmer(data, grouping.vars, formula, REML = TRUE,
   control = lme4::lmerControl(optimizer = "bobyqa", restart_edge = TRUE,
@@ -49,11 +49,12 @@ options: \code{"tidy"} (default), which will return the results, or \code{"glanc
 which will return model summaries.}
 }
 \value{
-A tibble dataframe with tidy results from linear model.
+A tibble dataframe with tidy results from linear model or model
+summaries.
 }
 \description{
-Function to run linear mixed-effects model (lmer) across multiple grouping
-variables.
+Function to run linear mixed-effects model (lmer) across multiple
+grouping variables.
 }
 \examples{
 

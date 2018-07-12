@@ -34,6 +34,7 @@
 #' @importFrom tidyr separate
 #' @importFrom crayon blue
 #' @importFrom crayon red
+#' @importFrom stats qt
 #'
 #' @examples
 #'
@@ -301,17 +302,21 @@ grouped_summary <- function(data,
         .tbl = .,
         .vars = dplyr::vars(missing, complete, n, mean, sd, p0, p25, p50, p75, p100),
         .funs = ~ as.numeric(as.character(.)) # change summary variables to numeric
-      ) %>%
+      ) %>% # renaming variables to more common terminology
       dplyr::rename(
         .data = .,
         min = p0,
         median = p50,
         max = p100
-      ) %>% # renaming columns to minimum and maximum
-      dplyr::mutate_if(.tbl = .,
-                       .predicate = is.character,
-                       .funs = as.factor) # change grouping variables to factors (tibble won't have it though)
+      ) %>% # computing more descriptive indices
+      dplyr::mutate(
+        .data = .,
+        std.error = sd / base::sqrt(n),
+        mean.low.conf = mean - stats::qt(p = 1 - (0.05 / 2), df = n - 1, lower.tail = TRUE) * std.error,
+        mean.high.conf = mean + stats::qt(p = 1 - (0.05 / 2), df = n - 1, lower.tail = TRUE) * std.error
+      )
   }
+
   # return the summary dataframe
   return(df_summary)
 }

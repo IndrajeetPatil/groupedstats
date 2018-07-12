@@ -23,7 +23,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--07--11-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--07--12-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
@@ -120,9 +120,9 @@ groupedstats::grouped_summary(data = datasets::iris,
                               grouping.vars = Species,
                               measures = Sepal.Length:Petal.Width,
                               measures.type = "numeric")
-#> # A tibble: 12 x 13
+#> # A tibble: 12 x 16
 #>    Species    type    variable     missing complete     n  mean    sd
-#>    <fct>      <fct>   <fct>          <dbl>    <dbl> <dbl> <dbl> <dbl>
+#>    <fct>      <chr>   <chr>          <dbl>    <dbl> <dbl> <dbl> <dbl>
 #>  1 setosa     numeric Petal.Length       0       50    50  1.46  0.17
 #>  2 setosa     numeric Petal.Width        0       50    50  0.25  0.11
 #>  3 setosa     numeric Sepal.Length       0       50    50  5.01  0.35
@@ -135,20 +135,20 @@ groupedstats::grouped_summary(data = datasets::iris,
 #> 10 virginica  numeric Petal.Width        0       50    50  2.03  0.27
 #> 11 virginica  numeric Sepal.Length       0       50    50  6.59  0.64
 #> 12 virginica  numeric Sepal.Width        0       50    50  2.97  0.32
-#>      min   p25 median   p75   max
-#>    <dbl> <dbl>  <dbl> <dbl> <dbl>
-#>  1   1    1.4    1.5   1.58   1.9
-#>  2   0.1  0.2    0.2   0.3    0.6
-#>  3   4.3  4.8    5     5.2    5.8
-#>  4   2.3  3.2    3.4   3.68   4.4
-#>  5   3    4      4.35  4.6    5.1
-#>  6   1    1.2    1.3   1.5    1.8
-#>  7   4.9  5.6    5.9   6.3    7  
-#>  8   2    2.52   2.8   3      3.4
-#>  9   4.5  5.1    5.55  5.88   6.9
-#> 10   1.4  1.8    2     2.3    2.5
-#> 11   4.9  6.23   6.5   6.9    7.9
-#> 12   2.2  2.8    3     3.18   3.8
+#>      min   p25 median   p75   max     se mean.low.conf mean.high.conf
+#>    <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>         <dbl>          <dbl>
+#>  1   1    1.4    1.5   1.58   1.9 0.0240         1.41           1.51 
+#>  2   0.1  0.2    0.2   0.3    0.6 0.0156         0.219          0.281
+#>  3   4.3  4.8    5     5.2    5.8 0.0495         4.91           5.11 
+#>  4   2.3  3.2    3.4   3.68   4.4 0.0537         3.32           3.54 
+#>  5   3    4      4.35  4.6    5.1 0.0665         4.13           4.39 
+#>  6   1    1.2    1.3   1.5    1.8 0.0283         1.27           1.39 
+#>  7   4.9  5.6    5.9   6.3    7   0.0735         5.79           6.09 
+#>  8   2    2.52   2.8   3      3.4 0.0438         2.68           2.86 
+#>  9   4.5  5.1    5.55  5.88   6.9 0.0778         5.39           5.71 
+#> 10   1.4  1.8    2     2.3    2.5 0.0382         1.95           2.11 
+#> 11   4.9  6.23   6.5   6.9    7.9 0.0905         6.41           6.77 
+#> 12   2.2  2.8    3     3.18   3.8 0.0453         2.88           3.06
 ```
 
 This function can be used to get summary of either numeric **or** factor
@@ -243,9 +243,9 @@ groupedstats::grouped_summary(
   data = ggplot2::diamonds,
   grouping.vars = c(cut, clarity)
 )
-#> # A tibble: 280 x 14
+#> # A tibble: 280 x 17
 #>    cut     clarity type    variable missing complete     n    mean      sd
-#>    <ord>   <ord>   <fct>   <fct>      <dbl>    <dbl> <dbl>   <dbl>   <dbl>
+#>    <ord>   <ord>   <chr>   <chr>      <dbl>    <dbl> <dbl>   <dbl>   <dbl>
 #>  1 Ideal   SI2     integer price          0     2598  2598 4756.   4252.  
 #>  2 Ideal   SI2     numeric carat          0     2598  2598    1.01    0.51
 #>  3 Ideal   SI2     numeric depth          0     2598  2598   61.7     0.82
@@ -256,18 +256,30 @@ groupedstats::grouped_summary(
 #>  8 Premium SI1     integer price          0     3575  3575 4455.   4071.  
 #>  9 Premium SI1     numeric carat          0     3575  3575    0.91    0.48
 #> 10 Premium SI1     numeric depth          0     3575  3575   61.3     1.17
-#>       min     p25  median     p75      max
-#>     <dbl>   <dbl>   <dbl>   <dbl>    <dbl>
-#>  1 326    1443    4060.   5402.   18804   
-#>  2   0.23    0.62    1       1.2      3.01
-#>  3  58.3    61.2    61.8    62.3     65.5 
-#>  4  52      55      56      57       62   
-#>  5   0       5.5     6.4     6.82     9.25
-#>  6   3.98    5.53    6.4     6.82     9.2 
-#>  7   0       3.38    3.95    4.21     5.69
-#>  8 326    1200.   3618    5597    18797   
-#>  9   0.21    0.5     0.9     1.15     2.57
-#> 10  58      60.5    61.5    62.3     63   
+#>       min     p25  median     p75      max       se mean.low.conf
+#>     <dbl>   <dbl>   <dbl>   <dbl>    <dbl>    <dbl>         <dbl>
+#>  1 326    1443    4060.   5402.   18804    83.4          4592.   
+#>  2   0.23    0.62    1       1.2      3.01  0.0100          0.990
+#>  3  58.3    61.2    61.8    62.3     65.5   0.0161         61.7  
+#>  4  52      55      56      57       62     0.0255         56.1  
+#>  5   0       5.5     6.4     6.82     9.25  0.0210          6.22 
+#>  6   3.98    5.53    6.4     6.82     9.2   0.0206          6.23 
+#>  7   0       3.38    3.95    4.21     5.69  0.0129          3.84 
+#>  8 326    1200.   3618    5597    18797    68.1          4322.   
+#>  9   0.21    0.5     0.9     1.15     2.57  0.00803         0.894
+#> 10  58      60.5    61.5    62.3     63     0.0196         61.3  
+#>    mean.high.conf
+#>             <dbl>
+#>  1       4920.   
+#>  2          1.03 
+#>  3         61.7  
+#>  4         56.2  
+#>  5          6.30 
+#>  6          6.31 
+#>  7          3.90 
+#>  8       4589.   
+#>  9          0.926
+#> 10         61.3  
 #> # ... with 270 more rows
 ```
 
@@ -447,20 +459,20 @@ groupedstats::grouped_lm(
   output = "tidy"             # tidy dataframe containing results
 )
 #> # A tibble: 12 x 9
-#>      cyl term        estimate std.error statistic conf.low conf.high
-#>    <dbl> <chr>          <dbl>     <dbl>     <dbl>    <dbl>     <dbl>
-#>  1     6 (Intercept)   63.6      14.1      4.51      18.7    109.   
-#>  2     6 am           -41.4      19.0     -2.18    -102.      19.1  
-#>  3     6 wt           -13.1       4.16    -3.16     -26.4      0.113
-#>  4     6 am:wt         12.5       6.22     2.02      -7.26    32.4  
-#>  5     4 (Intercept)   13.9      16.1      0.865    -24.1     51.9  
-#>  6     4 am            30.3      17.2      1.77     -10.3     70.9  
-#>  7     4 wt             3.07      5.44     0.564     -9.79    15.9  
-#>  8     4 am:wt        -11.0       6.16    -1.78     -25.5      3.61 
-#>  9     8 (Intercept)   25.1       3.51     7.14      17.2     32.9  
-#> 10     8 am            -2.92     25.9     -0.113    -60.5     54.7  
-#> 11     8 wt            -2.44      0.842   -2.90      -4.32    -0.563
-#> 12     8 am:wt          0.439     7.63     0.0575   -16.6     17.4  
+#>      cyl term        estimate std.error t.value conf.low conf.high
+#>    <dbl> <chr>          <dbl>     <dbl>   <dbl>    <dbl>     <dbl>
+#>  1     6 (Intercept)   63.6      14.1    4.51      18.7    109.   
+#>  2     6 am           -41.4      19.0   -2.18    -102.      19.1  
+#>  3     6 wt           -13.1       4.16  -3.16     -26.4      0.113
+#>  4     6 am:wt         12.5       6.22   2.02      -7.26    32.4  
+#>  5     4 (Intercept)   13.9      16.1    0.865    -24.1     51.9  
+#>  6     4 am            30.3      17.2    1.77     -10.3     70.9  
+#>  7     4 wt             3.07      5.44   0.564     -9.79    15.9  
+#>  8     4 am:wt        -11.0       6.16  -1.78     -25.5      3.61 
+#>  9     8 (Intercept)   25.1       3.51   7.14      17.2     32.9  
+#> 10     8 am            -2.92     25.9   -0.113    -60.5     54.7  
+#> 11     8 wt            -2.44      0.842 -2.90      -4.32    -0.563
+#> 12     8 am:wt          0.439     7.63   0.0575   -16.6     17.4  
 #>      p.value significance
 #>        <dbl> <chr>       
 #>  1 0.0204    *           
@@ -571,18 +583,18 @@ groupedstats::grouped_lmer(
 #> Computing p-values via Wald-statistics approximation (treating t as Wald z).
 #> Computing p-values via Wald-statistics approximation (treating t as Wald z).
 #> # A tibble: 24 x 9
-#>     year term             estimate std.error statistic conf.low conf.high
-#>    <int> <chr>               <dbl>     <dbl>     <dbl>    <dbl>     <dbl>
-#>  1  1952 (Intercept)         0.215     0.293     0.736   -0.358     0.789
-#>  2  1952 scale(gdpPercap)    0.930     0.302     3.07     0.337     1.52 
-#>  3  1957 (Intercept)         0.254     0.342     0.743   -0.416     0.923
-#>  4  1957 scale(gdpPercap)    0.815     0.282     2.89     0.262     1.37 
-#>  5  1962 (Intercept)         0.255     0.333     0.766   -0.397     0.908
-#>  6  1962 scale(gdpPercap)    0.591     0.210     2.82     0.180     1.00 
-#>  7  1967 (Intercept)         0.249     0.361     0.689   -0.459     0.956
-#>  8  1967 scale(gdpPercap)    0.387     0.120     3.24     0.153     0.622
-#>  9  1972 (Intercept)         0.276     0.366     0.753   -0.442     0.994
-#> 10  1972 scale(gdpPercap)    0.431     0.150     2.88     0.137     0.724
+#>     year term             estimate std.error t.value conf.low conf.high
+#>    <int> <chr>               <dbl>     <dbl>   <dbl>    <dbl>     <dbl>
+#>  1  1952 (Intercept)         0.215     0.293   0.736   -0.358     0.789
+#>  2  1952 scale(gdpPercap)    0.930     0.302   3.07     0.337     1.52 
+#>  3  1957 (Intercept)         0.254     0.342   0.743   -0.416     0.923
+#>  4  1957 scale(gdpPercap)    0.815     0.282   2.89     0.262     1.37 
+#>  5  1962 (Intercept)         0.255     0.333   0.766   -0.397     0.908
+#>  6  1962 scale(gdpPercap)    0.591     0.210   2.82     0.180     1.00 
+#>  7  1967 (Intercept)         0.249     0.361   0.689   -0.459     0.956
+#>  8  1967 scale(gdpPercap)    0.387     0.120   3.24     0.153     0.622
+#>  9  1972 (Intercept)         0.276     0.366   0.753   -0.442     0.994
+#> 10  1972 scale(gdpPercap)    0.431     0.150   2.88     0.137     0.724
 #>    p.value significance
 #>      <dbl> <chr>       
 #>  1 0.462   ns          

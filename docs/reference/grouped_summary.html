@@ -161,9 +161,9 @@ sd, median, min, max)</p>
 <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>Species</span>,
 <span class='kw'>measures</span> <span class='kw'>=</span> <span class='no'>Sepal.Length</span>:<span class='no'>Petal.Width</span>,
 <span class='kw'>measures.type</span> <span class='kw'>=</span> <span class='st'>"numeric"</span>
-)</div><div class='output co'>#&gt; # A tibble: 12 x 13
+)</div><div class='output co'>#&gt; # A tibble: 12 x 16
 #&gt;    Species type  variable missing complete     n  mean    sd   min   p25 median
-#&gt;    &lt;fct&gt;   &lt;fct&gt; &lt;fct&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+#&gt;    &lt;fct&gt;   &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
 #&gt;  1 setosa  nume~ Petal.L~       0       50    50  1.46  0.17   1    1.4    1.5 
 #&gt;  2 setosa  nume~ Petal.W~       0       50    50  0.25  0.11   0.1  0.2    0.2 
 #&gt;  3 setosa  nume~ Sepal.L~       0       50    50  5.01  0.35   4.3  4.8    5   
@@ -176,19 +176,21 @@ sd, median, min, max)</p>
 #&gt; 10 virgin~ nume~ Petal.W~       0       50    50  2.03  0.27   1.4  1.8    2   
 #&gt; 11 virgin~ nume~ Sepal.L~       0       50    50  6.59  0.64   4.9  6.23   6.5 
 #&gt; 12 virgin~ nume~ Sepal.W~       0       50    50  2.97  0.32   2.2  2.8    3   
-#&gt; # ... with 2 more variables: p75 &lt;dbl&gt;, max &lt;dbl&gt;</div><div class='input'>
+#&gt; # ... with 5 more variables: p75 &lt;dbl&gt;, max &lt;dbl&gt;, std.error &lt;dbl&gt;,
+#&gt; #   mean.low.conf &lt;dbl&gt;, mean.high.conf &lt;dbl&gt;</div><div class='input'>
 <span class='co'># if you have just one variable per argument, you need not use `c()`</span>
 <span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_summary'>grouped_summary</a></span>(
 <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/ToothGrowth'>ToothGrowth</a></span>,
 <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>supp</span>,
 <span class='kw'>measures</span> <span class='kw'>=</span> <span class='no'>len</span>,
 <span class='kw'>measures.type</span> <span class='kw'>=</span> <span class='st'>"numeric"</span>
-)</div><div class='output co'>#&gt; # A tibble: 2 x 13
+)</div><div class='output co'>#&gt; # A tibble: 2 x 16
 #&gt;   supp  type    variable missing complete     n  mean    sd   min   p25 median
-#&gt;   &lt;fct&gt; &lt;fct&gt;   &lt;fct&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+#&gt;   &lt;fct&gt; &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
 #&gt; 1 VC    numeric len            0       30    30  17.0  8.27   4.2  11.2   16.5
 #&gt; 2 OJ    numeric len            0       30    30  20.7  6.61   8.2  15.5   22.7
-#&gt; # ... with 2 more variables: p75 &lt;dbl&gt;, max &lt;dbl&gt;</div><div class='input'>
+#&gt; # ... with 5 more variables: p75 &lt;dbl&gt;, max &lt;dbl&gt;, std.error &lt;dbl&gt;,
+#&gt; #   mean.low.conf &lt;dbl&gt;, mean.high.conf &lt;dbl&gt;</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

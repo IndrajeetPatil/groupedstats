@@ -103,7 +103,8 @@ grouped_lm <- function(data,
             conf.level = 0.95
           ),
           .id = "..group"
-        )
+        ) %>%
+        dplyr::rename(.data = ., t.value = statistic)
     } else {
       # dataframe with results from lm
       results_df <-
