@@ -2,17 +2,27 @@
 % Please edit documentation in R/helpers.R
 \name{lm_effsize_ci}
 \alias{lm_effsize_ci}
-\title{Confidence intervals for partial eta-squared and omega-squared for linear models.}
+\title{Confidence intervals for partial eta-squared and omega-squared for
+linear models.}
 \usage{
-lm_effsize_ci(lm_object, conf.level = 0.95, nboot = 1000)
+lm_effsize_ci(object, effsize = "eta", partial = TRUE, conf.level = 0.95,
+  nboot = 1000)
 }
 \arguments{
-\item{lm_object}{The \code{stats::lm} linear model object.}
+\item{object}{The linear model object (can be of class \code{lm}, \code{aov}, or
+\code{aovlist}).}
 
-\item{conf.level}{Level of confidence for the confidence interval.}
+\item{effsize}{Character describing the effect size to be displayed: \code{"eta"}
+(default) or \code{"omega"}.}
+
+\item{partial}{Logical that decides if partial eta-squared or omega-squared
+are returned (Default: \code{TRUE}).}
+
+\item{conf.level}{Numeric specifying Level of confidence for the confidence
+interval (Default: \code{0.95}).}
 
 \item{nboot}{Number of bootstrap samples for confidence intervals for partial
-eta-squared and omega-squared.}
+eta-squared and omega-squared (Default: \code{1000}).}
 }
 \value{
 A dataframe with results from \code{stats::lm()} with partial eta-squared,
@@ -23,6 +33,20 @@ This function will convert a linear model object to a dataframe
 containing statistical details for all effects along with partial
 eta-squared effect size and its confidence interval.
 }
+\examples{
+
+# lm object
+# lm_effsize_ci(object = stats::lm(formula = wt ~ am * cyl, data = mtcars),
+# effsize = "omega",
+# partial = TRUE)
+
+# aov object
+# lm_effsize_ci(object = stats::aov(formula = wt ~ am * cyl, data = mtcars),
+# effsize = "eta",
+# partial = FALSE)
+
+}
 \author{
 Indrajeet Patil
 }
+\keyword{internal}

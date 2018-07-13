@@ -23,7 +23,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--07--12-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--07--13-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
@@ -527,6 +527,47 @@ groupedstats::grouped_lm(
 #>  9  3690.  3741.  163677866.         210 8.70e-106 ***         
 #> 10 14852. 14934.  798454816.         880 0.        ***         
 #> # ... with 25 more rows
+```
+
+  - `grouped_aov`
+
+A related function to `stats::lm` is `stats::aov`, which fits an
+analysis of variance model for each group. Contrast the output you get
+here with the previous output for the same model from `grouped_lm`
+function. The estimate in this case with be an effect size (either
+partial eta-squared or partial omega-squared).
+
+``` r
+library(groupedstats)
+
+groupedstats::grouped_aov(
+  data = mtcars,
+  grouping.vars = cyl,        # grouping variable (just one in this case)
+  formula = mpg ~ am*wt       # note that this function takes a formula
+)
+#> # A tibble: 9 x 10
+#>     cyl term  F.value   df1   df2 partial.etasq conf.low conf.high p.value
+#>   <dbl> <chr>   <dbl> <dbl> <dbl>         <dbl>    <dbl>     <dbl>   <dbl>
+#> 1     6 am    5.07        1     3      0.628      0         0.820   0.110 
+#> 2     6 wt    5.91        1     3      0.663      0         0.835   0.0933
+#> 3     6 am:wt 4.06        1     3      0.575      0         0.796   0.137 
+#> 4     4 am    5.95        1     7      0.459      0         0.711   0.0448
+#> 5     4 wt    4.59        1     7      0.396      0         0.676   0.0693
+#> 6     4 am:wt 3.17        1     7      0.311      0         0.627   0.118 
+#> 7     8 am    0.0456      1    10      0.00454    0         0.242   0.835 
+#> 8     8 wt    8.45        1    10      0.458      0.0190    0.691   0.0156
+#> 9     8 am:wt 0.00331     1    10      0.000330   0         0.0885  0.955 
+#>   significance
+#>   <chr>       
+#> 1 ns          
+#> 2 ns          
+#> 3 ns          
+#> 4 *           
+#> 5 ns          
+#> 6 ns          
+#> 7 ns          
+#> 8 *           
+#> 9 ns
 ```
 
   - `grouped_glm`

@@ -122,7 +122,8 @@ utils::globalVariables(
     "n",
     "statistic",
     "std.error",
-    "..group"
+    "..group",
+    "stratum"
   ),
   package = "groupedstats",
   add = FALSE

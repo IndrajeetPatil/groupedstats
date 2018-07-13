@@ -7,7 +7,7 @@
 #'
 #' @param data Dataframe from which variables are to be taken.
 #' @param grouping.vars List of grouping variables.
-#' @param output A character describing what output is exepcted. Two possible
+#' @param output A character describing what output is expected. Two possible
 #'   options: `"tidy"` (default), which will return the results, or `"glance"`,
 #'   which will return model summaries.
 #' @inheritParams stats::lm

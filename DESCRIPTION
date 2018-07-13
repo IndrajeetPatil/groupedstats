@@ -38,7 +38,7 @@ Suggests:
     ggstatsplot (>= 0.0.3),
     knitr (>= 1.20),
     rmarkdown (>= 1.9),
-    spelling (>= 1.2)
+    spelling
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

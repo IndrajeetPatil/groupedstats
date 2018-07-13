@@ -32,7 +32,7 @@ grouped_glmer(data, grouping.vars, formula, family = stats::binomial(link =
     nonlinear optimizer, see the \code{*lmerControl} documentation for
     details.}
 
-\item{output}{A character describing what output is exepcted. Two possible
+\item{output}{A character describing what output is expected. Two possible
 options: \code{"tidy"} (default), which will return the results, or \code{"glance"},
 which will return model summaries.}
 }

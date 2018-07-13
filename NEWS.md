@@ -1,8 +1,10 @@
 # groupedstats 0.0.1.9000
 
 MAJOR CHANGES
-  - New functions added: `grouped_lm()`, `grouped_lmer()`, `grouped_glmer()`.
-  - The package no longer **exports** tidy eval functions; it's not part of the tidyverse.
+  - New functions added: `grouped_lm()`, `grouped_aov()`, `grouped_lmer()`,
+   `grouped_glmer()`.
+  - The package no longer **exports** tidy eval functions; it's not part of the
+   tidyverse.
 
 MINOR CHANGES
   - For numeric variables, `grouped_summary` now also outputs standard error of
