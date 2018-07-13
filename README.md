@@ -135,20 +135,20 @@ groupedstats::grouped_summary(data = datasets::iris,
 #> 10 virginica  numeric Petal.Width        0       50    50  2.03  0.27
 #> 11 virginica  numeric Sepal.Length       0       50    50  6.59  0.64
 #> 12 virginica  numeric Sepal.Width        0       50    50  2.97  0.32
-#>      min   p25 median   p75   max     se mean.low.conf mean.high.conf
-#>    <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>         <dbl>          <dbl>
-#>  1   1    1.4    1.5   1.58   1.9 0.0240         1.41           1.51 
-#>  2   0.1  0.2    0.2   0.3    0.6 0.0156         0.219          0.281
-#>  3   4.3  4.8    5     5.2    5.8 0.0495         4.91           5.11 
-#>  4   2.3  3.2    3.4   3.68   4.4 0.0537         3.32           3.54 
-#>  5   3    4      4.35  4.6    5.1 0.0665         4.13           4.39 
-#>  6   1    1.2    1.3   1.5    1.8 0.0283         1.27           1.39 
-#>  7   4.9  5.6    5.9   6.3    7   0.0735         5.79           6.09 
-#>  8   2    2.52   2.8   3      3.4 0.0438         2.68           2.86 
-#>  9   4.5  5.1    5.55  5.88   6.9 0.0778         5.39           5.71 
-#> 10   1.4  1.8    2     2.3    2.5 0.0382         1.95           2.11 
-#> 11   4.9  6.23   6.5   6.9    7.9 0.0905         6.41           6.77 
-#> 12   2.2  2.8    3     3.18   3.8 0.0453         2.88           3.06
+#>      min   p25 median   p75   max std.error mean.low.conf mean.high.conf
+#>    <dbl> <dbl>  <dbl> <dbl> <dbl>     <dbl>         <dbl>          <dbl>
+#>  1   1    1.4    1.5   1.58   1.9    0.0240         1.41           1.51 
+#>  2   0.1  0.2    0.2   0.3    0.6    0.0156         0.219          0.281
+#>  3   4.3  4.8    5     5.2    5.8    0.0495         4.91           5.11 
+#>  4   2.3  3.2    3.4   3.68   4.4    0.0537         3.32           3.54 
+#>  5   3    4      4.35  4.6    5.1    0.0665         4.13           4.39 
+#>  6   1    1.2    1.3   1.5    1.8    0.0283         1.27           1.39 
+#>  7   4.9  5.6    5.9   6.3    7      0.0735         5.79           6.09 
+#>  8   2    2.52   2.8   3      3.4    0.0438         2.68           2.86 
+#>  9   4.5  5.1    5.55  5.88   6.9    0.0778         5.39           5.71 
+#> 10   1.4  1.8    2     2.3    2.5    0.0382         1.95           2.11 
+#> 11   4.9  6.23   6.5   6.9    7.9    0.0905         6.41           6.77 
+#> 12   2.2  2.8    3     3.18   3.8    0.0453         2.88           3.06
 ```
 
 This function can be used to get summary of either numeric **or** factor
@@ -256,18 +256,18 @@ groupedstats::grouped_summary(
 #>  8 Premium SI1     integer price          0     3575  3575 4455.   4071.  
 #>  9 Premium SI1     numeric carat          0     3575  3575    0.91    0.48
 #> 10 Premium SI1     numeric depth          0     3575  3575   61.3     1.17
-#>       min     p25  median     p75      max       se mean.low.conf
-#>     <dbl>   <dbl>   <dbl>   <dbl>    <dbl>    <dbl>         <dbl>
-#>  1 326    1443    4060.   5402.   18804    83.4          4592.   
-#>  2   0.23    0.62    1       1.2      3.01  0.0100          0.990
-#>  3  58.3    61.2    61.8    62.3     65.5   0.0161         61.7  
-#>  4  52      55      56      57       62     0.0255         56.1  
-#>  5   0       5.5     6.4     6.82     9.25  0.0210          6.22 
-#>  6   3.98    5.53    6.4     6.82     9.2   0.0206          6.23 
-#>  7   0       3.38    3.95    4.21     5.69  0.0129          3.84 
-#>  8 326    1200.   3618    5597    18797    68.1          4322.   
-#>  9   0.21    0.5     0.9     1.15     2.57  0.00803         0.894
-#> 10  58      60.5    61.5    62.3     63     0.0196         61.3  
+#>       min     p25  median     p75      max std.error mean.low.conf
+#>     <dbl>   <dbl>   <dbl>   <dbl>    <dbl>     <dbl>         <dbl>
+#>  1 326    1443    4060.   5402.   18804     83.4          4592.   
+#>  2   0.23    0.62    1       1.2      3.01   0.0100          0.990
+#>  3  58.3    61.2    61.8    62.3     65.5    0.0161         61.7  
+#>  4  52      55      56      57       62      0.0255         56.1  
+#>  5   0       5.5     6.4     6.82     9.25   0.0210          6.22 
+#>  6   3.98    5.53    6.4     6.82     9.2    0.0206          6.23 
+#>  7   0       3.38    3.95    4.21     5.69   0.0129          3.84 
+#>  8 326    1200.   3618    5597    18797     68.1          4322.   
+#>  9   0.21    0.5     0.9     1.15     2.57   0.00803         0.894
+#> 10  58      60.5    61.5    62.3     63      0.0196         61.3  
 #>    mean.high.conf
 #>             <dbl>
 #>  1       4920.   
@@ -608,6 +608,68 @@ groupedstats::grouped_lmer(
 #>  9 0.451   ns          
 #> 10 0.00402 **          
 #> # ... with 14 more rows
+```
+
+  - `grouped_glmer`
+
+A more generalized version of `lmer` is implemented in `glmer`, which
+can also handle categorical/nominal data. For example, let’s say we want
+to see if sex of a person was predictive of whether they survived the
+Titanic tragedy
+
+``` r
+# having a look at the data
+dplyr::glimpse(x = groupedstats::Titanic_full)
+#> Observations: 2,201
+#> Variables: 5
+#> $ id       <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16...
+#> $ Class    <fct> 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd...
+#> $ Sex      <fct> Male, Male, Male, Male, Male, Male, Male, Male, Male,...
+#> $ Age      <fct> Child, Child, Child, Child, Child, Child, Child, Chil...
+#> $ Survived <fct> No, No, No, No, No, No, No, No, No, No, No, No, No, N...
+
+# running glmer model to get tidy output
+groupedstats::grouped_glmer(
+  formula = Survived ~ Age + (Age |
+                                Class),
+  data = groupedstats::Titanic_full,
+  family = stats::binomial(link = "probit"),                  # choosing the appropriate GLM family
+                          control = lme4::glmerControl(       # choosing appropriate control
+                            optimizer = "Nelder_Mead",
+                            boundary.tol = 1e-07,
+                            calc.derivs = FALSE,
+                            optCtrl = list(maxfun = 2e9)
+                          ),
+  grouping.vars = Sex,                                        # grouping variables (just one in this case)
+  output = "tidy"
+)
+#> # A tibble: 4 x 9
+#>   Sex    term        estimate std.error z.value conf.low conf.high
+#>   <fct>  <chr>          <dbl>     <dbl>   <dbl>    <dbl>     <dbl>
+#> 1 Male   (Intercept)   -0.888     0.162   -5.47   -1.21     -0.570
+#> 2 Male   AgeChild       4.90      4.03     1.22   -3.00     12.8  
+#> 3 Female (Intercept)    1.01      0.379    2.66    0.264     1.75 
+#> 4 Female AgeChild       1.47      0.595    2.48    0.307     2.64 
+#>        p.value significance
+#>          <dbl> <chr>       
+#> 1 0.0000000453 ***         
+#> 2 0.224        ns          
+#> 3 0.00789      **          
+#> 4 0.0133       *
+
+# getting glmer model summaries (let's use the default family and control values)
+groupedstats::grouped_glmer(
+  formula = Survived ~ Age + (Age |
+                                Class),
+  grouping.vars = Sex,      
+  data = groupedstats::Titanic_full,
+  output = "glance"
+)
+#> # A tibble: 2 x 7
+#>   Sex    sigma logLik   AIC   BIC deviance df.residual
+#>   <fct>  <dbl>  <dbl> <dbl> <dbl>    <dbl>       <int>
+#> 1 Male       1  -860. 1730. 1757.    1698.        1726
+#> 2 Female     1  -208.  426.  447.     400.         465
 ```
 
   - `grouped_proptest`

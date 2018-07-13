@@ -304,6 +304,42 @@ groupedstats::grouped_lmer(
 )
 ```
 
+* `grouped_glmer`
+
+A more generalized version of `lmer` is implemented in `glmer`, which can also
+handle categorical/nominal data. For example, let's say we want to see if sex of
+a person was predictive of whether they survived the Titanic tragedy
+
+```{r grouped_glmer1, warning = FALSE, messsage = FALSE}
+# having a look at the data
+dplyr::glimpse(x = groupedstats::Titanic_full)
+
+# running glmer model to get tidy output
+groupedstats::grouped_glmer(
+  formula = Survived ~ Age + (Age |
+                                Class),
+  data = groupedstats::Titanic_full,
+  family = stats::binomial(link = "probit"),                  # choosing the appropriate GLM family
+                          control = lme4::glmerControl(       # choosing appropriate control
+                            optimizer = "Nelder_Mead",
+                            boundary.tol = 1e-07,
+                            calc.derivs = FALSE,
+                            optCtrl = list(maxfun = 2e9)
+                          ),
+  grouping.vars = Sex,                                        # grouping variables (just one in this case)
+  output = "tidy"
+)
+
+# getting glmer model summaries (let's use the default family and control values)
+groupedstats::grouped_glmer(
+  formula = Survived ~ Age + (Age |
+                                Class),
+  grouping.vars = Sex,      
+  data = groupedstats::Titanic_full,
+  output = "glance"
+)
+```
+
 * `grouped_proptest`
 
 This function helps carry out one-sample proportion tests with a unique variable

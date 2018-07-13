@@ -1,8 +1,8 @@
 #'
-#' @title Function to run linear mixed-effects model (lmer) across multiple
+#' @title Function to run generalized linear mixed-effects model (glmer) across multiple
 #'   grouping variables.
-#' @name grouped_lmer
-#' @aliases grouped_lmer
+#' @name grouped_glmer
+#' @aliases grouped_glmer
 #' @author Indrajeet Patil
 #' @return A tibble dataframe with tidy results from linear model or model
 #'   summaries.
@@ -12,8 +12,7 @@
 #' @param output A character describing what output is exepcted. Two possible
 #'   options: `"tidy"` (default), which will return the results, or `"glance"`,
 #'   which will return model summaries.
-#' @inheritParams lme4::lmer
-#' @inheritParams sjstats::p_value.lmerMod
+#' @inheritParams lme4::glmer
 #'
 #' @importFrom magrittr "%<>%"
 #' @importFrom broom tidy
@@ -21,9 +20,8 @@
 #' @importFrom purrr map
 #' @importFrom purrr map2_dfr
 #' @importFrom purrr pmap
-#' @importFrom lme4 lmer
-#' @importFrom lme4 lmerControl
-#' @importFrom sjstats p_value
+#' @importFrom lme4 glmer
+#' @importFrom lme4 glmerControl
 #' @importFrom stats as.formula
 #' @importFrom tibble as_data_frame
 #' @importFrom tidyr nest
@@ -37,43 +35,52 @@
 #' @importFrom rlang enquo
 #' @importFrom rlang quo
 #'
+#' @seealso grouped_lmer
 #'
 #' @examples
 #'
-#' # loading libraries containing data
-#' library(ggplot2)
-#' library(gapminder)
+#' # commented because the examples take too much time
 #'
-#' # getting tidy output of results
-#' groupedstats::grouped_lmer(data = gapminder,
-#'              formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap | continent),
-#'              grouping.vars = year,
-#'              output = "tidy")
+#' # categorical outcome; binomial family
+#' # groupedstats::grouped_glmer(
+#' # formula = Survived ~ Age + (Age |
+#' #                             Class),
+#' # family = stats::binomial(link = "probit"),
+#' # data = groupedstats::Titanic_full,
+#' # grouping.vars = Sex
+#' # )
 #'
-#' # getting model summaries
-#' grouped_lmer(data = diamonds,
-#'              formula = scale(price) ~ scale(carat) + (carat | color),
-#'              REML = FALSE,
-#'              grouping.vars = c(cut, clarity),
-#'              output = "glance")
+#' # continuous outcome; gaussian family
+#' # library(gapminder)
+#'
+#' # groupedstats::grouped_glmer(data = gapminder,
+#' # formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap | continent),
+#' # family = stats::gaussian(),
+#' # control = lme4::lmerControl(
+#' #  optimizer = "bobyqa",
+#' #   restart_edge = TRUE,
+#' #   boundary.tol = 1e-7,
+#' #   calc.derivs = FALSE,
+#' #   optCtrl = list(maxfun = 2e9)
+#' # ),
+#' # grouping.vars = year)
 #'
 #' @export
 #'
 
-grouped_lmer <- function(data,
-                         grouping.vars,
-                         formula,
-                         REML = TRUE,
-                         control = lme4::lmerControl(
-                           optimizer = "bobyqa",
-                           restart_edge = TRUE,
-                           boundary.tol = 1e-7,
-                           calc.derivs = FALSE,
-                           use.last.params = FALSE,
-                           optCtrl = list(maxfun = 2e9)
-                         ),
-                         p.kr = FALSE,
-                         output = "tidy") {
+grouped_glmer <- function(data,
+                          grouping.vars,
+                          formula,
+                          family = stats::binomial(link = "probit"),
+                          control = lme4::glmerControl(
+                            optimizer = "bobyqa",
+                            boundary.tol = 1e-07,
+                            calc.derivs = FALSE,
+                            use.last.params = FALSE,
+                            optCtrl = list(maxfun = 2e9)
+                          ),
+                          output = "tidy") {
+
   # check how many variables were entered for grouping variable vector
   grouping.vars <-
     as.list(rlang::quo_squash(rlang::enquo(grouping.vars)))
@@ -99,20 +106,19 @@ grouped_lmer <- function(data,
     function(list.col,
              formula,
              output,
-             REML,
-             control,
-             p.kr) {
+             family,
+             control) {
       if (output == "tidy") {
-        # dataframe with results from lmer
+        # dataframe with results from glmer
         results_df <-
           list.col %>% # tidying up the output with broom
           purrr::map_dfr(
             .x = .,
             .f = ~ broom::tidy(
-              x = lme4::lmer(
+              x = lme4::glmer(
                 formula = stats::as.formula(formula),
                 data = (.),
-                REML = REML,
+                family = family,
                 control = control,
                 na.action = na.omit
               ),
@@ -123,43 +129,7 @@ grouped_lmer <- function(data,
             ),
             .id = "..group"
           ) %>%
-          dplyr::rename(.data = ., t.value = statistic) %>%
-          dplyr::mutate_at(
-            .tbl = .,
-            .vars = "term",
-            .funs = ~ as.character(.)
-          )
-
-        # computing p-values
-        pval_df <-
-          list.col %>% # getting p-values with sjstats package
-          purrr::map_dfr(
-            .x = .,
-            .f = ~ sjstats::p_value(
-              fit = lme4::lmer(
-                formula = stats::as.formula(formula),
-                data = (.),
-                REML = REML,
-                control = control,
-                na.action = na.omit
-              ),
-              p.kr = p.kr
-            ),
-            .id = "..group"
-          ) %>%
-          dplyr::select(.data = ., -std.error) %>%
-          dplyr::mutate_at(
-            .tbl = .,
-            .vars = "term",
-            .funs = ~ as.character(.)
-          )
-
-        # combining the two dataframes
-        results_df %<>%
-          dplyr::full_join(x = .,
-                           y = pval_df,
-                           by = c("term", "..group"))
-
+          dplyr::rename(.data = ., z.value = statistic)
 
       } else {
         # dataframe with results from lm
@@ -168,10 +138,10 @@ grouped_lmer <- function(data,
           purrr::map_dfr(
             .x = .,
             .f = ~ broom::glance(
-              x = lme4::lmer(
+              x = lme4::glmer(
                 formula = stats::as.formula(formula),
                 data = (.),
-                REML = REML,
+                family = family,
                 control = control,
                 na.action = na.omit
               )
@@ -194,9 +164,8 @@ grouped_lmer <- function(data,
       list.col = list(df$data),
       formula = list(formula),
       output = list(output),
-      REML = list(REML),
-      control = list(control),
-      p.kr = list(p.kr)
+      family = list(family),
+      control = list(control)
     ),
     .f = fnlisted
   ) %>%

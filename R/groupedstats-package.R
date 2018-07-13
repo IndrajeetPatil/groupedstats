@@ -8,11 +8,6 @@
 #' Vignette preparation in progress.
 #'
 #' @docType package
-#' @name groupedstats
+#' @name groupedstats-package
 #'
 NULL
-
-# to appease R CMD Check
-if (getRversion() >= "2.15.1") {
-  utils::globalVariables(c("."))
-}

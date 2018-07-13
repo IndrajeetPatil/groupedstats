@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • groupedstats</title>
+<title>Titanic dataset. — Titanic_full • groupedstats</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,10 @@
 
 
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Titanic dataset. — Titanic_full" />
+
+<meta property="og:description" content="Titanic dataset." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -46,7 +49,7 @@
   </head>
 
   <body>
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -92,49 +95,67 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small></small></h1>
-      
+    <h1>Titanic dataset.</h1>
+    
+    <div class="hidden name"><code>Titanic_full.Rd</code></div>
     </div>
 
-    <div id="groupedstats-0-0-1-9000" class="section level1">
-<h1 class="page-header">
-<a href="#groupedstats-0-0-1-9000" class="anchor"></a>groupedstats 0.0.1.9000<small> Unreleased </small>
-</h1>
-<p>MAJOR CHANGES</p>
-<ul>
-<li>New functions added: <code><a href="../reference/grouped_lm.html">grouped_lm()</a></code>, <code><a href="../reference/grouped_lmer.html">grouped_lmer()</a></code>, <code><a href="../reference/grouped_glmer.html">grouped_glmer()</a></code>.</li>
-<li>The package no longer <strong>exports</strong> tidy eval functions; it’s not part of the tidyverse.</li>
-</ul>
-<p>MINOR CHANGES</p>
-<ul>
-<li>For numeric variables, <code>grouped_summary</code> now also outputs standard error of mean and 95% confidence intervals for the mean.</li>
-<li>Added datasets (<code>Titanic_full</code>, <code>movies_long</code>).</li>
-</ul>
-<p>BUG FUXES</p>
-<ul>
-<li>Some functions were not working if the grouping variable was called <code>"group"</code>. Fixed that.</li>
-</ul>
-</div>
-    <div id="groupedstats-0-0-1" class="section level1">
-<h1 class="page-header">
-<a href="#groupedstats-0-0-1" class="anchor"></a>groupedstats 0.0.1<small> 2018-07-05 </small>
-</h1>
-<ul>
-<li>First version of the package.</li>
-</ul>
-</div>
-  </div>
+    <div class="ref-description">
+    
+    <p>Titanic dataset.</p>
+    
+    </div>
 
+    <pre class="usage"><span class='no'>Titanic_full</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>A data frame with 2201 rows and 5 variables</p><ul>
+<li><p>id. Dummy identity number for each person.</p></li>
+<li><p>Class.	1st, 2nd, 3rd, Crew.</p></li>
+<li><p>Sex.	Male, Female.</p></li>
+<li><p>Age.	Child, Adult.</p></li>
+<li><p>Survived.	No, Yes.</p></li>
+</ul>
+    
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p><a href='https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/Titanic.html'>https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/Titanic.html</a></p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This data set provides information on the fate of passengers on the fatal
+maiden voyage of the ocean liner 'Titanic', summarized according to economic
+status (class), sex, age and survival.</p>
+<p>This is a modified dataset from <code>datasets</code> package.</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>dim</span>(<span class='no'>Titanic_full</span>)</div><div class='output co'>#&gt; [1] 2201    5</div><div class='input'><span class='fu'>head</span>(<span class='no'>Titanic_full</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 5
+#&gt;      id Class Sex   Age   Survived
+#&gt;   &lt;dbl&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;   
+#&gt; 1     1 3rd   Male  Child No      
+#&gt; 2     2 3rd   Male  Child No      
+#&gt; 3     3 3rd   Male  Child No      
+#&gt; 4     4 3rd   Male  Child No      
+#&gt; 5     5 3rd   Male  Child No      
+#&gt; 6     6 3rd   Male  Child No      </div><div class='input'>
+</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#groupedstats-0-0-1-9000">0.0.1.9000</a></li>
-        <li><a href="#groupedstats-0-0-1">0.0.1</a></li>
-      </ul>
-    </div>
-  </div>
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      
+      <li><a href="#format">Format</a></li>
 
+      <li><a href="#source">Source</a></li>
+
+      <li><a href="#details">Details</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
+
+  </div>
 </div>
 
       <footer>

@@ -10,4 +10,6 @@
 ^cran-comments\.md$
 ^_pkgdown\.yml$
 ^docs$
-
+^data-raw$
+^\.httr-oauth$
+^CRAN-RELEASE$
