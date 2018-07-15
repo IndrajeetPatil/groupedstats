@@ -111,7 +111,8 @@ variables.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>grouped_aov</span>(<span class='no'>data</span>, <span class='no'>grouping.vars</span>, <span class='no'>formula</span>, <span class='kw'>effsize</span> <span class='kw'>=</span> <span class='st'>"eta"</span>, <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>1000</span>)</pre>
+    <pre class="usage"><span class='fu'>grouped_aov</span>(<span class='no'>data</span>, <span class='no'>grouping.vars</span>, <span class='no'>formula</span>, <span class='kw'>effsize</span> <span class='kw'>=</span> <span class='st'>"eta"</span>, <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>,
+  <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>1000</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -132,6 +133,14 @@ variables.</p>
       <th>effsize</th>
       <td><p>Character describing the effect size to be displayed: <code>"eta"</code>
 (default) or <code>"omega"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>output</th>
+      <td><p>A character describing what output is expected. Two possible
+options: <code>"tidy"</code> (default), which will return the results, or <code>"tukey"</code>,
+which will return results from Tukey's Honest Significant Differences
+method for <em>post hoc</em> comparisons. The <code>"glance"</code> method to get model
+summary is currently not supported for this function.</p></td>
     </tr>
     <tr>
       <th>nboot</th>
@@ -157,18 +166,18 @@ available.</p>
 <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>item</span>,
 <span class='kw'>effsize</span> <span class='kw'>=</span> <span class='st'>"eta"</span>
 )</div><div class='output co'>#&gt; # A tibble: 28 x 10
-#&gt;    item  term    F.value   df1   df2 partial.etasq conf.low conf.high   p.value
-#&gt;    &lt;fct&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-#&gt;  1 Grace belief  2233.       1   996       0.692   0.664       0.716  1.21e-256
-#&gt;  2 Grace outcome   47.7      1   996       0.0457  0.0237      0.0734 8.69e- 12
-#&gt;  3 Grace questi~   17.3      1   996       0.0171  0.00478     0.0362 3.47e-  5
-#&gt;  4 Grace belief~   28.5      1   996       0.0278  0.0112      0.0508 1.16e-  7
-#&gt;  5 Grace belief~    6.14     1   996       0.00613 0.000238    0.0194 1.34e-  2
-#&gt;  6 Grace outcom~    8.62     1   996       0.00858 0.000942    0.0235 3.40e-  3
-#&gt;  7 Grace belief~    7.91     1   996       0.00788 0.000717    0.0223 5.00e-  3
-#&gt;  8 Anna  belief   331.       1   996       0.249   0.205       0.292  4.85e- 64
-#&gt;  9 Anna  outcome   86.2      1   996       0.0797  0.0505      0.113  9.68e- 20
-#&gt; 10 Anna  questi~   47.7      1   996       0.0457  0.0237      0.0734 8.76e- 12
+#&gt;    item  term  F.value   df1   df2 partial.etasq conf.low conf.high   p.value
+#&gt;    &lt;fct&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+#&gt;  1 Grace beli~ 2233.       1   996       0.692   0.664       0.716  1.21e-256
+#&gt;  2 Grace outc~   47.7      1   996       0.0457  0.0237      0.0734 8.69e- 12
+#&gt;  3 Grace ques~   17.3      1   996       0.0171  0.00478     0.0362 3.47e-  5
+#&gt;  4 Grace beli~   28.5      1   996       0.0278  0.0112      0.0508 1.16e-  7
+#&gt;  5 Grace beli~    6.14     1   996       0.00613 0.000238    0.0194 1.34e-  2
+#&gt;  6 Grace outc~    8.62     1   996       0.00858 0.000942    0.0235 3.40e-  3
+#&gt;  7 Grace beli~    7.91     1   996       0.00788 0.000717    0.0223 5.00e-  3
+#&gt;  8 Anna  beli~  331.       1   996       0.249   0.205       0.292  4.85e- 64
+#&gt;  9 Anna  outc~   86.2      1   996       0.0797  0.0505      0.113  9.68e- 20
+#&gt; 10 Anna  ques~   47.7      1   996       0.0457  0.0237      0.0734 8.76e- 12
 #&gt; # ... with 18 more rows, and 1 more variable: significance &lt;chr&gt;</div><div class='input'>
 </div></pre>
   </div>

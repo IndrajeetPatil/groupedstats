@@ -97,7 +97,7 @@ Documentation for any function can be accessed with the standard `help` command-
 
 ## Usage
 
-* `grouped_summary`
+## `grouped_summary`
 
 Getting summary for multiple variables across multiple grouping variables. This
 function is a wrapper around `skimr::skim_to_wide()`. It is supposed to be a
@@ -177,7 +177,7 @@ groupedstats::grouped_summary(
 )
 ```
 
-* `grouped_slr`
+## `grouped_slr`
 
 This function can be used to run **simple linear regression** (slr) between
 different pairs of variables across multiple levels of grouping variable(s). For
@@ -225,7 +225,7 @@ groupedstats::grouped_slr(data = ggplot2::diamonds,
 A more general version of this function (`grouped_lm`) will be implemented in
 future that will utilize the formula interface of `stats::lm`.
 
-* `grouped_robustslr`
+## `grouped_robustslr`
 
 There is also robust variant of **simple linear regression** (as implemented in `robust::lmRob`)-
 
@@ -243,7 +243,7 @@ groupedstats::grouped_robustslr(data = gapminder::gapminder,
 A more general version of this function (`grouped_robustlm`) will be implemented in
 future that will utilize the formula interface of `robust::lmRob`.
 
-* `grouped_lm`
+## `grouped_lm`
 
 A more general version of simple linear regression is `stats::lm`, implemented
 in `grouped_lm`:
@@ -273,7 +273,7 @@ groupedstats::grouped_lm(
 )
 ```
 
-* `grouped_aov`
+## `grouped_aov`
 
 A related function to `stats::lm` is `stats::aov`, which fits an analysis of
 variance model for each group. Contrast the output you get here with the
@@ -286,12 +286,33 @@ library(groupedstats)
 
 groupedstats::grouped_aov(
   data = mtcars,
-  grouping.vars = cyl,        # grouping variable (just one in this case)
-  formula = mpg ~ am*wt       # note that this function takes a formula
+  grouping.vars = cyl,                 # grouping variable (just one in this case)
+  formula = mpg ~ am * wt,             # note that this function takes a formula
+  output = "tidy"                      # tidy dataframe with results
 )
 ```
 
-* `grouped_glm`
+The same function can also be used to compute Tukey's test of Honest Significant
+Differences (HSD). For example, we can check for differences in life expectancy
+between different continents for all years for which the gapminder survey was
+conducted:
+
+```{r grouped_aov2, warning = FALSE, messsage = FALSE}
+library(groupedstats)
+library(gapminder)
+
+groupedstats::grouped_aov(
+  data = gapminder::gapminder,
+  grouping.vars = year,
+  formula = lifeExp ~ continent,
+  output = "tukey"
+)
+```
+
+Note that the p-value is adjusted adjusted for the number of tests conducted at
+each level of the grouping variable, and not across all tests conducted.
+
+## `grouped_glm`
 
 The option to run generalized linear model across different levels of the grouping variable-
 
@@ -303,7 +324,7 @@ groupedstats::grouped_glm(data = datasets::mtcars,
                           family = "gaussian")
 ```
 
-* `grouped_lmer`
+## `grouped_lmer`
 
 Linear mixed effects analyses (`lme4::lmer`) for all combinations of grouping
 variable levels can be carried out using `grouped_lmer`:
@@ -322,7 +343,7 @@ groupedstats::grouped_lmer(
 )
 ```
 
-* `grouped_glmer`
+## `grouped_glmer`
 
 A more generalized version of `lmer` is implemented in `glmer`, which can also
 handle categorical/nominal data. For example, let's say we want to see if sex of
@@ -358,7 +379,7 @@ groupedstats::grouped_glmer(
 )
 ```
 
-* `grouped_proptest`
+## `grouped_proptest`
 
 This function helps carry out one-sample proportion tests with a unique variable
 for multiple grouping variables-
@@ -372,7 +393,7 @@ groupedstats::grouped_proptest(data = mtcars,
                                measure = am)
 ```
 
-* `grouped_ttest`
+## `grouped_ttest`
 
 This function can help you carry out t-tests, paired or independent, on multiple
 variables across multiple groups. Deomostrating how to use this function is
@@ -417,7 +438,7 @@ groupedstats::grouped_ttest(
 )
 ```
 
-* `grouped_wilcox`
+## `grouped_wilcox`
 
 This function is just a non-parametric variant of the `grouped_ttest`:
 

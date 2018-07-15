@@ -23,7 +23,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--07--13-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--07--14-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
@@ -104,7 +104,7 @@ command-
 
 ## Usage
 
-  - `grouped_summary`
+## `grouped_summary`
 
 Getting summary for multiple variables across multiple grouping
 variables. This function is a wrapper around `skimr::skim_to_wide()`. It
@@ -121,34 +121,34 @@ groupedstats::grouped_summary(data = datasets::iris,
                               measures = Sepal.Length:Petal.Width,
                               measures.type = "numeric")
 #> # A tibble: 12 x 16
-#>    Species    type    variable     missing complete     n  mean    sd
-#>    <fct>      <chr>   <chr>          <dbl>    <dbl> <dbl> <dbl> <dbl>
-#>  1 setosa     numeric Petal.Length       0       50    50  1.46  0.17
-#>  2 setosa     numeric Petal.Width        0       50    50  0.25  0.11
-#>  3 setosa     numeric Sepal.Length       0       50    50  5.01  0.35
-#>  4 setosa     numeric Sepal.Width        0       50    50  3.43  0.38
-#>  5 versicolor numeric Petal.Length       0       50    50  4.26  0.47
-#>  6 versicolor numeric Petal.Width        0       50    50  1.33  0.2 
-#>  7 versicolor numeric Sepal.Length       0       50    50  5.94  0.52
-#>  8 versicolor numeric Sepal.Width        0       50    50  2.77  0.31
-#>  9 virginica  numeric Petal.Length       0       50    50  5.55  0.55
-#> 10 virginica  numeric Petal.Width        0       50    50  2.03  0.27
-#> 11 virginica  numeric Sepal.Length       0       50    50  6.59  0.64
-#> 12 virginica  numeric Sepal.Width        0       50    50  2.97  0.32
-#>      min   p25 median   p75   max std.error mean.low.conf mean.high.conf
-#>    <dbl> <dbl>  <dbl> <dbl> <dbl>     <dbl>         <dbl>          <dbl>
-#>  1   1    1.4    1.5   1.58   1.9    0.0240         1.41           1.51 
-#>  2   0.1  0.2    0.2   0.3    0.6    0.0156         0.219          0.281
-#>  3   4.3  4.8    5     5.2    5.8    0.0495         4.91           5.11 
-#>  4   2.3  3.2    3.4   3.68   4.4    0.0537         3.32           3.54 
-#>  5   3    4      4.35  4.6    5.1    0.0665         4.13           4.39 
-#>  6   1    1.2    1.3   1.5    1.8    0.0283         1.27           1.39 
-#>  7   4.9  5.6    5.9   6.3    7      0.0735         5.79           6.09 
-#>  8   2    2.52   2.8   3      3.4    0.0438         2.68           2.86 
-#>  9   4.5  5.1    5.55  5.88   6.9    0.0778         5.39           5.71 
-#> 10   1.4  1.8    2     2.3    2.5    0.0382         1.95           2.11 
-#> 11   4.9  6.23   6.5   6.9    7.9    0.0905         6.41           6.77 
-#> 12   2.2  2.8    3     3.18   3.8    0.0453         2.88           3.06
+#>    Species    type    variable     missing complete     n  mean    sd   min
+#>    <fct>      <chr>   <chr>          <dbl>    <dbl> <dbl> <dbl> <dbl> <dbl>
+#>  1 setosa     numeric Petal.Length       0       50    50  1.46  0.17   1  
+#>  2 setosa     numeric Petal.Width        0       50    50  0.25  0.11   0.1
+#>  3 setosa     numeric Sepal.Length       0       50    50  5.01  0.35   4.3
+#>  4 setosa     numeric Sepal.Width        0       50    50  3.43  0.38   2.3
+#>  5 versicolor numeric Petal.Length       0       50    50  4.26  0.47   3  
+#>  6 versicolor numeric Petal.Width        0       50    50  1.33  0.2    1  
+#>  7 versicolor numeric Sepal.Length       0       50    50  5.94  0.52   4.9
+#>  8 versicolor numeric Sepal.Width        0       50    50  2.77  0.31   2  
+#>  9 virginica  numeric Petal.Length       0       50    50  5.55  0.55   4.5
+#> 10 virginica  numeric Petal.Width        0       50    50  2.03  0.27   1.4
+#> 11 virginica  numeric Sepal.Length       0       50    50  6.59  0.64   4.9
+#> 12 virginica  numeric Sepal.Width        0       50    50  2.97  0.32   2.2
+#>      p25 median   p75   max std.error mean.low.conf mean.high.conf
+#>    <dbl>  <dbl> <dbl> <dbl>     <dbl>         <dbl>          <dbl>
+#>  1  1.4    1.5   1.58   1.9    0.0240         1.41           1.51 
+#>  2  0.2    0.2   0.3    0.6    0.0156         0.219          0.281
+#>  3  4.8    5     5.2    5.8    0.0495         4.91           5.11 
+#>  4  3.2    3.4   3.68   4.4    0.0537         3.32           3.54 
+#>  5  4      4.35  4.6    5.1    0.0665         4.13           4.39 
+#>  6  1.2    1.3   1.5    1.8    0.0283         1.27           1.39 
+#>  7  5.6    5.9   6.3    7      0.0735         5.79           6.09 
+#>  8  2.52   2.8   3      3.4    0.0438         2.68           2.86 
+#>  9  5.1    5.55  5.88   6.9    0.0778         5.39           5.71 
+#> 10  1.8    2     2.3    2.5    0.0382         1.95           2.11 
+#> 11  6.23   6.5   6.9    7.9    0.0905         6.41           6.77 
+#> 12  2.8    3     3.18   3.8    0.0453         2.88           3.06
 ```
 
 This function can be used to get summary of either numeric **or** factor
@@ -283,7 +283,7 @@ groupedstats::grouped_summary(
 #> # ... with 270 more rows
 ```
 
-  - `grouped_slr`
+## `grouped_slr`
 
 This function can be used to run **simple linear regression** (slr)
 between different pairs of variables across multiple levels of grouping
@@ -397,7 +397,7 @@ A more general version of this function (`grouped_lm`) will be
 implemented in future that will utilize the formula interface of
 `stats::lm`.
 
-  - `grouped_robustslr`
+## `grouped_robustslr`
 
 There is also robust variant of **simple linear regression** (as
 implemented in `robust::lmRob`)-
@@ -444,7 +444,7 @@ A more general version of this function (`grouped_robustlm`) will be
 implemented in future that will utilize the formula interface of
 `robust::lmRob`.
 
-  - `grouped_lm`
+## `grouped_lm`
 
 A more general version of simple linear regression is `stats::lm`,
 implemented in `grouped_lm`:
@@ -529,7 +529,7 @@ groupedstats::grouped_lm(
 #> # ... with 25 more rows
 ```
 
-  - `grouped_aov`
+## `grouped_aov`
 
 A related function to `stats::lm` is `stats::aov`, which fits an
 analysis of variance model for each group. Contrast the output you get
@@ -542,8 +542,9 @@ library(groupedstats)
 
 groupedstats::grouped_aov(
   data = mtcars,
-  grouping.vars = cyl,        # grouping variable (just one in this case)
-  formula = mpg ~ am*wt       # note that this function takes a formula
+  grouping.vars = cyl,                 # grouping variable (just one in this case)
+  formula = mpg ~ am * wt,             # note that this function takes a formula
+  output = "tidy"                      # tidy dataframe with results
 )
 #> # A tibble: 9 x 10
 #>     cyl term  F.value   df1   df2 partial.etasq conf.low conf.high p.value
@@ -570,7 +571,56 @@ groupedstats::grouped_aov(
 #> 9 ns
 ```
 
-  - `grouped_glm`
+The same function can also be used to compute Tukey’s test of Honest
+Significant Differences (HSD). For example, we can check for differences
+in life expectancy between different continents for all years for which
+the gapminder survey was conducted:
+
+``` r
+library(groupedstats)
+library(gapminder)
+
+groupedstats::grouped_aov(
+  data = gapminder::gapminder,
+  grouping.vars = year,
+  formula = lifeExp ~ continent,
+  output = "tukey"
+)
+#> Note: The p-value is adjusted for the number of tests conducted at each level of the grouping variable.
+#> 
+#> # A tibble: 120 x 8
+#>     year term      comparison       estimate conf.low conf.high adj.p.value
+#>    <int> <chr>     <chr>               <dbl>    <dbl>     <dbl>       <dbl>
+#>  1  1952 continent Americas-Africa     14.1      9.21     19.1     7.35e-12
+#>  2  1952 continent Asia-Africa          7.18     2.66     11.7     2.11e- 4
+#>  3  1952 continent Europe-Africa       25.3     20.6      29.9     1.01e-14
+#>  4  1952 continent Oceania-Africa      30.1     15.5      44.7     7.12e- 7
+#>  5  1952 continent Asia-Americas       -6.97   -12.3      -1.59    4.28e- 3
+#>  6  1952 continent Europe-Americas     11.1      5.64     16.6     1.12e- 6
+#>  7  1952 continent Oceania-Americas    16.0      1.07     30.9     2.91e- 2
+#>  8  1952 continent Europe-Asia         18.1     13.0      23.2     5.87e-14
+#>  9  1952 continent Oceania-Asia        22.9      8.17     37.7     3.16e- 4
+#> 10  1952 continent Oceania-Europe       4.85    -9.97     19.7     8.95e- 1
+#>    significance
+#>    <chr>       
+#>  1 ***         
+#>  2 ***         
+#>  3 ***         
+#>  4 ***         
+#>  5 **          
+#>  6 ***         
+#>  7 *           
+#>  8 ***         
+#>  9 ***         
+#> 10 ns          
+#> # ... with 110 more rows
+```
+
+Note that the p-value is adjusted adjusted for the number of tests
+conducted at each level of the grouping variable, and not across all
+tests conducted.
+
+## `grouped_glm`
 
 The option to run generalized linear model across different levels of
 the grouping variable-
@@ -594,7 +644,7 @@ groupedstats::grouped_glm(data = datasets::mtcars,
 #> 3 ns
 ```
 
-  - `grouped_lmer`
+## `grouped_lmer`
 
 Linear mixed effects analyses (`lme4::lmer`) for all combinations of
 grouping variable levels can be carried out using `grouped_lmer`:
@@ -651,7 +701,7 @@ groupedstats::grouped_lmer(
 #> # ... with 14 more rows
 ```
 
-  - `grouped_glmer`
+## `grouped_glmer`
 
 A more generalized version of `lmer` is implemented in `glmer`, which
 can also handle categorical/nominal data. For example, let’s say we want
@@ -713,7 +763,7 @@ groupedstats::grouped_glmer(
 #> 2 Female     1  -208.  426.  447.     400.         465
 ```
 
-  - `grouped_proptest`
+## `grouped_proptest`
 
 This function helps carry out one-sample proportion tests with a unique
 variable for multiple grouping variables-
@@ -733,7 +783,7 @@ groupedstats::grouped_proptest(data = mtcars,
 #> 3     8 85.71% 14.29%         7.14      1     0.008 **
 ```
 
-  - `grouped_ttest`
+## `grouped_ttest`
 
 This function can help you carry out t-tests, paired or independent, on
 multiple variables across multiple groups. Deomostrating how to use this
@@ -810,7 +860,7 @@ groupedstats::grouped_ttest(
 #> 6    -0.866        49 5.34e-28 ***
 ```
 
-  - `grouped_wilcox`
+## `grouped_wilcox`
 
 This function is just a non-parametric variant of the
 `grouped_ttest`:

@@ -5,7 +5,8 @@
 \title{Function to run analysis of variance (aov) across multiple grouping
 variables.}
 \usage{
-grouped_aov(data, grouping.vars, formula, effsize = "eta", nboot = 1000)
+grouped_aov(data, grouping.vars, formula, effsize = "eta", output = "tidy",
+  nboot = 1000)
 }
 \arguments{
 \item{data}{Dataframe from which variables are to be taken.}
@@ -16,6 +17,12 @@ grouped_aov(data, grouping.vars, formula, effsize = "eta", nboot = 1000)
 
 \item{effsize}{Character describing the effect size to be displayed: \code{"eta"}
 (default) or \code{"omega"}.}
+
+\item{output}{A character describing what output is expected. Two possible
+options: \code{"tidy"} (default), which will return the results, or \code{"tukey"},
+which will return results from Tukey's Honest Significant Differences
+method for \emph{post hoc} comparisons. The \code{"glance"} method to get model
+summary is currently not supported for this function.}
 
 \item{nboot}{Number of bootstrap samples for confidence intervals for partial
 eta-squared and omega-squared (Default: \code{1000}).}
