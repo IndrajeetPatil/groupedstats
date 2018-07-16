@@ -2,42 +2,61 @@
 % Please edit documentation in R/grouped_glm.R
 \name{grouped_glm}
 \alias{grouped_glm}
-\title{Function to run generalized linear model on multiple variables across
-multiple grouping variables.}
+\title{Function to run generalized linear model (glm) across multiple
+grouping variables.}
 \usage{
-grouped_glm(data, dep.vars, indep.vars, grouping.vars, family)
+grouped_glm(data, grouping.vars, formula, family = stats::binomial(link =
+  "logit"), quick = FALSE, exponentiate = FALSE, output = "tidy")
 }
 \arguments{
 \item{data}{Dataframe from which variables are to be taken.}
 
-\item{dep.vars}{List criterion or dependent variables for regression (\code{y} in
-\code{y ~ x}).}
-
-\item{indep.vars}{List predictor or independent variables for regression (\code{x}
-in \code{y ~ x}).}
-
 \item{grouping.vars}{List of grouping variables.}
 
-\item{family}{A description of the error distribution and link function to be
-used in the model. For glm this can be a character string naming a \code{family}
-function, a \code{family} function or the result of a call to a family function.
-For more, see \code{?stats::family}.}
+\item{formula}{an object of class \code{"\link{formula}"} (or one that
+    can be coerced to that class): a symbolic description of the
+    model to be fitted.  The details of model specification are given
+    under \sQuote{Details}.}
+
+\item{family}{a description of the error distribution and link
+    function to be used in the model.  For \code{glm} this can be a
+    character string naming a family function, a family function or the
+    result of a call to a family function.  For \code{glm.fit} only the
+    third option is supported.  (See \code{\link{family}} for details of
+    family functions.)}
+
+\item{quick}{Logical indicating if the only the term and estimate columns
+should be returned. Often useful to avoid time consuming covariance and
+standard error calculations. Defaults to \code{FALSE}.}
+
+\item{exponentiate}{Logical indicating whether or not to exponentiate the the
+coefficient estimates. This is typical for logistic and multinomial
+regressions, but a bad idea if there is no log or logit link. Defaults to
+\code{FALSE}.}
+
+\item{output}{A character describing what output is expected. Two possible
+options: \code{"tidy"} (default), which will return the results, or \code{"glance"},
+which will return model summaries.}
 }
 \value{
-A tibble dataframe with tidy results from linear regression analyses.
+A tibble dataframe with tidy results from linear model.
 }
 \description{
-Function to run generalized linear model on multiple variables across
-multiple grouping variables.
+Function to run generalized linear model (glm) across multiple
+grouping variables.
 }
 \examples{
 
-groupedstats::grouped_glm(data = datasets::mtcars,
- dep.vars = am,
- indep.vars = wt,
- grouping.vars = cyl,
- family = "gaussian"
+groupedstats::grouped_glm(
+  data = ggstatsplot::Titanic_full,
+  formula = Survived ~ Sex,
+  grouping.vars = Class,
+  family = stats::binomial(link = "logit")
 )
+
+}
+\seealso{
+grouped_lm, grouped_glmer
 }
 \author{
 Indrajeet Patil

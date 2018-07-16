@@ -76,9 +76,11 @@ grouped_lm <- function(data,
     }
 
   # getting the dataframe ready
-  df <- dplyr::select(.data = data,
-                      !!!grouping.vars,
-                      dplyr::everything()) %>%
+  df <- dplyr::select(
+    .data = data,
+    !!!grouping.vars,
+    dplyr::everything()
+  ) %>%
     dplyr::group_by(.data = ., !!!grouping.vars) %>%
     tidyr::nest(data = .) %>%
     dplyr::ungroup(x = .)
@@ -93,7 +95,7 @@ grouped_lm <- function(data,
         list.col %>% # tidying up the output with broom
         purrr::map_dfr(
           .x = .,
-          .f = ~ broom::tidy(
+          .f = ~broom::tidy(
             x = stats::lm(
               formula = stats::as.formula(formula),
               data = (.),
@@ -105,13 +107,13 @@ grouped_lm <- function(data,
           .id = "..group"
         ) %>%
         dplyr::rename(.data = ., t.value = statistic)
-    } else {
+    } else if (output == "glance") {
       # dataframe with results from lm
       results_df <-
         list.col %>% # tidying up the output with broom
         purrr::map_dfr(
           .x = .,
-          .f = ~ broom::glance(x = stats::lm(
+          .f = ~broom::glance(x = stats::lm(
             formula = stats::as.formula(formula),
             data = (.),
             na.action = na.omit
@@ -123,25 +125,30 @@ grouped_lm <- function(data,
   }
 
 
-  #========================== using  custom function on entered dataframe ==================================
+  # ========================== using  custom function on entered dataframe ==================================
 
   # converting the original dataframe to have a grouping variable column
   df %<>%
     tibble::rownames_to_column(df = ., var = "..group")
 
-  combined_df <- purrr::pmap(.l = list(list.col = list(df$data),
-                                       formula = list(formula),
-                                       output = list(output)),
-                             .f = fnlisted) %>%
+  combined_df <- purrr::pmap(
+    .l = list(
+      list.col = list(df$data),
+      formula = list(formula),
+      output = list(output)
+    ),
+    .f = fnlisted
+  ) %>%
     dplyr::bind_rows(.) %>%
     dplyr::left_join(x = ., y = df, by = "..group") %>%
     dplyr::select(.data = ., !!!grouping.vars, dplyr::everything()) %>%
-    dplyr::select(.data = ., -`..group`, -data) %>%
-    ggstatsplot:::signif_column(data = ., p = p.value)
+    dplyr::select(.data = ., -`..group`, -data)
+
+  # add a column with significance labels if p-values are present
+  if ("p.value" %in% names(combined_df)) {
+    combined_df %<>%
+      ggstatsplot:::signif_column(data = ., p = p.value)
+  }
 
   return(combined_df)
 }
-
-
-
-

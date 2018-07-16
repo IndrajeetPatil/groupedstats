@@ -92,9 +92,11 @@ grouped_glmer <- function(data,
     }
 
   # getting the dataframe ready
-  df <- dplyr::select(.data = data,
-                      !!!grouping.vars,
-                      dplyr::everything()) %>%
+  df <- dplyr::select(
+    .data = data,
+    !!!grouping.vars,
+    dplyr::everything()
+  ) %>%
     dplyr::group_by(.data = ., !!!grouping.vars) %>%
     tidyr::nest(data = .) %>%
     dplyr::ungroup(x = .)
@@ -104,17 +106,17 @@ grouped_glmer <- function(data,
   # custom function to run tidy operation on every element of list column
   fnlisted <-
     function(list.col,
-             formula,
-             output,
-             family,
-             control) {
+                 formula,
+                 output,
+                 family,
+                 control) {
       if (output == "tidy") {
         # dataframe with results from glmer
         results_df <-
           list.col %>% # tidying up the output with broom
           purrr::map_dfr(
             .x = .,
-            .f = ~ broom::tidy(
+            .f = ~broom::tidy(
               x = lme4::glmer(
                 formula = stats::as.formula(formula),
                 data = (.),
@@ -128,16 +130,14 @@ grouped_glmer <- function(data,
               effects = "fixed"
             ),
             .id = "..group"
-          ) %>%
-          dplyr::rename(.data = ., z.value = statistic)
-
+          )
       } else {
         # dataframe with results from lm
         results_df <-
           list.col %>% # tidying up the output with broom
           purrr::map_dfr(
             .x = .,
-            .f = ~ broom::glance(
+            .f = ~broom::glance(
               x = lme4::glmer(
                 formula = stats::as.formula(formula),
                 data = (.),
@@ -152,7 +152,7 @@ grouped_glmer <- function(data,
       return(results_df)
     }
 
-  #========================== using  custom function on entered dataframe ==================================
+  # ========================== using  custom function on entered dataframe ==================================
 
   # converting the original dataframe to have a grouping variable column
   df %<>%

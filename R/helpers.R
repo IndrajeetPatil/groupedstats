@@ -29,22 +29,26 @@
 
 signif_column <- function(data = NULL, p) {
   # storing variable name to be assigned later
-  p_lab <- colnames(dplyr::select(.data = data,
-                                  !!rlang::enquo(p)))
+  p_lab <- colnames(dplyr::select(
+    .data = data,
+    !!rlang::enquo(p)
+  ))
   # if dataframe is provided
   if (!is.null(data)) {
     df <-
-      dplyr::select(.data = data,
-                    # column corresponding to p-values
-                    p = !!rlang::enquo(p),
-                    dplyr::everything())
+      dplyr::select(
+        .data = data,
+        # column corresponding to p-values
+        p = !!rlang::enquo(p),
+        dplyr::everything()
+      )
   } else {
     # if only vector is provided
     df <-
       base::cbind.data.frame(p = p) # column corresponding to p-values
   }
 
-  #make sure the p-value column is numeric; if not, convert it to numeric and give a warning to the user
+  # make sure the p-value column is numeric; if not, convert it to numeric and give a warning to the user
   if (!is.numeric(df$p)) {
     df$p <- as.numeric(as.character(df$p))
   }
@@ -111,9 +115,13 @@ specify_decimal_p <- function(x,
   }
   # formatting the output properly
   output <-
-    base::trimws(x = base::format(x = base::round(x = x, digits = k),
-                                  nsmall = k),
-                 which = "both")
+    base::trimws(
+      x = base::format(
+        x = base::round(x = x, digits = k),
+        nsmall = k
+      ),
+      which = "both"
+    )
   # if it's a p-value, then format it properly
   if (isTRUE(p.value)) {
     # determing the class of output
@@ -175,10 +183,10 @@ specify_decimal_p <- function(x,
 # defining the function body
 lm_effsize_ci <-
   function(object,
-           effsize = "eta",
-           partial = TRUE,
-           conf.level = 0.95,
-           nboot = 1000) {
+             effsize = "eta",
+             partial = TRUE,
+             conf.level = 0.95,
+             nboot = 1000) {
     # based on the class, get the tidy output using broom
     if (class(object)[[1]] == "lm") {
       aov_df <-
@@ -195,11 +203,17 @@ lm_effsize_ci <-
 
     # cleaning up the dataframe
     aov_df %<>%
-      dplyr::select(.data = .,
-                    -c(base::grep(pattern = "sq",
-                                  x = names(.)))) %>% # rename to something more meaningful and tidy
-      dplyr::rename(.data = .,
-                    df1 = df) %>% # remove NAs, which would remove the row containing Residuals (redundant at this point)
+      dplyr::select(
+        .data = .,
+        -c(base::grep(
+          pattern = "sq",
+          x = names(.)
+        ))
+      ) %>% # rename to something more meaningful and tidy
+      dplyr::rename(
+        .data = .,
+        df1 = df
+      ) %>% # remove NAs, which would remove the row containing Residuals (redundant at this point)
       stats::na.omit(.) %>%
       tibble::as_data_frame(x = .)
 
@@ -217,7 +231,6 @@ lm_effsize_ci <-
         effsize_df %<>%
           dplyr::filter(.data = ., stratum == "Within")
       }
-
     } else if (effsize == "omega") {
       # creating dataframe of partial omega-squared effect size and its CI with sjstats
       effsize_df <- sjstats::omega_sq(
@@ -234,16 +247,20 @@ lm_effsize_ci <-
     }
 
     # combining the dataframes (erge the two preceding pieces of information by the common element of Effect
-    combined_df <- dplyr::left_join(x = aov_df,
-                                    y = effsize_df,
-                                    by = "term") %>% # reordering columns
-      dplyr::select(.data = .,
-                    term,
-                    F.value = statistic,
-                    df1,
-                    df2,
-                    p.value,
-                    dplyr::everything()) %>%
+    combined_df <- dplyr::left_join(
+      x = aov_df,
+      y = effsize_df,
+      by = "term"
+    ) %>% # reordering columns
+      dplyr::select(
+        .data = .,
+        term,
+        F.value = statistic,
+        df1,
+        df2,
+        p.value,
+        dplyr::everything()
+      ) %>%
       tibble::as_data_frame(x = .)
 
     # in case of within-subjects design, the stratum columns will be unnecessarily added

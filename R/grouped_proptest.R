@@ -61,22 +61,22 @@ grouped_proptest <- function(data,
       .data = .,
       percentage = data %>%
         purrr::map(
-        .x = .,
-        .f = ~dplyr::group_by(.data = ., measure) %>%
-          dplyr::summarize(.data = ., counts = length(measure)) %>%
-          dplyr::mutate(
-            .data = .,
-            perc = paste0(specify_decimal_p(
-              x = (counts / sum(counts)) * 100, k = 2
-            ), "%", sep = "")
-          ) %>%
-          dplyr::select(.data = ., -counts) %>%
-          tidyr::spread(
-            data = .,
-            key = measure,
-            value = perc
-          )
-      )
+          .x = .,
+          .f = ~dplyr::group_by(.data = ., measure) %>%
+            dplyr::summarize(.data = ., counts = length(measure)) %>%
+            dplyr::mutate(
+              .data = .,
+              perc = paste0(specify_decimal_p(
+                x = (counts / sum(counts)) * 100, k = 2
+              ), "%", sep = "")
+            ) %>%
+            dplyr::select(.data = ., -counts) %>%
+            tidyr::spread(
+              data = .,
+              key = measure,
+              value = perc
+            )
+        )
     ) %>%
     dplyr::mutate(
       .data = .,

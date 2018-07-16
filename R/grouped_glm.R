@@ -1,21 +1,26 @@
 #'
-#' @title Function to run generalized linear model on multiple variables across
-#'   multiple grouping variables.
+#' @title Function to run generalized linear model (glm) across multiple
+#'   grouping variables.
 #' @name grouped_glm
+#' @aliases grouped_glm
 #' @author Indrajeet Patil
-#' @return A tibble dataframe with tidy results from linear regression analyses.
+#' @return A tibble dataframe with tidy results from linear model.
 #'
 #' @param data Dataframe from which variables are to be taken.
 #' @param grouping.vars List of grouping variables.
-#' @param dep.vars List criterion or dependent variables for regression (`y` in
-#'   `y ~ x`).
-#' @param indep.vars List predictor or independent variables for regression (`x`
-#'   in `y ~ x`).
-#' @param family A description of the error distribution and link function to be
-#'   used in the model. For glm this can be a character string naming a `family`
-#'   function, a `family` function or the result of a call to a family function.
-#'   For more, see `?stats::family`.
+#' @param output A character describing what output is expected. Two possible
+#'   options: `"tidy"` (default), which will return the results, or `"glance"`,
+#'   which will return model summaries.
+#' @param quick Logical indicating if the only the term and estimate columns
+#'   should be returned. Often useful to avoid time consuming covariance and
+#'   standard error calculations. Defaults to `FALSE`.
+#' @param exponentiate Logical indicating whether or not to exponentiate the the
+#'   coefficient estimates. This is typical for logistic and multinomial
+#'   regressions, but a bad idea if there is no log or logit link. Defaults to
+#'   `FALSE`.
+#' @inheritParams stats::glm
 #'
+#' @importFrom magrittr "%<>%"
 #' @importFrom broom tidy
 #' @importFrom broom confint_tidy
 #' @importFrom glue glue
@@ -26,51 +31,38 @@
 #' @importFrom stats as.formula
 #' @importFrom tibble as_data_frame
 #' @importFrom tidyr nest
-#' @importFrom dplyr bind_cols
-#' @importFrom dplyr bind_rows
-#' @importFrom dplyr everything
-#' @importFrom dplyr left_join
+#' @importFrom dplyr select
+#' @importFrom dplyr group_by
+#' @importFrom dplyr arrange
+#' @importFrom dplyr mutate
+#' @importFrom dplyr mutate_at
+#' @importFrom dplyr mutate_if
+#' @importFrom dplyr select
+#' @importFrom rlang quo_squash
+#' @importFrom rlang enquo
+#' @importFrom rlang quo
+#'
+#' @seealso grouped_lm, grouped_glmer
 #'
 #' @examples
 #'
-#' groupedstats::grouped_glm(data = datasets::mtcars,
-#'  dep.vars = am,
-#'  indep.vars = wt,
-#'  grouping.vars = cyl,
-#'  family = "gaussian"
+#' groupedstats::grouped_glm(
+#'   data = ggstatsplot::Titanic_full,
+#'   formula = Survived ~ Sex,
+#'   grouping.vars = Class,
+#'   family = stats::binomial(link = "logit")
 #' )
-#
+#'
 #' @export
 #'
 
-# defining the function
 grouped_glm <- function(data,
-                       dep.vars,
-                       indep.vars,
-                       grouping.vars,
-                       family) {
-  # ================== preparing dataframe ==================
-  #
-  # check how many variables were entered for criterion variables vector
-  dep.vars <-
-    as.list(rlang::quo_squash(rlang::enquo(dep.vars)))
-  dep.vars <-
-    if (length(dep.vars) == 1) {
-      dep.vars
-    } else {
-      dep.vars[-1]
-    }
-
-  # check how many variables were entered for predictor variables vector
-  indep.vars <-
-    as.list(rlang::quo_squash(rlang::enquo(indep.vars)))
-  indep.vars <-
-    if (length(indep.vars) == 1) {
-      indep.vars
-    } else {
-      indep.vars[-1]
-    }
-
+                        grouping.vars,
+                        formula,
+                        family = stats::binomial(link = "logit"),
+                        quick = FALSE,
+                        exponentiate = FALSE,
+                        output = "tidy") {
   # check how many variables were entered for grouping variable vector
   grouping.vars <-
     as.list(rlang::quo_squash(rlang::enquo(grouping.vars)))
@@ -82,89 +74,94 @@ grouped_glm <- function(data,
     }
 
   # getting the dataframe ready
-  df <- dplyr::select(
-    .data = data,
-    !!!grouping.vars,
-    !!!dep.vars,
-    !!!indep.vars
-  ) %>%
+  df <- dplyr::select(.data = data,
+                      !!!grouping.vars,
+                      dplyr::everything()) %>%
     dplyr::group_by(.data = ., !!!grouping.vars) %>%
-    tidyr::nest(data = .)
+    tidyr::nest(data = .) %>%
+    dplyr::ungroup(x = .)
 
-  # ============== custom function ================
+  # ====================================== custom function ==================================
 
-  # custom function to run linear regression for every element of a list for two variables
-  lm_listed <- function(list.col, x_name, y_name) {
-    #
-    # creating a formula out of entered variables
-    fx <- glue::glue("{y_name} ~ {x_name}")
+  # custom function to run tidy operation on every element of list column
+  fnlisted <-
+    function(list.col,
+             formula,
+             family,
+             output,
+             quick,
+             exponentiate) {
+      if (output == "tidy") {
+        # dataframe with results from glm
+        results_df <-
+          list.col %>% # tidying up the output with broom
+          purrr::map_dfr(
+            .x = .,
+            .f = ~ broom::tidy(
+              x = stats::glm(
+                formula = stats::as.formula(formula),
+                data = (.),
+                na.action = na.omit,
+                family = family
+              ),
 
-    # this tags any names that are not predictor variables (used to remove intercept terms)
-    filter_name <- glue::glue("{x_name}")
+              conf.int = TRUE,
+              conf.level = 0.95,
+              quick = quick,
+              exponentiate = exponentiate
+            ),
+            .id = "..group"
+          )
+      } else if (output == "glance") {
+        # dataframe with results from glm
+        results_df <-
+          list.col %>% # tidying up the output with broom
+          purrr::map_dfr(
+            .x = .,
+            .f = ~ broom::glance(
+              x = stats::glm(
+                formula = stats::as.formula(formula),
+                data = (.),
+                na.action = na.omit,
+                family = family
+              )
+            ),
+            .id = "..group"
+          )
+      }
 
-    # dataframe with results from lm
-    results_df <-
-      list.col %>% # running linear regression on each individual group with purrr
-      purrr::map(
-        .x = .,
-        .f = ~stats::glm(
-          formula = stats::as.formula(fx),
-          family = family,
-          data = (.)
-        )
-      ) %>% # tidying up the output with broom
-      purrr::map_dfr(
-        .x = .,
-        .f = ~dplyr::bind_cols(broom::tidy(x = .), broom::confint_tidy(x = .)),
-        .id = "..group"
-      ) %>% # remove intercept terms
-      dplyr::filter(.data = ., term == !!filter_name) %>% # add formula as a character
-      dplyr::mutate(.data = ., formula = as.character(fx)) %>% # rearrange the dataframe
-      dplyr::select(
-        .data = .,
-        `..group`,
-        formula,
-        term,
-        statistic,
-        estimate,
-        conf.low,
-        conf.high,
-        std.error,
-        p.value
-      ) %>% # convert to a tibble dataframe
-      tibble::as_data_frame(x = .)
+      # return the final dataframe
+      return(results_df)
+    }
 
-    # return the dataframe
-    return(results_df)
-  }
 
-  # ========= using  custom function on entered dataframe =================
+  # ========================== using  custom function on entered dataframe ==================================
 
-  df <- df %>%
+  # converting the original dataframe to have a grouping variable column
+  df %<>%
     tibble::rownames_to_column(df = ., var = "..group")
-  # running custom function for each element of the created list column
-  df_lm <- purrr::pmap(
+
+  combined_df <- purrr::pmap(
     .l = list(
       list.col = list(df$data),
-      x_name = purrr::map(
-        .x = indep.vars,
-        .f = ~rlang::quo_name(quo = .)
-      ),
-      y_name = purrr::map(
-        .x = dep.vars,
-        .f = ~rlang::quo_name(quo = .)
-      )
+      formula = list(formula),
+      family = list(family),
+      output = list(output),
+      quick = list(quick),
+      exponentiate = list(exponentiate)
     ),
-    .f = lm_listed
+    .f = fnlisted
   ) %>%
     dplyr::bind_rows(.) %>%
     dplyr::left_join(x = ., y = df, by = "..group") %>%
     dplyr::select(.data = ., !!!grouping.vars, dplyr::everything()) %>%
-    dplyr::select(.data = ., -`..group`, -data, -term) %>%
-    signif_column(data = ., p = `p.value`)
+    dplyr::select(.data = ., -`..group`, -data)
 
-  # ============================== output ==================================
+  # add a column with significance labels if p-values are present
+  if ("p.value" %in% names(combined_df)) {
+    combined_df %<>%
+      ggstatsplot:::signif_column(data = ., p = p.value)
+  }
 
-  # return the final dataframe with results
-  return(df_lm)
+  return(combined_df)
 }

@@ -6,8 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function to run generalized linear model on multiple variables across
-multiple grouping variables. — grouped_glm • groupedstats</title>
+<title>Function to run generalized linear model (glm) across multiple
+grouping variables. — grouped_glm • groupedstats</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -31,11 +31,11 @@ multiple grouping variables. — grouped_glm • groupedstats</title>
 
 
 
-<meta property="og:title" content="Function to run generalized linear model on multiple variables across
-multiple grouping variables. — grouped_glm" />
+<meta property="og:title" content="Function to run generalized linear model (glm) across multiple
+grouping variables. — grouped_glm" />
 
-<meta property="og:description" content="Function to run generalized linear model on multiple variables across
-multiple grouping variables." />
+<meta property="og:description" content="Function to run generalized linear model (glm) across multiple
+grouping variables." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -98,20 +98,21 @@ multiple grouping variables." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Function to run generalized linear model on multiple variables across
-multiple grouping variables.</h1>
+    <h1>Function to run generalized linear model (glm) across multiple
+grouping variables.</h1>
     
     <div class="hidden name"><code>grouped_glm.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Function to run generalized linear model on multiple variables across
-multiple grouping variables.</p>
+    <p>Function to run generalized linear model (glm) across multiple
+grouping variables.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>grouped_glm</span>(<span class='no'>data</span>, <span class='no'>dep.vars</span>, <span class='no'>indep.vars</span>, <span class='no'>grouping.vars</span>, <span class='no'>family</span>)</pre>
+    <pre class="usage"><span class='fu'>grouped_glm</span>(<span class='no'>data</span>, <span class='no'>grouping.vars</span>, <span class='no'>formula</span>, <span class='kw'>family</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/stats/topics/family'>binomial</a></span>(<span class='kw'>link</span> <span class='kw'>=</span>
+  <span class='st'>"logit"</span>), <span class='kw'>quick</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>exponentiate</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -121,47 +122,75 @@ multiple grouping variables.</p>
       <td><p>Dataframe from which variables are to be taken.</p></td>
     </tr>
     <tr>
-      <th>dep.vars</th>
-      <td><p>List criterion or dependent variables for regression (<code>y</code> in
-<code>y ~ x</code>).</p></td>
-    </tr>
-    <tr>
-      <th>indep.vars</th>
-      <td><p>List predictor or independent variables for regression (<code>x</code>
-in <code>y ~ x</code>).</p></td>
-    </tr>
-    <tr>
       <th>grouping.vars</th>
       <td><p>List of grouping variables.</p></td>
     </tr>
     <tr>
+      <th>formula</th>
+      <td><p>an object of class <code>"formula"</code> (or one that
+    can be coerced to that class): a symbolic description of the
+    model to be fitted.  The details of model specification are given
+    under &#8216;Details&#8217;.</p></td>
+    </tr>
+    <tr>
       <th>family</th>
-      <td><p>A description of the error distribution and link function to be
-used in the model. For glm this can be a character string naming a <code>family</code>
-function, a <code>family</code> function or the result of a call to a family function.
-For more, see <code><a href='http://www.rdocumentation.org/packages/stats/topics/family'>?stats::family</a></code>.</p></td>
+      <td><p>a description of the error distribution and link
+    function to be used in the model.  For <code>glm</code> this can be a
+    character string naming a family function, a family function or the
+    result of a call to a family function.  For <code>glm.fit</code> only the
+    third option is supported.  (See <code>family</code> for details of
+    family functions.)</p></td>
+    </tr>
+    <tr>
+      <th>quick</th>
+      <td><p>Logical indicating if the only the term and estimate columns
+should be returned. Often useful to avoid time consuming covariance and
+standard error calculations. Defaults to <code>FALSE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>exponentiate</th>
+      <td><p>Logical indicating whether or not to exponentiate the the
+coefficient estimates. This is typical for logistic and multinomial
+regressions, but a bad idea if there is no log or logit link. Defaults to
+<code>FALSE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>output</th>
+      <td><p>A character describing what output is expected. Two possible
+options: <code>"tidy"</code> (default), which will return the results, or <code>"glance"</code>,
+which will return model summaries.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble dataframe with tidy results from linear regression analyses.</p>
+    <p>A tibble dataframe with tidy results from linear model.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>grouped_lm, grouped_glmer</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_glm'>grouped_glm</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/mtcars'>mtcars</a></span>,
- <span class='kw'>dep.vars</span> <span class='kw'>=</span> <span class='no'>am</span>,
- <span class='kw'>indep.vars</span> <span class='kw'>=</span> <span class='no'>wt</span>,
- <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>cyl</span>,
- <span class='kw'>family</span> <span class='kw'>=</span> <span class='st'>"gaussian"</span>
-)</div><div class='output co'>#&gt; # A tibble: 3 x 9
-#&gt;     cyl formula statistic estimate conf.low conf.high std.error p.value
-#&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-#&gt; 1     6 am ~ wt     -6.85   -1.43    -1.83    -1.02       0.208 0.00101
-#&gt; 2     4 am ~ wt     -3.22   -0.600   -0.965   -0.235      0.186 0.0104 
-#&gt; 3     8 am ~ wt     -1.30   -0.168   -0.421    0.0855     0.129 0.218  
-#&gt; # ... with 1 more variable: significance &lt;chr&gt;</div></pre>
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_glm'>grouped_glm</a></span>(
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggstatsplot</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/ggstatsplot/topics/Titanic_full'>Titanic_full</a></span>,
+  <span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>Survived</span> ~ <span class='no'>Sex</span>,
+  <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>Class</span>,
+  <span class='kw'>family</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/stats/topics/family'>binomial</a></span>(<span class='kw'>link</span> <span class='kw'>=</span> <span class='st'>"logit"</span>)
+)</div><div class='output co'>#&gt; # A tibble: 8 x 9
+#&gt;   Class term  estimate std.error statistic conf.low conf.high  p.value
+#&gt;   &lt;fct&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+#&gt; 1 3rd   (Int~   -0.164     0.143     -1.14   -0.446     0.117 2.54e- 1
+#&gt; 2 3rd   SexM~   -1.40      0.185     -7.58   -1.77     -1.04  3.36e-14
+#&gt; 3 1st   (Int~    3.56      0.507      7.03    2.70      4.74  2.13e-12
+#&gt; 4 1st   SexM~   -4.21      0.531     -7.92   -5.42     -3.29  2.29e-15
+#&gt; 5 2nd   (Int~    1.97      0.296      6.65    1.43      2.60  3.03e-11
+#&gt; 6 2nd   SexM~   -3.79      0.366    -10.3    -4.54     -3.10  4.88e-25
+#&gt; 7 Crew  (Int~    1.90      0.619      3.06    0.827     3.34  2.18e- 3
+#&gt; 8 Crew  SexM~   -3.15      0.625     -5.04   -4.60     -2.06  4.68e- 7
+#&gt; # ... with 1 more variable: significance &lt;chr&gt;</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -169,6 +198,8 @@ For more, see <code><a href='http://www.rdocumentation.org/packages/stats/topics
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

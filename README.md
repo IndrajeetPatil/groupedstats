@@ -6,7 +6,7 @@
 [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
 [![CRAN
 Checks](https://cranchecks.info/badges/summary/groupedstats)](https://cran.r-project.org/web/checks/check_results_groupedstats.html)
-[![packageversion](https://img.shields.io/badge/Package%20version-0.0.1-orange.svg?style=flat-square)](commits/master)
+[![packageversion](https://img.shields.io/badge/Package%20version-0.0.1.9000-orange.svg?style=flat-square)](commits/master)
 [![Daily downloads
 badge](https://cranlogs.r-pkg.org/badges/last-day/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
 [![Weekly downloads
@@ -23,7 +23,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--07--14-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--07--16-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
@@ -59,7 +59,7 @@ existing functionality.
 
 ## Installation
 
-To get the latest, stable CRAN release (0.0.1):
+To get the latest, stable CRAN release (0.0.2):
 
 ``` r
 utils::install.packages(pkgs = "groupedstats") 
@@ -92,8 +92,11 @@ Documentation for any function can be accessed with the standard `help`
 command-
 
 ``` r
+?grouped_aov
 ?grouped_lm
 ?grouped_lmer
+?grouped_glm
+?grouped_glmer
 ?grouped_summary
 ?grouped_slr
 ?grouped_robustslr
@@ -489,7 +492,7 @@ groupedstats::grouped_lm(
 #> 12 0.955     ns
 ```
 
-The same function can also be used to get model summaries instead of
+The same function can also be used to get model summaries instead of a
 tidy dataframe containing results-
 
 ``` r
@@ -622,26 +625,62 @@ tests conducted.
 
 ## `grouped_glm`
 
-The option to run generalized linear model across different levels of
-the grouping variable-
+The option to run generalized linear model (`stats::glm`) across
+different levels of the grouping variable is also implemented
+similarily-
 
 ``` r
-groupedstats::grouped_glm(data = datasets::mtcars,
-                          dep.vars = am,
-                          indep.vars = wt,
-                          grouping.vars = cyl,
-                          family = "gaussian")
-#> # A tibble: 3 x 9
-#>     cyl formula statistic estimate conf.low conf.high std.error p.value
-#>   <dbl> <chr>       <dbl>    <dbl>    <dbl>     <dbl>     <dbl>   <dbl>
-#> 1     6 am ~ wt     -6.85   -1.43    -1.83    -1.02       0.208 0.00101
-#> 2     4 am ~ wt     -3.22   -0.600   -0.965   -0.235      0.186 0.0104 
-#> 3     8 am ~ wt     -1.30   -0.168   -0.421    0.0855     0.129 0.218  
-#>   significance
-#>   <chr>       
-#> 1 **          
-#> 2 *           
-#> 3 ns
+groupedstats::grouped_glm(
+ data = ggstatsplot::Titanic_full,
+ formula = Survived ~ Sex,
+ grouping.vars = Class,
+ family = stats::binomial(link = "logit"),
+ output = "tidy"
+)
+#> # A tibble: 8 x 9
+#>   Class term        estimate std.error statistic conf.low conf.high
+#>   <fct> <chr>          <dbl>     <dbl>     <dbl>    <dbl>     <dbl>
+#> 1 3rd   (Intercept)   -0.164     0.143     -1.14   -0.446     0.117
+#> 2 3rd   SexMale       -1.40      0.185     -7.58   -1.77     -1.04 
+#> 3 1st   (Intercept)    3.56      0.507      7.03    2.70      4.74 
+#> 4 1st   SexMale       -4.21      0.531     -7.92   -5.42     -3.29 
+#> 5 2nd   (Intercept)    1.97      0.296      6.65    1.43      2.60 
+#> 6 2nd   SexMale       -3.79      0.366    -10.3    -4.54     -3.10 
+#> 7 Crew  (Intercept)    1.90      0.619      3.06    0.827     3.34 
+#> 8 Crew  SexMale       -3.15      0.625     -5.04   -4.60     -2.06 
+#>    p.value significance
+#>      <dbl> <chr>       
+#> 1 2.54e- 1 ns          
+#> 2 3.36e-14 ***         
+#> 3 2.13e-12 ***         
+#> 4 2.29e-15 ***         
+#> 5 3.03e-11 ***         
+#> 6 4.88e-25 ***         
+#> 7 2.18e- 3 **          
+#> 8 4.68e- 7 ***
+```
+
+Note that the `statistic` will either be a `t` (gaussian, e.g.) or a `z`
+(binomial, e.g.) value, based on the family of models used.
+
+You can also get a model summary across all models with `broom::glance`
+methods-
+
+``` r
+groupedstats::grouped_glm(
+ data = ggstatsplot::Titanic_full,
+ formula = Survived ~ Sex,
+ grouping.vars = Class,
+ family = stats::binomial(link = "logit"),
+ output = "glance"
+)
+#> # A tibble: 4 x 8
+#>   Class null.deviance df.null logLik   AIC   BIC deviance df.residual
+#>   <fct>         <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>       <int>
+#> 1 3rd            797.     705  -370.  744.  753.     740.         704
+#> 2 1st            430.     324  -134.  272.  280.     268.         323
+#> 3 2nd            387.     284  -112.  228.  235.     224.         283
+#> 4 Crew           974.     884  -466.  936.  946.     932.         883
 ```
 
 ## `grouped_lmer`
@@ -699,14 +738,40 @@ groupedstats::grouped_lmer(
 #>  9 0.451   ns          
 #> 10 0.00402 **          
 #> # ... with 14 more rows
+
+
+# getting tidy output of results
+groupedstats::grouped_lmer(
+  data = gapminder,
+  formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap |
+                                                   continent),
+  grouping.vars = year,
+  REML = FALSE,
+  output = "glance"
+)
+#> # A tibble: 12 x 7
+#>     year sigma logLik   AIC   BIC deviance df.residual
+#>    <int> <dbl>  <dbl> <dbl> <dbl>    <dbl>       <int>
+#>  1  1952 0.531  -124.  259.  277.     247.         136
+#>  2  1957 0.540  -127.  266.  284.     254.         136
+#>  3  1962 0.546  -128.  268.  285.     256.         136
+#>  4  1967 0.552  -128.  269.  287.     257.         136
+#>  5  1972 0.565  -132.  276.  294.     264.         136
+#>  6  1977 0.582  -132.  277.  294.     265.         136
+#>  7  1982 0.544  -121.  253.  271.     241.         136
+#>  8  1987 0.498  -110.  231.  249.     219.         136
+#>  9  1992 0.518  -117.  246.  264.     234.         136
+#> 10  1997 0.498  -109.  231.  248.     219.         136
+#> 11  2002 0.505  -113.  238.  255.     226.         136
+#> 12  2007 0.525  -116.  244.  262.     232.         136
 ```
 
 ## `grouped_glmer`
 
-A more generalized version of `lmer` is implemented in `glmer`, which
-can also handle categorical/nominal data. For example, let’s say we want
-to see if sex of a person was predictive of whether they survived the
-Titanic tragedy
+A more generalized version of `lmer` is implemented in `lme4::glmer`,
+which can also handle categorical/nominal data. For example, let’s say
+we want to see if sex of a person was predictive of whether they
+survived the Titanic tragedy.
 
 ``` r
 # having a look at the data
@@ -735,12 +800,12 @@ groupedstats::grouped_glmer(
   output = "tidy"
 )
 #> # A tibble: 4 x 9
-#>   Sex    term        estimate std.error z.value conf.low conf.high
-#>   <fct>  <chr>          <dbl>     <dbl>   <dbl>    <dbl>     <dbl>
-#> 1 Male   (Intercept)   -0.888     0.162   -5.47   -1.21     -0.570
-#> 2 Male   AgeChild       4.90      4.03     1.22   -3.00     12.8  
-#> 3 Female (Intercept)    1.01      0.379    2.66    0.264     1.75 
-#> 4 Female AgeChild       1.47      0.595    2.48    0.307     2.64 
+#>   Sex    term        estimate std.error statistic conf.low conf.high
+#>   <fct>  <chr>          <dbl>     <dbl>     <dbl>    <dbl>     <dbl>
+#> 1 Male   (Intercept)   -0.888     0.162     -5.47   -1.21     -0.570
+#> 2 Male   AgeChild       4.90      4.03       1.22   -3.00     12.8  
+#> 3 Female (Intercept)    1.01      0.379      2.66    0.264     1.75 
+#> 4 Female AgeChild       1.47      0.595      2.48    0.307     2.64 
 #>        p.value significance
 #>          <dbl> <chr>       
 #> 1 0.0000000453 ***         
@@ -763,16 +828,19 @@ groupedstats::grouped_glmer(
 #> 2 Female     1  -208.  426.  447.     400.         465
 ```
 
+Note that the `statistic` will either be a `t` (gaussian, e.g.) or a `z`
+(binomial, e.g.) value, based on the family of models used.
+
 ## `grouped_proptest`
 
-This function helps carry out one-sample proportion tests with a unique
-variable for multiple grouping variables-
+This function helps carry out one-sample proportion tests
+(`stats::chisq.test`) with a unique variable for multiple grouping
+variables-
 
 ``` r
-library(datasets)
 options(tibble.width = Inf)            # show me all columns
 
-groupedstats::grouped_proptest(data = mtcars,
+groupedstats::grouped_proptest(data = datasets::mtcars,
                                grouping.vars = cyl,
                                measure = am)
 #> # A tibble: 3 x 7
@@ -1088,12 +1156,13 @@ groupedstats::grouped_wilcox(
 
 In these examples, two things are worth noting that generalize to
 **all** functions in this package and stem from how [`tidy
-evaluation`](https://adv-r.hadley.nz/evaluation.html) works: <br />
-**1.** If just one independent variable is provided for multiple
-dependent variables, it will be used as a common variable. <br /> **2.**
-If you want to use a selection of variables, you need not use `c()`.
+evaluation`](https://adv-r.hadley.nz/evaluation.html) works:
 
-  - Suggestions
+  - If just one independent variable is provided for multiple dependent
+    variables, it will be used as a common variable.
+  - If you want to use a selection of variables, you need not use `c()`.
+
+## Suggestions
 
 If you find any bugs or have any suggestions/remarks, please file an
 issue on GitHub: <https://github.com/IndrajeetPatil/groupedstats/issues>

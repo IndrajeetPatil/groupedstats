@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 [![CRAN_Release_Badge](http://www.r-pkg.org/badges/version-ago/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
 [![CRAN Checks](https://cranchecks.info/badges/summary/groupedstats)](https://cran.r-project.org/web/checks/check_results_groupedstats.html)
-[![packageversion](https://img.shields.io/badge/Package%20version-0.0.1-orange.svg?style=flat-square)](commits/master)
+[![packageversion](https://img.shields.io/badge/Package%20version-0.0.1.9000-orange.svg?style=flat-square)](commits/master)
 [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
 [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
 [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
@@ -57,7 +57,7 @@ functionality.
 
 ## Installation
 
-To get the latest, stable CRAN release (0.0.1):
+To get the latest, stable CRAN release (0.0.2):
 ```{r installation1, eval = FALSE, warning = FALSE, messsage = FALSE}
 utils::install.packages(pkgs = "groupedstats") 
 ```
@@ -85,8 +85,11 @@ devtools::install_github(repo = "IndrajeetPatil/groupedstats", # package path on
 
 Documentation for any function can be accessed with the standard `help` command-
 ```{r help, eval = FALSE, warning = FALSE, messsage = FALSE}
+?grouped_aov
 ?grouped_lm
 ?grouped_lmer
+?grouped_glm
+?grouped_glmer
 ?grouped_summary
 ?grouped_slr
 ?grouped_robustslr
@@ -259,7 +262,7 @@ groupedstats::grouped_lm(
 )
 ```
 
-The same function can also be used to get model summaries instead of tidy
+The same function can also be used to get model summaries instead of a tidy
 dataframe containing results-
 
 ```{r grouped_lm2, warning = FALSE, messsage = FALSE}
@@ -314,14 +317,32 @@ each level of the grouping variable, and not across all tests conducted.
 
 ## `grouped_glm`
 
-The option to run generalized linear model across different levels of the grouping variable-
+The option to run generalized linear model (`stats::glm`) across different levels of the
+grouping variable is also implemented similarily-
 
-```{r grouped_glm, warning = FALSE, messsage = FALSE}
-groupedstats::grouped_glm(data = datasets::mtcars,
-                          dep.vars = am,
-                          indep.vars = wt,
-                          grouping.vars = cyl,
-                          family = "gaussian")
+```{r grouped_glm1, warning = FALSE, messsage = FALSE}
+groupedstats::grouped_glm(
+ data = ggstatsplot::Titanic_full,
+ formula = Survived ~ Sex,
+ grouping.vars = Class,
+ family = stats::binomial(link = "logit"),
+ output = "tidy"
+)
+```
+
+Note that the `statistic` will either be a `t` (gaussian, e.g.) or a `z`
+(binomial, e.g.) value, based on the family of models used.
+
+You can also get a model summary across all models with `broom::glance` methods-
+
+```{r grouped_glm2, warning = FALSE, messsage = FALSE}
+groupedstats::grouped_glm(
+ data = ggstatsplot::Titanic_full,
+ formula = Survived ~ Sex,
+ grouping.vars = Class,
+ family = stats::binomial(link = "logit"),
+ output = "glance"
+)
 ```
 
 ## `grouped_lmer`
@@ -341,13 +362,24 @@ groupedstats::grouped_lmer(
   REML = FALSE,
   output = "tidy"
 )
+
+
+# getting tidy output of results
+groupedstats::grouped_lmer(
+  data = gapminder,
+  formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap |
+                                                   continent),
+  grouping.vars = year,
+  REML = FALSE,
+  output = "glance"
+)
 ```
 
 ## `grouped_glmer`
 
-A more generalized version of `lmer` is implemented in `glmer`, which can also
+A more generalized version of `lmer` is implemented in `lme4::glmer`, which can also
 handle categorical/nominal data. For example, let's say we want to see if sex of
-a person was predictive of whether they survived the Titanic tragedy
+a person was predictive of whether they survived the Titanic tragedy.
 
 ```{r grouped_glmer1, warning = FALSE, messsage = FALSE}
 # having a look at the data
@@ -379,16 +411,18 @@ groupedstats::grouped_glmer(
 )
 ```
 
+Note that the `statistic` will either be a `t` (gaussian, e.g.) or a `z`
+(binomial, e.g.) value, based on the family of models used.
+
 ## `grouped_proptest`
 
-This function helps carry out one-sample proportion tests with a unique variable
-for multiple grouping variables-
+This function helps carry out one-sample proportion tests (`stats::chisq.test`)
+with a unique variable for multiple grouping variables-
 
 ```{r grouped_proptest, warning = FALSE, messsage = FALSE}
-library(datasets)
 options(tibble.width = Inf)            # show me all columns
 
-groupedstats::grouped_proptest(data = mtcars,
+groupedstats::grouped_proptest(data = datasets::mtcars,
                                grouping.vars = cyl,
                                measure = am)
 ```
@@ -513,12 +547,13 @@ groupedstats::grouped_wilcox(
 ```
 
 In these examples, two things are worth noting that generalize to **all**
-functions in this package and stem from how [`tidy evaluation`](https://adv-r.hadley.nz/evaluation.html) works: <br />
- **1.** If just one independent variable is provided for multiple dependent
-variables, it will be used as a common variable.  <br />
- **2.** If you want to use a selection of variables, you need not use `c()`.
+functions in this package and stem from how [`tidy evaluation`](https://adv-r.hadley.nz/evaluation.html) 
+works:
+
+  - If just one independent variable is provided for multiple dependent variables, it will be used as a common variable. 
+  - If you want to use a selection of variables, you need not use `c()`.
  
-* Suggestions
+## Suggestions
 
 If you find any bugs or have any suggestions/remarks, please file an issue on
 GitHub: <https://github.com/IndrajeetPatil/groupedstats/issues>

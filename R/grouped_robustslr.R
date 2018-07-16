@@ -37,9 +37,9 @@
 
 # defining the function
 grouped_robustslr <- function(data,
-                             dep.vars,
-                             indep.vars,
-                             grouping.vars) {
+                              dep.vars,
+                              indep.vars,
+                              grouping.vars) {
   # ================== preparing dataframe ==================
   #
   # check how many variables were entered for criterion variables vector

@@ -63,7 +63,7 @@ grouped_summary <- function(data,
                             measures = NULL,
                             measures.type = "numeric",
                             topcount.long = FALSE) {
-  #================================================== data ===========================================================
+  # ================================================== data ===========================================================
   # check how many variables were entered for this grouping variable
   grouping.vars <-
     base::as.list(x = rlang::quo_squash(quo = rlang::enquo(arg = grouping.vars)))
@@ -86,8 +86,10 @@ grouped_summary <- function(data,
       # check if there are any columns of factor type
       numeric_cols <- length(tibble::as_data_frame(
         x = purrr::keep(
-          .x = dplyr::select(.data = data,
-                             -c(!!!grouping.vars)),
+          .x = dplyr::select(
+            .data = data,
+            -c(!!!grouping.vars)
+          ),
           .p = purrr::is_bare_numeric
         )
       ))
@@ -96,12 +98,16 @@ grouped_summary <- function(data,
         # of numeric type
         df <- cbind(
           # select columns corresponding to grouping variables
-          dplyr::select(.data = data,
-                        !!!grouping.vars),
+          dplyr::select(
+            .data = data,
+            !!!grouping.vars
+          ),
           # select all additional columns of numeric type
           purrr::keep(
-            .x = dplyr::select(.data = data,
-                               -c(!!!grouping.vars)),
+            .x = dplyr::select(
+              .data = data,
+              -c(!!!grouping.vars)
+            ),
             .p = purrr::is_bare_numeric
           )
         )
@@ -113,13 +119,16 @@ grouped_summary <- function(data,
             "None of the variables in the dataframe are of numeric type\n"
           )
         ),
-        call. = FALSE)
+        call. = FALSE
+        )
       }
     } else if (measures.type == "factor") {
       # check if there are any columns of factor type
       factor_cols <- length(tibble::as_data_frame(x = purrr::keep(
-        .x = dplyr::select(.data = data,
-                           -c(!!!grouping.vars)),
+        .x = dplyr::select(
+          .data = data,
+          -c(!!!grouping.vars)
+        ),
         .p = base::is.factor
       )))
       # create a dataframe only if this is the case
@@ -127,12 +136,16 @@ grouped_summary <- function(data,
         # of character/factor type
         df <- cbind(
           # select columns corresponding to grouping variables
-          dplyr::select(.data = data,
-                        !!!grouping.vars),
+          dplyr::select(
+            .data = data,
+            !!!grouping.vars
+          ),
           # select all additional columns of character/factor type
           purrr::keep(
-            .x = dplyr::select(.data = data,
-                               -c(!!!grouping.vars)),
+            .x = dplyr::select(
+              .data = data,
+              -c(!!!grouping.vars)
+            ),
             .p = base::is.factor
           )
         )
@@ -144,29 +157,36 @@ grouped_summary <- function(data,
             "None of the variables in the dataframe are of factor/character type\n"
           )
         ),
-        call. = FALSE)
+        call. = FALSE
+        )
       }
     }
   } else {
     # if the measures are provided, select all relevant grouping variables and measures
-    df <- dplyr::select(.data = data,
-                        !!!grouping.vars,
-                        !!rlang::enquo(measures))
+    df <- dplyr::select(
+      .data = data,
+      !!!grouping.vars,
+      !!rlang::enquo(measures)
+    )
   }
-  #================================================== checks ===========================================================
+  # ================================================== checks ===========================================================
   # when measures have been specified
   if (!base::missing(measures)) {
     # check the class of variables (all have to be of uniform type)
     # numeric
     numeric_count <- sum(purrr::map_lgl(
-      .x = dplyr::select(.data = data,
-                         !!rlang::enquo(measures)),
-      .f = ~ purrr::is_bare_numeric(.)
+      .x = dplyr::select(
+        .data = data,
+        !!rlang::enquo(measures)
+      ),
+      .f = ~purrr::is_bare_numeric(.)
     ) == FALSE)
     # factor
     # convert factor into characters
-    df_char <- dplyr::select(.data = data,
-                             !!rlang::enquo(measures)) %>%
+    df_char <- dplyr::select(
+      .data = data,
+      !!rlang::enquo(measures)
+    ) %>%
       dplyr::mutate_if(
         .tbl = .,
         .predicate = base::is.factor,
@@ -174,8 +194,10 @@ grouped_summary <- function(data,
       )
 
     # count the number of character type variables
-    factor_count <- sum(purrr::map_lgl(.x = df_char,
-                                       .f = ~ purrr::is_bare_character(.)) == FALSE)
+    factor_count <- sum(purrr::map_lgl(
+      .x = df_char,
+      .f = ~purrr::is_bare_character(.)
+    ) == FALSE)
 
     # conditionally stopping the function
     # if a mix type of variables have been entered
@@ -186,9 +208,10 @@ grouped_summary <- function(data,
           "This function can either be used with numeric or with factor/character variables, but not both\n"
         )
       ),
-      call. = FALSE)
+      call. = FALSE
+      )
     }
-    #options(show.error.messages = FALSE)
+    # options(show.error.messages = FALSE)
     if (measures.type == "numeric") {
       # if one or more of the variables are not numeric, then stop the execution and let the user know
       if (numeric_count != 0) {
@@ -196,7 +219,8 @@ grouped_summary <- function(data,
           crayon::red("Error:"),
           crayon::blue("One of the entered variables is not a numeric variable\n")
         ),
-        call. = FALSE)
+        call. = FALSE
+        )
       }
     } else if (measures.type == "factor") {
       # if one or more of the variables are not numeric, then stop the execution and let the user know
@@ -207,12 +231,13 @@ grouped_summary <- function(data,
             "One of the entered variables is not a factor/character variable\n"
           )
         ),
-        call. = FALSE)
+        call. = FALSE
+        )
       }
     }
   }
-  #options(show.error.messages = TRUE)
-  #================================================== summary ===========================================================
+  # options(show.error.messages = TRUE)
+  # ================================================== summary ===========================================================
   #
   # creating a nested dataframe
   df_nest <- df %>%
@@ -224,31 +249,35 @@ grouped_summary <- function(data,
     dplyr::mutate(
       .data = .,
       summary = data %>% # 'data' variable is automatically created by tidyr::nest function
-        purrr::map(.x = .,
-                   .f = ~ skimr::skim_to_wide(.))
+        purrr::map(
+          .x = .,
+          .f = ~skimr::skim_to_wide(.)
+        )
     )
 
-  #================================================== factor ===========================================================
+  # ================================================== factor ===========================================================
   #
   if (measures.type == "factor") {
     # tidying up the skimr output by removing unnecessary information and renaming certain columns
     df_summary %<>%
       dplyr::select(.data = ., -data) %>% # removing the redudant data column
-      dplyr::mutate(.data = .,
-                    summary = summary %>%
-                      purrr::map(
-                        .x = .,
-                        .f = ~ dplyr::select(.data = ., dplyr::everything())
-                      )) %>% # remove the histograms since they are not that helpful
+      dplyr::mutate(
+        .data = .,
+        summary = summary %>%
+          purrr::map(
+            .x = .,
+            .f = ~dplyr::select(.data = ., dplyr::everything())
+          )
+      ) %>% # remove the histograms since they are not that helpful
       tidyr::unnest(data = .) %>% # unnesting the data
       tibble::as_data_frame(x = .) # converting to tibble dataframe
-    #=========================================== factor long format conversion ==========================================
+    # =========================================== factor long format conversion ==========================================
     if (isTRUE(topcount.long)) {
       # custom function used to convert counts into long format
       count_long_format_fn <- function(top_counts) {
         purrr::map_dfr(
           .x = base::strsplit(x = top_counts, split = ","),
-          .f = ~ tibble::as_data_frame(x = .) %>%
+          .f = ~tibble::as_data_frame(x = .) %>%
             dplyr::mutate_all(.tbl = ., .funs = base::trimws) %>%
             tidyr::separate(
               data = .,
@@ -269,7 +298,7 @@ grouped_summary <- function(data,
           long.counts = data %>%
             purrr::map(
               .x = .,
-              .f = ~ count_long_format_fn(top_counts = .$top_counts)
+              .f = ~count_long_format_fn(top_counts = .$top_counts)
             )
         ) %>%
         dplyr::select(.data = ., -data) %>%
@@ -277,10 +306,10 @@ grouped_summary <- function(data,
       #
       # joining the wide and long format datasets together
       df_summary <-
-        dplyr::full_join(x =  df_summary, y = df_summary_long)
+        dplyr::full_join(x = df_summary, y = df_summary_long)
     }
   }
-  #================================================== numeric ===========================================================
+  # ================================================== numeric ===========================================================
   #
   if (measures.type == "numeric") {
     # tidying up the skimr output by removing unnecessary information and renaming certain columns
@@ -289,9 +318,11 @@ grouped_summary <- function(data,
       dplyr::mutate(
         .data = .,
         summary = summary %>%
-          purrr::map(.x = .,
-                     .f = dplyr::select,
-                     -hist)
+          purrr::map(
+            .x = .,
+            .f = dplyr::select,
+            -hist
+          )
       ) %>% # remove the histograms since they are not that helpful
       tidyr::unnest(data = .) %>% # unnesting the data
       tibble::as_data_frame(x = .) # converting to tibble dataframe
@@ -301,7 +332,7 @@ grouped_summary <- function(data,
       dplyr::mutate_at(
         .tbl = .,
         .vars = dplyr::vars(missing, complete, n, mean, sd, p0, p25, p50, p75, p100),
-        .funs = ~ as.numeric(as.character(.)) # change summary variables to numeric
+        .funs = ~as.numeric(as.character(.)) # change summary variables to numeric
       ) %>% # renaming variables to more common terminology
       dplyr::rename(
         .data = .,

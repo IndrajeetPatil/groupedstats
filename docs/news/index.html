@@ -58,7 +58,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">groupedstats</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.1.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.2</span>
       </span>
     </div>
 
@@ -103,6 +103,7 @@
 <p>MAJOR CHANGES</p>
 <ul>
 <li>New functions added: <code><a href="../reference/grouped_lm.html">grouped_lm()</a></code>, <code><a href="../reference/grouped_aov.html">grouped_aov()</a></code>, <code><a href="../reference/grouped_lmer.html">grouped_lmer()</a></code>, <code><a href="../reference/grouped_glmer.html">grouped_glmer()</a></code>.</li>
+<li>To be consistent with the rest of the regression model functions, <code>grouped_glm</code> now takes a <code>formula</code> argument rather than <code>dep.vars</code> and <code>indep.vars</code> arguments.</li>
 <li>The package no longer <strong>exports</strong> tidy eval functions; it’s not part of the tidyverse.</li>
 </ul>
 <p>MINOR CHANGES</p>

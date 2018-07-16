@@ -85,9 +85,11 @@ grouped_lmer <- function(data,
     }
 
   # getting the dataframe ready
-  df <- dplyr::select(.data = data,
-                      !!!grouping.vars,
-                      dplyr::everything()) %>%
+  df <- dplyr::select(
+    .data = data,
+    !!!grouping.vars,
+    dplyr::everything()
+  ) %>%
     dplyr::group_by(.data = ., !!!grouping.vars) %>%
     tidyr::nest(data = .) %>%
     dplyr::ungroup(x = .)
@@ -97,18 +99,18 @@ grouped_lmer <- function(data,
   # custom function to run tidy operation on every element of list column
   fnlisted <-
     function(list.col,
-             formula,
-             output,
-             REML,
-             control,
-             p.kr) {
+                 formula,
+                 output,
+                 REML,
+                 control,
+                 p.kr) {
       if (output == "tidy") {
         # dataframe with results from lmer
         results_df <-
           list.col %>% # tidying up the output with broom
           purrr::map_dfr(
             .x = .,
-            .f = ~ broom::tidy(
+            .f = ~broom::tidy(
               x = lme4::lmer(
                 formula = stats::as.formula(formula),
                 data = (.),
@@ -127,7 +129,7 @@ grouped_lmer <- function(data,
           dplyr::mutate_at(
             .tbl = .,
             .vars = "term",
-            .funs = ~ as.character(.)
+            .funs = ~as.character(.)
           )
 
         # computing p-values
@@ -135,7 +137,7 @@ grouped_lmer <- function(data,
           list.col %>% # getting p-values with sjstats package
           purrr::map_dfr(
             .x = .,
-            .f = ~ sjstats::p_value(
+            .f = ~sjstats::p_value(
               fit = lme4::lmer(
                 formula = stats::as.formula(formula),
                 data = (.),
@@ -151,23 +153,23 @@ grouped_lmer <- function(data,
           dplyr::mutate_at(
             .tbl = .,
             .vars = "term",
-            .funs = ~ as.character(.)
+            .funs = ~as.character(.)
           )
 
         # combining the two dataframes
         results_df %<>%
-          dplyr::full_join(x = .,
-                           y = pval_df,
-                           by = c("term", "..group"))
-
-
+          dplyr::full_join(
+            x = .,
+            y = pval_df,
+            by = c("term", "..group")
+          )
       } else {
         # dataframe with results from lm
         results_df <-
           list.col %>% # tidying up the output with broom
           purrr::map_dfr(
             .x = .,
-            .f = ~ broom::glance(
+            .f = ~broom::glance(
               x = lme4::lmer(
                 formula = stats::as.formula(formula),
                 data = (.),
@@ -182,7 +184,7 @@ grouped_lmer <- function(data,
       return(results_df)
     }
 
-  #========================== using  custom function on entered dataframe ==================================
+  # ========================== using  custom function on entered dataframe ==================================
 
   # converting the original dataframe to have a grouping variable column
   df %<>%

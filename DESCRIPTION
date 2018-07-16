@@ -35,7 +35,7 @@ Imports:
     tidyr (>= 0.8.1)
 Suggests: 
     covr (>= 3.0.1),
-    ggstatsplot (>= 0.0.3),
+    ggstatsplot (>= 0.0.4),
     knitr (>= 1.20),
     rmarkdown (>= 1.9),
     spelling
