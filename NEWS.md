@@ -1,4 +1,4 @@
-# groupedstats 0.0.1.9000
+# groupedstats 0.0.2
 
 MAJOR CHANGES
   - New functions added: `grouped_lm()`, `grouped_aov()`, `grouped_lmer()`,
