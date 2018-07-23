@@ -132,7 +132,7 @@ grouped_robustslr <- function(data,
   # ========= using  custom function on entered dataframe =================
 
   df <- df %>%
-    tibble::rownames_to_column(df = ., var = "..group")
+    tibble::rownames_to_column(., var = "..group")
   # running custom function for each element of the created list column
   df_lm <- purrr::pmap(
     .l = list(
