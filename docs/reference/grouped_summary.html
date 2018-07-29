@@ -157,10 +157,10 @@ sd, median, min, max)</p>
     <pre class="examples"><div class='input'>
 <span class='co'># another possibility</span>
 <span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_summary'>grouped_summary</a></span>(
-<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/iris'>iris</a></span>,
-<span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>Species</span>,
-<span class='kw'>measures</span> <span class='kw'>=</span> <span class='no'>Sepal.Length</span>:<span class='no'>Petal.Width</span>,
-<span class='kw'>measures.type</span> <span class='kw'>=</span> <span class='st'>"numeric"</span>
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/iris'>iris</a></span>,
+  <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>Species</span>,
+  <span class='kw'>measures</span> <span class='kw'>=</span> <span class='no'>Sepal.Length</span>:<span class='no'>Petal.Width</span>,
+  <span class='kw'>measures.type</span> <span class='kw'>=</span> <span class='st'>"numeric"</span>
 )</div><div class='output co'>#&gt; # A tibble: 12 x 16
 #&gt;    Species type  variable missing complete     n  mean    sd   min   p25 median
 #&gt;    &lt;fct&gt;   &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
@@ -180,18 +180,17 @@ sd, median, min, max)</p>
 #&gt; #   mean.low.conf &lt;dbl&gt;, mean.high.conf &lt;dbl&gt;</div><div class='input'>
 <span class='co'># if you have just one variable per argument, you need not use `c()`</span>
 <span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_summary'>grouped_summary</a></span>(
-<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/ToothGrowth'>ToothGrowth</a></span>,
-<span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>supp</span>,
-<span class='kw'>measures</span> <span class='kw'>=</span> <span class='no'>len</span>,
-<span class='kw'>measures.type</span> <span class='kw'>=</span> <span class='st'>"numeric"</span>
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/ToothGrowth'>ToothGrowth</a></span>,
+  <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>supp</span>,
+  <span class='kw'>measures</span> <span class='kw'>=</span> <span class='no'>len</span>,
+  <span class='kw'>measures.type</span> <span class='kw'>=</span> <span class='st'>"numeric"</span>
 )</div><div class='output co'>#&gt; # A tibble: 2 x 16
 #&gt;   supp  type  variable missing complete     n  mean    sd   min   p25 median
 #&gt;   &lt;fct&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
 #&gt; 1 VC    nume~ len            0       30    30  17.0  8.27   4.2  11.2   16.5
 #&gt; 2 OJ    nume~ len            0       30    30  20.7  6.61   8.2  15.5   22.7
 #&gt; # ... with 5 more variables: p75 &lt;dbl&gt;, max &lt;dbl&gt;, std.error &lt;dbl&gt;,
-#&gt; #   mean.low.conf &lt;dbl&gt;, mean.high.conf &lt;dbl&gt;</div><div class='input'>
-</div></pre>
+#&gt; #   mean.low.conf &lt;dbl&gt;, mean.high.conf &lt;dbl&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

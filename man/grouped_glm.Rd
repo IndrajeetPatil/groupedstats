@@ -53,7 +53,6 @@ groupedstats::grouped_glm(
   grouping.vars = Class,
   family = stats::binomial(link = "logit")
 )
-
 }
 \seealso{
 grouped_lm, grouped_glmer

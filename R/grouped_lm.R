@@ -37,18 +37,18 @@
 #' @seealso grouped_slr
 #'
 #' @examples
-#'
+#' 
 #' # loading needed libraries
 #' library(ggplot2)
-#'
+#' 
 #' # getting tidy output of results
 #' grouped_lm(
 #'   data = mtcars,
 #'   grouping.vars = cyl,
-#'   formula = mpg ~ am*wt,
+#'   formula = mpg ~ am * wt,
 #'   output = "tidy"
 #' )
-#'
+#' 
 #' # getting model summaries
 #' # diamonds dataset from ggplot2
 #' grouped_lm(
@@ -57,7 +57,6 @@
 #'   formula = price ~ carat * clarity,
 #'   output = "glance"
 #' )
-#'
 #' @export
 #'
 

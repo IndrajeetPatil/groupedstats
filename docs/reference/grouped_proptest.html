@@ -135,16 +135,15 @@ test.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_proptest'>grouped_proptest</a></span>(
- <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>,
- <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>cyl</span>,
- <span class='kw'>measure</span> <span class='kw'>=</span> <span class='no'>am</span>
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>,
+  <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>cyl</span>,
+  <span class='kw'>measure</span> <span class='kw'>=</span> <span class='no'>am</span>
 )</div><div class='output co'>#&gt; # A tibble: 3 x 7
 #&gt;     cyl `0`    `1`    `Chi-squared`    df `p-value` significance
 #&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       
 #&gt; 1     6 57.14% 42.86%         0.143     1     0.705 ns          
 #&gt; 2     4 27.27% 72.73%         2.27      1     0.132 ns          
-#&gt; 3     8 85.71% 14.29%         7.14      1     0.008 **          </div><div class='input'>
-</div></pre>
+#&gt; 3     8 85.71% 14.29%         7.14      1     0.008 **          </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

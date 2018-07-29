@@ -45,14 +45,13 @@
 #' @seealso grouped_lm, grouped_glmer
 #'
 #' @examples
-#'
+#' 
 #' groupedstats::grouped_glm(
 #'   data = ggstatsplot::Titanic_full,
 #'   formula = Survived ~ Sex,
 #'   grouping.vars = Class,
 #'   family = stats::binomial(link = "logit")
 #' )
-#'
 #' @export
 #'
 
@@ -74,9 +73,11 @@ grouped_glm <- function(data,
     }
 
   # getting the dataframe ready
-  df <- dplyr::select(.data = data,
-                      !!!grouping.vars,
-                      dplyr::everything()) %>%
+  df <- dplyr::select(
+    .data = data,
+    !!!grouping.vars,
+    dplyr::everything()
+  ) %>%
     dplyr::group_by(.data = ., !!!grouping.vars) %>%
     tidyr::nest(data = .) %>%
     dplyr::ungroup(x = .)
@@ -86,18 +87,18 @@ grouped_glm <- function(data,
   # custom function to run tidy operation on every element of list column
   fnlisted <-
     function(list.col,
-             formula,
-             family,
-             output,
-             quick,
-             exponentiate) {
+                 formula,
+                 family,
+                 output,
+                 quick,
+                 exponentiate) {
       if (output == "tidy") {
         # dataframe with results from glm
         results_df <-
           list.col %>% # tidying up the output with broom
           purrr::map_dfr(
             .x = .,
-            .f = ~ broom::tidy(
+            .f = ~broom::tidy(
               x = stats::glm(
                 formula = stats::as.formula(formula),
                 data = (.),
@@ -118,7 +119,7 @@ grouped_glm <- function(data,
           list.col %>% # tidying up the output with broom
           purrr::map_dfr(
             .x = .,
-            .f = ~ broom::glance(
+            .f = ~broom::glance(
               x = stats::glm(
                 formula = stats::as.formula(formula),
                 data = (.),

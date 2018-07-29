@@ -24,11 +24,10 @@ Function to run proportion test on grouped data.
 \examples{
 
 groupedstats::grouped_proptest(
- data = mtcars,
- grouping.vars = cyl,
- measure = am
+  data = mtcars,
+  grouping.vars = cyl,
+  measure = am
 )
-
 }
 \author{
 Indrajeet Patil

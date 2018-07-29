@@ -43,7 +43,6 @@ groupedstats::grouped_wilcox(
   grouping.vars = clarity,
   paired = FALSE
 )
-
 }
 \author{
 Indrajeet Patil

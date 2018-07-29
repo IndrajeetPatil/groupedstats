@@ -5,8 +5,8 @@
 \title{Function to run analysis of variance (aov) across multiple grouping
 variables.}
 \usage{
-grouped_aov(data, grouping.vars, formula, effsize = "eta", output = "tidy",
-  nboot = 1000)
+grouped_aov(data, grouping.vars, formula, effsize = "eta",
+  output = "tidy", nboot = 1000)
 }
 \arguments{
 \item{data}{Dataframe from which variables are to be taken.}
@@ -41,12 +41,11 @@ variables.
 library(groupedstats)
 
 groupedstats::grouped_aov(
-formula = rating ~ belief * outcome * question,
-data = intent_morality,
-grouping.vars = item,
-effsize = "eta"
+  formula = rating ~ belief * outcome * question,
+  data = intent_morality,
+  grouping.vars = item,
+  effsize = "eta"
 )
-
 }
 \author{
 Indrajeet Patil

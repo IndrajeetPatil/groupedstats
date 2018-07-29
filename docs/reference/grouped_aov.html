@@ -111,8 +111,8 @@ variables.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>grouped_aov</span>(<span class='no'>data</span>, <span class='no'>grouping.vars</span>, <span class='no'>formula</span>, <span class='kw'>effsize</span> <span class='kw'>=</span> <span class='st'>"eta"</span>, <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>,
-  <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>1000</span>)</pre>
+    <pre class="usage"><span class='fu'>grouped_aov</span>(<span class='no'>data</span>, <span class='no'>grouping.vars</span>, <span class='no'>formula</span>, <span class='kw'>effsize</span> <span class='kw'>=</span> <span class='st'>"eta"</span>,
+  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>, <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>1000</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -161,10 +161,10 @@ available.</p>
 <span class='fu'>library</span>(<span class='no'>groupedstats</span>)
 
 <span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_aov'>grouped_aov</a></span>(
-<span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>rating</span> ~ <span class='no'>belief</span> * <span class='no'>outcome</span> * <span class='no'>question</span>,
-<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>intent_morality</span>,
-<span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>item</span>,
-<span class='kw'>effsize</span> <span class='kw'>=</span> <span class='st'>"eta"</span>
+  <span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>rating</span> ~ <span class='no'>belief</span> * <span class='no'>outcome</span> * <span class='no'>question</span>,
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>intent_morality</span>,
+  <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>item</span>,
+  <span class='kw'>effsize</span> <span class='kw'>=</span> <span class='st'>"eta"</span>
 )</div><div class='output co'>#&gt; # A tibble: 28 x 10
 #&gt;    item  term  F.value   df1   df2 partial.etasq conf.low conf.high   p.value
 #&gt;    &lt;fct&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
@@ -178,8 +178,7 @@ available.</p>
 #&gt;  8 Anna  beli~  331.       1   996       0.249   0.205       0.292  4.85e- 64
 #&gt;  9 Anna  outc~   86.2      1   996       0.0797  0.0505      0.113  9.68e- 20
 #&gt; 10 Anna  ques~   47.7      1   996       0.0457  0.0237      0.0734 8.76e- 12
-#&gt; # ... with 18 more rows, and 1 more variable: significance &lt;chr&gt;</div><div class='input'>
-</div></pre>
+#&gt; # ... with 18 more rows, and 1 more variable: significance &lt;chr&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

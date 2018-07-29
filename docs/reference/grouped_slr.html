@@ -150,10 +150,12 @@ analyses. The estimates are standardized, i.e. the <code>lm</code> model used is
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'># in case of just one grouping variable</span>
-<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_slr'>grouped_slr</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>,
-<span class='kw'>dep.vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>Sepal.Length</span>, <span class='no'>Petal.Length</span>),
-<span class='kw'>indep.vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>Sepal.Width</span>, <span class='no'>Petal.Width</span>),
-<span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>Species</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 9
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_slr'>grouped_slr</a></span>(
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>,
+  <span class='kw'>dep.vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>Sepal.Length</span>, <span class='no'>Petal.Length</span>),
+  <span class='kw'>indep.vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>Sepal.Width</span>, <span class='no'>Petal.Width</span>),
+  <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>Species</span>
+)</div><div class='output co'>#&gt; # A tibble: 6 x 9
 #&gt;   Species formula t.value estimate conf.low conf.high std.error  p.value
 #&gt;   &lt;fct&gt;   &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
 #&gt; 1 setosa  Sepal.~    7.68    0.743   0.548      0.937    0.0967 6.71e-10
@@ -162,8 +164,7 @@ analyses. The estimates are standardized, i.e. the <code>lm</code> model used is
 #&gt; 4 setosa  Petal.~    2.44    0.332   0.0578     0.605    0.136  1.86e- 2
 #&gt; 5 versic~ Petal.~    8.83    0.787   0.607      0.966    0.0891 1.27e-11
 #&gt; 6 virgin~ Petal.~    2.36    0.322   0.0474     0.597    0.137  2.25e- 2
-#&gt; # ... with 1 more variable: significance &lt;chr&gt;</div><div class='input'>
-</div></pre>
+#&gt; # ... with 1 more variable: significance &lt;chr&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

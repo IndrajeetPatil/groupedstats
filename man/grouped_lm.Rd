@@ -35,7 +35,7 @@ library(ggplot2)
 grouped_lm(
   data = mtcars,
   grouping.vars = cyl,
-  formula = mpg ~ am*wt,
+  formula = mpg ~ am * wt,
   output = "tidy"
 )
 
@@ -47,7 +47,6 @@ grouped_lm(
   formula = price ~ carat * clarity,
   output = "glance"
 )
-
 }
 \seealso{
 grouped_slr

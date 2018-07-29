@@ -5,10 +5,10 @@
 \title{Function to run generalized linear mixed-effects model (glmer) across multiple
 grouping variables.}
 \usage{
-grouped_glmer(data, grouping.vars, formula, family = stats::binomial(link =
-  "probit"), control = lme4::glmerControl(optimizer = "bobyqa", boundary.tol =
-  1e-07, calc.derivs = FALSE, use.last.params = FALSE, optCtrl = list(maxfun =
-  2e+09)), output = "tidy")
+grouped_glmer(data, grouping.vars, formula, family = stats::binomial(link
+  = "probit"), control = lme4::glmerControl(optimizer = "bobyqa",
+  boundary.tol = 1e-07, calc.derivs = FALSE, use.last.params = FALSE,
+  optCtrl = list(maxfun = 2e+09)), output = "tidy")
 }
 \arguments{
 \item{data}{Dataframe from which variables are to be taken.}
@@ -71,7 +71,6 @@ grouping variables.
 #   optCtrl = list(maxfun = 2e9)
 # ),
 # grouping.vars = year)
-
 }
 \seealso{
 grouped_lmer

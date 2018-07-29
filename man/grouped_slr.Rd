@@ -31,11 +31,12 @@ multiple grouping variables.
 \examples{
 
 # in case of just one grouping variable
-groupedstats::grouped_slr(data = iris,
-dep.vars = c(Sepal.Length, Petal.Length),
-indep.vars = c(Sepal.Width, Petal.Width),
-grouping.vars = Species)
-
+groupedstats::grouped_slr(
+  data = iris,
+  dep.vars = c(Sepal.Length, Petal.Length),
+  indep.vars = c(Sepal.Width, Petal.Width),
+  grouping.vars = Species
+)
 }
 \seealso{
 grouped_lm

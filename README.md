@@ -23,7 +23,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--07--26-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--07--29-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
@@ -65,8 +65,13 @@ To get the latest, stable CRAN release (0.0.2):
 utils::install.packages(pkgs = "groupedstats") 
 ```
 
-You can get the development version from GitHub. If you are in hurry and
-want to reduce the time of installation, prefer-
+You can get the **development** version of the package from GitHub
+(`0.0.2.9000`). To see what new changes (and bug fixes) have been made
+to the package since the last release on `CRAN`, you can check the
+detailed log of changes here:
+<https://indrajeetpatil.github.io/groupedstats/news/index.html>
+
+If you are in hurry and want to reduce the time of installation, prefer-
 
 ``` r
 # needed package to download from GitHub repo
@@ -88,8 +93,11 @@ devtools::install_github(repo = "IndrajeetPatil/groupedstats", # package path on
 
 ## Help
 
-Documentation for any function can be accessed with the standard `help`
-command-
+There is a dedicated website to `groupedstats`, which is updated after
+every new commit: <https://indrajeetpatil.github.io/groupedstats/>.
+
+In `R`, documentation for any function can be accessed with the standard
+`help` command-
 
 ``` r
 ?grouped_aov
@@ -104,6 +112,30 @@ command-
 ?grouped_ttest
 ?grouped_wilcox
 ```
+
+Another handy tool to see arguments to any of the functions is `args`.
+For example-
+
+``` r
+args(name = groupedstats::grouped_ttest)
+#> function (data, dep.vars, indep.vars, grouping.vars, paired = FALSE, 
+#>     var.equal = FALSE) 
+#> NULL
+```
+
+In case you want to look at the function body for any of the functions,
+just type the name of the function without the paranetheses:
+
+``` r
+groupedstats::grouped_lm
+```
+
+If you are not familiar either with what the namespace `::` does or how
+to use pipe operator `%>%`, something this package and its documentation
+relies a lot on, you can check out these links-
+
+  - <http://r-pkgs.had.co.nz/namespace.html>
+  - <http://r4ds.had.co.nz/pipes.html>
 
 ## Usage
 

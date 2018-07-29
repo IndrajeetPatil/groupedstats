@@ -29,7 +29,7 @@
 #' @importFrom tidyr nest
 #'
 #' @examples
-#'
+#' 
 #' # only with one grouping variable
 #' groupedstats::grouped_wilcox(
 #'   data = dplyr::filter(.data = ggplot2::diamonds, color == "E" | color == "J"),
@@ -38,7 +38,6 @@
 #'   grouping.vars = clarity,
 #'   paired = FALSE
 #' )
-#'
 #' @export
 #'
 

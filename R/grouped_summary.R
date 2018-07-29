@@ -37,23 +37,22 @@
 #' @importFrom stats qt
 #'
 #' @examples
-#'
+#' 
 #' # another possibility
 #' groupedstats::grouped_summary(
-#' data = datasets::iris,
-#' grouping.vars = Species,
-#' measures = Sepal.Length:Petal.Width,
-#' measures.type = "numeric"
+#'   data = datasets::iris,
+#'   grouping.vars = Species,
+#'   measures = Sepal.Length:Petal.Width,
+#'   measures.type = "numeric"
 #' )
-#'
+#' 
 #' # if you have just one variable per argument, you need not use `c()`
 #' groupedstats::grouped_summary(
-#' data = datasets::ToothGrowth,
-#' grouping.vars = supp,
-#' measures = len,
-#' measures.type = "numeric"
+#'   data = datasets::ToothGrowth,
+#'   grouping.vars = supp,
+#'   measures = len,
+#'   measures.type = "numeric"
 #' )
-#'
 #' @export
 #'
 

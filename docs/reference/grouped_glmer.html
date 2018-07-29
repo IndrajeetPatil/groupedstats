@@ -111,10 +111,10 @@ grouping variables.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>grouped_glmer</span>(<span class='no'>data</span>, <span class='no'>grouping.vars</span>, <span class='no'>formula</span>, <span class='kw'>family</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/stats/topics/family'>binomial</a></span>(<span class='kw'>link</span> <span class='kw'>=</span>
-  <span class='st'>"probit"</span>), <span class='kw'>control</span> <span class='kw'>=</span> <span class='kw pkg'>lme4</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/lme4/topics/lmerControl'>glmerControl</a></span>(<span class='kw'>optimizer</span> <span class='kw'>=</span> <span class='st'>"bobyqa"</span>, <span class='kw'>boundary.tol</span> <span class='kw'>=</span>
-  <span class='fl'>1e-07</span>, <span class='kw'>calc.derivs</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>use.last.params</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>optCtrl</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>maxfun</span> <span class='kw'>=</span>
-  <span class='fl'>2e+09</span>)), <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>)</pre>
+    <pre class="usage"><span class='fu'>grouped_glmer</span>(<span class='no'>data</span>, <span class='no'>grouping.vars</span>, <span class='no'>formula</span>, <span class='kw'>family</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/stats/topics/family'>binomial</a></span>(<span class='kw'>link</span>
+  <span class='kw'>=</span> <span class='st'>"probit"</span>), <span class='kw'>control</span> <span class='kw'>=</span> <span class='kw pkg'>lme4</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/lme4/topics/lmerControl'>glmerControl</a></span>(<span class='kw'>optimizer</span> <span class='kw'>=</span> <span class='st'>"bobyqa"</span>,
+  <span class='kw'>boundary.tol</span> <span class='kw'>=</span> <span class='fl'>1e-07</span>, <span class='kw'>calc.derivs</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>use.last.params</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>optCtrl</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>maxfun</span> <span class='kw'>=</span> <span class='fl'>2e+09</span>)), <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -195,7 +195,6 @@ summaries.</p>
 #   optCtrl = list(maxfun = 2e9)
 # ),
 # grouping.vars = year)
-
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

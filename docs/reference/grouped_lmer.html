@@ -113,8 +113,8 @@ grouping variables.</p>
 
     <pre class="usage"><span class='fu'>grouped_lmer</span>(<span class='no'>data</span>, <span class='no'>grouping.vars</span>, <span class='no'>formula</span>, <span class='kw'>REML</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>control</span> <span class='kw'>=</span> <span class='kw pkg'>lme4</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/lme4/topics/lmerControl'>lmerControl</a></span>(<span class='kw'>optimizer</span> <span class='kw'>=</span> <span class='st'>"bobyqa"</span>, <span class='kw'>restart_edge</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>boundary.tol</span> <span class='kw'>=</span> <span class='fl'>1e-07</span>, <span class='kw'>calc.derivs</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>use.last.params</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>optCtrl</span> <span class='kw'>=</span>
-  <span class='fu'>list</span>(<span class='kw'>maxfun</span> <span class='kw'>=</span> <span class='fl'>2e+09</span>)), <span class='kw'>p.kr</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>)</pre>
+  <span class='kw'>boundary.tol</span> <span class='kw'>=</span> <span class='fl'>1e-07</span>, <span class='kw'>calc.derivs</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>use.last.params</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>optCtrl</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>maxfun</span> <span class='kw'>=</span> <span class='fl'>2e+09</span>)), <span class='kw'>p.kr</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -184,10 +184,12 @@ summaries.</p>
 <span class='fu'>library</span>(<span class='no'>gapminder</span>)
 
 <span class='co'># getting tidy output of results</span>
-<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_lmer'>grouped_lmer</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>gapminder</span>,
-             <span class='kw'>formula</span> <span class='kw'>=</span> <span class='fu'>scale</span>(<span class='no'>lifeExp</span>) ~ <span class='fu'>scale</span>(<span class='no'>gdpPercap</span>) + (<span class='no'>gdpPercap</span> <span class='kw'>|</span> <span class='no'>continent</span>),
-             <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>year</span>,
-             <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>)</div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; # A tibble: 24 x 9
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_lmer'>grouped_lmer</a></span>(
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>gapminder</span>,
+  <span class='kw'>formula</span> <span class='kw'>=</span> <span class='fu'>scale</span>(<span class='no'>lifeExp</span>) ~ <span class='fu'>scale</span>(<span class='no'>gdpPercap</span>) + (<span class='no'>gdpPercap</span> <span class='kw'>|</span> <span class='no'>continent</span>),
+  <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>year</span>,
+  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>
+)</div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; # A tibble: 24 x 9
 #&gt;     year term  estimate std.error t.value conf.low conf.high p.value
 #&gt;    &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
 #&gt;  1  1952 (Int~    0.230     0.354   0.651   -0.463     0.923 0.515  
@@ -202,11 +204,13 @@ summaries.</p>
 #&gt; 10  1972 scal~    0.461     0.167   2.76     0.133     0.788 0.00582
 #&gt; # ... with 14 more rows, and 1 more variable: significance &lt;chr&gt;</div><div class='input'>
 <span class='co'># getting model summaries</span>
-<span class='fu'>grouped_lmer</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>diamonds</span>,
-             <span class='kw'>formula</span> <span class='kw'>=</span> <span class='fu'>scale</span>(<span class='no'>price</span>) ~ <span class='fu'>scale</span>(<span class='no'>carat</span>) + (<span class='no'>carat</span> <span class='kw'>|</span> <span class='no'>color</span>),
-             <span class='kw'>REML</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-             <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>cut</span>, <span class='no'>clarity</span>),
-             <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"glance"</span>)</div><div class='output co'>#&gt; # A tibble: 40 x 8
+<span class='fu'>grouped_lmer</span>(
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>diamonds</span>,
+  <span class='kw'>formula</span> <span class='kw'>=</span> <span class='fu'>scale</span>(<span class='no'>price</span>) ~ <span class='fu'>scale</span>(<span class='no'>carat</span>) + (<span class='no'>carat</span> <span class='kw'>|</span> <span class='no'>color</span>),
+  <span class='kw'>REML</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>cut</span>, <span class='no'>clarity</span>),
+  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"glance"</span>
+)</div><div class='output co'>#&gt; # A tibble: 40 x 8
 #&gt;    cut       clarity sigma logLik    AIC    BIC deviance df.residual
 #&gt;    &lt;ord&gt;     &lt;ord&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt;
 #&gt;  1 Ideal     SI2     0.252 -134.   279.   315.     267.         2592
@@ -219,8 +223,7 @@ summaries.</p>
 #&gt;  8 Very Good SI1     0.256 -204.   420.   456.     408.         3234
 #&gt;  9 Fair      VS2     0.287  -59.8  132.   153.     120.          255
 #&gt; 10 Very Good VS1     0.246  -52.4  117.   150.     105.         1769
-#&gt; # ... with 30 more rows</div><div class='input'>
-</div></pre>
+#&gt; # ... with 30 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

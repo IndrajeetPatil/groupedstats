@@ -152,7 +152,7 @@ which will return model summaries.</p></td>
 <span class='fu'>grouped_lm</span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>,
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>cyl</span>,
-  <span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>mpg</span> ~ <span class='no'>am</span>*<span class='no'>wt</span>,
+  <span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>mpg</span> ~ <span class='no'>am</span> * <span class='no'>wt</span>,
   <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>
 )</div><div class='output co'>#&gt; # A tibble: 12 x 9
 #&gt;      cyl term  estimate std.error t.value conf.low conf.high p.value
@@ -191,8 +191,7 @@ which will return model summaries.</p></td>
 #&gt;  9 Fair  E         0.917         0.912  883.      179.    14  -1830.  3690.
 #&gt; 10 Ideal J         0.955         0.955  953.     1259.    16  -7409. 14852.
 #&gt; # ... with 25 more rows, and 5 more variables: BIC &lt;dbl&gt;, deviance &lt;dbl&gt;,
-#&gt; #   df.residual &lt;int&gt;, p.value &lt;dbl&gt;, significance &lt;chr&gt;</div><div class='input'>
-</div></pre>
+#&gt; #   df.residual &lt;int&gt;, p.value &lt;dbl&gt;, significance &lt;chr&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

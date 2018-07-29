@@ -39,24 +39,27 @@
 #'
 #'
 #' @examples
-#'
+#' 
 #' # loading libraries containing data
 #' library(ggplot2)
 #' library(gapminder)
-#'
+#' 
 #' # getting tidy output of results
-#' groupedstats::grouped_lmer(data = gapminder,
-#'              formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap | continent),
-#'              grouping.vars = year,
-#'              output = "tidy")
-#'
+#' groupedstats::grouped_lmer(
+#'   data = gapminder,
+#'   formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap | continent),
+#'   grouping.vars = year,
+#'   output = "tidy"
+#' )
+#' 
 #' # getting model summaries
-#' grouped_lmer(data = diamonds,
-#'              formula = scale(price) ~ scale(carat) + (carat | color),
-#'              REML = FALSE,
-#'              grouping.vars = c(cut, clarity),
-#'              output = "glance")
-#'
+#' grouped_lmer(
+#'   data = diamonds,
+#'   formula = scale(price) ~ scale(carat) + (carat | color),
+#'   REML = FALSE,
+#'   grouping.vars = c(cut, clarity),
+#'   output = "glance"
+#' )
 #' @export
 #'
 
