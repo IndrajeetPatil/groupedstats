@@ -51,9 +51,9 @@ dataframe. This is a common situation, as illustrated by few example cases-
     subjective rating of emotional intensity and reaction time).
 4. Combination of all of the above.
 
-This is first installment of the package that provides only the most basic
-statistical operations. The next releases will expand on the existing
-functionality. 
+This package is still work in progress and it currently supports only the most
+basic statistical operations. The next releases will expand on the existing
+functionality.
 
 ## Installation
 
