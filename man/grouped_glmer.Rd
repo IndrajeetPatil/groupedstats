@@ -49,13 +49,13 @@ grouping variables.
 # commented because the examples take too much time
 
 # categorical outcome; binomial family
-# groupedstats::grouped_glmer(
-# formula = Survived ~ Age + (Age |
-#                             Class),
-# family = stats::binomial(link = "probit"),
-# data = groupedstats::Titanic_full,
-# grouping.vars = Sex
-# )
+groupedstats::grouped_glmer(
+formula = Survived ~ Age + (Age |
+                             Class),
+family = stats::binomial(link = "probit"),
+data = groupedstats::Titanic_full,
+grouping.vars = Sex
+)
 
 # continuous outcome; gaussian family
 # library(gapminder)

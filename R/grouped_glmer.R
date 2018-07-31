@@ -38,21 +38,21 @@
 #' @seealso grouped_lmer
 #'
 #' @examples
-#' 
+#'
 #' # commented because the examples take too much time
-#' 
+#'
 #' # categorical outcome; binomial family
-#' # groupedstats::grouped_glmer(
-#' # formula = Survived ~ Age + (Age |
-#' #                             Class),
-#' # family = stats::binomial(link = "probit"),
-#' # data = groupedstats::Titanic_full,
-#' # grouping.vars = Sex
-#' # )
-#' 
+#' groupedstats::grouped_glmer(
+#' formula = Survived ~ Age + (Age |
+#'                              Class),
+#' family = stats::binomial(link = "probit"),
+#' data = groupedstats::Titanic_full,
+#' grouping.vars = Sex
+#' )
+#'
 #' # continuous outcome; gaussian family
 #' # library(gapminder)
-#' 
+#'
 #' # groupedstats::grouped_glmer(data = gapminder,
 #' # formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap | continent),
 #' # family = stats::gaussian(),
