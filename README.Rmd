@@ -52,8 +52,8 @@ dataframe. This is a common situation, as illustrated by few example cases-
 4. Combination of all of the above.
 
 This package is still work in progress and it currently supports only the most
-basic statistical operations. The next releases will expand on the existing
-functionality.
+basic statistical operations (from `stats` and `lme4` package). The next
+releases will expand on the existing functionality (e.g., `ordinal`).
 
 ## Installation
 
