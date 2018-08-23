@@ -8,6 +8,14 @@ fortran: true
 # Note: http test servers are flaky and we want to minimze false positives
 # so we skip examples and vignettes (but not unit tests) on OS X.
 
+r:
+ - 3.1
+ - 3.2
+ - 3.3
+ - oldrel
+ - release
+ - devel
+
 matrix:
   include:
     - os: linux
