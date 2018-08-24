@@ -578,6 +578,32 @@ works:
 
   - If just one independent variable is provided for multiple dependent variables, it will be used as a common variable. 
   - If you want to use a selection of variables, you need not use `c()`.
+
+## Extending with `purrr`
+
+`groupedstats` functions can be further extended with `purrr` package. For
+example, let's say we want to run the same linear regression across multiple
+grouping variables but want to use different formulas-
+
+```{r purrr1}
+results_df <- purrr::pmap_dfr(
+  .l = list(
+    data = list(gapminder::gapminder),
+    grouping.vars = alist(country),
+    formula = list(
+      lifeExp ~ year,           # formula 1
+      lifeExp ~ log(year),      # formula 2
+      log(lifeExp) ~ year,      # formula 3
+      log(lifeExp) ~ log(year)  # formula 4
+    ),
+    output = list("glance")
+  ),
+  .f = groupedstats::grouped_lm,
+  .id = "formula"
+)
+
+head(results_df)
+```
  
 ## Suggestions
 
