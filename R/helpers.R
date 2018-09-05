@@ -3,7 +3,7 @@
 #' @aliases signif_column
 #' @author Indrajeet Patil
 #' @description This function will add a new column to a dataframe containing
-#'   p-values
+#'   *p*-values
 #' @return Returns the originally entered object (either a vector or a
 #'   dataframe) in tibble format with an additional column corresponding to
 #'   statistical significance.
@@ -12,7 +12,15 @@
 #'   be taken.
 #' @param p The column containing p-values.
 #'
-#'
+#' @importFrom dplyr group_by
+#' @importFrom dplyr summarize
+#' @importFrom dplyr n
+#' @importFrom dplyr arrange
+#' @importFrom dplyr mutate
+#' @importFrom dplyr mutate_at
+#' @importFrom dplyr mutate_if
+#' @importFrom magrittr "%<>%"
+#' @importFrom magrittr "%>%"
 #' @importFrom broom tidy
 #' @importFrom crayon red
 #' @importFrom crayon blue
@@ -20,21 +28,22 @@
 #' @importFrom stats lm
 #' @importFrom tibble as_data_frame
 #'
-#' @keywords internal
 #'
-#' @note This is a helper function used internally in the package and not
-#'   exported. In case you want to use it, you can do so by
-#'   `groupedstats:::signif_column`. Note that it is `:::` and not `::`.
+#' @keywords internal
 #'
 
 signif_column <- function(data = NULL, p) {
-  # storing variable name to be assigned later
-  p_lab <- colnames(dplyr::select(
-    .data = data,
-    !!rlang::enquo(p)
-  ))
+
   # if dataframe is provided
   if (!is.null(data)) {
+
+    # storing variable name to be assigned later
+    p_lab <- colnames(dplyr::select(
+      .data = data,
+      !!rlang::enquo(p)
+    ))
+
+    # preparing dataframe
     df <-
       dplyr::select(
         .data = data,
@@ -43,17 +52,32 @@ signif_column <- function(data = NULL, p) {
         dplyr::everything()
       )
   } else {
+
     # if only vector is provided
     df <-
-      base::cbind.data.frame(p = p) # column corresponding to p-values
+      base::cbind.data.frame(p = p)
   }
 
-  # make sure the p-value column is numeric; if not, convert it to numeric and give a warning to the user
+  # make sure the p-value column is numeric; if not, convert it to numeric
   if (!is.numeric(df$p)) {
+
+    # display message about conversion
+    base::message(cat(
+      crayon::green("Note:"),
+      crayon::blue(
+        "The entered vector is of class",
+        crayon::yellow(class(df$p)[[1]]),
+        "; attempting to convert it to numeric."
+      )
+    ))
+
+    # conversion
     df$p <- as.numeric(as.character(df$p))
   }
-  # add new significance column based on standard APA guidelines for describing different levels of significance
-  df <- df %>%
+
+  # add new significance column based on standard APA guidelines for describing
+  # different levels of significance
+  df %<>%
     dplyr::mutate(
       .data = .,
       significance = dplyr::case_when(
@@ -70,14 +94,18 @@ signif_column <- function(data = NULL, p) {
       )
     ) %>%
     tibble::as_data_frame(x = .) # convert to tibble dataframe
+
   # change back from the generic p-value to the original name that was provided by the user for the p-value
   if (!is.null(data)) {
+
     # reordering the dataframe
-    df <- df %>%
+    df %<>%
       dplyr::select(.data = ., -p, -significance, dplyr::everything())
+
     # renaming the p-value variable with the name provided by the user
     colnames(df)[which(names(df) == "p")] <- p_lab
   }
+
   # return the final tibble dataframe
   return(df)
 }
@@ -101,9 +129,6 @@ signif_column <- function(data = NULL, p) {
 #'
 #' @keywords internal
 #'
-#' @note This is a helper function used internally in the package and not
-#'   exported. In case you want to use it, you can do so by
-#'   `groupedstats:::specify_decimal_p`. Note that it is `:::` and not `::`.
 #'
 
 specify_decimal_p <- function(x,
@@ -165,12 +190,12 @@ specify_decimal_p <- function(x,
 #' @importFrom broom tidy
 #'
 #' @examples
-#' 
+#'
 #' # lm object
 #' # lm_effsize_ci(object = stats::lm(formula = wt ~ am * cyl, data = mtcars),
 #' # effsize = "omega",
 #' # partial = TRUE)
-#' 
+#'
 #' # aov object
 #' # lm_effsize_ci(object = stats::aov(formula = wt ~ am * cyl, data = mtcars),
 #' # effsize = "eta",

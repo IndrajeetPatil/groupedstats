@@ -45,7 +45,7 @@
 #' @seealso grouped_lm, grouped_glmer
 #'
 #' @examples
-#' 
+#'
 #' groupedstats::grouped_glm(
 #'   data = ggstatsplot::Titanic_full,
 #'   formula = Survived ~ Sex,
@@ -161,7 +161,7 @@ grouped_glm <- function(data,
   # add a column with significance labels if p-values are present
   if ("p.value" %in% names(combined_df)) {
     combined_df %<>%
-      ggstatsplot:::signif_column(data = ., p = p.value)
+      signif_column(data = ., p = p.value)
   }
 
   return(combined_df)

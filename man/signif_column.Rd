@@ -19,12 +19,7 @@ statistical significance.
 }
 \description{
 This function will add a new column to a dataframe containing
-p-values
-}
-\note{
-This is a helper function used internally in the package and not
-exported. In case you want to use it, you can do so by
-\code{groupedstats:::signif_column}. Note that it is \code{:::} and not \code{::}.
+\emph{p}-values
 }
 \author{
 Indrajeet Patil

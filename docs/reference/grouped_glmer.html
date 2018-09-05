@@ -170,33 +170,67 @@ summaries.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-# commented out because the examples are time-consuming and the R CMD CHECK
-# makes a NOTE (> 5s)
+<span class='co'># commented out because the examples are time-consuming and the R CMD CHECK</span>
+<span class='co'># makes a NOTE (&gt; 5s)</span>
 
-# categorical outcome; binomial family
-# groupedstats::grouped_glmer(
-# formula = Survived ~ Age + (Age |
-#                              Class),
-# family = stats::binomial(link = "probit"),
-# data = groupedstats::Titanic_full,
-# grouping.vars = Sex
-# )
+<span class='co'># categorical outcome; binomial family</span>
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_glmer'>grouped_glmer</a></span>(
+  <span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>Survived</span> ~ <span class='no'>Age</span> + (<span class='no'>Age</span> <span class='kw'>|</span>
+    <span class='no'>Class</span>),
+  <span class='kw'>family</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/stats/topics/family'>binomial</a></span>(<span class='kw'>link</span> <span class='kw'>=</span> <span class='st'>"probit"</span>),
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/sample.html'>sample_frac</a></span>(<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/Titanic_full'>Titanic_full</a></span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>0.3</span>),
+  <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>Sex</span>
+)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; # A tibble: 4 x 9
+#&gt;   Sex   term  estimate std.error statistic conf.low conf.high p.value
+#&gt;   &lt;fct&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+#&gt; 1 Male  (Int~   -0.720     0.156     -4.62   -1.03     -0.414 3.83e-6
+#&gt; 2 Male  AgeC~    1.45      0.540      2.69    0.395     2.51  7.12e-3
+#&gt; 3 Fema~ (Int~    1.23      0.457      2.70    0.336     2.13  7.02e-3
+#&gt; 4 Fema~ AgeC~    1.18      0.803      1.47   -0.396     2.75  1.43e-1
+#&gt; # ... with 1 more variable: significance &lt;chr&gt;</div><div class='input'>
+<span class='co'># continuous outcome; gaussian family</span>
+<span class='fu'>library</span>(<span class='no'>gapminder</span>)
 
-# continuous outcome; gaussian family
-# library(gapminder)
-
-# groupedstats::grouped_glmer(data = gapminder,
-# formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap | continent),
-# family = stats::gaussian(),
-# control = lme4::lmerControl(
-#  optimizer = "bobyqa",
-#   restart_edge = TRUE,
-#   boundary.tol = 1e-7,
-#   calc.derivs = FALSE,
-#   optCtrl = list(maxfun = 2e9)
-# ),
-# grouping.vars = year)
-</div></pre>
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_glmer'>grouped_glmer</a></span>(
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/sample.html'>sample_frac</a></span>(<span class='no'>gapminder</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>0.3</span>),
+  <span class='kw'>formula</span> <span class='kw'>=</span> <span class='fu'>scale</span>(<span class='no'>lifeExp</span>) ~ <span class='fu'>scale</span>(<span class='no'>gdpPercap</span>) + (<span class='no'>gdpPercap</span> <span class='kw'>|</span> <span class='no'>continent</span>),
+  <span class='kw'>family</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/stats/topics/family'>gaussian</a></span>(),
+  <span class='kw'>control</span> <span class='kw'>=</span> <span class='kw pkg'>lme4</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/lme4/topics/lmerControl'>lmerControl</a></span>(
+    <span class='kw'>optimizer</span> <span class='kw'>=</span> <span class='st'>"bobyqa"</span>,
+    <span class='kw'>restart_edge</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+    <span class='kw'>boundary.tol</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>,
+    <span class='kw'>calc.derivs</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+    <span class='kw'>optCtrl</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>maxfun</span> <span class='kw'>=</span> <span class='fl'>2e9</span>)
+  ),
+  <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>year</span>
+)</div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; # A tibble: 24 x 7
+#&gt;     year term             estimate std.error statistic conf.low conf.high
+#&gt;    &lt;int&gt; &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+#&gt;  1  1962 (Intercept)       -0.0655     0.196    -0.334  -0.450      0.319
+#&gt;  2  1962 scale(gdpPercap)   0.457      0.208     2.20    0.0496     0.864
+#&gt;  3  1952 (Intercept)        0.181      0.509     0.357  -0.816      1.18 
+#&gt;  4  1952 scale(gdpPercap)   1.54       0.999     1.54   -0.417      3.50 
+#&gt;  5  1972 (Intercept)        0.106      0.302     0.352  -0.486      0.699
+#&gt;  6  1972 scale(gdpPercap)   0.781      0.421     1.85   -0.0442     1.61 
+#&gt;  7  1992 (Intercept)        0.446      0.107     4.18    0.237      0.655
+#&gt;  8  1992 scale(gdpPercap)   1.12       0.432     2.59    0.272      1.97 
+#&gt;  9  1987 (Intercept)        0.278      0.201     1.38   -0.116      0.671
+#&gt; 10  1987 scale(gdpPercap)   0.636      0.238     2.68    0.170      1.10 
+#&gt; # ... with 14 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -219,7 +253,7 @@ Indrajeet Patil
 
       <footer>
       <div class="copyright">
-  <p>Developed by Indrajeet Patil.</p>
+  <p>Developed by <a href='https://sites.google.com/site/indrajeetspatilmorality/'>Indrajeet Patil</a>.</p>
 </div>
 
 <div class="pkgdown">

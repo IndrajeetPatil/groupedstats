@@ -22,11 +22,6 @@ Function to format an R object for pretty printing with a
 specified (\code{k}) number of decimal places. The function also allows highly
 significant p-values to be denoted as "p < 0.001" rather than "p = 0.000".
 }
-\note{
-This is a helper function used internally in the package and not
-exported. In case you want to use it, you can do so by
-\code{groupedstats:::specify_decimal_p}. Note that it is \code{:::} and not \code{::}.
-}
 \author{
 Indrajeet Patil
 }

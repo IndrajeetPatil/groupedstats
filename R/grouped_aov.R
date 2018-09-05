@@ -39,10 +39,10 @@
 #' @importFrom rlang quo
 #'
 #' @examples
-#' 
+#'
 #' # uses dataset included in the groupedstats package
 #' library(groupedstats)
-#' 
+#'
 #' groupedstats::grouped_aov(
 #'   formula = rating ~ belief * outcome * question,
 #'   data = intent_morality,
@@ -171,12 +171,12 @@ grouped_aov <- function(data,
   # add a column with significance labels if p-values are present
   if ("p.value" %in% names(combined_df)) {
     combined_df %<>%
-      ggstatsplot:::signif_column(data = ., p = p.value)
+      signif_column(data = ., p = p.value)
   }
 
   if ("adj.p.value" %in% names(combined_df)) {
     combined_df %<>%
-      ggstatsplot:::signif_column(data = ., p = adj.p.value)
+      signif_column(data = ., p = adj.p.value)
 
     # display note about adjustment
     base::message(cat(

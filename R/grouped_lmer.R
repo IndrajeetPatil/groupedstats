@@ -39,22 +39,24 @@
 #'
 #'
 #' @examples
-#' 
+#'
 #' # loading libraries containing data
 #' library(ggplot2)
 #' library(gapminder)
-#' 
+#'
 #' # getting tidy output of results
+#' # let's use only 50% data to speed it up
 #' groupedstats::grouped_lmer(
-#'   data = gapminder,
+#'   data = dplyr::sample_frac(gapminder, size = 0.5),
 #'   formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap | continent),
 #'   grouping.vars = year,
 #'   output = "tidy"
 #' )
-#' 
+#'
 #' # getting model summaries
+#' # let's use only 50% data to speed it up
 #' grouped_lmer(
-#'   data = diamonds,
+#'   data = ggplot2::diamonds,
 #'   formula = scale(price) ~ scale(carat) + (carat | color),
 #'   REML = FALSE,
 #'   grouping.vars = c(cut, clarity),
@@ -213,7 +215,7 @@ grouped_lmer <- function(data,
   # add a column with significance labels if p-values are present
   if ("p.value" %in% names(combined_df)) {
     combined_df %<>%
-      ggstatsplot:::signif_column(data = ., p = p.value)
+      signif_column(data = ., p = p.value)
   }
 
   # return the final combined dataframe

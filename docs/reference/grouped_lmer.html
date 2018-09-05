@@ -184,8 +184,9 @@ summaries.</p>
 <span class='fu'>library</span>(<span class='no'>gapminder</span>)
 
 <span class='co'># getting tidy output of results</span>
+<span class='co'># let's use only 50% data to speed it up</span>
 <span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_lmer'>grouped_lmer</a></span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>gapminder</span>,
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/sample.html'>sample_frac</a></span>(<span class='no'>gapminder</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>0.5</span>),
   <span class='kw'>formula</span> <span class='kw'>=</span> <span class='fu'>scale</span>(<span class='no'>lifeExp</span>) ~ <span class='fu'>scale</span>(<span class='no'>gdpPercap</span>) + (<span class='no'>gdpPercap</span> <span class='kw'>|</span> <span class='no'>continent</span>),
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>year</span>,
   <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>
@@ -204,20 +205,21 @@ summaries.</p>
 #&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; # A tibble: 24 x 9
 #&gt;     year term  estimate std.error t.value conf.low conf.high p.value
 #&gt;    &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-#&gt;  1  1952 (Int~    0.230     0.354   0.651   -0.463     0.923 0.515  
-#&gt;  2  1952 scal~    0.952     0.336   2.83     0.292     1.61  0.00467
-#&gt;  3  1957 (Int~    0.234     0.305   0.767   -0.364     0.831 0.443  
-#&gt;  4  1957 scal~    0.851     0.307   2.77     0.250     1.45  0.00555
-#&gt;  5  1962 (Int~    0.250     0.339   0.736   -0.415     0.915 0.462  
-#&gt;  6  1962 scal~    0.615     0.235   2.62     0.154     1.08  0.00888
-#&gt;  7  1967 (Int~    0.227     0.310   0.731   -0.381     0.835 0.465  
-#&gt;  8  1967 scal~    0.418     0.137   3.05     0.149     0.687 0.00231
-#&gt;  9  1972 (Int~    0.262     0.340   0.771   -0.405     0.929 0.441  
-#&gt; 10  1972 scal~    0.461     0.167   2.76     0.133     0.788 0.00582
+#&gt;  1  1977 (Int~    0.159    0.328    0.486  -0.484      0.803 6.27e-1
+#&gt;  2  1977 scal~    0.410    0.135    3.04    0.146      0.675 2.36e-3
+#&gt;  3  1972 (Int~    0.235    0.308    0.761  -0.369      0.839 4.46e-1
+#&gt;  4  1972 scal~    0.552    0.231    2.39    0.0988     1.01  1.70e-2
+#&gt;  5  1962 (Int~    0.216    0.344    0.629  -0.458      0.891 5.29e-1
+#&gt;  6  1962 scal~    0.757    0.372    2.04    0.0285     1.49  4.17e-2
+#&gt;  7  1967 (Int~    0.231    0.372    0.619  -0.499      0.960 5.36e-1
+#&gt;  8  1967 scal~    0.266    0.0796   3.35    0.110      0.422 8.21e-4
+#&gt;  9  1952 (Int~    0.207    0.271    0.766  -0.323      0.738 4.44e-1
+#&gt; 10  1952 scal~    0.591    0.126    4.69    0.344      0.838 2.74e-6
 #&gt; # ... with 14 more rows, and 1 more variable: significance &lt;chr&gt;</div><div class='input'>
 <span class='co'># getting model summaries</span>
+<span class='co'># let's use only 50% data to speed it up</span>
 <span class='fu'>grouped_lmer</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>diamonds</span>,
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/diamonds'>diamonds</a></span>,
   <span class='kw'>formula</span> <span class='kw'>=</span> <span class='fu'>scale</span>(<span class='no'>price</span>) ~ <span class='fu'>scale</span>(<span class='no'>carat</span>) + (<span class='no'>carat</span> <span class='kw'>|</span> <span class='no'>color</span>),
   <span class='kw'>REML</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>cut</span>, <span class='no'>clarity</span>),
@@ -296,7 +298,7 @@ Indrajeet Patil
 
       <footer>
       <div class="copyright">
-  <p>Developed by Indrajeet Patil.</p>
+  <p>Developed by <a href='https://sites.google.com/site/indrajeetspatilmorality/'>Indrajeet Patil</a>.</p>
 </div>
 
 <div class="pkgdown">
