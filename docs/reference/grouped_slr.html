@@ -85,7 +85,12 @@ multiple grouping variables." />
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/IndrajeetPatil/groupedstats">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -100,7 +105,7 @@ multiple grouping variables." />
     <div class="page-header">
     <h1>Function to run simple linear regression (slr) on multiple variables across
 multiple grouping variables.</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/groupedstats/blob/master/R/grouped_slr.R'><code>R/grouped_slr.R</code></a></small>
     <div class="hidden name"><code>grouped_slr.Rd</code></div>
     </div>
 
@@ -150,7 +155,7 @@ analyses. The estimates are standardized, i.e. the <code>lm</code> model used is
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'># in case of just one grouping variable</span>
-<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_slr'>grouped_slr</a></span>(
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/grouped_slr.html'>grouped_slr</a></span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>,
   <span class='kw'>dep.vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>Sepal.Length</span>, <span class='no'>Petal.Length</span>),
   <span class='kw'>indep.vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>Sepal.Width</span>, <span class='no'>Petal.Width</span>),

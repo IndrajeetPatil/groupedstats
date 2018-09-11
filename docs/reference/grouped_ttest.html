@@ -85,7 +85,12 @@ variables." />
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/IndrajeetPatil/groupedstats">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -100,7 +105,7 @@ variables." />
     <div class="page-header">
     <h1>Function to run t-test on multiple variables across multiple grouping
 variables.</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/groupedstats/blob/master/R/grouped_ttest.R'><code>R/grouped_ttest.R</code></a></small>
     <div class="hidden name"><code>grouped_ttest.Rd</code></div>
     </div>
 
@@ -155,7 +160,7 @@ t-test, i.e.).</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_ttest'>grouped_ttest</a></span>(
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/grouped_ttest.html'>grouped_ttest</a></span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='kw'>.data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/diamonds'>diamonds</a></span>, <span class='no'>color</span> <span class='kw'>==</span> <span class='st'>"E"</span> <span class='kw'>|</span> <span class='no'>color</span> <span class='kw'>==</span> <span class='st'>"J"</span>),
   <span class='kw'>dep.vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>carat</span>, <span class='no'>price</span>, <span class='no'>depth</span>),
   <span class='kw'>indep.vars</span> <span class='kw'>=</span> <span class='no'>color</span>,

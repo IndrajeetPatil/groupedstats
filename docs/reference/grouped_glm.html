@@ -85,7 +85,12 @@ grouping variables." />
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/IndrajeetPatil/groupedstats">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -100,7 +105,7 @@ grouping variables." />
     <div class="page-header">
     <h1>Function to run generalized linear model (glm) across multiple
 grouping variables.</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/groupedstats/blob/master/R/grouped_glm.R'><code>R/grouped_glm.R</code></a></small>
     <div class="hidden name"><code>grouped_glm.Rd</code></div>
     </div>
 
@@ -173,8 +178,9 @@ which will return model summaries.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_glm'>grouped_glm</a></span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggstatsplot</span><span class='kw ns'>::</span><span class='no'><a href='https://indrajeetpatil.github.io/ggstatsplot//reference/Titanic_full.html'>Titanic_full</a></span>,
+<span class='co'># to get tidy output</span>
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/grouped_glm.html'>grouped_glm</a></span>(
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='no'><a href='https://indrajeetpatil.github.io/groupedstats//reference/Titanic_full.html'>Titanic_full</a></span>,
   <span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>Survived</span> ~ <span class='no'>Sex</span>,
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>Class</span>,
   <span class='kw'>family</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/stats/topics/family'>binomial</a></span>(<span class='kw'>link</span> <span class='kw'>=</span> <span class='st'>"logit"</span>)
@@ -189,7 +195,21 @@ which will return model summaries.</p></td>
 #&gt; 6 2nd   SexM~   -3.79      0.366    -10.3    -4.54     -3.10  4.88e-25
 #&gt; 7 Crew  (Int~    1.90      0.619      3.06    0.827     3.34  2.18e- 3
 #&gt; 8 Crew  SexM~   -3.15      0.625     -5.04   -4.60     -2.06  4.68e- 7
-#&gt; # ... with 1 more variable: significance &lt;chr&gt;</div></pre>
+#&gt; # ... with 1 more variable: significance &lt;chr&gt;</div><div class='input'>
+<span class='co'># to get glance output</span>
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/grouped_glm.html'>grouped_glm</a></span>(
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='no'><a href='https://indrajeetpatil.github.io/groupedstats//reference/Titanic_full.html'>Titanic_full</a></span>,
+  <span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>Survived</span> ~ <span class='no'>Sex</span>,
+  <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>Class</span>,
+  <span class='kw'>family</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/stats/topics/family'>binomial</a></span>(<span class='kw'>link</span> <span class='kw'>=</span> <span class='st'>"logit"</span>),
+  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"glance"</span>
+)</div><div class='output co'>#&gt; # A tibble: 4 x 8
+#&gt;   Class null.deviance df.null logLik   AIC   BIC deviance df.residual
+#&gt;   &lt;fct&gt;         &lt;dbl&gt;   &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt;
+#&gt; 1 3rd            797.     705  -370.  744.  753.     740.         704
+#&gt; 2 1st            430.     324  -134.  272.  280.     268.         323
+#&gt; 3 2nd            387.     284  -112.  228.  235.     224.         283
+#&gt; 4 Crew           974.     884  -466.  936.  946.     932.         883</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

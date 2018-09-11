@@ -85,7 +85,12 @@ grouping variables." />
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/IndrajeetPatil/groupedstats">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -100,7 +105,7 @@ grouping variables." />
     <div class="page-header">
     <h1>Function to run linear mixed-effects model (lmer) across multiple
 grouping variables.</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/groupedstats/blob/master/R/grouped_lmer.R'><code>R/grouped_lmer.R</code></a></small>
     <div class="hidden name"><code>grouped_lmer.Rd</code></div>
     </div>
 
@@ -185,7 +190,7 @@ summaries.</p>
 
 <span class='co'># getting tidy output of results</span>
 <span class='co'># let's use only 50% data to speed it up</span>
-<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_lmer'>grouped_lmer</a></span>(
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/grouped_lmer.html'>grouped_lmer</a></span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/sample.html'>sample_frac</a></span>(<span class='no'>gapminder</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>0.5</span>),
   <span class='kw'>formula</span> <span class='kw'>=</span> <span class='fu'>scale</span>(<span class='no'>lifeExp</span>) ~ <span class='fu'>scale</span>(<span class='no'>gdpPercap</span>) + (<span class='no'>gdpPercap</span> <span class='kw'>|</span> <span class='no'>continent</span>),
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>year</span>,
@@ -205,16 +210,16 @@ summaries.</p>
 #&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; # A tibble: 24 x 9
 #&gt;     year term  estimate std.error t.value conf.low conf.high p.value
 #&gt;    &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-#&gt;  1  1977 (Int~    0.159    0.328    0.486  -0.484      0.803 6.27e-1
-#&gt;  2  1977 scal~    0.410    0.135    3.04    0.146      0.675 2.36e-3
-#&gt;  3  1972 (Int~    0.235    0.308    0.761  -0.369      0.839 4.46e-1
-#&gt;  4  1972 scal~    0.552    0.231    2.39    0.0988     1.01  1.70e-2
-#&gt;  5  1962 (Int~    0.216    0.344    0.629  -0.458      0.891 5.29e-1
-#&gt;  6  1962 scal~    0.757    0.372    2.04    0.0285     1.49  4.17e-2
-#&gt;  7  1967 (Int~    0.231    0.372    0.619  -0.499      0.960 5.36e-1
-#&gt;  8  1967 scal~    0.266    0.0796   3.35    0.110      0.422 8.21e-4
-#&gt;  9  1952 (Int~    0.207    0.271    0.766  -0.323      0.738 4.44e-1
-#&gt; 10  1952 scal~    0.591    0.126    4.69    0.344      0.838 2.74e-6
+#&gt;  1  1967 (Int~   0.203     0.321    0.633  -0.426      0.833 5.27e-1
+#&gt;  2  1967 scal~   0.369     0.110    3.35    0.153      0.585 8.23e-4
+#&gt;  3  1977 (Int~   0.0658    0.444    0.148  -0.805      0.937 8.82e-1
+#&gt;  4  1977 scal~   0.347     0.0871   3.98    0.176      0.517 6.90e-5
+#&gt;  5  1982 (Int~   0.284     0.253    1.12   -0.211      0.780 2.61e-1
+#&gt;  6  1982 scal~   0.501     0.163    3.07    0.181      0.821 2.17e-3
+#&gt;  7  2002 (Int~   0.296     0.288    1.03   -0.268      0.860 3.04e-1
+#&gt;  8  2002 scal~   0.495     0.206    2.41    0.0922     0.899 1.60e-2
+#&gt;  9  1952 (Int~   0.181     0.259    0.701  -0.326      0.689 4.83e-1
+#&gt; 10  1952 scal~   0.467     0.0863   5.42    0.298      0.636 5.98e-8
 #&gt; # ... with 14 more rows, and 1 more variable: significance &lt;chr&gt;</div><div class='input'>
 <span class='co'># getting model summaries</span>
 <span class='co'># let's use only 50% data to speed it up</span>

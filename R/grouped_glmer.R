@@ -65,7 +65,8 @@
 #'     calc.derivs = FALSE,
 #'     optCtrl = list(maxfun = 2e9)
 #'   ),
-#'   grouping.vars = year
+#'   grouping.vars = year,
+#'   output = "tidy"
 #' )
 #' @export
 #'

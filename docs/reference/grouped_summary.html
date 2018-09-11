@@ -85,7 +85,12 @@ grouping variable levels" />
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/IndrajeetPatil/groupedstats">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -100,7 +105,7 @@ grouping variable levels" />
     <div class="page-header">
     <h1>Function to get descriptive statistics for multiple variables for all
 grouping variable levels</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/groupedstats/blob/master/R/grouped_summary.R'><code>R/grouped_summary.R</code></a></small>
     <div class="hidden name"><code>grouped_summary.Rd</code></div>
     </div>
 
@@ -156,7 +161,7 @@ sd, median, min, max)</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'># another possibility</span>
-<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_summary'>grouped_summary</a></span>(
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/grouped_summary.html'>grouped_summary</a></span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/iris'>iris</a></span>,
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>Species</span>,
   <span class='kw'>measures</span> <span class='kw'>=</span> <span class='no'>Sepal.Length</span>:<span class='no'>Petal.Width</span>,
@@ -179,7 +184,7 @@ sd, median, min, max)</p>
 #&gt; # ... with 5 more variables: p75 &lt;dbl&gt;, max &lt;dbl&gt;, std.error &lt;dbl&gt;,
 #&gt; #   mean.low.conf &lt;dbl&gt;, mean.high.conf &lt;dbl&gt;</div><div class='input'>
 <span class='co'># if you have just one variable per argument, you need not use `c()`</span>
-<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/groupedstats/topics/grouped_summary'>grouped_summary</a></span>(
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/grouped_summary.html'>grouped_summary</a></span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/ToothGrowth'>ToothGrowth</a></span>,
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>supp</span>,
   <span class='kw'>measures</span> <span class='kw'>=</span> <span class='no'>len</span>,
