@@ -604,6 +604,35 @@ results_df <- purrr::pmap_dfr(
 
 head(results_df)
 ```
+
+## Current code coverage
+
+As the code stands right now, here is the code coverage for all primary
+functions involved:
+
+https://codecov.io/gh/IndrajeetPatil/groupedstats/tree/master/R
+
+
+## Dependencies
+
+`groupedstats` relies on a number of other packages-
+
+```{r dependency_plot, echo = FALSE, fig.width = 10, fig.height = 10, message = FALSE, warning = FALSE}
+source("https://gist.githubusercontent.com/crsh/c906e93c260488e7363ea606243057c2/raw/f6f0fce38bc274446d205854ea35cfa03b9b1f7a/plot_dependencies.R")
+
+plot_dependencies()
+```
+
+## Contributing
+
+I'm happy to receive bug reports, suggestions, questions, and (most of all)
+contributions to fix problems and add features. I personally prefer using the
+Github issues system over trying to reach out to me in other ways (personal
+e-mail, Twitter, etc.). Pull requests for contributions are encouraged.
+
+Please note that this project is released with a 
+[Contributor Code of Conduct](CONDUCT.md). By participating in this project
+you agree to abide by its terms.
  
 ## Suggestions
 

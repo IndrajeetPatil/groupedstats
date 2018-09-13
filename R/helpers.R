@@ -190,12 +190,12 @@ specify_decimal_p <- function(x,
 #' @importFrom broom tidy
 #'
 #' @examples
-#'
+#' 
 #' # lm object
 #' # lm_effsize_ci(object = stats::lm(formula = wt ~ am * cyl, data = mtcars),
 #' # effsize = "omega",
 #' # partial = TRUE)
-#'
+#' 
 #' # aov object
 #' # lm_effsize_ci(object = stats::aov(formula = wt ~ am * cyl, data = mtcars),
 #' # effsize = "eta",

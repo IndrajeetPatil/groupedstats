@@ -23,7 +23,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--08--23-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--09--13-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
@@ -1237,6 +1237,31 @@ head(results_df)
 #> 5  8.35  9.80    0.854          10 4.22e-13 ***         
 #> 6 26.4  27.9     3.85           10 8.67e-10 ***
 ```
+
+## Current code coverage
+
+As the code stands right now, here is the code coverage for all primary
+functions involved:
+
+<https://codecov.io/gh/IndrajeetPatil/groupedstats/tree/master/R>
+
+## Dependencies
+
+`groupedstats` relies on a number of other packages-
+
+<img src="man/figures/README-dependency_plot-1.png" width="100%" />
+
+## Contributing
+
+I’m happy to receive bug reports, suggestions, questions, and (most of
+all) contributions to fix problems and add features. I personally prefer
+using the Github issues system over trying to reach out to me in other
+ways (personal e-mail, Twitter, etc.). Pull requests for contributions
+are encouraged.
+
+Please note that this project is released with a [Contributor Code of
+Conduct](CONDUCT.md). By participating in this project you agree to
+abide by its terms.
 
 ## Suggestions
 

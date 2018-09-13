@@ -39,11 +39,11 @@
 #'
 #'
 #' @examples
-#'
+#' 
 #' # loading libraries containing data
 #' library(ggplot2)
 #' library(gapminder)
-#'
+#' 
 #' # getting tidy output of results
 #' # let's use only 50% data to speed it up
 #' groupedstats::grouped_lmer(
@@ -52,7 +52,7 @@
 #'   grouping.vars = year,
 #'   output = "tidy"
 #' )
-#'
+#' 
 #' # getting model summaries
 #' # let's use only 50% data to speed it up
 #' grouped_lmer(

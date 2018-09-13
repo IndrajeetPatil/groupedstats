@@ -39,10 +39,10 @@
 #' @importFrom rlang quo
 #'
 #' @examples
-#'
+#' 
 #' # uses dataset included in the groupedstats package
 #' library(groupedstats)
-#'
+#' 
 #' groupedstats::grouped_aov(
 #'   formula = rating ~ belief * outcome * question,
 #'   data = intent_morality,
