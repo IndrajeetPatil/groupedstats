@@ -9,3 +9,38 @@ template:
 authors:
   Indrajeet Patil:
     href: https://sites.google.com/site/indrajeetspatilmorality/
+
+
+reference:
+
+  - title: Package - "stats"
+    desc: The `grouped_` versions of functions from `stats` package.
+    contents:
+      - grouped_lm
+      - grouped_glm
+      - grouped_aov
+      - grouped_ttest
+      - grouped_wilcox
+
+  - title: Package - "lme4"
+    desc:  The `grouped_` versions of functions from `lme4` package.
+    contents:
+      - grouped_lmer
+      - grouped_glmer
+
+  - title: Miscellaneous functions
+    desc: The `grouped_` versions of functions from miscellaneous packages.
+    contents:
+      - groupedstats-package
+      - grouped_robustslr
+      - grouped_slr
+      - grouped_summary
+      - grouped_proptest
+
+  - title: Data
+    desc:  Datasets included in the package.
+    contents:
+      - movies_wide
+      - movies_long
+      - Titanic_full
+      - intent_morality
