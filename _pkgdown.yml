@@ -2,8 +2,16 @@ url: https://indrajeetpatil.github.io/groupedstats/
 
 
 template:
+  #ganalytics: "UA-64959413-1"
   params:
+    docsearch:
+      api_key: e4d54f2f161c3166ffc68005afe31d9f
+      index_name: groupedstats
     bootswatch: lumen
+
+
+development:
+  mode: unreleased
 
 
 authors:
