@@ -210,31 +210,19 @@ summaries.</p>
   <span class='kw'>formula</span> <span class='kw'>=</span> <span class='fu'>scale</span>(<span class='no'>lifeExp</span>) ~ <span class='fu'>scale</span>(<span class='no'>gdpPercap</span>) + (<span class='no'>gdpPercap</span> <span class='kw'>|</span> <span class='no'>continent</span>),
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>year</span>,
   <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>
-)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'tidy.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; [90m# A tibble: 24 x 9[39m
-#&gt;     year term  estimate std.error t.value conf.low conf.high p.value
-#&gt;    [3m[90m&lt;int&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m    [3m[90m&lt;dbl&gt;[39m[23m     [3m[90m&lt;dbl&gt;[39m[23m   [3m[90m&lt;dbl&gt;[39m[23m    [3m[90m&lt;dbl&gt;[39m[23m     [3m[90m&lt;dbl&gt;[39m[23m   [3m[90m&lt;dbl&gt;[39m[23m
-#&gt; [90m 1[39m  [4m1[24m967 (Int~   0.203     0.321    0.633  -[31m0[39m[31m.[39m[31m426[39m      0.833 5.27[90me[39m[31m-1[39m
-#&gt; [90m 2[39m  [4m1[24m967 scal~   0.369     0.110    3.35    0.153      0.585 8.23[90me[39m[31m-4[39m
-#&gt; [90m 3[39m  [4m1[24m977 (Int~   0.065[4m8[24m    0.444    0.148  -[31m0[39m[31m.[39m[31m805[39m      0.937 8.82[90me[39m[31m-1[39m
-#&gt; [90m 4[39m  [4m1[24m977 scal~   0.347     0.087[4m1[24m   3.98    0.176      0.517 6.90[90me[39m[31m-5[39m
-#&gt; [90m 5[39m  [4m1[24m982 (Int~   0.284     0.253    1.12   -[31m0[39m[31m.[39m[31m211[39m      0.780 2.61[90me[39m[31m-1[39m
-#&gt; [90m 6[39m  [4m1[24m982 scal~   0.501     0.163    3.07    0.181      0.821 2.17[90me[39m[31m-3[39m
-#&gt; [90m 7[39m  [4m2[24m002 (Int~   0.296     0.288    1.03   -[31m0[39m[31m.[39m[31m268[39m      0.860 3.04[90me[39m[31m-1[39m
-#&gt; [90m 8[39m  [4m2[24m002 scal~   0.495     0.206    2.41    0.092[4m2[24m     0.899 1.60[90me[39m[31m-2[39m
-#&gt; [90m 9[39m  [4m1[24m952 (Int~   0.181     0.259    0.701  -[31m0[39m[31m.[39m[31m326[39m      0.689 4.83[90me[39m[31m-1[39m
-#&gt; [90m10[39m  [4m1[24m952 scal~   0.467     0.086[4m3[24m   5.42    0.298      0.636 5.98[90me[39m[31m-8[39m
+)</div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; [90m# A tibble: 24 x 10[39m
+#&gt;     year effect term  estimate std.error t.value conf.low conf.high p.value
+#&gt;    [3m[90m&lt;int&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m  [3m[90m&lt;chr&gt;[39m[23m    [3m[90m&lt;dbl&gt;[39m[23m     [3m[90m&lt;dbl&gt;[39m[23m   [3m[90m&lt;dbl&gt;[39m[23m    [3m[90m&lt;dbl&gt;[39m[23m     [3m[90m&lt;dbl&gt;[39m[23m   [3m[90m&lt;dbl&gt;[39m[23m
+#&gt; [90m 1[39m  [4m1[24m967 fixed  (Int~   0.203     0.321    0.633  -[31m0[39m[31m.[39m[31m426[39m      0.833 5.27[90me[39m[31m-1[39m
+#&gt; [90m 2[39m  [4m1[24m967 fixed  scal~   0.369     0.110    3.35    0.153      0.585 8.23[90me[39m[31m-4[39m
+#&gt; [90m 3[39m  [4m1[24m977 fixed  (Int~   0.065[4m8[24m    0.444    0.148  -[31m0[39m[31m.[39m[31m805[39m      0.937 8.82[90me[39m[31m-1[39m
+#&gt; [90m 4[39m  [4m1[24m977 fixed  scal~   0.347     0.087[4m1[24m   3.98    0.176      0.517 6.90[90me[39m[31m-5[39m
+#&gt; [90m 5[39m  [4m1[24m982 fixed  (Int~   0.284     0.253    1.12   -[31m0[39m[31m.[39m[31m211[39m      0.780 2.61[90me[39m[31m-1[39m
+#&gt; [90m 6[39m  [4m1[24m982 fixed  scal~   0.501     0.163    3.07    0.181      0.821 2.17[90me[39m[31m-3[39m
+#&gt; [90m 7[39m  [4m2[24m002 fixed  (Int~   0.296     0.288    1.03   -[31m0[39m[31m.[39m[31m268[39m      0.860 3.04[90me[39m[31m-1[39m
+#&gt; [90m 8[39m  [4m2[24m002 fixed  scal~   0.495     0.206    2.41    0.092[4m2[24m     0.899 1.60[90me[39m[31m-2[39m
+#&gt; [90m 9[39m  [4m1[24m952 fixed  (Int~   0.181     0.259    0.701  -[31m0[39m[31m.[39m[31m326[39m      0.689 4.83[90me[39m[31m-1[39m
+#&gt; [90m10[39m  [4m1[24m952 fixed  scal~   0.467     0.086[4m3[24m   5.42    0.298      0.636 5.98[90me[39m[31m-8[39m
 #&gt; [90m# ... with 14 more rows, and 1 more variable: significance [3m[90m&lt;chr&gt;[90m[23m[39m</div><div class='input'>
 <span class='co'># getting model summaries</span>
 <span class='co'># let's use only 50% data to speed it up</span>
@@ -244,47 +232,7 @@ summaries.</p>
   <span class='kw'>REML</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='no'>cut</span>, <span class='no'>clarity</span>),
   <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"glance"</span>
-)</div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 'glance.merMod' is deprecated.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; [90m# A tibble: 40 x 8[39m
+)</div><div class='output co'>#&gt; [90m# A tibble: 40 x 8[39m
 #&gt;    cut       clarity sigma logLik    AIC    BIC deviance df.residual
 #&gt;    [3m[90m&lt;ord&gt;[39m[23m     [3m[90m&lt;ord&gt;[39m[23m   [3m[90m&lt;dbl&gt;[39m[23m  [3m[90m&lt;dbl&gt;[39m[23m  [3m[90m&lt;dbl&gt;[39m[23m  [3m[90m&lt;dbl&gt;[39m[23m    [3m[90m&lt;dbl&gt;[39m[23m       [3m[90m&lt;int&gt;[39m[23m
 #&gt; [90m 1[39m Ideal     SI2     0.252 -[31m134[39m[31m.[39m   279.   315.     267.         [4m2[24m592

@@ -16,7 +16,7 @@
 #' @inheritParams sjstats::p_value.lmerMod
 #'
 #' @importFrom magrittr "%<>%"
-#' @importFrom broom tidy
+#' @importFrom broom.mixed tidy
 #' @importFrom glue glue
 #' @importFrom purrr map
 #' @importFrom purrr map2_dfr
@@ -36,14 +36,16 @@
 #' @importFrom rlang quo_squash
 #' @importFrom rlang enquo
 #' @importFrom rlang quo
-#'
+#' @importFrom broom.mixed glance
+#' @importFrom broom.mixed tidy
+#' @importFrom broom.mixed augment
 #'
 #' @examples
-#' 
+#'
 #' # loading libraries containing data
 #' library(ggplot2)
 #' library(gapminder)
-#' 
+#'
 #' # getting tidy output of results
 #' # let's use only 50% data to speed it up
 #' groupedstats::grouped_lmer(
@@ -52,7 +54,7 @@
 #'   grouping.vars = year,
 #'   output = "tidy"
 #' )
-#' 
+#'
 #' # getting model summaries
 #' # let's use only 50% data to speed it up
 #' grouped_lmer(
@@ -63,7 +65,6 @@
 #'   output = "glance"
 #' )
 #' @export
-#'
 
 grouped_lmer <- function(data,
                          grouping.vars,
@@ -112,10 +113,10 @@ grouped_lmer <- function(data,
       if (output == "tidy") {
         # dataframe with results from lmer
         results_df <-
-          list.col %>% # tidying up the output with broom
+          list.col %>% # tidying up the output with broom.mixed
           purrr::map_dfr(
             .x = .,
-            .f = ~broom::tidy(
+            .f = ~broom.mixed::tidy(
               x = lme4::lmer(
                 formula = stats::as.formula(formula),
                 data = (.),
@@ -171,10 +172,10 @@ grouped_lmer <- function(data,
       } else {
         # dataframe with results from lm
         results_df <-
-          list.col %>% # tidying up the output with broom
+          list.col %>% # tidying up the output with broom.mixed
           purrr::map_dfr(
             .x = .,
-            .f = ~broom::glance(
+            .f = ~broom.mixed::glance(
               x = lme4::lmer(
                 formula = stats::as.formula(formula),
                 data = (.),

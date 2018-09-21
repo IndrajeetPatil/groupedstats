@@ -15,7 +15,7 @@
 #' @inheritParams lme4::glmer
 #'
 #' @importFrom magrittr "%<>%"
-#' @importFrom broom tidy
+#' @importFrom broom.mixed tidy
 #' @importFrom glue glue
 #' @importFrom purrr map
 #' @importFrom purrr map2_dfr
@@ -38,10 +38,10 @@
 #' @seealso grouped_lmer
 #'
 #' @examples
-#' 
+#'
 #' # commented out because the examples are time-consuming and the R CMD CHECK
 #' # makes a NOTE (> 5s)
-#' 
+#'
 #' # categorical outcome; binomial family
 #' groupedstats::grouped_glmer(
 #'   formula = Survived ~ Age + (Age |
@@ -50,10 +50,10 @@
 #'   data = dplyr::sample_frac(groupedstats::Titanic_full, size = 0.3),
 #'   grouping.vars = Sex
 #' )
-#' 
+#'
 #' # continuous outcome; gaussian family
 #' library(gapminder)
-#' 
+#'
 #' groupedstats::grouped_glmer(
 #'   data = dplyr::sample_frac(gapminder, size = 0.3),
 #'   formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap | continent),
@@ -69,7 +69,6 @@
 #'   output = "tidy"
 #' )
 #' @export
-#'
 
 grouped_glmer <- function(data,
                           grouping.vars,
@@ -116,10 +115,10 @@ grouped_glmer <- function(data,
       if (output == "tidy") {
         # dataframe with results from glmer
         results_df <-
-          list.col %>% # tidying up the output with broom
+          list.col %>% # tidying up the output with broom.mixed
           purrr::map_dfr(
             .x = .,
-            .f = ~broom::tidy(
+            .f = ~broom.mixed::tidy(
               x = lme4::glmer(
                 formula = stats::as.formula(formula),
                 data = (.),
@@ -137,10 +136,10 @@ grouped_glmer <- function(data,
       } else {
         # dataframe with results from lm
         results_df <-
-          list.col %>% # tidying up the output with broom
+          list.col %>% # tidying up the output with broom.mixed
           purrr::map_dfr(
             .x = .,
-            .f = ~broom::glance(
+            .f = ~broom.mixed::glance(
               x = lme4::glmer(
                 formula = stats::as.formula(formula),
                 data = (.),

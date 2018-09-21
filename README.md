@@ -23,7 +23,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--09--13-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--09--20-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
@@ -745,31 +745,31 @@ groupedstats::grouped_lmer(
 #> Computing p-values via Wald-statistics approximation (treating t as Wald z).
 #> Computing p-values via Wald-statistics approximation (treating t as Wald z).
 #> Computing p-values via Wald-statistics approximation (treating t as Wald z).
-#> # A tibble: 24 x 9
-#>     year term             estimate std.error t.value conf.low conf.high
-#>    <int> <chr>               <dbl>     <dbl>   <dbl>    <dbl>     <dbl>
-#>  1  1952 (Intercept)         0.215     0.293   0.736   -0.358     0.789
-#>  2  1952 scale(gdpPercap)    0.930     0.302   3.07     0.337     1.52 
-#>  3  1957 (Intercept)         0.254     0.342   0.743   -0.416     0.923
-#>  4  1957 scale(gdpPercap)    0.815     0.282   2.89     0.262     1.37 
-#>  5  1962 (Intercept)         0.255     0.333   0.766   -0.397     0.908
-#>  6  1962 scale(gdpPercap)    0.591     0.210   2.82     0.180     1.00 
-#>  7  1967 (Intercept)         0.249     0.361   0.689   -0.459     0.956
-#>  8  1967 scale(gdpPercap)    0.387     0.120   3.24     0.153     0.622
-#>  9  1972 (Intercept)         0.276     0.366   0.753   -0.442     0.994
-#> 10  1972 scale(gdpPercap)    0.431     0.150   2.88     0.137     0.724
-#>    p.value significance
-#>      <dbl> <chr>       
-#>  1 0.462   ns          
-#>  2 0.00211 **          
-#>  3 0.457   ns          
-#>  4 0.00389 **          
-#>  5 0.444   ns          
-#>  6 0.00479 **          
-#>  7 0.491   ns          
-#>  8 0.00120 **          
-#>  9 0.451   ns          
-#> 10 0.00402 **          
+#> # A tibble: 24 x 10
+#>     year effect term             estimate std.error t.value conf.low
+#>    <int> <chr>  <chr>               <dbl>     <dbl>   <dbl>    <dbl>
+#>  1  1952 fixed  (Intercept)         0.215     0.293   0.736   -0.358
+#>  2  1952 fixed  scale(gdpPercap)    0.930     0.302   3.07     0.337
+#>  3  1957 fixed  (Intercept)         0.254     0.342   0.743   -0.416
+#>  4  1957 fixed  scale(gdpPercap)    0.815     0.282   2.89     0.262
+#>  5  1962 fixed  (Intercept)         0.255     0.333   0.766   -0.397
+#>  6  1962 fixed  scale(gdpPercap)    0.591     0.210   2.82     0.180
+#>  7  1967 fixed  (Intercept)         0.249     0.361   0.689   -0.459
+#>  8  1967 fixed  scale(gdpPercap)    0.387     0.120   3.24     0.153
+#>  9  1972 fixed  (Intercept)         0.276     0.366   0.753   -0.442
+#> 10  1972 fixed  scale(gdpPercap)    0.431     0.150   2.88     0.137
+#>    conf.high p.value significance
+#>        <dbl>   <dbl> <chr>       
+#>  1     0.789 0.462   ns          
+#>  2     1.52  0.00211 **          
+#>  3     0.923 0.457   ns          
+#>  4     1.37  0.00389 **          
+#>  5     0.908 0.444   ns          
+#>  6     1.00  0.00479 **          
+#>  7     0.956 0.491   ns          
+#>  8     0.622 0.00120 **          
+#>  9     0.994 0.451   ns          
+#> 10     0.724 0.00402 **          
 #> # ... with 14 more rows
 
 
@@ -832,13 +832,13 @@ groupedstats::grouped_glmer(
   grouping.vars = Sex,                                        # grouping variables (just one in this case)
   output = "tidy"
 )
-#> # A tibble: 4 x 9
-#>   Sex    term        estimate std.error statistic conf.low conf.high
-#>   <fct>  <chr>          <dbl>     <dbl>     <dbl>    <dbl>     <dbl>
-#> 1 Male   (Intercept)   -0.888     0.162     -5.47   -1.21     -0.570
-#> 2 Male   AgeChild       4.90      4.03       1.22   -3.00     12.8  
-#> 3 Female (Intercept)    1.01      0.379      2.66    0.264     1.75 
-#> 4 Female AgeChild       1.47      0.595      2.48    0.307     2.64 
+#> # A tibble: 4 x 10
+#>   Sex    effect term        estimate std.error statistic conf.low conf.high
+#>   <fct>  <chr>  <chr>          <dbl>     <dbl>     <dbl>    <dbl>     <dbl>
+#> 1 Male   fixed  (Intercept)   -0.888     0.162     -5.47   -1.21     -0.570
+#> 2 Male   fixed  AgeChild       4.90      4.03       1.22   -3.00     12.8  
+#> 3 Female fixed  (Intercept)    1.01      0.379      2.66    0.264     1.75 
+#> 4 Female fixed  AgeChild       1.47      0.595      2.48    0.307     2.64 
 #>        p.value significance
 #>          <dbl> <chr>       
 #> 1 0.0000000453 ***         

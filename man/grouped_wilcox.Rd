@@ -38,7 +38,7 @@ multiple grouping variables.
 # only with one grouping variable
 groupedstats::grouped_wilcox(
   data = dplyr::filter(.data = ggplot2::diamonds, color == "E" | color == "J"),
-  dep.vars = depth:price,
+  dep.vars = depth:table,
   indep.vars = color,
   grouping.vars = clarity,
   paired = FALSE
