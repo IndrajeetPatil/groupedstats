@@ -1,6 +1,14 @@
+# groupedstats 0.0.3
+
+MAJOR CHANGES
+
+  - New functions exported: `lm_effsize_ci()`, `signif_column()`,
+  `specify_decimal_p()`.
+
 # groupedstats 0.0.2
 
 MAJOR CHANGES
+
   - New functions added: `grouped_lm()`, `grouped_aov()`, `grouped_lmer()`,
    `grouped_glmer()`.
   - To be consistent with the rest of the regression model functions,
@@ -10,11 +18,13 @@ MAJOR CHANGES
     tidyverse.
 
 MINOR CHANGES
+
   - For numeric variables, `grouped_summary` now also outputs standard error of
     mean and 95% confidence intervals for the mean.
   - Added datasets (`Titanic_full`, `movies_long`).
   
 BUG FUXES
+
   - Some functions were not working if the grouping variable was called `"group"`. Fixed that.
   
 # groupedstats 0.0.1

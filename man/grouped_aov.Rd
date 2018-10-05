@@ -25,7 +25,7 @@ method for \emph{post hoc} comparisons. The \code{"glance"} method to get model
 summary is currently not supported for this function.}
 
 \item{nboot}{Number of bootstrap samples for confidence intervals for partial
-eta-squared and omega-squared (Default: \code{1000}).}
+eta-squared and omega-squared (Default: \code{500}).}
 }
 \value{
 A tibble dataframe with tidy results from anova. No model summaries

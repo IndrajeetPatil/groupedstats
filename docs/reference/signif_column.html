@@ -71,7 +71,7 @@ p-values" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">groupedstats</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.2.9000</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.3</span>
       </span>
     </div>
 
@@ -151,6 +151,43 @@ dataframe) in tibble format with an additional column corresponding to
 statistical significance.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='co'># vector as input</span>
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/signif_column.html'>signif_column</a></span>(<span class='kw'>p</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0.05</span>, <span class='fl'>0.1</span>, <span class='fl'>1</span>, <span class='fl'>0.00001</span>, <span class='fl'>0.001</span>, <span class='fl'>0.01</span>))</div><div class='output co'>#&gt; # A tibble: 6 x 2
+#&gt;         p significance
+#&gt;     &lt;dbl&gt; &lt;chr&gt;       
+#&gt; 1 0.05    ns          
+#&gt; 2 0.1     ns          
+#&gt; 3 1       ns          
+#&gt; 4 0.00001 ***         
+#&gt; 5 0.001   **          
+#&gt; 6 0.01    *           </div><div class='input'>
+<span class='co'># dataframe as input</span>
+<span class='co'># preparing a newdataframe</span>
+<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>cbind.data.frame</span>(
+  <span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>5</span>,
+  <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>p.value</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0.1</span>, <span class='fl'>0.5</span>, <span class='fl'>0.00001</span>, <span class='fl'>0.05</span>, <span class='fl'>0.01</span>)
+)
+
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/signif_column.html'>signif_column</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>df</span>, <span class='kw'>p</span> <span class='kw'>=</span> <span class='no'>p.value</span>)</div><div class='output co'>#&gt; # A tibble: 5 x 4
+#&gt;       x     y p.value significance
+#&gt;   &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       
+#&gt; 1     1     1 0.1     ns          
+#&gt; 2     2     1 0.5     ns          
+#&gt; 3     3     1 0.00001 ***         
+#&gt; 4     4     1 0.05    ns          
+#&gt; 5     5     1 0.01    *           </div><div class='input'>
+<span class='co'># numbers entered as characters are also tolerated</span>
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/signif_column.html'>signif_column</a></span>(<span class='kw'>p</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"1"</span>, <span class='st'>"0.1"</span>, <span class='st'>"0.0002"</span>, <span class='st'>"0.03"</span>, <span class='st'>"0.65"</span>))</div><div class='output co'>#&gt; Note: The entered vector is of class factor ; attempting to convert it to numeric.</div><div class='output co'>#&gt; </div><div class='output co'>#&gt; # A tibble: 5 x 2
+#&gt;        p significance
+#&gt;    &lt;dbl&gt; &lt;chr&gt;       
+#&gt; 1 1      ns          
+#&gt; 2 0.1    ns          
+#&gt; 3 0.0002 ***         
+#&gt; 4 0.03   *           
+#&gt; 5 0.65   ns          </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -158,7 +195,9 @@ statistical significance.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
     <h2>Author</h2>
     

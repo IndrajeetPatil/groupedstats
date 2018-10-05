@@ -73,7 +73,7 @@ grouping variable levels" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">groupedstats</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.2.9000</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.3</span>
       </span>
     </div>
 
@@ -181,36 +181,36 @@ sd, median, min, max)</p>
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>Species</span>,
   <span class='kw'>measures</span> <span class='kw'>=</span> <span class='no'>Sepal.Length</span>:<span class='no'>Petal.Width</span>,
   <span class='kw'>measures.type</span> <span class='kw'>=</span> <span class='st'>"numeric"</span>
-)</div><div class='output co'>#&gt; [90m# A tibble: 12 x 16[39m
+)</div><div class='output co'>#&gt; # A tibble: 12 x 16
 #&gt;    Species type  variable missing complete     n  mean    sd   min   p25 median
-#&gt;    [3m[90m&lt;fct&gt;[39m[23m   [3m[90m&lt;chr&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m      [3m[90m&lt;dbl&gt;[39m[23m    [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;dbl&gt;[39m[23m  [3m[90m&lt;dbl&gt;[39m[23m
-#&gt; [90m 1[39m setosa  nume~ Petal.L~       0       50    50  1.46  0.17   1    1.4    1.5 
-#&gt; [90m 2[39m setosa  nume~ Petal.W~       0       50    50  0.25  0.11   0.1  0.2    0.2 
-#&gt; [90m 3[39m setosa  nume~ Sepal.L~       0       50    50  5.01  0.35   4.3  4.8    5   
-#&gt; [90m 4[39m setosa  nume~ Sepal.W~       0       50    50  3.43  0.38   2.3  3.2    3.4 
-#&gt; [90m 5[39m versic~ nume~ Petal.L~       0       50    50  4.26  0.47   3    4      4.35
-#&gt; [90m 6[39m versic~ nume~ Petal.W~       0       50    50  1.33  0.2    1    1.2    1.3 
-#&gt; [90m 7[39m versic~ nume~ Sepal.L~       0       50    50  5.94  0.52   4.9  5.6    5.9 
-#&gt; [90m 8[39m versic~ nume~ Sepal.W~       0       50    50  2.77  0.31   2    2.52   2.8 
-#&gt; [90m 9[39m virgin~ nume~ Petal.L~       0       50    50  5.55  0.55   4.5  5.1    5.55
-#&gt; [90m10[39m virgin~ nume~ Petal.W~       0       50    50  2.03  0.27   1.4  1.8    2   
-#&gt; [90m11[39m virgin~ nume~ Sepal.L~       0       50    50  6.59  0.64   4.9  6.23   6.5 
-#&gt; [90m12[39m virgin~ nume~ Sepal.W~       0       50    50  2.97  0.32   2.2  2.8    3   
-#&gt; [90m# ... with 5 more variables: p75 [3m[90m&lt;dbl&gt;[90m[23m, max [3m[90m&lt;dbl&gt;[90m[23m, std.error [3m[90m&lt;dbl&gt;[90m[23m,
-#&gt; #   mean.low.conf [3m[90m&lt;dbl&gt;[90m[23m, mean.high.conf [3m[90m&lt;dbl&gt;[90m[23m[39m</div><div class='input'>
+#&gt;    &lt;fct&gt;   &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+#&gt;  1 setosa  nume~ Petal.L~       0       50    50  1.46  0.17   1    1.4    1.5 
+#&gt;  2 setosa  nume~ Petal.W~       0       50    50  0.25  0.11   0.1  0.2    0.2 
+#&gt;  3 setosa  nume~ Sepal.L~       0       50    50  5.01  0.35   4.3  4.8    5   
+#&gt;  4 setosa  nume~ Sepal.W~       0       50    50  3.43  0.38   2.3  3.2    3.4 
+#&gt;  5 versic~ nume~ Petal.L~       0       50    50  4.26  0.47   3    4      4.35
+#&gt;  6 versic~ nume~ Petal.W~       0       50    50  1.33  0.2    1    1.2    1.3 
+#&gt;  7 versic~ nume~ Sepal.L~       0       50    50  5.94  0.52   4.9  5.6    5.9 
+#&gt;  8 versic~ nume~ Sepal.W~       0       50    50  2.77  0.31   2    2.52   2.8 
+#&gt;  9 virgin~ nume~ Petal.L~       0       50    50  5.55  0.55   4.5  5.1    5.55
+#&gt; 10 virgin~ nume~ Petal.W~       0       50    50  2.03  0.27   1.4  1.8    2   
+#&gt; 11 virgin~ nume~ Sepal.L~       0       50    50  6.59  0.64   4.9  6.23   6.5 
+#&gt; 12 virgin~ nume~ Sepal.W~       0       50    50  2.97  0.32   2.2  2.8    3   
+#&gt; # ... with 5 more variables: p75 &lt;dbl&gt;, max &lt;dbl&gt;, std.error &lt;dbl&gt;,
+#&gt; #   mean.low.conf &lt;dbl&gt;, mean.high.conf &lt;dbl&gt;</div><div class='input'>
 <span class='co'># if you have just one variable per argument, you need not use `c()`</span>
 <span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/grouped_summary.html'>grouped_summary</a></span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>datasets</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/datasets/topics/ToothGrowth'>ToothGrowth</a></span>,
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>supp</span>,
   <span class='kw'>measures</span> <span class='kw'>=</span> <span class='no'>len</span>,
   <span class='kw'>measures.type</span> <span class='kw'>=</span> <span class='st'>"numeric"</span>
-)</div><div class='output co'>#&gt; [90m# A tibble: 2 x 16[39m
+)</div><div class='output co'>#&gt; # A tibble: 2 x 16
 #&gt;   supp  type  variable missing complete     n  mean    sd   min   p25 median
-#&gt;   [3m[90m&lt;fct&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m [3m[90m&lt;chr&gt;[39m[23m      [3m[90m&lt;dbl&gt;[39m[23m    [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;dbl&gt;[39m[23m [3m[90m&lt;dbl&gt;[39m[23m  [3m[90m&lt;dbl&gt;[39m[23m
-#&gt; [90m1[39m VC    nume~ len            0       30    30  17.0  8.27   4.2  11.2   16.5
-#&gt; [90m2[39m OJ    nume~ len            0       30    30  20.7  6.61   8.2  15.5   22.7
-#&gt; [90m# ... with 5 more variables: p75 [3m[90m&lt;dbl&gt;[90m[23m, max [3m[90m&lt;dbl&gt;[90m[23m, std.error [3m[90m&lt;dbl&gt;[90m[23m,
-#&gt; #   mean.low.conf [3m[90m&lt;dbl&gt;[90m[23m, mean.high.conf [3m[90m&lt;dbl&gt;[90m[23m[39m</div></pre>
+#&gt;   &lt;fct&gt; &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+#&gt; 1 VC    nume~ len            0       30    30  17.0  8.27   4.2  11.2   16.5
+#&gt; 2 OJ    nume~ len            0       30    30  20.7  6.61   8.2  15.5   22.7
+#&gt; # ... with 5 more variables: p75 &lt;dbl&gt;, max &lt;dbl&gt;, std.error &lt;dbl&gt;,
+#&gt; #   mean.low.conf &lt;dbl&gt;, mean.high.conf &lt;dbl&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

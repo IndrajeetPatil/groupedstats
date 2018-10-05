@@ -74,7 +74,7 @@ significant p-values to be denoted as &quot;p &amp;lt; 0.001&quot; rather than &
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">groupedstats</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.2.9000</span>
+        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.3</span>
       </span>
     </div>
 
@@ -121,7 +121,7 @@ significant p-values to be denoted as &quot;p &amp;lt; 0.001&quot; rather than &
     <div class="page-header">
     <h1>Custom function for getting specified number of decimal places in
 results for p-value</h1>
-    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/groupedstats/blob/master/R/helpers.R'><code>R/helpers.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/groupedstats/blob/master/R/specify_decimal_p.R'><code>R/specify_decimal_p.R</code></a></small>
     <div class="hidden name"><code>specify_decimal_p.Rd</code></div>
     </div>
 
@@ -133,7 +133,7 @@ significant p-values to be denoted as "p &lt; 0.001" rather than "p = 0.000".</p
     
     </div>
 
-    <pre class="usage"><span class='fu'>specify_decimal_p</span>(<span class='no'>x</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>p.value</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>specify_decimal_p</span>(<span class='no'>x</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>p.value</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -144,7 +144,7 @@ significant p-values to be denoted as "p &lt; 0.001" rather than "p = 0.000".</p
     </tr>
     <tr>
       <th>k</th>
-      <td><p>Number of digits after decimal point (should be an integer).</p></td>
+      <td><p>Number of digits after decimal point (should be an integer) (Default: <code>k = 3</code>).</p></td>
     </tr>
     <tr>
       <th>p.value</th>

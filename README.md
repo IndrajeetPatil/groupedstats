@@ -6,7 +6,7 @@
 [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
 [![CRAN
 Checks](https://cranchecks.info/badges/summary/groupedstats)](https://cran.r-project.org/web/checks/check_results_groupedstats.html)
-[![packageversion](https://img.shields.io/badge/Package%20version-0.0.2.9000-orange.svg?style=flat-square)](commits/master)
+[![packageversion](https://img.shields.io/badge/Package%20version-0.0.3-orange.svg?style=flat-square)](commits/master)
 [![Daily downloads
 badge](https://cranlogs.r-pkg.org/badges/last-day/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
 [![Weekly downloads
@@ -23,7 +23,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--09--20-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--10--04-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
@@ -60,14 +60,14 @@ The next releases will expand on the existing functionality (e.g.,
 
 ## Installation
 
-To get the latest, stable CRAN release (0.0.2):
+To get the latest, stable CRAN release (0.0.3):
 
 ``` r
 utils::install.packages(pkgs = "groupedstats") 
 ```
 
 You can get the **development** version of the package from GitHub
-(`0.0.2.9000`). To see what new changes (and bug fixes) have been made
+(`0.0.3.9000`). To see what new changes (and bug fixes) have been made
 to the package since the last release on `CRAN`, you can check the
 detailed log of changes here:
 <https://indrajeetpatil.github.io/groupedstats/news/index.html>
@@ -487,6 +487,11 @@ implemented in `grouped_lm`:
 
 ``` r
 library(groupedstats)
+#> 
+#> Attaching package: 'groupedstats'
+#> The following objects are masked from 'package:ggstatsplot':
+#> 
+#>     signif_column, specify_decimal_p
 
 groupedstats::grouped_lm(
   data = mtcars,
@@ -1245,11 +1250,13 @@ functions involved:
 
 <https://codecov.io/gh/IndrajeetPatil/groupedstats/tree/master/R>
 
+<!--
 ## Dependencies
 
 `groupedstats` relies on a number of other packages-
 
 <img src="man/figures/README-dependency_plot-1.png" width="100%" />
+-->
 
 ## Contributing
 
