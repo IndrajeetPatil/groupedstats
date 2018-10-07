@@ -9,5 +9,4 @@
 #'
 #' @docType package
 #' @name groupedstats-package
-#'
 NULL

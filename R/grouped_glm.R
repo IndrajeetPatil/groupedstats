@@ -1,4 +1,3 @@
-#'
 #' @title Function to run generalized linear model (glm) across multiple
 #'   grouping variables.
 #' @name grouped_glm
@@ -63,7 +62,6 @@
 #'   output = "glance"
 #' )
 #' @export
-#'
 
 grouped_glm <- function(data,
                         grouping.vars,

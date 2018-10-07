@@ -6,7 +6,7 @@
 [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
 [![CRAN
 Checks](https://cranchecks.info/badges/summary/groupedstats)](https://cran.r-project.org/web/checks/check_results_groupedstats.html)
-[![packageversion](https://img.shields.io/badge/Package%20version-0.0.3-orange.svg?style=flat-square)](commits/master)
+[![packageversion](https://img.shields.io/badge/Package%20version-0.0.3.9000-orange.svg?style=flat-square)](commits/master)
 [![Daily downloads
 badge](https://cranlogs.r-pkg.org/badges/last-day/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
 [![Weekly downloads
@@ -23,14 +23,14 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--10--04-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--10--06-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/IndrajeetPatil/groupedstats/master.svg)](https://codecov.io/github/IndrajeetPatil/groupedstats?branch=master)
 
-## Overview
+# Overview
 
 `groupedstats` package provides a collection of functions to run
 statistical operations on multiple variables across multiple grouping
@@ -58,7 +58,7 @@ the most basic statistical operations (from `stats` and `lme4` package).
 The next releases will expand on the existing functionality (e.g.,
 `ordinal`).
 
-## Installation
+# Installation
 
 To get the latest, stable CRAN release (0.0.3):
 
@@ -92,7 +92,7 @@ devtools::install_github(repo = "IndrajeetPatil/groupedstats", # package path on
 )
 ```
 
-## Help
+# Help
 
 There is a dedicated website to `groupedstats`, which is updated after
 every new commit: <https://indrajeetpatil.github.io/groupedstats/>.
@@ -138,7 +138,7 @@ relies a lot on, you can check out these links-
   - <http://r-pkgs.had.co.nz/namespace.html>
   - <http://r4ds.had.co.nz/pipes.html>
 
-## Usage
+# Usage
 
 ## `grouped_summary`
 
@@ -489,9 +489,9 @@ implemented in `grouped_lm`:
 library(groupedstats)
 #> 
 #> Attaching package: 'groupedstats'
-#> The following objects are masked from 'package:ggstatsplot':
+#> The following object is masked from 'package:ggstatsplot':
 #> 
-#>     signif_column, specify_decimal_p
+#>     set_cwd
 
 groupedstats::grouped_lm(
   data = mtcars,
@@ -1200,7 +1200,7 @@ evaluation`](https://adv-r.hadley.nz/evaluation.html) works:
     variables, it will be used as a common variable.
   - If you want to use a selection of variables, you need not use `c()`.
 
-## Extending with `purrr`
+# Extending with `purrr`
 
 `groupedstats` functions can be further extended with `purrr` package.
 For example, let’s say we want to run the same linear regression across
@@ -1243,22 +1243,14 @@ head(results_df)
 #> 6 26.4  27.9     3.85           10 8.67e-10 ***
 ```
 
-## Current code coverage
+# Current code coverage
 
 As the code stands right now, here is the code coverage for all primary
 functions involved:
 
 <https://codecov.io/gh/IndrajeetPatil/groupedstats/tree/master/R>
 
-<!--
-## Dependencies
-
-`groupedstats` relies on a number of other packages-
-
-<img src="man/figures/README-dependency_plot-1.png" width="100%" />
--->
-
-## Contributing
+# Contributing
 
 I’m happy to receive bug reports, suggestions, questions, and (most of
 all) contributions to fix problems and add features. I personally prefer

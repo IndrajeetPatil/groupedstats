@@ -1,4 +1,3 @@
-#'
 #' @title Function to run generalized linear mixed-effects model (glmer) across multiple
 #'   grouping variables.
 #' @name grouped_glmer

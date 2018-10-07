@@ -1,4 +1,3 @@
-#'
 #' @title Function to run analysis of variance (aov) across multiple grouping
 #'   variables.
 #' @name grouped_aov
@@ -50,7 +49,6 @@
 #'   effsize = "eta"
 #' )
 #' @export
-#'
 
 grouped_aov <- function(data,
                         grouping.vars,

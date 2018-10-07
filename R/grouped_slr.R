@@ -1,4 +1,3 @@
-#'
 #' @title Function to run simple linear regression (slr) on multiple variables across
 #'   multiple grouping variables.
 #' @name grouped_slr
@@ -49,7 +48,6 @@
 #'   grouping.vars = Species
 #' )
 #' @export
-#'
 
 # defining the function
 grouped_slr <- function(data,

@@ -38,7 +38,8 @@ Suggests:
     covr (>= 3.0.1),
     knitr (>= 1.20),
     rmarkdown (>= 1.9),
-    spelling
+    spelling,
+    testthat
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

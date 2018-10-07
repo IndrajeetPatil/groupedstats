@@ -1,4 +1,3 @@
-#'
 #' @title Movie information and user ratings from IMDB.com (wide format).
 #' @name movies_wide
 #' @details Modified dataset from `ggplot2movies` package.
@@ -35,7 +34,6 @@
 "movies_wide"
 
 
-#'
 #' @title Movie information and user ratings from IMDB.com (long format).
 #' @name movies_long
 #' @details Modified dataset from `ggplot2movies` package.
@@ -70,6 +68,7 @@
 #' head(movies_long)
 "movies_long"
 
+
 #' @title Titanic dataset.
 #' @name Titanic_full
 #' @details This data set provides information on the fate of passengers on the fatal
@@ -95,7 +94,6 @@
 "Titanic_full"
 
 
-#'
 #' @title Moral judgments about third-party moral behavior.
 #' @name intent_morality
 #' @details This dataset contains data from a recent study about how people

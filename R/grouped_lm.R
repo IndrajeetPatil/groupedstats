@@ -1,4 +1,3 @@
-#'
 #' @title Function to run linear model (lm) across multiple grouping variables.
 #' @name grouped_lm
 #' @aliases grouped_lm
@@ -58,7 +57,6 @@
 #'   output = "glance"
 #' )
 #' @export
-#'
 
 grouped_lm <- function(data,
                        grouping.vars,

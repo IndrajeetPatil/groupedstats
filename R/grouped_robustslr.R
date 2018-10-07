@@ -1,4 +1,3 @@
-#'
 #' @title Function to run robust simple linear regression (slr) on multiple variables across
 #'   multiple grouping variables.
 #' @name grouped_robustslr
@@ -34,7 +33,6 @@
 #'   grouping.vars = Species
 #' )
 #' @export
-#'
 
 # defining the function
 grouped_robustslr <- function(data,

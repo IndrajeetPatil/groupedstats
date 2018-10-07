@@ -1,4 +1,3 @@
-#'
 #' @title Function to run two-sample Wilcoxon tests on multiple variables across
 #'   multiple grouping variables.
 #' @name grouped_wilcox
@@ -39,7 +38,6 @@
 #'   paired = FALSE
 #' )
 #' @export
-#'
 
 # defining the function
 grouped_wilcox <- function(data,

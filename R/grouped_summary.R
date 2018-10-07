@@ -1,4 +1,3 @@
-#'
 #' @title Function to get descriptive statistics for multiple variables for all
 #'   grouping variable levels
 #' @name grouped_summary
@@ -54,7 +53,6 @@
 #'   measures.type = "numeric"
 #' )
 #' @export
-#'
 
 # function body
 grouped_summary <- function(data,
@@ -62,10 +60,12 @@ grouped_summary <- function(data,
                             measures = NULL,
                             measures.type = "numeric",
                             topcount.long = FALSE) {
-  # ================================================== data ===========================================================
+  # ============================== data ========================================
+
   # check how many variables were entered for this grouping variable
   grouping.vars <-
     base::as.list(x = rlang::quo_squash(quo = rlang::enquo(arg = grouping.vars)))
+
   # based on number of arguments, select grouping.vars in cases like `c(cyl)`,
   # the first list element after `quo_squash` will be `c` which we don't need,
   # but if we pass just `cyl`, there is no `c`, this will take care of that

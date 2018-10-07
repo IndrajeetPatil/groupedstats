@@ -1,4 +1,3 @@
-#'
 #' @title Function to run linear mixed-effects model (lmer) across multiple
 #'   grouping variables.
 #' @name grouped_lmer

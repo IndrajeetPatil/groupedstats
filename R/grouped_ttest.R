@@ -1,4 +1,3 @@
-#'
 #' @title Function to run t-test on multiple variables across multiple grouping
 #'   variables.
 #' @name grouped_ttest
@@ -39,7 +38,6 @@
 #'   var.equal = FALSE
 #' )
 #' @export
-#'
 
 # defining the function
 grouped_ttest <- function(data,

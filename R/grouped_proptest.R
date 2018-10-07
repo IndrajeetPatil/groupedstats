@@ -1,4 +1,3 @@
-#'
 #' @title Function to run proportion test on grouped data.
 #' @name grouped_proptest
 #' @author Indrajeet Patil
@@ -23,7 +22,6 @@
 #'   measure = am
 #' )
 #' @export
-#'
 
 grouped_proptest <- function(data,
                              grouping.vars,

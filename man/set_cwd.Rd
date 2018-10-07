@@ -2,7 +2,7 @@
 % Please edit documentation in R/set_cwd.R
 \name{set_cwd}
 \alias{set_cwd}
-\title{Setting Working Directory to where the R Script is}
+\title{Setting Working Directory in RStudio to where the R Script is.}
 \usage{
 set_cwd()
 }
@@ -15,9 +15,6 @@ whichever directory the R script you are currently working on is located.
 This preempts the trouble of setting the working directory manually.
 }
 \note{
-From: https://eranraviv.com/r-tips-and-tricks-working-directory/
+This function will work \strong{only with RStudio IDE}. Reference:
+https://eranraviv.com/r-tips-and-tricks-working-directory/
 }
-\author{
-Indrajeet Patil
-}
-\keyword{internal}
