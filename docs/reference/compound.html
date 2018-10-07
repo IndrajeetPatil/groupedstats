@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Confidence intervals for partial eta-squared and omega-squared for
-linear models. — lm_effsize_ci • groupedstats</title>
+<title>Compound assignment pipe operator — %&lt;&gt;% • groupedstats</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -39,12 +38,9 @@ linear models. — lm_effsize_ci • groupedstats</title>
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Confidence intervals for partial eta-squared and omega-squared for
-linear models. — lm_effsize_ci" />
+<meta property="og:title" content="Compound assignment pipe operator — %&lt;&gt;%" />
 
-<meta property="og:description" content="This function will convert a linear model object to a dataframe
-containing statistical details for all effects along with partial
-eta-squared effect size and its confidence interval." />
+<meta property="og:description" content="See magrittr::%&amp;lt;&amp;gt;% for details." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -119,73 +115,25 @@ eta-squared effect size and its confidence interval." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Confidence intervals for partial eta-squared and omega-squared for
-linear models.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/groupedstats/blob/master/R/lm_effsize_ci.R'><code>R/lm_effsize_ci.R</code></a></small>
-    <div class="hidden name"><code>lm_effsize_ci.Rd</code></div>
+    <h1>Compound assignment pipe operator</h1>
+    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/groupedstats/blob/master/R/utils-tidy.R'><code>R/utils-tidy.R</code></a></small>
+    <div class="hidden name"><code>compound.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function will convert a linear model object to a dataframe
-containing statistical details for all effects along with partial
-eta-squared effect size and its confidence interval.</p>
+    <p>See <code>magrittr::%&lt;&gt;%</code> for details.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>lm_effsize_ci</span>(<span class='no'>object</span>, <span class='kw'>effsize</span> <span class='kw'>=</span> <span class='st'>"eta"</span>, <span class='kw'>partial</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>, <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>500</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>object</th>
-      <td><p>The linear model object (can be of class <code>lm</code>, <code>aov</code>, <code>anova</code>, or
-<code>aovlist</code>).</p></td>
-    </tr>
-    <tr>
-      <th>effsize</th>
-      <td><p>Character describing the effect size to be displayed: <code>"eta"</code>
-(default) or <code>"omega"</code>.</p></td>
-    </tr>
-    <tr>
-      <th>partial</th>
-      <td><p>Logical that decides if partial eta-squared or omega-squared
-are returned (Default: <code>TRUE</code>). If <code>FALSE</code>, eta-squared or omega-squared
-will be returned. Valid only for objects of class <code>lm</code>, <code>aov</code>, <code>anova</code>, or
-<code>aovlist</code>.</p></td>
-    </tr>
-    <tr>
-      <th>conf.level</th>
-      <td><p>Numeric specifying Level of confidence for the confidence
-interval (Default: <code>0.95</code>).</p></td>
-    </tr>
-    <tr>
-      <th>nboot</th>
-      <td><p>Number of bootstrap samples for confidence intervals for partial
-eta-squared and omega-squared (Default: <code>500</code>).</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A dataframe with results from <code><a href='http://www.rdocumentation.org/packages/stats/topics/lm'>stats::lm()</a></code> with partial eta-squared,
-omega-squared, and bootstrapped confidence interval for the same.</p>
-    
+    <pre class="usage"><span class='no'>lhs</span> <span class='kw'>%&lt;&gt;%</span> <span class='no'>rhs</span></pre>
+        
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-          </ul>
-
-    <h2>Author</h2>
-    
-Indrajeet Patil
+                </ul>
 
   </div>
 </div>

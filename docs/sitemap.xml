@@ -4,6 +4,9 @@
     <loc>https://indrajeetpatil.github.io/groupedstats//index.html</loc>
   </url>
   <url>
+    <loc>https://indrajeetpatil.github.io/groupedstats//reference/compound.html</loc>
+  </url>
+  <url>
     <loc>https://indrajeetpatil.github.io/groupedstats//reference/groupedstats-package.html</loc>
   </url>
   <url>
@@ -62,6 +65,9 @@
   </url>
   <url>
     <loc>https://indrajeetpatil.github.io/groupedstats//reference/specify_decimal_p.html</loc>
+  </url>
+  <url>
+    <loc>https://indrajeetpatil.github.io/groupedstats//reference/tibble.html</loc>
   </url>
   <url>
     <loc>https://indrajeetpatil.github.io/groupedstats//reference/Titanic_full.html</loc>
