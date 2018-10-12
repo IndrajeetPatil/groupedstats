@@ -10,7 +10,8 @@ specify_decimal_p(x, k = 3, p.value = FALSE)
 \arguments{
 \item{x}{A numeric variable.}
 
-\item{k}{Number of digits after decimal point (should be an integer) (Default: \code{k = 3}).}
+\item{k}{Number of digits after decimal point (should be an integer)
+(Default: \code{k = 3}).}
 
 \item{p.value}{Decides whether the number is a p-value (Default: \code{FALSE}).}
 }
@@ -19,8 +20,17 @@ Formatted numeric values.
 }
 \description{
 Function to format an R object for pretty printing with a
-specified (\code{k}) number of decimal places. The function also allows highly
-significant p-values to be denoted as "p < 0.001" rather than "p = 0.000".
+specified (\code{k}) number of decimal places. The function also allows really
+small \emph{p}-values to be denoted as \code{"p < 0.001"} rather than \code{"p = 0.000"}.
+Note that if \code{p.value} is set to \code{TRUE}, the minimum value of \code{k} allowed
+is \code{3}. If \code{k} is set to less than 3, the function will ignore entered \code{k}
+value and use \code{k = 3} instead.
+}
+\examples{
+
+groupedstats::specify_decimal_p(x = 0.00001, k = 2, p.value = TRUE)
+groupedstats::specify_decimal_p(x = 0.008, k = 2, p.value = TRUE)
+groupedstats::specify_decimal_p(x = 0.008, k = 3, p.value = FALSE)
 }
 \author{
 Indrajeet Patil

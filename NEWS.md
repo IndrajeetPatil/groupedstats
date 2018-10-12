@@ -1,5 +1,9 @@
 # groupedstats 0.0.3.9000
 
+MAJOR CHANGES
+
+  - New functions exported: `set_cwd()`
+
 # groupedstats 0.0.3
 
 MAJOR CHANGES

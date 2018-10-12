@@ -11,6 +11,7 @@
 #' @param data Data frame from which variables specified are preferentially to
 #'   be taken.
 #' @param p The column containing p-values.
+#' @param messages Logical decides whether to produce notes (Default: `TRUE`).
 #'
 #' @importFrom dplyr group_by
 #' @importFrom dplyr summarize
@@ -50,7 +51,7 @@
 #' @export
 
 # function body
-signif_column <- function(data = NULL, p) {
+signif_column <- function(data = NULL, p, messages = FALSE) {
 
   # if dataframe is provided
   if (!is.null(data)) {
@@ -78,18 +79,18 @@ signif_column <- function(data = NULL, p) {
 
   # make sure the p-value column is numeric; if not, convert it to numeric
   if (!is.numeric(df$p)) {
-
-    # display message about conversion
-    base::message(cat(
-      crayon::green("Note: "),
-      crayon::blue(
-        "The entered vector is of class",
-        crayon::yellow(class(df$p)[[1]]),
-        "; attempting to convert it to numeric."
-      ),
-      sep = ""
-    ))
-
+    if (isTRUE(messages)) {
+      # display message about conversion
+      base::message(cat(
+        crayon::green("Note: "),
+        crayon::blue(
+          "The entered vector is of class",
+          crayon::yellow(class(df$p)[[1]]),
+          "; attempting to convert it to numeric."
+        ),
+        sep = ""
+      ))
+    }
     # conversion
     df$p <- as.numeric(as.character(df$p))
   }

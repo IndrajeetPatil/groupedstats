@@ -1,6 +1,6 @@
 Tests and Coverage
 ================
-12 October, 2018 08:21:15
+12 October, 2018 17:29:30
 
 This output is created by
 [covrpage](https://github.com/yonicd/covrpage).
@@ -12,7 +12,7 @@ Coverage summary is created using the
 
 | Object                                              | Coverage (%) |
 | :-------------------------------------------------- | :----------: |
-| groupedstats                                        |     0.97     |
+| groupedstats                                        |     3.81     |
 | [R/grouped\_aov.R](../R/grouped_aov.R)              |     0.00     |
 | [R/grouped\_glm.R](../R/grouped_glm.R)              |     0.00     |
 | [R/grouped\_glmer.R](../R/grouped_glmer.R)          |     0.00     |
@@ -26,8 +26,8 @@ Coverage summary is created using the
 | [R/grouped\_wilcox.R](../R/grouped_wilcox.R)        |     0.00     |
 | [R/lm\_effsize\_ci.R](../R/lm_effsize_ci.R)         |     0.00     |
 | [R/set\_cwd.R](../R/set_cwd.R)                      |     0.00     |
-| [R/signif\_column.R](../R/signif_column.R)          |     0.00     |
-| [R/specify\_decimal\_p.R](../R/specify_decimal_p.R) |    100.00    |
+| [R/signif\_column.R](../R/signif_column.R)          |    79.07     |
+| [R/specify\_decimal\_p.R](../R/specify_decimal_p.R) |    92.86     |
 
 <br>
 
@@ -39,7 +39,8 @@ package.
 
 | file                                                             | n | time | error | failed | skipped | warning |
 | :--------------------------------------------------------------- | -: | ---: | ----: | -----: | ------: | ------: |
-| [test\_specify\_decimal\_p.R](testthat/test_specify_decimal_p.R) | 4 | 0.03 |     0 |      0 |       0 |       0 |
+| [test\_signif\_column.R](testthat/test_signif_column.R)          | 7 | 0.01 |     0 |      0 |       0 |       0 |
+| [test\_specify\_decimal\_p.R](testthat/test_specify_decimal_p.R) | 8 | 0.04 |     0 |      0 |       0 |       0 |
 
 <details closed>
 
@@ -48,7 +49,8 @@ package.
 
 | file                                                                 | context          | test                      | status | n | time |
 | :------------------------------------------------------------------- | :--------------- | :------------------------ | :----- | -: | ---: |
-| [test\_specify\_decimal\_p.R](testthat/test_specify_decimal_p.R#L17) | Specify decimals | specify\_decimal\_p works | PASS   | 4 | 0.03 |
+| [test\_signif\_column.R](testthat/test_signif_column.R#L27)          | signif column    | signif\_column works      | PASS   | 7 | 0.01 |
+| [test\_specify\_decimal\_p.R](testthat/test_specify_decimal_p.R#L21) | Specify decimals | specify\_decimal\_p works | PASS   | 8 | 0.04 |
 
 </details>
 

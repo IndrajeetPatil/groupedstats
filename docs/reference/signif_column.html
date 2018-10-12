@@ -11,7 +11,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
 
 <!-- jquery -->
-<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
@@ -21,7 +21,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.1/clipboard.min.js" integrity="sha256-hIvIxeqhGZF+VVeM55k0mJvWpQ6gTkWk3Emc+NmowYA=" crossorigin="anonymous"></script>
 
 <!-- sticky kit -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
@@ -130,7 +130,7 @@ p-values" />
     
     </div>
 
-    <pre class="usage"><span class='fu'>signif_column</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>p</span>)</pre>
+    <pre class="usage"><span class='fu'>signif_column</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>p</span>, <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -143,6 +143,10 @@ be taken.</p></td>
     <tr>
       <th>p</th>
       <td><p>The column containing p-values.</p></td>
+    </tr>
+    <tr>
+      <th>messages</th>
+      <td><p>Logical decides whether to produce notes (Default: <code>TRUE</code>).</p></td>
     </tr>
     </table>
     
@@ -182,7 +186,7 @@ statistical significance.</p>
 #&gt; 4     4     1 0.05    ns          
 #&gt; 5     5     1 0.01    *           </div><div class='input'>
 <span class='co'># numbers entered as characters are also tolerated</span>
-<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/signif_column.html'>signif_column</a></span>(<span class='kw'>p</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"1"</span>, <span class='st'>"0.1"</span>, <span class='st'>"0.0002"</span>, <span class='st'>"0.03"</span>, <span class='st'>"0.65"</span>))</div><div class='output co'>#&gt; Note: The entered vector is of class factor ; attempting to convert it to numeric.</div><div class='output co'>#&gt; </div><div class='output co'>#&gt; # A tibble: 5 x 2
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/signif_column.html'>signif_column</a></span>(<span class='kw'>p</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"1"</span>, <span class='st'>"0.1"</span>, <span class='st'>"0.0002"</span>, <span class='st'>"0.03"</span>, <span class='st'>"0.65"</span>))</div><div class='output co'>#&gt; # A tibble: 5 x 2
 #&gt;        p significance
 #&gt;    &lt;dbl&gt; &lt;chr&gt;       
 #&gt; 1 1      ns          

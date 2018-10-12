@@ -12,7 +12,7 @@ results for p-value — specify_decimal_p • groupedstats</title>
 <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
 
 <!-- jquery -->
-<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
@@ -22,7 +22,7 @@ results for p-value — specify_decimal_p • groupedstats</title>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.1/clipboard.min.js" integrity="sha256-hIvIxeqhGZF+VVeM55k0mJvWpQ6gTkWk3Emc+NmowYA=" crossorigin="anonymous"></script>
 
 <!-- sticky kit -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
@@ -45,8 +45,11 @@ results for p-value — specify_decimal_p • groupedstats</title>
 results for p-value — specify_decimal_p" />
 
 <meta property="og:description" content="Function to format an R object for pretty printing with a
-specified (k) number of decimal places. The function also allows highly
-significant p-values to be denoted as &quot;p &amp;lt; 0.001&quot; rather than &quot;p = 0.000&quot;." />
+specified (k) number of decimal places. The function also allows really
+small p-values to be denoted as &quot;p &amp;lt; 0.001&quot; rather than &quot;p = 0.000&quot;.
+Note that if p.value is set to TRUE, the minimum value of k allowed
+is 3. If k is set to less than 3, the function will ignore entered k
+value and use k = 3 instead." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -130,8 +133,11 @@ results for p-value</h1>
     <div class="ref-description">
     
     <p>Function to format an R object for pretty printing with a
-specified (<code>k</code>) number of decimal places. The function also allows highly
-significant p-values to be denoted as "p &lt; 0.001" rather than "p = 0.000".</p>
+specified (<code>k</code>) number of decimal places. The function also allows really
+small <em>p</em>-values to be denoted as <code>"p &lt; 0.001"</code> rather than <code>"p = 0.000"</code>.
+Note that if <code>p.value</code> is set to <code>TRUE</code>, the minimum value of <code>k</code> allowed
+is <code>3</code>. If <code>k</code> is set to less than 3, the function will ignore entered <code>k</code>
+value and use <code>k = 3</code> instead.</p>
     
     </div>
 
@@ -146,7 +152,8 @@ significant p-values to be denoted as "p &lt; 0.001" rather than "p = 0.000".</p
     </tr>
     <tr>
       <th>k</th>
-      <td><p>Number of digits after decimal point (should be an integer) (Default: <code>k = 3</code>).</p></td>
+      <td><p>Number of digits after decimal point (should be an integer)
+(Default: <code>k = 3</code>).</p></td>
     </tr>
     <tr>
       <th>p.value</th>
@@ -159,6 +166,9 @@ significant p-values to be denoted as "p &lt; 0.001" rather than "p = 0.000".</p
     <p>Formatted numeric values.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/specify_decimal_p.html'>specify_decimal_p</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>0.00001</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>p.value</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "&lt; 0.001"</div><div class='input'><span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/specify_decimal_p.html'>specify_decimal_p</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>0.008</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>p.value</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "0.008"</div><div class='input'><span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/specify_decimal_p.html'>specify_decimal_p</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>0.008</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>p.value</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] "0.008"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -166,7 +176,9 @@ significant p-values to be denoted as "p &lt; 0.001" rather than "p = 0.000".</p
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
     <h2>Author</h2>
     

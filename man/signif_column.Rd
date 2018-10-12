@@ -4,13 +4,15 @@
 \alias{signif_column}
 \title{Creating a new character type column with significance labels}
 \usage{
-signif_column(data = NULL, p)
+signif_column(data = NULL, p, messages = FALSE)
 }
 \arguments{
 \item{data}{Data frame from which variables specified are preferentially to
 be taken.}
 
 \item{p}{The column containing p-values.}
+
+\item{messages}{Logical decides whether to produce notes (Default: \code{TRUE}).}
 }
 \value{
 Returns the originally entered object (either a vector or a
