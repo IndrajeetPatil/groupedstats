@@ -587,21 +587,26 @@ example, let's say we want to run the same linear regression across multiple
 grouping variables but want to use different formulas-
 
 ```{r purrr1}
+set.seed(123)
+library(groupedstats)
+
 results_df <- purrr::pmap_dfr(
   .l = list(
-    data = list(gapminder::gapminder),
-    grouping.vars = alist(country),
+    data = list(groupedstats::movies_long),
+    grouping.vars = alist(c(mpaa, genre)), # note it's `alist` and not `list`
     formula = list(
-      lifeExp ~ year,           # formula 1
-      lifeExp ~ log(year),      # formula 2
-      log(lifeExp) ~ year,      # formula 3
-      log(lifeExp) ~ log(year)  # formula 4
+      rating ~ budget,           # model 1
+      rating ~ log(budget),      # model 2
+      log(rating) ~ budget,      # model 3
+      log(rating) ~ log(budget)  # model 4
     ),
-    output = list("glance")
+    output = list("glance")      # return model diagnostics
   ),
-  .f = groupedstats::grouped_lm,
-  .id = "formula"
-)
+  .f = groupedstats::grouped_lm, # regression model
+  .id = "model"
+) %>%  # for each combination of mpaa rating and movie genre
+  dplyr::group_by(.data = ., mpaa, genre) %>% # arrange by best to worst fits
+  dplyr::arrange(.data = ., dplyr::desc(adj.r.squared))
 
 head(results_df)
 ```

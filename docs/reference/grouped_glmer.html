@@ -9,6 +9,8 @@
 <title>Function to run generalized linear mixed-effects model (glmer) across multiple
 grouping variables. — grouped_glmer • groupedstats</title>
 
+<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
@@ -49,7 +51,7 @@ grouping variables." />
 
 
 <!-- mathjax -->
-<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -201,12 +203,12 @@ summaries.</p>
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/sample.html'>sample_frac</a></span>(<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='no'><a href='https://indrajeetpatil.github.io/groupedstats//reference/Titanic_full.html'>Titanic_full</a></span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>0.3</span>),
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>Sex</span>
 )</div><div class='output co'>#&gt; # A tibble: 4 x 10
-#&gt;   Sex   effect term  estimate std.error statistic conf.low conf.high p.value
-#&gt;   &lt;fct&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-#&gt; 1 Male  fixed  (Int~   -0.720     0.156     -4.62   -1.03     -0.414 3.83e-6
-#&gt; 2 Male  fixed  AgeC~    1.45      0.540      2.69    0.395     2.51  7.12e-3
-#&gt; 3 Fema~ fixed  (Int~    1.23      0.457      2.70    0.336     2.13  7.02e-3
-#&gt; 4 Fema~ fixed  AgeC~    1.18      0.803      1.47   -0.396     2.75  1.43e-1
+#&gt;   Sex   effect term  estimate std.error statistic conf.low conf.high  p.value
+#&gt;   &lt;fct&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+#&gt; 1 Male  fixed  (Int~   -0.878    0.0993     -8.84   -1.07     -0.683 9.53e-19
+#&gt; 2 Male  fixed  AgeC~    2.54     0.972       2.62    0.637     4.45  8.91e- 3
+#&gt; 3 Fema~ fixed  (Int~    0.924    0.408       2.26    0.124     1.72  2.35e- 2
+#&gt; 4 Fema~ fixed  AgeC~    0.973    0.621       1.57   -0.244     2.19  1.17e- 1
 #&gt; # ... with 1 more variable: significance &lt;chr&gt;</div><div class='input'>
 <span class='co'># continuous outcome; gaussian family</span>
 <span class='fu'>library</span>(<span class='no'>gapminder</span>)
@@ -227,16 +229,16 @@ summaries.</p>
 )</div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; # A tibble: 24 x 8
 #&gt;     year effect term             estimate std.error statistic conf.low conf.high
 #&gt;    &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-#&gt;  1  1962 fixed  (Intercept)       -0.0655     0.196    -0.334  -0.450      0.319
-#&gt;  2  1962 fixed  scale(gdpPercap)   0.457      0.208     2.20    0.0496     0.864
-#&gt;  3  1952 fixed  (Intercept)        0.181      0.509     0.357  -0.816      1.18 
-#&gt;  4  1952 fixed  scale(gdpPercap)   1.54       0.999     1.54   -0.417      3.50 
-#&gt;  5  1972 fixed  (Intercept)        0.106      0.302     0.352  -0.486      0.699
-#&gt;  6  1972 fixed  scale(gdpPercap)   0.781      0.421     1.85   -0.0442     1.61 
-#&gt;  7  1992 fixed  (Intercept)        0.446      0.107     4.18    0.237      0.655
-#&gt;  8  1992 fixed  scale(gdpPercap)   1.12       0.432     2.59    0.272      1.97 
-#&gt;  9  1987 fixed  (Intercept)        0.278      0.201     1.38   -0.116      0.671
-#&gt; 10  1987 fixed  scale(gdpPercap)   0.636      0.238     2.68    0.170      1.10 
+#&gt;  1  1952 fixed  (Intercept)         0.567     0.242     2.34    0.0929     1.04 
+#&gt;  2  1952 fixed  scale(gdpPercap)    3.51      1.32      2.65    0.918      6.11 
+#&gt;  3  1977 fixed  (Intercept)         0.155     0.350     0.442  -0.531      0.841
+#&gt;  4  1977 fixed  scale(gdpPercap)    0.515     0.183     2.81    0.156      0.873
+#&gt;  5  1987 fixed  (Intercept)         0.496     0.187     2.66    0.131      0.862
+#&gt;  6  1987 fixed  scale(gdpPercap)    0.916     0.391     2.34    0.149      1.68 
+#&gt;  7  1967 fixed  (Intercept)         0.199     0.256     0.777  -0.303      0.700
+#&gt;  8  1967 fixed  scale(gdpPercap)    0.546     0.154     3.54    0.243      0.849
+#&gt;  9  1972 fixed  (Intercept)         0.278     0.273     1.02   -0.258      0.813
+#&gt; 10  1972 fixed  scale(gdpPercap)    1.29      0.690     1.87   -0.0619     2.64 
 #&gt; # ... with 14 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

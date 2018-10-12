@@ -9,6 +9,8 @@
 <title>Function to run linear mixed-effects model (lmer) across multiple
 grouping variables. — grouped_lmer • groupedstats</title>
 
+<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
@@ -49,7 +51,7 @@ grouping variables." />
 
 
 <!-- mathjax -->
-<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -213,16 +215,16 @@ summaries.</p>
 )</div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; <span class='message'>Computing p-values via Wald-statistics approximation (treating t as Wald z).</span></div><div class='output co'>#&gt; # A tibble: 24 x 10
 #&gt;     year effect term  estimate std.error t.value conf.low conf.high p.value
 #&gt;    &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-#&gt;  1  1967 fixed  (Int~   0.203     0.321    0.633  -0.426      0.833 5.27e-1
-#&gt;  2  1967 fixed  scal~   0.369     0.110    3.35    0.153      0.585 8.23e-4
-#&gt;  3  1977 fixed  (Int~   0.0658    0.444    0.148  -0.805      0.937 8.82e-1
-#&gt;  4  1977 fixed  scal~   0.347     0.0871   3.98    0.176      0.517 6.90e-5
-#&gt;  5  1982 fixed  (Int~   0.284     0.253    1.12   -0.211      0.780 2.61e-1
-#&gt;  6  1982 fixed  scal~   0.501     0.163    3.07    0.181      0.821 2.17e-3
-#&gt;  7  2002 fixed  (Int~   0.296     0.288    1.03   -0.268      0.860 3.04e-1
-#&gt;  8  2002 fixed  scal~   0.495     0.206    2.41    0.0922     0.899 1.60e-2
-#&gt;  9  1952 fixed  (Int~   0.181     0.259    0.701  -0.326      0.689 4.83e-1
-#&gt; 10  1952 fixed  scal~   0.467     0.0863   5.42    0.298      0.636 5.98e-8
+#&gt;  1  1952 fixed  (Int~    0.220     0.382   0.575  -0.529      0.969 5.65e-1
+#&gt;  2  1952 fixed  scal~    0.904     0.532   1.70   -0.138      1.95  8.91e-2
+#&gt;  3  2007 fixed  (Int~    0.296     0.204   1.45   -0.105      0.696 1.48e-1
+#&gt;  4  2007 fixed  scal~    0.496     0.214   2.32    0.0773     0.916 2.03e-2
+#&gt;  5  1992 fixed  (Int~    0.414     0.116   3.58    0.187      0.641 3.47e-4
+#&gt;  6  1992 fixed  scal~    0.782     0.375   2.09    0.0471     1.52  3.70e-2
+#&gt;  7  1987 fixed  (Int~    0.313     0.248   1.26   -0.173      0.798 2.07e-1
+#&gt;  8  1987 fixed  scal~    0.590     0.190   3.11    0.218      0.963 1.90e-3
+#&gt;  9  1962 fixed  (Int~    0.321     0.326   0.985  -0.318      0.961 3.25e-1
+#&gt; 10  1962 fixed  scal~    0.897     0.400   2.24    0.114      1.68  2.48e-2
 #&gt; # ... with 14 more rows, and 1 more variable: significance &lt;chr&gt;</div><div class='input'>
 <span class='co'># getting model summaries</span>
 <span class='co'># let's use only 50% data to speed it up</span>

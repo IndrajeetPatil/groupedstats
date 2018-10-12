@@ -1,6 +1,6 @@
 Tests and Coverage
 ================
-06 October, 2018 20:06:37
+12 October, 2018 08:21:15
 
 This output is created by
 [covrpage](https://github.com/yonicd/covrpage).
@@ -12,7 +12,7 @@ Coverage summary is created using the
 
 | Object                                              | Coverage (%) |
 | :-------------------------------------------------- | :----------: |
-| groupedstats                                        |     0.98     |
+| groupedstats                                        |     0.97     |
 | [R/grouped\_aov.R](../R/grouped_aov.R)              |     0.00     |
 | [R/grouped\_glm.R](../R/grouped_glm.R)              |     0.00     |
 | [R/grouped\_glmer.R](../R/grouped_glmer.R)          |     0.00     |
@@ -24,8 +24,9 @@ Coverage summary is created using the
 | [R/grouped\_summary.R](../R/grouped_summary.R)      |     0.00     |
 | [R/grouped\_ttest.R](../R/grouped_ttest.R)          |     0.00     |
 | [R/grouped\_wilcox.R](../R/grouped_wilcox.R)        |     0.00     |
-| [R/helpers.R](../R/helpers.R)                       |     0.00     |
+| [R/lm\_effsize\_ci.R](../R/lm_effsize_ci.R)         |     0.00     |
 | [R/set\_cwd.R](../R/set_cwd.R)                      |     0.00     |
+| [R/signif\_column.R](../R/signif_column.R)          |     0.00     |
 | [R/specify\_decimal\_p.R](../R/specify_decimal_p.R) |    100.00    |
 
 <br>
@@ -36,9 +37,9 @@ Unit Test summary is created using the
 [testthat](https://github.com/r-lib/testthat)
 package.
 
-|                             | file                                                             | n | time | error | failed | skipped | warning |
-| --------------------------- | :--------------------------------------------------------------- | -: | ---: | ----: | -----: | ------: | ------: |
-| test\_specify\_decimal\_p.R | [test\_specify\_decimal\_p.R](testthat/test_specify_decimal_p.R) | 4 |    0 |     0 |      0 |       0 |       0 |
+| file                                                             | n | time | error | failed | skipped | warning |
+| :--------------------------------------------------------------- | -: | ---: | ----: | -----: | ------: | ------: |
+| [test\_specify\_decimal\_p.R](testthat/test_specify_decimal_p.R) | 4 | 0.03 |     0 |      0 |       0 |       0 |
 
 <details closed>
 
@@ -47,7 +48,7 @@ package.
 
 | file                                                                 | context          | test                      | status | n | time |
 | :------------------------------------------------------------------- | :--------------- | :------------------------ | :----- | -: | ---: |
-| [test\_specify\_decimal\_p.R](testthat/test_specify_decimal_p.R#L17) | Specify decimals | specify\_decimal\_p works | PASS   | 4 |    0 |
+| [test\_specify\_decimal\_p.R](testthat/test_specify_decimal_p.R#L17) | Specify decimals | specify\_decimal\_p works | PASS   | 4 | 0.03 |
 
 </details>
 
@@ -67,7 +68,7 @@ package.
 | :------- | :--------- |
 | testthat | 2.0.0      |
 | covr     | 3.2.0.9000 |
-| covrpage | 0.0.59     |
+| covrpage | 0.0.60     |
 
 </details>
 

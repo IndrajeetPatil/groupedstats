@@ -50,6 +50,7 @@ reference:
       - lm_effsize_ci
       - signif_column
       - specify_decimal_p
+      - set_cwd
 
   - title: Data
     desc:  Datasets included in the package.

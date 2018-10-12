@@ -23,7 +23,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--10--06-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--10--12-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
@@ -1207,47 +1207,52 @@ For example, let’s say we want to run the same linear regression across
 multiple grouping variables but want to use different formulas-
 
 ``` r
+set.seed(123)
+library(groupedstats)
+
 results_df <- purrr::pmap_dfr(
   .l = list(
-    data = list(gapminder::gapminder),
-    grouping.vars = alist(country),
+    data = list(groupedstats::movies_long),
+    grouping.vars = alist(c(mpaa, genre)), # note it's `alist` and not `list`
     formula = list(
-      lifeExp ~ year,           # formula 1
-      lifeExp ~ log(year),      # formula 2
-      log(lifeExp) ~ year,      # formula 3
-      log(lifeExp) ~ log(year)  # formula 4
+      rating ~ budget,           # model 1
+      rating ~ log(budget),      # model 2
+      log(rating) ~ budget,      # model 3
+      log(rating) ~ log(budget)  # model 4
     ),
-    output = list("glance")
+    output = list("glance")      # return model diagnostics
   ),
-  .f = groupedstats::grouped_lm,
-  .id = "formula"
-)
+  .f = groupedstats::grouped_lm, # regression model
+  .id = "model"
+) %>%  # for each combination of mpaa rating and movie genre
+  dplyr::group_by(.data = ., mpaa, genre) %>% # arrange by best to worst fits
+  dplyr::arrange(.data = ., dplyr::desc(adj.r.squared))
 
 head(results_df)
-#> # A tibble: 6 x 14
-#>   formula country     r.squared adj.r.squared sigma statistic    df logLik
-#>   <chr>   <fct>           <dbl>         <dbl> <dbl>     <dbl> <int>  <dbl>
-#> 1 1       Afghanistan     0.948         0.942 1.22      181.      2 -18.3 
-#> 2 1       Albania         0.911         0.902 1.98      102.      2 -24.1 
-#> 3 1       Algeria         0.985         0.984 1.32      662.      2 -19.3 
-#> 4 1       Angola          0.888         0.877 1.41       79.1     2 -20.0 
-#> 5 1       Argentina       0.996         0.995 0.292    2246.      2  -1.17
-#> 6 1       Australia       0.980         0.978 0.621     481.      2 -10.2 
-#>     AIC   BIC deviance df.residual  p.value significance
-#>   <dbl> <dbl>    <dbl>       <int>    <dbl> <chr>       
-#> 1 42.7  44.1    15.0            10 9.84e- 8 ***         
-#> 2 54.3  55.8    39.3            10 1.46e- 6 ***         
-#> 3 44.6  46.0    17.5            10 1.81e-10 ***         
-#> 4 46.1  47.5    19.8            10 4.59e- 6 ***         
-#> 5  8.35  9.80    0.854          10 4.22e-13 ***         
-#> 6 26.4  27.9     3.85           10 8.67e-10 ***
+#> # A tibble: 6 x 15
+#> # Groups:   mpaa, genre [3]
+#>   model mpaa  genre       r.squared adj.r.squared  sigma statistic    df
+#>   <chr> <fct> <fct>           <dbl>         <dbl>  <dbl>     <dbl> <int>
+#> 1 2     PG-13 Animation       0.474         0.369 0.824       4.51     2
+#> 2 4     PG-13 Animation       0.447         0.337 0.138       4.05     2
+#> 3 3     PG    Documentary     0.468         0.202 0.0532      1.76     2
+#> 4 1     PG    Documentary     0.449         0.174 0.386       1.63     2
+#> 5 4     R     Action          0.142         0.138 0.254      34.6      2
+#> 6 2     R     Action          0.129         0.125 1.31       30.9      2
+#>     logLik     AIC     BIC  deviance df.residual      p.value significance
+#>      <dbl>   <dbl>   <dbl>     <dbl>       <int>        <dbl> <chr>       
+#> 1   -7.40    20.8    20.6    3.39              5 0.0870       ns          
+#> 2    5.09    -4.18   -4.35   0.0957            5 0.100        ns          
+#> 3    7.45    -8.90  -10.7    0.00565           2 0.316        ns          
+#> 4   -0.479    6.96    5.12   0.298             2 0.330        ns          
+#> 5   -9.39    24.8    34.8   13.5             209 0.0000000162 ***         
+#> 6 -356.     718.    728.   361.              209 0.0000000825 ***
 ```
 
 # Current code coverage
 
 As the code stands right now, here is the code coverage for all primary
 functions involved:
-
 <https://codecov.io/gh/IndrajeetPatil/groupedstats/tree/master/R>
 
 # Contributing
