@@ -23,7 +23,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--10--12-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--10--17-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
@@ -125,7 +125,7 @@ args(name = groupedstats::grouped_ttest)
 ```
 
 In case you want to look at the function body for any of the functions,
-just type the name of the function without the paranetheses:
+just type the name of the function without the parenetheses:
 
 ``` r
 groupedstats::grouped_lm
@@ -188,7 +188,7 @@ groupedstats::grouped_summary(data = datasets::iris,
 ```
 
 This function can be used to get summary of either numeric **or** factor
-varibles, but **not** both. This is by design. If no `measures` are
+variables, but **not** both. This is by design. If no `measures` are
 specified, the function will compute summary for all variables of the
 specified type (`numeric` or `factor`).
 
@@ -326,7 +326,7 @@ between different pairs of variables across multiple levels of grouping
 variable(s). For example, we can use the `gapminder` dataset to study
 two relationships of interest for **each country** across years:
 
-1.  life expectency and GDP (per capita)
+1.  life expectancy and GDP (per capita)
 2.  population GDP (per capita) Thus, in this case we have two
     regression models and one grouping variable with 142 levels
     (countries)
@@ -370,12 +370,12 @@ groupedstats::grouped_slr(data = gapminder::gapminder,
 ```
 
 Notice the order in which the dependent and independent variables are
-entered; there are two regression models being run here: `lifeExp ~
-gdpPercap` and `pop ~ gdpPercap` If this order is incorrect, the result
-will also be incorrect. So it is always a good idea to check the
-*formula* column to see if you have run the correct linear models. Also,
-note that the estimates are already standardized, i.e. estimates are
-standardized regression coefficients (betas, i.e.).
+entered; there are two separate regression models being run here:
+`lifeExp ~ gdpPercap` and `pop ~ gdpPercap` If this order is incorrect,
+the result will also be incorrect. So it is always a good idea to check
+the *formula* column to see if you have run the correct linear models.
+Also, note that the estimates are already standardized, i.e. estimates
+are standardized regression coefficients (betas, i.e.).
 
 The prior example was with just one grouping variable. This can be done
 with multiple grouping variables as well. For example, with the
@@ -892,7 +892,7 @@ groupedstats::grouped_proptest(data = datasets::mtcars,
 ## `grouped_ttest`
 
 This function can help you carry out t-tests, paired or independent, on
-multiple variables across multiple groups. Deomostrating how to use this
+multiple variables across multiple groups. Demonstrating how to use this
 function is going to first require getting the `iris` dataset into long
 format. Let’s say we want to investigate if `Sepal` part of the flower
 has greater measurement (length or width) than `Petal` part of the
