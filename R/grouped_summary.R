@@ -178,7 +178,7 @@ grouped_summary <- function(data,
         .data = data,
         !!rlang::enquo(measures)
       ),
-      .f = ~purrr::is_bare_numeric(.)
+      .f = ~ purrr::is_bare_numeric(.)
     ) == FALSE)
     # factor
     # convert factor into characters
@@ -195,7 +195,7 @@ grouped_summary <- function(data,
     # count the number of character type variables
     factor_count <- sum(purrr::map_lgl(
       .x = df_char,
-      .f = ~purrr::is_bare_character(.)
+      .f = ~ purrr::is_bare_character(.)
     ) == FALSE)
 
     # conditionally stopping the function
@@ -250,7 +250,7 @@ grouped_summary <- function(data,
       summary = data %>% # 'data' variable is automatically created by tidyr::nest function
         purrr::map(
           .x = .,
-          .f = ~skimr::skim_to_wide(.)
+          .f = ~ skimr::skim_to_wide(.)
         )
     )
 
@@ -265,7 +265,7 @@ grouped_summary <- function(data,
         summary = summary %>%
           purrr::map(
             .x = .,
-            .f = ~dplyr::select(.data = ., dplyr::everything())
+            .f = ~ dplyr::select(.data = ., dplyr::everything())
           )
       ) %>% # remove the histograms since they are not that helpful
       tidyr::unnest(data = .) %>% # unnesting the data
@@ -276,7 +276,7 @@ grouped_summary <- function(data,
       count_long_format_fn <- function(top_counts) {
         purrr::map_dfr(
           .x = base::strsplit(x = top_counts, split = ","),
-          .f = ~tibble::as_data_frame(x = .) %>%
+          .f = ~ tibble::as_data_frame(x = .) %>%
             dplyr::mutate_all(.tbl = ., .funs = base::trimws) %>%
             tidyr::separate(
               data = .,
@@ -297,7 +297,7 @@ grouped_summary <- function(data,
           long.counts = data %>%
             purrr::map(
               .x = .,
-              .f = ~count_long_format_fn(top_counts = .$top_counts)
+              .f = ~ count_long_format_fn(top_counts = .$top_counts)
             )
         ) %>%
         dplyr::select(.data = ., -data) %>%
@@ -331,7 +331,7 @@ grouped_summary <- function(data,
       dplyr::mutate_at(
         .tbl = .,
         .vars = dplyr::vars(missing, complete, n, mean, sd, p0, p25, p50, p75, p100),
-        .funs = ~as.numeric(as.character(.)) # change summary variables to numeric
+        .funs = ~ as.numeric(as.character(.)) # change summary variables to numeric
       ) %>% # renaming variables to more common terminology
       dplyr::rename(
         .data = .,

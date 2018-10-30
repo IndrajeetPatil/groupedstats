@@ -115,7 +115,7 @@ grouped_lmer <- function(data,
           list.col %>% # tidying up the output with broom.mixed
           purrr::map_dfr(
             .x = .,
-            .f = ~broom.mixed::tidy(
+            .f = ~ broom.mixed::tidy(
               x = lme4::lmer(
                 formula = stats::as.formula(formula),
                 data = (.),
@@ -134,7 +134,7 @@ grouped_lmer <- function(data,
           dplyr::mutate_at(
             .tbl = .,
             .vars = "term",
-            .funs = ~as.character(.)
+            .funs = ~ as.character(.)
           )
 
         # computing p-values
@@ -142,7 +142,7 @@ grouped_lmer <- function(data,
           list.col %>% # getting p-values with sjstats package
           purrr::map_dfr(
             .x = .,
-            .f = ~sjstats::p_value(
+            .f = ~ sjstats::p_value(
               fit = lme4::lmer(
                 formula = stats::as.formula(formula),
                 data = (.),
@@ -158,7 +158,7 @@ grouped_lmer <- function(data,
           dplyr::mutate_at(
             .tbl = .,
             .vars = "term",
-            .funs = ~as.character(.)
+            .funs = ~ as.character(.)
           )
 
         # combining the two dataframes
@@ -174,7 +174,7 @@ grouped_lmer <- function(data,
           list.col %>% # tidying up the output with broom.mixed
           purrr::map_dfr(
             .x = .,
-            .f = ~broom.mixed::glance(
+            .f = ~ broom.mixed::glance(
               x = lme4::lmer(
                 formula = stats::as.formula(formula),
                 data = (.),

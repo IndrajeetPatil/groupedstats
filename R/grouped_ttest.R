@@ -104,7 +104,7 @@ grouped_ttest <- function(data,
       list.col %>% # running t-test on each individual group with purrr
       purrr::map(
         .x = .,
-        .f = ~stats::t.test(
+        .f = ~ stats::t.test(
           formula = stats::as.formula(fx),
           mu = 0,
           paired = paired,
@@ -117,7 +117,7 @@ grouped_ttest <- function(data,
       ) %>% # tidying up the output with broom
       purrr::map_dfr(
         .x = .,
-        .f = ~broom::tidy(x = .),
+        .f = ~ broom::tidy(x = .),
         .id = "..group"
       ) %>% # add formula as a character
       dplyr::mutate(.data = ., formula = as.character(fx)) %>% # rearrange the dataframe
@@ -150,11 +150,11 @@ grouped_ttest <- function(data,
       list.col = list(df$data),
       x_name = purrr::map(
         .x = indep.vars,
-        .f = ~rlang::quo_name(quo = .)
+        .f = ~ rlang::quo_name(quo = .)
       ),
       y_name = purrr::map(
         .x = dep.vars,
-        .f = ~rlang::quo_name(quo = .)
+        .f = ~ rlang::quo_name(quo = .)
       ),
       paired = paired,
       var.equal = var.equal

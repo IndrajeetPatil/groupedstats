@@ -8,8 +8,10 @@ test_that(desc = "signif_column works", code = {
   df1 <-
     suppressWarnings(groupedstats::signif_column(p = c("a", "b"), messages = FALSE))
   df2 <-
-    groupedstats::signif_column(p = c("0.01", "0.001", "0.05", "0.0002"),
-                                messages = FALSE)
+    groupedstats::signif_column(
+      p = c("0.01", "0.001", "0.05", "0.0002"),
+      messages = FALSE
+    )
 
   # dataframe with p-values
   p.data <- cbind.data.frame(
@@ -18,8 +20,10 @@ test_that(desc = "signif_column works", code = {
     p.value = c(0.1, 0.5, 0.00001, 0.05, 0.01)
   )
 
-  df3 <- groupedstats::signif_column(data = p.data, p = p.value,
-                                     messages = FALSE)
+  df3 <- groupedstats::signif_column(
+    data = p.data, p = p.value,
+    messages = FALSE
+  )
 
   # testing
   set.seed(123)

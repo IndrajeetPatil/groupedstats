@@ -54,9 +54,7 @@ r_packages:
   - dplyr
   - readr
   - covr
-  #- jmv
   - sjstats
-  #- WRS2
 
 notifications:
   email:

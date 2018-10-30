@@ -23,7 +23,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--10--17-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--10--30-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.3.0-6666ff.svg)](https://cran.r-project.org/)
@@ -125,7 +125,7 @@ args(name = groupedstats::grouped_ttest)
 ```
 
 In case you want to look at the function body for any of the functions,
-just type the name of the function without the parenetheses:
+just type the name of the function without the parentheses:
 
 ``` r
 groupedstats::grouped_lm
@@ -238,6 +238,17 @@ to use an additional argument provided for this function:
 ``` r
 library(ggplot2)
 library(magrittr)
+#> 
+#> Attaching package: 'magrittr'
+#> The following object is masked from 'package:rlang':
+#> 
+#>     set_names
+#> The following object is masked from 'package:purrr':
+#> 
+#>     set_names
+#> The following object is masked from 'package:tidyr':
+#> 
+#>     extract
 library(ggstatsplot)
 
 options(tibble.width = Inf)            # show me all columns
@@ -386,14 +397,6 @@ cut-
 ``` r
 library(ggplot2)
 library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
 options(tibble.width = Inf)            # show me all columns
 
 groupedstats::grouped_slr(data = ggplot2::diamonds,
@@ -664,8 +667,7 @@ tests conducted.
 ## `grouped_glm`
 
 The option to run generalized linear model (`stats::glm`) across
-different levels of the grouping variable is also implemented
-similarily-
+different levels of the grouping variable is also implemented similarly-
 
 ``` r
 groupedstats::grouped_glm(
@@ -1193,8 +1195,8 @@ groupedstats::grouped_wilcox(
 ```
 
 In these examples, two things are worth noting that generalize to
-**all** functions in this package and stem from how [`tidy
-evaluation`](https://adv-r.hadley.nz/evaluation.html) works:
+**all** functions in this package and stem from how tidy evaluation
+(<https://adv-r.hadley.nz/evaluation.html>) works:
 
   - If just one independent variable is provided for multiple dependent
     variables, it will be used as a common variable.

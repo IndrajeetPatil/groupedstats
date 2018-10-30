@@ -14,6 +14,12 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r library, include = FALSE}
+library(tidyverse)
+library(rlang)
+library(ggstatsplot)
+```
+
 # groupedstats: Grouped statistical analysis in a tidy way
 
 [![CRAN_Release_Badge](http://www.r-pkg.org/badges/version-ago/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
@@ -106,20 +112,22 @@ In `R`, documentation for any function can be accessed with the standard `help` 
 ?grouped_wilcox
 ```
 
-Another handy tool to see arguments to any of the functions is `args`. For example-
+Another handy tool to see arguments to any of the functions is `args`. For
+example-
+
 ```{r args}
 args(name = groupedstats::grouped_ttest)
 ```
 
 In case you want to look at the function body for any of the functions, just
-type the name of the function without the parenetheses:
+type the name of the function without the parentheses:
 ```{r funbody, eval = FALSE}
 groupedstats::grouped_lm
 ```
 
-If you are not familiar either with what the namespace `::` does or how to use pipe
-operator `%>%`, something this package and its documentation relies a lot on,
-you can check out these links-
+If you are not familiar either with what the namespace `::` does or how to use
+pipe operator `%>%`, something this package and its documentation relies a lot
+on, you can check out these links-
 
   - <http://r-pkgs.had.co.nz/namespace.html>
   - <http://r4ds.had.co.nz/pipes.html>
@@ -273,8 +281,8 @@ groupedstats::grouped_robustslr(data = gapminder::gapminder,
                          grouping.vars = c(continent, country)) %>%
   dplyr::arrange(.data = ., continent, country)
 ```
-A more general version of this function (`grouped_robustlm`) will be implemented in
-future that will utilize the formula interface of `robust::lmRob`.
+A more general version of this function (`grouped_robustlm`) will be implemented
+in future that will utilize the formula interface of `robust::lmRob`.
 
 ## `grouped_lm`
 
@@ -348,7 +356,7 @@ each level of the grouping variable, and not across all tests conducted.
 ## `grouped_glm`
 
 The option to run generalized linear model (`stats::glm`) across different
-levels of the grouping variable is also implemented similarily-
+levels of the grouping variable is also implemented similarly-
 
 ```{r grouped_glm1, warning = FALSE, messsage = FALSE}
 groupedstats::grouped_glm(
@@ -407,9 +415,9 @@ groupedstats::grouped_lmer(
 
 ## `grouped_glmer`
 
-A more generalized version of `lmer` is implemented in `lme4::glmer`, which can also
-handle categorical/nominal data. For example, let's say we want to see if sex of
-a person was predictive of whether they survived the Titanic tragedy.
+A more generalized version of `lmer` is implemented in `lme4::glmer`, which can
+also handle categorical/nominal data. For example, let's say we want to see if
+sex of a person was predictive of whether they survived the Titanic tragedy.
 
 ```{r grouped_glmer1, warning = FALSE, messsage = FALSE}
 # having a look at the data
@@ -577,10 +585,11 @@ groupedstats::grouped_wilcox(
 ```
 
 In these examples, two things are worth noting that generalize to **all**
-functions in this package and stem from how [`tidy evaluation`](https://adv-r.hadley.nz/evaluation.html) 
-works:
+functions in this package and stem from how tidy evaluation
+(<https://adv-r.hadley.nz/evaluation.html>) works:
 
-  - If just one independent variable is provided for multiple dependent variables, it will be used as a common variable. 
+  - If just one independent variable is provided for multiple dependent
+    variables, it will be used as a common variable.
   - If you want to use a selection of variables, you need not use `c()`.
 
 # Extending with `purrr`

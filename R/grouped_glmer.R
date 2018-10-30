@@ -117,7 +117,7 @@ grouped_glmer <- function(data,
           list.col %>% # tidying up the output with broom.mixed
           purrr::map_dfr(
             .x = .,
-            .f = ~broom.mixed::tidy(
+            .f = ~ broom.mixed::tidy(
               x = lme4::glmer(
                 formula = stats::as.formula(formula),
                 data = (.),
@@ -138,7 +138,7 @@ grouped_glmer <- function(data,
           list.col %>% # tidying up the output with broom.mixed
           purrr::map_dfr(
             .x = .,
-            .f = ~broom.mixed::glance(
+            .f = ~ broom.mixed::glance(
               x = lme4::glmer(
                 formula = stats::as.formula(formula),
                 data = (.),
