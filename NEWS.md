@@ -1,8 +1,12 @@
-# groupedstats 0.0.3.9000
+# groupedstats 0.0.4
 
 MAJOR CHANGES
 
   - New functions exported: `set_cwd()`
+  - `specify_decimal_p` has been modified because it produced incorrect results
+    when `k < 3` and `p.value = TRUE` (e.g., `0.002` was printed as `< 0.001`).
+  - `groupedstats` now depends on `R 3.5.0`. This is because some of its
+    dependencies require `3.5.0` to work (e.g., `broom.mixed`).
 
 # groupedstats 0.0.3
 

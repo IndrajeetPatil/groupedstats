@@ -15,11 +15,15 @@
 ^revdep$
 publication/*
 ^codecov\.yml$
+^\.coveralls\.yml$
 ^\.travis\.yml$
 ^_pkgdown\.yml$
 ^appveyor\.yml$
+^.gitlab-ci\.yml$
 ^data-raw$
 ^pkgdown$
 ^\.httr-oauth$
 ^CRAN-RELEASE$
 tests\^spelling
+^LICENSE\.md$
+^\.lintr$

@@ -1,6 +1,6 @@
 pandoc: 2.2.3.2
-pkgdown: 1.1.0.9000
-pkgdown_sha: eec35964f8c7a091ff953c7e07b2e285d7475df1
+pkgdown: 1.2.0.9000
+pkgdown_sha: c980e84a573614087c6e151d5e6e19a22748b761
 articles: []
 urls:
   reference: https://indrajeetpatil.github.io/groupedstats//reference
