@@ -19,12 +19,13 @@ badge](https://cranlogs.r-pkg.org/badges/grand-total/groupedstats?color=blue)](h
 Status](https://travis-ci.org/IndrajeetPatil/groupedstats.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/groupedstats)
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupedstats?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/groupedstats)
+[![CircleCI](https://circleci.com/gh/IndrajeetPatil/groupedstats.svg?style=svg)](https://circleci.com/gh/IndrajeetPatil/groupedstats)
 [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 [![DOI](https://zenodo.org/badge/126624251.svg)](https://zenodo.org/badge/latestdoi/126624251)
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--12--08-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--12--11-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
@@ -491,6 +492,11 @@ implemented in `grouped_lm`:
 
 ``` r
 library(groupedstats)
+#> 
+#> Attaching package: 'groupedstats'
+#> The following objects are masked from 'package:ggstatsplot':
+#> 
+#>     movies_long, movies_wide
 
 groupedstats::grouped_lm(
   data = mtcars,
