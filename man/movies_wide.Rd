@@ -42,5 +42,6 @@ rated by at least one imdb user.
 \examples{
 dim(movies_wide)
 head(movies_wide)
+dplyr::glimpse(movies_wide)
 }
 \keyword{datasets}

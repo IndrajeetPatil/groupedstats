@@ -31,6 +31,7 @@
 #' @examples
 #' dim(movies_wide)
 #' head(movies_wide)
+#' dplyr::glimpse(movies_wide)
 "movies_wide"
 
 
@@ -66,6 +67,7 @@
 #' @examples
 #' dim(movies_long)
 #' head(movies_long)
+#' dplyr::glimpse(movies_long)
 "movies_long"
 
 
@@ -91,6 +93,7 @@
 #' @examples
 #' dim(Titanic_full)
 #' head(Titanic_full)
+#' dplyr::glimpse(Titanic_full)
 "Titanic_full"
 
 
@@ -129,4 +132,5 @@
 #' @examples
 #' dim(intent_morality)
 #' head(intent_morality)
+#' dplyr::glimpse(intent_morality)
 "intent_morality"
