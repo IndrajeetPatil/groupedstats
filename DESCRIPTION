@@ -34,10 +34,10 @@ Imports:
     tidyr (>= 0.8.2)
 Suggests: 
     gapminder,
-    covr (>= 3.2.1),
+    covr,
     ggplot2,
-    knitr (>= 1.21),
-    rmarkdown (>= 1.11),
+    knitr,
+    rmarkdown,
     spelling,
     testthat
 Encoding: UTF-8
