@@ -35,6 +35,18 @@ This function will convert a linear model object to a dataframe
 containing statistical details for all effects along with partial
 eta-squared effect size and its confidence interval.
 }
+\examples{
+# model
+set.seed(123)
+mod <-
+  stats::aov(
+    formula = mpg ~ wt + qsec + Error(disp / am),
+    data = mtcars
+  )
+
+# dataframe with effect size and confidence intervals
+groupedstats::lm_effsize_ci(mod)
+}
 \author{
 Indrajeet Patil
 }

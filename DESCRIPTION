@@ -30,7 +30,7 @@ Imports:
     sjstats (>= 0.17.2),
     skimr (>= 1.0.3),
     stats,
-    tibble (>= 1.4.2),
+    tibble (>= 2.0.0),
     tidyr (>= 0.8.2)
 Suggests: 
     gapminder,
