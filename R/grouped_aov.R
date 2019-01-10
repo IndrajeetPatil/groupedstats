@@ -62,7 +62,8 @@ grouped_aov <- function(data,
     base::stop(base::message(cat(
       crayon::green("Note:"),
       crayon::blue(
-        "The glance model summary is currently not supported for this function. Use either 'tidy' or 'tukey'."
+        "The glance model summary is currently not supported for this function.\n
+        Use either 'tidy' or 'tukey'."
       )
     )))
   }
@@ -85,6 +86,7 @@ grouped_aov <- function(data,
   ) %>%
     dplyr::group_by(.data = ., !!!grouping.vars) %>%
     tidyr::nest(data = .) %>%
+    dplyr::filter(.data = ., !purrr::map_lgl(.x = data, .f = is.null)) %>%
     dplyr::ungroup(x = .)
 
   # ====================================== custom function ==================================

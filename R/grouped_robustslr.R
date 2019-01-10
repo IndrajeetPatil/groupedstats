@@ -15,9 +15,7 @@
 #'
 #' @importFrom broom tidy
 #' @importFrom glue glue
-#' @importFrom purrr map
-#' @importFrom purrr map2_dfr
-#' @importFrom purrr pmap
+#' @importFrom purrr map map_lgl map2_dfr pmap
 #' @importFrom robust lmRob
 #' @importFrom stats as.formula
 #' @importFrom tibble as_data_frame
@@ -79,20 +77,24 @@ grouped_robustslr <- function(data,
     !!!indep.vars
   ) %>%
     dplyr::group_by(.data = ., !!!grouping.vars) %>%
-    tidyr::nest(data = .)
+    tidyr::nest(data = .) %>%
+    dplyr::filter(.data = ., !purrr::map_lgl(.x = data, .f = is.null)) %>%
+    dplyr::ungroup(x = .)
 
   # ============== custom function ================
 
-  # custom function to run linear regression for every element of a list for two variables
+  # custom function to run linear regression for every element of a list for two
+  # variables
   lm_listed <- function(list.col, x_name, y_name) {
-    #
+
     # creating a formula out of entered variables
     fx <- glue::glue("scale({y_name}) ~ scale({x_name})")
 
     # plain version of the formula to return
     fx_plain <- glue::glue("{y_name} ~ {x_name}")
 
-    # this tags any names that are not predictor variables (used to remove intercept terms)
+    # this tags any names that are not predictor variables (used to remove
+    # intercept terms)
     filter_name <- glue::glue("scale({x_name})")
 
     # dataframe with results from lm
@@ -130,8 +132,9 @@ grouped_robustslr <- function(data,
 
   # ========= using  custom function on entered dataframe =================
 
-  df <- df %>%
+  df %<>%
     tibble::rownames_to_column(., var = "..group")
+
   # running custom function for each element of the created list column
   df_lm <- purrr::pmap(
     .l = list(

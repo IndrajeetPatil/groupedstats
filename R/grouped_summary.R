@@ -235,13 +235,15 @@ grouped_summary <- function(data,
       }
     }
   }
-  # options(show.error.messages = TRUE)
-  # ================================================== summary ===========================================================
+
+  # ============================ summary ==================================
   #
   # creating a nested dataframe
   df_nest <- df %>%
     dplyr::group_by(.data = ., !!!grouping.vars) %>%
-    tidyr::nest(data = .)
+    tidyr::nest(data = .) %>%
+    dplyr::filter(.data = ., !purrr::map_lgl(.x = data, .f = is.null)) %>%
+    dplyr::ungroup(x = .)
 
   # computing summary
   df_summary <- df_nest %>%
@@ -254,10 +256,11 @@ grouped_summary <- function(data,
         )
     )
 
-  # ================================================== factor ===========================================================
-  #
+  # =============================== factor ============================
+
   if (measures.type == "factor") {
-    # tidying up the skimr output by removing unnecessary information and renaming certain columns
+    # tidying up the skimr output by removing unnecessary information and
+    # renaming certain columns
     df_summary %<>%
       dplyr::select(.data = ., -data) %>% # removing the redudant data column
       dplyr::mutate(
@@ -270,7 +273,8 @@ grouped_summary <- function(data,
       ) %>% # remove the histograms since they are not that helpful
       tidyr::unnest(data = .) %>% # unnesting the data
       tibble::as_data_frame(x = .) # converting to tibble dataframe
-    # =========================================== factor long format conversion ==========================================
+
+    # ===================== factor long format conversion ====================
     if (isTRUE(topcount.long)) {
       # custom function used to convert counts into long format
       count_long_format_fn <- function(top_counts) {
@@ -308,7 +312,7 @@ grouped_summary <- function(data,
         dplyr::full_join(x = df_summary, y = df_summary_long)
     }
   }
-  # ================================================== numeric ===========================================================
+  # ================================ numeric ==============================
   #
   if (measures.type == "numeric") {
     # tidying up the skimr output by removing unnecessary information and renaming certain columns
@@ -342,8 +346,16 @@ grouped_summary <- function(data,
       dplyr::mutate(
         .data = .,
         std.error = sd / base::sqrt(n),
-        mean.low.conf = mean - stats::qt(p = 1 - (0.05 / 2), df = n - 1, lower.tail = TRUE) * std.error,
-        mean.high.conf = mean + stats::qt(p = 1 - (0.05 / 2), df = n - 1, lower.tail = TRUE) * std.error
+        mean.low.conf = mean - stats::qt(
+          p = 1 - (0.05 / 2),
+          df = n - 1,
+          lower.tail = TRUE
+        ) * std.error,
+        mean.high.conf = mean + stats::qt(
+          p = 1 - (0.05 / 2),
+          df = n - 1,
+          lower.tail = TRUE
+        ) * std.error
       )
   }
 

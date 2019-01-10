@@ -275,12 +275,14 @@ There is also robust variant of **simple linear regression** (as implemented in
 ```{r grouped_robustslr, warning = FALSE, messsage = FALSE}
 library(gapminder)
 library(dplyr)
-options(tibble.width = Inf)            # show me all columns
+options(tibble.width = Inf) # show me all columns
 
-groupedstats::grouped_robustslr(data = gapminder::gapminder,
-                         dep.vars = c(lifeExp, pop),
-                         indep.vars = c(gdpPercap, gdpPercap),
-                         grouping.vars = c(continent, country)) %>%
+groupedstats::grouped_robustslr(
+  data = gapminder::gapminder,
+  dep.vars = c(lifeExp, pop),
+  indep.vars = c(gdpPercap, gdpPercap),
+  grouping.vars = c(continent, country)
+) %>%
   dplyr::arrange(.data = ., continent, country)
 ```
 A more general version of this function (`grouped_robustlm`) will be implemented

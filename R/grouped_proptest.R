@@ -15,7 +15,7 @@
 #' @importFrom tidyr spread
 #'
 #' @examples
-#' 
+#'
 #' groupedstats::grouped_proptest(
 #'   data = mtcars,
 #'   grouping.vars = cyl,
@@ -50,7 +50,9 @@ grouped_proptest <- function(data,
   # creating a nested dataframe
   df_nest <- df %>%
     dplyr::group_by(.data = ., !!!grouping.vars) %>%
-    tidyr::nest(data = .)
+    tidyr::nest(data = .) %>%
+    dplyr::filter(.data = ., !purrr::map_lgl(.x = data, .f = is.null)) %>%
+    dplyr::ungroup(x = .)
 
   # creating the final results with the
   df_results <- df_nest %>%
@@ -77,31 +79,33 @@ grouped_proptest <- function(data,
     ) %>%
     dplyr::mutate(
       .data = .,
-      chi_sq = data %>% purrr::map(
-        .x = .,
-        .f = ~ stats::chisq.test(x = base::table(.$measure))
-      )
+      chi_sq = data %>%
+        purrr::map(
+          .x = .,
+          .f = ~ stats::chisq.test(x = base::table(.$measure))
+        )
     ) %>%
     dplyr::mutate(
       .data = .,
-      results = chi_sq %>% purrr::map(
-        .x = .,
-        .f = ~
-        base::cbind.data.frame(
-          "Chi-squared" = as.numeric(as.character(
-            specify_decimal_p(x = .$statistic, k = 3)
-          )),
-          "df" = as.numeric(as.character(
-            specify_decimal_p(x = .$parameter, k = 0)
-          )),
-          "p-value" = as.numeric(as.character(
-            specify_decimal_p(
-              x = .$p.value,
-              k = 3
-            )
-          ))
+      results = chi_sq %>%
+        purrr::map(
+          .x = .,
+          .f = ~
+          base::cbind.data.frame(
+            "Chi-squared" = as.numeric(as.character(
+              specify_decimal_p(x = .$statistic, k = 3)
+            )),
+            "df" = as.numeric(as.character(
+              specify_decimal_p(x = .$parameter, k = 0)
+            )),
+            "p-value" = as.numeric(as.character(
+              specify_decimal_p(
+                x = .$p.value,
+                k = 3
+              )
+            ))
+          )
         )
-      )
     ) %>%
     dplyr::select(.data = ., -data, -chi_sq) %>%
     tidyr::unnest(data = .) %>%

@@ -86,7 +86,9 @@ grouped_ttest <- function(data,
     !!!indep.vars
   ) %>%
     dplyr::group_by(.data = ., !!!grouping.vars) %>%
-    tidyr::nest(data = .)
+    tidyr::nest(data = .) %>%
+    dplyr::filter(.data = ., !purrr::map_lgl(.x = data, .f = is.null)) %>%
+    dplyr::ungroup(x = .)
 
   # ============== custom function ================
 
