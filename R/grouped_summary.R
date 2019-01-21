@@ -19,8 +19,7 @@
 #' @param topcount.long If `measures.type = factor`, you can get the top counts
 #'   in long format for plotting purposes. (Default: `topcount.long = FALSE`).
 #'
-#' @importFrom magrittr "%<>%"
-#' @importFrom skimr skim_to_wide
+#' @importFrom skimr skim
 #' @importFrom tibble as_data_frame
 #' @importFrom purrr is_bare_numeric
 #' @importFrom purrr is_bare_character
@@ -36,7 +35,7 @@
 #' @importFrom stats qt
 #'
 #' @examples
-#' 
+#'
 #' # another possibility
 #' groupedstats::grouped_summary(
 #'   data = datasets::iris,
@@ -44,7 +43,7 @@
 #'   measures = Sepal.Length:Petal.Width,
 #'   measures.type = "numeric"
 #' )
-#' 
+#'
 #' # if you have just one variable per argument, you need not use `c()`
 #' groupedstats::grouped_summary(
 #'   data = datasets::ToothGrowth,
@@ -245,16 +244,26 @@ grouped_summary <- function(data,
     dplyr::filter(.data = ., !purrr::map_lgl(.x = data, .f = is.null)) %>%
     dplyr::ungroup(x = .)
 
-  # computing summary
-  df_summary <- df_nest %>%
-    dplyr::mutate(
-      .data = .,
-      summary = data %>% # 'data' variable is automatically created by tidyr::nest function
-        purrr::map(
-          .x = .,
-          .f = ~ skimr::skim_to_wide(.)
-        )
-    )
+  # computing summary (depends on the version of skimr)
+  if (utils::packageVersion("skimr") != "2.0") {
+    df_summary <- df_nest %>%
+      dplyr::mutate(
+        .data = .,
+        summary = data %>%
+          purrr::map(.x = .,
+                     .f = ~ skimr::skim_to_wide(.))
+      )
+  } else {
+    df_summary <- df_nest %>%
+      dplyr::mutate(
+        .data = .,
+        summary = data %>%
+          purrr::map(
+            .x = .,
+            .f = ~ tibble::as_tibble(skimr::skim(.))
+          )
+      )
+  }
 
   # =============================== factor ============================
 
