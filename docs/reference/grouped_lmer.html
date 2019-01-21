@@ -74,7 +74,7 @@ grouping variables." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">groupedstats</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.4.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.5</span>
       </span>
     </div>
 
@@ -228,7 +228,7 @@ summaries.</p>
 <span class='co'># getting model summaries</span>
 <span class='co'># let's use only 50% data to speed it up</span>
 <span class='fu'>grouped_lmer</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/diamonds'>diamonds</a></span>,
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/diamonds.html'>diamonds</a></span>,
   <span class='kw'>formula</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/scale'>scale</a></span>(<span class='no'>price</span>) ~ <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/scale'>scale</a></span>(<span class='no'>carat</span>) + (<span class='no'>carat</span> <span class='kw'>|</span> <span class='no'>color</span>),
   <span class='kw'>REML</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='no'>cut</span>, <span class='no'>clarity</span>),

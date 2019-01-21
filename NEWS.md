@@ -1,4 +1,7 @@
-# groupedstats 0.0.4.9000
+# groupedstats 0.0.5
+
+  - Maintenance release: Makes `groupedstats` compatible with `skimr 2.0` and
+    `dplyr 0.8.0`.
 
 # groupedstats 0.0.4
 
