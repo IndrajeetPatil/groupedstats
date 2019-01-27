@@ -1,4 +1,9 @@
 # groupedstats 0.0.5.9000
+ 
+MAJOR CHANGES
+
+  - New function `grouped_tidy` to extract a tidy dataframe of results in a
+    grouped analysis for any function.
 
 # groupedstats 0.0.5
 
