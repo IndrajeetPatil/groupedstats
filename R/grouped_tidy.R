@@ -1,4 +1,5 @@
-#' @title Tidy output from grouped analysis of any function.
+#' @title Tidy output from grouped analysis of any function that has `data`
+#'   argument in its function call.
 #' @name grouped_tidy
 #' @description This is the most general form of a `grouped_` function where any
 #'   function can be used to run `grouped_` analysis.

@@ -2,7 +2,8 @@
 % Please edit documentation in R/grouped_tidy.R
 \name{grouped_tidy}
 \alias{grouped_tidy}
-\title{Tidy output from grouped analysis of any function.}
+\title{Tidy output from grouped analysis of any function that has \code{data}
+argument in its function call.}
 \usage{
 grouped_tidy(data, grouping.vars, .f, ...)
 }
