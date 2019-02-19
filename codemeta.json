@@ -1,11 +1,17 @@
 {
-  "@context": ["https://doi.org/10.5063/schema/codemeta-2.0", "http://schema.org"],
+  "@context": [
+    "https://doi.org/10.5063/schema/codemeta-2.0",
+    "http://schema.org"
+  ],
   "@type": "SoftwareSourceCode",
   "identifier": "groupedstats",
   "description": "Collection of functions to run statistical tests across all levels\n  of multiple grouping variables.",
   "name": "groupedstats: Grouped Statistical Analyses in a Tidy Way",
   "codeRepository": "https://github.com/IndrajeetPatil/groupedstats",
-  "relatedLink": ["https://indrajeetpatil.github.io/groupedstats/", "https://CRAN.R-project.org/package=groupedstats"],
+  "relatedLink": [
+    "https://indrajeetpatil.github.io/groupedstats/",
+    "https://CRAN.R-project.org/package=groupedstats"
+  ],
   "issueTracker": "https://github.com/IndrajeetPatil/groupedstats/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
   "version": "0.0.5.9000",
@@ -176,7 +182,7 @@
       "@type": "SoftwareApplication",
       "identifier": "dplyr",
       "name": "dplyr",
-      "version": ">= 0.7.8",
+      "version": ">= 0.8.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -336,8 +342,20 @@
   ],
   "releaseNotes": "https://github.com/IndrajeetPatil/groupedstats/blob/master/NEWS.md",
   "readme": "https://github.com/IndrajeetPatil/groupedstats/blob/master/README.md",
-  "fileSize": "175.953KB",
-  "contIntegration": ["https://travis-ci.org/IndrajeetPatil/groupedstats", "https://ci.appveyor.com/project/IndrajeetPatil/groupedstats", "https://circleci.com/gh/IndrajeetPatil/groupedstats", "https://codecov.io/github/IndrajeetPatil/groupedstats?branch=master"],
+  "fileSize": "176.725KB",
+  "contIntegration": [
+    "https://travis-ci.org/IndrajeetPatil/groupedstats",
+    "https://ci.appveyor.com/project/IndrajeetPatil/groupedstats",
+    "https://circleci.com/gh/IndrajeetPatil/groupedstats",
+    "https://codecov.io/github/IndrajeetPatil/groupedstats?branch=master"
+  ],
   "developmentStatus": "http://www.repostatus.org/#active",
-  "keywords": ["statistics", "r", "statistical-analysis", "tidy", "linear-regression", "grouping"]
+  "keywords": [
+    "statistics",
+    "r",
+    "statistical-analysis",
+    "tidy",
+    "linear-regression",
+    "grouping"
+  ]
 }

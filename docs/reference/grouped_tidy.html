@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tidy output from grouped analysis of any function. — grouped_tidy • groupedstats</title>
+<title>Tidy output from grouped analysis of any function that has <code>data</code>
+argument in its function call. — grouped_tidy • groupedstats</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -38,7 +39,8 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Tidy output from grouped analysis of any function. — grouped_tidy" />
+<meta property="og:title" content="Tidy output from grouped analysis of any function that has <code>data</code>
+argument in its function call. — grouped_tidy" />
 
 <meta property="og:description" content="This is the most general form of a grouped_ function where any
 function can be used to run grouped_ analysis." />
@@ -117,7 +119,8 @@ function can be used to run grouped_ analysis." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Tidy output from grouped analysis of any function.</h1>
+    <h1>Tidy output from grouped analysis of any function that has <code>data</code>
+argument in its function call.</h1>
     <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/groupedstats/blob/master/R/grouped_tidy.R'><code>R/grouped_tidy.R</code></a></small>
     <div class="hidden name"><code>grouped_tidy.Rd</code></div>
     </div>
@@ -129,7 +132,7 @@ function can be used to run <code>grouped_</code> analysis.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>grouped_tidy</span>(<span class='no'>data</span>, <span class='no'>grouping.vars</span>, <span class='no'>.f</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>grouped_tidy</span>(<span class='no'>data</span>, <span class='no'>grouping.vars</span>, <span class='no'>..f</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -143,7 +146,7 @@ function can be used to run <code>grouped_</code> analysis.</p>
       <td><p>List of grouping variables.</p></td>
     </tr>
     <tr>
-      <th>.f</th>
+      <th>..f</th>
       <td><p>A function, or function name as a string.</p></td>
     </tr>
     <tr>
@@ -155,26 +158,26 @@ function can be used to run <code>grouped_</code> analysis.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>grouped_tidy</span>(
+    <pre class="examples"><div class='input'><span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/grouped_tidy.html'>grouped_tidy</a></span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/diamonds.html'>diamonds</a></span>,
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='no'>cut</span>, <span class='no'>color</span>),
   <span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>price</span> ~ <span class='no'>carat</span> * <span class='no'>clarity</span>,
-  <span class='kw'>.f</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>
+  <span class='kw'>..f</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>
 )</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 547 x 9</span><span>
-#&gt;    cut   color term    estimate std.error statistic   p.value conf.low conf.high
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;ord&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;ord&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Ideal E     (Inter~  -</span><span style='color: #BB0000;text-decoration: underline;'>3</span><span style='color: #BB0000;'>085.</span><span>       64.9   -</span><span style='color: #BB0000;'>47.5</span><span>   0.  </span><span style='color: #949494;'> </span><span>      -</span><span style='color: #BB0000;text-decoration: underline;'>3</span><span style='color: #BB0000;'>212.</span><span>    -</span><span style='color: #BB0000;text-decoration: underline;'>2</span><span style='color: #BB0000;'>958.</span><span> 
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Ideal E     carat    </span><span style='text-decoration: underline;'>10</span><span>529.       74.1   142.    0.  </span><span style='color: #949494;'> </span><span>      </span><span style='text-decoration: underline;'>10</span><span>384.    </span><span style='text-decoration: underline;'>10</span><span>674. 
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Ideal E     clarit~  -</span><span style='color: #BB0000;text-decoration: underline;'>2</span><span style='color: #BB0000;'>088.</span><span>      267.     -</span><span style='color: #BB0000;'>7.81</span><span>  7.28</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 15</span><span>  -</span><span style='color: #BB0000;text-decoration: underline;'>2</span><span style='color: #BB0000;'>612.</span><span>    -</span><span style='color: #BB0000;text-decoration: underline;'>1</span><span style='color: #BB0000;'>564.</span><span> 
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Ideal E     clarit~    168.      265.      0.633 5.27</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-  1</span><span>   -</span><span style='color: #BB0000;'>352.</span><span>      688. 
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Ideal E     clarit~   -</span><span style='color: #BB0000;'>926.</span><span>      217.     -</span><span style='color: #BB0000;'>4.26</span><span>  2.06</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-  5</span><span>  -</span><span style='color: #BB0000;text-decoration: underline;'>1</span><span style='color: #BB0000;'>352.</span><span>     -</span><span style='color: #BB0000;'>500.</span><span> 
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Ideal E     clarit~    625.      157.      3.99  6.70</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-  5</span><span>    318.      932. 
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Ideal E     clarit~   -</span><span style='color: #BB0000;'>392.</span><span>      107.     -</span><span style='color: #BB0000;'>3.65</span><span>  2.63</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-  4</span><span>   -</span><span style='color: #BB0000;'>602.</span><span>     -</span><span style='color: #BB0000;'>181.</span><span> 
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Ideal E     clarit~     83.9      79.1     1.06  2.89</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-  1</span><span>    -</span><span style='color: #BB0000;'>71.1</span><span>     239. 
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Ideal E     clarit~    -</span><span style='color: #BB0000;'>40.8</span><span>      67.4    -</span><span style='color: #BB0000;'>0.605</span><span> 5.45</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-  1</span><span>   -</span><span style='color: #BB0000;'>173.</span><span>       91.4
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Ideal E     carat:~   </span><span style='text-decoration: underline;'>9</span><span>746.      287.     34.0   3.38</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-222</span><span>   </span><span style='text-decoration: underline;'>9</span><span>185.    </span><span style='text-decoration: underline;'>10</span><span>308. 
-#&gt; </span><span style='color: #949494;'># ... with 537 more rows</span><span></div><div class='input'>
-</div></span></pre>
+#&gt; </span><span style='color: #949494;'># Groups:   cut, color [35]</span><span>
+#&gt;    cut   color term     estimate std.error statistic  p.value conf.low conf.high
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;ord&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;ord&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Fair  D     (Interc~   -</span><span style='color: #BB0000;text-decoration: underline;'>3</span><span style='color: #BB0000;'>442.</span><span>      504.    -</span><span style='color: #BB0000;'>6.83</span><span>  2.13</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-10</span><span>   -</span><span style='color: #BB0000;text-decoration: underline;'>4</span><span style='color: #BB0000;'>439.</span><span>    -</span><span style='color: #BB0000;text-decoration: underline;'>2</span><span style='color: #BB0000;'>446.</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Fair  D     carat       </span><span style='text-decoration: underline;'>9</span><span>511.     </span><span style='text-decoration: underline;'>1</span><span>111.     8.56  1.39</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-14</span><span>    </span><span style='text-decoration: underline;'>7</span><span>315.    </span><span style='text-decoration: underline;'>11</span><span>707.
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Fair  D     clarity~    </span><span style='text-decoration: underline;'>1</span><span>284.     </span><span style='text-decoration: underline;'>1</span><span>934.     0.664 5.08</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 1</span><span>   -</span><span style='color: #BB0000;text-decoration: underline;'>2</span><span style='color: #BB0000;'>538.</span><span>     </span><span style='text-decoration: underline;'>5</span><span>106.
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Fair  D     clarity~    </span><span style='text-decoration: underline;'>1</span><span>986.     </span><span style='text-decoration: underline;'>1</span><span>928.     1.03  3.05</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 1</span><span>   -</span><span style='color: #BB0000;text-decoration: underline;'>1</span><span style='color: #BB0000;'>824.</span><span>     </span><span style='text-decoration: underline;'>5</span><span>796.
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Fair  D     clarity~     466.     </span><span style='text-decoration: underline;'>1</span><span>600.     0.291 7.71</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 1</span><span>   -</span><span style='color: #BB0000;text-decoration: underline;'>2</span><span style='color: #BB0000;'>696.</span><span>     </span><span style='text-decoration: underline;'>3</span><span>629.
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Fair  D     clarity~    </span><span style='text-decoration: underline;'>1</span><span>919.     </span><span style='text-decoration: underline;'>1</span><span>313.     1.46  1.46</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 1</span><span>    -</span><span style='color: #BB0000;'>676.</span><span>     </span><span style='text-decoration: underline;'>4</span><span>514.
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Fair  D     clarity~    </span><span style='text-decoration: underline;'>1</span><span>728.     </span><span style='text-decoration: underline;'>1</span><span>021.     1.69  9.27</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 2</span><span>    -</span><span style='color: #BB0000;'>290.</span><span>     </span><span style='text-decoration: underline;'>3</span><span>745.
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Fair  D     clarity~     436.      812.     0.537 5.92</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 1</span><span>   -</span><span style='color: #BB0000;text-decoration: underline;'>1</span><span style='color: #BB0000;'>169.</span><span>     </span><span style='text-decoration: underline;'>2</span><span>042.
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Fair  D     clarity~   -</span><span style='color: #BB0000;text-decoration: underline;'>1</span><span style='color: #BB0000;'>219.</span><span>      890.    -</span><span style='color: #BB0000;'>1.37</span><span>  1.73</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 1</span><span>   -</span><span style='color: #BB0000;text-decoration: underline;'>2</span><span style='color: #BB0000;'>978.</span><span>      540.
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Fair  D     carat:c~    </span><span style='text-decoration: underline;'>3</span><span>436.     </span><span style='text-decoration: underline;'>4</span><span>583.     0.750 4.55</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 1</span><span>   -</span><span style='color: #BB0000;text-decoration: underline;'>5</span><span style='color: #BB0000;'>621.</span><span>    </span><span style='text-decoration: underline;'>12</span><span>493.
+#&gt; </span><span style='color: #949494;'># ... with 537 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

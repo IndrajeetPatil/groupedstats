@@ -37,7 +37,7 @@
 #'     formula = mpg ~ wt + qsec + Error(disp / am),
 #'     data = mtcars
 #'   )
-#' 
+#'
 #' # dataframe with effect size and confidence intervals
 #' groupedstats::lm_effsize_ci(mod)
 #' @export

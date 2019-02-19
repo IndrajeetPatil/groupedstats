@@ -37,10 +37,10 @@
 #' @seealso grouped_lmer
 #'
 #' @examples
-#' 
+#'
 #' # commented out because the examples are time-consuming and the R CMD CHECK
 #' # makes a NOTE (> 5s)
-#' 
+#'
 #' # categorical outcome; binomial family
 #' groupedstats::grouped_glmer(
 #'   formula = Survived ~ Age + (Age |
@@ -49,10 +49,10 @@
 #'   data = dplyr::sample_frac(groupedstats::Titanic_full, size = 0.3),
 #'   grouping.vars = Sex
 #' )
-#' 
+#'
 #' # continuous outcome; gaussian family
 #' library(gapminder)
-#' 
+#'
 #' groupedstats::grouped_glmer(
 #'   data = dplyr::sample_frac(gapminder, size = 0.3),
 #'   formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap | continent),

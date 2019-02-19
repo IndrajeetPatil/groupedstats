@@ -15,7 +15,7 @@
 #' @importFrom tidyr spread
 #'
 #' @examples
-#' 
+#'
 #' groupedstats::grouped_proptest(
 #'   data = mtcars,
 #'   grouping.vars = cyl,

@@ -5,14 +5,14 @@
 \title{Tidy output from grouped analysis of any function that has \code{data}
 argument in its function call.}
 \usage{
-grouped_tidy(data, grouping.vars, .f, ...)
+grouped_tidy(data, grouping.vars, ..f, ...)
 }
 \arguments{
 \item{data}{Dataframe from which variables are to be taken.}
 
 \item{grouping.vars}{List of grouping variables.}
 
-\item{.f}{A function, or function name as a string.}
+\item{..f}{A function, or function name as a string.}
 
 \item{...}{Arguments to function.
 
@@ -27,6 +27,6 @@ groupedstats::grouped_tidy(
   data = ggplot2::diamonds,
   grouping.vars = c(cut, color),
   formula = price ~ carat * clarity,
-  .f = stats::lm
+  ..f = stats::lm
 )
 }

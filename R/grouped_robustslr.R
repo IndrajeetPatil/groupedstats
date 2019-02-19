@@ -22,7 +22,7 @@
 #' @importFrom tidyr nest
 #'
 #' @examples
-#' 
+#'
 #' # in case of just one grouping variable
 #' groupedstats::grouped_robustslr(
 #'   data = iris,

@@ -44,7 +44,7 @@
 #' @seealso grouped_lm, grouped_glmer
 #'
 #' @examples
-#' 
+#'
 #' # to get tidy output
 #' groupedstats::grouped_glm(
 #'   data = groupedstats::Titanic_full,
@@ -52,7 +52,7 @@
 #'   grouping.vars = Class,
 #'   family = stats::binomial(link = "logit")
 #' )
-#' 
+#'
 #' # to get glance output
 #' groupedstats::grouped_glm(
 #'   data = groupedstats::Titanic_full,

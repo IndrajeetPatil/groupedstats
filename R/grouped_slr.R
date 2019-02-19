@@ -39,7 +39,7 @@
 #' @seealso grouped_lm
 #'
 #' @examples
-#' 
+#'
 #' # in case of just one grouping variable
 #' groupedstats::grouped_slr(
 #'   data = iris,

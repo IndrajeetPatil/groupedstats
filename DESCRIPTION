@@ -19,7 +19,7 @@ Imports:
     broom (>= 0.5.1),
     broom.mixed(>= 0.2.3),
     crayon (>= 1.3.4),
-    dplyr (>= 0.7.8),
+    dplyr (>= 0.8.0),
     glue (>= 1.3.0),
     lme4 (>= 1.1-19),
     magrittr (>= 1.5),

@@ -19,7 +19,7 @@
 #' @return Formatted numeric values.
 #'
 #' @examples
-#' 
+#'
 #' groupedstats::specify_decimal_p(x = 0.00001, k = 2, p.value = TRUE)
 #' groupedstats::specify_decimal_p(x = 0.008, k = 2, p.value = TRUE)
 #' groupedstats::specify_decimal_p(x = 0.008, k = 3, p.value = FALSE)

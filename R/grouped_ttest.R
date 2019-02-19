@@ -28,7 +28,7 @@
 #' @importFrom tidyr nest
 #'
 #' @examples
-#' 
+#'
 #' groupedstats::grouped_ttest(
 #'   data = dplyr::filter(.data = ggplot2::diamonds, color == "E" | color == "J"),
 #'   dep.vars = c(carat, price, depth),
