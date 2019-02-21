@@ -25,7 +25,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--01--21-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--02--21-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
@@ -1236,7 +1236,7 @@ results_df <- purrr::pmap_dfr(
 
 head(results_df)
 #> # A tibble: 6 x 15
-#> # Groups:   mpaa, genre [18]
+#> # Groups:   mpaa, genre [3]
 #>   model mpaa  genre       r.squared adj.r.squared  sigma statistic    df
 #>   <chr> <fct> <fct>           <dbl>         <dbl>  <dbl>     <dbl> <int>
 #> 1 2     PG-13 Animation       0.474         0.369 0.824       4.51     2

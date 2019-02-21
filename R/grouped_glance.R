@@ -1,21 +1,19 @@
-#' @title Tidy output from grouped analysis of any function that has `data`
+#' @title Model summary from grouped analysis of any function that has `data`
 #'   argument in its function call.
-#' @name grouped_tidy
+#' @name grouped_glance
 #' @description This is the most general form of a `grouped_` function where any
 #'   function can be used to run `grouped_` analysis.
 #'
-#' @inheritParams grouped_lm
-#' @param ..f A function, or function name as a string.
-#' @inheritParams rlang::exec
+#' @inheritParams grouped_tidy
 #'
 #' @importFrom rlang !! !!! quo_squash enquo enquos exec
 #' @importFrom dplyr select everything group_by filter ungroup mutate group_map
 #' @importFrom tidyr nest unnest
 #' @importFrom purrr map_lgl map
-#' @importFrom broom tidy
+#' @importFrom broom glance
 #'
 #' @examples
-#' groupedstats::grouped_tidy(
+#' groupedstats::grouped_glance(
 #'   data = ggplot2::diamonds,
 #'   grouping.vars = c(cut, color),
 #'   formula = price ~ carat * clarity,
@@ -24,7 +22,7 @@
 #' @export
 
 # function body
-grouped_tidy <- function(data,
+grouped_glance <- function(data,
                          grouping.vars,
                          ..f,
                          ...) {
@@ -42,13 +40,13 @@ grouped_tidy <- function(data,
   dots <- rlang::enquos(...)
 
   # running the grouped analysis
-  df_results <- data %>%
+  df_results <-
+    data %>%
     dplyr::group_by(.data = ., !!!grouping.vars, .drop = TRUE) %>%
-    dplyr::group_map(.tbl = ., .f = ~ broom::tidy(
-      x = rlang::exec(.fn = ..f, !!!dots, data = .x),
-      conf.int = TRUE,
-      quick = FALSE
-    ))
+    dplyr::group_map(
+      .tbl = .,
+      .f = ~ broom::glance(rlang::exec(.fn = ..f, !!!dots, data = .x))
+    )
 
   # return the final dataframe with results
   return(df_results)

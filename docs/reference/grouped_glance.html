@@ -6,8 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tidy output from grouped analysis of any function that has <code>data</code>
-argument in its function call. — grouped_tidy • groupedstats</title>
+<title>Model summary from grouped analysis of any function that has <code>data</code>
+argument in its function call. — grouped_glance • groupedstats</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -39,8 +39,8 @@ argument in its function call. — grouped_tidy • groupedstats</title>
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Tidy output from grouped analysis of any function that has <code>data</code>
-argument in its function call. — grouped_tidy" />
+<meta property="og:title" content="Model summary from grouped analysis of any function that has <code>data</code>
+argument in its function call. — grouped_glance" />
 
 <meta property="og:description" content="This is the most general form of a grouped_ function where any
 function can be used to run grouped_ analysis." />
@@ -119,10 +119,10 @@ function can be used to run grouped_ analysis." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Tidy output from grouped analysis of any function that has <code>data</code>
+    <h1>Model summary from grouped analysis of any function that has <code>data</code>
 argument in its function call.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/groupedstats/blob/master/R/grouped_tidy.R'><code>R/grouped_tidy.R</code></a></small>
-    <div class="hidden name"><code>grouped_tidy.Rd</code></div>
+    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/groupedstats/blob/master/R/grouped_glance.R'><code>R/grouped_glance.R</code></a></small>
+    <div class="hidden name"><code>grouped_glance.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -132,7 +132,7 @@ function can be used to run <code>grouped_</code> analysis.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>grouped_tidy</span>(<span class='no'>data</span>, <span class='no'>grouping.vars</span>, <span class='no'>..f</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>grouped_glance</span>(<span class='no'>data</span>, <span class='no'>grouping.vars</span>, <span class='no'>..f</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -158,26 +158,27 @@ function can be used to run <code>grouped_</code> analysis.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/grouped_tidy.html'>grouped_tidy</a></span>(
+    <pre class="examples"><div class='input'><span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/grouped_glance.html'>grouped_glance</a></span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/diamonds.html'>diamonds</a></span>,
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='no'>cut</span>, <span class='no'>color</span>),
   <span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>price</span> ~ <span class='no'>carat</span> * <span class='no'>clarity</span>,
   <span class='kw'>..f</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>
-)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 547 x 9</span><span>
+)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 35 x 13</span><span>
 #&gt; </span><span style='color: #555555;'># Groups:   cut, color [35]</span><span>
-#&gt;    cut   color term     estimate std.error statistic  p.value conf.low conf.high
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;ord&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;ord&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> Fair  D     (Interc~   -</span><span style='color: #BB0000;text-decoration: underline;'>3</span><span style='color: #BB0000;'>442.</span><span>      504.    -</span><span style='color: #BB0000;'>6.83</span><span>  2.13</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-10</span><span>   -</span><span style='color: #BB0000;text-decoration: underline;'>4</span><span style='color: #BB0000;'>439.</span><span>    -</span><span style='color: #BB0000;text-decoration: underline;'>2</span><span style='color: #BB0000;'>446.</span><span>
-#&gt; </span><span style='color: #555555;'> 2</span><span> Fair  D     carat       </span><span style='text-decoration: underline;'>9</span><span>511.     </span><span style='text-decoration: underline;'>1</span><span>111.     8.56  1.39</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-14</span><span>    </span><span style='text-decoration: underline;'>7</span><span>315.    </span><span style='text-decoration: underline;'>11</span><span>707.
-#&gt; </span><span style='color: #555555;'> 3</span><span> Fair  D     clarity~    </span><span style='text-decoration: underline;'>1</span><span>284.     </span><span style='text-decoration: underline;'>1</span><span>934.     0.664 5.08</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 1</span><span>   -</span><span style='color: #BB0000;text-decoration: underline;'>2</span><span style='color: #BB0000;'>538.</span><span>     </span><span style='text-decoration: underline;'>5</span><span>106.
-#&gt; </span><span style='color: #555555;'> 4</span><span> Fair  D     clarity~    </span><span style='text-decoration: underline;'>1</span><span>986.     </span><span style='text-decoration: underline;'>1</span><span>928.     1.03  3.05</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 1</span><span>   -</span><span style='color: #BB0000;text-decoration: underline;'>1</span><span style='color: #BB0000;'>824.</span><span>     </span><span style='text-decoration: underline;'>5</span><span>796.
-#&gt; </span><span style='color: #555555;'> 5</span><span> Fair  D     clarity~     466.     </span><span style='text-decoration: underline;'>1</span><span>600.     0.291 7.71</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 1</span><span>   -</span><span style='color: #BB0000;text-decoration: underline;'>2</span><span style='color: #BB0000;'>696.</span><span>     </span><span style='text-decoration: underline;'>3</span><span>629.
-#&gt; </span><span style='color: #555555;'> 6</span><span> Fair  D     clarity~    </span><span style='text-decoration: underline;'>1</span><span>919.     </span><span style='text-decoration: underline;'>1</span><span>313.     1.46  1.46</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 1</span><span>    -</span><span style='color: #BB0000;'>676.</span><span>     </span><span style='text-decoration: underline;'>4</span><span>514.
-#&gt; </span><span style='color: #555555;'> 7</span><span> Fair  D     clarity~    </span><span style='text-decoration: underline;'>1</span><span>728.     </span><span style='text-decoration: underline;'>1</span><span>021.     1.69  9.27</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 2</span><span>    -</span><span style='color: #BB0000;'>290.</span><span>     </span><span style='text-decoration: underline;'>3</span><span>745.
-#&gt; </span><span style='color: #555555;'> 8</span><span> Fair  D     clarity~     436.      812.     0.537 5.92</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 1</span><span>   -</span><span style='color: #BB0000;text-decoration: underline;'>1</span><span style='color: #BB0000;'>169.</span><span>     </span><span style='text-decoration: underline;'>2</span><span>042.
-#&gt; </span><span style='color: #555555;'> 9</span><span> Fair  D     clarity~   -</span><span style='color: #BB0000;text-decoration: underline;'>1</span><span style='color: #BB0000;'>219.</span><span>      890.    -</span><span style='color: #BB0000;'>1.37</span><span>  1.73</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 1</span><span>   -</span><span style='color: #BB0000;text-decoration: underline;'>2</span><span style='color: #BB0000;'>978.</span><span>      540.
-#&gt; </span><span style='color: #555555;'>10</span><span> Fair  D     carat:c~    </span><span style='text-decoration: underline;'>3</span><span>436.     </span><span style='text-decoration: underline;'>4</span><span>583.     0.750 4.55</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 1</span><span>   -</span><span style='color: #BB0000;text-decoration: underline;'>5</span><span style='color: #BB0000;'>621.</span><span>    </span><span style='text-decoration: underline;'>12</span><span>493.
-#&gt; </span><span style='color: #555555;'># ... with 537 more rows</span><span></div></span></pre>
+#&gt;    cut   color r.squared adj.r.squared sigma statistic   p.value    df logLik
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;ord&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;ord&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> Fair  D         0.915         0.906 </span><span style='text-decoration: underline;'>1</span><span>005.      106. 1.03</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 70</span><span>    16 -</span><span style='color: #BB0000;text-decoration: underline;'>1</span><span style='color: #BB0000;'>350.</span><span>
+#&gt; </span><span style='color: #555555;'> 2</span><span> Fair  E         0.917         0.912  883.      179. 8.70</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-106</span><span>    14 -</span><span style='color: #BB0000;text-decoration: underline;'>1</span><span style='color: #BB0000;'>830.</span><span>
+#&gt; </span><span style='color: #555555;'> 3</span><span> Fair  F         0.917         0.912  954.      217. 9.37</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-150</span><span>    16 -</span><span style='color: #BB0000;text-decoration: underline;'>2</span><span style='color: #BB0000;'>575.</span><span>
+#&gt; </span><span style='color: #555555;'> 4</span><span> Fair  G         0.932         0.929  964.      273. 5.03</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-164</span><span>    16 -</span><span style='color: #BB0000;text-decoration: underline;'>2</span><span style='color: #BB0000;'>595.</span><span>
+#&gt; </span><span style='color: #555555;'> 5</span><span> Fair  H         0.932         0.929 </span><span style='text-decoration: underline;'>1</span><span>033.      332. 1.76</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-161</span><span>    13 -</span><span style='color: #BB0000;text-decoration: underline;'>2</span><span style='color: #BB0000;'>526.</span><span>
+#&gt; </span><span style='color: #555555;'> 6</span><span> Fair  I         0.958         0.955  794.      307. 1.14</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-104</span><span>    13 -</span><span style='color: #BB0000;text-decoration: underline;'>1</span><span style='color: #BB0000;'>410.</span><span>
+#&gt; </span><span style='color: #555555;'> 7</span><span> Fair  J         0.955         0.950  907.      204. 1.82</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 66</span><span>    12  -</span><span style='color: #BB0000;'>973.</span><span>
+#&gt; </span><span style='color: #555555;'> 8</span><span> Good  D         0.933         0.931  831.      600. 0.  </span><span style='color: #555555;'> </span><span>        16 -</span><span style='color: #BB0000;text-decoration: underline;'>5</span><span style='color: #BB0000;'>382.</span><span>
+#&gt; </span><span style='color: #555555;'> 9</span><span> Good  E         0.927         0.926  905.      781. 0.  </span><span style='color: #555555;'> </span><span>        16 -</span><span style='color: #BB0000;text-decoration: underline;'>7</span><span style='color: #BB0000;'>667.</span><span>
+#&gt; </span><span style='color: #555555;'>10</span><span> Good  F         0.915         0.914  939.      644. 0.  </span><span style='color: #555555;'> </span><span>        16 -</span><span style='color: #BB0000;text-decoration: underline;'>7</span><span style='color: #BB0000;'>504.</span><span>
+#&gt; </span><span style='color: #555555;'># ... with 25 more rows, and 4 more variables: AIC </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, BIC </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>,
+#&gt; #   deviance </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, df.residual </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

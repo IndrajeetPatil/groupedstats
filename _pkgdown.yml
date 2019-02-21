@@ -24,6 +24,7 @@ reference:
     desc: These will work only with functions that have `data` argument.
     contents:
       - grouped_tidy
+      - grouped_glance
 
   - title: Package - "stats"
     desc: The `grouped_` versions of functions from `stats` package.

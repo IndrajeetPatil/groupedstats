@@ -16,7 +16,7 @@ env:
     - R_MAX_NUM_DLLS=999
     - _R_CHECK_FORCE_SUGGESTS_=FALSE
 
-r_check_args: "--run-dontrun"
+#r_check_args: "--run-dontrun"
 
 r_binary_packages:
   - stringi
