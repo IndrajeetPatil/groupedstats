@@ -13,9 +13,6 @@
     <loc>https://indrajeetpatil.github.io/groupedstats//reference/grouped_aov.html</loc>
   </url>
   <url>
-    <loc>https://indrajeetpatil.github.io/groupedstats//reference/grouped_glance.html</loc>
-  </url>
-  <url>
     <loc>https://indrajeetpatil.github.io/groupedstats//reference/grouped_glm.html</loc>
   </url>
   <url>
@@ -40,9 +37,6 @@
     <loc>https://indrajeetpatil.github.io/groupedstats//reference/grouped_summary.html</loc>
   </url>
   <url>
-    <loc>https://indrajeetpatil.github.io/groupedstats//reference/grouped_tidy.html</loc>
-  </url>
-  <url>
     <loc>https://indrajeetpatil.github.io/groupedstats//reference/grouped_ttest.html</loc>
   </url>
   <url>
@@ -62,6 +56,9 @@
   </url>
   <url>
     <loc>https://indrajeetpatil.github.io/groupedstats//reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>https://indrajeetpatil.github.io/groupedstats//reference/reexports.html</loc>
   </url>
   <url>
     <loc>https://indrajeetpatil.github.io/groupedstats//reference/set_cwd.html</loc>

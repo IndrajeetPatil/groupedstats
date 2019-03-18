@@ -20,12 +20,6 @@ authors:
 
 reference:
 
-  - title: General `grouped` functions
-    desc: These will work only with functions that have `data` argument.
-    contents:
-      - grouped_tidy
-      - grouped_glance
-
   - title: Package - "stats"
     desc: The `grouped_` versions of functions from `stats` package.
     contents:
@@ -40,6 +34,13 @@ reference:
     contents:
       - grouped_lmer
       - grouped_glmer
+
+  - title: Reexported functions
+    desc:  Useful functions re-exported from other packages.
+    contents:
+      - grouped_tidy
+      - grouped_glance
+      - grouped_augment
 
   - title: Miscellaneous functions
     desc: The `grouped_` versions of functions from miscellaneous packages.

@@ -2,46 +2,50 @@ Type: Package
 Package: groupedstats
 Title: Grouped Statistical Analyses in a Tidy Way
 Version: 0.0.5.9000
-Authors@R: person(given = "Indrajeet", 
-  family = "Patil", 
-  email = "patilindrajeet.science@gmail.com", 
-  role = c("aut", "cre"), 
-  comment = c(ORCID = "0000-0003-1995-6531"))
+Authors@R: 
+    person(given = "Indrajeet",
+           family = "Patil",
+           role = c("aut", "cre"),
+           email = "patilindrajeet.science@gmail.com",
+           comment = c(ORCID = "0000-0003-1995-6531"))
 Maintainer: Indrajeet Patil <patilindrajeet.science@gmail.com>
-Description: Collection of functions to run statistical tests across all levels
-  of multiple grouping variables.
+Description: Collection of functions to run statistical tests
+    across all levels of multiple grouping variables.
 License: GPL-3 | file LICENSE
-URL: https://indrajeetpatil.github.io/groupedstats/, https://github.com/IndrajeetPatil/groupedstats
-BugReports: https://github.com/IndrajeetPatil/groupedstats/issues
+URL: https://indrajeetpatil.github.io/groupedstats/,
+    https://github.com/IndrajeetPatil/groupedstats
+BugReports: 
+    https://github.com/IndrajeetPatil/groupedstats/issues
 Depends: 
     R (>= 3.5.0)
 Imports: 
     broom (>= 0.5.1),
-    broom.mixed(>= 0.2.3),
+    broom.mixed (>= 0.2.4),
+    broomExtra,
     crayon (>= 1.3.4),
-    dplyr (>= 0.8.0),
+    dplyr (>= 0.8.0.1),
     glue (>= 1.3.0),
-    lme4 (>= 1.1-19),
+    lme4 (>= 1.1-21),
     magrittr (>= 1.5),
-    purrr (>= 0.2.5),
+    purrr (>= 0.3.2),
     rlang (>= 0.3.1),
     robust (>= 0.4-18),
     rstudioapi (>= 0.9.0),
-    sjstats (>= 0.17.3),
-    skimr (>= 1.0.4),
+    sjstats (>= 0.17.4),
+    skimr (>= 1.0.5),
     stats,
-    tibble (>= 2.0.1),
-    tidyr (>= 0.8.2)
+    tibble (>= 2.1.1),
+    tidyr (>= 0.8.3)
 Suggests: 
-    gapminder,
     covr,
+    gapminder,
     ggplot2,
     knitr,
     rmarkdown,
     spelling,
     testthat
 Encoding: UTF-8
+Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
-Language: en-US

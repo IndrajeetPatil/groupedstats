@@ -25,12 +25,13 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--02--21-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--03--18-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/IndrajeetPatil/groupedstats/master.svg)](https://codecov.io/github/IndrajeetPatil/groupedstats?branch=master)
+[![status](https://tinyverse.netlify.com/badge/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
 
 # Overview
 
@@ -455,32 +456,32 @@ groupedstats::grouped_robustslr(
   grouping.vars = c(continent, country)
 ) %>%
   dplyr::arrange(.data = ., continent, country)
-#> # A tibble: 104 x 8
+#> # A tibble: 284 x 8
 #>    continent country      formula             t.value estimate std.error
 #>    <fct>     <fct>        <chr>                 <dbl>    <dbl>     <dbl>
-#>  1 Africa    Algeria      lifeExp ~ gdpPercap   2.46     0.773    0.315 
-#>  2 Africa    Algeria      pop ~ gdpPercap       7.18     0.929    0.129 
-#>  3 Africa    Angola       lifeExp ~ gdpPercap   4.42     1.47     0.332 
-#>  4 Africa    Angola       pop ~ gdpPercap      15.3      1.08     0.0706
-#>  5 Africa    Benin        lifeExp ~ gdpPercap  -0.387   -0.225    0.581 
-#>  6 Africa    Benin        pop ~ gdpPercap      -4.41    -0.824    0.187 
-#>  7 Africa    Botswana     lifeExp ~ gdpPercap  -1.86    -0.493    0.265 
-#>  8 Africa    Botswana     pop ~ gdpPercap      -0.652   -0.721    1.11  
-#>  9 Africa    Burkina Faso lifeExp ~ gdpPercap  13.0      1.07     0.0822
-#> 10 Africa    Burkina Faso pop ~ gdpPercap       8.58     1.04     0.121 
+#>  1 Africa    Algeria      lifeExp ~ gdpPercap   5.82     0.904    0.155 
+#>  2 Africa    Algeria      pop ~ gdpPercap       2.49     0.869    0.349 
+#>  3 Africa    Angola       lifeExp ~ gdpPercap  -0.734   -0.413    0.563 
+#>  4 Africa    Angola       pop ~ gdpPercap      -2.45    -0.541    0.221 
+#>  5 Africa    Benin        lifeExp ~ gdpPercap   2.46     0.773    0.315 
+#>  6 Africa    Benin        pop ~ gdpPercap       7.18     0.929    0.129 
+#>  7 Africa    Botswana     lifeExp ~ gdpPercap   4.42     1.47     0.332 
+#>  8 Africa    Botswana     pop ~ gdpPercap      15.3      1.08     0.0706
+#>  9 Africa    Burkina Faso lifeExp ~ gdpPercap   2.14     0.882    0.413 
+#> 10 Africa    Burkina Faso pop ~ gdpPercap       7.17     0.920    0.128 
 #>         p.value significance
 #>           <dbl> <chr>       
-#>  1 0.0338       *           
-#>  2 0.0000299    ***         
-#>  3 0.00130      **          
-#>  4 0.0000000294 ***         
-#>  5 0.707        ns          
-#>  6 0.00132      **          
-#>  7 0.0926       ns          
-#>  8 0.529        ns          
-#>  9 0.000000141  ***         
-#> 10 0.00000637   ***         
-#> # ... with 94 more rows
+#>  1 0.000168     ***         
+#>  2 0.0319       *           
+#>  3 0.480        ns          
+#>  4 0.0344       *           
+#>  5 0.0338       *           
+#>  6 0.0000299    ***         
+#>  7 0.00130      **          
+#>  8 0.0000000294 ***         
+#>  9 0.0583       ns          
+#> 10 0.0000304    ***         
+#> # ... with 274 more rows
 ```
 
 A more general version of this function (`grouped_robustlm`) will be
@@ -549,31 +550,31 @@ groupedstats::grouped_lm(
   formula = price ~ carat * clarity,        # formula
   output = "glance"                         # dataframe with model summaries
 )
-#> # A tibble: 35 x 14
+#> # A tibble: 35 x 15
 #>    cut       color r.squared adj.r.squared sigma statistic    df  logLik
-#>    <ord>     <ord>     <dbl>         <dbl> <dbl>     <dbl> <int>   <dbl>
-#>  1 Ideal     E         0.931         0.931  776.     3516.    16 -31501.
-#>  2 Premium   E         0.927         0.927 1028.     1968.    16 -19516.
-#>  3 Good      E         0.927         0.926  905.      781.    16  -7667.
-#>  4 Premium   I         0.934         0.934 1303.     1338.    16 -12260.
-#>  5 Good      J         0.946         0.943  885.      363.    15  -2511.
-#>  6 Very Good J         0.957         0.957  862.      994.    16  -5537.
-#>  7 Very Good I         0.946         0.945 1100.     1378.    16 -10132.
-#>  8 Very Good H         0.940         0.939 1032.     1880.    16 -15237.
-#>  9 Fair      E         0.917         0.912  883.      179.    14  -1830.
-#> 10 Ideal     J         0.955         0.955  953.     1259.    16  -7409.
-#>       AIC    BIC    deviance df.residual   p.value significance
-#>     <dbl>  <dbl>       <dbl>       <int>     <dbl> <chr>       
-#>  1 63036. 63142. 2340281648.        3887 0.        ***         
-#>  2 39066. 39163. 2452401685.        2321 0.        ***         
-#>  3 15369. 15451.  750592238.         917 0.        ***         
-#>  4 24554. 24644. 2396212809.        1412 0.        ***         
-#>  5  5054.  5114.  228805662.         292 2.70e-175 ***         
-#>  6 11108. 11185.  492442592.         662 0.        ***         
-#>  7 20297. 20384. 1436458762.        1188 0.        ***         
-#>  8 30508. 30601. 1924549052.        1808 0.        ***         
-#>  9  3690.  3741.  163677866.         210 8.70e-106 ***         
-#> 10 14852. 14934.  798454816.         880 0.        ***         
+#>    <ord>     <ord>     <dbl>         <dbl> <dbl>     <dbl> <dbl>   <dbl>
+#>  1 Ideal     E         0.931         0.931  776.     3516.    15 -31501.
+#>  2 Premium   E         0.927         0.927 1028.     1968.    15 -19516.
+#>  3 Good      E         0.927         0.926  905.      781.    15  -7667.
+#>  4 Premium   I         0.934         0.934 1303.     1338.    15 -12260.
+#>  5 Good      J         0.946         0.943  885.      363.    14  -2511.
+#>  6 Very Good J         0.957         0.957  862.      994.    15  -5537.
+#>  7 Very Good I         0.946         0.945 1100.     1378.    15 -10132.
+#>  8 Very Good H         0.940         0.939 1032.     1880.    15 -15237.
+#>  9 Fair      E         0.917         0.912  883.      179.    13  -1830.
+#> 10 Ideal     J         0.955         0.955  953.     1259.    15  -7409.
+#>       AIC    BIC    deviance df.residual  nobs   p.value significance
+#>     <dbl>  <dbl>       <dbl>       <int> <int>     <dbl> <chr>       
+#>  1 63036. 63142. 2340281648.        3887  3903 0.        ***         
+#>  2 39066. 39163. 2452401685.        2321  2337 0.        ***         
+#>  3 15369. 15451.  750592238.         917   933 0.        ***         
+#>  4 24554. 24644. 2396212809.        1412  1428 0.        ***         
+#>  5  5054.  5114.  228805662.         292   307 2.70e-175 ***         
+#>  6 11108. 11185.  492442592.         662   678 0.        ***         
+#>  7 20297. 20384. 1436458762.        1188  1204 0.        ***         
+#>  8 30508. 30601. 1924549052.        1808  1824 0.        ***         
+#>  9  3690.  3741.  163677866.         210   224 8.70e-106 ***         
+#> 10 14852. 14934.  798454816.         880   896 0.        ***         
 #> # ... with 25 more rows
 ```
 
@@ -718,13 +719,13 @@ groupedstats::grouped_glm(
  family = stats::binomial(link = "logit"),
  output = "glance"
 )
-#> # A tibble: 4 x 8
-#>   Class null.deviance df.null logLik   AIC   BIC deviance df.residual
-#>   <fct>         <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>       <int>
-#> 1 3rd            797.     705  -370.  744.  753.     740.         704
-#> 2 1st            430.     324  -134.  272.  280.     268.         323
-#> 3 2nd            387.     284  -112.  228.  235.     224.         283
-#> 4 Crew           974.     884  -466.  936.  946.     932.         883
+#> # A tibble: 4 x 9
+#>   Class null.deviance df.null logLik   AIC   BIC deviance df.residual  nobs
+#>   <fct>         <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>       <int> <int>
+#> 1 3rd            797.     705  -370.  744.  753.     740.         704   706
+#> 2 1st            430.     324  -134.  272.  280.     268.         323   325
+#> 3 2nd            387.     284  -112.  228.  235.     224.         283   285
+#> 4 Crew           974.     884  -466.  936.  946.     932.         883   885
 ```
 
 ## `grouped_lmer`
@@ -1235,24 +1236,32 @@ results_df <- purrr::pmap_dfr(
   dplyr::arrange(.data = ., dplyr::desc(adj.r.squared))
 
 head(results_df)
-#> # A tibble: 6 x 15
+#> # A tibble: 6 x 16
 #> # Groups:   mpaa, genre [3]
 #>   model mpaa  genre       r.squared adj.r.squared  sigma statistic    df
-#>   <chr> <fct> <fct>           <dbl>         <dbl>  <dbl>     <dbl> <int>
-#> 1 2     PG-13 Animation       0.474         0.369 0.824       4.51     2
-#> 2 4     PG-13 Animation       0.447         0.337 0.138       4.05     2
-#> 3 3     PG    Documentary     0.468         0.202 0.0532      1.76     2
-#> 4 1     PG    Documentary     0.449         0.174 0.386       1.63     2
-#> 5 4     PG-13 Romance         0.142         0.138 0.254      34.6      2
-#> 6 2     PG-13 Romance         0.129         0.125 1.31       30.9      2
-#>     logLik     AIC     BIC  deviance df.residual      p.value significance
-#>      <dbl>   <dbl>   <dbl>     <dbl>       <int>        <dbl> <chr>       
-#> 1   -7.40    20.8    20.6    3.39              5 0.0870       ns          
-#> 2    5.09    -4.18   -4.35   0.0957            5 0.100        ns          
-#> 3    7.45    -8.90  -10.7    0.00565           2 0.316        ns          
-#> 4   -0.479    6.96    5.12   0.298             2 0.330        ns          
-#> 5   -9.39    24.8    34.8   13.5             209 0.0000000162 ***         
-#> 6 -356.     718.    728.   361.              209 0.0000000825 ***
+#>   <chr> <fct> <fct>           <dbl>         <dbl>  <dbl>     <dbl> <dbl>
+#> 1 2     PG-13 Animation       0.474         0.369 0.824       4.51     1
+#> 2 4     PG-13 Animation       0.447         0.337 0.138       4.05     1
+#> 3 3     PG    Documentary     0.468         0.202 0.0532      1.76     1
+#> 4 1     PG    Documentary     0.449         0.174 0.386       1.63     1
+#> 5 4     R     Action          0.142         0.138 0.254      34.6      1
+#> 6 2     R     Action          0.129         0.125 1.31       30.9      1
+#>     logLik     AIC     BIC  deviance df.residual  nobs      p.value
+#>      <dbl>   <dbl>   <dbl>     <dbl>       <int> <int>        <dbl>
+#> 1   -7.40    20.8    20.6    3.39              5     7 0.0870      
+#> 2    5.09    -4.18   -4.35   0.0957            5     7 0.100       
+#> 3    7.45    -8.90  -10.7    0.00565           2     4 0.316       
+#> 4   -0.479    6.96    5.12   0.298             2     4 0.330       
+#> 5   -9.39    24.8    34.8   13.5             209   211 0.0000000162
+#> 6 -356.     718.    728.   361.              209   211 0.0000000825
+#>   significance
+#>   <chr>       
+#> 1 ns          
+#> 2 ns          
+#> 3 ns          
+#> 4 ns          
+#> 5 ***         
+#> 6 ***
 ```
 
 # Current code coverage

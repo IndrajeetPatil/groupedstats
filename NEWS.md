@@ -1,9 +1,11 @@
 # groupedstats 0.0.5.9000
  
-MAJOR CHANGES
+NEW FUNCTIONS
 
-  - New function `grouped_tidy` to extract a tidy dataframe of results in a
-    grouped analysis for any function that has a `data` argument.
+  - New re-exported functions: `grouped_tidy`, `grouped_glance`,
+    `grouped_augment`. These provide the most general version of `grouped_`
+    versions of generic functions from `broom` package. They can be used to
+    carry out grouped analysis for any function that has a `data` argument.
 
 # groupedstats 0.0.5
 
