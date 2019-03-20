@@ -6,7 +6,7 @@ testthat::test_that(
   desc = "lm_effsize_ci works (eta, partial = FALSE)",
   code = {
     testthat::skip_on_cran()
-    testthat::skip_if(R.version$minor != "6.0")
+    testthat::skip_if_not(R.version$minor >= "6.0")
 
     # creating lm object-1
     set.seed(123)
@@ -129,7 +129,7 @@ testthat::test_that(
   desc = "lm_effsize_ci works (eta, partial = TRUE)",
   code = {
     testthat::skip_on_cran()
-    testthat::skip_if(R.version$minor != "6.0")
+    testthat::skip_if_not(R.version$minor >= "6.0")
 
     # creating lm object-1
     set.seed(123)
@@ -230,7 +230,7 @@ testthat::test_that(
   desc = "lm_effsize_ci works (omega, partial = FALSE)",
   code = {
     testthat::skip_on_cran()
-    testthat::skip_if(R.version$minor != "6.0")
+    testthat::skip_if_not(R.version$minor >= "6.0")
 
     # creating lm object-1
     set.seed(123)
@@ -344,7 +344,7 @@ testthat::test_that(
   desc = "lm_effsize_ci works (omega, partial = TRUE)",
   code = {
     testthat::skip_on_cran()
-    testthat::skip_if(R.version$minor != "6.0")
+    testthat::skip_if_not(R.version$minor >= "6.0")
 
     # creating lm object-1
     set.seed(123)
@@ -457,7 +457,7 @@ testthat::test_that(
   desc = "lm_effsize_ci works with ezANOVA",
   code = {
     testthat::skip_on_cran()
-    testthat::skip_if(R.version$minor != "6.0")
+    testthat::skip_if_not(R.version$minor >= "6.0")
 
     set.seed(123)
     library(ez)

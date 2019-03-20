@@ -91,7 +91,8 @@ grouped_ttest <- function(data,
 
   # ============== custom function ================
 
-  # custom function to run linear regression for every element of a list for two variables
+  # custom function to run linear regression for every element of a list for two
+  # variables
   lm_listed <- function(list.col,
                           x_name,
                           y_name,
@@ -121,7 +122,8 @@ grouped_ttest <- function(data,
         .f = ~ broom::tidy(x = .),
         .id = "..group"
       ) %>% # add formula as a character
-      dplyr::mutate(.data = ., formula = as.character(fx)) %>% # rearrange the dataframe
+      dplyr::mutate(.data = ., formula = as.character(fx)) %>%
+      # rearrange the dataframe
       dplyr::select(
         .data = .,
         `..group`,

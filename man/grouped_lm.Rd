@@ -4,21 +4,26 @@
 \alias{grouped_lm}
 \title{Function to run linear model (lm) across multiple grouping variables.}
 \usage{
-grouped_lm(data, grouping.vars, formula, output = "tidy")
+grouped_lm(data, grouping.vars, ..., output = "tidy",
+  tidy.args = list(conf.int = TRUE, conf.level = 0.95),
+  augment.args = list())
 }
 \arguments{
-\item{data}{Dataframe from which variables are to be taken.}
+\item{data}{Dataframe (or tibble) from which variables are to be taken.}
 
-\item{grouping.vars}{List of grouping variables.}
+\item{grouping.vars}{Grouping variables.}
 
-\item{formula}{an object of class \code{"\link{formula}"} (or one that
-    can be coerced to that class): a symbolic description of the
-    model to be fitted.  The details of model specification are given
-    under \sQuote{Details}.}
+\item{...}{Arguments to function.
+
+These dots support \link{tidy-dots} features.}
 
 \item{output}{A character describing what output is expected. Two possible
 options: \code{"tidy"} (default), which will return the results, or \code{"glance"},
 which will return model summaries.}
+
+\item{tidy.args}{A list of arguments to be used in the relevant \code{S3} method.}
+
+\item{augment.args}{A list of arguments to be used in the relevant \code{S3} method.}
 }
 \value{
 A tibble dataframe with tidy results from linear model.
@@ -49,7 +54,7 @@ grouped_lm(
 )
 }
 \seealso{
-grouped_slr
+\code{\link{grouped_slr}}
 }
 \author{
 Indrajeet Patil

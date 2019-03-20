@@ -5,38 +5,26 @@
 \title{Function to run generalized linear model (glm) across multiple
 grouping variables.}
 \usage{
-grouped_glm(data, grouping.vars, formula, family = stats::binomial(link =
-  "logit"), quick = FALSE, exponentiate = FALSE, output = "tidy")
+grouped_glm(data, grouping.vars, ..., output = "tidy",
+  tidy.args = list(conf.int = TRUE, conf.level = 0.95),
+  augment.args = list())
 }
 \arguments{
-\item{data}{Dataframe from which variables are to be taken.}
+\item{data}{Dataframe (or tibble) from which variables are to be taken.}
 
-\item{grouping.vars}{List of grouping variables.}
+\item{grouping.vars}{Grouping variables.}
 
-\item{formula}{an object of class \code{"\link{formula}"} (or one that
-    can be coerced to that class): a symbolic description of the
-    model to be fitted.  The details of model specification are given
-    under \sQuote{Details}.}
+\item{...}{Arguments to function.
 
-\item{family}{a description of the error distribution and link
-    function to be used in the model.  For \code{glm} this can be a
-    character string naming a family function, a family function or the
-    result of a call to a family function.  For \code{glm.fit} only the
-    third option is supported.  (See \code{\link{family}} for details of
-    family functions.)}
-
-\item{quick}{Logical indicating if the only the term and estimate columns
-should be returned. Often useful to avoid time consuming covariance and
-standard error calculations. Defaults to \code{FALSE}.}
-
-\item{exponentiate}{Logical indicating whether or not to exponentiate the the
-coefficient estimates. This is typical for logistic and multinomial
-regressions, but a bad idea if there is no log or logit link. Defaults to
-\code{FALSE}.}
+These dots support \link{tidy-dots} features.}
 
 \item{output}{A character describing what output is expected. Two possible
 options: \code{"tidy"} (default), which will return the results, or \code{"glance"},
 which will return model summaries.}
+
+\item{tidy.args}{A list of arguments to be used in the relevant \code{S3} method.}
+
+\item{augment.args}{A list of arguments to be used in the relevant \code{S3} method.}
 }
 \value{
 A tibble dataframe with tidy results from linear model.
@@ -65,7 +53,8 @@ groupedstats::grouped_glm(
 )
 }
 \seealso{
-grouped_lm, grouped_glmer
+\code{\link{grouped_lm}}, \code{\link{grouped_lmer}},
+\code{\link{grouped_glmer}}
 }
 \author{
 Indrajeet Patil

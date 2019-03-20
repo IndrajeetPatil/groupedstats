@@ -6,7 +6,7 @@
 [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
 [![CRAN
 Checks](https://cranchecks.info/badges/summary/groupedstats)](https://cran.r-project.org/web/checks/check_results_groupedstats.html)
-[![packageversion](https://img.shields.io/badge/Package%20version-0.0.5.9000-orange.svg?style=flat-square)](commits/master)
+[![packageversion](https://img.shields.io/badge/Package%20version-0.0.6.9000-orange.svg?style=flat-square)](commits/master)
 [![Daily downloads
 badge](https://cranlogs.r-pkg.org/badges/last-day/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
 [![Weekly downloads
@@ -25,7 +25,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--03--18-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--03--20-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
@@ -63,14 +63,14 @@ The next releases will expand on the existing functionality (e.g.,
 
 # Installation
 
-To get the latest, stable CRAN release (0.0.5):
+To get the latest, stable CRAN release (0.0.6):
 
 ``` r
 utils::install.packages(pkgs = "groupedstats") 
 ```
 
 You can get the **development** version of the package from GitHub
-(`0.0.5.9000`). To see what new changes (and bug fixes) have been made
+(`0.0.6.9000`). To see what new changes (and bug fixes) have been made
 to the package since the last release on `CRAN`, you can check the
 detailed log of changes here:
 <https://indrajeetpatil.github.io/groupedstats/news/index.html>
@@ -508,30 +508,30 @@ groupedstats::grouped_lm(
   output = "tidy"             # tidy dataframe containing results
 )
 #> # A tibble: 12 x 9
-#>      cyl term        estimate std.error t.value conf.low conf.high
-#>    <dbl> <chr>          <dbl>     <dbl>   <dbl>    <dbl>     <dbl>
-#>  1     6 (Intercept)   63.6      14.1    4.51      18.7    109.   
-#>  2     6 am           -41.4      19.0   -2.18    -102.      19.1  
-#>  3     6 wt           -13.1       4.16  -3.16     -26.4      0.113
-#>  4     6 am:wt         12.5       6.22   2.02      -7.26    32.4  
-#>  5     4 (Intercept)   13.9      16.1    0.865    -24.1     51.9  
-#>  6     4 am            30.3      17.2    1.77     -10.3     70.9  
-#>  7     4 wt             3.07      5.44   0.564     -9.79    15.9  
-#>  8     4 am:wt        -11.0       6.16  -1.78     -25.5      3.61 
-#>  9     8 (Intercept)   25.1       3.51   7.14      17.2     32.9  
-#> 10     8 am            -2.92     25.9   -0.113    -60.5     54.7  
-#> 11     8 wt            -2.44      0.842 -2.90      -4.32    -0.563
-#> 12     8 am:wt          0.439     7.63   0.0575   -16.6     17.4  
+#>      cyl term        estimate std.error statistic conf.low conf.high
+#>    <dbl> <chr>          <dbl>     <dbl>     <dbl>    <dbl>     <dbl>
+#>  1     4 (Intercept)   13.9      16.1      0.865    -24.1     51.9  
+#>  2     4 am            30.3      17.2      1.77     -10.3     70.9  
+#>  3     4 wt             3.07      5.44     0.564     -9.79    15.9  
+#>  4     4 am:wt        -11.0       6.16    -1.78     -25.5      3.61 
+#>  5     6 (Intercept)   63.6      14.1      4.51      18.7    109.   
+#>  6     6 am           -41.4      19.0     -2.18    -102.      19.1  
+#>  7     6 wt           -13.1       4.16    -3.16     -26.4      0.113
+#>  8     6 am:wt         12.5       6.22     2.02      -7.26    32.4  
+#>  9     8 (Intercept)   25.1       3.51     7.14      17.2     32.9  
+#> 10     8 am            -2.92     25.9     -0.113    -60.5     54.7  
+#> 11     8 wt            -2.44      0.842   -2.90      -4.32    -0.563
+#> 12     8 am:wt          0.439     7.63     0.0575   -16.6     17.4  
 #>      p.value significance
 #>        <dbl> <chr>       
-#>  1 0.0204    *           
-#>  2 0.117     ns          
-#>  3 0.0511    ns          
-#>  4 0.137     ns          
-#>  5 0.416     ns          
-#>  6 0.121     ns          
-#>  7 0.590     ns          
-#>  8 0.118     ns          
+#>  1 0.416     ns          
+#>  2 0.121     ns          
+#>  3 0.590     ns          
+#>  4 0.118     ns          
+#>  5 0.0204    *           
+#>  6 0.117     ns          
+#>  7 0.0511    ns          
+#>  8 0.137     ns          
 #>  9 0.0000315 ***         
 #> 10 0.912     ns          
 #> 11 0.0159    *           
@@ -550,31 +550,31 @@ groupedstats::grouped_lm(
   formula = price ~ carat * clarity,        # formula
   output = "glance"                         # dataframe with model summaries
 )
-#> # A tibble: 35 x 15
-#>    cut       color r.squared adj.r.squared sigma statistic    df  logLik
-#>    <ord>     <ord>     <dbl>         <dbl> <dbl>     <dbl> <dbl>   <dbl>
-#>  1 Ideal     E         0.931         0.931  776.     3516.    15 -31501.
-#>  2 Premium   E         0.927         0.927 1028.     1968.    15 -19516.
-#>  3 Good      E         0.927         0.926  905.      781.    15  -7667.
-#>  4 Premium   I         0.934         0.934 1303.     1338.    15 -12260.
-#>  5 Good      J         0.946         0.943  885.      363.    14  -2511.
-#>  6 Very Good J         0.957         0.957  862.      994.    15  -5537.
-#>  7 Very Good I         0.946         0.945 1100.     1378.    15 -10132.
-#>  8 Very Good H         0.940         0.939 1032.     1880.    15 -15237.
-#>  9 Fair      E         0.917         0.912  883.      179.    13  -1830.
-#> 10 Ideal     J         0.955         0.955  953.     1259.    15  -7409.
-#>       AIC    BIC    deviance df.residual  nobs   p.value significance
-#>     <dbl>  <dbl>       <dbl>       <int> <int>     <dbl> <chr>       
-#>  1 63036. 63142. 2340281648.        3887  3903 0.        ***         
-#>  2 39066. 39163. 2452401685.        2321  2337 0.        ***         
-#>  3 15369. 15451.  750592238.         917   933 0.        ***         
-#>  4 24554. 24644. 2396212809.        1412  1428 0.        ***         
-#>  5  5054.  5114.  228805662.         292   307 2.70e-175 ***         
-#>  6 11108. 11185.  492442592.         662   678 0.        ***         
-#>  7 20297. 20384. 1436458762.        1188  1204 0.        ***         
-#>  8 30508. 30601. 1924549052.        1808  1824 0.        ***         
-#>  9  3690.  3741.  163677866.         210   224 8.70e-106 ***         
-#> 10 14852. 14934.  798454816.         880   896 0.        ***         
+#> # A tibble: 35 x 14
+#>    cut   color r.squared adj.r.squared sigma statistic   p.value    df
+#>    <ord> <ord>     <dbl>         <dbl> <dbl>     <dbl>     <dbl> <dbl>
+#>  1 Fair  D         0.915         0.906 1005.      106. 1.03e- 70    15
+#>  2 Fair  E         0.917         0.912  883.      179. 8.70e-106    13
+#>  3 Fair  F         0.917         0.912  954.      217. 9.37e-150    15
+#>  4 Fair  G         0.932         0.929  964.      273. 5.03e-164    15
+#>  5 Fair  H         0.932         0.929 1033.      332. 1.76e-161    12
+#>  6 Fair  I         0.958         0.955  794.      307. 1.14e-104    12
+#>  7 Fair  J         0.955         0.950  907.      204. 1.82e- 66    11
+#>  8 Good  D         0.933         0.931  831.      600. 0.           15
+#>  9 Good  E         0.927         0.926  905.      781. 0.           15
+#> 10 Good  F         0.915         0.914  939.      644. 0.           15
+#>    logLik    AIC    BIC   deviance df.residual  nobs
+#>     <dbl>  <dbl>  <dbl>      <dbl>       <int> <int>
+#>  1 -1350.  2733.  2786. 148463951.         147   163
+#>  2 -1830.  3690.  3741. 163677866.         210   224
+#>  3 -2575.  5184.  5248. 269389292.         296   312
+#>  4 -2595.  5224.  5288. 277025077.         298   314
+#>  5 -2526.  5081.  5133. 309753202.         290   303
+#>  6 -1410.  2848.  2892. 102049583.         162   175
+#>  7  -973.  1972.  2008.  88046170.         107   119
+#>  8 -5382. 10797. 10874. 446239835.         646   662
+#>  9 -7667. 15369. 15451. 750592238.         917   933
+#> 10 -7504. 15042. 15123. 787519475.         893   909
 #> # ... with 25 more rows
 ```
 
@@ -685,22 +685,22 @@ groupedstats::grouped_glm(
 #> # A tibble: 8 x 9
 #>   Class term        estimate std.error statistic conf.low conf.high
 #>   <fct> <chr>          <dbl>     <dbl>     <dbl>    <dbl>     <dbl>
-#> 1 3rd   (Intercept)   -0.164     0.143     -1.14   -0.446     0.117
-#> 2 3rd   SexMale       -1.40      0.185     -7.58   -1.77     -1.04 
-#> 3 1st   (Intercept)    3.56      0.507      7.03    2.70      4.74 
-#> 4 1st   SexMale       -4.21      0.531     -7.92   -5.42     -3.29 
-#> 5 2nd   (Intercept)    1.97      0.296      6.65    1.43      2.60 
-#> 6 2nd   SexMale       -3.79      0.366    -10.3    -4.54     -3.10 
+#> 1 1st   (Intercept)    3.56      0.507      7.03    2.70      4.74 
+#> 2 1st   SexMale       -4.21      0.531     -7.92   -5.42     -3.29 
+#> 3 2nd   (Intercept)    1.97      0.296      6.65    1.43      2.60 
+#> 4 2nd   SexMale       -3.79      0.366    -10.3    -4.54     -3.10 
+#> 5 3rd   (Intercept)   -0.164     0.143     -1.14   -0.446     0.117
+#> 6 3rd   SexMale       -1.40      0.185     -7.58   -1.77     -1.04 
 #> 7 Crew  (Intercept)    1.90      0.619      3.06    0.827     3.34 
 #> 8 Crew  SexMale       -3.15      0.625     -5.04   -4.60     -2.06 
 #>    p.value significance
 #>      <dbl> <chr>       
-#> 1 2.54e- 1 ns          
-#> 2 3.36e-14 ***         
-#> 3 2.13e-12 ***         
-#> 4 2.29e-15 ***         
-#> 5 3.03e-11 ***         
-#> 6 4.88e-25 ***         
+#> 1 2.13e-12 ***         
+#> 2 2.29e-15 ***         
+#> 3 3.03e-11 ***         
+#> 4 4.88e-25 ***         
+#> 5 2.54e- 1 ns          
+#> 6 3.36e-14 ***         
 #> 7 2.18e- 3 **          
 #> 8 4.68e- 7 ***
 ```
@@ -722,9 +722,9 @@ groupedstats::grouped_glm(
 #> # A tibble: 4 x 9
 #>   Class null.deviance df.null logLik   AIC   BIC deviance df.residual  nobs
 #>   <fct>         <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>       <int> <int>
-#> 1 3rd            797.     705  -370.  744.  753.     740.         704   706
-#> 2 1st            430.     324  -134.  272.  280.     268.         323   325
-#> 3 2nd            387.     284  -112.  228.  235.     224.         283   285
+#> 1 1st            430.     324  -134.  272.  280.     268.         323   325
+#> 2 2nd            387.     284  -112.  228.  235.     224.         283   285
+#> 3 3rd            797.     705  -370.  744.  753.     740.         704   706
 #> 4 Crew           974.     884  -466.  936.  946.     932.         883   885
 ```
 
@@ -1236,32 +1236,24 @@ results_df <- purrr::pmap_dfr(
   dplyr::arrange(.data = ., dplyr::desc(adj.r.squared))
 
 head(results_df)
-#> # A tibble: 6 x 16
+#> # A tibble: 6 x 15
 #> # Groups:   mpaa, genre [3]
-#>   model mpaa  genre       r.squared adj.r.squared  sigma statistic    df
-#>   <chr> <fct> <fct>           <dbl>         <dbl>  <dbl>     <dbl> <dbl>
-#> 1 2     PG-13 Animation       0.474         0.369 0.824       4.51     1
-#> 2 4     PG-13 Animation       0.447         0.337 0.138       4.05     1
-#> 3 3     PG    Documentary     0.468         0.202 0.0532      1.76     1
-#> 4 1     PG    Documentary     0.449         0.174 0.386       1.63     1
-#> 5 4     R     Action          0.142         0.138 0.254      34.6      1
-#> 6 2     R     Action          0.129         0.125 1.31       30.9      1
-#>     logLik     AIC     BIC  deviance df.residual  nobs      p.value
-#>      <dbl>   <dbl>   <dbl>     <dbl>       <int> <int>        <dbl>
-#> 1   -7.40    20.8    20.6    3.39              5     7 0.0870      
-#> 2    5.09    -4.18   -4.35   0.0957            5     7 0.100       
-#> 3    7.45    -8.90  -10.7    0.00565           2     4 0.316       
-#> 4   -0.479    6.96    5.12   0.298             2     4 0.330       
-#> 5   -9.39    24.8    34.8   13.5             209   211 0.0000000162
-#> 6 -356.     718.    728.   361.              209   211 0.0000000825
-#>   significance
-#>   <chr>       
-#> 1 ns          
-#> 2 ns          
-#> 3 ns          
-#> 4 ns          
-#> 5 ***         
-#> 6 ***
+#>   model mpaa  genre       r.squared adj.r.squared  sigma statistic
+#>   <chr> <fct> <fct>           <dbl>         <dbl>  <dbl>     <dbl>
+#> 1 2     PG-13 Animation       0.474         0.369 0.824       4.51
+#> 2 4     PG-13 Animation       0.447         0.337 0.138       4.05
+#> 3 3     PG    Documentary     0.468         0.202 0.0532      1.76
+#> 4 1     PG    Documentary     0.449         0.174 0.386       1.63
+#> 5 4     R     Action          0.142         0.138 0.254      34.6 
+#> 6 2     R     Action          0.129         0.125 1.31       30.9 
+#>        p.value    df   logLik     AIC     BIC  deviance df.residual  nobs
+#>          <dbl> <dbl>    <dbl>   <dbl>   <dbl>     <dbl>       <int> <int>
+#> 1 0.0870           1   -7.40    20.8    20.6    3.39              5     7
+#> 2 0.100            1    5.09    -4.18   -4.35   0.0957            5     7
+#> 3 0.316            1    7.45    -8.90  -10.7    0.00565           2     4
+#> 4 0.330            1   -0.479    6.96    5.12   0.298             2     4
+#> 5 0.0000000162     1   -9.39    24.8    34.8   13.5             209   211
+#> 6 0.0000000825     1 -356.     718.    728.   361.              209   211
 ```
 
 # Current code coverage

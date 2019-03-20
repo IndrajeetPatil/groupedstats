@@ -126,7 +126,7 @@ grouped_slr <- function(data,
           dplyr::filter(.data = broom::tidy(x = .), term == !!filter_name), # remove intercept terms
           broom::confint_tidy(x = .)[-c(1), ]
         ),
-        .id = "group"
+        .id = "..group"
       ) %>% # removing the unnecessary term column
       dplyr::select(.data = ., -term) %>% # convert to a tibble dataframe
       tibble::as_tibble(x = .)
@@ -136,7 +136,7 @@ grouped_slr <- function(data,
       dplyr::mutate(.data = ., formula = as.character(fx_plain)) %>% # rearrange the dataframe
       dplyr::select(
         .data = .,
-        group,
+        `..group`,
         formula,
         t.value = statistic,
         estimate,
@@ -155,10 +155,10 @@ grouped_slr <- function(data,
 
   # converting the original dataframe to have a grouping variable column
   df %<>%
-    tibble::rownames_to_column(., var = "group")
+    tibble::rownames_to_column(., var = "..group")
 
   # running custom function for each element of the created list column
-  df_lm <- purrr::pmap(
+  combined_df <- purrr::pmap(
     .l = list(
       list.col = list(df$data),
       x_name = purrr::map(
@@ -173,13 +173,13 @@ grouped_slr <- function(data,
     .f = lm_listed
   ) %>%
     dplyr::bind_rows(.) %>%
-    dplyr::left_join(x = ., y = df, by = "group") %>%
+    dplyr::left_join(x = ., y = df, by = "..group") %>%
     dplyr::select(.data = ., !!!grouping.vars, dplyr::everything()) %>%
-    dplyr::select(.data = ., -group, -data) %>%
+    dplyr::select(.data = ., -`..group`, -data) %>%
     signif_column(data = ., p = `p.value`)
 
   # ============================== output ==================================
 
   # return the final dataframe with results
-  return(df_lm)
+  return(combined_df)
 }

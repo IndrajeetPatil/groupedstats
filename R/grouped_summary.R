@@ -129,6 +129,7 @@ grouped_summary <- function(data,
         ),
         .p = base::is.factor
       )))
+
       # create a dataframe only if this is the case
       if (factor_cols > 0) {
         # of character/factor type
@@ -167,11 +168,12 @@ grouped_summary <- function(data,
       !!rlang::enquo(measures)
     )
   }
-  # ================================================== checks ===========================================================
+
+  # =================================== checks ===============================
+
   # when measures have been specified
   if (!base::missing(measures)) {
-    # check the class of variables (all have to be of uniform type)
-    # numeric
+    # check the class of variables (all have to be of uniform type) numeric
     numeric_count <- sum(purrr::map_lgl(
       .x = dplyr::select(
         .data = data,
@@ -179,6 +181,7 @@ grouped_summary <- function(data,
       ),
       .f = ~ purrr::is_bare_numeric(.)
     ) == FALSE)
+
     # factor
     # convert factor into characters
     df_char <- dplyr::select(
@@ -286,6 +289,7 @@ grouped_summary <- function(data,
       tibble::as_tibble(x = .) # converting to tibble dataframe
 
     # ===================== factor long format conversion ====================
+
     if (isTRUE(topcount.long)) {
       # custom function used to convert counts into long format
       count_long_format_fn <- function(top_counts) {
@@ -302,7 +306,7 @@ grouped_summary <- function(data,
             )
         )
       }
-      #
+
       # converting to long format using the custom function
       df_summary_long <- df_summary %>%
         dplyr::group_by(.data = ., !!!grouping.vars) %>%

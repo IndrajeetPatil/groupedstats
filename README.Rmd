@@ -7,7 +7,7 @@ output: github_document
 ```{r, echo = FALSE, warning = FALSE, messsage = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  dpi = 300,
+  dpi = 200,
   out.width = "100%",
   comment = "#>",
   fig.path = "man/figures/README-"
@@ -24,7 +24,7 @@ library(ggstatsplot)
 
 [![CRAN_Release_Badge](http://www.r-pkg.org/badges/version-ago/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
 [![CRAN Checks](https://cranchecks.info/badges/summary/groupedstats)](https://cran.r-project.org/web/checks/check_results_groupedstats.html)
-[![packageversion](https://img.shields.io/badge/Package%20version-0.0.5.9000-orange.svg?style=flat-square)](commits/master)
+[![packageversion](https://img.shields.io/badge/Package%20version-0.0.6.9000-orange.svg?style=flat-square)](commits/master)
 [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
 [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
 [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
@@ -67,13 +67,13 @@ releases will expand on the existing functionality (e.g., `ordinal`).
 
 # Installation
 
-To get the latest, stable CRAN release (0.0.5):
+To get the latest, stable CRAN release (0.0.6):
 ```{r installation1, eval = FALSE, warning = FALSE, messsage = FALSE}
 utils::install.packages(pkgs = "groupedstats") 
 ```
 
 You can get the **development** version of the package from GitHub
-(`0.0.5.9000`). To see what new changes (and bug fixes) have been made to the
+(`0.0.6.9000`). To see what new changes (and bug fixes) have been made to the
 package since the last release on `CRAN`, you can check the detailed log of
 changes here: <https://indrajeetpatil.github.io/groupedstats/news/index.html> 
 
