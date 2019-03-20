@@ -35,9 +35,11 @@ Imports:
     skimr (>= 1.0.5),
     stats,
     tibble (>= 2.1.1),
-    tidyr (>= 0.8.3)
+    tidyr (>= 0.8.3),
+    utils
 Suggests: 
     covr,
+    ez,
     gapminder,
     ggplot2,
     knitr,

@@ -21,13 +21,10 @@
 #' @param nboot Number of bootstrap samples for confidence intervals for partial
 #'   eta-squared and omega-squared (Default: `500`).
 #'
-#' @importFrom sjstats eta_sq
-#' @importFrom sjstats omega_sq
-#' @importFrom stats anova
-#' @importFrom stats na.omit
-#' @importFrom stats lm
-#' @importFrom tibble as_data_frame
+#' @importFrom sjstats eta_sq omega_sq
+#' @importFrom stats anova na.omit lm
 #' @importFrom broom tidy
+#' @importFrom tibble as_tibble
 #'
 #' @examples
 #' # model
@@ -56,61 +53,60 @@ lm_effsize_ci <- function(object,
   } else if (class(object)[[1]] %in% c("aov", "anova")) {
     aov_df <- broom::tidy(x = object)
   } else if (class(object)[[1]] == "aovlist") {
-    aov_df <- broom::tidy(x = object) %>%
-      dplyr::filter(.data = ., stratum == "Within")
+    if (dim(dplyr::filter(broom::tidy(object), stratum == "Within"))[[1]] != 0L) {
+      aov_df <- broom::tidy(x = object) %>%
+        dplyr::filter(.data = ., stratum == "Within")
+    } else {
+      aov_df <- broom::tidy(x = object)
+    }
   } else {
     aov_df <- broom::tidy(x = object)
   }
 
-  # create a new column for residual degrees of freedom
-  aov_df$df2 <- aov_df$df[aov_df$term == "Residuals"]
+  # creating numerator and denominator degrees of freedom
+  if (dim(dplyr::filter(aov_df, term == "Residuals"))[[1]] == 1L) {
+    # create a new column for residual degrees of freedom
+    aov_df$df2 <- aov_df$df[aov_df$term == "Residuals"]
+  }
 
   # cleaning up the dataframe
   aov_df %<>%
     dplyr::select(
-      .data = .,
-      -c(base::grep(
-        pattern = "sq",
-        x = names(.)
-      ))
-    ) %>% # rename to something more meaningful and tidy
-    dplyr::rename(
-      .data = .,
-      df1 = df
-    ) %>% # remove NAs, which would remove the row containing Residuals (redundant at this point)
+      .data = ., -c(base::grep(pattern = "sq", x = names(.)))
+    ) %>%
+    # remove NAs, which would remove the row containing Residuals (redundant at this point)
+    dplyr::rename(.data = ., df1 = df) %>%
     stats::na.omit(.) %>%
-    tibble::as_data_frame(x = .)
+    tibble::as_tibble(x = .)
 
   # computing the effect sizes using sjstats
   if (effsize == "eta") {
     # creating dataframe of partial eta-squared effect size and its CI with sjstats
-    effsize_df <- sjstats::eta_sq(
+    effsize_df <- suppressWarnings(sjstats::eta_sq(
       model = object,
       partial = partial,
       ci.lvl = conf.level,
       n = nboot
-    )
-
-    if (class(object)[[1]] == "aovlist") {
-      effsize_df %<>%
-        dplyr::filter(.data = ., stratum == "Within")
-    }
-  } else if (effsize == "omega") {
+    ))
+  } else {
     # creating dataframe of partial omega-squared effect size and its CI with sjstats
-    effsize_df <- sjstats::omega_sq(
+    effsize_df <- suppressWarnings(sjstats::omega_sq(
       model = object,
       partial = partial,
       ci.lvl = conf.level,
       n = nboot
-    )
+    ))
+  }
 
-    if (class(object)[[1]] == "aovlist") {
+  if (class(object)[[1]] == "aovlist") {
+    if (dim(dplyr::filter(effsize_df, stratum == "Within"))[[1]] != 0L) {
       effsize_df %<>%
         dplyr::filter(.data = ., stratum == "Within")
     }
   }
 
-  # combining the dataframes (erge the two preceding pieces of information by the common element of Effect
+  # combining the dataframes
+  # merge the two preceding pieces of information by the common element of Effect
   combined_df <- dplyr::left_join(
     x = aov_df,
     y = effsize_df,
@@ -120,12 +116,11 @@ lm_effsize_ci <- function(object,
       .data = .,
       term,
       F.value = statistic,
-      df1,
-      df2,
+      dplyr::matches("^df"),
       p.value,
       dplyr::everything()
     ) %>%
-    tibble::as_data_frame(x = .)
+    tibble::as_tibble(x = .)
 
   # in case of within-subjects design, the stratum columns will be unnecessarily added
   if ("stratum.x" %in% names(combined_df)) {

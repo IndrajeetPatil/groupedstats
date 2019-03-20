@@ -61,6 +61,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "ez",
+      "name": "ez",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=ez"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "gapminder",
       "name": "gapminder",
       "provider": {
@@ -350,11 +362,16 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=tidyr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "utils",
+      "name": "utils"
     }
   ],
   "releaseNotes": "https://github.com/IndrajeetPatil/groupedstats/blob/master/NEWS.md",
   "readme": "https://github.com/IndrajeetPatil/groupedstats/blob/master/README.md",
-  "fileSize": "176.42KB",
+  "fileSize": "178.272KB",
   "contIntegration": [
     "https://travis-ci.org/IndrajeetPatil/groupedstats",
     "https://ci.appveyor.com/project/IndrajeetPatil/groupedstats",

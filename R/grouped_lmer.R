@@ -24,7 +24,6 @@
 #' @importFrom lme4 lmerControl
 #' @importFrom sjstats p_value
 #' @importFrom stats as.formula
-#' @importFrom tibble as_data_frame
 #' @importFrom tidyr nest
 #' @importFrom dplyr select
 #' @importFrom dplyr group_by

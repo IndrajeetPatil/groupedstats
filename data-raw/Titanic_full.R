@@ -8,7 +8,7 @@ library(purrr)
 dplyr::glimpse(x = Titanic)
 
 # converting to tibble
-tibble::as_data_frame(x = Titanic)
+tibble::as_tibble(x = Titanic)
 
 # a custom function to repeat dataframe `rep` number of times, which is going to
 # be count data for us
@@ -17,7 +17,7 @@ rep_df <- function(df, rep) {
 }
 
 # converting dataframe to full length based on count information
-Titanic_full <- tibble::as_data_frame(datasets::Titanic) %>%
+Titanic_full <- tibble::as_tibble(datasets::Titanic) %>%
   tibble::rowid_to_column(df = ., var = "id") %>%
   dplyr::mutate_at(
     .tbl = .,

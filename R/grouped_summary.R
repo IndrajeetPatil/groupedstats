@@ -20,7 +20,6 @@
 #'   in long format for plotting purposes. (Default: `topcount.long = FALSE`).
 #'
 #' @importFrom skimr skim
-#' @importFrom tibble as_data_frame
 #' @importFrom purrr is_bare_numeric
 #' @importFrom purrr is_bare_character
 #' @importFrom purrr map_lgl
@@ -33,6 +32,7 @@
 #' @importFrom crayon blue
 #' @importFrom crayon red
 #' @importFrom stats qt
+#' @importFrom utils packageVersion
 #'
 #' @examples
 #'
@@ -82,7 +82,7 @@ grouped_summary <- function(data,
     # addition to* grouping variables
     if (measures.type == "numeric") {
       # check if there are any columns of factor type
-      numeric_cols <- length(tibble::as_data_frame(
+      numeric_cols <- length(tibble::as_tibble(
         x = purrr::keep(
           .x = dplyr::select(
             .data = data,
@@ -122,7 +122,7 @@ grouped_summary <- function(data,
       }
     } else if (measures.type == "factor") {
       # check if there are any columns of factor type
-      factor_cols <- length(tibble::as_data_frame(x = purrr::keep(
+      factor_cols <- length(tibble::as_tibble(x = purrr::keep(
         .x = dplyr::select(
           .data = data,
           -c(!!!grouping.vars)
@@ -245,7 +245,7 @@ grouped_summary <- function(data,
     dplyr::ungroup(x = .)
 
   # computing summary (depends on the version of skimr)
-  if (utils::packageVersion("skimr") != "2.0") {
+  if (utils::packageVersion("skimr") < "2.0") {
     df_summary <- df_nest %>%
       dplyr::mutate(
         .data = .,
@@ -283,7 +283,7 @@ grouped_summary <- function(data,
           )
       ) %>% # remove the histograms since they are not that helpful
       tidyr::unnest(data = .) %>% # unnesting the data
-      tibble::as_data_frame(x = .) # converting to tibble dataframe
+      tibble::as_tibble(x = .) # converting to tibble dataframe
 
     # ===================== factor long format conversion ====================
     if (isTRUE(topcount.long)) {
@@ -291,7 +291,7 @@ grouped_summary <- function(data,
       count_long_format_fn <- function(top_counts) {
         purrr::map_dfr(
           .x = base::strsplit(x = top_counts, split = ","),
-          .f = ~ tibble::as_data_frame(x = .) %>%
+          .f = ~ tibble::as_tibble(x = .) %>%
             dplyr::mutate_all(.tbl = ., .funs = base::trimws) %>%
             tidyr::separate(
               data = .,
@@ -339,7 +339,7 @@ grouped_summary <- function(data,
           )
       ) %>% # remove the histograms since they are not that helpful
       tidyr::unnest(data = .) %>% # unnesting the data
-      tibble::as_data_frame(x = .) # converting to tibble dataframe
+      tibble::as_tibble(x = .) # converting to tibble dataframe
 
     # changing class of summary variables if these are numeric variables
     df_summary %<>%

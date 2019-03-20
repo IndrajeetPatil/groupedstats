@@ -25,7 +25,6 @@
 #' @importFrom stats aov
 #' @importFrom stats as.formula
 #' @importFrom stats TukeyHSD
-#' @importFrom tibble as_data_frame
 #' @importFrom tidyr nest
 #' @importFrom dplyr select
 #' @importFrom dplyr group_by

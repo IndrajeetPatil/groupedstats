@@ -22,7 +22,6 @@
 #' @importFrom lme4 glmer
 #' @importFrom lme4 glmerControl
 #' @importFrom stats as.formula
-#' @importFrom tibble as_data_frame
 #' @importFrom tidyr nest
 #' @importFrom dplyr select
 #' @importFrom dplyr group_by

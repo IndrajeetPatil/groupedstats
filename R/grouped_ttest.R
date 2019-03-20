@@ -24,7 +24,6 @@
 #' @importFrom purrr pmap
 #' @importFrom stats t.test
 #' @importFrom stats as.formula
-#' @importFrom tibble as_data_frame
 #' @importFrom tidyr nest
 #'
 #' @examples
@@ -136,7 +135,7 @@ grouped_ttest <- function(data,
         p.value,
         alternative
       ) %>% # convert to a tibble dataframe
-      tibble::as_data_frame(x = .)
+      tibble::as_tibble(x = .)
 
     # return the dataframe
     return(results_df)

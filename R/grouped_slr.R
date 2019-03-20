@@ -23,7 +23,6 @@
 #' @importFrom purrr pmap
 #' @importFrom stats lm
 #' @importFrom stats as.formula
-#' @importFrom tibble as_data_frame
 #' @importFrom tidyr nest
 #' @importFrom dplyr select
 #' @importFrom dplyr group_by
@@ -130,7 +129,7 @@ grouped_slr <- function(data,
         .id = "group"
       ) %>% # removing the unnecessary term column
       dplyr::select(.data = ., -term) %>% # convert to a tibble dataframe
-      tibble::as_data_frame(x = .)
+      tibble::as_tibble(x = .)
 
     # preparing the final dataframe to be returned
     results_df %<>%
@@ -146,7 +145,7 @@ grouped_slr <- function(data,
         std.error,
         p.value
       ) %>% # convert to a tibble dataframe
-      tibble::as_data_frame(x = .)
+      tibble::as_tibble(x = .)
 
     # return the dataframe
     return(results_df)

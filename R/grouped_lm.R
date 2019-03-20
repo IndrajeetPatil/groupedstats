@@ -20,7 +20,6 @@
 #' @importFrom purrr pmap
 #' @importFrom stats lm
 #' @importFrom stats as.formula
-#' @importFrom tibble as_data_frame
 #' @importFrom tidyr nest
 #' @importFrom dplyr select
 #' @importFrom dplyr group_by

@@ -18,7 +18,6 @@
 #' @importFrom purrr map map_lgl map2_dfr pmap
 #' @importFrom robust lmRob
 #' @importFrom stats as.formula
-#' @importFrom tibble as_data_frame
 #' @importFrom tidyr nest
 #'
 #' @examples
@@ -124,7 +123,7 @@ grouped_robustslr <- function(data,
         std.error,
         p.value
       ) %>% # convert to a tibble dataframe
-      tibble::as_data_frame(x = .)
+      tibble::as_tibble(x = .)
 
     # return the dataframe
     return(results_df)
