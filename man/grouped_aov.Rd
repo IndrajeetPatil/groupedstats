@@ -38,6 +38,7 @@ variables.
 \examples{
 
 # uses dataset included in the groupedstats package
+set.seed(123)
 library(groupedstats)
 
 groupedstats::grouped_aov(

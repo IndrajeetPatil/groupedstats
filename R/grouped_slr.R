@@ -14,26 +14,13 @@
 #' @param indep.vars List predictor or **independent** variables for simple
 #'   linear model (`x` in `y ~ x`).
 #'
-#' @importFrom magrittr "%<>%"
-#' @importFrom broom tidy
-#' @importFrom broom confint_tidy
 #' @importFrom glue glue
-#' @importFrom purrr map
-#' @importFrom purrr map2_dfr
-#' @importFrom purrr pmap
-#' @importFrom stats lm
-#' @importFrom stats as.formula
+#' @importFrom purrr map map2_dfr pmap
+#' @importFrom stats wilcox.test as.formula lm
 #' @importFrom tidyr nest
-#' @importFrom dplyr select
-#' @importFrom dplyr group_by
-#' @importFrom dplyr arrange
-#' @importFrom dplyr mutate
-#' @importFrom dplyr mutate_at
-#' @importFrom dplyr mutate_if
-#' @importFrom dplyr select
-#' @importFrom rlang quo_squash
-#' @importFrom rlang enquo
-#' @importFrom rlang quo
+#' @importFrom rlang !! enquos enquo quo quo_squash
+#' @importFrom dplyr select group_by arrange mutate mutate_at mutate_if
+#' @importFrom dplyr left_join right_join
 #'
 #' @seealso grouped_lm
 #'
@@ -122,9 +109,9 @@ grouped_slr <- function(data,
       ) %>% # tidying up the output with broom
       purrr::map_dfr(
         .x = .,
-        .f = ~ dplyr::bind_cols(
-          dplyr::filter(.data = broom::tidy(x = .), term == !!filter_name), # remove intercept terms
-          broom::confint_tidy(x = .)[-c(1), ]
+        .f = ~ dplyr::filter(
+          .data = broomExtra::tidy(x = ., conf.int = TRUE),
+          term == !!filter_name
         ),
         .id = "..group"
       ) %>% # removing the unnecessary term column

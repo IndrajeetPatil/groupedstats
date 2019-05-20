@@ -16,15 +16,13 @@
 #'   to the degrees of freedom is used (Default: `var.equal = FALSE`; Welch's
 #'   t-test, i.e.).
 #'
-#' @importFrom broom tidy
-#' @importFrom broom confint_tidy
 #' @importFrom glue glue
-#' @importFrom purrr map
-#' @importFrom purrr map2_dfr
-#' @importFrom purrr pmap
-#' @importFrom stats t.test
-#' @importFrom stats as.formula
+#' @importFrom purrr map map2_dfr pmap
+#' @importFrom stats wilcox.test as.formula t.test
 #' @importFrom tidyr nest
+#' @importFrom rlang !! enquos enquo quo quo_squash
+#' @importFrom dplyr select group_by arrange mutate mutate_at mutate_if
+#' @importFrom dplyr left_join right_join
 #'
 #' @examples
 #'
@@ -79,10 +77,7 @@ grouped_ttest <- function(data,
 
   # getting the dataframe ready
   df <- dplyr::select(
-    .data = data,
-    !!!grouping.vars,
-    !!!dep.vars,
-    !!!indep.vars
+    .data = data, !!!grouping.vars, !!!dep.vars, !!!indep.vars
   ) %>%
     dplyr::group_by(.data = ., !!!grouping.vars) %>%
     tidyr::nest(data = .) %>%
@@ -119,7 +114,7 @@ grouped_ttest <- function(data,
       ) %>% # tidying up the output with broom
       purrr::map_dfr(
         .x = .,
-        .f = ~ broom::tidy(x = .),
+        .f = ~ broomExtra::tidy(x = .),
         .id = "..group"
       ) %>% # add formula as a character
       dplyr::mutate(.data = ., formula = as.character(fx)) %>%

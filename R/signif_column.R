@@ -13,18 +13,9 @@
 #' @param p The column containing p-values.
 #' @param messages Logical decides whether to produce notes (Default: `TRUE`).
 #'
-#' @importFrom dplyr group_by
-#' @importFrom dplyr summarize
-#' @importFrom dplyr n
-#' @importFrom dplyr arrange
-#' @importFrom dplyr mutate
-#' @importFrom dplyr mutate_at
-#' @importFrom dplyr mutate_if
-#' @importFrom magrittr "%<>%"
-#' @importFrom magrittr "%>%"
-#' @importFrom broom tidy
-#' @importFrom crayon red
-#' @importFrom crayon blue
+#' @importFrom dplyr group_by summarize n arrange
+#' @importFrom dplyr mutate mutate_at mutate_if
+#' @importFrom crayon red blue
 #' @importFrom rlang !! !!! enquo
 #' @importFrom stats lm
 #'

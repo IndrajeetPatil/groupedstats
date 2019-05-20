@@ -16,14 +16,9 @@
 #' @param correct A logical indicating whether to apply continuity correction in
 #'   the normal approximation for the p-value (Default: `correct = TRUE`).
 #'
-#' @importFrom broom tidy
-#' @importFrom broom confint_tidy
 #' @importFrom glue glue
-#' @importFrom purrr map
-#' @importFrom purrr map2_dfr
-#' @importFrom purrr pmap
-#' @importFrom stats wilcox.test
-#' @importFrom stats as.formula
+#' @importFrom purrr map map2_dfr pmap
+#' @importFrom stats wilcox.test as.formula
 #' @importFrom tidyr nest
 #'
 #' @examples
@@ -121,7 +116,7 @@ grouped_wilcox <- function(data,
         ) %>% # tidying up the output with broom
         purrr::map_dfr(
           .x = .,
-          .f = ~ broom::tidy(x = .),
+          .f = ~ broomExtra::tidy(x = .),
           .id = "..group"
         ) %>% # add formula as a character
         dplyr::mutate(.data = ., formula = as.character(fx)) %>% # rearrange the dataframe

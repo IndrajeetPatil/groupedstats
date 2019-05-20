@@ -25,7 +25,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--03--20-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--05--20-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
@@ -85,8 +85,7 @@ devtools::install_github(repo = "IndrajeetPatil/groupedstats",  # package path o
                          quick = TRUE)                          # skips docs, demos, and vignettes
 ```
 
-If time is not a
-constraint-
+If time is not a constraint-
 
 ``` r
 devtools::install_github(repo = "IndrajeetPatil/groupedstats", # package path on GitHub
@@ -104,6 +103,12 @@ In `R`, documentation for any function can be accessed with the standard
 `help` command-
 
 ``` r
+# general
+?grouped_tidy
+?grouped_glance
+?grouped_augment
+
+# specific
 ?grouped_aov
 ?grouped_lm
 ?grouped_lmer
@@ -122,6 +127,9 @@ For example-
 
 ``` r
 args(name = groupedstats::grouped_ttest)
+#> Registered S3 method overwritten by 'broom.mixed':
+#>   method      from 
+#>   tidy.gamlss broom
 #> function (data, dep.vars, indep.vars, grouping.vars, paired = FALSE, 
 #>     var.equal = FALSE) 
 #> NULL
@@ -160,34 +168,34 @@ groupedstats::grouped_summary(data = datasets::iris,
                               measures = Sepal.Length:Petal.Width,
                               measures.type = "numeric")
 #> # A tibble: 12 x 16
-#>    Species    variable     type    missing complete     n  mean    sd   min
-#>    <fct>      <chr>        <chr>     <dbl>    <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 setosa     Sepal.Length numeric       0       50    50 5.01  0.352   4.3
-#>  2 setosa     Sepal.Width  numeric       0       50    50 3.43  0.379   2.3
-#>  3 setosa     Petal.Length numeric       0       50    50 1.46  0.174   1  
-#>  4 setosa     Petal.Width  numeric       0       50    50 0.246 0.105   0.1
-#>  5 versicolor Sepal.Length numeric       0       50    50 5.94  0.516   4.9
-#>  6 versicolor Sepal.Width  numeric       0       50    50 2.77  0.314   2  
-#>  7 versicolor Petal.Length numeric       0       50    50 4.26  0.470   3  
-#>  8 versicolor Petal.Width  numeric       0       50    50 1.33  0.198   1  
-#>  9 virginica  Sepal.Length numeric       0       50    50 6.59  0.636   4.9
-#> 10 virginica  Sepal.Width  numeric       0       50    50 2.97  0.322   2.2
-#> 11 virginica  Petal.Length numeric       0       50    50 5.55  0.552   4.5
-#> 12 virginica  Petal.Width  numeric       0       50    50 2.03  0.275   1.4
+#>    Species    type    variable     missing complete     n  mean    sd   min
+#>    <fct>      <chr>   <chr>          <dbl>    <dbl> <dbl> <dbl> <dbl> <dbl>
+#>  1 setosa     numeric Petal.Length       0       50    50  1.46  0.17   1  
+#>  2 setosa     numeric Petal.Width        0       50    50  0.25  0.11   0.1
+#>  3 setosa     numeric Sepal.Length       0       50    50  5.01  0.35   4.3
+#>  4 setosa     numeric Sepal.Width        0       50    50  3.43  0.38   2.3
+#>  5 versicolor numeric Petal.Length       0       50    50  4.26  0.47   3  
+#>  6 versicolor numeric Petal.Width        0       50    50  1.33  0.2    1  
+#>  7 versicolor numeric Sepal.Length       0       50    50  5.94  0.52   4.9
+#>  8 versicolor numeric Sepal.Width        0       50    50  2.77  0.31   2  
+#>  9 virginica  numeric Petal.Length       0       50    50  5.55  0.55   4.5
+#> 10 virginica  numeric Petal.Width        0       50    50  2.03  0.27   1.4
+#> 11 virginica  numeric Sepal.Length       0       50    50  6.59  0.64   4.9
+#> 12 virginica  numeric Sepal.Width        0       50    50  2.97  0.32   2.2
 #>      p25 median   p75   max std.error mean.low.conf mean.high.conf
 #>    <dbl>  <dbl> <dbl> <dbl>     <dbl>         <dbl>          <dbl>
-#>  1  4.8    5     5.2    5.8    0.0498         4.91           5.11 
-#>  2  3.2    3.4   3.68   4.4    0.0536         3.32           3.54 
-#>  3  1.4    1.5   1.58   1.9    0.0246         1.41           1.51 
-#>  4  0.2    0.2   0.3    0.6    0.0149         0.216          0.276
-#>  5  5.6    5.9   6.3    7      0.0730         5.79           6.08 
-#>  6  2.52   2.8   3      3.4    0.0444         2.68           2.86 
-#>  7  4      4.35  4.6    5.1    0.0665         4.13           4.39 
-#>  8  1.2    1.3   1.5    1.8    0.0280         1.27           1.38 
-#>  9  6.22   6.5   6.9    7.9    0.0899         6.41           6.77 
-#> 10  2.8    3     3.18   3.8    0.0456         2.88           3.07 
-#> 11  5.1    5.55  5.88   6.9    0.0780         5.40           5.71 
-#> 12  1.8    2     2.3    2.5    0.0388         1.95           2.10
+#>  1  1.4    1.5   1.58   1.9    0.0240         1.41           1.51 
+#>  2  0.2    0.2   0.3    0.6    0.0156         0.219          0.281
+#>  3  4.8    5     5.2    5.8    0.0495         4.91           5.11 
+#>  4  3.2    3.4   3.68   4.4    0.0537         3.32           3.54 
+#>  5  4      4.35  4.6    5.1    0.0665         4.13           4.39 
+#>  6  1.2    1.3   1.5    1.8    0.0283         1.27           1.39 
+#>  7  5.6    5.9   6.3    7      0.0735         5.79           6.09 
+#>  8  2.52   2.8   3      3.4    0.0438         2.68           2.86 
+#>  9  5.1    5.55  5.88   6.9    0.0778         5.39           5.71 
+#> 10  1.8    2     2.3    2.5    0.0382         1.95           2.11 
+#> 11  6.23   6.5   6.9    7.9    0.0905         6.41           6.77 
+#> 12  2.8    3     3.18   3.8    0.0453         2.88           3.06
 ```
 
 This function can be used to get summary of either numeric **or** factor
@@ -199,6 +207,11 @@ If you want summary of variables of `factor` type-
 
 ``` r
 library(ggplot2)
+#> Registered S3 methods overwritten by 'ggplot2':
+#>   method         from 
+#>   [.quosures     rlang
+#>   c.quosures     rlang
+#>   print.quosures rlang
 options(tibble.width = Inf)            # show me all columns
 
 groupedstats::grouped_summary(data = ggplot2::diamonds,
@@ -206,30 +219,30 @@ groupedstats::grouped_summary(data = ggplot2::diamonds,
                               measures = color,
                               measures.type = "factor")
 #> # A tibble: 40 x 10
-#>    cut       clarity variable type   missing complete     n ordered
-#>    <ord>     <ord>   <chr>    <chr>    <int>    <int> <int> <lgl>  
-#>  1 Ideal     SI2     color    factor       0     2598  2598 TRUE   
-#>  2 Premium   SI1     color    factor       0     3575  3575 TRUE   
-#>  3 Good      VS1     color    factor       0      648   648 TRUE   
-#>  4 Premium   VS2     color    factor       0     3357  3357 TRUE   
-#>  5 Good      SI2     color    factor       0     1081  1081 TRUE   
-#>  6 Very Good VVS2    color    factor       0     1235  1235 TRUE   
-#>  7 Very Good VVS1    color    factor       0      789   789 TRUE   
-#>  8 Very Good SI1     color    factor       0     3240  3240 TRUE   
-#>  9 Fair      VS2     color    factor       0      261   261 TRUE   
-#> 10 Very Good VS1     color    factor       0     1775  1775 TRUE   
-#>    n_unique top_counts                    
-#>       <int> <chr>                         
-#>  1        7 G: 486, E: 469, F: 453, H: 450
-#>  2        7 H: 655, E: 614, F: 608, G: 566
-#>  3        7 G: 152, F: 132, I: 103, E: 89 
-#>  4        7 G: 721, E: 629, F: 619, H: 532
-#>  5        7 D: 223, E: 202, F: 201, G: 163
-#>  6        7 G: 302, E: 298, F: 249, H: 145
-#>  7        7 G: 190, F: 174, E: 170, H: 115
-#>  8        7 E: 626, F: 559, H: 547, D: 494
-#>  9        7 F: 53, G: 45, E: 42, H: 41    
-#> 10        7 G: 432, E: 293, F: 293, H: 257
+#>    cut       clarity type   variable missing complete n     n_unique
+#>    <ord>     <ord>   <chr>  <chr>    <chr>   <chr>    <chr> <chr>   
+#>  1 Ideal     SI2     factor color    0       2598     2598  7       
+#>  2 Premium   SI1     factor color    0       3575     3575  7       
+#>  3 Good      VS1     factor color    0       648      648   7       
+#>  4 Premium   VS2     factor color    0       3357     3357  7       
+#>  5 Good      SI2     factor color    0       1081     1081  7       
+#>  6 Very Good VVS2    factor color    0       1235     1235  7       
+#>  7 Very Good VVS1    factor color    0       789      789   7       
+#>  8 Very Good SI1     factor color    0       3240     3240  7       
+#>  9 Fair      VS2     factor color    0       261      261   7       
+#> 10 Very Good VS1     factor color    0       1775     1775  7       
+#>    top_counts                     ordered
+#>    <chr>                          <chr>  
+#>  1 G: 486, E: 469, F: 453, H: 450 TRUE   
+#>  2 H: 655, E: 614, F: 608, G: 566 TRUE   
+#>  3 G: 152, F: 132, I: 103, E: 89  TRUE   
+#>  4 G: 721, E: 629, F: 619, H: 532 TRUE   
+#>  5 D: 223, E: 202, F: 201, G: 163 TRUE   
+#>  6 G: 302, E: 298, F: 249, H: 145 TRUE   
+#>  7 G: 190, F: 174, E: 170, H: 115 TRUE   
+#>  8 E: 626, F: 559, H: 547, D: 494 TRUE   
+#>  9 F: 53, G: 45, E: 42, H: 41     TRUE   
+#> 10 G: 432, E: 293, F: 293, H: 257 TRUE   
 #> # ... with 30 more rows
 ```
 
@@ -241,18 +254,13 @@ to use an additional argument provided for this function:
 ``` r
 library(ggplot2)
 library(magrittr)
-#> 
-#> Attaching package: 'magrittr'
-#> The following object is masked from 'package:rlang':
-#> 
-#>     set_names
-#> The following object is masked from 'package:purrr':
-#> 
-#>     set_names
-#> The following object is masked from 'package:tidyr':
-#> 
-#>     extract
 library(ggstatsplot)
+#> Registered S3 methods overwritten by 'car':
+#>   method                          from
+#>   influence.merMod                lme4
+#>   cooks.distance.influence.merMod lme4
+#>   dfbeta.influence.merMod         lme4
+#>   dfbetas.influence.merMod        lme4
 
 options(tibble.width = Inf)            # show me all columns
 
@@ -294,42 +302,42 @@ groupedstats::grouped_summary(
   grouping.vars = c(cut, clarity)
 )
 #> # A tibble: 280 x 17
-#>    cut     clarity variable type    missing complete     n     mean
-#>    <ord>   <ord>   <chr>    <chr>     <dbl>    <dbl> <dbl>    <dbl>
-#>  1 Ideal   SI2     carat    numeric       0     2598  2598    1.01 
-#>  2 Ideal   SI2     depth    numeric       0     2598  2598   61.7  
-#>  3 Ideal   SI2     table    numeric       0     2598  2598   56.1  
-#>  4 Ideal   SI2     price    numeric       0     2598  2598 4756.   
-#>  5 Ideal   SI2     x        numeric       0     2598  2598    6.26 
-#>  6 Ideal   SI2     y        numeric       0     2598  2598    6.27 
-#>  7 Ideal   SI2     z        numeric       0     2598  2598    3.87 
-#>  8 Premium SI1     carat    numeric       0     3575  3575    0.909
-#>  9 Premium SI1     depth    numeric       0     3575  3575   61.3  
-#> 10 Premium SI1     table    numeric       0     3575  3575   58.8  
-#>          sd    min     p25  median     p75      max std.error mean.low.conf
-#>       <dbl>  <dbl>   <dbl>   <dbl>   <dbl>    <dbl>     <dbl>         <dbl>
-#>  1    0.509   0.23    0.62    1       1.2      3.01   0.01000         0.988
-#>  2    0.824  58.3    61.2    61.8    62.3     65.5    0.0162         61.7  
-#>  3    1.30   52      55      56      57       62      0.0254         56.1  
-#>  4 4252.    326    1443    4060.   5402.   18804     83.4          4592.   
-#>  5    1.07    0       5.50    6.4     6.82     9.25   0.0210          6.22 
-#>  6    1.05    3.98    5.53    6.4     6.82     9.2    0.0207          6.23 
-#>  7    0.662   0       3.38    3.95    4.21     5.69   0.0130          3.84 
-#>  8    0.481   0.21    0.5     0.9     1.15     2.57   0.00804         0.893
-#>  9    1.17   58      60.5    61.5    62.3     63      0.0196         61.3  
-#> 10    1.53   51      58      59      60       62      0.0255         58.7  
+#>    cut     clarity type    variable missing complete     n    mean      sd
+#>    <ord>   <ord>   <chr>   <chr>      <dbl>    <dbl> <dbl>   <dbl>   <dbl>
+#>  1 Ideal   SI2     integer price          0     2598  2598 4756.   4252.  
+#>  2 Ideal   SI2     numeric carat          0     2598  2598    1.01    0.51
+#>  3 Ideal   SI2     numeric depth          0     2598  2598   61.7     0.82
+#>  4 Ideal   SI2     numeric table          0     2598  2598   56.1     1.3 
+#>  5 Ideal   SI2     numeric x              0     2598  2598    6.26    1.07
+#>  6 Ideal   SI2     numeric y              0     2598  2598    6.27    1.05
+#>  7 Ideal   SI2     numeric z              0     2598  2598    3.87    0.66
+#>  8 Premium SI1     integer price          0     3575  3575 4455.   4071.  
+#>  9 Premium SI1     numeric carat          0     3575  3575    0.91    0.48
+#> 10 Premium SI1     numeric depth          0     3575  3575   61.3     1.17
+#>       min     p25  median     p75      max std.error mean.low.conf
+#>     <dbl>   <dbl>   <dbl>   <dbl>    <dbl>     <dbl>         <dbl>
+#>  1 326    1443    4060.   5402.   18804     83.4          4592.   
+#>  2   0.23    0.62    1       1.2      3.01   0.0100          0.990
+#>  3  58.3    61.2    61.8    62.3     65.5    0.0161         61.7  
+#>  4  52      55      56      57       62      0.0255         56.1  
+#>  5   0       5.5     6.4     6.82     9.25   0.0210          6.22 
+#>  6   3.98    5.53    6.4     6.82     9.2    0.0206          6.23 
+#>  7   0       3.38    3.95    4.21     5.69   0.0129          3.84 
+#>  8 326    1200.   3618    5597    18797     68.1          4322.   
+#>  9   0.21    0.5     0.9     1.15     2.57   0.00803         0.894
+#> 10  58      60.5    61.5    62.3     63      0.0196         61.3  
 #>    mean.high.conf
 #>             <dbl>
-#>  1          1.03 
-#>  2         61.7  
-#>  3         56.2  
-#>  4       4920.   
+#>  1       4920.   
+#>  2          1.03 
+#>  3         61.7  
+#>  4         56.2  
 #>  5          6.30 
 #>  6          6.31 
-#>  7          3.89 
-#>  8          0.924
-#>  9         61.3  
-#> 10         58.8  
+#>  7          3.90 
+#>  8       4589.   
+#>  9          0.926
+#> 10         61.3  
 #> # ... with 270 more rows
 ```
 
@@ -400,6 +408,14 @@ cut-
 ``` r
 library(ggplot2)
 library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
 options(tibble.width = Inf)            # show me all columns
 
 groupedstats::grouped_slr(data = ggplot2::diamonds,
@@ -975,8 +991,7 @@ groupedstats::grouped_ttest(
 
 ## `grouped_wilcox`
 
-This function is just a non-parametric variant of the
-`grouped_ttest`:
+This function is just a non-parametric variant of the `grouped_ttest`:
 
 ``` r
 # checking if the Sepal part has different dimentions (value) than Petal part
@@ -1246,14 +1261,14 @@ head(results_df)
 #> 4 1     PG    Documentary     0.449         0.174 0.386       1.63
 #> 5 4     R     Action          0.142         0.138 0.254      34.6 
 #> 6 2     R     Action          0.129         0.125 1.31       30.9 
-#>        p.value    df   logLik     AIC     BIC  deviance df.residual  nobs
-#>          <dbl> <dbl>    <dbl>   <dbl>   <dbl>     <dbl>       <int> <int>
-#> 1 0.0870           1   -7.40    20.8    20.6    3.39              5     7
-#> 2 0.100            1    5.09    -4.18   -4.35   0.0957            5     7
-#> 3 0.316            1    7.45    -8.90  -10.7    0.00565           2     4
-#> 4 0.330            1   -0.479    6.96    5.12   0.298             2     4
-#> 5 0.0000000162     1   -9.39    24.8    34.8   13.5             209   211
-#> 6 0.0000000825     1 -356.     718.    728.   361.              209   211
+#>        p.value    df   logLik    AIC    BIC  deviance df.residual  nobs
+#>          <dbl> <dbl>    <dbl>  <dbl>  <dbl>     <dbl>       <int> <int>
+#> 1 0.0870           1   -7.40   20.8   20.6    3.39              5     7
+#> 2 0.100            1    5.09   -4.18  -4.35   0.0957            5     7
+#> 3 0.316            1    7.45   -8.90 -10.7    0.00565           2     4
+#> 4 0.330            1   -0.479   6.96   5.12   0.298             2     4
+#> 5 0.0000000162     1   -9.39   24.8   34.8   13.5             209   211
+#> 6 0.0000000825     1 -356.    718.   728.   361.              209   211
 ```
 
 # Current code coverage

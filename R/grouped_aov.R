@@ -16,29 +16,18 @@
 #' @inheritParams stats::aov
 #' @inheritParams lm_effsize_ci
 #'
-#' @importFrom magrittr "%<>%"
-#' @importFrom broom tidy
 #' @importFrom glue glue
-#' @importFrom purrr map
-#' @importFrom purrr map2_dfr
-#' @importFrom purrr pmap
-#' @importFrom stats aov
-#' @importFrom stats as.formula
-#' @importFrom stats TukeyHSD
+#' @importFrom purrr map map2_dfr pmap
+#' @importFrom stats aov as.formula TukeyHSD
 #' @importFrom tidyr nest
-#' @importFrom dplyr select
-#' @importFrom dplyr group_by
-#' @importFrom dplyr arrange
-#' @importFrom dplyr mutate
-#' @importFrom dplyr mutate_at
-#' @importFrom dplyr select
-#' @importFrom rlang quo_squash
-#' @importFrom rlang enquo
-#' @importFrom rlang quo
+#' @importFrom rlang !! enquos enquo quo quo_squash
+#' @importFrom dplyr select group_by arrange mutate mutate_at mutate_if
+#' @importFrom dplyr left_join right_join bind_rows bind_cols
 #'
 #' @examples
 #'
 #' # uses dataset included in the groupedstats package
+#' set.seed(123)
 #' library(groupedstats)
 #'
 #' groupedstats::grouped_aov(
@@ -49,6 +38,7 @@
 #' )
 #' @export
 
+# function body
 grouped_aov <- function(data,
                         grouping.vars,
                         formula,
@@ -127,7 +117,7 @@ grouped_aov <- function(data,
           list.col %>%
           purrr::map_dfr(
             .x = .,
-            .f = ~ broom::tidy(
+            .f = ~ broomExtra::tidy(
               x = stats::TukeyHSD(
                 x = stats::aov(
                   formula = stats::as.formula(formula),
