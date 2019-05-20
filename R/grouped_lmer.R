@@ -14,29 +14,17 @@
 #' @inheritParams lme4::lmer
 #' @inheritParams sjstats::p_value.lmerMod
 #'
-#' @importFrom magrittr "%<>%"
-#' @importFrom broom.mixed tidy
 #' @importFrom glue glue
-#' @importFrom purrr map
-#' @importFrom purrr map2_dfr
+#' @importFrom purrr map map2_dfr pmap
 #' @importFrom purrr pmap
-#' @importFrom lme4 lmer
-#' @importFrom lme4 lmerControl
+#' @importFrom lme4 lmer lmerControl
 #' @importFrom sjstats p_value
 #' @importFrom stats as.formula
 #' @importFrom tidyr nest
-#' @importFrom dplyr select
-#' @importFrom dplyr group_by
-#' @importFrom dplyr arrange
-#' @importFrom dplyr mutate
-#' @importFrom dplyr mutate_at
-#' @importFrom dplyr select
-#' @importFrom rlang quo_squash
-#' @importFrom rlang enquo
-#' @importFrom rlang quo
-#' @importFrom broom.mixed glance
-#' @importFrom broom.mixed tidy
-#' @importFrom broom.mixed augment
+#' @importFrom rlang !! enquos enquo quo quo_squash
+#' @importFrom dplyr select group_by arrange mutate mutate_at mutate_if
+#' @importFrom dplyr left_join right_join
+#' @importFrom broomExtra tidy glance augment
 #'
 #' @examples
 #'
@@ -115,7 +103,7 @@ grouped_lmer <- function(data,
           list.col %>% # tidying up the output with broom.mixed
           purrr::map_dfr(
             .x = .,
-            .f = ~ broom.mixed::tidy(
+            .f = ~ broomExtra::tidy(
               x = lme4::lmer(
                 formula = stats::as.formula(formula),
                 data = (.),
@@ -174,7 +162,7 @@ grouped_lmer <- function(data,
           list.col %>% # tidying up the output with broom.mixed
           purrr::map_dfr(
             .x = .,
-            .f = ~ broom.mixed::glance(
+            .f = ~ broomExtra::glance(
               x = lme4::lmer(
                 formula = stats::as.formula(formula),
                 data = (.),

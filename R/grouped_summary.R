@@ -20,17 +20,10 @@
 #'   in long format for plotting purposes. (Default: `topcount.long = FALSE`).
 #'
 #' @importFrom skimr skim
-#' @importFrom purrr is_bare_numeric
-#' @importFrom purrr is_bare_character
-#' @importFrom purrr map_lgl
-#' @importFrom purrr map_dfr
-#' @importFrom purrr map
-#' @importFrom purrr keep
-#' @importFrom tidyr nest
-#' @importFrom tidyr unnest
-#' @importFrom tidyr separate
-#' @importFrom crayon blue
-#' @importFrom crayon red
+#' @importFrom purrr is_bare_numeric is_bare_character
+#' @importFrom purrr keep map map_lgl map_dfr
+#' @importFrom tidyr nest unnest separate
+#' @importFrom crayon red blue
 #' @importFrom stats qt
 #' @importFrom utils packageVersion
 #'
@@ -83,11 +76,8 @@ grouped_summary <- function(data,
     if (measures.type == "numeric") {
       # check if there are any columns of factor type
       numeric_cols <- length(tibble::as_tibble(
-        x = purrr::keep(
-          .x = dplyr::select(
-            .data = data,
-            -c(!!!grouping.vars)
-          ),
+        purrr::keep(
+          .x = dplyr::select(.data = data, -c(!!!grouping.vars)),
           .p = purrr::is_bare_numeric
         )
       ))
@@ -96,16 +86,10 @@ grouped_summary <- function(data,
         # of numeric type
         df <- cbind(
           # select columns corresponding to grouping variables
-          dplyr::select(
-            .data = data,
-            !!!grouping.vars
-          ),
+          dplyr::select(.data = data, !!!grouping.vars),
           # select all additional columns of numeric type
           purrr::keep(
-            .x = dplyr::select(
-              .data = data,
-              -c(!!!grouping.vars)
-            ),
+            .x = dplyr::select(.data = data, -c(!!!grouping.vars)),
             .p = purrr::is_bare_numeric
           )
         )
@@ -122,29 +106,22 @@ grouped_summary <- function(data,
       }
     } else if (measures.type == "factor") {
       # check if there are any columns of factor type
-      factor_cols <- length(tibble::as_tibble(x = purrr::keep(
-        .x = dplyr::select(
-          .data = data,
-          -c(!!!grouping.vars)
-        ),
-        .p = base::is.factor
-      )))
+      factor_cols <- length(tibble::as_tibble(
+        purrr::keep(
+          .x = dplyr::select(.data = data, -c(!!!grouping.vars)),
+          .p = base::is.factor
+        )
+      ))
 
       # create a dataframe only if this is the case
       if (factor_cols > 0) {
         # of character/factor type
         df <- cbind(
           # select columns corresponding to grouping variables
-          dplyr::select(
-            .data = data,
-            !!!grouping.vars
-          ),
+          dplyr::select(.data = data, !!!grouping.vars),
           # select all additional columns of character/factor type
           purrr::keep(
-            .x = dplyr::select(
-              .data = data,
-              -c(!!!grouping.vars)
-            ),
+            .x = dplyr::select(.data = data, -c(!!!grouping.vars)),
             .p = base::is.factor
           )
         )
@@ -162,11 +139,7 @@ grouped_summary <- function(data,
     }
   } else {
     # if the measures are provided, select all relevant grouping variables and measures
-    df <- dplyr::select(
-      .data = data,
-      !!!grouping.vars,
-      !!rlang::enquo(measures)
-    )
+    df <- dplyr::select(.data = data, !!!grouping.vars, !!rlang::enquo(measures))
   }
 
   # =================================== checks ===============================
@@ -175,19 +148,13 @@ grouped_summary <- function(data,
   if (!base::missing(measures)) {
     # check the class of variables (all have to be of uniform type) numeric
     numeric_count <- sum(purrr::map_lgl(
-      .x = dplyr::select(
-        .data = data,
-        !!rlang::enquo(measures)
-      ),
+      .x = dplyr::select(.data = data, !!rlang::enquo(measures)),
       .f = ~ purrr::is_bare_numeric(.)
     ) == FALSE)
 
     # factor
     # convert factor into characters
-    df_char <- dplyr::select(
-      .data = data,
-      !!rlang::enquo(measures)
-    ) %>%
+    df_char <- dplyr::select(.data = data, !!rlang::enquo(measures)) %>%
       dplyr::mutate_if(
         .tbl = .,
         .predicate = base::is.factor,

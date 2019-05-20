@@ -23,7 +23,6 @@
 #'
 #' @importFrom sjstats eta_sq omega_sq
 #' @importFrom stats anova na.omit lm
-#' @importFrom broom tidy
 #' @importFrom tibble as_tibble
 #'
 #' @examples
@@ -49,18 +48,18 @@ lm_effsize_ci <- function(object,
   # based on the class, get the tidy output using broom
   if (class(object)[[1]] == "lm") {
     aov_df <-
-      broom::tidy(stats::anova(object = object))
+      broomExtra::tidy(stats::anova(object = object))
   } else if (class(object)[[1]] %in% c("aov", "anova")) {
-    aov_df <- broom::tidy(x = object)
+    aov_df <- broomExtra::tidy(x = object)
   } else if (class(object)[[1]] == "aovlist") {
-    if (dim(dplyr::filter(broom::tidy(object), stratum == "Within"))[[1]] != 0L) {
-      aov_df <- broom::tidy(x = object) %>%
+    if (dim(dplyr::filter(broomExtra::tidy(object), stratum == "Within"))[[1]] != 0L) {
+      aov_df <- broomExtra::tidy(x = object) %>%
         dplyr::filter(.data = ., stratum == "Within")
     } else {
-      aov_df <- broom::tidy(x = object)
+      aov_df <- broomExtra::tidy(x = object)
     }
   } else {
-    aov_df <- broom::tidy(x = object)
+    aov_df <- broomExtra::tidy(x = object)
   }
 
   # creating numerator and denominator degrees of freedom

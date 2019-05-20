@@ -13,12 +13,14 @@
 #' @param indep.vars List predictor or independent variables for regression (`x`
 #'   in `y ~ x`).
 #'
-#' @importFrom broom tidy
+#' @importFrom robust lmRob
 #' @importFrom glue glue
 #' @importFrom purrr map map_lgl map2_dfr pmap
-#' @importFrom robust lmRob
-#' @importFrom stats as.formula
+#' @importFrom stats wilcox.test as.formula lm
 #' @importFrom tidyr nest
+#' @importFrom rlang !! enquos enquo quo quo_squash
+#' @importFrom dplyr select group_by arrange mutate mutate_at mutate_if
+#' @importFrom dplyr left_join right_join
 #'
 #' @examples
 #'
@@ -108,7 +110,7 @@ grouped_robustslr <- function(data,
       ) %>% # tidying up the output with broom
       purrr::map_dfr(
         .x = .,
-        .f = ~ broom::tidy(x = .),
+        .f = ~ broomExtra::tidy(x = .),
         .id = "..group"
       ) %>% # remove intercept terms
       dplyr::filter(.data = ., term == !!filter_name) %>% # add formula as a character

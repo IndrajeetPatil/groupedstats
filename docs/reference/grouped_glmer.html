@@ -23,8 +23,9 @@ grouping variables. — grouped_glmer • groupedstats</title>
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -133,10 +134,10 @@ grouping variables.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>grouped_glmer</span>(<span class='no'>data</span>, <span class='no'>grouping.vars</span>, <span class='no'>formula</span>, <span class='kw'>family</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/family'>binomial</a></span>(<span class='kw'>link</span>
-  <span class='kw'>=</span> <span class='st'>"probit"</span>), <span class='kw'>control</span> <span class='kw'>=</span> <span class='kw pkg'>lme4</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/lme4/topics/lmerControl'>glmerControl</a></span>(<span class='kw'>optimizer</span> <span class='kw'>=</span> <span class='st'>"bobyqa"</span>,
+    <pre class="usage"><span class='fu'>grouped_glmer</span>(<span class='no'>data</span>, <span class='no'>grouping.vars</span>, <span class='no'>formula</span>, <span class='kw'>family</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/family.html'>binomial</a></span>(<span class='kw'>link</span>
+  <span class='kw'>=</span> <span class='st'>"probit"</span>), <span class='kw'>control</span> <span class='kw'>=</span> <span class='kw pkg'>lme4</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmerControl.html'>glmerControl</a></span>(<span class='kw'>optimizer</span> <span class='kw'>=</span> <span class='st'>"bobyqa"</span>,
   <span class='kw'>boundary.tol</span> <span class='kw'>=</span> <span class='fl'>1e-07</span>, <span class='kw'>calc.derivs</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>use.last.params</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>optCtrl</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>maxfun</span> <span class='kw'>=</span> <span class='fl'>2e+09</span>)), <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>)</pre>
+  <span class='kw'>optCtrl</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxfun</span> <span class='kw'>=</span> <span class='fl'>2e+09</span>)), <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -160,8 +161,8 @@ grouping variables.</p>
     </tr>
     <tr>
       <th>family</th>
-      <td><p>a GLM family, see <code><a href='https://www.rdocumentation.org/packages/stats/topics/glm'>glm</a></code> and
-    <code><a href='https://www.rdocumentation.org/packages/stats/topics/family'>family</a></code>.</p></td>
+      <td><p>a GLM family, see <code><a href='https://rdrr.io/r/stats/glm.html'>glm</a></code> and
+    <code><a href='https://rdrr.io/r/stats/family.html'>family</a></code>.</p></td>
     </tr>
     <tr>
       <th>control</th>
@@ -199,7 +200,7 @@ summaries.</p>
 <span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/grouped_glmer.html'>grouped_glmer</a></span>(
   <span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>Survived</span> ~ <span class='no'>Age</span> + (<span class='no'>Age</span> <span class='kw'>|</span>
     <span class='no'>Class</span>),
-  <span class='kw'>family</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/family'>binomial</a></span>(<span class='kw'>link</span> <span class='kw'>=</span> <span class='st'>"probit"</span>),
+  <span class='kw'>family</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/family.html'>binomial</a></span>(<span class='kw'>link</span> <span class='kw'>=</span> <span class='st'>"probit"</span>),
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/sample.html'>sample_frac</a></span>(<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='no'><a href='https://indrajeetpatil.github.io/groupedstats//reference/Titanic_full.html'>Titanic_full</a></span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>0.3</span>),
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>Sex</span>
 )</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 4 x 10</span><span>
@@ -211,18 +212,18 @@ summaries.</p>
 #&gt; </span><span style='color: #555555;'>4</span><span> Fema~ fixed  AgeC~    0.687     0.548      1.25 -</span><span style='color: #BB0000;'>0.388</span><span>       1.76  2.10</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 1</span><span>
 #&gt; </span><span style='color: #555555;'># ... with 1 more variable: significance </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
 <span class='co'># continuous outcome; gaussian family</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>gapminder</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>gapminder</span>)
 
 <span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/grouped_glmer.html'>grouped_glmer</a></span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/sample.html'>sample_frac</a></span>(<span class='no'>gapminder</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>0.3</span>),
-  <span class='kw'>formula</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/scale'>scale</a></span>(<span class='no'>lifeExp</span>) ~ <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/scale'>scale</a></span>(<span class='no'>gdpPercap</span>) + (<span class='no'>gdpPercap</span> <span class='kw'>|</span> <span class='no'>continent</span>),
-  <span class='kw'>family</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/family'>gaussian</a></span>(),
-  <span class='kw'>control</span> <span class='kw'>=</span> <span class='kw pkg'>lme4</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/lme4/topics/lmerControl'>lmerControl</a></span>(
+  <span class='kw'>formula</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span>(<span class='no'>lifeExp</span>) ~ <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span>(<span class='no'>gdpPercap</span>) + (<span class='no'>gdpPercap</span> <span class='kw'>|</span> <span class='no'>continent</span>),
+  <span class='kw'>family</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/family.html'>gaussian</a></span>(),
+  <span class='kw'>control</span> <span class='kw'>=</span> <span class='kw pkg'>lme4</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmerControl.html'>lmerControl</a></span>(
     <span class='kw'>optimizer</span> <span class='kw'>=</span> <span class='st'>"bobyqa"</span>,
     <span class='kw'>restart_edge</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
     <span class='kw'>boundary.tol</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>,
     <span class='kw'>calc.derivs</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-    <span class='kw'>optCtrl</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>maxfun</span> <span class='kw'>=</span> <span class='fl'>2e9</span>)
+    <span class='kw'>optCtrl</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxfun</span> <span class='kw'>=</span> <span class='fl'>2e9</span>)
   ),
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>year</span>,
   <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>
