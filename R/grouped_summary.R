@@ -52,11 +52,11 @@ grouped_summary <- function(data,
                             measures = NULL,
                             measures.type = "numeric",
                             topcount.long = FALSE) {
-  # ============================== data ========================================
+  # data -------------------------------------------------------------------
 
   # check how many variables were entered for this grouping variable
   grouping.vars <-
-    base::as.list(x = rlang::quo_squash(quo = rlang::enquo(arg = grouping.vars)))
+    as.list(x = rlang::quo_squash(quo = rlang::enquo(arg = grouping.vars)))
 
   # based on number of arguments, select grouping.vars in cases like `c(cyl)`,
   # the first list element after `quo_squash` will be `c` which we don't need,
@@ -70,7 +70,7 @@ grouped_summary <- function(data,
     }
 
   # getting the dataframe ready
-  if (base::missing(measures)) {
+  if (missing(measures)) {
     # if the measures are not provided, select all relevant variables *in
     # addition to* grouping variables
     if (measures.type == "numeric") {
@@ -95,7 +95,7 @@ grouped_summary <- function(data,
         )
       } else {
         # otherwise throw an error with the following message
-        base::stop(base::cat(
+        stop(cat(
           crayon::red("Error:"),
           crayon::blue(
             "None of the variables in the dataframe are of numeric type\n"
@@ -109,7 +109,7 @@ grouped_summary <- function(data,
       factor_cols <- length(tibble::as_tibble(
         purrr::keep(
           .x = dplyr::select(.data = data, -c(!!!grouping.vars)),
-          .p = base::is.factor
+          .p = is.factor
         )
       ))
 
@@ -122,12 +122,12 @@ grouped_summary <- function(data,
           # select all additional columns of character/factor type
           purrr::keep(
             .x = dplyr::select(.data = data, -c(!!!grouping.vars)),
-            .p = base::is.factor
+            .p = is.factor
           )
         )
       } else {
         # otherwise throw an error with the following message
-        base::stop(base::cat(
+        stop(cat(
           crayon::red("Error:"),
           crayon::blue(
             "None of the variables in the dataframe are of factor/character type\n"
@@ -145,7 +145,7 @@ grouped_summary <- function(data,
   # =================================== checks ===============================
 
   # when measures have been specified
-  if (!base::missing(measures)) {
+  if (!missing(measures)) {
     # check the class of variables (all have to be of uniform type) numeric
     numeric_count <- sum(purrr::map_lgl(
       .x = dplyr::select(.data = data, !!rlang::enquo(measures)),
@@ -157,7 +157,7 @@ grouped_summary <- function(data,
     df_char <- dplyr::select(.data = data, !!rlang::enquo(measures)) %>%
       dplyr::mutate_if(
         .tbl = .,
-        .predicate = base::is.factor,
+        .predicate = is.factor,
         .funs = as.character
       )
 
@@ -170,7 +170,7 @@ grouped_summary <- function(data,
     # conditionally stopping the function
     # if a mix type of variables have been entered
     if (numeric_count != 0 && factor_count != 0) {
-      base::stop(base::cat(
+      stop(cat(
         crayon::red("Error:"),
         crayon::blue(
           "This function can either be used with numeric or with factor/character variables, but not both\n"
@@ -179,11 +179,12 @@ grouped_summary <- function(data,
       call. = FALSE
       )
     }
-    # options(show.error.messages = FALSE)
+
     if (measures.type == "numeric") {
-      # if one or more of the variables are not numeric, then stop the execution and let the user know
+      # if one or more of the variables are not numeric, then stop the execution
+      # and let the user know
       if (numeric_count != 0) {
-        base::stop(base::cat(
+        stop(cat(
           crayon::red("Error:"),
           crayon::blue("One of the entered variables is not a numeric variable\n")
         ),
@@ -191,9 +192,10 @@ grouped_summary <- function(data,
         )
       }
     } else if (measures.type == "factor") {
-      # if one or more of the variables are not numeric, then stop the execution and let the user know
+      # if one or more of the variables are not numeric, then stop the execution
+      # and let the user know
       if (factor_count != 0) {
-        base::stop(base::cat(
+        stop(cat(
           crayon::red("Error:"),
           crayon::blue(
             "One of the entered variables is not a factor/character variable\n"
@@ -237,13 +239,13 @@ grouped_summary <- function(data,
       )
   }
 
-  # =============================== factor ============================
+  # factor --------------------------------------------------------------
 
   if (measures.type == "factor") {
     # tidying up the skimr output by removing unnecessary information and
     # renaming certain columns
     df_summary %<>%
-      dplyr::select(.data = ., -data) %>% # removing the redudant data column
+      dplyr::select(.data = ., -data) %>% # removing the redundant data column
       dplyr::mutate(
         .data = .,
         summary = summary %>%
@@ -261,9 +263,9 @@ grouped_summary <- function(data,
       # custom function used to convert counts into long format
       count_long_format_fn <- function(top_counts) {
         purrr::map_dfr(
-          .x = base::strsplit(x = top_counts, split = ","),
+          .x = strsplit(x = top_counts, split = ","),
           .f = ~ tibble::as_tibble(x = .) %>%
-            dplyr::mutate_all(.tbl = ., .funs = base::trimws) %>%
+            dplyr::mutate_all(.tbl = ., .funs = trimws) %>%
             tidyr::separate(
               data = .,
               col = "value",
@@ -327,7 +329,7 @@ grouped_summary <- function(data,
       ) %>% # computing more descriptive indices
       dplyr::mutate(
         .data = .,
-        std.error = sd / base::sqrt(n),
+        std.error = sd / sqrt(n),
         mean.low.conf = mean - stats::qt(
           p = 1 - (0.05 / 2),
           df = n - 1,

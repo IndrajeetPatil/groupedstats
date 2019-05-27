@@ -76,9 +76,8 @@ grouped_ttest <- function(data,
     }
 
   # getting the dataframe ready
-  df <- dplyr::select(
-    .data = data, !!!grouping.vars, !!!dep.vars, !!!indep.vars
-  ) %>%
+  df <-
+    dplyr::select(.data = data, !!!grouping.vars, !!!dep.vars, !!!indep.vars) %>%
     dplyr::group_by(.data = ., !!!grouping.vars) %>%
     tidyr::nest(data = .) %>%
     dplyr::filter(.data = ., !purrr::map_lgl(.x = data, .f = is.null)) %>%

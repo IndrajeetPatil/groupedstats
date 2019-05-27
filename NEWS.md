@@ -1,5 +1,8 @@
 # groupedstats 0.0.6.9000
 
+  - Maintenance release. The only change is that the package relies on
+   `broomExtra` instead of `broom` and `broom.mixed.`
+
 # groupedstats 0.0.6
  
 NEW FUNCTIONS
@@ -11,8 +14,8 @@ NEW FUNCTIONS
 
 # groupedstats 0.0.5
 
-  - Maintenance release: Makes `groupedstats` compatible with `skimr 2.0` and
-    `dplyr 0.8.0`.
+  - Maintenance release: Makes `groupedstats` compatible with upcoming releases
+    of `skimr 2.0` and `dplyr 0.8.0`.
 
 # groupedstats 0.0.4
 

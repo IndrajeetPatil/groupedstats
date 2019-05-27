@@ -6,7 +6,7 @@
 [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
 [![CRAN
 Checks](https://cranchecks.info/badges/summary/groupedstats)](https://cran.r-project.org/web/checks/check_results_groupedstats.html)
-[![packageversion](https://img.shields.io/badge/Package%20version-0.0.6.9000-orange.svg?style=flat-square)](commits/master)
+[![packageversion](https://img.shields.io/badge/Package%20version-0.0.7.9000-orange.svg?style=flat-square)](commits/master)
 [![Daily downloads
 badge](https://cranlogs.r-pkg.org/badges/last-day/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
 [![Weekly downloads
@@ -25,12 +25,14 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--05--20-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--05--27-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/IndrajeetPatil/groupedstats/master.svg)](https://codecov.io/github/IndrajeetPatil/groupedstats?branch=master)
+[![Coverage
+Status](https://coveralls.io/repos/github/IndrajeetPatil/groupedstats/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/groupedstats?branch=master)
 [![status](https://tinyverse.netlify.com/badge/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
 
 # Overview
@@ -63,14 +65,14 @@ The next releases will expand on the existing functionality (e.g.,
 
 # Installation
 
-To get the latest, stable CRAN release (0.0.6):
+To get the latest, stable `CRAN` release (0.0.7):
 
 ``` r
 utils::install.packages(pkgs = "groupedstats") 
 ```
 
 You can get the **development** version of the package from GitHub
-(`0.0.6.9000`). To see what new changes (and bug fixes) have been made
+(`0.0.7.9000`). To see what new changes (and bug fixes) have been made
 to the package since the last release on `CRAN`, you can check the
 detailed log of changes here:
 <https://indrajeetpatil.github.io/groupedstats/news/index.html>
@@ -79,16 +81,16 @@ If you are in hurry and want to reduce the time of installation, prefer-
 
 ``` r
 # needed package to download from GitHub repo
-utils::install.packages(pkgs = "devtools")                 
+utils::install.packages(pkgs = "remotes")                 
 
-devtools::install_github(repo = "IndrajeetPatil/groupedstats",  # package path on GitHub
+remotes::install_github(repo = "IndrajeetPatil/groupedstats",   # package path on GitHub
                          quick = TRUE)                          # skips docs, demos, and vignettes
 ```
 
 If time is not a constraint-
 
 ``` r
-devtools::install_github(repo = "IndrajeetPatil/groupedstats", # package path on GitHub
+remotes::install_github(repo = "IndrajeetPatil/groupedstats",  # package path on GitHub
                          dependencies = TRUE,                  # installs packages which groupedstats depends on
                          upgrade_dependencies = TRUE           # updates any out of date dependencies
 )
@@ -126,7 +128,7 @@ Another handy tool to see arguments to any of the functions is `args`.
 For example-
 
 ``` r
-args(name = groupedstats::grouped_ttest)
+args(groupedstats::grouped_ttest)
 #> Registered S3 method overwritten by 'broom.mixed':
 #>   method      from 
 #>   tidy.gamlss broom
@@ -163,7 +165,7 @@ computed-
 library(datasets)
 options(tibble.width = Inf)            # show me all columns
 
-groupedstats::grouped_summary(data = datasets::iris,
+groupedstats::grouped_summary(data = iris,
                               grouping.vars = Species,
                               measures = Sepal.Length:Petal.Width,
                               measures.type = "numeric")
@@ -207,11 +209,6 @@ If you want summary of variables of `factor` type-
 
 ``` r
 library(ggplot2)
-#> Registered S3 methods overwritten by 'ggplot2':
-#>   method         from 
-#>   [.quosures     rlang
-#>   c.quosures     rlang
-#>   print.quosures rlang
 options(tibble.width = Inf)            # show me all columns
 
 groupedstats::grouped_summary(data = ggplot2::diamonds,
@@ -901,7 +898,7 @@ variables-
 ``` r
 options(tibble.width = Inf)            # show me all columns
 
-groupedstats::grouped_proptest(data = datasets::mtcars,
+groupedstats::grouped_proptest(data = mtcars,
                                grouping.vars = cyl,
                                measure = am)
 #> # A tibble: 3 x 7
@@ -924,7 +921,7 @@ flower for **each** *Iris* species.
 ``` r
 
 # converting the iris dataset to long format
-iris_long <- datasets::iris %>%
+iris_long <- iris %>%
   dplyr::mutate(.data = ., id = dplyr::row_number(x = Species)) %>%
   tidyr::gather(
     data = .,
