@@ -137,7 +137,7 @@ grouped_ttest <- function(data,
     return(results_df)
   }
 
-  # ========= using  custom function on entered dataframe =================
+  # using  custom function on entered dataframe ----------------------------
 
   df <- df %>%
     tibble::rownames_to_column(., var = "..group")

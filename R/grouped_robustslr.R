@@ -12,6 +12,7 @@
 #'   `y ~ x`).
 #' @param indep.vars List predictor or independent variables for regression (`x`
 #'   in `y ~ x`).
+#' @inheritParams robust::lmRob
 #'
 #' @importFrom robust lmRob
 #' @importFrom glue glue
@@ -37,7 +38,25 @@
 grouped_robustslr <- function(data,
                               dep.vars,
                               indep.vars,
-                              grouping.vars) {
+                              grouping.vars,
+                              nrep = 1000,
+                              control = robust::lmRob.control(
+                                tlo = 1e-4,
+                                tua = 1.5e-06,
+                                mxr = 50,
+                                mxf = 50,
+                                mxs = 50,
+                                tl = 1e-06,
+                                estim = "Final",
+                                initial.alg = "Auto",
+                                final.alg = "MM",
+                                seed = 1313,
+                                level = 0.1,
+                                efficiency = 0.9,
+                                weight = c("Optimal", "Optimal"),
+                                trace = TRUE
+                              )) {
+
   # ================== preparing dataframe ==================
   #
   # check how many variables were entered for criterion variables vector
@@ -86,7 +105,7 @@ grouped_robustslr <- function(data,
 
   # custom function to run linear regression for every element of a list for two
   # variables
-  lm_listed <- function(list.col, x_name, y_name) {
+  lm_listed <- function(list.col, x_name, y_name, nrep, control) {
 
     # creating a formula out of entered variables
     fx <- glue::glue("scale({y_name}) ~ scale({x_name})")
@@ -105,7 +124,9 @@ grouped_robustslr <- function(data,
         .x = .,
         .f = ~ robust::lmRob(
           formula = stats::as.formula(fx),
-          data = (.)
+          data = (.),
+          nrep = nrep,
+          control = control
         )
       ) %>% # tidying up the output with broom
       purrr::map_dfr(
@@ -147,7 +168,9 @@ grouped_robustslr <- function(data,
       y_name = purrr::map(
         .x = dep.vars,
         .f = ~ rlang::quo_name(quo = .)
-      )
+      ),
+      nrep = list(nrep),
+      control = list(control)
     ),
     .f = lm_listed
   ) %>%

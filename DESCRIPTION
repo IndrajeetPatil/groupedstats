@@ -30,9 +30,9 @@ Imports:
     robust (>= 0.4-18),
     rstudioapi (>= 0.9.0),
     sjstats (>= 0.17.4),
-    skimr (>= 1.0.5),
+    skimr (>= 1.0.6),
     stats,
-    tibble (>= 2.1.1),
+    tibble (>= 2.1.2),
     tidyr (>= 0.8.3),
     utils
 Suggests: 
