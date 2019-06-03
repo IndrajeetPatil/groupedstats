@@ -131,3 +131,70 @@ lm_effsize_ci <- function(object,
   # returning the final dataframe
   return(combined_df)
 }
+
+
+#' @title Standardize a dataframe with effect sizes for `aov`, `lm`, `aovlist`,
+#'   etc. objects.
+#' @description The difference between `lm_effsize_ci` and
+#'   `lm_effsize_standardizer` is that the former has more opinionated column
+#'   naming, while the latter doesn't. The latter can thus be more helpful in
+#'   writing a wrapper around this function.
+#' @name lm_effsize_standardizer
+#'
+#' @inheritParams lm_effsize_ci
+#'
+#' @examples
+#' \dontrun{
+#' groupedstats::lm_effsize_standardizer(
+#'   object = stats::lm(formula = brainwt ~ vore, data = ggplot2::msleep),
+#'   effsize = "eta",
+#'   partial = FALSE,
+#'   conf.level = 0.99,
+#'   nboot = 50
+#' )
+#' }
+#'
+#' @export
+
+# function body
+lm_effsize_standardizer <- function(object,
+                                    effsize = "eta",
+                                    partial = TRUE,
+                                    conf.level = 0.95,
+                                    nboot = 500) {
+
+  # creating a dataframe with effect size and its CI
+  df <- groupedstats::lm_effsize_ci(
+    object = object,
+    effsize = effsize,
+    partial = partial,
+    conf.level = conf.level,
+    nboot = nboot
+  )
+
+  # renaming the particular effect size to standard term 'estimate'
+  if (effsize == "eta") {
+    # partial eta-squared
+    if (isTRUE(partial)) {
+      df %<>%
+        dplyr::rename(.data = ., estimate = partial.etasq)
+    } else {
+      # eta-squared
+      df %<>%
+        dplyr::rename(.data = ., estimate = etasq)
+    }
+  } else if (effsize == "omega") {
+    # partial omega-squared
+    if (isTRUE(partial)) {
+      df %<>%
+        dplyr::rename(.data = ., estimate = partial.omegasq)
+    } else {
+      # omega-squared
+      df %<>%
+        dplyr::rename(.data = ., estimate = omegasq)
+    }
+  }
+
+  # return the dataframe in standard format
+  return(df)
+}

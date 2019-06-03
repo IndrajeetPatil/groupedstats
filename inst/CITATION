@@ -1,0 +1,6 @@
+bibentry(bibtype = "manual",
+         title = "groupedstats: Grouped Statistical Analyses in a Tidy Way",
+         author = c(person("Indrajeet", "Patil")),
+         year = 2018,
+         url = "https://CRAN.R-project.org/package=groupedstats",
+         doi = "10.5281/zenodo.2600159")

@@ -25,7 +25,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--05--31-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--06--03-yellowgreen.svg)](/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
@@ -68,7 +68,7 @@ The next releases will expand on the existing functionality (e.g.,
 To get the latest, stable `CRAN` release (0.0.7):
 
 ``` r
-utils::install.packages(pkgs = "groupedstats") 
+utils::install.packages(pkgs = "groupedstats")
 ```
 
 You can get the **development** version of the package from GitHub
@@ -81,19 +81,31 @@ If you are in hurry and want to reduce the time of installation, prefer-
 
 ``` r
 # needed package to download from GitHub repo
-utils::install.packages(pkgs = "remotes")                 
+utils::install.packages(pkgs = "remotes")
 
-remotes::install_github(repo = "IndrajeetPatil/groupedstats",   # package path on GitHub
-                         quick = TRUE)                          # skips docs, demos, and vignettes
+remotes::install_github(
+  repo = "IndrajeetPatil/groupedstats", # package path on GitHub
+  quick = TRUE
+) # skips docs, demos, and vignettes
 ```
 
 If time is not a constraint-
 
 ``` r
-remotes::install_github(repo = "IndrajeetPatil/groupedstats",  # package path on GitHub
-                         dependencies = TRUE,                  # installs packages which groupedstats depends on
-                         upgrade_dependencies = TRUE           # updates any out of date dependencies
+remotes::install_github(
+  repo = "IndrajeetPatil/groupedstats", # package path on GitHub
+  dependencies = TRUE, # installs packages which groupedstats depends on
+  upgrade_dependencies = TRUE # updates any out of date dependencies
 )
+```
+
+# Citation
+
+If you want to cite this package in a scientific journal or in any other
+context, run the following code in your `R` console:
+
+``` r
+utils::citation(package = "groupedstats")
 ```
 
 # Help
@@ -163,12 +175,14 @@ computed-
 
 ``` r
 library(datasets)
-options(tibble.width = Inf)            # show me all columns
+options(tibble.width = Inf) # show me all columns
 
-groupedstats::grouped_summary(data = iris,
-                              grouping.vars = Species,
-                              measures = Sepal.Length:Petal.Width,
-                              measures.type = "numeric")
+groupedstats::grouped_summary(
+  data = iris,
+  grouping.vars = Species,
+  measures = Sepal.Length:Petal.Width,
+  measures.type = "numeric"
+)
 #> # A tibble: 12 x 16
 #>    Species    type    variable     missing complete     n  mean    sd   min
 #>    <fct>      <chr>   <chr>          <dbl>    <dbl> <dbl> <dbl> <dbl> <dbl>
@@ -209,12 +223,14 @@ If you want summary of variables of `factor` type-
 
 ``` r
 library(ggplot2)
-options(tibble.width = Inf)            # show me all columns
+options(tibble.width = Inf) # show me all columns
 
-groupedstats::grouped_summary(data = ggplot2::diamonds,
-                              grouping.vars = c(cut, clarity),
-                              measures = color,
-                              measures.type = "factor")
+groupedstats::grouped_summary(
+  data = ggplot2::diamonds,
+  grouping.vars = c(cut, clarity),
+  measures = color,
+  measures.type = "factor"
+)
 #> # A tibble: 40 x 10
 #>    cut       clarity type   variable missing complete n     n_unique
 #>    <ord>     <ord>   <chr>  <chr>    <chr>   <chr>    <chr> <chr>   
@@ -259,26 +275,26 @@ library(ggstatsplot)
 #>   dfbeta.influence.merMod         lme4
 #>   dfbetas.influence.merMod        lme4
 
-options(tibble.width = Inf)            # show me all columns
+options(tibble.width = Inf) # show me all columns
 
 groupedstats::grouped_summary(
   data = ggplot2::diamonds,
-  grouping.vars = cut,                          # for simplicity, let's just use one grouping variable
+  grouping.vars = cut, # for simplicity, let's just use one grouping variable
   measures = color,
   measures.type = "factor",
   topcount.long = TRUE
-) %>% 
+) %>%
   ggplot2::ggplot(
-  data = .,                                     # placeholder for summary dataframe we just created 
-  mapping = ggplot2::aes(
-    x = forcats::fct_inorder(f = factor.level),
-    y = count,
-    fill = factor.level
-  )
-) +
+    data = ., # placeholder for summary dataframe we just created
+    mapping = ggplot2::aes(
+      x = forcats::fct_inorder(f = factor.level),
+      y = count,
+      fill = factor.level
+    )
+  ) +
   ggplot2::geom_bar(stat = "identity") +
   ggplot2::labs(x = "color", y = "count") +
-  ggplot2::facet_grid(facets = ~ cut) +         # for each level of the factor level
+  ggplot2::facet_grid(facets = ~cut) + # for each level of the factor level
   ggstatsplot::theme_mprl() +
   ggplot2::theme(legend.position = "none")
 #> Joining, by = "cut"
@@ -292,7 +308,7 @@ other pipelines, e.g., preparing a plot of `mean` and `sd` values in
 `ggplot2`).
 
 ``` r
-options(tibble.width = Inf)            # show me all columns
+options(tibble.width = Inf) # show me all columns
 
 groupedstats::grouped_summary(
   data = ggplot2::diamonds,
@@ -354,12 +370,14 @@ two relationships of interest for **each country** across years:
 
 ``` r
 library(gapminder)
-options(tibble.width = Inf)            # show me all columns
+options(tibble.width = Inf) # show me all columns
 
-groupedstats::grouped_slr(data = gapminder::gapminder,
-                         dep.vars = c(lifeExp, pop),
-                         indep.vars = c(gdpPercap, gdpPercap),
-                         grouping.vars = country)
+groupedstats::grouped_slr(
+  data = gapminder::gapminder,
+  dep.vars = c(lifeExp, pop),
+  indep.vars = c(gdpPercap, gdpPercap),
+  grouping.vars = country
+)
 #> # A tibble: 284 x 9
 #>    country     formula             t.value estimate conf.low conf.high
 #>    <fct>       <chr>                 <dbl>    <dbl>    <dbl>     <dbl>
@@ -413,12 +431,14 @@ library(dplyr)
 #> The following objects are masked from 'package:base':
 #> 
 #>     intersect, setdiff, setequal, union
-options(tibble.width = Inf)            # show me all columns
+options(tibble.width = Inf) # show me all columns
 
-groupedstats::grouped_slr(data = ggplot2::diamonds,
-                         dep.vars = price,
-                         indep.vars = carat,
-                         grouping.vars = c(cut, clarity)) %>%
+groupedstats::grouped_slr(
+  data = ggplot2::diamonds,
+  dep.vars = price,
+  indep.vars = carat,
+  grouping.vars = c(cut, clarity)
+) %>%
   dplyr::arrange(.data = ., cut)
 #> # A tibble: 40 x 10
 #>    cut   clarity formula       t.value estimate conf.low conf.high
@@ -516,9 +536,9 @@ library(groupedstats)
 
 groupedstats::grouped_lm(
   data = mtcars,
-  grouping.vars = cyl,        # grouping variable (just one in this case)
-  formula = mpg ~ am*wt,      # note that this function takes a formula
-  output = "tidy"             # tidy dataframe containing results
+  grouping.vars = cyl, # grouping variable (just one in this case)
+  formula = mpg ~ am * wt, # note that this function takes a formula
+  output = "tidy" # tidy dataframe containing results
 )
 #> # A tibble: 12 x 9
 #>      cyl term        estimate std.error statistic conf.low conf.high
@@ -559,9 +579,9 @@ library(groupedstats)
 
 groupedstats::grouped_lm(
   data = ggplot2::diamonds,
-  grouping.vars = c(cut, color),            # grouping variables
-  formula = price ~ carat * clarity,        # formula
-  output = "glance"                         # dataframe with model summaries
+  grouping.vars = c(cut, color), # grouping variables
+  formula = price ~ carat * clarity, # formula
+  output = "glance" # dataframe with model summaries
 )
 #> # A tibble: 35 x 14
 #>    cut   color r.squared adj.r.squared sigma statistic   p.value    df
@@ -604,9 +624,9 @@ library(groupedstats)
 
 groupedstats::grouped_aov(
   data = mtcars,
-  grouping.vars = cyl,                 # grouping variable (just one in this case)
-  formula = mpg ~ am * wt,             # note that this function takes a formula
-  output = "tidy"                      # tidy dataframe with results
+  grouping.vars = cyl, # grouping variable (just one in this case)
+  formula = mpg ~ am * wt, # note that this function takes a formula
+  output = "tidy" # tidy dataframe with results
 )
 #> # A tibble: 9 x 10
 #>     cyl term  F.value   df1   df2 partial.etasq conf.low conf.high p.value
@@ -689,11 +709,11 @@ different levels of the grouping variable is also implemented similarly-
 
 ``` r
 groupedstats::grouped_glm(
- data = ggstatsplot::Titanic_full,
- formula = Survived ~ Sex,
- grouping.vars = Class,
- family = stats::binomial(link = "logit"),
- output = "tidy"
+  data = ggstatsplot::Titanic_full,
+  formula = Survived ~ Sex,
+  grouping.vars = Class,
+  family = stats::binomial(link = "logit"),
+  output = "tidy"
 )
 #> # A tibble: 8 x 9
 #>   Class term        estimate std.error statistic conf.low conf.high
@@ -726,11 +746,11 @@ methods-
 
 ``` r
 groupedstats::grouped_glm(
- data = ggstatsplot::Titanic_full,
- formula = Survived ~ Sex,
- grouping.vars = Class,
- family = stats::binomial(link = "logit"),
- output = "glance"
+  data = ggstatsplot::Titanic_full,
+  formula = Survived ~ Sex,
+  grouping.vars = Class,
+  family = stats::binomial(link = "logit"),
+  output = "glance"
 )
 #> # A tibble: 4 x 9
 #>   Class null.deviance df.null logLik   AIC   BIC deviance df.residual  nobs
@@ -753,7 +773,7 @@ library(gapminder)
 groupedstats::grouped_lmer(
   data = gapminder,
   formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap |
-                                                   continent),
+    continent),
   grouping.vars = year,
   REML = FALSE,
   output = "tidy"
@@ -802,7 +822,7 @@ groupedstats::grouped_lmer(
 groupedstats::grouped_lmer(
   data = gapminder,
   formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap |
-                                                   continent),
+    continent),
   grouping.vars = year,
   REML = FALSE,
   output = "glance"
@@ -845,16 +865,16 @@ dplyr::glimpse(x = groupedstats::Titanic_full)
 # running glmer model to get tidy output
 groupedstats::grouped_glmer(
   formula = Survived ~ Age + (Age |
-                                Class),
+    Class),
   data = groupedstats::Titanic_full,
-  family = stats::binomial(link = "probit"),                  # choosing the appropriate GLM family
-                          control = lme4::glmerControl(       # choosing appropriate control
-                            optimizer = "Nelder_Mead",
-                            boundary.tol = 1e-07,
-                            calc.derivs = FALSE,
-                            optCtrl = list(maxfun = 2e9)
-                          ),
-  grouping.vars = Sex,                                        # grouping variables (just one in this case)
+  family = stats::binomial(link = "probit"), # choosing the appropriate GLM family
+  control = lme4::glmerControl( # choosing appropriate control
+    optimizer = "Nelder_Mead",
+    boundary.tol = 1e-07,
+    calc.derivs = FALSE,
+    optCtrl = list(maxfun = 2e9)
+  ),
+  grouping.vars = Sex, # grouping variables (just one in this case)
   output = "tidy"
 )
 #> # A tibble: 4 x 10
@@ -874,8 +894,8 @@ groupedstats::grouped_glmer(
 # getting glmer model summaries (let's use the default family and control values)
 groupedstats::grouped_glmer(
   formula = Survived ~ Age + (Age |
-                                Class),
-  grouping.vars = Sex,      
+    Class),
+  grouping.vars = Sex,
   data = groupedstats::Titanic_full,
   output = "glance"
 )
@@ -896,11 +916,13 @@ This function helps carry out one-sample proportion tests
 variables-
 
 ``` r
-options(tibble.width = Inf)            # show me all columns
+options(tibble.width = Inf) # show me all columns
 
-groupedstats::grouped_proptest(data = mtcars,
-                               grouping.vars = cyl,
-                               measure = am)
+groupedstats::grouped_proptest(
+  data = mtcars,
+  grouping.vars = cyl,
+  measure = am
+)
 #> # A tibble: 3 x 7
 #>     cyl `0`    `1`    `Chi-squared`    df `p-value` significance
 #>   <dbl> <chr>  <chr>          <dbl> <dbl>     <dbl> <chr>       
@@ -958,14 +980,14 @@ iris_long
 
 # checking if the Sepal part has different dimentions (value) than Petal part
 # for each Species and for each type of measurement (Length and Width)
-options(tibble.width = Inf)            # show me all columns
+options(tibble.width = Inf) # show me all columns
 
 groupedstats::grouped_ttest(
   data = iris_long,
-  dep.vars = value,                    # dependent variable
-  indep.vars = part,                   # independent variable
+  dep.vars = value, # dependent variable
+  indep.vars = part, # independent variable
   grouping.vars = c(Species, measure), # for each Species and for each measurement
-  paired = TRUE                        # paired t-test
+  paired = TRUE # paired t-test
 )
 #> # A tibble: 6 x 11
 #>   Species    measure formula      method        t.test estimate conf.low
@@ -993,14 +1015,14 @@ This function is just a non-parametric variant of the `grouped_ttest`:
 ``` r
 # checking if the Sepal part has different dimentions (value) than Petal part
 # for each Species and for each type of measurement (Length and Width)
-options(tibble.width = Inf)            # show me all columns
+options(tibble.width = Inf) # show me all columns
 
 groupedstats::grouped_wilcox(
   data = iris_long,
-  dep.vars = value,                    # dependent variable
-  indep.vars = part,                   # independent variable
+  dep.vars = value, # dependent variable
+  indep.vars = part, # independent variable
   grouping.vars = c(Species, measure), # for each Species and for each measurement
-  paired = TRUE                        # paired Wilcoxon signed rank test with continuity correction
+  paired = TRUE # paired Wilcoxon signed rank test with continuity correction
 )
 #> # A tibble: 6 x 10
 #>   Species    measure formula     
@@ -1041,16 +1063,16 @@ and depth of a diamond is different for two of our favorite colors (say
 # subset the dataframe with two colors of interest to us
 diamonds_short <-
   dplyr::filter(.data = ggplot2::diamonds, color == "E" |
-                  color == "J")
+    color == "J")
 
-options(tibble.width = Inf, tibble.print_max = Inf)             # show me all rows and columns
+options(tibble.width = Inf, tibble.print_max = Inf) # show me all rows and columns
 
 # t-test
 groupedstats::grouped_ttest(
   data = diamonds_short,
-  dep.vars = c(carat, price, depth),             # note that there three dependent variables 
-  indep.vars = color,                            # and just one independent variable 
-  grouping.vars = clarity,                       # one grouping variable
+  dep.vars = c(carat, price, depth), # note that there three dependent variables
+  indep.vars = color, # and just one independent variable
+  grouping.vars = clarity, # one grouping variable
   paired = FALSE,
   var.equal = FALSE
 )
@@ -1111,9 +1133,9 @@ groupedstats::grouped_ttest(
 # wilcox test (aka Mann-Whitney U-test)
 groupedstats::grouped_wilcox(
   data = diamonds_short,
-  dep.vars = depth:price,                        # note that you can select variables in range with `:`
-  indep.vars = color,                            # again, just one independent, multiple dependent variables case
-  grouping.vars = clarity,                       # one grouping variable
+  dep.vars = depth:price, # note that you can select variables in range with `:`
+  indep.vars = color, # again, just one independent, multiple dependent variables case
+  grouping.vars = clarity, # one grouping variable
   paired = FALSE
 )
 #> # A tibble: 16 x 9
@@ -1162,14 +1184,14 @@ another aspect of entering the arguments-
 # subset the dataframe even further to just select two levels of clarity
 diamonds_short2 <-
   dplyr::filter(.data = diamonds_short, clarity == "SI2" |
-                  clarity == "SI1")
+    clarity == "SI1")
 
 # wilcox test (aka Mann-Whitney U-test)
 groupedstats::grouped_wilcox(
- data = diamonds_short2,
-  dep.vars = c(carat, price),                    # two dependent variables
-  indep.vars = c(color, clarity),                # two independent variables
-  grouping.vars = cut,                           # one grouping variable
+  data = diamonds_short2,
+  dep.vars = c(carat, price), # two dependent variables
+  indep.vars = c(color, clarity), # two independent variables
+  grouping.vars = cut, # one grouping variable
   paired = FALSE
 )
 #> # A tibble: 10 x 9
@@ -1234,16 +1256,16 @@ results_df <- purrr::pmap_dfr(
     data = list(groupedstats::movies_long),
     grouping.vars = alist(c(mpaa, genre)), # note it's `alist` and not `list`
     formula = list(
-      rating ~ budget,           # model 1
-      rating ~ log(budget),      # model 2
-      log(rating) ~ budget,      # model 3
-      log(rating) ~ log(budget)  # model 4
+      rating ~ budget, # model 1
+      rating ~ log(budget), # model 2
+      log(rating) ~ budget, # model 3
+      log(rating) ~ log(budget) # model 4
     ),
-    output = list("glance")      # return model diagnostics
+    output = list("glance") # return model diagnostics
   ),
   .f = groupedstats::grouped_lm, # regression model
   .id = "model"
-) %>%  # for each combination of mpaa rating and movie genre
+) %>% # for each combination of mpaa rating and movie genre
   dplyr::group_by(.data = ., mpaa, genre) %>% # arrange by best to worst fits
   dplyr::arrange(.data = ., dplyr::desc(adj.r.squared))
 

@@ -55,6 +55,7 @@ reference:
     desc: Helpers for carrying out routine statistical operations.
     contents:
       - lm_effsize_ci
+      - lm_effsize_standardizer
       - signif_column
       - specify_decimal_p
       - set_cwd

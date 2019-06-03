@@ -112,6 +112,8 @@ utils::globalVariables(
     "alternative",
     "method",
     "parameter",
+    "etasq",
+    "omegasq",
     "partial.etasq",
     "partial.etasq.conf.low",
     "partial.etasq.conf.high",

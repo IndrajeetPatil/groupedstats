@@ -346,7 +346,7 @@
   ],
   "releaseNotes": "https://github.com/IndrajeetPatil/groupedstats/blob/master/NEWS.md",
   "readme": "https://github.com/IndrajeetPatil/groupedstats/blob/master/README.md",
-  "fileSize": "164.346KB",
+  "fileSize": "164.811KB",
   "contIntegration": [
     "https://travis-ci.org/IndrajeetPatil/groupedstats",
     "https://ci.appveyor.com/project/IndrajeetPatil/groupedstats",
@@ -364,5 +364,23 @@
   ],
   "contributor": {},
   "copyrightHolder": {},
-  "funder": {}
+  "funder": {},
+  "citation": [
+    {
+      "@type": "SoftwareSourceCode",
+      "datePublished": "2018",
+      "author": [
+        {
+          "@type": "Person",
+          "givenName": "Indrajeet",
+          "familyName": "Patil"
+        }
+      ],
+      "name": "groupedstats: Grouped Statistical Analyses in a Tidy Way",
+      "identifier": "10.5281/zenodo.2600159",
+      "url": "https://CRAN.R-project.org/package=groupedstats",
+      "@id": "https://doi.org/10.5281/zenodo.2600159",
+      "sameAs": "https://doi.org/10.5281/zenodo.2600159"
+    }
+  ]
 }
