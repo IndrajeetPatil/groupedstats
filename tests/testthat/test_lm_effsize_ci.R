@@ -483,20 +483,20 @@ testthat::test_that(
     )
 
     set.seed(123)
-    df2 <- groupedstats::lm_effsize_ci(
+    df2 <- suppressWarnings(groupedstats::lm_effsize_ci(
       object = rt_anova$aov,
       effsize = "eta",
       partial = FALSE,
       nboot = 25
-    )
+    ))
 
     set.seed(123)
-    df3 <- groupedstats::lm_effsize_ci(
+    df3 <- suppressWarnings(groupedstats::lm_effsize_ci(
       object = rt_anova$aov,
       effsize = "omega",
       partial = TRUE,
       nboot = 25
-    )
+    ))
 
     set.seed(123)
     df4 <- groupedstats::lm_effsize_ci(

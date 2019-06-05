@@ -20,10 +20,13 @@
 #'   interval (Default: `0.95`).
 #' @param nboot Number of bootstrap samples for confidence intervals for partial
 #'   eta-squared and omega-squared (Default: `500`).
+#' @inheritParams sjstats::omega_sq
 #'
 #' @importFrom sjstats eta_sq omega_sq
 #' @importFrom stats anova na.omit lm
 #' @importFrom tibble as_tibble
+#' @importFrom rlang exec
+#' @importFrom tidyr drop_na
 #'
 #' @examples
 #' # model
@@ -43,23 +46,20 @@ lm_effsize_ci <- function(object,
                           effsize = "eta",
                           partial = TRUE,
                           conf.level = 0.95,
-                          nboot = 500) {
+                          nboot = 500,
+                          method = c("dist", "quantile")) {
 
   # based on the class, get the tidy output using broom
   if (class(object)[[1]] == "lm") {
-    aov_df <-
-      broomExtra::tidy(stats::anova(object = object))
-  } else if (class(object)[[1]] %in% c("aov", "anova")) {
-    aov_df <- broomExtra::tidy(x = object)
+    aov_df <- broomExtra::tidy(stats::anova(object))
   } else if (class(object)[[1]] == "aovlist") {
     if (dim(dplyr::filter(broomExtra::tidy(object), stratum == "Within"))[[1]] != 0L) {
-      aov_df <- broomExtra::tidy(x = object) %>%
-        dplyr::filter(.data = ., stratum == "Within")
+      aov_df <- dplyr::filter(.data = broomExtra::tidy(object), stratum == "Within")
     } else {
-      aov_df <- broomExtra::tidy(x = object)
+      aov_df <- broomExtra::tidy(object)
     }
   } else {
-    aov_df <- broomExtra::tidy(x = object)
+    aov_df <- broomExtra::tidy(object)
   }
 
   # creating numerator and denominator degrees of freedom
@@ -70,32 +70,29 @@ lm_effsize_ci <- function(object,
 
   # cleaning up the dataframe
   aov_df %<>%
-    dplyr::select(
-      .data = ., -c(base::grep(pattern = "sq", x = names(.)))
-    ) %>%
-    # remove NAs, which would remove the row containing Residuals (redundant at this point)
+    dplyr::select(.data = ., -c(base::grep(pattern = "sq", x = names(.)))) %>%
+    # remove NAs, which would remove the row containing Residuals
+    # (redundant at this point)
     dplyr::rename(.data = ., df1 = df) %>%
-    stats::na.omit(.) %>%
+    tidyr::drop_na(.) %>%
     tibble::as_tibble(x = .)
 
-  # computing the effect sizes using sjstats
+  # function to compute effect sizes
   if (effsize == "eta") {
-    # creating dataframe of partial eta-squared effect size and its CI with sjstats
-    effsize_df <- suppressWarnings(sjstats::eta_sq(
-      model = object,
-      partial = partial,
-      ci.lvl = conf.level,
-      n = nboot
-    ))
+    .f <- sjstats::eta_sq
   } else {
-    # creating dataframe of partial omega-squared effect size and its CI with sjstats
-    effsize_df <- suppressWarnings(sjstats::omega_sq(
-      model = object,
-      partial = partial,
-      ci.lvl = conf.level,
-      n = nboot
-    ))
+    .f <- sjstats::omega_sq
   }
+
+  # computing effect size
+  effsize_df <- rlang::exec(
+    .fn = .f,
+    model = object,
+    partial = partial,
+    ci.lvl = conf.level,
+    n = nboot,
+    method = method
+  )
 
   if (class(object)[[1]] == "aovlist") {
     if (dim(dplyr::filter(effsize_df, stratum == "Within"))[[1]] != 0L) {
@@ -161,7 +158,8 @@ lm_effsize_standardizer <- function(object,
                                     effsize = "eta",
                                     partial = TRUE,
                                     conf.level = 0.95,
-                                    nboot = 500) {
+                                    nboot = 500,
+                                    method = c("dist", "quantile")) {
 
   # creating a dataframe with effect size and its CI
   df <- groupedstats::lm_effsize_ci(
@@ -169,7 +167,8 @@ lm_effsize_standardizer <- function(object,
     effsize = effsize,
     partial = partial,
     conf.level = conf.level,
-    nboot = nboot
+    nboot = nboot,
+    method = method
   )
 
   # renaming the particular effect size to standard term 'estimate'

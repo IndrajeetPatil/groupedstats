@@ -5,11 +5,9 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 0 note
 
 ## Comments
 
-  - Maintenance release that adds three new functions.
-  - 1 NOTE: `"Missing or unexported object: 'skimr::skim_to_wide'"` This is
-    deliberate behavior. The new version of `skimr 2.0` will be submitted to
-    `CRAN` soon and will remove `skimr::skim_to_wide()` function. 
+  - Minor refactoring to get rid of `broom` and `broom.mixed` as dependencies.
+  - None of the dependencies are affected by this change.

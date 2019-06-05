@@ -137,7 +137,7 @@ eta-squared effect size and its confidence interval.</p>
     </div>
 
     <pre class="usage"><span class='fu'>lm_effsize_ci</span>(<span class='no'>object</span>, <span class='kw'>effsize</span> <span class='kw'>=</span> <span class='st'>"eta"</span>, <span class='kw'>partial</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>, <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>500</span>)</pre>
+  <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>, <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>500</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"dist"</span>, <span class='st'>"quantile"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -169,6 +169,14 @@ interval (Default: <code>0.95</code>).</p></td>
       <td><p>Number of bootstrap samples for confidence intervals for partial
 eta-squared and omega-squared (Default: <code>500</code>).</p></td>
     </tr>
+    <tr>
+      <th>method</th>
+      <td><p>Character vector, indicating if confidence intervals should be
+based on bootstrap standard error, multiplied by the value of the
+quantile function of the t-distribution (default), or on sample
+quantiles of the bootstrapped values. See 'Details' in <code>boot_ci()</code>.
+May be abbreviated.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -187,11 +195,11 @@ omega-squared, and bootstrapped confidence interval for the same.</p>
   )
 
 <span class='co'># dataframe with effect size and confidence intervals</span>
-<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/lm_effsize_ci.html'>lm_effsize_ci</a></span>(<span class='no'>mod</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 2 x 9</span><span>
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/lm_effsize_ci.html'>lm_effsize_ci</a></span>(<span class='no'>mod</span>)</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 9</span><span>
 #&gt;   term  F.value   df1   df2 p.value partial.etasq conf.low conf.high stratum
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  
-#&gt; </span><span style='color: #555555;'>1</span><span> wt      12.0      1    27 0.001</span><span style='text-decoration: underline;'>76</span><span>         0.308   0.053</span><span style='text-decoration: underline;'>3</span><span>     0.520 Within 
-#&gt; </span><span style='color: #555555;'>2</span><span> qsec     4.72     1    27 0.038</span><span style='text-decoration: underline;'>7</span><span>          0.149   0          0.378 Within </div></span></pre>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> wt      12.0      1    27 0.001</span><span style='text-decoration: underline;'>76</span><span>         0.308   0.053</span><span style='text-decoration: underline;'>3</span><span>     0.520 Within 
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> qsec     4.72     1    27 0.038</span><span style='text-decoration: underline;'>7</span><span>          0.149   0          0.378 Within </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

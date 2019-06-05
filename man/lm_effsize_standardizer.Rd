@@ -6,7 +6,7 @@
 etc. objects.}
 \usage{
 lm_effsize_standardizer(object, effsize = "eta", partial = TRUE,
-  conf.level = 0.95, nboot = 500)
+  conf.level = 0.95, nboot = 500, method = c("dist", "quantile"))
 }
 \arguments{
 \item{object}{The linear model object (can be of class \code{lm}, \code{aov}, \code{anova}, or
@@ -25,6 +25,12 @@ interval (Default: \code{0.95}).}
 
 \item{nboot}{Number of bootstrap samples for confidence intervals for partial
 eta-squared and omega-squared (Default: \code{500}).}
+
+\item{method}{Character vector, indicating if confidence intervals should be
+based on bootstrap standard error, multiplied by the value of the
+quantile function of the t-distribution (default), or on sample
+quantiles of the bootstrapped values. See 'Details' in \code{boot_ci()}.
+May be abbreviated.}
 }
 \description{
 The difference between \code{lm_effsize_ci} and
