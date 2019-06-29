@@ -1,6 +1,6 @@
 Tests and Coverage
 ================
-21 May, 2019 19:55:34
+28 June, 2019 22:40:52
 
   - [Coverage](#coverage)
   - [Unit Tests](#unit-tests)
@@ -15,7 +15,7 @@ Coverage summary is created using the
 
 | Object                                              | Coverage (%) |
 | :-------------------------------------------------- | :----------: |
-| groupedstats                                        |     3.37     |
+| groupedstats                                        |     3.51     |
 | [R/grouped\_aov.R](../R/grouped_aov.R)              |     0.00     |
 | [R/grouped\_glm.R](../R/grouped_glm.R)              |     0.00     |
 | [R/grouped\_glmer.R](../R/grouped_glmer.R)          |     0.00     |
@@ -41,9 +41,10 @@ Unit Test summary is created using the
 
 | file                                                             | n | time | error | failed | skipped | warning | icon |
 | :--------------------------------------------------------------- | -: | ---: | ----: | -----: | ------: | ------: | :--- |
-| [test\_lm\_effsize\_ci.R](testthat/test_lm_effsize_ci.R)         | 5 | 0.03 |     0 |      0 |       5 |       0 | \+   |
+| [test\_grouped\_summary.R](testthat/test_grouped_summary.R)      | 2 | 0.00 |     0 |      0 |       2 |       0 | \+   |
+| [test\_lm\_effsize\_ci.R](testthat/test_lm_effsize_ci.R)         | 5 | 0.00 |     0 |      0 |       5 |       0 | \+   |
 | [test\_signif\_column.R](testthat/test_signif_column.R)          | 7 | 0.01 |     0 |      0 |       0 |       0 |      |
-| [test\_specify\_decimal\_p.R](testthat/test_specify_decimal_p.R) | 8 | 0.02 |     0 |      0 |       0 |       0 |      |
+| [test\_specify\_decimal\_p.R](testthat/test_specify_decimal_p.R) | 8 | 0.00 |     0 |      0 |       0 |       0 |      |
 
 <details open>
 
@@ -51,13 +52,15 @@ Unit Test summary is created using the
 
 | file                                                                 | context          | test                                           | status  | n | time | icon |
 | :------------------------------------------------------------------- | :--------------- | :--------------------------------------------- | :------ | -: | ---: | :--- |
-| [test\_lm\_effsize\_ci.R](testthat/test_lm_effsize_ci.R#L8)          | lm\_effsize\_ci  | lm\_effsize\_ci works (eta, partial = FALSE)   | SKIPPED | 1 | 0.02 | \+   |
-| [test\_lm\_effsize\_ci.R](testthat/test_lm_effsize_ci.R#L131)        | lm\_effsize\_ci  | lm\_effsize\_ci works (eta, partial = TRUE)    | SKIPPED | 1 | 0.01 | \+   |
+| [test\_grouped\_summary.R](testthat/test_grouped_summary.R#L8)       | grouped\_summary | grouped\_summary with numeric measures         | SKIPPED | 1 | 0.00 | \+   |
+| [test\_grouped\_summary.R](testthat/test_grouped_summary.R#L57)      | grouped\_summary | grouped\_summary with factor measures          | SKIPPED | 1 | 0.00 | \+   |
+| [test\_lm\_effsize\_ci.R](testthat/test_lm_effsize_ci.R#L8)          | lm\_effsize\_ci  | lm\_effsize\_ci works (eta, partial = FALSE)   | SKIPPED | 1 | 0.00 | \+   |
+| [test\_lm\_effsize\_ci.R](testthat/test_lm_effsize_ci.R#L131)        | lm\_effsize\_ci  | lm\_effsize\_ci works (eta, partial = TRUE)    | SKIPPED | 1 | 0.00 | \+   |
 | [test\_lm\_effsize\_ci.R](testthat/test_lm_effsize_ci.R#L232)        | lm\_effsize\_ci  | lm\_effsize\_ci works (omega, partial = FALSE) | SKIPPED | 1 | 0.00 | \+   |
 | [test\_lm\_effsize\_ci.R](testthat/test_lm_effsize_ci.R#L346)        | lm\_effsize\_ci  | lm\_effsize\_ci works (omega, partial = TRUE)  | SKIPPED | 1 | 0.00 | \+   |
 | [test\_lm\_effsize\_ci.R](testthat/test_lm_effsize_ci.R#L459)        | lm\_effsize\_ci  | lm\_effsize\_ci works with ezANOVA             | SKIPPED | 1 | 0.00 | \+   |
 | [test\_signif\_column.R](testthat/test_signif_column.R#L36)          | signif column    | signif\_column works                           | PASS    | 7 | 0.01 |      |
-| [test\_specify\_decimal\_p.R](testthat/test_specify_decimal_p.R#L23) | Specify decimals | specify\_decimal\_p works                      | PASS    | 8 | 0.02 |      |
+| [test\_specify\_decimal\_p.R](testthat/test_specify_decimal_p.R#L23) | Specify decimals | specify\_decimal\_p works                      | PASS    | 8 | 0.00 |      |
 
 | Failed | Warning | Skipped |
 | :----- | :------ | :------ |

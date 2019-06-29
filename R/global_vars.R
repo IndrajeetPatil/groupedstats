@@ -126,7 +126,13 @@ utils::globalVariables(
     "std.error",
     "..group",
     "stratum",
-    "adj.p.value"
+    "adj.p.value",
+    "numeric.mean",
+    "numeric.n",
+    "numeric.p0",
+    "numeric.p100",
+    "numeric.p50",
+    "numeric.sd"
   ),
   package = "groupedstats",
   add = FALSE

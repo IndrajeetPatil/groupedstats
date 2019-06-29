@@ -39,18 +39,17 @@ grouping variable levels
 
 # another possibility
 groupedstats::grouped_summary(
-  data = datasets::iris,
+  data = iris,
   grouping.vars = Species,
   measures = Sepal.Length:Petal.Width,
   measures.type = "numeric"
 )
 
-# if you have just one variable per argument, you need not use `c()`
+# if no measures are chosen, all relevant columns will be summarized
 groupedstats::grouped_summary(
-  data = datasets::ToothGrowth,
-  grouping.vars = supp,
-  measures = len,
-  measures.type = "numeric"
+  data = ggplot2::msleep,
+  grouping.vars = vore,
+  measures.type = "factor"
 )
 }
 \author{

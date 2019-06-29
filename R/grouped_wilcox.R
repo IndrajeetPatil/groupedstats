@@ -21,6 +21,8 @@
 #' @importFrom stats wilcox.test as.formula
 #' @importFrom tidyr nest
 #'
+#' @seealso \code{\link{grouped_tidy}}
+#'
 #' @examples
 #'
 #' # only with one grouping variable
@@ -87,56 +89,55 @@ grouped_wilcox <- function(data,
   # ============== custom function ================
 
   # custom function to run linear regression for every element of a list for two variables
-  lm_listed <-
-    function(list.col,
-                 x_name,
-                 y_name,
-                 paired,
-                 correct) {
-      # plain version of the formula to return
-      fx <- glue::glue("{y_name} ~ {x_name}")
+  lm_listed <- function(list.col,
+                          x_name,
+                          y_name,
+                          paired,
+                          correct) {
+    # plain version of the formula to return
+    fx <- glue::glue("{y_name} ~ {x_name}")
 
-      # dataframe with results from wilcox tests
-      results_df <-
-        list.col %>% # running two-sample Wilcoxon tests on each individual group with purrr
-        purrr::map(
-          .x = .,
-          .f = ~ stats::wilcox.test(
-            formula = stats::as.formula(fx),
-            mu = 0,
-            paired = paired,
-            alternative = "two.sided",
-            conf.level = 0.95,
-            na.action = na.omit,
-            exact = NULL,
-            correct = correct,
-            conf.int = TRUE,
-            data = (.)
-          )
-        ) %>% # tidying up the output with broom
-        purrr::map_dfr(
-          .x = .,
-          .f = ~ broomExtra::tidy(x = .),
-          .id = "..group"
-        ) %>% # add formula as a character
-        dplyr::mutate(.data = ., formula = as.character(fx)) %>% # rearrange the dataframe
-        dplyr::select(
-          .data = .,
-          `..group`,
-          formula,
-          method,
-          statistic,
-          estimate,
-          conf.low,
-          conf.high,
-          p.value,
-          alternative
-        ) %>% # convert to a tibble dataframe
-        tibble::as_tibble(x = .)
+    # dataframe with results from wilcox tests
+    results_df <-
+      list.col %>% # running two-sample Wilcoxon tests on each individual group with purrr
+      purrr::map(
+        .x = .,
+        .f = ~ stats::wilcox.test(
+          formula = stats::as.formula(fx),
+          mu = 0,
+          paired = paired,
+          alternative = "two.sided",
+          conf.level = 0.95,
+          na.action = na.omit,
+          exact = NULL,
+          correct = correct,
+          conf.int = TRUE,
+          data = (.)
+        )
+      ) %>% # tidying up the output with broom
+      purrr::map_dfr(
+        .x = .,
+        .f = ~ broomExtra::tidy(x = .),
+        .id = "..group"
+      ) %>% # add formula as a character
+      dplyr::mutate(.data = ., formula = as.character(fx)) %>% # rearrange the dataframe
+      dplyr::select(
+        .data = .,
+        `..group`,
+        formula,
+        method,
+        statistic,
+        estimate,
+        conf.low,
+        conf.high,
+        p.value,
+        alternative
+      ) %>% # convert to a tibble dataframe
+      tibble::as_tibble(x = .)
 
-      # return the dataframe
-      return(results_df)
-    }
+    # return the dataframe
+    return(results_df)
+  }
 
   # ========= using  custom function on entered dataframe =================
 
