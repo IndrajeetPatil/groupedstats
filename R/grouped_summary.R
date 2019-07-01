@@ -53,6 +53,12 @@ grouped_summary <- function(data,
                             measures = NULL,
                             measures.type = "numeric",
                             topcount.long = FALSE) {
+  # check -------------------------------------------------------------------
+
+  if (utils::packageVersion("skimr") >= "2.0") {
+    stop(message("This package is currently not compatible with `skimr 2.0` package."))
+  }
+
   # data -------------------------------------------------------------------
 
   # check how many variables were entered for this grouping variable
@@ -73,7 +79,7 @@ grouped_summary <- function(data,
   if (missing(measures)) {
     df <- data
   } else {
-    df <- dplyr::select(.data = data, !!!grouping.vars, !!rlang::enquo(measures))
+    df <- dplyr::select(.data = data, !!!grouping.vars, {{ measures }})
   }
 
   # summary -------------------------------------------------------------------
@@ -84,59 +90,34 @@ grouped_summary <- function(data,
       .tbl = .,
       .vars = dplyr::vars(!!!grouping.vars),
       .vars_predicate = dplyr::any_vars(!is.na(.))
+    ) %>%
+    dplyr::mutate_if(
+      .tbl = .,
+      .predicate = purrr::is_bare_character,
+      .funs = as.factor
     )
 
-  # obtaining grouped summaries
+  # what to retain depends on the type of columns needed
   if (measures.type == "numeric") {
-    df_results <- df %>%
-      dplyr::group_by(.data = ., !!!grouping.vars, .drop = TRUE) %>%
-      dplyr::group_modify(
-        .tbl = .,
-        .f = ~ tryCatch(
-          expr = tibble::as_tibble(skimr::skim_to_wide(
-            purrr::keep(
-              .x = .,
-              .p = purrr::is_bare_numeric
-            )
-          )),
-          error = tibble::as_tibble(skimr::skim(
-            purrr::keep(
-              .x = .,
-              .p = purrr::is_bare_numeric
-            )
-          ))
-        ),
-        keep = FALSE
-      ) %>%
-      dplyr::ungroup(x = .)
+    ..f <- purrr::is_bare_numeric
   } else {
-    df_results <- df %>%
-      dplyr::mutate_if(
-        .tbl = .,
-        .predicate = purrr::is_bare_character,
-        .funs = as.factor
-      ) %>%
-      dplyr::group_by(.data = ., !!!grouping.vars, .drop = TRUE) %>%
-      dplyr::group_modify(
-        .tbl = .,
-        .f = ~ tryCatch(
-          expr = tibble::as_tibble(skimr::skim_to_wide(
-            purrr::keep(
-              .x = .,
-              .p = is.factor
-            )
-          )),
-          error = tibble::as_tibble(skimr::skim(
-            purrr::keep(
-              .x = .,
-              .p = is.factor
-            )
-          ))
-        ),
-        keep = FALSE
-      ) %>%
-      dplyr::ungroup(x = .)
+    ..f <- base::is.factor
   }
+
+  # skimming across groups
+  df_results <- df %>%
+    dplyr::group_by(.data = ., !!!grouping.vars, .drop = TRUE) %>%
+    dplyr::group_modify(
+      .tbl = .,
+      .f = ~ tibble::as_tibble(skimr::skim_to_wide(
+        purrr::keep(
+          .x = .,
+          .p = ..f
+        )
+      )),
+      keep = FALSE
+    ) %>%
+    dplyr::ungroup(x = .)
 
   # factor long format conversion --------------------------------------------
 
@@ -180,62 +161,34 @@ grouped_summary <- function(data,
   # renaming numeric variable ----------------------------------------------
 
   if (measures.type == "numeric") {
-    if (utils::packageVersion("skimr") < "2.0") {
-      # changing class of summary variables if these are numeric variables
-      df_summary <-
-        df_results %>%
-        dplyr::mutate_at(
-          .tbl = .,
-          .vars = dplyr::vars(missing:p100),
-          .funs = ~ as.numeric(as.character(.)) # change summary variables to numeric
-        ) %>% # renaming variables to more common terminology
-        dplyr::rename(
-          .data = .,
-          min = p0,
-          median = p50,
-          max = p100
-        ) %>% # computing more descriptive indices
-        dplyr::mutate(
-          .data = .,
-          std.error = sd / sqrt(n),
-          mean.low.conf = mean - stats::qt(
-            p = 1 - (0.05 / 2),
-            df = n - 1,
-            lower.tail = TRUE
-          ) * std.error,
-          mean.high.conf = mean + stats::qt(
-            p = 1 - (0.05 / 2),
-            df = n - 1,
-            lower.tail = TRUE
-          ) * std.error
-        )
-    } else {
-      df_summary <-
-        df_results %>% # renaming variables to more common terminology
-        dplyr::rename(
-          .data = .,
-          mean = numeric.mean,
-          min = numeric.p0,
-          median = numeric.p50,
-          max = numeric.p100,
-          sd = numeric.sd,
-          n = numeric.n
-        ) %>% # computing more descriptive indices
-        dplyr::mutate(
-          .data = .,
-          std.error = sd / sqrt(n),
-          mean.low.conf = mean - stats::qt(
-            p = 1 - (0.05 / 2),
-            df = n - 1,
-            lower.tail = TRUE
-          ) * std.error,
-          mean.high.conf = mean + stats::qt(
-            p = 1 - (0.05 / 2),
-            df = n - 1,
-            lower.tail = TRUE
-          ) * std.error
-        )
-    }
+    # changing class of summary variables if these are numeric variables
+    df_summary <-
+      df_results %>%
+      dplyr::mutate_at(
+        .tbl = .,
+        .vars = dplyr::vars(missing:p100),
+        .funs = ~ as.numeric(as.character(.)) # change summary variables to numeric
+      ) %>% # renaming variables to more common terminology
+      dplyr::rename(
+        .data = .,
+        min = p0,
+        median = p50,
+        max = p100
+      ) %>% # computing more descriptive indices
+      dplyr::mutate(
+        .data = .,
+        std.error = sd / sqrt(n),
+        mean.low.conf = mean - stats::qt(
+          p = 1 - (0.05 / 2),
+          df = n - 1,
+          lower.tail = TRUE
+        ) * std.error,
+        mean.high.conf = mean + stats::qt(
+          p = 1 - (0.05 / 2),
+          df = n - 1,
+          lower.tail = TRUE
+        ) * std.error
+      )
   } else {
     df_summary <- df_results
   }
