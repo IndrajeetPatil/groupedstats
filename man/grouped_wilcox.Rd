@@ -44,6 +44,9 @@ groupedstats::grouped_wilcox(
   paired = FALSE
 )
 }
+\seealso{
+\code{\link{grouped_tidy}}
+}
 \author{
 Indrajeet Patil
 }

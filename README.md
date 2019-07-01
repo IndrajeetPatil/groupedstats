@@ -25,7 +25,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--06--05-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--07--01-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
@@ -232,30 +232,30 @@ groupedstats::grouped_summary(
   measures.type = "factor"
 )
 #> # A tibble: 40 x 10
-#>    cut       clarity type   variable missing complete n     n_unique
-#>    <ord>     <ord>   <chr>  <chr>    <chr>   <chr>    <chr> <chr>   
-#>  1 Ideal     SI2     factor color    0       2598     2598  7       
-#>  2 Premium   SI1     factor color    0       3575     3575  7       
-#>  3 Good      VS1     factor color    0       648      648   7       
-#>  4 Premium   VS2     factor color    0       3357     3357  7       
-#>  5 Good      SI2     factor color    0       1081     1081  7       
-#>  6 Very Good VVS2    factor color    0       1235     1235  7       
-#>  7 Very Good VVS1    factor color    0       789      789   7       
-#>  8 Very Good SI1     factor color    0       3240     3240  7       
-#>  9 Fair      VS2     factor color    0       261      261   7       
-#> 10 Very Good VS1     factor color    0       1775     1775  7       
+#>    cut   clarity type   variable missing complete n     n_unique
+#>    <ord> <ord>   <chr>  <chr>    <chr>   <chr>    <chr> <chr>   
+#>  1 Fair  I1      factor color    0       210      210   7       
+#>  2 Fair  SI2     factor color    0       466      466   7       
+#>  3 Fair  SI1     factor color    0       408      408   7       
+#>  4 Fair  VS2     factor color    0       261      261   7       
+#>  5 Fair  VS1     factor color    0       170      170   7       
+#>  6 Fair  VVS2    factor color    0       69       69    7       
+#>  7 Fair  VVS1    factor color    0       17       17    7       
+#>  8 Fair  IF      factor color    0       9        9     3       
+#>  9 Good  I1      factor color    0       96       96    7       
+#> 10 Good  SI2     factor color    0       1081     1081  7       
 #>    top_counts                     ordered
 #>    <chr>                          <chr>  
-#>  1 G: 486, E: 469, F: 453, H: 450 TRUE   
-#>  2 H: 655, E: 614, F: 608, G: 566 TRUE   
-#>  3 G: 152, F: 132, I: 103, E: 89  TRUE   
-#>  4 G: 721, E: 629, F: 619, H: 532 TRUE   
-#>  5 D: 223, E: 202, F: 201, G: 163 TRUE   
-#>  6 G: 302, E: 298, F: 249, H: 145 TRUE   
-#>  7 G: 190, F: 174, E: 170, H: 115 TRUE   
-#>  8 E: 626, F: 559, H: 547, D: 494 TRUE   
-#>  9 F: 53, G: 45, E: 42, H: 41     TRUE   
-#> 10 G: 432, E: 293, F: 293, H: 257 TRUE   
+#>  1 G: 53, H: 52, F: 35, I: 34     TRUE   
+#>  2 H: 91, F: 89, G: 80, E: 78     TRUE   
+#>  3 F: 83, H: 75, G: 69, E: 65     TRUE   
+#>  4 F: 53, G: 45, E: 42, H: 41     TRUE   
+#>  5 G: 45, F: 33, H: 32, I: 25     TRUE   
+#>  6 G: 17, E: 13, H: 11, F: 10     TRUE   
+#>  7 F: 5, D: 3, E: 3, G: 3         TRUE   
+#>  8 F: 4, D: 3, G: 2, E: 0         TRUE   
+#>  9 E: 23, F: 19, G: 19, H: 14     TRUE   
+#> 10 D: 223, E: 202, F: 201, G: 163 TRUE   
 #> # ... with 30 more rows
 ```
 
@@ -274,9 +274,6 @@ library(ggstatsplot)
 #>   cooks.distance.influence.merMod lme4
 #>   dfbeta.influence.merMod         lme4
 #>   dfbetas.influence.merMod        lme4
-#> Registered S3 method overwritten by 'coin':
-#>   method   from      
-#>   print.ci bayestestR
 
 options(tibble.width = Inf) # show me all columns
 
@@ -300,7 +297,6 @@ groupedstats::grouped_summary(
   ggplot2::facet_grid(facets = ~cut) + # for each level of the factor level
   ggstatsplot::theme_mprl() +
   ggplot2::theme(legend.position = "none")
-#> Joining, by = "cut"
 ```
 
 <img src="man/figures/README-grouped_summary3-1.png" width="100%" />
@@ -318,42 +314,42 @@ groupedstats::grouped_summary(
   grouping.vars = c(cut, clarity)
 )
 #> # A tibble: 280 x 17
-#>    cut     clarity type    variable missing complete     n    mean      sd
-#>    <ord>   <ord>   <chr>   <chr>      <dbl>    <dbl> <dbl>   <dbl>   <dbl>
-#>  1 Ideal   SI2     integer price          0     2598  2598 4756.   4252.  
-#>  2 Ideal   SI2     numeric carat          0     2598  2598    1.01    0.51
-#>  3 Ideal   SI2     numeric depth          0     2598  2598   61.7     0.82
-#>  4 Ideal   SI2     numeric table          0     2598  2598   56.1     1.3 
-#>  5 Ideal   SI2     numeric x              0     2598  2598    6.26    1.07
-#>  6 Ideal   SI2     numeric y              0     2598  2598    6.27    1.05
-#>  7 Ideal   SI2     numeric z              0     2598  2598    3.87    0.66
-#>  8 Premium SI1     integer price          0     3575  3575 4455.   4071.  
-#>  9 Premium SI1     numeric carat          0     3575  3575    0.91    0.48
-#> 10 Premium SI1     numeric depth          0     3575  3575   61.3     1.17
+#>    cut   clarity type    variable missing complete     n    mean      sd
+#>    <ord> <ord>   <chr>   <chr>      <dbl>    <dbl> <dbl>   <dbl>   <dbl>
+#>  1 Fair  I1      integer price          0      210   210 3704.   3099.  
+#>  2 Fair  I1      numeric carat          0      210   210    1.36    0.75
+#>  3 Fair  I1      numeric depth          0      210   210   65.7     3.1 
+#>  4 Fair  I1      numeric table          0      210   210   58.1     2.87
+#>  5 Fair  I1      numeric x              0      210   210    6.72    1.11
+#>  6 Fair  I1      numeric y              0      210   210    6.62    1.13
+#>  7 Fair  I1      numeric z              0      210   210    4.39    0.76
+#>  8 Fair  SI2     integer price          0      466   466 5174.   3928.  
+#>  9 Fair  SI2     numeric carat          0      466   466    1.2     0.5 
+#> 10 Fair  SI2     numeric depth          0      466   466   64.4     3.16
 #>       min     p25  median     p75      max std.error mean.low.conf
 #>     <dbl>   <dbl>   <dbl>   <dbl>    <dbl>     <dbl>         <dbl>
-#>  1 326    1443    4060.   5402.   18804     83.4          4592.   
-#>  2   0.23    0.62    1       1.2      3.01   0.0100          0.990
-#>  3  58.3    61.2    61.8    62.3     65.5    0.0161         61.7  
-#>  4  52      55      56      57       62      0.0255         56.1  
-#>  5   0       5.5     6.4     6.82     9.25   0.0210          6.22 
-#>  6   3.98    5.53    6.4     6.82     9.2    0.0206          6.23 
-#>  7   0       3.38    3.95    4.21     5.69   0.0129          3.84 
-#>  8 326    1200.   3618    5597    18797     68.1          4322.   
-#>  9   0.21    0.5     0.9     1.15     2.57   0.00803         0.894
-#> 10  58      60.5    61.5    62.3     63      0.0196         61.3  
+#>  1 584    1387.   2397    5614.   18531     214.           3282.  
+#>  2   0.34    0.85    1.06    1.82     5.01    0.0518          1.26
+#>  3  55.6    64.7    66.0    67.3     78.2     0.214          65.3 
+#>  4  52      56      58      59       67       0.198          57.7 
+#>  5   4.72    5.96    6.55    7.46    10.7     0.0766          6.57
+#>  6   4.6     5.82    6.42    7.38    10.5     0.0780          6.47
+#>  7   2.6     3.77    4.22    4.86     6.98    0.0524          4.29
+#>  8 536    2763    3681    6266.   18308     182.           4816.  
+#>  9   0.25    0.9     1.01    1.5      3.01    0.0232          1.15
+#> 10  53.1    64.5    65.1    65.9     72.2     0.146          64.1 
 #>    mean.high.conf
 #>             <dbl>
-#>  1       4920.   
-#>  2          1.03 
-#>  3         61.7  
-#>  4         56.2  
-#>  5          6.30 
-#>  6          6.31 
-#>  7          3.90 
-#>  8       4589.   
-#>  9          0.926
-#> 10         61.3  
+#>  1        4125.  
+#>  2           1.46
+#>  3          66.1 
+#>  4          58.5 
+#>  5           6.87
+#>  6           6.77
+#>  7           4.49
+#>  8        5531.  
+#>  9           1.25
+#> 10          64.7 
 #> # ... with 270 more rows
 ```
 
