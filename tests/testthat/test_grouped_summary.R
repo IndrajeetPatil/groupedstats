@@ -5,7 +5,6 @@ context("grouped_summary")
 testthat::test_that(
   desc = "grouped_summary with numeric measures",
   code = {
-    testthat::skip_on_cran()
 
     set.seed(123)
 
@@ -63,7 +62,6 @@ testthat::test_that(
 testthat::test_that(
   desc = "grouped_summary with factor measures",
   code = {
-    testthat::skip_on_cran()
 
     set.seed(123)
 

@@ -18,10 +18,10 @@
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.6.0",
+    "version": "3.6.1",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.6.0 (2019-04-26)",
+  "runtimePlatform": "R version 3.6.1 (2019-07-05)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -193,7 +193,7 @@
       "@type": "SoftwareApplication",
       "identifier": "dplyr",
       "name": "dplyr",
-      "version": ">= 0.8.2",
+      "version": ">= 0.8.3",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -271,7 +271,7 @@
       "@type": "SoftwareApplication",
       "identifier": "robust",
       "name": "robust",
-      "version": ">= 0.4-18",
+      "version": ">= 0.4-18.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -358,7 +358,7 @@
   ],
   "releaseNotes": "https://github.com/IndrajeetPatil/groupedstats/blob/master/NEWS.md",
   "readme": "https://github.com/IndrajeetPatil/groupedstats/blob/master/README.md",
-  "fileSize": "155.231KB",
+  "fileSize": "164.816KB",
   "contIntegration": [
     "https://travis-ci.org/IndrajeetPatil/groupedstats",
     "https://ci.appveyor.com/project/IndrajeetPatil/groupedstats",

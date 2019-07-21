@@ -5,8 +5,6 @@ context("lm_effsize_ci")
 testthat::test_that(
   desc = "lm_effsize_ci works (eta, partial = FALSE)",
   code = {
-    testthat::skip_on_cran()
-
 
     # creating lm object-1
     set.seed(123)
@@ -128,8 +126,6 @@ testthat::test_that(
 testthat::test_that(
   desc = "lm_effsize_ci works (eta, partial = TRUE)",
   code = {
-    testthat::skip_on_cran()
-
 
     # creating lm object-1
     set.seed(123)
@@ -229,8 +225,6 @@ testthat::test_that(
 testthat::test_that(
   desc = "lm_effsize_ci works (omega, partial = FALSE)",
   code = {
-    testthat::skip_on_cran()
-
 
     # creating lm object-1
     set.seed(123)
@@ -343,8 +337,6 @@ testthat::test_that(
 testthat::test_that(
   desc = "lm_effsize_ci works (omega, partial = TRUE)",
   code = {
-    testthat::skip_on_cran()
-
 
     # creating lm object-1
     set.seed(123)
@@ -456,9 +448,6 @@ testthat::test_that(
 testthat::test_that(
   desc = "lm_effsize_ci works with ezANOVA",
   code = {
-    testthat::skip_on_cran()
-
-
     set.seed(123)
     library(ez)
     data(ANT)

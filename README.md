@@ -25,8 +25,8 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--07--01-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
-[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-red.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--07--21-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
 [![Coverage
@@ -58,10 +58,19 @@ few example cases-
     reaction time).
 4.  Combination of all of the above.
 
-This package is still work in progress and it currently supports only
-the most basic statistical operations (from `stats` and `lme4` package).
-The next releases will expand on the existing functionality (e.g.,
-`ordinal`).
+**Important**: <br>
+
+This package is no longer under active development and no new
+functionality will be added. The package will continue to be available
+on `CRAN` and all releases will primarily be focused on maintenance and
+bug fixes. This is because `dplyr 0.8.1` introduced `group_map()`,
+`group_modify()` and `group_walk()` functions that can be used to
+iterate on grouped dataframes. So if you want to do `grouped_`
+operations, I would highly recommend using these functions over
+`groupedstats` functions since the former are much more general,
+efficient, and faster than the latter.
+
+For more see, <https://dplyr.tidyverse.org/reference/group_map.html>
 
 # Installation
 
