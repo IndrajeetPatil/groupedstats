@@ -68,11 +68,10 @@ lm_effsize_ci <- function(object,
     aov_df$df2 <- aov_df$df[aov_df$term == "Residuals"]
   }
 
-  # cleaning up the dataframe
+  # remove NAs, which would remove the row containing Residuals
+  # (redundant at this point)
   aov_df %<>%
-    dplyr::select(.data = ., -c(base::grep(pattern = "sq", x = names(.)))) %>%
-    # remove NAs, which would remove the row containing Residuals
-    # (redundant at this point)
+    dplyr::select(.data = ., -c(grep(pattern = "sq", x = names(.)))) %>%
     dplyr::rename(.data = ., df1 = df) %>%
     tidyr::drop_na(.) %>%
     tibble::as_tibble(x = .)
@@ -96,18 +95,18 @@ lm_effsize_ci <- function(object,
 
   if (class(object)[[1]] == "aovlist") {
     if (dim(dplyr::filter(effsize_df, stratum == "Within"))[[1]] != 0L) {
-      effsize_df %<>%
-        dplyr::filter(.data = ., stratum == "Within")
+      effsize_df %<>% dplyr::filter(.data = ., stratum == "Within")
     }
   }
 
   # combining the dataframes
   # merge the two preceding pieces of information by the common element of Effect
-  combined_df <- dplyr::left_join(
-    x = aov_df,
-    y = effsize_df,
-    by = "term"
-  ) %>% # reordering columns
+  combined_df <-
+    dplyr::left_join(
+      x = aov_df,
+      y = effsize_df,
+      by = "term"
+    ) %>% # reordering columns
     dplyr::select(
       .data = .,
       term,
@@ -121,7 +120,7 @@ lm_effsize_ci <- function(object,
   # in case of within-subjects design, the stratum columns will be unnecessarily added
   if ("stratum.x" %in% names(combined_df)) {
     combined_df %<>%
-      dplyr::select(.data = ., -c(base::grep(pattern = "stratum", x = names(.)))) %>%
+      dplyr::select(.data = ., -c(grep(pattern = "stratum", x = names(.)))) %>%
       dplyr::mutate(.data = ., stratum = "Within")
   }
 
@@ -172,25 +171,21 @@ lm_effsize_standardizer <- function(object,
   )
 
   # renaming the particular effect size to standard term 'estimate'
+  # eta-squared
   if (effsize == "eta") {
-    # partial eta-squared
     if (isTRUE(partial)) {
-      df %<>%
-        dplyr::rename(.data = ., estimate = partial.etasq)
+      df %<>% dplyr::rename(.data = ., estimate = partial.etasq)
     } else {
-      # eta-squared
-      df %<>%
-        dplyr::rename(.data = ., estimate = etasq)
+      df %<>% dplyr::rename(.data = ., estimate = etasq)
     }
-  } else if (effsize == "omega") {
-    # partial omega-squared
+  }
+
+  # omega-squared
+  if (effsize == "omega") {
     if (isTRUE(partial)) {
-      df %<>%
-        dplyr::rename(.data = ., estimate = partial.omegasq)
+      df %<>% dplyr::rename(.data = ., estimate = partial.omegasq)
     } else {
-      # omega-squared
-      df %<>%
-        dplyr::rename(.data = ., estimate = omegasq)
+      df %<>% dplyr::rename(.data = ., estimate = omegasq)
     }
   }
 

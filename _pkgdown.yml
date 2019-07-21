@@ -1,6 +1,5 @@
 url: https://indrajeetpatil.github.io/groupedstats/
 
-
 template:
   params:
     docsearch:
@@ -8,15 +7,12 @@ template:
       index_name: groupedstats
     bootswatch: lumen
 
-
 development:
   mode: unreleased
-
 
 authors:
   Indrajeet Patil:
     href: https://sites.google.com/site/indrajeetspatilmorality/
-
 
 reference:
 

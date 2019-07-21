@@ -1,5 +1,8 @@
 # groupedstats 0.0.7.9000
 
+  - Flags in `README` that this package is retired and future releases will
+    focus only on maintenance and bug fixes. 
+
 # groupedstats 0.0.7
 
   - Maintenance release. The only change is that the package relies on
