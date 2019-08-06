@@ -2,8 +2,8 @@
 % Please edit documentation in R/grouped_ttest.R
 \name{grouped_ttest}
 \alias{grouped_ttest}
-\title{Function to run t-test on multiple variables across multiple grouping
-variables.}
+\title{Function to run \emph{t}-test on multiple variables across multiple
+grouping variables.}
 \usage{
 grouped_ttest(data, dep.vars, indep.vars, grouping.vars, paired = FALSE,
   var.equal = FALSE)
@@ -11,27 +11,27 @@ grouped_ttest(data, dep.vars, indep.vars, grouping.vars, paired = FALSE,
 \arguments{
 \item{data}{Dataframe from which variables are to be taken.}
 
-\item{dep.vars}{List dependent variables for a t-test (\code{y} in \code{y ~ x}).}
+\item{dep.vars}{List dependent variables for a \emph{t}-test (\code{y} in \code{y ~ x}).}
 
-\item{indep.vars}{List independent variables for a t-test (\code{x} in \code{y ~ x}).}
+\item{indep.vars}{List independent variables for a \emph{t}-test (\code{x} in \code{y ~ x}).}
 
 \item{grouping.vars}{List of grouping variables.}
 
-\item{paired}{A logical indicating whether you want a paired t-test (Default:
-\code{paired = FALSE}; independent t-test, i.e.).}
+\item{paired}{A logical indicating whether you want a paired \emph{t}-test (Default:
+\code{paired = FALSE}; independent \emph{t}-test, i.e.).}
 
 \item{var.equal}{A logical variable indicating whether to treat the two
 variances as being equal. If \code{TRUE}, then the pooled variance is used to
 estimate the variance otherwise the Welch (or Satterthwaite) approximation
 to the degrees of freedom is used (Default: \code{var.equal = FALSE}; Welch's
-t-test, i.e.).}
+\emph{t}-test, i.e.).}
 }
 \value{
-A tibble dataframe with tidy results from t-test analyses.
+A tibble dataframe with tidy results from \emph{t}-test analyses.
 }
 \description{
-Function to run t-test on multiple variables across multiple grouping
-variables.
+Function to run \emph{t}-test on multiple variables across multiple
+grouping variables.
 }
 \examples{
 # for reproducibility
