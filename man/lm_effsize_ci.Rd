@@ -42,8 +42,10 @@ containing statistical details for all effects along with partial
 eta-squared effect size and its confidence interval.
 }
 \examples{
-# model
+# for reproducibility
 set.seed(123)
+
+# model
 mod <-
   stats::aov(
     formula = mpg ~ wt + qsec + Error(disp / am),

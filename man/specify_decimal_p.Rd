@@ -2,21 +2,20 @@
 % Please edit documentation in R/specify_decimal_p.R
 \name{specify_decimal_p}
 \alias{specify_decimal_p}
-\title{Custom function for getting specified number of decimal places in
-results for p-value}
+\title{Formatting numeric (\emph{p}-)values}
 \usage{
 specify_decimal_p(x, k = 3, p.value = FALSE)
 }
 \arguments{
-\item{x}{A numeric variable.}
+\item{x}{A numeric value.}
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 3}).}
 
-\item{p.value}{Decides whether the number is a p-value (Default: \code{FALSE}).}
+\item{p.value}{Decides whether the number is a \emph{p}-value (Default: \code{FALSE}).}
 }
 \value{
-Formatted numeric values.
+Formatted numeric value.
 }
 \description{
 Function to format an R object for pretty printing with a
@@ -24,13 +23,14 @@ specified (\code{k}) number of decimal places. The function also allows really
 small \emph{p}-values to be denoted as \code{"p < 0.001"} rather than \code{"p = 0.000"}.
 Note that if \code{p.value} is set to \code{TRUE}, the minimum value of \code{k} allowed
 is \code{3}. If \code{k} is set to less than 3, the function will ignore entered \code{k}
-value and use \code{k = 3} instead.
+value and use \code{k = 3} instead. \strong{Important}: This function is not
+vectorized.
 }
 \examples{
-
-groupedstats::specify_decimal_p(x = 0.00001, k = 2, p.value = TRUE)
-groupedstats::specify_decimal_p(x = 0.008, k = 2, p.value = TRUE)
-groupedstats::specify_decimal_p(x = 0.008, k = 3, p.value = FALSE)
+library(groupedstats)
+specify_decimal_p(x = 0.00001, k = 2, p.value = TRUE)
+specify_decimal_p(x = 0.008, k = 2, p.value = TRUE)
+specify_decimal_p(x = 0.008, k = 3, p.value = FALSE)
 }
 \author{
 Indrajeet Patil

@@ -39,14 +39,12 @@ naming, while the latter doesn't. The latter can thus be more helpful in
 writing a wrapper around this function.
 }
 \examples{
-\dontrun{
+set.seed(123)
 groupedstats::lm_effsize_standardizer(
   object = stats::lm(formula = brainwt ~ vore, data = ggplot2::msleep),
   effsize = "eta",
   partial = FALSE,
   conf.level = 0.99,
-  nboot = 50
+  nboot = 20
 )
-}
-
 }

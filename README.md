@@ -25,7 +25,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--07--21-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--08--06-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
@@ -58,7 +58,7 @@ few example cases-
     reaction time).
 4.  Combination of all of the above.
 
-**Important**: <br>
+# Retirement
 
 This package is no longer under active development and no new
 functionality will be added. The package will continue to be available
@@ -70,7 +70,7 @@ operations, I would highly recommend using these functions over
 `groupedstats` functions since the former are much more general,
 efficient, and faster than the latter.
 
-For more see, <https://dplyr.tidyverse.org/reference/group_map.html>
+For more, see: <https://dplyr.tidyverse.org/reference/group_map.html>
 
 # Installation
 
@@ -122,31 +122,7 @@ utils::citation(package = "groupedstats")
 There is a dedicated website to `groupedstats`, which is updated after
 every new commit: <https://indrajeetpatil.github.io/groupedstats/>.
 
-In `R`, documentation for any function can be accessed with the standard
-`help` command-
-
-``` r
-# general
-?grouped_tidy
-?grouped_glance
-?grouped_augment
-
-# specific
-?grouped_aov
-?grouped_lm
-?grouped_lmer
-?grouped_glm
-?grouped_glmer
-?grouped_summary
-?grouped_slr
-?grouped_robustslr
-?grouped_proptest
-?grouped_ttest
-?grouped_wilcox
-```
-
-Another handy tool to see arguments to any of the functions is `args`.
-For example-
+To see arguments for any of the functions, use `args`. For example-
 
 ``` r
 args(groupedstats::grouped_ttest)
@@ -162,7 +138,7 @@ In case you want to look at the function body for any of the functions,
 just type the name of the function without the parentheses:
 
 ``` r
-groupedstats::grouped_lm
+groupedstats::grouped_summary
 ```
 
 If you are not familiar either with what the namespace `::` does or how
@@ -549,34 +525,34 @@ groupedstats::grouped_lm(
   output = "tidy" # tidy dataframe containing results
 )
 #> # A tibble: 12 x 9
-#>      cyl term        estimate std.error statistic conf.low conf.high
-#>    <dbl> <chr>          <dbl>     <dbl>     <dbl>    <dbl>     <dbl>
-#>  1     4 (Intercept)   13.9      16.1      0.865    -24.1     51.9  
-#>  2     4 am            30.3      17.2      1.77     -10.3     70.9  
-#>  3     4 wt             3.07      5.44     0.564     -9.79    15.9  
-#>  4     4 am:wt        -11.0       6.16    -1.78     -25.5      3.61 
-#>  5     6 (Intercept)   63.6      14.1      4.51      18.7    109.   
-#>  6     6 am           -41.4      19.0     -2.18    -102.      19.1  
-#>  7     6 wt           -13.1       4.16    -3.16     -26.4      0.113
-#>  8     6 am:wt         12.5       6.22     2.02      -7.26    32.4  
-#>  9     8 (Intercept)   25.1       3.51     7.14      17.2     32.9  
-#> 10     8 am            -2.92     25.9     -0.113    -60.5     54.7  
-#> 11     8 wt            -2.44      0.842   -2.90      -4.32    -0.563
-#> 12     8 am:wt          0.439     7.63     0.0575   -16.6     17.4  
-#>      p.value significance
+#>      cyl term        estimate std.error statistic   p.value conf.low
+#>    <dbl> <chr>          <dbl>     <dbl>     <dbl>     <dbl>    <dbl>
+#>  1     4 (Intercept)   13.9      16.1      0.865  0.416       -24.1 
+#>  2     4 am            30.3      17.2      1.77   0.121       -10.3 
+#>  3     4 wt             3.07      5.44     0.564  0.590        -9.79
+#>  4     4 am:wt        -11.0       6.16    -1.78   0.118       -25.5 
+#>  5     6 (Intercept)   63.6      14.1      4.51   0.0204       18.7 
+#>  6     6 am           -41.4      19.0     -2.18   0.117      -102.  
+#>  7     6 wt           -13.1       4.16    -3.16   0.0511      -26.4 
+#>  8     6 am:wt         12.5       6.22     2.02   0.137        -7.26
+#>  9     8 (Intercept)   25.1       3.51     7.14   0.0000315    17.2 
+#> 10     8 am            -2.92     25.9     -0.113  0.912       -60.5 
+#> 11     8 wt            -2.44      0.842   -2.90   0.0159       -4.32
+#> 12     8 am:wt          0.439     7.63     0.0575 0.955       -16.6 
+#>    conf.high significance
 #>        <dbl> <chr>       
-#>  1 0.416     ns          
-#>  2 0.121     ns          
-#>  3 0.590     ns          
-#>  4 0.118     ns          
-#>  5 0.0204    *           
-#>  6 0.117     ns          
-#>  7 0.0511    ns          
-#>  8 0.137     ns          
-#>  9 0.0000315 ***         
-#> 10 0.912     ns          
-#> 11 0.0159    *           
-#> 12 0.955     ns
+#>  1    51.9   ns          
+#>  2    70.9   ns          
+#>  3    15.9   ns          
+#>  4     3.61  ns          
+#>  5   109.    *           
+#>  6    19.1   ns          
+#>  7     0.113 ns          
+#>  8    32.4   ns          
+#>  9    32.9   ***         
+#> 10    54.7   ns          
+#> 11    -0.563 *           
+#> 12    17.4   ns
 ```
 
 The same function can also be used to get model summaries instead of a
@@ -637,17 +613,17 @@ groupedstats::grouped_aov(
   output = "tidy" # tidy dataframe with results
 )
 #> # A tibble: 9 x 10
-#>     cyl term  F.value   df1   df2 partial.etasq conf.low conf.high p.value
-#>   <dbl> <chr>   <dbl> <dbl> <dbl>         <dbl>    <dbl>     <dbl>   <dbl>
-#> 1     6 am    5.07        1     3      0.628      0         0.820   0.110 
-#> 2     6 wt    5.91        1     3      0.663      0         0.835   0.0933
-#> 3     6 am:wt 4.06        1     3      0.575      0         0.796   0.137 
-#> 4     4 am    5.95        1     7      0.459      0         0.711   0.0448
-#> 5     4 wt    4.59        1     7      0.396      0         0.676   0.0693
-#> 6     4 am:wt 3.17        1     7      0.311      0         0.627   0.118 
-#> 7     8 am    0.0456      1    10      0.00454    0         0.242   0.835 
-#> 8     8 wt    8.45        1    10      0.458      0.0190    0.691   0.0156
-#> 9     8 am:wt 0.00331     1    10      0.000330   0         0.0885  0.955 
+#>     cyl term  F.value   df1   df2 p.value partial.etasq conf.low conf.high
+#>   <dbl> <chr>   <dbl> <dbl> <dbl>   <dbl>         <dbl>    <dbl>     <dbl>
+#> 1     6 am    5.07        1     3  0.110       0.628      0         0.820 
+#> 2     6 wt    5.91        1     3  0.0933      0.663      0         0.835 
+#> 3     6 am:wt 4.06        1     3  0.137       0.575      0         0.796 
+#> 4     4 am    5.95        1     7  0.0448      0.459      0         0.711 
+#> 5     4 wt    4.59        1     7  0.0693      0.396      0         0.676 
+#> 6     4 am:wt 3.17        1     7  0.118       0.311      0         0.627 
+#> 7     8 am    0.0456      1    10  0.835       0.00454    0         0.242 
+#> 8     8 wt    8.45        1    10  0.0156      0.458      0.0190    0.691 
+#> 9     8 am:wt 0.00331     1    10  0.955       0.000330   0         0.0885
 #>   significance
 #>   <chr>       
 #> 1 ns          
@@ -724,26 +700,26 @@ groupedstats::grouped_glm(
   output = "tidy"
 )
 #> # A tibble: 8 x 9
-#>   Class term        estimate std.error statistic conf.low conf.high
-#>   <fct> <chr>          <dbl>     <dbl>     <dbl>    <dbl>     <dbl>
-#> 1 1st   (Intercept)    3.56      0.507      7.03    2.70      4.74 
-#> 2 1st   SexMale       -4.21      0.531     -7.92   -5.42     -3.29 
-#> 3 2nd   (Intercept)    1.97      0.296      6.65    1.43      2.60 
-#> 4 2nd   SexMale       -3.79      0.366    -10.3    -4.54     -3.10 
-#> 5 3rd   (Intercept)   -0.164     0.143     -1.14   -0.446     0.117
-#> 6 3rd   SexMale       -1.40      0.185     -7.58   -1.77     -1.04 
-#> 7 Crew  (Intercept)    1.90      0.619      3.06    0.827     3.34 
-#> 8 Crew  SexMale       -3.15      0.625     -5.04   -4.60     -2.06 
-#>    p.value significance
-#>      <dbl> <chr>       
-#> 1 2.13e-12 ***         
-#> 2 2.29e-15 ***         
-#> 3 3.03e-11 ***         
-#> 4 4.88e-25 ***         
-#> 5 2.54e- 1 ns          
-#> 6 3.36e-14 ***         
-#> 7 2.18e- 3 **          
-#> 8 4.68e- 7 ***
+#>   Class term        estimate std.error statistic  p.value conf.low
+#>   <fct> <chr>          <dbl>     <dbl>     <dbl>    <dbl>    <dbl>
+#> 1 1st   (Intercept)    3.56      0.507      7.03 2.13e-12    2.70 
+#> 2 1st   SexMale       -4.21      0.531     -7.92 2.29e-15   -5.42 
+#> 3 2nd   (Intercept)    1.97      0.296      6.65 3.03e-11    1.43 
+#> 4 2nd   SexMale       -3.79      0.366    -10.3  4.88e-25   -4.54 
+#> 5 3rd   (Intercept)   -0.164     0.143     -1.14 2.54e- 1   -0.446
+#> 6 3rd   SexMale       -1.40      0.185     -7.58 3.36e-14   -1.77 
+#> 7 Crew  (Intercept)    1.90      0.619      3.06 2.18e- 3    0.827
+#> 8 Crew  SexMale       -3.15      0.625     -5.04 4.68e- 7   -4.60 
+#>   conf.high significance
+#>       <dbl> <chr>       
+#> 1     4.74  ***         
+#> 2    -3.29  ***         
+#> 3     2.60  ***         
+#> 4    -3.10  ***         
+#> 5     0.117 ns          
+#> 6    -1.04  ***         
+#> 7     3.34  **          
+#> 8    -2.06  ***
 ```
 
 Note that the `statistic` will either be a `t` (gaussian, e.g.) or a `z`
@@ -886,18 +862,18 @@ groupedstats::grouped_glmer(
   output = "tidy"
 )
 #> # A tibble: 4 x 10
-#>   Sex    effect term        estimate std.error statistic conf.low conf.high
-#>   <fct>  <chr>  <chr>          <dbl>     <dbl>     <dbl>    <dbl>     <dbl>
-#> 1 Male   fixed  (Intercept)   -0.888     0.162     -5.47   -1.21     -0.570
-#> 2 Male   fixed  AgeChild       4.90      4.03       1.22   -3.00     12.8  
-#> 3 Female fixed  (Intercept)    1.01      0.379      2.66    0.264     1.75 
-#> 4 Female fixed  AgeChild       1.47      0.595      2.48    0.307     2.64 
-#>        p.value significance
-#>          <dbl> <chr>       
-#> 1 0.0000000453 ***         
-#> 2 0.224        ns          
-#> 3 0.00789      **          
-#> 4 0.0133       *
+#>   Sex    effect term        estimate std.error statistic      p.value
+#>   <fct>  <chr>  <chr>          <dbl>     <dbl>     <dbl>        <dbl>
+#> 1 Male   fixed  (Intercept)   -0.888     0.162     -5.47 0.0000000453
+#> 2 Male   fixed  AgeChild       4.90      4.03       1.22 0.224       
+#> 3 Female fixed  (Intercept)    1.01      0.379      2.66 0.00789     
+#> 4 Female fixed  AgeChild       1.47      0.595      2.48 0.0133      
+#>   conf.low conf.high significance
+#>      <dbl>     <dbl> <chr>       
+#> 1   -1.21     -0.570 ***         
+#> 2   -3.00     12.8   ns          
+#> 3    0.264     1.75  **          
+#> 4    0.307     2.64  *
 
 # getting glmer model summaries (let's use the default family and control values)
 groupedstats::grouped_glmer(

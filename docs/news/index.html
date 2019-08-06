@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">groupedstats</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.7.9005</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.7.9006</span>
       </span>
     </div>
 
@@ -125,8 +125,15 @@
 <h1 class="page-header">
 <a href="#groupedstats-0079000" class="anchor"></a>groupedstats 0.0.7.9000<small> Unreleased </small>
 </h1>
+<p>BREAKING CHANGES</p>
+<ul>
+<li>
+<code>signif_column</code> no longer works with vectors and expects dataframe (<code>data</code> argument can no longer be <code>NULL</code>, i.e.). This is to remain consistent with rest of the functions in this package.</li>
+</ul>
+<p>MAJOR CHANGES</p>
 <ul>
 <li>Flags in <code>README</code> that this package is retired and future releases will focus only on maintenance and bug fixes.</li>
+<li>Code refactoring of all utility functions.</li>
 </ul>
 </div>
     <div id="groupedstats-007" class="section level1">

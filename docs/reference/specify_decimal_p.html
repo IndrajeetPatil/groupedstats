@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Custom function for getting specified number of decimal places in
-results for p-value — specify_decimal_p • groupedstats</title>
+<title>Formatting numeric (<em>p</em>-)values — specify_decimal_p • groupedstats</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -41,15 +40,15 @@ results for p-value — specify_decimal_p • groupedstats</title>
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Custom function for getting specified number of decimal places in
-results for p-value — specify_decimal_p" />
+<meta property="og:title" content="Formatting numeric (<em>p</em>-)values — specify_decimal_p" />
 
 <meta property="og:description" content="Function to format an R object for pretty printing with a
 specified (k) number of decimal places. The function also allows really
 small p-values to be denoted as &quot;p &amp;lt; 0.001&quot; rather than &quot;p = 0.000&quot;.
 Note that if p.value is set to TRUE, the minimum value of k allowed
 is 3. If k is set to less than 3, the function will ignore entered k
-value and use k = 3 instead." />
+value and use k = 3 instead. Important: This function is not
+vectorized." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -81,7 +80,7 @@ value and use k = 3 instead." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">groupedstats</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.7.9005</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.7.9006</span>
       </span>
     </div>
 
@@ -127,8 +126,7 @@ value and use k = 3 instead." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Custom function for getting specified number of decimal places in
-results for p-value</h1>
+    <h1>Formatting numeric (<em>p</em>-)values</h1>
     <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/groupedstats/blob/master/R/specify_decimal_p.R'><code>R/specify_decimal_p.R</code></a></small>
     <div class="hidden name"><code>specify_decimal_p.Rd</code></div>
     </div>
@@ -140,7 +138,8 @@ specified (<code>k</code>) number of decimal places. The function also allows re
 small <em>p</em>-values to be denoted as <code>"p &lt; 0.001"</code> rather than <code>"p = 0.000"</code>.
 Note that if <code>p.value</code> is set to <code>TRUE</code>, the minimum value of <code>k</code> allowed
 is <code>3</code>. If <code>k</code> is set to less than 3, the function will ignore entered <code>k</code>
-value and use <code>k = 3</code> instead.</p>
+value and use <code>k = 3</code> instead. <strong>Important</strong>: This function is not
+vectorized.</p>
     
     </div>
 
@@ -151,7 +150,7 @@ value and use <code>k = 3</code> instead.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A numeric variable.</p></td>
+      <td><p>A numeric value.</p></td>
     </tr>
     <tr>
       <th>k</th>
@@ -160,18 +159,18 @@ value and use <code>k = 3</code> instead.</p>
     </tr>
     <tr>
       <th>p.value</th>
-      <td><p>Decides whether the number is a p-value (Default: <code>FALSE</code>).</p></td>
+      <td><p>Decides whether the number is a <em>p</em>-value (Default: <code>FALSE</code>).</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Formatted numeric values.</p>
+    <p>Formatted numeric value.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/specify_decimal_p.html'>specify_decimal_p</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>0.00001</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>p.value</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "&lt; 0.001"</div><div class='input'><span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/specify_decimal_p.html'>specify_decimal_p</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>0.008</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>p.value</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "0.008"</div><div class='input'><span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/specify_decimal_p.html'>specify_decimal_p</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>0.008</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>p.value</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] "0.008"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>groupedstats</span>)
+<span class='fu'>specify_decimal_p</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>0.00001</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>p.value</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "&lt; 0.001"</div><div class='input'><span class='fu'>specify_decimal_p</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>0.008</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>p.value</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "0.008"</div><div class='input'><span class='fu'>specify_decimal_p</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>0.008</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>p.value</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] "0.008"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

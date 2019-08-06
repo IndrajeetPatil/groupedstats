@@ -56,7 +56,7 @@ dataframe. This is a common situation, as illustrated by few example cases-
     subjective rating of emotional intensity and reaction time).
 4. Combination of all of the above.
 
-**Important**: <br>
+# Retirement
 
 This package is no longer under active development and no new functionality will
 be added. The package will continue to be available on `CRAN` and all releases
@@ -67,11 +67,12 @@ do `grouped_` operations, I would highly recommend using these functions over
 `groupedstats` functions since the former are much more general, efficient, and
 faster than the latter.
 
-For more see, <https://dplyr.tidyverse.org/reference/group_map.html>
+For more, see: <https://dplyr.tidyverse.org/reference/group_map.html>
 
 # Installation
 
 To get the latest, stable `CRAN` release (0.0.7):
+
 ```{r installation1, eval = FALSE, warning = FALSE, messsage = FALSE}
 utils::install.packages(pkgs = "groupedstats")
 ```
@@ -116,29 +117,7 @@ utils::citation(package = "groupedstats")
 There is a dedicated website to `groupedstats`, which is updated after every new
 commit: <https://indrajeetpatil.github.io/groupedstats/>.
 
-In `R`, documentation for any function can be accessed with the standard `help` command-
-```{r help, eval = FALSE, warning = FALSE, messsage = FALSE}
-# general
-?grouped_tidy
-?grouped_glance
-?grouped_augment
-
-# specific
-?grouped_aov
-?grouped_lm
-?grouped_lmer
-?grouped_glm
-?grouped_glmer
-?grouped_summary
-?grouped_slr
-?grouped_robustslr
-?grouped_proptest
-?grouped_ttest
-?grouped_wilcox
-```
-
-Another handy tool to see arguments to any of the functions is `args`. For
-example-
+To see arguments for any of the functions, use `args`. For example-
 
 ```{r args}
 args(groupedstats::grouped_ttest)
@@ -148,7 +127,7 @@ In case you want to look at the function body for any of the functions, just
 type the name of the function without the parentheses:
 
 ```{r funbody, eval = FALSE}
-groupedstats::grouped_lm
+groupedstats::grouped_summary
 ```
 
 If you are not familiar either with what the namespace `::` does or how to use
@@ -157,7 +136,6 @@ on, you can check out these links-
 
   - <http://r-pkgs.had.co.nz/namespace.html>
   - <http://r4ds.had.co.nz/pipes.html>
-
 
 # Usage
 
