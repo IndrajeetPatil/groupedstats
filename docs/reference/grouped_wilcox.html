@@ -183,7 +183,9 @@ analyses.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
+    <pre class="examples"><div class='input'><span class='co'># for reproducibility</span>
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
+
 <span class='co'># only with one grouping variable</span>
 <span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/grouped_wilcox.html'>grouped_wilcox</a></span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='kw'>.data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/diamonds.html'>diamonds</a></span>, <span class='no'>color</span> <span class='kw'>==</span> <span class='st'>"E"</span> <span class='kw'>|</span> <span class='no'>color</span> <span class='kw'>==</span> <span class='st'>"J"</span>),

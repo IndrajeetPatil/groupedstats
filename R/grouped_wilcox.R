@@ -24,6 +24,8 @@
 #' @seealso \code{\link{grouped_tidy}}
 #'
 #' @examples
+#' # for reproducibility
+#' set.seed(123)
 #'
 #' # only with one grouping variable
 #' groupedstats::grouped_wilcox(

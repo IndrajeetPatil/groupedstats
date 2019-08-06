@@ -15,6 +15,8 @@
 #' @importFrom tidyr spread
 #'
 #' @examples
+#' # for reproducibility
+#' set.seed(123)
 #'
 #' groupedstats::grouped_proptest(
 #'   data = mtcars,
@@ -82,7 +84,7 @@ grouped_proptest <- function(data,
       chi_sq = data %>%
         purrr::map(
           .x = .,
-          .f = ~ stats::chisq.test(x = base::table(.$measure))
+          .f = ~ stats::chisq.test(table(.$measure))
         )
     ) %>%
     dplyr::mutate(
@@ -91,7 +93,7 @@ grouped_proptest <- function(data,
         purrr::map(
           .x = .,
           .f = ~
-          base::cbind.data.frame(
+          cbind.data.frame(
             "Chi-squared" = as.numeric(as.character(
               specify_decimal_p(x = .$statistic, k = 3)
             )),

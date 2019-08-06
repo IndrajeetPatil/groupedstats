@@ -159,6 +159,8 @@ variables and multiple variables for which summary statistics are to be
 computed-
 
 ``` r
+# for reproducibility
+set.seed(123)
 library(datasets)
 options(tibble.width = Inf) # show me all columns
 
@@ -207,6 +209,8 @@ specified type (`numeric` or `factor`).
 If you want summary of variables of `factor` type-
 
 ``` r
+# for reproducibility
+set.seed(123)
 library(ggplot2)
 options(tibble.width = Inf) # show me all columns
 
@@ -250,6 +254,8 @@ this column is of `character` type and in wide format. The solution is
 to use an additional argument provided for this function:
 
 ``` r
+# for reproducibility
+set.seed(123)
 library(ggplot2)
 library(magrittr)
 library(ggstatsplot)
@@ -280,7 +286,7 @@ groupedstats::grouped_summary(
   ggplot2::geom_bar(stat = "identity") +
   ggplot2::labs(x = "color", y = "count") +
   ggplot2::facet_grid(facets = ~cut) + # for each level of the factor level
-  ggstatsplot::theme_mprl() +
+  ggstatsplot::theme_ggstatsplot() +
   ggplot2::theme(legend.position = "none")
 ```
 
@@ -292,6 +298,8 @@ other pipelines, e.g., preparing a plot of `mean` and `sd` values in
 `ggplot2`).
 
 ``` r
+# for reproducibility
+set.seed(123)
 options(tibble.width = Inf) # show me all columns
 
 groupedstats::grouped_summary(
@@ -353,6 +361,8 @@ two relationships of interest for **each country** across years:
 <!-- end list -->
 
 ``` r
+# for reproducibility
+set.seed(123)
 library(gapminder)
 options(tibble.width = Inf) # show me all columns
 
@@ -405,6 +415,8 @@ between carat *and* price of a diamond for each type of clarity *and*
 cut-
 
 ``` r
+# for reproducibility
+set.seed(123)
 library(ggplot2)
 library(dplyr)
 #> 
@@ -462,6 +474,8 @@ There is also robust variant of **simple linear regression** (as
 implemented in `robust::lmRob`)-
 
 ``` r
+# for reproducibility
+set.seed(123)
 library(gapminder)
 library(dplyr)
 options(tibble.width = Inf) # show me all columns
@@ -511,6 +525,8 @@ A more general version of simple linear regression is `stats::lm`,
 implemented in `grouped_lm`:
 
 ``` r
+# for reproducibility
+set.seed(123)
 library(groupedstats)
 #> 
 #> Attaching package: 'groupedstats'
@@ -559,6 +575,8 @@ The same function can also be used to get model summaries instead of a
 tidy dataframe containing results-
 
 ``` r
+# for reproducibility
+set.seed(123)
 library(groupedstats)
 
 groupedstats::grouped_lm(
@@ -604,6 +622,8 @@ function. The estimate in this case with be an effect size (either
 partial eta-squared or partial omega-squared).
 
 ``` r
+# for reproducibility
+set.seed(123)
 library(groupedstats)
 
 groupedstats::grouped_aov(
@@ -643,6 +663,8 @@ in life expectancy between different continents for all years for which
 the gapminder survey was conducted:
 
 ``` r
+# for reproducibility
+set.seed(123)
 library(groupedstats)
 library(gapminder)
 
@@ -692,6 +714,9 @@ The option to run generalized linear model (`stats::glm`) across
 different levels of the grouping variable is also implemented similarly-
 
 ``` r
+# for reproducibility
+set.seed(123)
+
 groupedstats::grouped_glm(
   data = ggstatsplot::Titanic_full,
   formula = Survived ~ Sex,
@@ -729,6 +754,9 @@ You can also get a model summary across all models with `broom::glance`
 methods-
 
 ``` r
+# for reproducibility
+set.seed(123)
+
 groupedstats::grouped_glm(
   data = ggstatsplot::Titanic_full,
   formula = Survived ~ Sex,
@@ -751,6 +779,8 @@ Linear mixed effects analyses (`lme4::lmer`) for all combinations of
 grouping variable levels can be carried out using `grouped_lmer`:
 
 ``` r
+# for reproducibility
+set.seed(123)
 library(gapminder)
 
 # getting tidy output of results
@@ -801,7 +831,6 @@ groupedstats::grouped_lmer(
 #> 10     0.724 0.00402 **          
 #> # ... with 14 more rows
 
-
 # getting tidy output of results
 groupedstats::grouped_lmer(
   data = gapminder,
@@ -836,8 +865,11 @@ we want to see if sex of a person was predictive of whether they
 survived the Titanic tragedy.
 
 ``` r
+# for reproducibility
+set.seed(123)
+
 # having a look at the data
-dplyr::glimpse(x = groupedstats::Titanic_full)
+dplyr::glimpse(groupedstats::Titanic_full)
 #> Observations: 2,201
 #> Variables: 5
 #> $ id       <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16...
@@ -900,6 +932,8 @@ This function helps carry out one-sample proportion tests
 variables-
 
 ``` r
+# for reproducibility
+set.seed(123)
 options(tibble.width = Inf) # show me all columns
 
 groupedstats::grouped_proptest(
@@ -925,6 +959,8 @@ has greater measurement (length or width) than `Petal` part of the
 flower for **each** *Iris* species.
 
 ``` r
+# for reproducibility
+set.seed(123)
 
 # converting the iris dataset to long format
 iris_long <- iris %>%
@@ -997,8 +1033,8 @@ groupedstats::grouped_ttest(
 This function is just a non-parametric variant of the `grouped_ttest`:
 
 ``` r
-# checking if the Sepal part has different dimentions (value) than Petal part
-# for each Species and for each type of measurement (Length and Width)
+# for reproducibility
+set.seed(123)
 options(tibble.width = Inf) # show me all columns
 
 groupedstats::grouped_wilcox(
@@ -1043,6 +1079,8 @@ and depth of a diamond is different for two of our favorite colors (say
 `E` and `J`) for each type of clarity.
 
 ``` r
+# for reproducibility
+set.seed(123)
 
 # subset the dataframe with two colors of interest to us
 diamonds_short <-
@@ -1165,6 +1203,9 @@ We can further focus just on two levels of clarity to further elucidate
 another aspect of entering the arguments-
 
 ``` r
+# for reproducibility
+set.seed(123)
+
 # subset the dataframe even further to just select two levels of clarity
 diamonds_short2 <-
   dplyr::filter(.data = diamonds_short, clarity == "SI2" |
@@ -1232,10 +1273,12 @@ For example, let’s say we want to run the same linear regression across
 multiple grouping variables but want to use different formulas-
 
 ``` r
+# for reproducibility
 set.seed(123)
 library(groupedstats)
 
-results_df <- purrr::pmap_dfr(
+results_df <- 
+  purrr::pmap_dfr(
   .l = list(
     data = list(groupedstats::movies_long),
     grouping.vars = alist(c(mpaa, genre)), # note it's `alist` and not `list`
@@ -1284,9 +1327,22 @@ functions involved:
 
 I’m happy to receive bug reports, suggestions, questions, and (most of
 all) contributions to fix problems and add features. I personally prefer
-using the `Github` issues system over trying to reach out to me in other
-ways (personal e-mail, Twitter, etc.). Pull requests for contributions
+using the `GitHub` issues system over trying to reach out to me in other
+ways (personal e-mail, Twitter, etc.). Pull Requests for contributions
 are encouraged.
+
+Here are some simple ways in which you can contribute (in the increasing
+order of commitment):
+
+  - Read and correct any inconsistencies in the
+    [documentation](https://indrajeetpatil.github.io/groupedstats/)
+
+  - Raise issues about bugs or wanted features
+
+  - Review code
+
+  - Add new functionality (in the form of new plotting functions or
+    helpers for preparing subtitles)
 
 Please note that this project is released with a [Contributor Code of
 Conduct](https://github.com/IndrajeetPatil/groupedstats/blob/master/CODE_OF_CONDUCT.md).
@@ -1295,4 +1351,5 @@ By participating in this project you agree to abide by its terms.
 ## Suggestions
 
 If you find any bugs or have any suggestions/remarks, please file an
-issue on GitHub: <https://github.com/IndrajeetPatil/groupedstats/issues>
+issue on `GitHub`:
+<https://github.com/IndrajeetPatil/groupedstats/issues>

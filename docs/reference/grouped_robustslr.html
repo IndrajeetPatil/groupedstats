@@ -181,7 +181,9 @@ analyses. The estimates are standardized, i.e. the <code>lm</code> model used is
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
+    <pre class="examples"><div class='input'><span class='co'># for reproducibility</span>
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
+
 <span class='co'># in case of just one grouping variable</span>
 <span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/grouped_robustslr.html'>grouped_robustslr</a></span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>iris</span>,

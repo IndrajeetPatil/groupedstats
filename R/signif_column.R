@@ -33,26 +33,7 @@
 
 # function body
 signif_column <- function(data, p, messages = FALSE) {
-
-  # make sure the p-value column is numeric; if not, convert it to numeric
-  # if (!rlang::is_bare_numeric(data %>% dplyr::pull({{ p }}))) {
-  #   # display message about conversion
-  #   if (isTRUE(messages)) {
-  #     message(cat(
-  #       crayon::green("Note: "),
-  #       crayon::blue("The entered vector is of class"),
-  #       crayon::yellow(class(data %>% dplyr::pull({{ p }}))[[1]]),
-  #       crayon::blue("; attempting to convert it to numeric."),
-  #       sep = ""
-  #     ))
-  #   }
-  #
-  #   # conversion
-  #   data %<>% dplyr::mutate(.data = ., {{ p }} := as.numeric(as.character({{ p }})))
-  # }
-
-  # add new significance column based on standard APA guidelines for describing
-  # different levels of significance
+  # add new significance column based on standard APA guidelines
   data %<>%
     dplyr::mutate(
       .data = .,
@@ -64,7 +45,4 @@ signif_column <- function(data, p, messages = FALSE) {
       )
     ) %>% # convert to tibble dataframe
     tibble::as_tibble(x = .)
-
-  # return the final tibble dataframe
-  return(data)
 }

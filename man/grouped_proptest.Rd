@@ -22,6 +22,8 @@ test.
 Function to run proportion test on grouped data.
 }
 \examples{
+# for reproducibility
+set.seed(123)
 
 groupedstats::grouped_proptest(
   data = mtcars,

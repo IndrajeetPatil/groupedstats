@@ -30,6 +30,8 @@
 #' @importFrom utils packageVersion
 #'
 #' @examples
+#' # for reproducibility
+#' set.seed(123)
 #'
 #' # another possibility
 #' groupedstats::grouped_summary(
@@ -122,22 +124,6 @@ grouped_summary <- function(data,
   # factor long format conversion --------------------------------------------
 
   if (measures.type %in% c("factor", "character") && isTRUE(topcount.long)) {
-    # custom function used to convert counts into long format
-    count_long_format_fn <- function(top_counts) {
-      purrr::map_dfr(
-        .x = strsplit(x = top_counts, split = ","),
-        .f = ~ tibble::enframe(x = .) %>%
-          dplyr::mutate_all(.tbl = ., .funs = trimws) %>%
-          tidyr::separate(
-            data = .,
-            col = "value",
-            into = c("factor.level", "count"),
-            sep = ":",
-            convert = TRUE
-          )
-      )
-    }
-
     # converting to long format using the custom function
     df_results %<>%
       dplyr::group_nest(
@@ -194,10 +180,27 @@ grouped_summary <- function(data,
   }
 
   # remove the histogram column
-  if ("hist" %in% names(df_summary)) {
-    df_summary %<>% dplyr::select(.data = ., -hist)
-  }
+  if ("hist" %in% names(df_summary)) df_summary %<>% dplyr::select(.data = ., -hist)
 
   # return the summary dataframe
   return(df_summary)
+}
+
+#' @keywords internal
+#' @noRd
+
+# custom function used to convert counts into long format
+count_long_format_fn <- function(top_counts) {
+  purrr::map_dfr(
+    .x = strsplit(x = top_counts, split = ","),
+    .f = ~ tibble::enframe(x = .) %>%
+      dplyr::mutate_all(.tbl = ., .funs = trimws) %>%
+      tidyr::separate(
+        data = .,
+        col = "value",
+        into = c("factor.level", "count"),
+        sep = ":",
+        convert = TRUE
+      )
+  )
 }

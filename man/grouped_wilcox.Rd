@@ -34,6 +34,8 @@ Function to run two-sample Wilcoxon tests on multiple variables across
 multiple grouping variables.
 }
 \examples{
+# for reproducibility
+set.seed(123)
 
 # only with one grouping variable
 groupedstats::grouped_wilcox(

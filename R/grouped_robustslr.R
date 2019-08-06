@@ -24,6 +24,8 @@
 #' @importFrom dplyr left_join right_join
 #'
 #' @examples
+#' # for reproducibility
+#' set.seed(123)
 #'
 #' # in case of just one grouping variable
 #' groupedstats::grouped_robustslr(
@@ -154,8 +156,7 @@ grouped_robustslr <- function(data,
 
   # ========= using  custom function on entered dataframe =================
 
-  df %<>%
-    tibble::rownames_to_column(., var = "..group")
+  df %<>% tibble::rownames_to_column(., var = "..group")
 
   # running custom function for each element of the created list column
   combined_df <- purrr::pmap(

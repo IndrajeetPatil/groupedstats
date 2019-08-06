@@ -36,6 +36,8 @@ Function to get descriptive statistics for multiple variables for all
 grouping variable levels
 }
 \examples{
+# for reproducibility
+set.seed(123)
 
 # another possibility
 groupedstats::grouped_summary(
