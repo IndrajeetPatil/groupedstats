@@ -25,6 +25,8 @@
 #' @seealso grouped_lm
 #'
 #' @examples
+#' # for reproducibility
+#' set.seed(123)
 #'
 #' # in case of just one grouping variable
 #' groupedstats::grouped_slr(

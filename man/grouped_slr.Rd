@@ -29,6 +29,8 @@ Function to run simple linear regression (slr) on multiple variables across
 multiple grouping variables.
 }
 \examples{
+# for reproducibility
+set.seed(123)
 
 # in case of just one grouping variable
 groupedstats::grouped_slr(

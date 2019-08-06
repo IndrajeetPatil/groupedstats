@@ -36,6 +36,8 @@ Function to run robust simple linear regression (slr) on multiple variables acro
 multiple grouping variables.
 }
 \examples{
+# for reproducibility
+set.seed(123)
 
 # in case of just one grouping variable
 groupedstats::grouped_robustslr(

@@ -5,7 +5,6 @@ context("grouped_summary")
 testthat::test_that(
   desc = "grouped_summary with numeric measures",
   code = {
-
     set.seed(123)
 
     # without measures specified (without NA)
@@ -62,7 +61,6 @@ testthat::test_that(
 testthat::test_that(
   desc = "grouped_summary with factor measures",
   code = {
-
     set.seed(123)
 
     # without measures specified (without NA)

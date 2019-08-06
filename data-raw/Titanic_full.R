@@ -18,7 +18,7 @@ rep_df <- function(df, rep) {
 
 # converting dataframe to full length based on count information
 Titanic_full <- tibble::as_tibble(datasets::Titanic) %>%
-  tibble::rowid_to_column(df = ., var = "id") %>%
+  tibble::rowid_to_column(.data = ., var = "id") %>%
   dplyr::mutate_at(
     .tbl = .,
     .vars = dplyr::vars("id"),
@@ -42,7 +42,7 @@ Titanic_full <- tibble::as_tibble(datasets::Titanic) %>%
     .funs = ~ base::droplevels(.)
   ) %>%
   dplyr::select(.data = ., -n, -id) %>%
-  tibble::rownames_to_column(df = ., var = "id") %>%
+  tibble::rownames_to_column(.data = ., var = "id") %>%
   dplyr::mutate_at(
     .tbl = .,
     .vars = "id",

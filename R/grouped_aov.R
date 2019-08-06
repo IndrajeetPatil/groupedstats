@@ -48,7 +48,7 @@ grouped_aov <- function(data,
 
   # glace is not supported for all models
   if (output == "glance") {
-    base::stop(base::message(cat(
+    stop(message(cat(
       crayon::green("Note:"),
       crayon::blue(
         "The glance model summary is currently not supported for this function.\n
@@ -78,68 +78,65 @@ grouped_aov <- function(data,
     dplyr::filter(.data = ., !purrr::map_lgl(.x = data, .f = is.null)) %>%
     dplyr::ungroup(x = .)
 
-  # ====================================== custom function ==================================
+  # ======================= custom function ==================================
 
   # custom function to run tidy operation on every element of list column
-  fnlisted <-
-    function(list.col,
-                 formula,
-                 effsize,
-                 nboot,
-                 output) {
-      if (output == "tidy") {
+  fnlisted <- function(list.col,
+                         formula,
+                         effsize,
+                         nboot,
+                         output) {
+    if (output == "tidy") {
+      # getting tidy dataframe with results
+      results_df <-
+        list.col %>%
+        purrr::map_dfr(
+          .x = .,
+          .f = ~ lm_effsize_ci(
+            object = stats::aov(
+              formula = stats::as.formula(formula),
+              data = (.),
+              na.action = na.omit
+            ),
+            effsize = effsize,
+            partial = TRUE,
+            nboot = nboot,
+            conf.level = 0.95
+          ),
+          .id = "..group"
+        )
 
-        # getting tidy dataframe with results
-        results_df <-
-          list.col %>%
-          purrr::map_dfr(
-            .x = .,
-            .f = ~ lm_effsize_ci(
-              object = stats::aov(
+      # return the tidy dataframe
+      return(results_df)
+    } else if (output == "tukey") {
+
+      # getting tidy dataframe for Tukey HSD comparisons
+      results_df <-
+        list.col %>%
+        purrr::map_dfr(
+          .x = .,
+          .f = ~ broomExtra::tidy(
+            x = stats::TukeyHSD(
+              x = stats::aov(
                 formula = stats::as.formula(formula),
                 data = (.),
                 na.action = na.omit
               ),
-              effsize = effsize,
-              partial = TRUE,
-              nboot = nboot,
+              ordered = FALSE,
               conf.level = 0.95
-            ),
-            .id = "..group"
-          )
+            )
+          ),
+          .id = "..group"
+        )
 
-        # return the tidy dataframe
-        return(results_df)
-      } else if (output == "tukey") {
-
-        # getting tidy dataframe for Tukey HSD comparisons
-        results_df <-
-          list.col %>%
-          purrr::map_dfr(
-            .x = .,
-            .f = ~ broomExtra::tidy(
-              x = stats::TukeyHSD(
-                x = stats::aov(
-                  formula = stats::as.formula(formula),
-                  data = (.),
-                  na.action = na.omit
-                ),
-                ordered = FALSE,
-                conf.level = 0.95
-              )
-            ),
-            .id = "..group"
-          )
-
-        # return the posthoc dataframe
-        return(results_df)
-      }
+      # return the posthoc dataframe
+      return(results_df)
     }
-  # ========================== using  custom function on entered dataframe ==================================
+  }
+  # =============== using  custom function on entered dataframe ===============
 
   # converting the original dataframe to have a grouping variable column
-  df %<>%
-    tibble::rownames_to_column(., var = "..group")
+  df %<>% tibble::rownames_to_column(., var = "..group")
 
   # running the custom function and cleaning the dataframe
   combined_df <- purrr::pmap(
@@ -159,16 +156,14 @@ grouped_aov <- function(data,
 
   # add a column with significance labels if p-values are present
   if ("p.value" %in% names(combined_df)) {
-    combined_df %<>%
-      signif_column(data = ., p = p.value)
+    combined_df %<>% signif_column(data = ., p = p.value)
   }
 
   if ("adj.p.value" %in% names(combined_df)) {
-    combined_df %<>%
-      signif_column(data = ., p = adj.p.value)
+    combined_df %<>% signif_column(data = ., p = adj.p.value)
 
     # display note about adjustment
-    base::message(cat(
+    message(cat(
       crayon::green("Note:"),
       crayon::blue(
         "The p-value is adjusted for the number of tests conducted at each level of the grouping variable."

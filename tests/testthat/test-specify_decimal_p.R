@@ -1,5 +1,7 @@
 context("Specify decimals")
 
+# specify_decimal_p works --------------------------------------------------
+
 test_that(
   desc = "specify_decimal_p works",
   code = {

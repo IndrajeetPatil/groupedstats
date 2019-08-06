@@ -25,6 +25,8 @@
 #' @importFrom dplyr left_join right_join
 #'
 #' @examples
+#' # for reproducibility
+#' set.seed(123)
 #'
 #' groupedstats::grouped_ttest(
 #'   data = dplyr::filter(.data = ggplot2::diamonds, color == "E" | color == "J"),
