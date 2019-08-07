@@ -1,5 +1,5 @@
-#' @title Function to get descriptive statistics for multiple variables for all
-#'   grouping variable levels
+#' @title Descriptive statistics for multiple variables for all grouping
+#'   variable levels
 #' @name grouped_summary
 #' @author Indrajeet Patil
 #' @return Dataframe with descriptive statistics for numeric variables (n, mean,
@@ -21,8 +21,7 @@
 #'
 #' @importFrom skimr skim
 #' @importFrom dplyr filter_at mutate_at mutate_if group_modify group_nest any_vars
-#' @importFrom purrr is_bare_numeric is_bare_character
-#' @importFrom purrr keep map map_lgl map_dfr
+#' @importFrom purrr is_bare_numeric is_bare_character keep map map_lgl map_dfr
 #' @importFrom tidyr nest unnest separate
 #' @importFrom crayon red blue
 #' @importFrom tibble as_tibble enframe

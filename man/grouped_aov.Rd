@@ -2,16 +2,17 @@
 % Please edit documentation in R/grouped_aov.R
 \name{grouped_aov}
 \alias{grouped_aov}
-\title{Function to run analysis of variance (aov) across multiple grouping
-variables.}
+\title{Running analysis of variance (aov) across multiple grouping variables.}
 \usage{
 grouped_aov(data, grouping.vars, formula, effsize = "eta",
   output = "tidy", nboot = 1000)
 }
 \arguments{
-\item{data}{Dataframe from which variables are to be taken.}
+\item{data}{A data frame in which the variables specified in the
+    formula will be found. If missing, the variables are searched for in
+    the standard way.}
 
-\item{grouping.vars}{List of grouping variables.}
+\item{grouping.vars}{Grouping variables.}
 
 \item{formula}{A formula specifying the model.}
 
@@ -32,8 +33,7 @@ A tibble dataframe with tidy results from anova. No model summaries
 available.
 }
 \description{
-Function to run analysis of variance (aov) across multiple grouping
-variables.
+Running analysis of variance (aov) across multiple grouping variables.
 }
 \examples{
 

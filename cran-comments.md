@@ -9,5 +9,5 @@
 
 ## Comments
 
-  - Minor code refactoring to get rid of `broom` and `broom.mixed` as dependencies.
+  - Minor code refactoring.
   - None of the upstream dependencies are affected by these changes.

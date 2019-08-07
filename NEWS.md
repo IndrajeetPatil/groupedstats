@@ -1,4 +1,4 @@
-# groupedstats 0.0.7.9000
+# groupedstats 0.0.8
 
 BREAKING CHANGES
 

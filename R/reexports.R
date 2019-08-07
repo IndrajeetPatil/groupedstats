@@ -11,3 +11,17 @@ broomExtra::grouped_glance
 #' @export
 #' @importFrom broomExtra grouped_augment
 broomExtra::grouped_augment
+
+# ----------------------- tidyverse -------------------------------------
+
+#' @export
+#' @importFrom magrittr "%>%"
+magrittr::`%>%`
+
+#' @export
+#' @importFrom magrittr "%<>%"
+magrittr::`%<>%`
+
+#' @export
+#' @importFrom magrittr "%$%"
+magrittr::`%$%`

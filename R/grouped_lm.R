@@ -1,4 +1,4 @@
-#' @title Function to run linear model (lm) across multiple grouping variables.
+#' @title Running linear model (`lm`) across multiple grouping variables.
 #' @name grouped_lm
 #' @author Indrajeet Patil
 #' @return A tibble dataframe with tidy results from linear model.
@@ -9,12 +9,11 @@
 #' @inheritParams broomExtra::grouped_tidy
 #' @inheritParams broomExtra::grouped_augment
 #'
-#' @importFrom magrittr "%<>%"
 #' @importFrom broomExtra grouped_tidy grouped_glance grouped_augment
 #' @importFrom rlang !! enquos
 #' @importFrom stats lm glm
 #'
-#' @seealso \code{\link{grouped_slr}}
+#' @seealso \code{\link{grouped_slr}}, \code{\link{grouped_tidy}}
 #'
 #' @examples
 #'
@@ -45,8 +44,9 @@ grouped_lm <- function(data,
                        output = "tidy",
                        tidy.args = list(conf.int = TRUE, conf.level = 0.95),
                        augment.args = list()) {
+
+  # tidy results
   if (output == "tidy") {
-    # tidy results
     combined_df <- broomExtra::grouped_tidy(
       data = data,
       grouping.vars = !!rlang::enquo(grouping.vars),
@@ -57,11 +57,11 @@ grouped_lm <- function(data,
 
     # add a column with significance labels if p-values are present
     if ("p.value" %in% names(combined_df)) {
-      combined_df %<>%
-        signif_column(data = ., p = p.value)
+      combined_df %<>% signif_column(data = ., p = p.value)
     }
   }
 
+  # glance summary
   if (output == "glance") {
     # tidy results
     combined_df <- broomExtra::grouped_glance(
@@ -72,8 +72,8 @@ grouped_lm <- function(data,
     )
   }
 
+  # augmented results
   if (output == "augment") {
-    # tidy results
     combined_df <- broomExtra::grouped_augment(
       data = data,
       grouping.vars = !!rlang::enquo(grouping.vars),
@@ -83,5 +83,6 @@ grouped_lm <- function(data,
     )
   }
 
+  # return the final dataframe
   return(combined_df)
 }

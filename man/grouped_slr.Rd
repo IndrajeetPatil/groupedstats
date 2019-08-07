@@ -2,8 +2,7 @@
 % Please edit documentation in R/grouped_slr.R
 \name{grouped_slr}
 \alias{grouped_slr}
-\alias{grouped_simplelm}
-\title{Function to run simple linear regression (slr) on multiple variables across
+\title{Running simple linear regression (slr) on multiple variables across
 multiple grouping variables.}
 \usage{
 grouped_slr(data, dep.vars, indep.vars, grouping.vars)
@@ -25,7 +24,7 @@ analyses. The estimates are standardized, i.e. the \code{lm} model used is
 \code{scale(y) ~ scale(x)}, and not \code{y ~ x}.
 }
 \description{
-Function to run simple linear regression (slr) on multiple variables across
+Running simple linear regression (slr) on multiple variables across
 multiple grouping variables.
 }
 \examples{
@@ -41,7 +40,7 @@ groupedstats::grouped_slr(
 )
 }
 \seealso{
-grouped_lm
+\code{\link{grouped_lm}}, \code{\link{grouped_tidy}}
 }
 \author{
 Indrajeet Patil

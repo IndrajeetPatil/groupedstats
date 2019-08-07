@@ -2,7 +2,7 @@
 % Please edit documentation in R/grouped_lm.R
 \name{grouped_lm}
 \alias{grouped_lm}
-\title{Function to run linear model (lm) across multiple grouping variables.}
+\title{Running linear model (\code{lm}) across multiple grouping variables.}
 \usage{
 grouped_lm(data, grouping.vars, ..., output = "tidy",
   tidy.args = list(conf.int = TRUE, conf.level = 0.95),
@@ -29,7 +29,7 @@ which will return model summaries.}
 A tibble dataframe with tidy results from linear model.
 }
 \description{
-Function to run linear model (lm) across multiple grouping variables.
+Running linear model (\code{lm}) across multiple grouping variables.
 }
 \examples{
 
@@ -54,7 +54,7 @@ grouped_lm(
 )
 }
 \seealso{
-\code{\link{grouped_slr}}
+\code{\link{grouped_slr}}, \code{\link{grouped_tidy}}
 }
 \author{
 Indrajeet Patil
