@@ -2,6 +2,7 @@ anova
 aov
 APA
 AppVeyor
+broomExtra
 changedate
 CircleCI
 codecov
@@ -30,7 +31,6 @@ io
 Kenward
 Licence
 lifecycle
-lm
 lmer
 mpaa
 MPAA
