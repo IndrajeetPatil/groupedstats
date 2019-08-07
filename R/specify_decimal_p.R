@@ -25,9 +25,7 @@
 #' @export
 
 # function body
-specify_decimal_p <- function(x,
-                              k = 3,
-                              p.value = FALSE) {
+specify_decimal_p <- function(x, k = 3, p.value = FALSE) {
 
   # for example, if p.value is 0.002, it should be displayed as such
   if (k < 3 && isTRUE(p.value)) k <- 3

@@ -358,7 +358,7 @@
   ],
   "releaseNotes": "https://github.com/IndrajeetPatil/groupedstats/blob/master/NEWS.md",
   "readme": "https://github.com/IndrajeetPatil/groupedstats/blob/master/README.md",
-  "fileSize": "155.11KB",
+  "fileSize": "165.074KB",
   "contIntegration": [
     "https://travis-ci.org/IndrajeetPatil/groupedstats",
     "https://ci.appveyor.com/project/IndrajeetPatil/groupedstats",

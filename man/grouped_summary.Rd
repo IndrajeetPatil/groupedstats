@@ -2,8 +2,8 @@
 % Please edit documentation in R/grouped_summary.R
 \name{grouped_summary}
 \alias{grouped_summary}
-\title{Function to get descriptive statistics for multiple variables for all
-grouping variable levels}
+\title{Descriptive statistics for multiple variables for all grouping
+variable levels}
 \usage{
 grouped_summary(data, grouping.vars, measures = NULL,
   measures.type = "numeric", topcount.long = FALSE)
@@ -32,8 +32,8 @@ Dataframe with descriptive statistics for numeric variables (n, mean,
 sd, median, min, max)
 }
 \description{
-Function to get descriptive statistics for multiple variables for all
-grouping variable levels
+Descriptive statistics for multiple variables for all grouping
+variable levels
 }
 \examples{
 # for reproducibility

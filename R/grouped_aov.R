@@ -1,19 +1,16 @@
-#' @title Function to run analysis of variance (aov) across multiple grouping
-#'   variables.
+#' @title Running analysis of variance (aov) across multiple grouping variables.
 #' @name grouped_aov
-#' @aliases grouped_aov
 #' @author Indrajeet Patil
 #' @return A tibble dataframe with tidy results from anova. No model summaries
 #'   available.
 #'
-#' @param data Dataframe from which variables are to be taken.
-#' @param grouping.vars List of grouping variables.
 #' @param output A character describing what output is expected. Two possible
 #'   options: `"tidy"` (default), which will return the results, or `"tukey"`,
 #'   which will return results from Tukey's Honest Significant Differences
 #'   method for *post hoc* comparisons. The `"glance"` method to get model
 #'   summary is currently not supported for this function.
 #' @inheritParams stats::aov
+#' @inheritParams broomExtra::grouped_tidy
 #' @inheritParams lm_effsize_ci
 #'
 #' @importFrom glue glue
@@ -58,8 +55,7 @@ grouped_aov <- function(data,
   }
 
   # check how many variables were entered for grouping variable vector
-  grouping.vars <-
-    as.list(rlang::quo_squash(rlang::enquo(grouping.vars)))
+  grouping.vars <- as.list(rlang::quo_squash(rlang::enquo(grouping.vars)))
   grouping.vars <-
     if (length(grouping.vars) == 1) {
       grouping.vars
@@ -68,11 +64,8 @@ grouped_aov <- function(data,
     }
 
   # getting the dataframe ready
-  df <- dplyr::select(
-    .data = data,
-    !!!grouping.vars,
-    dplyr::everything()
-  ) %>%
+  df <-
+    dplyr::select(.data = data, !!!grouping.vars, dplyr::everything()) %>%
     dplyr::group_by(.data = ., !!!grouping.vars) %>%
     tidyr::nest(data = .) %>%
     dplyr::filter(.data = ., !purrr::map_lgl(.x = data, .f = is.null)) %>%

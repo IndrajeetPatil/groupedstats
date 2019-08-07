@@ -60,12 +60,19 @@ dataframe. This is a common situation, as illustrated by few example cases-
 
 This package is no longer under active development and no new functionality will
 be added. The package will continue to be available on `CRAN` and all releases
-will primarily be focused on maintenance and bug fixes. This is because
-`dplyr 0.8.1` introduced `group_map()`, `group_modify()` and `group_walk()`
-functions that can be used to iterate on grouped dataframes. So if you want to
-do `grouped_` operations, I would highly recommend using these functions over
-`groupedstats` functions since the former are much more general, efficient, and
-faster than the latter.
+will primarily be focused on maintenance and bug fixes. This is for two reasons-
+
+1.  There is are more general versions of these functions introduced in
+    `broomExtra` package: `grouped_tidy`, `grouped_augment`, `grouped_glance`.
+
+For more, see:
+<https://indrajeetpatil.github.io/broomExtra/reference/index.html#section-grouped-variants-of-generics>
+
+2.  `dplyr 0.8.1` introduced `group_map()`, `group_modify()` and `group_walk()`
+    functions that can be used to iterate on grouped dataframes. So if you want
+    to do `grouped_` operations, I would highly recommend using these functions
+    over `groupedstats` functions since the former are much more general,
+    efficient, and faster than the latter.
 
 For more, see: <https://dplyr.tidyverse.org/reference/group_map.html>
 

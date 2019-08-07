@@ -1,7 +1,6 @@
-#' @title Function to run linear mixed-effects model (lmer) across multiple
+#' @title Running linear mixed-effects model (`lmer`) across multiple
 #'   grouping variables.
 #' @name grouped_lmer
-#' @aliases grouped_lmer
 #' @author Indrajeet Patil
 #' @return A tibble dataframe with tidy results from linear model or model
 #'   summaries.
@@ -15,8 +14,7 @@
 #' @inheritParams sjstats::p_value.lmerMod
 #'
 #' @importFrom glue glue
-#' @importFrom purrr map map2_dfr pmap
-#' @importFrom purrr pmap
+#' @importFrom purrr map map2_dfr pmap pmap
 #' @importFrom lme4 lmer lmerControl
 #' @importFrom sjstats p_value
 #' @importFrom stats as.formula

@@ -2,7 +2,7 @@
 % Please edit documentation in R/grouped_lmer.R
 \name{grouped_lmer}
 \alias{grouped_lmer}
-\title{Function to run linear mixed-effects model (lmer) across multiple
+\title{Running linear mixed-effects model (\code{lmer}) across multiple
 grouping variables.}
 \usage{
 grouped_lmer(data, grouping.vars, formula, REML = TRUE,
@@ -53,7 +53,7 @@ A tibble dataframe with tidy results from linear model or model
 summaries.
 }
 \description{
-Function to run linear mixed-effects model (lmer) across multiple
+Running linear mixed-effects model (\code{lmer}) across multiple
 grouping variables.
 }
 \examples{

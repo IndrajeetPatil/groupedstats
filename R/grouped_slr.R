@@ -1,7 +1,6 @@
-#' @title Function to run simple linear regression (slr) on multiple variables across
+#' @title Running simple linear regression (slr) on multiple variables across
 #'   multiple grouping variables.
 #' @name grouped_slr
-#' @aliases grouped_simplelm
 #' @author Indrajeet Patil
 #' @return A tibble dataframe with tidy results from simple linear regression
 #'   analyses. The estimates are standardized, i.e. the `lm` model used is
@@ -22,7 +21,7 @@
 #' @importFrom dplyr select group_by arrange mutate mutate_at mutate_if
 #' @importFrom dplyr left_join right_join
 #'
-#' @seealso grouped_lm
+#' @seealso \code{\link{grouped_lm}}, \code{\link{grouped_tidy}}
 #'
 #' @examples
 #' # for reproducibility

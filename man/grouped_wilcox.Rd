@@ -17,7 +17,8 @@ in \code{y ~ x}).}
 \item{indep.vars}{List independent variables for a two-sample Wilcoxon tests
 (\code{x} in \code{y ~ x}).}
 
-\item{grouping.vars}{List of grouping variables.}
+\item{grouping.vars}{List of grouping variables (if \code{NULL}, the entire
+dataframe will be used).}
 
 \item{paired}{A logical indicating whether you want a paired two-sample
 Wilcoxon tests (Default: \code{paired = FALSE}).}
@@ -32,6 +33,8 @@ analyses.
 \description{
 Function to run two-sample Wilcoxon tests on multiple variables across
 multiple grouping variables.
+
+Running Wilcox test across multiple grouping variables.
 }
 \examples{
 # for reproducibility

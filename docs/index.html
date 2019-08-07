@@ -103,7 +103,15 @@
 <div id="retirement" class="section level1">
 <h1 class="hasAnchor">
 <a href="#retirement" class="anchor"></a>Retirement</h1>
-<p>This package is no longer under active development and no new functionality will be added. The package will continue to be available on <code>CRAN</code> and all releases will primarily be focused on maintenance and bug fixes. This is because <code>dplyr 0.8.1</code> introduced <code>group_map()</code>, <code>group_modify()</code> and <code>group_walk()</code> functions that can be used to iterate on grouped dataframes. So if you want to do <code>grouped_</code> operations, I would highly recommend using these functions over <code>groupedstats</code> functions since the former are much more general, efficient, and faster than the latter.</p>
+<p>This package is no longer under active development and no new functionality will be added. The package will continue to be available on <code>CRAN</code> and all releases will primarily be focused on maintenance and bug fixes. This is for two reasons-</p>
+<ol style="list-style-type: decimal">
+<li>There is are more general versions of these functions introduced in <code>broomExtra</code> package: <code>grouped_tidy</code>, <code>grouped_augment</code>, <code>grouped_glance</code>.</li>
+</ol>
+<p>For more, see: <a href="https://indrajeetpatil.github.io/broomExtra/reference/index.html#section-grouped-variants-of-generics" class="uri">https://indrajeetpatil.github.io/broomExtra/reference/index.html#section-grouped-variants-of-generics</a></p>
+<ol start="2" style="list-style-type: decimal">
+<li>
+<code>dplyr 0.8.1</code> introduced <code>group_map()</code>, <code>group_modify()</code> and <code>group_walk()</code> functions that can be used to iterate on grouped dataframes. So if you want to do <code>grouped_</code> operations, I would highly recommend using these functions over <code>groupedstats</code> functions since the former are much more general, efficient, and faster than the latter.</li>
+</ol>
 <p>For more, see: <a href="https://dplyr.tidyverse.org/reference/group_map.html" class="uri">https://dplyr.tidyverse.org/reference/group_map.html</a></p>
 </div>
 <div id="installation" class="section level1">
@@ -147,7 +155,7 @@
 <a class="sourceLine" id="cb5-7" title="7"><span class="co">#&gt; NULL</span></a></code></pre></div>
 <p>In case you want to look at the function body for any of the functions, just type the name of the function without the parentheses:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">groupedstats<span class="op">::</span>grouped_summary</a></code></pre></div>
-<p>If you are not familiar either with what the namespace <code>::</code> does or how to use pipe operator <code><a href="reference/pipe.html">%&gt;%</a></code>, something this package and its documentation relies a lot on, you can check out these links-</p>
+<p>If you are not familiar either with what the namespace <code>::</code> does or how to use pipe operator <code><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></code>, something this package and its documentation relies a lot on, you can check out these links-</p>
 <ul>
 <li><a href="http://r-pkgs.had.co.nz/namespace.html" class="uri">http://r-pkgs.had.co.nz/namespace.html</a></li>
 <li><a href="http://r4ds.had.co.nz/pipes.html" class="uri">http://r4ds.had.co.nz/pipes.html</a></li>

@@ -1,5 +1,6 @@
 #' @title Function to run two-sample Wilcoxon tests on multiple variables across
 #'   multiple grouping variables.
+#' @title Running Wilcox test across multiple grouping variables.
 #' @name grouped_wilcox
 #' @author Indrajeet Patil
 #' @return A tibble dataframe with tidy results from two-sample Wilcoxon tests
@@ -10,7 +11,8 @@
 #'   in `y ~ x`).
 #' @param indep.vars List independent variables for a two-sample Wilcoxon tests
 #'   (`x` in `y ~ x`).
-#' @param grouping.vars List of grouping variables.
+#' @param grouping.vars List of grouping variables (if `NULL`, the entire
+#'   dataframe will be used).
 #' @param paired A logical indicating whether you want a paired two-sample
 #'   Wilcoxon tests (Default: `paired = FALSE`).
 #' @param correct A logical indicating whether to apply continuity correction in
@@ -47,8 +49,7 @@ grouped_wilcox <- function(data,
   # ================== preparing dataframe ==================
   #
   # check how many variables were entered for criterion variables vector
-  dep.vars <-
-    as.list(rlang::quo_squash(rlang::enquo(dep.vars)))
+  dep.vars <- as.list(rlang::quo_squash(rlang::enquo(dep.vars)))
   dep.vars <-
     if (length(dep.vars) == 1) {
       dep.vars
@@ -57,8 +58,7 @@ grouped_wilcox <- function(data,
     }
 
   # check how many variables were entered for predictor variables vector
-  indep.vars <-
-    as.list(rlang::quo_squash(rlang::enquo(indep.vars)))
+  indep.vars <- as.list(rlang::quo_squash(rlang::enquo(indep.vars)))
   indep.vars <-
     if (length(indep.vars) == 1) {
       indep.vars
@@ -67,8 +67,7 @@ grouped_wilcox <- function(data,
     }
 
   # check how many variables were entered for grouping variable vector
-  grouping.vars <-
-    as.list(rlang::quo_squash(rlang::enquo(grouping.vars)))
+  grouping.vars <- as.list(rlang::quo_squash(rlang::enquo(grouping.vars)))
   grouping.vars <-
     if (length(grouping.vars) == 1) {
       grouping.vars
@@ -77,12 +76,8 @@ grouped_wilcox <- function(data,
     }
 
   # getting the dataframe ready
-  df <- dplyr::select(
-    .data = data,
-    !!!grouping.vars,
-    !!!dep.vars,
-    !!!indep.vars
-  ) %>%
+  df <-
+    dplyr::select(.data = data, !!!grouping.vars, !!!dep.vars, !!!indep.vars) %>%
     dplyr::group_by(.data = ., !!!grouping.vars) %>%
     tidyr::nest(data = .) %>%
     dplyr::filter(.data = ., !purrr::map_lgl(.x = data, .f = is.null)) %>%
