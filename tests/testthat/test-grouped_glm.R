@@ -5,6 +5,10 @@ context("grouped_glm")
 testthat::test_that(
   desc = "grouped_glm works",
   code = {
+    testthat::skip_on_cran()
+    testthat::skip_on_travis()
+    testthat::skip_on_appveyor()
+    testthat::skip_on_covr()
 
     # getting tidy output of results
     set.seed(123)
