@@ -4,15 +4,14 @@
 #' @return Dataframe with percentages and statistical details from a proportion
 #'  test.
 #'
-#' @param data Dataframe from which variables are to be drawn.
-#' @param grouping.vars List of grouping variables
+#' @inheritParams broomExtra::grouped_tidy
 #' @param measure A variable for which proportion test needs to be carried out
 #'  for each combination of levels of factors entered in `grouping.vars`.
 #'
 #' @importFrom purrr map
-#' @importFrom tidyr nest
-#' @importFrom tidyr unnest
-#' @importFrom tidyr spread
+#' @importFrom tidyr nest unnest spread
+#' @importFrom broomExtra tidy
+#' @importFrom stats chisq.test
 #'
 #' @examples
 #' # for reproducibility
@@ -25,14 +24,11 @@
 #' )
 #' @export
 
-grouped_proptest <- function(data,
-                             grouping.vars,
-                             measure) {
-  # turn off warning messages because there are going to be many of them for tidyr::unnest
-  options(warn = -1)
+# function body
+grouped_proptest <- function(data, grouping.vars, measure) {
+
   # check how many variables were entered for this grouping variable
-  grouping.vars <-
-    as.list(rlang::quo_squash(rlang::enquo(grouping.vars)))
+  grouping.vars <- as.list(rlang::quo_squash(rlang::enquo(grouping.vars)))
   grouping.vars <-
     if (length(grouping.vars) == 1) {
       # e.g., in mtcars dataset, grouping.vars = am
@@ -43,16 +39,12 @@ grouped_proptest <- function(data,
     }
 
   # getting the dataframe ready
-  df <- dplyr::select(
-    .data = data,
-    !!!grouping.vars,
-    measure = !!rlang::enquo(measure)
-  )
+  df <- dplyr::select(.data = data, !!!grouping.vars, measure = {{ measure }})
 
   # creating a nested dataframe
   df_nest <- df %>%
     dplyr::group_by(.data = ., !!!grouping.vars) %>%
-    tidyr::nest(data = .) %>%
+    tidyr::nest(.) %>%
     dplyr::filter(.data = ., !purrr::map_lgl(.x = data, .f = is.null)) %>%
     dplyr::ungroup(x = .)
 
@@ -84,47 +76,14 @@ grouped_proptest <- function(data,
       chi_sq = data %>%
         purrr::map(
           .x = .,
-          .f = ~ stats::chisq.test(table(.$measure))
+          .f = ~ broomExtra::tidy(stats::chisq.test(table(.$measure)))
         )
     ) %>%
-    dplyr::mutate(
-      .data = .,
-      results = chi_sq %>%
-        purrr::map(
-          .x = .,
-          .f = ~
-          cbind.data.frame(
-            "Chi-squared" = as.numeric(as.character(
-              specify_decimal_p(x = .$statistic, k = 3)
-            )),
-            "df" = as.numeric(as.character(
-              specify_decimal_p(x = .$parameter, k = 0)
-            )),
-            "p-value" = as.numeric(as.character(
-              specify_decimal_p(
-                x = .$p.value,
-                k = 3
-              )
-            ))
-          )
-        )
-    ) %>%
-    dplyr::select(.data = ., -data, -chi_sq) %>%
-    tidyr::unnest(data = .) %>%
-    signif_column(data = ., p = `p-value`)
-
-  # for every level of grouping.vars, it is going to throw following errors
-  # Warning in bind_rows_(x, .id) :
-  # Unequal factor levels: coercing to character
-  # Warning in bind_rows_(x, .id) :
-  #   binding character and factor vector, coercing into character vector
-  # Warning in bind_rows_(x, .id) :
-  #   binding character and factor vector, coercing into character vector
-
-  # this is due different columns having different types
-
-  # clean up after yourself and change the options back to what are R base defaults
-  options(warn = 1)
+    dplyr::select(.data = ., -data) %>%
+    # tidyr::unnest(.) %>%
+    tidyr::unnest(., cols = c(percentage, chi_sq)) %>% # for tidyr 0.8.9
+    dplyr::rename(.data = ., "Chi-squared" = statistic, df = parameter) %>%
+    signif_column(data = ., p = p.value)
 
   # return the final results
   return(df_results)

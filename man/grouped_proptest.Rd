@@ -7,9 +7,9 @@
 grouped_proptest(data, grouping.vars, measure)
 }
 \arguments{
-\item{data}{Dataframe from which variables are to be drawn.}
+\item{data}{Dataframe (or tibble) from which variables are to be taken.}
 
-\item{grouping.vars}{List of grouping variables}
+\item{grouping.vars}{Grouping variables.}
 
 \item{measure}{A variable for which proportion test needs to be carried out
 for each combination of levels of factors entered in \code{grouping.vars}.}

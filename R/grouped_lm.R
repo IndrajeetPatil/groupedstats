@@ -49,7 +49,7 @@ grouped_lm <- function(data,
   if (output == "tidy") {
     combined_df <- broomExtra::grouped_tidy(
       data = data,
-      grouping.vars = !!rlang::enquo(grouping.vars),
+      grouping.vars = {{ grouping.vars }},
       ..f = stats::lm,
       ...,
       tidy.args = tidy.args
@@ -66,7 +66,7 @@ grouped_lm <- function(data,
     # tidy results
     combined_df <- broomExtra::grouped_glance(
       data = data,
-      grouping.vars = !!rlang::enquo(grouping.vars),
+      grouping.vars = {{ grouping.vars }},
       ..f = stats::lm,
       ...
     )
@@ -76,7 +76,7 @@ grouped_lm <- function(data,
   if (output == "augment") {
     combined_df <- broomExtra::grouped_augment(
       data = data,
-      grouping.vars = !!rlang::enquo(grouping.vars),
+      grouping.vars = {{ grouping.vars }},
       ..f = stats::lm,
       ...,
       augment.args = augment.args

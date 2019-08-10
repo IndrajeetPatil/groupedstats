@@ -57,7 +57,7 @@ Running linear mixed-effects model (\code{lmer}) across multiple
 grouping variables.
 }
 \examples{
-
+\donttest{
 # loading libraries containing data
 library(ggplot2)
 library(gapminder)
@@ -80,6 +80,7 @@ grouped_lmer(
   grouping.vars = c(cut, clarity),
   output = "glance"
 )
+}
 }
 \author{
 Indrajeet Patil

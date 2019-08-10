@@ -9,6 +9,7 @@
 \alias{\%>\%}
 \alias{\%<>\%}
 \alias{\%$\%}
+\alias{tibble}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -19,5 +20,7 @@ below to see their documentation.
   \item{broomExtra}{\code{\link[broomExtra]{grouped_tidy}}, \code{\link[broomExtra]{grouped_glance}}, \code{\link[broomExtra]{grouped_augment}}}
 
   \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%$\%}}}
+
+  \item{tibble}{\code{\link[tibble]{tibble}}}
 }}
 

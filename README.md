@@ -25,7 +25,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--08--07-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--08--09-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
@@ -961,12 +961,17 @@ groupedstats::grouped_proptest(
   grouping.vars = cyl,
   measure = am
 )
-#> # A tibble: 3 x 7
-#>     cyl `0`    `1`    `Chi-squared`    df `p-value` significance
-#>   <dbl> <chr>  <chr>          <dbl> <dbl>     <dbl> <chr>       
-#> 1     6 57.14% 42.86%         0.143     1     0.705 ns          
-#> 2     4 27.27% 72.73%         2.27      1     0.132 ns          
-#> 3     8 85.71% 14.29%         7.14      1     0.008 **
+#> # A tibble: 3 x 8
+#>     cyl `0`    `1`    `Chi-squared` p.value    df
+#>   <dbl> <chr>  <chr>          <dbl>   <dbl> <dbl>
+#> 1     6 57.14% 42.86%         0.143 0.705       1
+#> 2     4 27.27% 72.73%         2.27  0.132       1
+#> 3     8 85.71% 14.29%         7.14  0.00753     1
+#>   method                                   significance
+#>   <chr>                                    <chr>       
+#> 1 Chi-squared test for given probabilities ns          
+#> 2 Chi-squared test for given probabilities ns          
+#> 3 Chi-squared test for given probabilities **
 ```
 
 ## `grouped_ttest`

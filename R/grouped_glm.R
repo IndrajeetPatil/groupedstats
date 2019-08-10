@@ -1,13 +1,11 @@
 #' @title Function to run generalized linear model (glm) across multiple
 #'   grouping variables.
 #' @name grouped_glm
-#' @aliases grouped_glm
 #' @author Indrajeet Patil
 #' @return A tibble dataframe with tidy results from linear model.
 #'
 #' @inheritParams grouped_lm
 #'
-#' @importFrom magrittr "%<>%"
 #' @importFrom broomExtra grouped_tidy grouped_glance grouped_augment
 #' @importFrom rlang !! enquos
 #'
@@ -52,8 +50,7 @@ grouped_glm <- function(data,
 
     # add a column with significance labels if p-values are present
     if ("p.value" %in% names(combined_df)) {
-      combined_df %<>%
-        signif_column(data = ., p = p.value)
+      combined_df %<>% signif_column(data = ., p = p.value)
     }
   }
 

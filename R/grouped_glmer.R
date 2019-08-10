@@ -1,7 +1,6 @@
 #' @title Function to run generalized linear mixed-effects model (glmer) across multiple
 #'   grouping variables.
 #' @name grouped_glmer
-#' @aliases grouped_glmer
 #' @author Indrajeet Patil
 #' @return A tibble dataframe with tidy results from linear model or model
 #'   summaries.
@@ -15,7 +14,6 @@
 #'
 #' @importFrom glue glue
 #' @importFrom purrr map map2_dfr pmap
-#' @importFrom purrr pmap
 #' @importFrom lme4 glmer glmerControl
 #' @importFrom sjstats p_value
 #' @importFrom stats as.formula
@@ -74,8 +72,7 @@ grouped_glmer <- function(data,
                           output = "tidy") {
 
   # check how many variables were entered for grouping variable vector
-  grouping.vars <-
-    as.list(rlang::quo_squash(rlang::enquo(grouping.vars)))
+  grouping.vars <- as.list(rlang::quo_squash(rlang::enquo(grouping.vars)))
   grouping.vars <-
     if (length(grouping.vars) == 1) {
       grouping.vars
@@ -86,7 +83,7 @@ grouped_glmer <- function(data,
   # getting the dataframe ready
   df <- dplyr::select(.data = data, !!!grouping.vars, dplyr::everything()) %>%
     dplyr::group_by(.data = ., !!!grouping.vars) %>%
-    tidyr::nest(data = .) %>%
+    tidyr::nest(.) %>%
     dplyr::filter(.data = ., !purrr::map_lgl(.x = data, .f = is.null)) %>%
     dplyr::ungroup(x = .)
 
@@ -144,8 +141,7 @@ grouped_glmer <- function(data,
   # ========================== using  custom function on entered dataframe ==================================
 
   # converting the original dataframe to have a grouping variable column
-  df %<>%
-    tibble::rownames_to_column(., var = "..group")
+  df %<>% tibble::rownames_to_column(., var = "..group")
 
   # running the custom function and cleaning the dataframe
   combined_df <- purrr::pmap(
@@ -165,8 +161,7 @@ grouped_glmer <- function(data,
 
   # add a column with significance labels if p-values are present
   if ("p.value" %in% names(combined_df)) {
-    combined_df %<>%
-      signif_column(data = ., p = p.value)
+    combined_df %<>% signif_column(data = ., p = p.value)
   }
 
   # return the final combined dataframe

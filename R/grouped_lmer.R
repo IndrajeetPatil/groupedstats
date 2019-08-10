@@ -25,7 +25,7 @@
 #' @importFrom broomExtra tidy glance augment
 #'
 #' @examples
-#'
+#' \donttest{
 #' # loading libraries containing data
 #' library(ggplot2)
 #' library(gapminder)
@@ -48,6 +48,7 @@
 #'   grouping.vars = c(cut, clarity),
 #'   output = "glance"
 #' )
+#' }
 #' @export
 
 grouped_lmer <- function(data,
@@ -81,7 +82,7 @@ grouped_lmer <- function(data,
     dplyr::everything()
   ) %>%
     dplyr::group_by(.data = ., !!!grouping.vars) %>%
-    tidyr::nest(data = .) %>%
+    tidyr::nest(.) %>%
     dplyr::filter(.data = ., !purrr::map_lgl(.x = data, .f = is.null)) %>%
     dplyr::ungroup(x = .)
 
