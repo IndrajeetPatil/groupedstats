@@ -56,14 +56,12 @@ grouped_proptest <- function(data, grouping.vars, measure) {
         purrr::map(
           .x = .,
           .f = ~ dplyr::group_by(.data = ., measure) %>%
-            dplyr::summarize(.data = ., counts = length(measure)) %>%
+            dplyr::summarize(.data = ., n = dplyr::n()) %>%
             dplyr::mutate(
               .data = .,
-              perc = paste0(specify_decimal_p(
-                x = (counts / sum(counts)) * 100, k = 2
-              ), "%", sep = "")
+              perc = paste(specify_decimal_p((n / sum(n)) * 100, k = 2), "%", sep = "")
             ) %>%
-            dplyr::select(.data = ., -counts) %>%
+            dplyr::select(.data = ., -n) %>%
             tidyr::spread(
               data = .,
               key = measure,
@@ -80,8 +78,8 @@ grouped_proptest <- function(data, grouping.vars, measure) {
         )
     ) %>%
     dplyr::select(.data = ., -data) %>%
-    # tidyr::unnest(.) %>%
-    tidyr::unnest(., cols = c(percentage, chi_sq)) %>% # for tidyr 0.8.9
+    tidyr::unnest(.) %>%
+    # tidyr::unnest(., cols = c(percentage, chi_sq)) %>% # for tidyr 0.8.9
     dplyr::rename(.data = ., "Chi-squared" = statistic, df = parameter) %>%
     signif_column(data = ., p = p.value)
 

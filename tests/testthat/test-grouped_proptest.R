@@ -26,7 +26,6 @@ testthat::test_that(
       measure = cut
     ))
 
-
     # testing dimensions
     testthat::expect_equal(dim(df1), c(3L, 8L))
     testthat::expect_equal(dim(df2), c(35L, 15L))

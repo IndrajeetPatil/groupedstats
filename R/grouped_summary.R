@@ -137,8 +137,8 @@ grouped_summary <- function(data,
           )
       ) %>%
       dplyr::select(.data = ., -data) %>%
-      # tidyr::unnest(.)
-      tidyr::unnest(., cols = c(long.counts)) # for tidyr 0.8.9
+      tidyr::unnest(.)
+    # tidyr::unnest(., cols = c(long.counts)) # for tidyr 0.8.9
   }
 
   # renaming numeric variable ----------------------------------------------

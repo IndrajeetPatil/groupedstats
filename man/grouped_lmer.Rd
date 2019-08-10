@@ -58,6 +58,9 @@ grouping variables.
 }
 \examples{
 \donttest{
+# for reproducibility
+set.seed(123)
+
 # loading libraries containing data
 library(ggplot2)
 library(gapminder)
@@ -72,8 +75,7 @@ groupedstats::grouped_lmer(
 )
 
 # getting model summaries
-# let's use only 50\% data to speed it up
-grouped_lmer(
+groupedstats::grouped_lmer(
   data = ggplot2::diamonds,
   formula = scale(price) ~ scale(carat) + (carat | color),
   REML = FALSE,

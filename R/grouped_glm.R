@@ -42,7 +42,7 @@ grouped_glm <- function(data,
     # tidy results
     combined_df <- broomExtra::grouped_tidy(
       data = data,
-      grouping.vars = !!rlang::enquo(grouping.vars),
+      grouping.vars = {{ grouping.vars }},
       ..f = stats::glm,
       ...,
       tidy.args = tidy.args
@@ -58,7 +58,7 @@ grouped_glm <- function(data,
     # tidy results
     combined_df <- broomExtra::grouped_glance(
       data = data,
-      grouping.vars = !!rlang::enquo(grouping.vars),
+      grouping.vars = {{ grouping.vars }},
       ..f = stats::glm,
       ...
     )
@@ -68,7 +68,7 @@ grouped_glm <- function(data,
     # tidy results
     combined_df <- broomExtra::grouped_augment(
       data = data,
-      grouping.vars = !!rlang::enquo(grouping.vars),
+      grouping.vars = {{ grouping.vars }},
       ..f = stats::glm,
       ...,
       augment.args = augment.args
