@@ -57,13 +57,16 @@ Running linear mixed-effects model (\code{lmer}) across multiple
 grouping variables.
 }
 \examples{
+\donttest{
+# for reproducibility
+set.seed(123)
 
 # loading libraries containing data
 library(ggplot2)
 library(gapminder)
 
 # getting tidy output of results
-# let's use only 50\% data to speed it up
+# let's use only subset of the data
 groupedstats::grouped_lmer(
   data = dplyr::sample_frac(gapminder, size = 0.5),
   formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap | continent),
@@ -72,14 +75,14 @@ groupedstats::grouped_lmer(
 )
 
 # getting model summaries
-# let's use only 50\% data to speed it up
-grouped_lmer(
+groupedstats::grouped_lmer(
   data = ggplot2::diamonds,
   formula = scale(price) ~ scale(carat) + (carat | color),
   REML = FALSE,
   grouping.vars = c(cut, clarity),
   output = "glance"
 )
+}
 }
 \author{
 Indrajeet Patil

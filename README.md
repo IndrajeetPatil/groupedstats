@@ -25,7 +25,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--08--07-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--08--10-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
@@ -167,7 +167,41 @@ this package:
 These functions are re-exported from `broomExtra` package and provide
 the most general versions of `grouped_` functions.
 
-For more, see:
+Here is an example
+
+``` r
+# for reproducibility
+set.seed(123)
+
+# running glm across two all combinations of two grouping variables
+groupedstats::grouped_tidy(
+  data = groupedstats::Titanic_full, # dataframe
+  grouping.vars = c(Class, Age),     # grouping variables
+  ..f = stats::glm,                  # function to execute
+  # additional arguments passed to `..f`
+  formula = Survived ~ Sex,
+  family = stats::binomial(link = "logit")
+)
+#> # A tibble: 14 x 7
+#>    Class Age   term         estimate  std.error statistic   p.value
+#>    <fct> <fct> <chr>           <dbl>      <dbl>     <dbl>     <dbl>
+#>  1 1st   Adult (Intercept)  3.56e+ 0      0.507  7.01e+ 0  2.36e-12
+#>  2 1st   Adult SexMale     -4.28e+ 0      0.532 -8.05e+ 0  8.36e-16
+#>  3 1st   Child (Intercept) -2.46e+ 1 131011.    -1.88e- 4 10.00e- 1
+#>  4 1st   Child SexMale     -1.74e-15 143515.    -1.21e-20  1.00e+ 0
+#>  5 2nd   Adult (Intercept)  1.82e+ 0      0.299  6.08e+ 0  1.23e- 9
+#>  6 2nd   Adult SexMale     -4.21e+ 0      0.409 -1.03e+ 1  6.79e-25
+#>  7 2nd   Child (Intercept) -2.56e+ 1  59908.    -4.27e- 4 10.00e- 1
+#>  8 2nd   Child SexMale     -7.14e-15  88489.    -8.07e-20  1.00e+ 0
+#>  9 3rd   Adult (Intercept) -1.58e- 1      0.156 -1.01e+ 0  3.12e- 1
+#> 10 3rd   Adult SexMale     -1.48e+ 0      0.201 -7.39e+ 0  1.51e-13
+#> 11 3rd   Child (Intercept) -1.94e- 1      0.361 -5.38e- 1  5.91e- 1
+#> 12 3rd   Child SexMale     -7.96e- 1      0.486 -1.64e+ 0  1.01e- 1
+#> 13 Crew  Adult (Intercept)  1.90e+ 0      0.619  3.06e+ 0  2.18e- 3
+#> 14 Crew  Adult SexMale     -3.15e+ 0      0.625 -5.04e+ 0  4.68e- 7
+```
+
+For more examples, see:
 <https://indrajeetpatil.github.io/broomExtra/reference/index.html#section-grouped-variants-of-generics>
 
 ## `grouped_summary`
@@ -900,8 +934,7 @@ dplyr::glimpse(groupedstats::Titanic_full)
 
 # running glmer model to get tidy output
 groupedstats::grouped_glmer(
-  formula = Survived ~ Age + (Age |
-    Class),
+  formula = Survived ~ Age + (Age | Class),
   data = groupedstats::Titanic_full,
   family = stats::binomial(link = "probit"), # choosing the appropriate GLM family
   control = lme4::glmerControl( # choosing appropriate control
@@ -911,35 +944,37 @@ groupedstats::grouped_glmer(
     optCtrl = list(maxfun = 2e9)
   ),
   grouping.vars = Sex, # grouping variables (just one in this case)
-  output = "tidy"
+  output = "tidy",
+  tidy.args = list(conf.int = TRUE, effects = "fixed")
 )
 #> # A tibble: 4 x 10
 #>   Sex    effect term        estimate std.error statistic      p.value
 #>   <fct>  <chr>  <chr>          <dbl>     <dbl>     <dbl>        <dbl>
-#> 1 Male   fixed  (Intercept)   -0.888     0.162     -5.47 0.0000000453
-#> 2 Male   fixed  AgeChild       4.90      4.03       1.22 0.224       
-#> 3 Female fixed  (Intercept)    1.01      0.379      2.66 0.00789     
-#> 4 Female fixed  AgeChild       1.47      0.595      2.48 0.0133      
+#> 1 Female fixed  (Intercept)    1.01      0.379      2.66 0.00789     
+#> 2 Female fixed  AgeChild       1.47      0.595      2.48 0.0133      
+#> 3 Male   fixed  (Intercept)   -0.888     0.162     -5.47 0.0000000453
+#> 4 Male   fixed  AgeChild       4.90      4.03       1.22 0.224       
 #>   conf.low conf.high significance
 #>      <dbl>     <dbl> <chr>       
-#> 1   -1.21     -0.570 ***         
-#> 2   -3.00     12.8   ns          
-#> 3    0.264     1.75  **          
-#> 4    0.307     2.64  *
+#> 1    0.264     1.75  **          
+#> 2    0.307     2.64  *           
+#> 3   -1.21     -0.570 ***         
+#> 4   -3.00     12.8   ns
 
 # getting glmer model summaries (let's use the default family and control values)
 groupedstats::grouped_glmer(
-  formula = Survived ~ Age + (Age |
-    Class),
-  grouping.vars = Sex,
   data = groupedstats::Titanic_full,
+  grouping.vars = Sex,
+  formula = Survived ~ Age + (Age | Class),
+  family = stats::binomial(link = "probit"),
   output = "glance"
 )
+#> boundary (singular) fit: see ?isSingular
 #> # A tibble: 2 x 7
 #>   Sex    sigma logLik   AIC   BIC deviance df.residual
 #>   <fct>  <dbl>  <dbl> <dbl> <dbl>    <dbl>       <int>
-#> 1 Male       1  -860. 1730. 1757.    1698.        1726
-#> 2 Female     1  -208.  426.  447.     400.         465
+#> 1 Female     1  -208.  426.  447.     400.         465
+#> 2 Male       1  -860. 1730. 1757.    1698.        1726
 ```
 
 Note that the `statistic` will either be a `t` (gaussian, e.g.) or a `z`
@@ -961,12 +996,17 @@ groupedstats::grouped_proptest(
   grouping.vars = cyl,
   measure = am
 )
-#> # A tibble: 3 x 7
-#>     cyl `0`    `1`    `Chi-squared`    df `p-value` significance
-#>   <dbl> <chr>  <chr>          <dbl> <dbl>     <dbl> <chr>       
-#> 1     6 57.14% 42.86%         0.143     1     0.705 ns          
-#> 2     4 27.27% 72.73%         2.27      1     0.132 ns          
-#> 3     8 85.71% 14.29%         7.14      1     0.008 **
+#> # A tibble: 3 x 8
+#>     cyl `0`    `1`    `Chi-squared` p.value    df
+#>   <dbl> <chr>  <chr>          <dbl>   <dbl> <dbl>
+#> 1     6 57.14% 42.86%         0.143 0.705       1
+#> 2     4 27.27% 72.73%         2.27  0.132       1
+#> 3     8 85.71% 14.29%         7.14  0.00753     1
+#>   method                                   significance
+#>   <chr>                                    <chr>       
+#> 1 Chi-squared test for given probabilities ns          
+#> 2 Chi-squared test for given probabilities ns          
+#> 3 Chi-squared test for given probabilities **
 ```
 
 ## `grouped_ttest`

@@ -132,7 +132,9 @@ utils::globalVariables(
     "numeric.p0",
     "numeric.p100",
     "numeric.p50",
-    "numeric.sd"
+    "numeric.sd",
+    "long.counts",
+    "percentage"
   ),
   package = "groupedstats",
   add = FALSE

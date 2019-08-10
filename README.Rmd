@@ -156,7 +156,24 @@ package:
 These functions are re-exported from `broomExtra` package and provide the most
 general versions of `grouped_` functions.
 
-For more, see:
+Here is an example
+
+```{r broomExtra_example, warning = FALSE, messsage = FALSE}
+# for reproducibility
+set.seed(123)
+
+# running glm across two all combinations of two grouping variables
+groupedstats::grouped_tidy(
+  data = groupedstats::Titanic_full, # dataframe
+  grouping.vars = c(Class, Age),     # grouping variables
+  ..f = stats::glm,                  # function to execute
+  # additional arguments passed to `..f`
+  formula = Survived ~ Sex,
+  family = stats::binomial(link = "logit")
+)
+```
+
+For more examples, see:
 <https://indrajeetpatil.github.io/broomExtra/reference/index.html#section-grouped-variants-of-generics>
 
 ## `grouped_summary`
@@ -491,8 +508,7 @@ dplyr::glimpse(groupedstats::Titanic_full)
 
 # running glmer model to get tidy output
 groupedstats::grouped_glmer(
-  formula = Survived ~ Age + (Age |
-    Class),
+  formula = Survived ~ Age + (Age | Class),
   data = groupedstats::Titanic_full,
   family = stats::binomial(link = "probit"), # choosing the appropriate GLM family
   control = lme4::glmerControl( # choosing appropriate control
@@ -502,15 +518,16 @@ groupedstats::grouped_glmer(
     optCtrl = list(maxfun = 2e9)
   ),
   grouping.vars = Sex, # grouping variables (just one in this case)
-  output = "tidy"
+  output = "tidy",
+  tidy.args = list(conf.int = TRUE, effects = "fixed")
 )
 
 # getting glmer model summaries (let's use the default family and control values)
 groupedstats::grouped_glmer(
-  formula = Survived ~ Age + (Age |
-    Class),
-  grouping.vars = Sex,
   data = groupedstats::Titanic_full,
+  grouping.vars = Sex,
+  formula = Survived ~ Age + (Age | Class),
+  family = stats::binomial(link = "probit"),
   output = "glance"
 )
 ```

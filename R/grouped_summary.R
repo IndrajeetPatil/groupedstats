@@ -22,7 +22,7 @@
 #' @importFrom skimr skim
 #' @importFrom dplyr filter_at mutate_at mutate_if group_modify group_nest any_vars
 #' @importFrom purrr is_bare_numeric is_bare_character keep map map_lgl map_dfr
-#' @importFrom tidyr nest unnest separate
+#' @importFrom tidyr unnest separate
 #' @importFrom crayon red blue
 #' @importFrom tibble as_tibble enframe
 #' @importFrom stats qt
@@ -111,10 +111,7 @@ grouped_summary <- function(data,
     dplyr::group_modify(
       .tbl = .,
       .f = ~ tibble::as_tibble(skimr::skim_to_wide(
-        purrr::keep(
-          .x = .,
-          .p = ..f
-        )
+        purrr::keep(.x = ., .p = ..f)
       )),
       keep = FALSE
     ) %>%
@@ -140,7 +137,8 @@ grouped_summary <- function(data,
           )
       ) %>%
       dplyr::select(.data = ., -data) %>%
-      tidyr::unnest(data = .)
+      tidyr::unnest(.)
+    # tidyr::unnest(., cols = c(long.counts)) # for tidyr 0.8.9
   }
 
   # renaming numeric variable ----------------------------------------------

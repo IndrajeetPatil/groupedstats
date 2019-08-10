@@ -136,50 +136,39 @@ grouping variables.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>grouped_glmer</span>(<span class='no'>data</span>, <span class='no'>grouping.vars</span>, <span class='no'>formula</span>, <span class='kw'>family</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/family.html'>binomial</a></span>(<span class='kw'>link</span>
-  <span class='kw'>=</span> <span class='st'>"probit"</span>), <span class='kw'>control</span> <span class='kw'>=</span> <span class='kw pkg'>lme4</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmerControl.html'>glmerControl</a></span>(<span class='kw'>optimizer</span> <span class='kw'>=</span> <span class='st'>"bobyqa"</span>,
-  <span class='kw'>boundary.tol</span> <span class='kw'>=</span> <span class='fl'>1e-07</span>, <span class='kw'>calc.derivs</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>use.last.params</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>optCtrl</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxfun</span> <span class='kw'>=</span> <span class='fl'>2e+09</span>)), <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>)</pre>
+    <pre class="usage"><span class='fu'>grouped_glmer</span>(<span class='no'>data</span>, <span class='no'>grouping.vars</span>, <span class='no'>...</span>, <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>,
+  <span class='kw'>tidy.args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>conf.int</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>),
+  <span class='kw'>augment.args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>Dataframe from which variables are to be taken.</p></td>
+      <td><p>Dataframe (or tibble) from which variables are to be taken.</p></td>
     </tr>
     <tr>
       <th>grouping.vars</th>
-      <td><p>List of grouping variables.</p></td>
+      <td><p>Grouping variables.</p></td>
     </tr>
     <tr>
-      <th>formula</th>
-      <td><p>a two-sided linear formula object describing both the
-    fixed-effects and random-effects part of the model, with the response
-    on the left of a <code>~</code> operator and the terms, separated by
-    <code>+</code> operators, on the right.  Random-effects terms are
-    distinguished by vertical bars (<code><a href='https://rdrr.io/r/base/Logic.html'>"|"</a></code>) separating expressions
-    for design matrices from grouping factors.</p></td>
-    </tr>
-    <tr>
-      <th>family</th>
-      <td><p>a GLM family, see <code><a href='https://rdrr.io/r/stats/glm.html'>glm</a></code> and
-    <code><a href='https://rdrr.io/r/stats/family.html'>family</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>control</th>
-      <td><p>a list (of correct class, resulting from
-    <code>lmerControl()</code> or <code>glmerControl()</code>
-    respectively) containing control parameters, including the nonlinear
-    optimizer to be used and parameters to be passed through to the
-    nonlinear optimizer, see the <code>*lmerControl</code> documentation for
-    details.</p></td>
+      <th>...</th>
+      <td><p>Arguments to function.</p>
+<p>These dots support tidy-dots features.</p></td>
     </tr>
     <tr>
       <th>output</th>
       <td><p>A character describing what output is expected. Two possible
 options: <code>"tidy"</code> (default), which will return the results, or <code>"glance"</code>,
 which will return model summaries.</p></td>
+    </tr>
+    <tr>
+      <th>tidy.args</th>
+      <td><p>A list of arguments to be used in the relevant <code>S3</code> method.</p></td>
+    </tr>
+    <tr>
+      <th>augment.args</th>
+      <td><p>A list of arguments to be used in the relevant <code>S3</code> method.</p></td>
     </tr>
     </table>
     
@@ -195,54 +184,29 @@ summaries.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='co'># commented out because the examples are time-consuming and the R CMD CHECK</span>
-<span class='co'># makes a NOTE (&gt; 5s)</span>
+<span class='co'># for reproducibility</span>
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
 
 <span class='co'># categorical outcome; binomial family</span>
 <span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/grouped_glmer.html'>grouped_glmer</a></span>(
-  <span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>Survived</span> ~ <span class='no'>Age</span> + (<span class='no'>Age</span> <span class='kw'>|</span>
-    <span class='no'>Class</span>),
+  <span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>Survived</span> ~ <span class='no'>Age</span> + (<span class='no'>Age</span> <span class='kw'>|</span> <span class='no'>Class</span>),
   <span class='kw'>family</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/family.html'>binomial</a></span>(<span class='kw'>link</span> <span class='kw'>=</span> <span class='st'>"probit"</span>),
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/sample.html'>sample_frac</a></span>(<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='no'><a href='https://indrajeetpatil.github.io/groupedstats//reference/Titanic_full.html'>Titanic_full</a></span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>0.3</span>),
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>Sex</span>
-)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 4 x 10</span><span>
-#&gt;   Sex   effect term  estimate std.error statistic  p.value conf.low conf.high
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> Male  fixed  (Int~   -</span><span style='color: #BB0000;'>0.914</span><span>     0.141     -</span><span style='color: #BB0000;'>6.50</span><span> 8.25</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-11</span><span> -</span><span style='color: #BB0000;'>1.19</span><span>       -</span><span style='color: #BB0000;'>0.639</span><span>
-#&gt; </span><span style='color: #555555;'>2</span><span> Male  fixed  AgeC~    2.25      1.07       2.10 3.56</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 2</span><span>  0.151       4.34 
-#&gt; </span><span style='color: #555555;'>3</span><span> Fema~ fixed  (Int~    0.841     0.426      1.97 4.84</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 2</span><span>  0.006</span><span style='text-decoration: underline;'>00</span><span>     1.68 
-#&gt; </span><span style='color: #555555;'>4</span><span> Fema~ fixed  AgeC~    0.687     0.548      1.25 2.10</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 1</span><span> -</span><span style='color: #BB0000;'>0.388</span><span>       1.76 
-#&gt; </span><span style='color: #555555;'># ... with 1 more variable: significance </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
-<span class='co'># continuous outcome; gaussian family</span>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>gapminder</span>)
-
-<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/grouped_glmer.html'>grouped_glmer</a></span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/sample.html'>sample_frac</a></span>(<span class='no'>gapminder</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>0.3</span>),
-  <span class='kw'>formula</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span>(<span class='no'>lifeExp</span>) ~ <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span>(<span class='no'>gdpPercap</span>) + (<span class='no'>gdpPercap</span> <span class='kw'>|</span> <span class='no'>continent</span>),
-  <span class='kw'>family</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/family.html'>gaussian</a></span>(),
-  <span class='kw'>control</span> <span class='kw'>=</span> <span class='kw pkg'>lme4</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmerControl.html'>lmerControl</a></span>(
-    <span class='kw'>optimizer</span> <span class='kw'>=</span> <span class='st'>"bobyqa"</span>,
-    <span class='kw'>restart_edge</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-    <span class='kw'>boundary.tol</span> <span class='kw'>=</span> <span class='fl'>1e-7</span>,
-    <span class='kw'>calc.derivs</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-    <span class='kw'>optCtrl</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxfun</span> <span class='kw'>=</span> <span class='fl'>2e9</span>)
-  ),
-  <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>year</span>,
-  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>
-)</div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; <span class='warning'>Warning: please use glmerControl() instead of lmerControl()</span></div><div class='output co'>#&gt; <span class='warning'>Warning: calling glmer() with family=gaussian (identity link) as a shortcut to lmer() is deprecated; please call lmer() directly</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 24 x 8</span><span>
-#&gt;     year effect term             estimate std.error statistic conf.low conf.high
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>               </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span>  </span><span style='text-decoration: underline;'>1</span><span>952 fixed  (Intercept)         0.221     0.280     0.789  -</span><span style='color: #BB0000;'>0.328</span><span>      0.770
-#&gt; </span><span style='color: #555555;'> 2</span><span>  </span><span style='text-decoration: underline;'>1</span><span>952 fixed  scale(gdpPercap)    0.480     0.136     3.54    0.215      0.746
-#&gt; </span><span style='color: #555555;'> 3</span><span>  </span><span style='text-decoration: underline;'>1</span><span>992 fixed  (Intercept)         0.124     0.199     0.623  -</span><span style='color: #BB0000;'>0.266</span><span>      0.514
-#&gt; </span><span style='color: #555555;'> 4</span><span>  </span><span style='text-decoration: underline;'>1</span><span>992 fixed  scale(gdpPercap)    0.653     0.180     3.63    0.300      1.01 
-#&gt; </span><span style='color: #555555;'> 5</span><span>  </span><span style='text-decoration: underline;'>2</span><span>007 fixed  (Intercept)         0.289     0.187     1.54   -</span><span style='color: #BB0000;'>0.078</span><span style='color: #BB0000;text-decoration: underline;'>4</span><span>     0.656
-#&gt; </span><span style='color: #555555;'> 6</span><span>  </span><span style='text-decoration: underline;'>2</span><span>007 fixed  scale(gdpPercap)    0.574     0.204     2.82    0.175      0.973
-#&gt; </span><span style='color: #555555;'> 7</span><span>  </span><span style='text-decoration: underline;'>1</span><span>987 fixed  (Intercept)         0.318     0.291     1.09   -</span><span style='color: #BB0000;'>0.252</span><span>      0.888
-#&gt; </span><span style='color: #555555;'> 8</span><span>  </span><span style='text-decoration: underline;'>1</span><span>987 fixed  scale(gdpPercap)    0.537     0.177     3.04    0.190      0.883
-#&gt; </span><span style='color: #555555;'> 9</span><span>  </span><span style='text-decoration: underline;'>1</span><span>977 fixed  (Intercept)         0.573     0.142     4.03    0.294      0.852
-#&gt; </span><span style='color: #555555;'>10</span><span>  </span><span style='text-decoration: underline;'>1</span><span>977 fixed  scale(gdpPercap)    1.22      0.553     2.20    0.134      2.30 
-#&gt; </span><span style='color: #555555;'># ... with 14 more rows</span><span></div></span></pre>
+)</div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 10 x 11</span><span>
+#&gt;    Sex   effect group term  estimate std.error statistic   p.value conf.low
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> Fema~ fixed  </span><span style='color: #BB0000;'>NA</span><span>    (Int~    0.841     0.428     1.96   4.95</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 2</span><span>  0.001</span><span style='text-decoration: underline;'>88</span><span>
+#&gt; </span><span style='color: #555555;'> 2</span><span> Fema~ fixed  </span><span style='color: #BB0000;'>NA</span><span>    AgeC~    0.687     1.41      0.488  6.26</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 1</span><span> -</span><span style='color: #BB0000;'>2.07</span><span>   
+#&gt; </span><span style='color: #555555;'> 3</span><span> Fema~ ran_p~ Class sd__~    0.790    </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>   </span><span style='color: #555555;'> </span><span>    </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #555555;'> 4</span><span> Fema~ ran_p~ Class cor_~    1        </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>   </span><span style='color: #555555;'> </span><span>    </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #555555;'> 5</span><span> Fema~ ran_p~ Class sd__~    0.647    </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>   </span><span style='color: #555555;'> </span><span>    </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #555555;'> 6</span><span> Male  fixed  </span><span style='color: #BB0000;'>NA</span><span>    (Int~   -</span><span style='color: #BB0000;'>0.914</span><span>     0.148    -</span><span style='color: #BB0000;'>6.18</span><span>   6.50</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-10</span><span> -</span><span style='color: #BB0000;'>1.20</span><span>   
+#&gt; </span><span style='color: #555555;'> 7</span><span> Male  fixed  </span><span style='color: #BB0000;'>NA</span><span>    AgeC~    2.25      1.92      1.17   2.41</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 1</span><span> -</span><span style='color: #BB0000;'>1.51</span><span>   
+#&gt; </span><span style='color: #555555;'> 8</span><span> Male  ran_p~ Class sd__~    0.232    </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>   </span><span style='color: #555555;'> </span><span>    </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #555555;'> 9</span><span> Male  ran_p~ Class cor_~    0.368    </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>   </span><span style='color: #555555;'> </span><span>    </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #555555;'>10</span><span> Male  ran_p~ Class sd__~    1.40     </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>   </span><span style='color: #555555;'> </span><span>    </span><span style='color: #BB0000;'>NA</span><span>      
+#&gt; </span><span style='color: #555555;'># ... with 2 more variables: conf.high </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, significance </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -20,18 +20,21 @@
 #' @importFrom stats as.formula
 #' @importFrom tidyr nest
 #' @importFrom rlang !! enquos enquo quo quo_squash
-#' @importFrom dplyr select group_by arrange mutate mutate_at mutate_if
-#' @importFrom dplyr left_join right_join
+#' @importFrom dplyr select group_by arrange mutate mutate_at
+#' @importFrom dplyr left_join
 #' @importFrom broomExtra tidy glance augment
 #'
 #' @examples
+#' \donttest{
+#' # for reproducibility
+#' set.seed(123)
 #'
 #' # loading libraries containing data
 #' library(ggplot2)
 #' library(gapminder)
 #'
 #' # getting tidy output of results
-#' # let's use only 50% data to speed it up
+#' # let's use only subset of the data
 #' groupedstats::grouped_lmer(
 #'   data = dplyr::sample_frac(gapminder, size = 0.5),
 #'   formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap | continent),
@@ -40,16 +43,17 @@
 #' )
 #'
 #' # getting model summaries
-#' # let's use only 50% data to speed it up
-#' grouped_lmer(
+#' groupedstats::grouped_lmer(
 #'   data = ggplot2::diamonds,
 #'   formula = scale(price) ~ scale(carat) + (carat | color),
 #'   REML = FALSE,
 #'   grouping.vars = c(cut, clarity),
 #'   output = "glance"
 #' )
+#' }
 #' @export
 
+# function body
 grouped_lmer <- function(data,
                          grouping.vars,
                          formula,
@@ -65,8 +69,7 @@ grouped_lmer <- function(data,
                          p.kr = FALSE,
                          output = "tidy") {
   # check how many variables were entered for grouping variable vector
-  grouping.vars <-
-    as.list(rlang::quo_squash(rlang::enquo(grouping.vars)))
+  grouping.vars <- as.list(rlang::quo_squash(rlang::enquo(grouping.vars)))
   grouping.vars <-
     if (length(grouping.vars) == 1) {
       grouping.vars
@@ -75,111 +78,105 @@ grouped_lmer <- function(data,
     }
 
   # getting the dataframe ready
-  df <- dplyr::select(
-    .data = data,
-    !!!grouping.vars,
-    dplyr::everything()
-  ) %>%
+  df <- dplyr::select(.data = data, !!!grouping.vars, dplyr::everything()) %>%
     dplyr::group_by(.data = ., !!!grouping.vars) %>%
-    tidyr::nest(data = .) %>%
+    tidyr::nest(.) %>%
     dplyr::filter(.data = ., !purrr::map_lgl(.x = data, .f = is.null)) %>%
     dplyr::ungroup(x = .)
 
   # ====================================== custom function ==================================
 
   # custom function to run tidy operation on every element of list column
-  fnlisted <-
-    function(list.col,
-                 formula,
-                 output,
-                 REML,
-                 control,
-                 p.kr) {
-      if (output == "tidy") {
-        # dataframe with results from lmer
-        results_df <-
-          list.col %>% # tidying up the output with broom.mixed
-          purrr::map_dfr(
-            .x = .,
-            .f = ~ broomExtra::tidy(
-              x = lme4::lmer(
-                formula = stats::as.formula(formula),
-                data = (.),
-                REML = REML,
-                control = control,
-                na.action = na.omit
-              ),
-              conf.int = TRUE,
-              conf.level = 0.95,
-              conf.method = "Wald",
-              effects = "fixed"
+  fnlisted <- function(list.col,
+                         formula,
+                         output,
+                         REML,
+                         control,
+                         p.kr) {
+    if (output == "tidy") {
+      # dataframe with results from lmer
+      results_df <-
+        list.col %>% # tidying up the output with broom.mixed
+        purrr::map_dfr(
+          .x = .,
+          .f = ~ broomExtra::tidy(
+            x = lme4::lmer(
+              formula = stats::as.formula(formula),
+              data = (.),
+              REML = REML,
+              control = control,
+              na.action = na.omit
             ),
-            .id = "..group"
-          ) %>%
-          dplyr::rename(.data = ., t.value = statistic) %>%
-          dplyr::mutate_at(
-            .tbl = .,
-            .vars = "term",
-            .funs = ~ as.character(.)
-          )
+            conf.int = TRUE,
+            conf.level = 0.95,
+            conf.method = "Wald",
+            effects = "fixed"
+          ),
+          .id = "..group"
+        ) %>%
+        dplyr::rename(.data = ., t.value = statistic) %>%
+        dplyr::mutate_at(
+          .tbl = .,
+          .vars = "term",
+          .funs = ~ as.character(.)
+        )
 
-        # computing p-values
-        pval_df <-
-          list.col %>% # getting p-values with sjstats package
-          purrr::map_dfr(
-            .x = .,
-            .f = ~ sjstats::p_value(
-              fit = lme4::lmer(
-                formula = stats::as.formula(formula),
-                data = (.),
-                REML = REML,
-                control = control,
-                na.action = na.omit
-              ),
-              p.kr = p.kr
+      # computing p-values
+      pval_df <-
+        list.col %>% # getting p-values with sjstats package
+        purrr::map_dfr(
+          .x = .,
+          .f = ~ sjstats::p_value(
+            fit = lme4::lmer(
+              formula = stats::as.formula(formula),
+              data = (.),
+              REML = REML,
+              control = control,
+              na.action = na.omit
             ),
-            .id = "..group"
-          ) %>%
-          dplyr::select(.data = ., -std.error) %>%
-          dplyr::mutate_at(
-            .tbl = .,
-            .vars = "term",
-            .funs = ~ as.character(.)
-          )
+            p.kr = p.kr
+          ),
+          .id = "..group"
+        ) %>%
+        dplyr::select(.data = ., -std.error) %>%
+        dplyr::mutate_at(
+          .tbl = .,
+          .vars = "term",
+          .funs = ~ as.character(.)
+        )
 
-        # combining the two dataframes
-        results_df %<>%
-          dplyr::full_join(
-            x = .,
-            y = pval_df,
-            by = c("term", "..group")
-          )
-      } else {
-        # dataframe with results from lm
-        results_df <-
-          list.col %>% # tidying up the output with broom.mixed
-          purrr::map_dfr(
-            .x = .,
-            .f = ~ broomExtra::glance(
-              x = lme4::lmer(
-                formula = stats::as.formula(formula),
-                data = (.),
-                REML = REML,
-                control = control,
-                na.action = na.omit
-              )
-            ),
-            .id = "..group"
-          )
-      }
-      return(results_df)
+      # combining the two dataframes
+      results_df %<>%
+        dplyr::full_join(
+          x = .,
+          y = pval_df,
+          by = c("term", "..group")
+        )
+    } else {
+      # dataframe with results from lm
+      results_df <-
+        list.col %>% # tidying up the output with broom.mixed
+        purrr::map_dfr(
+          .x = .,
+          .f = ~ broomExtra::glance(
+            x = lme4::lmer(
+              formula = stats::as.formula(formula),
+              data = (.),
+              REML = REML,
+              control = control,
+              na.action = na.omit
+            )
+          ),
+          .id = "..group"
+        )
     }
+    return(results_df)
+  }
 
   # ========================== using  custom function on entered dataframe ==================================
 
   # converting the original dataframe to have a grouping variable column
-  df %<>%
-    tibble::rownames_to_column(., var = "..group")
+  df %<>% tibble::rownames_to_column(., var = "..group")
 
   # running the custom function and cleaning the dataframe
   combined_df <- purrr::pmap(
@@ -200,8 +197,7 @@ grouped_lmer <- function(data,
 
   # add a column with significance labels if p-values are present
   if ("p.value" %in% names(combined_df)) {
-    combined_df %<>%
-      signif_column(data = ., p = p.value)
+    combined_df %<>% signif_column(data = ., p = p.value)
   }
 
   # return the final combined dataframe

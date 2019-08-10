@@ -67,7 +67,7 @@ grouped_aov <- function(data,
   df <-
     dplyr::select(.data = data, !!!grouping.vars, dplyr::everything()) %>%
     dplyr::group_by(.data = ., !!!grouping.vars) %>%
-    tidyr::nest(data = .) %>%
+    tidyr::nest(.) %>%
     dplyr::filter(.data = ., !purrr::map_lgl(.x = data, .f = is.null)) %>%
     dplyr::ungroup(x = .)
 

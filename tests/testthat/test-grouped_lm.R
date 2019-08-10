@@ -2,7 +2,7 @@ context("grouped_lm")
 
 # grouped_lm works --------------------------------------------------------
 
-test_that(
+testthat::test_that(
   desc = "grouped_lm works",
   code = {
     testthat::skip_on_cran()
