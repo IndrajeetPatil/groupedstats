@@ -36,9 +36,7 @@ Imports:
     tidyr (>= 0.8.3),
     utils
 Suggests: 
-    covr,
     ez,
-    forcats,
     gapminder,
     ggplot2,
     knitr,

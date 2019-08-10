@@ -34,7 +34,7 @@
 #' library(gapminder)
 #'
 #' # getting tidy output of results
-#' # let's use only 50\% data to speed it up
+#' # let's use only subset of the data
 #' groupedstats::grouped_lmer(
 #'   data = dplyr::sample_frac(gapminder, size = 0.5),
 #'   formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap | continent),
