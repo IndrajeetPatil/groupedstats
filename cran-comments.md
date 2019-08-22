@@ -10,4 +10,6 @@
 ## Comments
 
   - Minor code refactoring.
-  - None of the upstream dependencies are affected by these changes.
+  - This leads to breakage of one dependency `ggstatsplot` which I maintain. I
+    will submit a new version of `ggstatsplot` as soon as `groupedstats` makes
+    it to `CRAN`.

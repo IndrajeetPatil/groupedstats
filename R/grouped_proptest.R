@@ -77,11 +77,17 @@ grouped_proptest <- function(data, grouping.vars, measure) {
           .f = ~ broomExtra::tidy(stats::chisq.test(table(.$measure)))
         )
     ) %>%
-    dplyr::select(.data = ., -data) %>%
-    tidyr::unnest(.) %>%
-    # tidyr::unnest(., cols = c(percentage, chi_sq)) %>% # for tidyr 0.8.9
-    dplyr::rename(.data = ., "Chi-squared" = statistic, df = parameter) %>%
-    signif_column(data = ., p = p.value)
+    dplyr::select(.data = ., -data)
+
+  # unnest the dataframe
+  if (utils::packageVersion("tidyr") <= "0.8.9") {
+    df_results %<>% tidyr::unnest(.)
+  } else {
+    df_results %<>% tidyr::unnest(., cols = c(percentage, chi_sq))
+  }
+
+  # add significance column
+  df_results %<>% signif_column(data = ., p = p.value)
 
   # return the final results
   return(df_results)

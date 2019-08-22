@@ -14,7 +14,7 @@
   ],
   "issueTracker": "\n    https://github.com/IndrajeetPatil/groupedstats/issues/",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.0.8.9000",
+  "version": "0.0.9",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -143,7 +143,7 @@
       "@type": "SoftwareApplication",
       "identifier": "broomExtra",
       "name": "broomExtra",
-      "version": ">= 0.0.4",
+      "version": ">= 0.0.5",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",

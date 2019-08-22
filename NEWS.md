@@ -1,4 +1,4 @@
-# groupedstats 0.0.8.9000
+# groupedstats 0.0.9
 
 MAJOR CHANGES
 
