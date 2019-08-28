@@ -9,10 +9,12 @@
 <title>Confidence intervals for partial eta-squared and omega-squared for
 linear models. — lm_effsize_ci • groupedstats</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -41,13 +43,14 @@ linear models. — lm_effsize_ci • groupedstats</title>
 
   <link href="../extra.css" rel="stylesheet">
   
+
 <meta property="og:title" content="Confidence intervals for partial eta-squared and omega-squared for
 linear models. — lm_effsize_ci" />
-
 <meta property="og:description" content="This function will convert a linear model object to a dataframe
 containing statistical details for all effects along with partial
 eta-squared effect size and its confidence interval." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -78,7 +81,7 @@ eta-squared effect size and its confidence interval." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">groupedstats</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.8.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.9.9000</span>
       </span>
     </div>
 
@@ -97,7 +100,6 @@ eta-squared effect size and its confidence interval." />
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/IndrajeetPatil/groupedstats">
@@ -131,16 +133,14 @@ linear models.</h1>
     </div>
 
     <div class="ref-description">
-    
     <p>This function will convert a linear model object to a dataframe
 containing statistical details for all effects along with partial
 eta-squared effect size and its confidence interval.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>lm_effsize_ci</span>(<span class='no'>object</span>, <span class='kw'>effsize</span> <span class='kw'>=</span> <span class='st'>"eta"</span>, <span class='kw'>partial</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>, <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>500</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"dist"</span>, <span class='st'>"quantile"</span>))</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -180,12 +180,11 @@ quantiles of the bootstrapped values. See 'Details' in <code>boot_ci()</code>.
 May be abbreviated.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A dataframe with results from <code><a href='https://rdrr.io/r/stats/lm.html'>stats::lm()</a></code> with partial eta-squared,
 omega-squared, and bootstrapped confidence interval for the same.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># for reproducibility</span>
@@ -209,9 +208,7 @@ omega-squared, and bootstrapped confidence interval for the same.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

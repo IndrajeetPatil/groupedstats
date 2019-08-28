@@ -8,10 +8,12 @@
 
 <title>Function to run proportion test on grouped data. — grouped_proptest • groupedstats</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -40,10 +42,11 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Function to run proportion test on grouped data. — grouped_proptest" />
 
+<meta property="og:title" content="Function to run proportion test on grouped data. — grouped_proptest" />
 <meta property="og:description" content="Function to run proportion test on grouped data." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -74,7 +77,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">groupedstats</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.8.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.9.9000</span>
       </span>
     </div>
 
@@ -93,7 +96,6 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/IndrajeetPatil/groupedstats">
@@ -126,13 +128,11 @@
     </div>
 
     <div class="ref-description">
-    
     <p>Function to run proportion test on grouped data.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>grouped_proptest</span>(<span class='no'>data</span>, <span class='no'>grouping.vars</span>, <span class='no'>measure</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -150,12 +150,11 @@
 for each combination of levels of factors entered in <code>grouping.vars</code>.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Dataframe with percentages and statistical details from a proportion
 test.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># for reproducibility</span>
@@ -165,21 +164,18 @@ test.</p>
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>,
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>cyl</span>,
   <span class='kw'>measure</span> <span class='kw'>=</span> <span class='no'>am</span>
-)</div><div class='output co'>#&gt; <span class='warning'>Warning: Chi-squared approximation may be incorrect</span></div><div class='output co'>#&gt; <span class='warning'>Warning: `cols` is now required.</span>
-#&gt; <span class='warning'>Please use `cols = c(percentage, chi_sq)`</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 3 x 8</span><span>
-#&gt;     cyl `0`    `1`   `Chi-squared` p.value    df method             significance
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
-#&gt; </span><span style='color: #555555;'>1</span><span>     6 57.14% 42.8~         0.143 0.705       1 Chi-squared test ~ ns          
-#&gt; </span><span style='color: #555555;'>2</span><span>     4 27.27% 72.7~         2.27  0.132       1 Chi-squared test ~ ns          
-#&gt; </span><span style='color: #555555;'>3</span><span>     8 85.71% 14.2~         7.14  0.007</span><span style='text-decoration: underline;'>53</span><span>     1 Chi-squared test ~ **          </div></span></pre>
+)</div><div class='output co'>#&gt; <span class='warning'>Warning: Chi-squared approximation may be incorrect</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 3 x 8</span><span>
+#&gt;     cyl `0`    `1`   statistic p.value parameter method             significance
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
+#&gt; </span><span style='color: #555555;'>1</span><span>     6 57.14% 42.8~     0.143 0.705           1 Chi-squared test ~ ns          
+#&gt; </span><span style='color: #555555;'>2</span><span>     4 27.27% 72.7~     2.27  0.132           1 Chi-squared test ~ ns          
+#&gt; </span><span style='color: #555555;'>3</span><span>     8 85.71% 14.2~     7.14  0.007</span><span style='text-decoration: underline;'>53</span><span>         1 Chi-squared test ~ **          </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

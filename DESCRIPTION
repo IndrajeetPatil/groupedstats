@@ -1,7 +1,7 @@
 Type: Package
 Package: groupedstats
 Title: Grouped Statistical Analyses in a Tidy Way
-Version: 0.0.9
+Version: 0.0.9.9000
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
