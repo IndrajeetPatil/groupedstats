@@ -31,3 +31,4 @@ tests\^spelling
 ^\.lintr$
 ^\.circleci$
 ^\.github/ISSUE_TEMPLATE$
+^API$
