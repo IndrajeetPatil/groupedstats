@@ -137,8 +137,7 @@ grouped_summary <- function(data,
           )
       ) %>%
       dplyr::select(.data = ., -data) %>%
-      tidyr::unnest(.)
-    # tidyr::unnest(., cols = c(long.counts)) # for tidyr 0.8.9
+      tidyr::unnest(., cols = c(long.counts))
   }
 
   # renaming numeric variable ----------------------------------------------
@@ -177,7 +176,9 @@ grouped_summary <- function(data,
   }
 
   # remove the histogram column
-  if ("hist" %in% names(df_summary)) df_summary %<>% dplyr::select(.data = ., -hist)
+  if ("hist" %in% names(df_summary)) {
+    df_summary %<>% dplyr::select(.data = ., -hist)
+  }
 
   # return the summary dataframe
   return(df_summary)

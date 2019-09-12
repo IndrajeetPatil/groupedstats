@@ -79,15 +79,10 @@ grouped_proptest <- function(data, grouping.vars, measure) {
     ) %>%
     dplyr::select(.data = ., -data)
 
-  # unnest the dataframe
-  if (utils::packageVersion("tidyr") <= "0.8.9") {
-    df_results %<>% tidyr::unnest(.)
-  } else {
-    df_results %<>% tidyr::unnest(., cols = c(percentage, chi_sq))
-  }
-
-  # add significance column
-  df_results %<>% signif_column(data = ., p = p.value)
+  # unnest the dataframe and add significance column
+  df_results %<>%
+    tidyr::unnest(., cols = c(percentage, chi_sq)) %>%
+    signif_column(data = ., p = p.value)
 
   # return the final results
   return(df_results)
