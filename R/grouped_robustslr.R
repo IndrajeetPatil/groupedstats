@@ -45,18 +45,10 @@ grouped_robustslr <- function(data,
                               control = robust::lmRob.control(
                                 tlo = 1e-4,
                                 tua = 1.5e-06,
-                                mxr = 50,
-                                mxf = 50,
-                                mxs = 50,
                                 tl = 1e-06,
                                 estim = "Final",
                                 initial.alg = "Auto",
-                                final.alg = "MM",
-                                seed = 1313,
-                                level = 0.1,
-                                efficiency = 0.9,
-                                weight = c("Optimal", "Optimal"),
-                                trace = TRUE
+                                final.alg = "MM"
                               )) {
 
   # ================== preparing dataframe ==================
@@ -89,7 +81,8 @@ grouped_robustslr <- function(data,
     }
 
   # getting the dataframe ready
-  df <- dplyr::select(.data = data, !!!grouping.vars, !!!dep.vars, !!!indep.vars) %>%
+  df <-
+    dplyr::select(.data = data, !!!grouping.vars, !!!dep.vars, !!!indep.vars) %>%
     dplyr::group_by(.data = ., !!!grouping.vars) %>%
     tidyr::nest(.) %>%
     dplyr::filter(.data = ., !purrr::map_lgl(.x = data, .f = is.null)) %>%
@@ -151,22 +144,23 @@ grouped_robustslr <- function(data,
   df %<>% tibble::rownames_to_column(., var = "..group")
 
   # running custom function for each element of the created list column
-  combined_df <- purrr::pmap(
-    .l = list(
-      list.col = list(df$data),
-      x_name = purrr::map(
-        .x = indep.vars,
-        .f = ~ rlang::quo_name(quo = .)
+  combined_df <-
+    purrr::pmap(
+      .l = list(
+        list.col = list(df$data),
+        x_name = purrr::map(
+          .x = indep.vars,
+          .f = ~ rlang::quo_name(quo = .)
+        ),
+        y_name = purrr::map(
+          .x = dep.vars,
+          .f = ~ rlang::quo_name(quo = .)
+        ),
+        nrep = list(nrep),
+        control = list(control)
       ),
-      y_name = purrr::map(
-        .x = dep.vars,
-        .f = ~ rlang::quo_name(quo = .)
-      ),
-      nrep = list(nrep),
-      control = list(control)
-    ),
-    .f = lm_listed
-  ) %>%
+      .f = lm_listed
+    ) %>%
     dplyr::bind_rows(.) %>%
     dplyr::left_join(x = ., y = df, by = "..group") %>%
     dplyr::select(.data = ., !!!grouping.vars, dplyr::everything()) %>%

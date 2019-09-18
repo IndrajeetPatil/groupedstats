@@ -6,6 +6,8 @@
 #' @param output A character describing what output is expected. Two possible
 #'   options: `"tidy"` (default), which will return the results, or `"glance"`,
 #'   which will return model summaries.
+#' @param ... Additional arguments to `broom::tidy`, `broom::glance`, or
+#'   `broom::augment` S3 method.
 #' @inheritParams broomExtra::grouped_tidy
 #' @inheritParams broomExtra::grouped_augment
 #'
@@ -47,13 +49,14 @@ grouped_lm <- function(data,
 
   # tidy results
   if (output == "tidy") {
-    combined_df <- broomExtra::grouped_tidy(
-      data = data,
-      grouping.vars = {{ grouping.vars }},
-      ..f = stats::lm,
-      ...,
-      tidy.args = tidy.args
-    )
+    combined_df <-
+      broomExtra::grouped_tidy(
+        data = data,
+        grouping.vars = {{ grouping.vars }},
+        ..f = stats::lm,
+        ...,
+        tidy.args = tidy.args
+      )
 
     # add a column with significance labels if p-values are present
     if ("p.value" %in% names(combined_df)) {
@@ -64,23 +67,25 @@ grouped_lm <- function(data,
   # glance summary
   if (output == "glance") {
     # tidy results
-    combined_df <- broomExtra::grouped_glance(
-      data = data,
-      grouping.vars = {{ grouping.vars }},
-      ..f = stats::lm,
-      ...
-    )
+    combined_df <-
+      broomExtra::grouped_glance(
+        data = data,
+        grouping.vars = {{ grouping.vars }},
+        ..f = stats::lm,
+        ...
+      )
   }
 
   # augmented results
   if (output == "augment") {
-    combined_df <- broomExtra::grouped_augment(
-      data = data,
-      grouping.vars = {{ grouping.vars }},
-      ..f = stats::lm,
-      ...,
-      augment.args = augment.args
-    )
+    combined_df <-
+      broomExtra::grouped_augment(
+        data = data,
+        grouping.vars = {{ grouping.vars }},
+        ..f = stats::lm,
+        ...,
+        augment.args = augment.args
+      )
   }
 
   # return the final dataframe

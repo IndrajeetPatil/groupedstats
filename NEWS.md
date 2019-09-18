@@ -1,3 +1,9 @@
+# groupedstats 0.0.9.9000
+
+MINOR CHANGES
+
+  - `grouped_summary` can now work with labeled data (#14).
+
 # groupedstats 0.0.9
 
 MAJOR CHANGES

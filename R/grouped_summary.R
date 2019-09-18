@@ -22,10 +22,12 @@
 #' @importFrom skimr skim
 #' @importFrom dplyr filter_at mutate_at mutate_if group_modify group_nest any_vars
 #' @importFrom purrr is_bare_numeric is_bare_character keep map map_lgl map_dfr
+#' @importFrom purrr flatten_lgl
 #' @importFrom tidyr unnest separate
 #' @importFrom crayon red blue
 #' @importFrom tibble as_tibble enframe
 #' @importFrom stats qt
+#' @importFrom sjlabelled is_labelled remove_all_labels
 #' @importFrom utils packageVersion
 #'
 #' @examples
@@ -83,6 +85,11 @@ grouped_summary <- function(data,
     df <- dplyr::select(.data = data, !!!grouping.vars, {{ measures }})
   }
 
+  # clean up labeled columns, if present
+  if (sum(purrr::flatten_lgl(purrr::map(df, sjlabelled::is_labelled))) > 0L) {
+    df %<>% sjlabelled::remove_all_labels(.)
+  }
+
   # summary -------------------------------------------------------------------
 
   # removing grouping levels that are NA
@@ -100,7 +107,7 @@ grouped_summary <- function(data,
 
   # what to retain depends on the type of columns needed
   if (measures.type == "numeric") {
-    ..f <- purrr::is_bare_numeric
+    ..f <- base::is.numeric
   } else {
     ..f <- base::is.factor
   }
@@ -137,7 +144,7 @@ grouped_summary <- function(data,
           )
       ) %>%
       dplyr::select(.data = ., -data) %>%
-      tidyr::unnest(., cols = c(long.counts))
+      tidyr::unnest(data = ., cols = c(long.counts))
   }
 
   # renaming numeric variable ----------------------------------------------

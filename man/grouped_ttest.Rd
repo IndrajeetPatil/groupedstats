@@ -5,8 +5,14 @@
 \title{Function to run \emph{t}-test on multiple variables across multiple
 grouping variables.}
 \usage{
-grouped_ttest(data, dep.vars, indep.vars, grouping.vars, paired = FALSE,
-  var.equal = FALSE)
+grouped_ttest(
+  data,
+  dep.vars,
+  indep.vars,
+  grouping.vars,
+  paired = FALSE,
+  var.equal = FALSE
+)
 }
 \arguments{
 \item{data}{Dataframe from which variables are to be taken.}

@@ -5,10 +5,16 @@
 \title{Running linear mixed-effects model (\code{lmer}) across multiple
 grouping variables.}
 \usage{
-grouped_lmer(data, grouping.vars, formula, REML = TRUE,
-  control = lme4::lmerControl(optimizer = "bobyqa", restart_edge = TRUE,
-  boundary.tol = 1e-07, calc.derivs = FALSE, use.last.params = FALSE,
-  optCtrl = list(maxfun = 2e+09)), p.kr = FALSE, output = "tidy")
+grouped_lmer(
+  data,
+  grouping.vars,
+  formula,
+  REML = TRUE,
+  control = lme4::lmerControl(optimizer = "bobyqa", restart_edge = TRUE, boundary.tol =
+    1e-07, calc.derivs = FALSE, use.last.params = FALSE, optCtrl = list(maxfun = 2e+09)),
+  p.kr = FALSE,
+  output = "tidy"
+)
 }
 \arguments{
 \item{data}{Dataframe from which variables are to be taken.}
@@ -26,7 +32,7 @@ grouped_lmer(data, grouping.vars, formula, REML = TRUE,
     implemented, the \code{||}-syntax \emph{works
     only for design matrices containing
     numeric (continuous) predictors}; to fit models with independent
-  categorical effects, see \code{\link{dummy}} or the \code{lmer_alt}
+  categorical effects, see \code{\link[lme4]{dummy}} or the \code{lmer_alt}
   function from the \code{afex} package.) 
 }
 
@@ -34,7 +40,7 @@ grouped_lmer(data, grouping.vars, formula, REML = TRUE,
     optimize the REML criterion (as opposed to the log-likelihood)?}
 
 \item{control}{a list (of correct class, resulting from
-    \code{\link{lmerControl}()} or \code{\link{glmerControl}()}
+    \code{\link[lme4]{lmerControl}()} or \code{\link[lme4]{glmerControl}()}
     respectively) containing control parameters, including the nonlinear
     optimizer to be used and parameters to be passed through to the
     nonlinear optimizer, see the \code{*lmerControl} documentation for

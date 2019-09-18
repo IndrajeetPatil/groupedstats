@@ -5,8 +5,14 @@
 \title{Standardize a dataframe with effect sizes for \code{aov}, \code{lm}, \code{aovlist},
 etc. objects.}
 \usage{
-lm_effsize_standardizer(object, effsize = "eta", partial = TRUE,
-  conf.level = 0.95, nboot = 500, method = c("dist", "quantile"))
+lm_effsize_standardizer(
+  object,
+  effsize = "eta",
+  partial = TRUE,
+  conf.level = 0.95,
+  nboot = 500,
+  method = c("dist", "quantile")
+)
 }
 \arguments{
 \item{object}{The linear model object (can be of class \code{lm}, \code{aov}, \code{anova}, or

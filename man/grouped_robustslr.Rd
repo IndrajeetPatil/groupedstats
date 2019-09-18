@@ -5,11 +5,15 @@
 \title{Function to run robust simple linear regression (slr) on multiple variables across
 multiple grouping variables.}
 \usage{
-grouped_robustslr(data, dep.vars, indep.vars, grouping.vars, nrep = 1000,
-  control = robust::lmRob.control(tlo = 1e-04, tua = 1.5e-06, mxr = 50,
-  mxf = 50, mxs = 50, tl = 1e-06, estim = "Final", initial.alg = "Auto",
-  final.alg = "MM", seed = 1313, level = 0.1, efficiency = 0.9, weight =
-  c("Optimal", "Optimal"), trace = TRUE))
+grouped_robustslr(
+  data,
+  dep.vars,
+  indep.vars,
+  grouping.vars,
+  nrep = 1000,
+  control = robust::lmRob.control(tlo = 1e-04, tua = 1.5e-06, tl = 1e-06, estim = "Final",
+    initial.alg = "Auto", final.alg = "MM")
+)
 }
 \arguments{
 \item{data}{Dataframe from which variables are to be taken.}
@@ -24,7 +28,7 @@ in \code{y ~ x}).}
 
 \item{nrep}{the number of random subsamples to be drawn. If \code{"Exhaustive"} resampling is being used, the value of \code{nrep} is ignored.}
 
-\item{control}{a list of control parameters to be used in the numerical algorithms. See \code{\link{lmRob.control}} for the possible control parameters and their default settings.}
+\item{control}{a list of control parameters to be used in the numerical algorithms. See \code{\link[robust]{lmRob.control}} for the possible control parameters and their default settings.}
 }
 \value{
 A tibble dataframe with tidy results from robust linear regression

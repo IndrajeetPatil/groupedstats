@@ -5,8 +5,13 @@
 \title{Descriptive statistics for multiple variables for all grouping
 variable levels}
 \usage{
-grouped_summary(data, grouping.vars, measures = NULL,
-  measures.type = "numeric", topcount.long = FALSE)
+grouped_summary(
+  data,
+  grouping.vars,
+  measures = NULL,
+  measures.type = "numeric",
+  topcount.long = FALSE
+)
 }
 \arguments{
 \item{data}{Dataframe from which variables need to be taken.}

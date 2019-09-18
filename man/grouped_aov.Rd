@@ -4,8 +4,14 @@
 \alias{grouped_aov}
 \title{Running analysis of variance (aov) across multiple grouping variables.}
 \usage{
-grouped_aov(data, grouping.vars, formula, effsize = "eta",
-  output = "tidy", nboot = 1000)
+grouped_aov(
+  data,
+  grouping.vars,
+  formula,
+  effsize = "eta",
+  output = "tidy",
+  nboot = 1000
+)
 }
 \arguments{
 \item{data}{A data frame in which the variables specified in the

@@ -5,8 +5,14 @@
 \title{Function to run two-sample Wilcoxon tests on multiple variables across
 multiple grouping variables.}
 \usage{
-grouped_wilcox(data, dep.vars, indep.vars, grouping.vars, paired = FALSE,
-  correct = TRUE)
+grouped_wilcox(
+  data,
+  dep.vars,
+  indep.vars,
+  grouping.vars,
+  paired = FALSE,
+  correct = TRUE
+)
 }
 \arguments{
 \item{data}{Dataframe from which variables are to be taken.}

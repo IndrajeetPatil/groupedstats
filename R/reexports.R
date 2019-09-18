@@ -15,16 +15,16 @@ broomExtra::grouped_augment
 # ----------------------- tidyverse -------------------------------------
 
 #' @export
-#' @importFrom magrittr "%>%"
-magrittr::`%>%`
+#' @importFrom broomExtra "%>%"
+broomExtra::`%>%`
 
 #' @export
-#' @importFrom magrittr "%<>%"
-magrittr::`%<>%`
+#' @importFrom broomExtra "%<>%"
+broomExtra::`%<>%`
 
 #' @export
-#' @importFrom magrittr "%$%"
-magrittr::`%$%`
+#' @importFrom broomExtra "%$%"
+broomExtra::`%$%`
 
 #' @export
 #' @importFrom tibble tibble

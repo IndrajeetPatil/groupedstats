@@ -136,10 +136,16 @@ grouping variables.</h1>
 grouping variables.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>grouped_lmer</span>(<span class='no'>data</span>, <span class='no'>grouping.vars</span>, <span class='no'>formula</span>, <span class='kw'>REML</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>control</span> <span class='kw'>=</span> <span class='kw pkg'>lme4</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmerControl.html'>lmerControl</a></span>(<span class='kw'>optimizer</span> <span class='kw'>=</span> <span class='st'>"bobyqa"</span>, <span class='kw'>restart_edge</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>boundary.tol</span> <span class='kw'>=</span> <span class='fl'>1e-07</span>, <span class='kw'>calc.derivs</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>use.last.params</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>optCtrl</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxfun</span> <span class='kw'>=</span> <span class='fl'>2e+09</span>)), <span class='kw'>p.kr</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>)</pre>
+    <pre class="usage"><span class='fu'>grouped_lmer</span>(
+  <span class='no'>data</span>,
+  <span class='no'>grouping.vars</span>,
+  <span class='no'>formula</span>,
+  <span class='kw'>REML</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>control</span> <span class='kw'>=</span> <span class='kw pkg'>lme4</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmerControl.html'>lmerControl</a></span>(<span class='kw'>optimizer</span> <span class='kw'>=</span> <span class='st'>"bobyqa"</span>, <span class='kw'>restart_edge</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>boundary.tol</span> <span class='kw'>=</span>
+    <span class='fl'>1e-07</span>, <span class='kw'>calc.derivs</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>use.last.params</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>optCtrl</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxfun</span> <span class='kw'>=</span> <span class='fl'>2e+09</span>)),
+  <span class='kw'>p.kr</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -165,7 +171,7 @@ grouping variables.</p>
     implemented, the <code>||</code>-syntax <em>works
     only for design matrices containing
     numeric (continuous) predictors</em>; to fit models with independent
-  categorical effects, see <code>dummy</code> or the <code>lmer_alt</code>
+  categorical effects, see <code><a href='https://rdrr.io/pkg/lme4/man/dummy.html'>dummy</a></code> or the <code>lmer_alt</code>
   function from the <code>afex</code> package.)</p></td>
     </tr>
     <tr>
@@ -176,7 +182,7 @@ grouping variables.</p>
     <tr>
       <th>control</th>
       <td><p>a list (of correct class, resulting from
-    <code>lmerControl()</code> or <code>glmerControl()</code>
+    <code><a href='https://rdrr.io/pkg/lme4/man/lmerControl.html'>lmerControl</a>()</code> or <code><a href='https://rdrr.io/pkg/lme4/man/lmerControl.html'>glmerControl</a>()</code>
     respectively) containing control parameters, including the nonlinear
     optimizer to be used and parameters to be passed through to the
     nonlinear optimizer, see the <code>*lmerControl</code> documentation for
@@ -274,7 +280,7 @@ summaries.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

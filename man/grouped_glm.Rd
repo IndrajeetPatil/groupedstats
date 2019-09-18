@@ -5,18 +5,22 @@
 \title{Function to run generalized linear model (glm) across multiple
 grouping variables.}
 \usage{
-grouped_glm(data, grouping.vars, ..., output = "tidy",
+grouped_glm(
+  data,
+  grouping.vars,
+  ...,
+  output = "tidy",
   tidy.args = list(conf.int = TRUE, conf.level = 0.95),
-  augment.args = list())
+  augment.args = list()
+)
 }
 \arguments{
 \item{data}{Dataframe (or tibble) from which variables are to be taken.}
 
 \item{grouping.vars}{Grouping variables.}
 
-\item{...}{Arguments to function.
-
-These dots support \link{tidy-dots} features.}
+\item{...}{Additional arguments to \code{broom::tidy}, \code{broom::glance}, or
+\code{broom::augment} S3 method.}
 
 \item{output}{A character describing what output is expected. Two possible
 options: \code{"tidy"} (default), which will return the results, or \code{"glance"},

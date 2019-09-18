@@ -17,9 +17,7 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{broomExtra}{\code{\link[broomExtra]{grouped_tidy}}, \code{\link[broomExtra]{grouped_glance}}, \code{\link[broomExtra]{grouped_augment}}}
-
-  \item{magrittr}{\code{\link[magrittr]{\%>\%}}, \code{\link[magrittr]{\%<>\%}}, \code{\link[magrittr]{\%$\%}}}
+  \item{broomExtra}{\code{\link[broomExtra]{grouped_tidy}}, \code{\link[broomExtra]{grouped_glance}}, \code{\link[broomExtra]{grouped_augment}}, \code{\link[broomExtra]{\%>\%}}, \code{\link[broomExtra]{\%<>\%}}, \code{\link[broomExtra]{\%$\%}}}
 
   \item{tibble}{\code{\link[tibble]{tibble}}}
 }}

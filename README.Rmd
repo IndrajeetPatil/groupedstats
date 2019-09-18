@@ -269,6 +269,27 @@ groupedstats::grouped_summary(
 )
 ```
 
+The function should also work with labeled data.
+
+```{r grouped_summary5, warning = FALSE, messsage = FALSE}
+# for reproducibility
+set.seed(123)
+library(labelled)
+
+# dataframe
+df <- data.frame(x = rep(c("A", "B"), each = 50),
+                 y = rnorm(100), stringsAsFactors = FALSE)
+
+# labelled
+df$y <- labelled(df$y, label = "Y variable", labels = c())
+
+# convert to a tibble
+(df <- tibble::as_tibble(df))
+
+# grouped summary
+groupedstats::grouped_summary(df, x, y)
+```
+
 ## `grouped_slr`
 
 This function can be used to run **simple linear regression** (slr) between
