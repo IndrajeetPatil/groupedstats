@@ -75,10 +75,10 @@ grouped_aov <- function(data,
 
   # custom function to run tidy operation on every element of list column
   fnlisted <- function(list.col,
-                         formula,
-                         effsize,
-                         nboot,
-                         output) {
+                       formula,
+                       effsize,
+                       nboot,
+                       output) {
     if (output == "tidy") {
       # getting tidy dataframe with results
       results_df <-

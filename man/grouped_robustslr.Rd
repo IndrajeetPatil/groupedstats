@@ -11,8 +11,8 @@ grouped_robustslr(
   indep.vars,
   grouping.vars,
   nrep = 1000,
-  control = robust::lmRob.control(tlo = 1e-04, tua = 1.5e-06, tl = 1e-06, estim = "Final",
-    initial.alg = "Auto", final.alg = "MM")
+  control = robust::lmRob.control(tlo = 1e-04, tua = 1.5e-06, tl = 1e-06, estim =
+    "Final", initial.alg = "Auto", final.alg = "MM")
 )
 }
 \arguments{

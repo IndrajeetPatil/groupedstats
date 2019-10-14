@@ -18,8 +18,10 @@
 #'   both numeric **and** variables simultaneously.
 #' @param topcount.long If `measures.type = factor`, you can get the top counts
 #'   in long format for plotting purposes. (Default: `topcount.long = FALSE`).
+#' @inheritParams specify_decimal_p
+#' @param ... Currently ignored.
 #'
-#' @importFrom skimr skim
+#' @importFrom skimr skim skim_format
 #' @importFrom dplyr filter_at mutate_at mutate_if group_modify group_nest any_vars
 #' @importFrom purrr is_bare_numeric is_bare_character keep map map_lgl map_dfr
 #' @importFrom purrr flatten_lgl
@@ -55,7 +57,9 @@ grouped_summary <- function(data,
                             grouping.vars,
                             measures = NULL,
                             measures.type = "numeric",
-                            topcount.long = FALSE) {
+                            topcount.long = FALSE,
+                            k = 2L,
+                            ...) {
   # check -------------------------------------------------------------------
 
   if (utils::packageVersion("skimr") >= "2.0") {
@@ -113,10 +117,13 @@ grouped_summary <- function(data,
   }
 
   # skimming across groups
-  df_results <- df %>%
-    dplyr::group_by(.data = ., !!!grouping.vars, .drop = TRUE) %>%
+  df_results <- dplyr::group_by(.data = df, !!!grouping.vars, .drop = TRUE)
+
+  # format the number of digits in `skimr` output
+  skimr::skim_format(numeric = list(digits = k + 1L))
+  df_results %<>%
     dplyr::group_modify(
-      .tbl = .,
+      .data = .,
       .f = ~ tibble::as_tibble(skimr::skim_to_wide(
         purrr::keep(.x = ., .p = ..f)
       )),

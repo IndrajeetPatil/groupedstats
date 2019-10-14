@@ -6,17 +6,22 @@ init:
         $ErrorActionPreference = "Stop"
         Invoke-WebRequest http://raw.github.com/krlmlr/r-appveyor/master/scripts/appveyor-tool.ps1 -OutFile "..\appveyor-tool.ps1"
         Import-Module '..\appveyor-tool.ps1'
-
 install:
   - ps: Bootstrap
-# - cinst pandoc
-#  - ps: $env:Path += ";C:\Program Files\Pandoc\"
 
-#cache:
-#  - C:\RLibrary
-#  - C:\Program Files\Pandoc\
+# Do not build feature branch with open Pull Requests
+skip_branch_with_pr: true
 
 # Adapt as necessary starting from here
+
+cache:
+  - C:\RLibrary
+
+# Adapt as necessary starting from here
+before_test:
+  - cinst pandoc
+  - ps: $env:Path += ";C:\Program Files (x86)\Pandoc\"
+  - pandoc -v
 
 environment:
   global:
@@ -25,6 +30,8 @@ environment:
     _R_CHECK_FORCE_SUGGESTS: true
     _R_CHECK_CRAN_INCOMING_: true
     #R_CHECK_ARGS: "--run-dontrun"
+    R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+
   matrix:
   - R_VERSION: release
     R_ARCH: x64

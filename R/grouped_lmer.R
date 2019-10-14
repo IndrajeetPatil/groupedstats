@@ -88,11 +88,11 @@ grouped_lmer <- function(data,
 
   # custom function to run tidy operation on every element of list column
   fnlisted <- function(list.col,
-                         formula,
-                         output,
-                         REML,
-                         control,
-                         p.kr) {
+                       formula,
+                       output,
+                       REML,
+                       control,
+                       p.kr) {
     if (output == "tidy") {
       # dataframe with results from lmer
       results_df <-

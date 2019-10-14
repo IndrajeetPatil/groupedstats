@@ -10,7 +10,9 @@ grouped_summary(
   grouping.vars,
   measures = NULL,
   measures.type = "numeric",
-  topcount.long = FALSE
+  topcount.long = FALSE,
+  k = 2L,
+  ...
 )
 }
 \arguments{
@@ -31,6 +33,11 @@ both numeric \strong{and} variables simultaneously.}
 
 \item{topcount.long}{If \code{measures.type = factor}, you can get the top counts
 in long format for plotting purposes. (Default: \code{topcount.long = FALSE}).}
+
+\item{k}{Number of digits after decimal point (should be an integer)
+(Default: \code{k = 3}).}
+
+\item{...}{Currently ignored.}
 }
 \value{
 Dataframe with descriptive statistics for numeric variables (n, mean,

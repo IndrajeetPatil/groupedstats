@@ -87,10 +87,10 @@ grouped_ttest <- function(data,
   # custom function to run linear regression for every element of a list for two
   # variables
   lm_listed <- function(list.col,
-                          x_name,
-                          y_name,
-                          paired,
-                          var.equal) {
+                        x_name,
+                        y_name,
+                        paired,
+                        var.equal) {
     # plain version of the formula to return
     fx <- glue::glue("{y_name} ~ {x_name}")
 

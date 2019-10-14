@@ -25,7 +25,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--09--18-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--10--14-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
@@ -227,32 +227,32 @@ groupedstats::grouped_summary(
 #> # A tibble: 12 x 16
 #>    Species    type    variable     missing complete     n  mean    sd   min
 #>    <fct>      <chr>   <chr>          <dbl>    <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 setosa     numeric Petal.Length       0       50    50  1.46  0.17   1  
-#>  2 setosa     numeric Petal.Width        0       50    50  0.25  0.11   0.1
-#>  3 setosa     numeric Sepal.Length       0       50    50  5.01  0.35   4.3
-#>  4 setosa     numeric Sepal.Width        0       50    50  3.43  0.38   2.3
-#>  5 versicolor numeric Petal.Length       0       50    50  4.26  0.47   3  
-#>  6 versicolor numeric Petal.Width        0       50    50  1.33  0.2    1  
-#>  7 versicolor numeric Sepal.Length       0       50    50  5.94  0.52   4.9
-#>  8 versicolor numeric Sepal.Width        0       50    50  2.77  0.31   2  
-#>  9 virginica  numeric Petal.Length       0       50    50  5.55  0.55   4.5
-#> 10 virginica  numeric Petal.Width        0       50    50  2.03  0.27   1.4
-#> 11 virginica  numeric Sepal.Length       0       50    50  6.59  0.64   4.9
-#> 12 virginica  numeric Sepal.Width        0       50    50  2.97  0.32   2.2
+#>  1 setosa     numeric Petal.Length       0       50    50 1.46  0.174   1  
+#>  2 setosa     numeric Petal.Width        0       50    50 0.246 0.105   0.1
+#>  3 setosa     numeric Sepal.Length       0       50    50 5.01  0.352   4.3
+#>  4 setosa     numeric Sepal.Width        0       50    50 3.43  0.379   2.3
+#>  5 versicolor numeric Petal.Length       0       50    50 4.26  0.47    3  
+#>  6 versicolor numeric Petal.Width        0       50    50 1.33  0.198   1  
+#>  7 versicolor numeric Sepal.Length       0       50    50 5.94  0.516   4.9
+#>  8 versicolor numeric Sepal.Width        0       50    50 2.77  0.314   2  
+#>  9 virginica  numeric Petal.Length       0       50    50 5.55  0.552   4.5
+#> 10 virginica  numeric Petal.Width        0       50    50 2.03  0.275   1.4
+#> 11 virginica  numeric Sepal.Length       0       50    50 6.59  0.636   4.9
+#> 12 virginica  numeric Sepal.Width        0       50    50 2.97  0.322   2.2
 #>      p25 median   p75   max std.error mean.low.conf mean.high.conf
 #>    <dbl>  <dbl> <dbl> <dbl>     <dbl>         <dbl>          <dbl>
-#>  1  1.4    1.5   1.58   1.9    0.0240         1.41           1.51 
-#>  2  0.2    0.2   0.3    0.6    0.0156         0.219          0.281
-#>  3  4.8    5     5.2    5.8    0.0495         4.91           5.11 
-#>  4  3.2    3.4   3.68   4.4    0.0537         3.32           3.54 
+#>  1  1.4    1.5   1.58   1.9    0.0246         1.41           1.51 
+#>  2  0.2    0.2   0.3    0.6    0.0148         0.216          0.276
+#>  3  4.8    5     5.2    5.8    0.0498         4.91           5.11 
+#>  4  3.2    3.4   3.68   4.4    0.0536         3.32           3.54 
 #>  5  4      4.35  4.6    5.1    0.0665         4.13           4.39 
-#>  6  1.2    1.3   1.5    1.8    0.0283         1.27           1.39 
-#>  7  5.6    5.9   6.3    7      0.0735         5.79           6.09 
-#>  8  2.52   2.8   3      3.4    0.0438         2.68           2.86 
-#>  9  5.1    5.55  5.88   6.9    0.0778         5.39           5.71 
-#> 10  1.8    2     2.3    2.5    0.0382         1.95           2.11 
-#> 11  6.23   6.5   6.9    7.9    0.0905         6.41           6.77 
-#> 12  2.8    3     3.18   3.8    0.0453         2.88           3.06
+#>  6  1.2    1.3   1.5    1.8    0.0280         1.27           1.39 
+#>  7  5.6    5.9   6.3    7      0.0730         5.79           6.09 
+#>  8  2.52   2.8   3      3.4    0.0444         2.68           2.86 
+#>  9  5.1    5.55  5.88   6.9    0.0781         5.39           5.71 
+#> 10  1.8    2     2.3    2.5    0.0389         1.95           2.11 
+#> 11  6.23   6.5   6.9    7.9    0.0899         6.41           6.77 
+#> 12  2.8    3     3.18   3.8    0.0455         2.88           3.06
 ```
 
 This function can be used to get summary of either numeric **or** factor
@@ -361,27 +361,27 @@ groupedstats::grouped_summary(
   grouping.vars = c(cut, clarity)
 )
 #> # A tibble: 280 x 17
-#>    cut   clarity type    variable missing complete     n    mean      sd
-#>    <ord> <ord>   <chr>   <chr>      <dbl>    <dbl> <dbl>   <dbl>   <dbl>
-#>  1 Fair  I1      integer price          0      210   210 3704.   3099.  
-#>  2 Fair  I1      numeric carat          0      210   210    1.36    0.75
-#>  3 Fair  I1      numeric depth          0      210   210   65.7     3.1 
-#>  4 Fair  I1      numeric table          0      210   210   58.1     2.87
-#>  5 Fair  I1      numeric x              0      210   210    6.72    1.11
-#>  6 Fair  I1      numeric y              0      210   210    6.62    1.13
-#>  7 Fair  I1      numeric z              0      210   210    4.39    0.76
-#>  8 Fair  SI2     integer price          0      466   466 5174.   3928.  
-#>  9 Fair  SI2     numeric carat          0      466   466    1.2     0.5 
-#> 10 Fair  SI2     numeric depth          0      466   466   64.4     3.16
+#>    cut   clarity type    variable missing complete     n    mean       sd
+#>    <ord> <ord>   <chr>   <chr>      <dbl>    <dbl> <dbl>   <dbl>    <dbl>
+#>  1 Fair  I1      integer price          0      210   210 3704.   3099.   
+#>  2 Fair  I1      numeric carat          0      210   210    1.36    0.745
+#>  3 Fair  I1      numeric depth          0      210   210   65.7     3.1  
+#>  4 Fair  I1      numeric table          0      210   210   58.1     2.87 
+#>  5 Fair  I1      numeric x              0      210   210    6.72    1.11 
+#>  6 Fair  I1      numeric y              0      210   210    6.62    1.13 
+#>  7 Fair  I1      numeric z              0      210   210    4.39    0.756
+#>  8 Fair  SI2     integer price          0      466   466 5174.   3928.   
+#>  9 Fair  SI2     numeric carat          0      466   466    1.2     0.501
+#> 10 Fair  SI2     numeric depth          0      466   466   64.4     3.16 
 #>       min     p25  median     p75      max std.error mean.low.conf
 #>     <dbl>   <dbl>   <dbl>   <dbl>    <dbl>     <dbl>         <dbl>
 #>  1 584    1387.   2397    5614.   18531     214.           3282.  
-#>  2   0.34    0.85    1.06    1.82     5.01    0.0518          1.26
+#>  2   0.34    0.85    1.06    1.82     5.01    0.0514          1.26
 #>  3  55.6    64.7    66.0    67.3     78.2     0.214          65.3 
 #>  4  52      56      58      59       67       0.198          57.7 
 #>  5   4.72    5.96    6.55    7.46    10.7     0.0766          6.57
 #>  6   4.6     5.82    6.42    7.38    10.5     0.0780          6.47
-#>  7   2.6     3.77    4.22    4.86     6.98    0.0524          4.29
+#>  7   2.6     3.77    4.22    4.86     6.98    0.0522          4.29
 #>  8 536    2763    3681    6266.   18308     182.           4816.  
 #>  9   0.25    0.9     1.01    1.5      3.01    0.0232          1.15
 #> 10  53.1    64.5    65.1    65.9     72.2     0.146          64.1 
@@ -434,14 +434,14 @@ df$y <- labelled(df$y, label = "Y variable", labels = c())
 # grouped summary
 groupedstats::grouped_summary(df, x, y)
 #> # A tibble: 2 x 16
-#>   x     type    variable missing complete     n  mean    sd   min   p25
-#>   <fct> <chr>   <chr>      <dbl>    <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#> 1 A     numeric y              0       50    50 0.034  0.93 -1.97 -0.56
-#> 2 B     numeric y              0       50    50 0.15   0.91 -2.31 -0.36
-#>   median   p75   max std.error mean.low.conf mean.high.conf
-#>    <dbl> <dbl> <dbl>     <dbl>         <dbl>          <dbl>
-#> 1 -0.073  0.7   2.17     0.132        -0.230          0.298
-#> 2  0.15   0.63  2.19     0.129        -0.109          0.409
+#>   x     type    variable missing complete     n   mean    sd   min    p25
+#>   <fct> <chr>   <chr>      <dbl>    <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>
+#> 1 A     numeric y              0       50    50 0.0344 0.926 -1.97 -0.559
+#> 2 B     numeric y              0       50    50 0.146  0.905 -2.31 -0.361
+#>    median   p75   max std.error mean.low.conf mean.high.conf
+#>     <dbl> <dbl> <dbl>     <dbl>         <dbl>          <dbl>
+#> 1 -0.0726 0.698  2.17     0.131        -0.229          0.298
+#> 2  0.153  0.629  2.19     0.128        -0.111          0.403
 ```
 
 ## `grouped_slr`
