@@ -63,11 +63,9 @@ be added. The package will continue to be available on `CRAN` and all releases
 will primarily be focused on maintenance and bug fixes. This is for two reasons-
 
 1.  There are more general versions of these functions introduced in
-    `broomExtra` package:<br> 
-    `grouped_tidy`, `grouped_augment`, `grouped_glance`.
-
-For more, see:
-<https://indrajeetpatil.github.io/broomExtra/reference/index.html#section-grouped-variants-of-generics>
+    `broomExtra` package:<br> `grouped_tidy`, `grouped_augment`,
+    `grouped_glance`. For more, see:
+    <https://indrajeetpatil.github.io/broomExtra/reference/index.html#section-grouped-variants-of-generics>
 
 2.  `dplyr 0.8.1` introduced `group_map()`, `group_modify()` and `group_walk()`
     functions that can be used to iterate on grouped dataframes. So if you want
@@ -165,8 +163,8 @@ set.seed(123)
 # running glm across two all combinations of two grouping variables
 groupedstats::grouped_tidy(
   data = groupedstats::Titanic_full, # dataframe
-  grouping.vars = c(Class, Age),     # grouping variables
-  ..f = stats::glm,                  # function to execute
+  grouping.vars = c(Class, Age), # grouping variables
+  ..f = stats::glm, # function to execute
   # additional arguments passed to `..f`
   formula = Survived ~ Sex,
   family = stats::binomial(link = "logit")
@@ -189,10 +187,11 @@ set.seed(123)
 library(datasets)
 options(tibble.width = Inf) # show me all columns
 
+# note that this dataset has NAs
 groupedstats::grouped_summary(
-  data = iris,
-  grouping.vars = Species,
-  measures = Sepal.Length:Petal.Width,
+  data = ggplot2::msleep,
+  grouping.vars = vore,
+  measures = sleep_total:awake,
   measures.type = "numeric"
 )
 ```
@@ -231,21 +230,24 @@ library(magrittr)
 
 options(tibble.width = Inf) # show me all columns
 
-groupedstats::grouped_summary(
+# dataframe with counts
+(df <- groupedstats::grouped_summary(
   data = ggplot2::diamonds,
   grouping.vars = cut, # for simplicity, let's just use one grouping variable
   measures = color,
   measures.type = "factor",
   topcount.long = TRUE
-) %>%
-  ggplot2::ggplot(
-    data = ., # placeholder for summary dataframe we just created
-    mapping = ggplot2::aes(
-      x = forcats::fct_inorder(f = factor.level),
-      y = count,
-      fill = factor.level
-    )
-  ) +
+))
+
+# plot
+ggplot2::ggplot(
+  data = df,
+  mapping = ggplot2::aes(
+    x = forcats::fct_inorder(f = factor.level),
+    y = count,
+    fill = factor.level
+  )
+) +
   ggplot2::geom_bar(stat = "identity") +
   ggplot2::labs(x = "color", y = "count") +
   ggplot2::facet_grid(facets = ~cut) + # for each level of the factor level
@@ -276,8 +278,10 @@ set.seed(123)
 library(labelled)
 
 # dataframe
-df <- data.frame(x = rep(c("A", "B"), each = 50),
-                 y = rnorm(100), stringsAsFactors = FALSE)
+df <- data.frame(
+  x = rep(c("A", "B"), each = 50),
+  y = rnorm(100), stringsAsFactors = FALSE
+)
 
 # labelled
 df$y <- labelled(df$y, label = "Y variable", labels = c())
@@ -716,22 +720,22 @@ grouping variables but want to use different formulas-
 set.seed(123)
 library(groupedstats)
 
-results_df <- 
+results_df <-
   purrr::pmap_dfr(
-  .l = list(
-    data = list(groupedstats::movies_long),
-    grouping.vars = alist(c(mpaa, genre)), # note it's `alist` and not `list`
-    formula = list(
-      rating ~ budget, # model 1
-      rating ~ log(budget), # model 2
-      log(rating) ~ budget, # model 3
-      log(rating) ~ log(budget) # model 4
+    .l = list(
+      data = list(groupedstats::movies_long),
+      grouping.vars = alist(c(mpaa, genre)), # note it's `alist` and not `list`
+      formula = list(
+        rating ~ budget, # model 1
+        rating ~ log(budget), # model 2
+        log(rating) ~ budget, # model 3
+        log(rating) ~ log(budget) # model 4
+      ),
+      output = list("glance") # return model diagnostics
     ),
-    output = list("glance") # return model diagnostics
-  ),
-  .f = groupedstats::grouped_lm, # regression model
-  .id = "model"
-) %>% # for each combination of mpaa rating and movie genre
+    .f = groupedstats::grouped_lm, # regression model
+    .id = "model"
+  ) %>% # for each combination of mpaa rating and movie genre
   dplyr::group_by(.data = ., mpaa, genre) %>% # arrange by best to worst fits
   dplyr::arrange(.data = ., dplyr::desc(adj.r.squared))
 

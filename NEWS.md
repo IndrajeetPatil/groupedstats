@@ -1,8 +1,15 @@
 # groupedstats 0.0.9.9000
 
+BREAKING CHANGES
+
+  - To be consistent with other packages that `groupedstats` relies on or
+    supports the confidence intervals columns for `grouped_summary` have been
+    renamed to `mean.conf.high` and `mean.conf.low`.
+
 MINOR CHANGES
 
   - `grouped_summary` can now work with labeled data (#14).
+  - `grouped_summary` outputs might differ slightly with `skimr 2.0`.
 
 # groupedstats 0.0.9
 

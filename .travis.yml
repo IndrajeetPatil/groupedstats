@@ -44,6 +44,8 @@ r_binary_packages:
   - psych
   - git2r
   - data.table
+  - ez
+  - broom.mixed
 
 r_packages:
   - rlang

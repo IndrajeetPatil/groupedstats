@@ -67,10 +67,8 @@ bug fixes. This is for two reasons-
 
 1.  There are more general versions of these functions introduced in
     `broomExtra` package:<br> `grouped_tidy`, `grouped_augment`,
-    `grouped_glance`.
-
-For more, see:
-<https://indrajeetpatil.github.io/broomExtra/reference/index.html#section-grouped-variants-of-generics>
+    `grouped_glance`. For more, see:
+    <https://indrajeetpatil.github.io/broomExtra/reference/index.html#section-grouped-variants-of-generics>
 
 2.  `dplyr 0.8.1` introduced `group_map()`, `group_modify()` and
     `group_walk()` functions that can be used to iterate on grouped
@@ -176,8 +174,8 @@ set.seed(123)
 # running glm across two all combinations of two grouping variables
 groupedstats::grouped_tidy(
   data = groupedstats::Titanic_full, # dataframe
-  grouping.vars = c(Class, Age),     # grouping variables
-  ..f = stats::glm,                  # function to execute
+  grouping.vars = c(Class, Age), # grouping variables
+  ..f = stats::glm, # function to execute
   # additional arguments passed to `..f`
   formula = Survived ~ Sex,
   family = stats::binomial(link = "logit")
@@ -218,42 +216,50 @@ set.seed(123)
 library(datasets)
 options(tibble.width = Inf) # show me all columns
 
+# note that this dataset has NAs
 groupedstats::grouped_summary(
-  data = iris,
-  grouping.vars = Species,
-  measures = Sepal.Length:Petal.Width,
+  data = ggplot2::msleep,
+  grouping.vars = vore,
+  measures = sleep_total:awake,
   measures.type = "numeric"
 )
-#> Joining, by = "Species"
-#> # A tibble: 12 x 16
-#>    Species    type    variable     missing complete  mean    sd   min   p25
-#>    <fct>      <chr>   <chr>          <int>    <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 setosa     numeric Sepal.Length       0        1 5.01  0.352   4.3  4.8 
-#>  2 setosa     numeric Sepal.Width        0        1 3.43  0.379   2.3  3.2 
-#>  3 setosa     numeric Petal.Length       0        1 1.46  0.174   1    1.4 
-#>  4 setosa     numeric Petal.Width        0        1 0.246 0.105   0.1  0.2 
-#>  5 versicolor numeric Sepal.Length       0        1 5.94  0.516   4.9  5.6 
-#>  6 versicolor numeric Sepal.Width        0        1 2.77  0.314   2    2.52
-#>  7 versicolor numeric Petal.Length       0        1 4.26  0.470   3    4   
-#>  8 versicolor numeric Petal.Width        0        1 1.33  0.198   1    1.2 
-#>  9 virginica  numeric Sepal.Length       0        1 6.59  0.636   4.9  6.22
-#> 10 virginica  numeric Sepal.Width        0        1 2.97  0.322   2.2  2.8 
-#> 11 virginica  numeric Petal.Length       0        1 5.55  0.552   4.5  5.1 
-#> 12 virginica  numeric Petal.Width        0        1 2.03  0.275   1.4  1.8 
-#>    median   p75   max     n std.error mean.low.conf mean.high.conf
-#>     <dbl> <dbl> <dbl> <int>     <dbl>         <dbl>          <dbl>
-#>  1   5     5.2    5.8    50    0.0498         4.91           5.11 
-#>  2   3.4   3.68   4.4    50    0.0536         3.32           3.54 
-#>  3   1.5   1.58   1.9    50    0.0246         1.41           1.51 
-#>  4   0.2   0.3    0.6    50    0.0149         0.216          0.276
-#>  5   5.9   6.3    7      50    0.0730         5.79           6.08 
-#>  6   2.8   3      3.4    50    0.0444         2.68           2.86 
-#>  7   4.35  4.6    5.1    50    0.0665         4.13           4.39 
-#>  8   1.3   1.5    1.8    50    0.0280         1.27           1.38 
-#>  9   6.5   6.9    7.9    50    0.0899         6.41           6.77 
-#> 10   3     3.18   3.8    50    0.0456         2.88           3.07 
-#> 11   5.55  5.88   6.9    50    0.0780         5.40           5.71 
-#> 12   2     2.3    2.5    50    0.0388         1.95           2.10
+#> # A tibble: 16 x 16
+#>    vore    type    variable    missing complete   mean     sd   min    p25
+#>    <fct>   <chr>   <chr>         <int>    <dbl>  <dbl>  <dbl> <dbl>  <dbl>
+#>  1 carni   numeric sleep_total       0    1     10.4   4.67   2.7    6.25 
+#>  2 carni   numeric sleep_rem         9    0.526  2.29  1.86   0.1    1.33 
+#>  3 carni   numeric sleep_cycle      14    0.263  0.373 0.0325 0.333  0.35 
+#>  4 carni   numeric awake             0    1     13.6   4.68   4.6   11    
+#>  5 herbi   numeric sleep_total       0    1      9.51  4.88   1.9    4.3  
+#>  6 herbi   numeric sleep_rem         8    0.75   1.37  0.922  0.4    0.6  
+#>  7 herbi   numeric sleep_cycle      20    0.375  0.418 0.324  0.117  0.183
+#>  8 herbi   numeric awake             0    1     14.5   4.88   7.4    9.78 
+#>  9 insecti numeric sleep_total       0    1     14.9   5.92   8.4    8.6  
+#> 10 insecti numeric sleep_rem         1    0.8    3.52  1.93   2      2.08 
+#> 11 insecti numeric sleep_cycle       2    0.6    0.161 0.0419 0.117  0.142
+#> 12 insecti numeric awake             0    1      9.06  5.92   4.1    4.3  
+#> 13 omni    numeric sleep_total       0    1     10.9   2.95   8      9.1  
+#> 14 omni    numeric sleep_rem         2    0.9    1.96  1.01   0.7    1.25 
+#> 15 omni    numeric sleep_cycle       9    0.55   0.592 0.473  0.133  0.258
+#> 16 omni    numeric awake             0    1     13.1   2.95   6     13.1  
+#>    median    p75    max     n std.error mean.conf.low mean.conf.high
+#>     <dbl>  <dbl>  <dbl> <int>     <dbl>         <dbl>          <dbl>
+#>  1 10.4   13     19.4      19    1.07          8.13           12.6  
+#>  2  1.95   3.05   6.6      10    0.589         0.958           3.62 
+#>  3  0.383  0.383  0.417     5    0.0145        0.333           0.414
+#>  4 13.6   17.8   21.4      19    1.07         11.4            15.9  
+#>  5 10.3   14.2   16.6      32    0.862         7.75           11.3  
+#>  6  0.95   1.98   3.4      24    0.188         0.977           1.76 
+#>  7  0.217  0.692  1        12    0.0936        0.212           0.624
+#>  8 13.7   19.7   22.1      32    0.862        12.7            16.2  
+#>  9 18.1   19.7   19.9       5    2.65          7.59           22.3  
+#> 10  3      4.45   6.1       4    0.963         0.460           6.59 
+#> 11  0.167  0.183  0.2       3    0.0242        0.0569          0.265
+#> 12  5.9   15.4   15.6       5    2.65          1.71           16.4  
+#> 13  9.9   10.9   18        20    0.659         9.54           12.3  
+#> 14  1.85   2.3    4.9      18    0.239         1.45            2.46 
+#> 15  0.5    0.708  1.5      11    0.143         0.274           0.911
+#> 16 14.1   14.9   16        20    0.659        11.7            14.5
 ```
 
 This function can be used to get summary of either numeric **or** factor
@@ -275,7 +281,6 @@ groupedstats::grouped_summary(
   measures = color,
   measures.type = "factor"
 )
-#> Joining, by = c("cut", "clarity")
 #> # A tibble: 40 x 10
 #>    cut   clarity type   variable missing complete ordered n_unique
 #>    <ord> <ord>   <chr>  <chr>      <int>    <dbl> <lgl>      <int>
@@ -317,27 +322,52 @@ library(magrittr)
 
 options(tibble.width = Inf) # show me all columns
 
-groupedstats::grouped_summary(
+# dataframe with counts
+(df <- groupedstats::grouped_summary(
   data = ggplot2::diamonds,
   grouping.vars = cut, # for simplicity, let's just use one grouping variable
   measures = color,
   measures.type = "factor",
   topcount.long = TRUE
-) %>%
-  ggplot2::ggplot(
-    data = ., # placeholder for summary dataframe we just created
-    mapping = ggplot2::aes(
-      x = forcats::fct_inorder(f = factor.level),
-      y = count,
-      fill = factor.level
-    )
-  ) +
+))
+#> # A tibble: 20 x 3
+#>    cut       factor.level count
+#>    <ord>     <chr>        <int>
+#>  1 Fair      G              314
+#>  2 Fair      F              312
+#>  3 Fair      H              303
+#>  4 Fair      E              224
+#>  5 Good      E              933
+#>  6 Good      F              909
+#>  7 Good      G              871
+#>  8 Good      H              702
+#>  9 Very Good E             2400
+#> 10 Very Good G             2299
+#> 11 Very Good F             2164
+#> 12 Very Good H             1824
+#> 13 Premium   G             2924
+#> 14 Premium   H             2360
+#> 15 Premium   E             2337
+#> 16 Premium   F             2331
+#> 17 Ideal     G             4884
+#> 18 Ideal     E             3903
+#> 19 Ideal     F             3826
+#> 20 Ideal     H             3115
+
+# plot
+ggplot2::ggplot(
+  data = df,
+  mapping = ggplot2::aes(
+    x = forcats::fct_inorder(f = factor.level),
+    y = count,
+    fill = factor.level
+  )
+) +
   ggplot2::geom_bar(stat = "identity") +
   ggplot2::labs(x = "color", y = "count") +
   ggplot2::facet_grid(facets = ~cut) + # for each level of the factor level
   ggstatsplot::theme_ggstatsplot() +
   ggplot2::theme(legend.position = "none")
-#> Joining, by = "cut"
 #> Registered S3 methods overwritten by 'car':
 #>   method                          from
 #>   influence.merMod                lme4
@@ -362,7 +392,6 @@ groupedstats::grouped_summary(
   data = ggplot2::diamonds,
   grouping.vars = c(cut, clarity)
 )
-#> Joining, by = c("cut", "clarity")
 #> # A tibble: 280 x 17
 #>    cut   clarity type    variable missing complete    mean       sd    min
 #>    <ord> <ord>   <chr>   <chr>      <int>    <dbl>   <dbl>    <dbl>  <dbl>
@@ -376,7 +405,7 @@ groupedstats::grouped_summary(
 #>  8 Fair  SI2     numeric carat          0        1    1.20    0.501   0.25
 #>  9 Fair  SI2     numeric depth          0        1   64.4     3.16   53.1 
 #> 10 Fair  SI2     numeric table          0        1   58.8     3.68   50.1 
-#>        p25  median     p75      max     n std.error mean.low.conf mean.high.conf
+#>        p25  median     p75      max     n std.error mean.conf.low mean.conf.high
 #>      <dbl>   <dbl>   <dbl>    <dbl> <int>     <dbl>         <dbl>          <dbl>
 #>  1    0.85    1.06    1.82     5.01   210    0.0514          1.26           1.46
 #>  2   64.7    66.0    67.3     78.2    210    0.214          65.3           66.1 
@@ -399,8 +428,10 @@ set.seed(123)
 library(labelled)
 
 # dataframe
-df <- data.frame(x = rep(c("A", "B"), each = 50),
-                 y = rnorm(100), stringsAsFactors = FALSE)
+df <- data.frame(
+  x = rep(c("A", "B"), each = 50),
+  y = rnorm(100), stringsAsFactors = FALSE
+)
 
 # labelled
 df$y <- labelled(df$y, label = "Y variable", labels = c())
@@ -424,13 +455,12 @@ df$y <- labelled(df$y, label = "Y variable", labels = c())
 
 # grouped summary
 groupedstats::grouped_summary(df, x, y)
-#> Joining, by = "x"
 #> # A tibble: 2 x 16
 #>   x     type    variable missing complete   mean    sd   min    p25  median
 #>   <fct> <chr>   <chr>      <int>    <dbl>  <dbl> <dbl> <dbl>  <dbl>   <dbl>
 #> 1 A     numeric y              0        1 0.0344 0.926 -1.97 -0.559 -0.0726
 #> 2 B     numeric y              0        1 0.146  0.905 -2.31 -0.361  0.153 
-#>     p75   max     n std.error mean.low.conf mean.high.conf
+#>     p75   max     n std.error mean.conf.low mean.conf.high
 #>   <dbl> <dbl> <int>     <dbl>         <dbl>          <dbl>
 #> 1 0.698  2.17    50     0.131        -0.229          0.298
 #> 2 0.629  2.19    50     0.128        -0.111          0.404
@@ -1356,22 +1386,22 @@ multiple grouping variables but want to use different formulas-
 set.seed(123)
 library(groupedstats)
 
-results_df <- 
+results_df <-
   purrr::pmap_dfr(
-  .l = list(
-    data = list(groupedstats::movies_long),
-    grouping.vars = alist(c(mpaa, genre)), # note it's `alist` and not `list`
-    formula = list(
-      rating ~ budget, # model 1
-      rating ~ log(budget), # model 2
-      log(rating) ~ budget, # model 3
-      log(rating) ~ log(budget) # model 4
+    .l = list(
+      data = list(groupedstats::movies_long),
+      grouping.vars = alist(c(mpaa, genre)), # note it's `alist` and not `list`
+      formula = list(
+        rating ~ budget, # model 1
+        rating ~ log(budget), # model 2
+        log(rating) ~ budget, # model 3
+        log(rating) ~ log(budget) # model 4
+      ),
+      output = list("glance") # return model diagnostics
     ),
-    output = list("glance") # return model diagnostics
-  ),
-  .f = groupedstats::grouped_lm, # regression model
-  .id = "model"
-) %>% # for each combination of mpaa rating and movie genre
+    .f = groupedstats::grouped_lm, # regression model
+    .id = "model"
+  ) %>% # for each combination of mpaa rating and movie genre
   dplyr::group_by(.data = ., mpaa, genre) %>% # arrange by best to worst fits
   dplyr::arrange(.data = ., dplyr::desc(adj.r.squared))
 

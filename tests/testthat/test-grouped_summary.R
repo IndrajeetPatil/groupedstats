@@ -40,7 +40,26 @@ testthat::test_that(
     testthat::expect_equal(dim(df4), c(16L, 16L))
 
     # testing few values
-    testthat::expect_equal(df1$mean[7], 4.26, tolerance = 0.001)
+    testthat::expect_equal(df1$mean, c(
+      5.006, 3.428, 1.462, 0.246, 5.936, 2.77, 4.26, 1.326, 6.588,
+      2.974, 5.552, 2.026
+    ), tolerance = 0.001)
+    testthat::expect_identical(df2$variable, c(
+      "Sepal.Length", "Sepal.Width", "Petal.Length", "Sepal.Length",
+      "Sepal.Width", "Petal.Length", "Sepal.Length", "Sepal.Width",
+      "Petal.Length"
+    ))
+    testthat::expect_equal(df3$std.error,
+      c(
+        1.07116865041126, 0.588868972409539, 0.0145296632177839, 1.07287371943377,
+        0.0342369038673148, 41.7699169307636, 0.862448682145597, 0.188209206241378,
+        0.093574236670027, 0.862448682145597, 0.351511874903009, 219.924114575772,
+        2.64775376498646, 0.962959846861055, 0.0242161051526754, 2.64775376498646,
+        0.0155974036300918, 11.8013082351068, 0.659420598947128, 0.238763456962194,
+        0.142760724430519, 0.659420598947128, 0.078726118581906, 5.52170402569428
+      ),
+      tolerance = 0.001
+    )
     testthat::expect_equal(df2$mean[9], 5.552, tolerance = 0.001)
     testthat::expect_equal(df3$mean[12], 366.8773, tolerance = 0.001)
     testthat::expect_equal(df4$mean[11], 0.1611111, tolerance = 0.001)
@@ -87,7 +106,14 @@ testthat::test_that(
     testthat::expect_identical(df3$n[12], 3L)
     testthat::expect_identical(df4$n[4], 32L)
 
-    # testing counts
+    # testing n and counts
+    testthat::expect_equal(
+      df3$n_unique,
+      c(
+        19L, 16L, 6L, 6L, 32L, 29L, 9L, 6L, 5L, 5L, 4L, 2L, 20L, 20L,
+        8L, 2L
+      )
+    )
     testthat::expect_identical(
       df5$factor.level,
       c(

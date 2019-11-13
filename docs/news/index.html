@@ -128,10 +128,16 @@
 <h1 class="page-header">
 <a href="#groupedstats-0099000" class="anchor"></a>groupedstats 0.0.9.9000<small> Unreleased </small>
 </h1>
+<p>BREAKING CHANGES</p>
+<ul>
+<li>To be consistent with other packages that <code>groupedstats</code> relies on or supports the confidence intervals columns for <code>grouped_summary</code> have been renamed to <code>mean.conf.high</code> and <code>mean.conf.low</code>.</li>
+</ul>
 <p>MINOR CHANGES</p>
 <ul>
 <li>
 <code>grouped_summary</code> can now work with labeled data (<a href='https://github.com/IndrajeetPatil/groupedstats/issues/14'>#14</a>).</li>
+<li>
+<code>grouped_summary</code> outputs might differ slightly with <code>skimr 2.0</code>.</li>
 </ul>
 </div>
     <div id="groupedstats-009" class="section level1">

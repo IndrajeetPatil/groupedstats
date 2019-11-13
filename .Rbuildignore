@@ -32,5 +32,6 @@ tests\^spelling
 ^\.circleci$
 ^\.github/ISSUE_TEMPLATE$
 ^API$
+^\.pre-commit-config\.yaml$
 ^\.github/workflows/R\.yaml$
 ^\.github/workflows/pr-commands\.yaml$

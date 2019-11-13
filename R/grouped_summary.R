@@ -25,12 +25,13 @@
 #' @importFrom dplyr filter_at mutate_at mutate_if any_vars tally
 #' @importFrom dplyr group_modify group_nest
 #' @importFrom purrr is_bare_numeric is_bare_character keep map map_lgl map_dfr
-#' @importFrom purrr flatten_lgl set_names
+#' @importFrom purrr flatten_lgl set_names map_chr
 #' @importFrom tidyr unnest separate
 #' @importFrom crayon red blue
 #' @importFrom tibble as_tibble enframe
 #' @importFrom stats qt
 #' @importFrom sjlabelled is_labelled remove_all_labels
+#' @importFrom rlang !! !!! as_string
 #'
 #' @examples
 #' # for reproducibility
@@ -134,7 +135,8 @@ grouped_summary <- function(data,
           keep = FALSE
         ) %>%
         dplyr::ungroup(x = .),
-      y = dplyr::tally(df_results)
+      y = dplyr::tally(df_results),
+      by = purrr::map_chr(.x = grouping.vars, .f = rlang::as_string)
     ) %>%
     dplyr::mutate(.data = ., n = n - n_missing) %>% # changing column names
     purrr::set_names(x = ., nm = ~ sub("numeric.|factor.|^skim_|^n_|_rate$", "", .x))
@@ -177,12 +179,12 @@ grouped_summary <- function(data,
       dplyr::mutate(
         .data = .,
         std.error = sd / sqrt(n),
-        mean.low.conf = mean - stats::qt(
+        mean.conf.low = mean - stats::qt(
           p = 1 - (0.05 / 2),
           df = n - 1,
           lower.tail = TRUE
         ) * std.error,
-        mean.high.conf = mean + stats::qt(
+        mean.conf.high = mean + stats::qt(
           p = 1 - (0.05 / 2),
           df = n - 1,
           lower.tail = TRUE
