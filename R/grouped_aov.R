@@ -19,7 +19,7 @@
 #' @importFrom tidyr nest
 #' @importFrom rlang !! enquos enquo quo quo_squash
 #' @importFrom dplyr select group_by arrange mutate mutate_at mutate_if
-#' @importFrom dplyr left_join right_join bind_rows bind_cols
+#' @importFrom dplyr left_join bind_rows bind_cols
 #'
 #' @examples
 #'

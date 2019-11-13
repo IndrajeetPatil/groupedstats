@@ -25,7 +25,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--10--14-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--11--13-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
@@ -224,35 +224,36 @@ groupedstats::grouped_summary(
   measures = Sepal.Length:Petal.Width,
   measures.type = "numeric"
 )
+#> Joining, by = "Species"
 #> # A tibble: 12 x 16
-#>    Species    type    variable     missing complete     n  mean    sd   min
-#>    <fct>      <chr>   <chr>          <dbl>    <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1 setosa     numeric Petal.Length       0       50    50 1.46  0.174   1  
-#>  2 setosa     numeric Petal.Width        0       50    50 0.246 0.105   0.1
-#>  3 setosa     numeric Sepal.Length       0       50    50 5.01  0.352   4.3
-#>  4 setosa     numeric Sepal.Width        0       50    50 3.43  0.379   2.3
-#>  5 versicolor numeric Petal.Length       0       50    50 4.26  0.47    3  
-#>  6 versicolor numeric Petal.Width        0       50    50 1.33  0.198   1  
-#>  7 versicolor numeric Sepal.Length       0       50    50 5.94  0.516   4.9
-#>  8 versicolor numeric Sepal.Width        0       50    50 2.77  0.314   2  
-#>  9 virginica  numeric Petal.Length       0       50    50 5.55  0.552   4.5
-#> 10 virginica  numeric Petal.Width        0       50    50 2.03  0.275   1.4
-#> 11 virginica  numeric Sepal.Length       0       50    50 6.59  0.636   4.9
-#> 12 virginica  numeric Sepal.Width        0       50    50 2.97  0.322   2.2
-#>      p25 median   p75   max std.error mean.low.conf mean.high.conf
-#>    <dbl>  <dbl> <dbl> <dbl>     <dbl>         <dbl>          <dbl>
-#>  1  1.4    1.5   1.58   1.9    0.0246         1.41           1.51 
-#>  2  0.2    0.2   0.3    0.6    0.0148         0.216          0.276
-#>  3  4.8    5     5.2    5.8    0.0498         4.91           5.11 
-#>  4  3.2    3.4   3.68   4.4    0.0536         3.32           3.54 
-#>  5  4      4.35  4.6    5.1    0.0665         4.13           4.39 
-#>  6  1.2    1.3   1.5    1.8    0.0280         1.27           1.39 
-#>  7  5.6    5.9   6.3    7      0.0730         5.79           6.09 
-#>  8  2.52   2.8   3      3.4    0.0444         2.68           2.86 
-#>  9  5.1    5.55  5.88   6.9    0.0781         5.39           5.71 
-#> 10  1.8    2     2.3    2.5    0.0389         1.95           2.11 
-#> 11  6.23   6.5   6.9    7.9    0.0899         6.41           6.77 
-#> 12  2.8    3     3.18   3.8    0.0455         2.88           3.06
+#>    Species    type    variable     missing complete  mean    sd   min   p25
+#>    <fct>      <chr>   <chr>          <int>    <dbl> <dbl> <dbl> <dbl> <dbl>
+#>  1 setosa     numeric Sepal.Length       0        1 5.01  0.352   4.3  4.8 
+#>  2 setosa     numeric Sepal.Width        0        1 3.43  0.379   2.3  3.2 
+#>  3 setosa     numeric Petal.Length       0        1 1.46  0.174   1    1.4 
+#>  4 setosa     numeric Petal.Width        0        1 0.246 0.105   0.1  0.2 
+#>  5 versicolor numeric Sepal.Length       0        1 5.94  0.516   4.9  5.6 
+#>  6 versicolor numeric Sepal.Width        0        1 2.77  0.314   2    2.52
+#>  7 versicolor numeric Petal.Length       0        1 4.26  0.470   3    4   
+#>  8 versicolor numeric Petal.Width        0        1 1.33  0.198   1    1.2 
+#>  9 virginica  numeric Sepal.Length       0        1 6.59  0.636   4.9  6.22
+#> 10 virginica  numeric Sepal.Width        0        1 2.97  0.322   2.2  2.8 
+#> 11 virginica  numeric Petal.Length       0        1 5.55  0.552   4.5  5.1 
+#> 12 virginica  numeric Petal.Width        0        1 2.03  0.275   1.4  1.8 
+#>    median   p75   max     n std.error mean.low.conf mean.high.conf
+#>     <dbl> <dbl> <dbl> <int>     <dbl>         <dbl>          <dbl>
+#>  1   5     5.2    5.8    50    0.0498         4.91           5.11 
+#>  2   3.4   3.68   4.4    50    0.0536         3.32           3.54 
+#>  3   1.5   1.58   1.9    50    0.0246         1.41           1.51 
+#>  4   0.2   0.3    0.6    50    0.0149         0.216          0.276
+#>  5   5.9   6.3    7      50    0.0730         5.79           6.08 
+#>  6   2.8   3      3.4    50    0.0444         2.68           2.86 
+#>  7   4.35  4.6    5.1    50    0.0665         4.13           4.39 
+#>  8   1.3   1.5    1.8    50    0.0280         1.27           1.38 
+#>  9   6.5   6.9    7.9    50    0.0899         6.41           6.77 
+#> 10   3     3.18   3.8    50    0.0456         2.88           3.07 
+#> 11   5.55  5.88   6.9    50    0.0780         5.40           5.71 
+#> 12   2     2.3    2.5    50    0.0388         1.95           2.10
 ```
 
 This function can be used to get summary of either numeric **or** factor
@@ -274,31 +275,32 @@ groupedstats::grouped_summary(
   measures = color,
   measures.type = "factor"
 )
+#> Joining, by = c("cut", "clarity")
 #> # A tibble: 40 x 10
-#>    cut   clarity type   variable missing complete n     n_unique
-#>    <ord> <ord>   <chr>  <chr>    <chr>   <chr>    <chr> <chr>   
-#>  1 Fair  I1      factor color    0       210      210   7       
-#>  2 Fair  SI2     factor color    0       466      466   7       
-#>  3 Fair  SI1     factor color    0       408      408   7       
-#>  4 Fair  VS2     factor color    0       261      261   7       
-#>  5 Fair  VS1     factor color    0       170      170   7       
-#>  6 Fair  VVS2    factor color    0       69       69    7       
-#>  7 Fair  VVS1    factor color    0       17       17    7       
-#>  8 Fair  IF      factor color    0       9        9     3       
-#>  9 Good  I1      factor color    0       96       96    7       
-#> 10 Good  SI2     factor color    0       1081     1081  7       
-#>    top_counts                     ordered
-#>    <chr>                          <chr>  
-#>  1 G: 53, H: 52, F: 35, I: 34     TRUE   
-#>  2 H: 91, F: 89, G: 80, E: 78     TRUE   
-#>  3 F: 83, H: 75, G: 69, E: 65     TRUE   
-#>  4 F: 53, G: 45, E: 42, H: 41     TRUE   
-#>  5 G: 45, F: 33, H: 32, I: 25     TRUE   
-#>  6 G: 17, E: 13, H: 11, F: 10     TRUE   
-#>  7 F: 5, D: 3, E: 3, G: 3         TRUE   
-#>  8 F: 4, D: 3, G: 2, E: 0         TRUE   
-#>  9 E: 23, F: 19, G: 19, H: 14     TRUE   
-#> 10 D: 223, E: 202, F: 201, G: 163 TRUE   
+#>    cut   clarity type   variable missing complete ordered n_unique
+#>    <ord> <ord>   <chr>  <chr>      <int>    <dbl> <lgl>      <int>
+#>  1 Fair  I1      factor color          0        1 TRUE           7
+#>  2 Fair  SI2     factor color          0        1 TRUE           7
+#>  3 Fair  SI1     factor color          0        1 TRUE           7
+#>  4 Fair  VS2     factor color          0        1 TRUE           7
+#>  5 Fair  VS1     factor color          0        1 TRUE           7
+#>  6 Fair  VVS2    factor color          0        1 TRUE           7
+#>  7 Fair  VVS1    factor color          0        1 TRUE           7
+#>  8 Fair  IF      factor color          0        1 TRUE           3
+#>  9 Good  I1      factor color          0        1 TRUE           7
+#> 10 Good  SI2     factor color          0        1 TRUE           7
+#>    top_counts                         n
+#>    <chr>                          <int>
+#>  1 G: 53, H: 52, F: 35, I: 34       210
+#>  2 H: 91, F: 89, G: 80, E: 78       466
+#>  3 F: 83, H: 75, G: 69, E: 65       408
+#>  4 F: 53, G: 45, E: 42, H: 41       261
+#>  5 G: 45, F: 33, H: 32, I: 25       170
+#>  6 G: 17, E: 13, H: 11, F: 10        69
+#>  7 F: 5, D: 3, E: 3, G: 3            17
+#>  8 F: 4, D: 3, G: 2, E: 0             9
+#>  9 E: 23, F: 19, G: 19, H: 14        96
+#> 10 D: 223, E: 202, F: 201, G: 163  1081
 #> # ... with 30 more rows
 ```
 
@@ -312,13 +314,6 @@ to use an additional argument provided for this function:
 set.seed(123)
 library(ggplot2)
 library(magrittr)
-library(ggstatsplot)
-#> Registered S3 methods overwritten by 'car':
-#>   method                          from
-#>   influence.merMod                lme4
-#>   cooks.distance.influence.merMod lme4
-#>   dfbeta.influence.merMod         lme4
-#>   dfbetas.influence.merMod        lme4
 
 options(tibble.width = Inf) # show me all columns
 
@@ -342,6 +337,13 @@ groupedstats::grouped_summary(
   ggplot2::facet_grid(facets = ~cut) + # for each level of the factor level
   ggstatsplot::theme_ggstatsplot() +
   ggplot2::theme(legend.position = "none")
+#> Joining, by = "cut"
+#> Registered S3 methods overwritten by 'car':
+#>   method                          from
+#>   influence.merMod                lme4
+#>   cooks.distance.influence.merMod lme4
+#>   dfbeta.influence.merMod         lme4
+#>   dfbetas.influence.merMod        lme4
 ```
 
 <img src="man/figures/README-grouped_summary3-1.png" width="100%" />
@@ -360,43 +362,32 @@ groupedstats::grouped_summary(
   data = ggplot2::diamonds,
   grouping.vars = c(cut, clarity)
 )
+#> Joining, by = c("cut", "clarity")
 #> # A tibble: 280 x 17
-#>    cut   clarity type    variable missing complete     n    mean       sd
-#>    <ord> <ord>   <chr>   <chr>      <dbl>    <dbl> <dbl>   <dbl>    <dbl>
-#>  1 Fair  I1      integer price          0      210   210 3704.   3099.   
-#>  2 Fair  I1      numeric carat          0      210   210    1.36    0.745
-#>  3 Fair  I1      numeric depth          0      210   210   65.7     3.1  
-#>  4 Fair  I1      numeric table          0      210   210   58.1     2.87 
-#>  5 Fair  I1      numeric x              0      210   210    6.72    1.11 
-#>  6 Fair  I1      numeric y              0      210   210    6.62    1.13 
-#>  7 Fair  I1      numeric z              0      210   210    4.39    0.756
-#>  8 Fair  SI2     integer price          0      466   466 5174.   3928.   
-#>  9 Fair  SI2     numeric carat          0      466   466    1.2     0.501
-#> 10 Fair  SI2     numeric depth          0      466   466   64.4     3.16 
-#>       min     p25  median     p75      max std.error mean.low.conf
-#>     <dbl>   <dbl>   <dbl>   <dbl>    <dbl>     <dbl>         <dbl>
-#>  1 584    1387.   2397    5614.   18531     214.           3282.  
-#>  2   0.34    0.85    1.06    1.82     5.01    0.0514          1.26
-#>  3  55.6    64.7    66.0    67.3     78.2     0.214          65.3 
-#>  4  52      56      58      59       67       0.198          57.7 
-#>  5   4.72    5.96    6.55    7.46    10.7     0.0766          6.57
-#>  6   4.6     5.82    6.42    7.38    10.5     0.0780          6.47
-#>  7   2.6     3.77    4.22    4.86     6.98    0.0522          4.29
-#>  8 536    2763    3681    6266.   18308     182.           4816.  
-#>  9   0.25    0.9     1.01    1.5      3.01    0.0232          1.15
-#> 10  53.1    64.5    65.1    65.9     72.2     0.146          64.1 
-#>    mean.high.conf
-#>             <dbl>
-#>  1        4125.  
-#>  2           1.46
-#>  3          66.1 
-#>  4          58.5 
-#>  5           6.87
-#>  6           6.77
-#>  7           4.49
-#>  8        5531.  
-#>  9           1.25
-#> 10          64.7 
+#>    cut   clarity type    variable missing complete    mean       sd    min
+#>    <ord> <ord>   <chr>   <chr>      <int>    <dbl>   <dbl>    <dbl>  <dbl>
+#>  1 Fair  I1      numeric carat          0        1    1.36    0.745   0.34
+#>  2 Fair  I1      numeric depth          0        1   65.7     3.10   55.6 
+#>  3 Fair  I1      numeric table          0        1   58.1     2.87   52   
+#>  4 Fair  I1      numeric price          0        1 3704.   3099.    584   
+#>  5 Fair  I1      numeric x              0        1    6.72    1.11    4.72
+#>  6 Fair  I1      numeric y              0        1    6.62    1.13    4.6 
+#>  7 Fair  I1      numeric z              0        1    4.39    0.756   2.6 
+#>  8 Fair  SI2     numeric carat          0        1    1.20    0.501   0.25
+#>  9 Fair  SI2     numeric depth          0        1   64.4     3.16   53.1 
+#> 10 Fair  SI2     numeric table          0        1   58.8     3.68   50.1 
+#>        p25  median     p75      max     n std.error mean.low.conf mean.high.conf
+#>      <dbl>   <dbl>   <dbl>    <dbl> <int>     <dbl>         <dbl>          <dbl>
+#>  1    0.85    1.06    1.82     5.01   210    0.0514          1.26           1.46
+#>  2   64.7    66.0    67.3     78.2    210    0.214          65.3           66.1 
+#>  3   56      58      59       67      210    0.198          57.7           58.5 
+#>  4 1387.   2397    5614.   18531      210  214.           3282.          4125.  
+#>  5    5.96    6.56    7.46    10.7    210    0.0769          6.57           6.87
+#>  6    5.82    6.42    7.38    10.5    210    0.0777          6.47           6.78
+#>  7    3.77    4.22    4.86     6.98   210    0.0522          4.28           4.49
+#>  8    0.9     1.01    1.5      3.01   466    0.0232          1.16           1.25
+#>  9   64.5    65.1    65.9     72.2    466    0.147          64.1           64.7 
+#> 10   56      58      60       79      466    0.171          58.5           59.2 
 #> # ... with 270 more rows
 ```
 
@@ -433,15 +424,16 @@ df$y <- labelled(df$y, label = "Y variable", labels = c())
 
 # grouped summary
 groupedstats::grouped_summary(df, x, y)
+#> Joining, by = "x"
 #> # A tibble: 2 x 16
-#>   x     type    variable missing complete     n   mean    sd   min    p25
-#>   <fct> <chr>   <chr>      <dbl>    <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>
-#> 1 A     numeric y              0       50    50 0.0344 0.926 -1.97 -0.559
-#> 2 B     numeric y              0       50    50 0.146  0.905 -2.31 -0.361
-#>    median   p75   max std.error mean.low.conf mean.high.conf
-#>     <dbl> <dbl> <dbl>     <dbl>         <dbl>          <dbl>
-#> 1 -0.0726 0.698  2.17     0.131        -0.229          0.298
-#> 2  0.153  0.629  2.19     0.128        -0.111          0.403
+#>   x     type    variable missing complete   mean    sd   min    p25  median
+#>   <fct> <chr>   <chr>      <int>    <dbl>  <dbl> <dbl> <dbl>  <dbl>   <dbl>
+#> 1 A     numeric y              0        1 0.0344 0.926 -1.97 -0.559 -0.0726
+#> 2 B     numeric y              0        1 0.146  0.905 -2.31 -0.361  0.153 
+#>     p75   max     n std.error mean.low.conf mean.high.conf
+#>   <dbl> <dbl> <int>     <dbl>         <dbl>          <dbl>
+#> 1 0.698  2.17    50     0.131        -0.229          0.298
+#> 2 0.629  2.19    50     0.128        -0.111          0.404
 ```
 
 ## `grouped_slr`
@@ -471,30 +463,30 @@ groupedstats::grouped_slr(
   grouping.vars = country
 )
 #> # A tibble: 284 x 9
-#>    country     formula             t.value estimate conf.low conf.high
-#>    <fct>       <chr>                 <dbl>    <dbl>    <dbl>     <dbl>
-#>  1 Afghanistan lifeExp ~ gdpPercap  -0.151  -0.0475   -0.751     0.656
-#>  2 Albania     lifeExp ~ gdpPercap   4.84    0.837     0.452     1.22 
-#>  3 Algeria     lifeExp ~ gdpPercap   6.71    0.904     0.604     1.21 
-#>  4 Angola      lifeExp ~ gdpPercap  -0.998  -0.301    -0.973     0.371
-#>  5 Argentina   lifeExp ~ gdpPercap   4.74    0.832     0.440     1.22 
-#>  6 Australia   lifeExp ~ gdpPercap  19.0     0.986     0.871     1.10 
-#>  7 Austria     lifeExp ~ gdpPercap  26.5     0.993     0.910     1.08 
-#>  8 Bahrain     lifeExp ~ gdpPercap   6.45    0.898     0.587     1.21 
-#>  9 Bangladesh  lifeExp ~ gdpPercap   5.05    0.847     0.473     1.22 
-#> 10 Belgium     lifeExp ~ gdpPercap  26.1     0.993     0.908     1.08 
-#>    std.error  p.value significance
-#>        <dbl>    <dbl> <chr>       
-#>  1    0.316  8.83e- 1 ns          
-#>  2    0.173  6.82e- 4 ***         
-#>  3    0.135  5.33e- 5 ***         
-#>  4    0.302  3.42e- 1 ns          
-#>  5    0.176  7.97e- 4 ***         
-#>  6    0.0519 3.52e- 9 ***         
-#>  7    0.0374 1.34e-10 ***         
-#>  8    0.139  7.38e- 5 ***         
-#>  9    0.168  5.03e- 4 ***         
-#> 10    0.0380 1.56e-10 ***         
+#>    country     formula             t.value estimate conf.low conf.high std.error
+#>    <fct>       <chr>                 <dbl>    <dbl>    <dbl>     <dbl>     <dbl>
+#>  1 Afghanistan lifeExp ~ gdpPercap  -0.151  -0.0475   -0.751     0.656    0.316 
+#>  2 Albania     lifeExp ~ gdpPercap   4.84    0.837     0.452     1.22     0.173 
+#>  3 Algeria     lifeExp ~ gdpPercap   6.71    0.904     0.604     1.21     0.135 
+#>  4 Angola      lifeExp ~ gdpPercap  -0.998  -0.301    -0.973     0.371    0.302 
+#>  5 Argentina   lifeExp ~ gdpPercap   4.74    0.832     0.440     1.22     0.176 
+#>  6 Australia   lifeExp ~ gdpPercap  19.0     0.986     0.871     1.10     0.0519
+#>  7 Austria     lifeExp ~ gdpPercap  26.5     0.993     0.910     1.08     0.0374
+#>  8 Bahrain     lifeExp ~ gdpPercap   6.45    0.898     0.587     1.21     0.139 
+#>  9 Bangladesh  lifeExp ~ gdpPercap   5.05    0.847     0.473     1.22     0.168 
+#> 10 Belgium     lifeExp ~ gdpPercap  26.1     0.993     0.908     1.08     0.0380
+#>     p.value significance
+#>       <dbl> <chr>       
+#>  1 8.83e- 1 ns          
+#>  2 6.82e- 4 ***         
+#>  3 5.33e- 5 ***         
+#>  4 3.42e- 1 ns          
+#>  5 7.97e- 4 ***         
+#>  6 3.52e- 9 ***         
+#>  7 1.34e-10 ***         
+#>  8 7.38e- 5 ***         
+#>  9 5.03e- 4 ***         
+#> 10 1.56e-10 ***         
 #> # ... with 274 more rows
 ```
 
@@ -535,30 +527,30 @@ groupedstats::grouped_slr(
 ) %>%
   dplyr::arrange(.data = ., cut)
 #> # A tibble: 40 x 10
-#>    cut   clarity formula       t.value estimate conf.low conf.high
-#>    <ord> <ord>   <chr>           <dbl>    <dbl>    <dbl>     <dbl>
-#>  1 Fair  VS2     price ~ carat   42.0     0.934    0.890     0.978
-#>  2 Fair  SI2     price ~ carat   69.1     0.955    0.928     0.982
-#>  3 Fair  SI1     price ~ carat   58.9     0.946    0.915     0.978
-#>  4 Fair  I1      price ~ carat   58.7     0.971    0.939     1.00 
-#>  5 Fair  VVS1    price ~ carat    8.58    0.911    0.685     1.14 
-#>  6 Fair  VS1     price ~ carat   36.6     0.943    0.892     0.994
-#>  7 Fair  IF      price ~ carat    8.22    0.952    0.678     1.23 
-#>  8 Fair  VVS2    price ~ carat   13.6     0.857    0.732     0.983
-#>  9 Good  VS1     price ~ carat   74.0     0.946    0.921     0.971
-#> 10 Good  SI2     price ~ carat  103.      0.953    0.934     0.971
-#>    std.error   p.value significance
-#>        <dbl>     <dbl> <chr>       
-#>  1   0.0222  1.55e-117 ***         
-#>  2   0.0138  1.96e-246 ***         
-#>  3   0.0161  4.58e-201 ***         
-#>  4   0.0165  1.86e-131 ***         
-#>  5   0.106   3.59e-  7 ***         
-#>  6   0.0257  5.40e- 82 ***         
-#>  7   0.116   7.67e-  5 ***         
-#>  8   0.0629  5.54e- 21 ***         
-#>  9   0.0128  9.62e-318 ***         
-#> 10   0.00926 0.        ***         
+#>    cut   clarity formula       t.value estimate conf.low conf.high std.error
+#>    <ord> <ord>   <chr>           <dbl>    <dbl>    <dbl>     <dbl>     <dbl>
+#>  1 Fair  VS2     price ~ carat   42.0     0.934    0.890     0.978   0.0222 
+#>  2 Fair  SI2     price ~ carat   69.1     0.955    0.928     0.982   0.0138 
+#>  3 Fair  SI1     price ~ carat   58.9     0.946    0.915     0.978   0.0161 
+#>  4 Fair  I1      price ~ carat   58.7     0.971    0.939     1.00    0.0165 
+#>  5 Fair  VVS1    price ~ carat    8.58    0.911    0.685     1.14    0.106  
+#>  6 Fair  VS1     price ~ carat   36.6     0.943    0.892     0.994   0.0257 
+#>  7 Fair  IF      price ~ carat    8.22    0.952    0.678     1.23    0.116  
+#>  8 Fair  VVS2    price ~ carat   13.6     0.857    0.732     0.983   0.0629 
+#>  9 Good  VS1     price ~ carat   74.0     0.946    0.921     0.971   0.0128 
+#> 10 Good  SI2     price ~ carat  103.      0.953    0.934     0.971   0.00926
+#>      p.value significance
+#>        <dbl> <chr>       
+#>  1 1.55e-117 ***         
+#>  2 1.96e-246 ***         
+#>  3 4.58e-201 ***         
+#>  4 1.86e-131 ***         
+#>  5 3.59e-  7 ***         
+#>  6 5.40e- 82 ***         
+#>  7 7.67e-  5 ***         
+#>  8 5.54e- 21 ***         
+#>  9 9.62e-318 ***         
+#> 10 0.        ***         
 #> # ... with 30 more rows
 ```
 
@@ -626,11 +618,6 @@ implemented in `grouped_lm`:
 # for reproducibility
 set.seed(123)
 library(groupedstats)
-#> 
-#> Attaching package: 'groupedstats'
-#> The following objects are masked from 'package:ggstatsplot':
-#> 
-#>     movies_long, movies_wide
 
 groupedstats::grouped_lm(
   data = mtcars,
@@ -639,34 +626,34 @@ groupedstats::grouped_lm(
   output = "tidy" # tidy dataframe containing results
 )
 #> # A tibble: 12 x 9
-#>      cyl term        estimate std.error statistic   p.value conf.low
-#>    <dbl> <chr>          <dbl>     <dbl>     <dbl>     <dbl>    <dbl>
-#>  1     4 (Intercept)   13.9      16.1      0.865  0.416       -24.1 
-#>  2     4 am            30.3      17.2      1.77   0.121       -10.3 
-#>  3     4 wt             3.07      5.44     0.564  0.590        -9.79
-#>  4     4 am:wt        -11.0       6.16    -1.78   0.118       -25.5 
-#>  5     6 (Intercept)   63.6      14.1      4.51   0.0204       18.7 
-#>  6     6 am           -41.4      19.0     -2.18   0.117      -102.  
-#>  7     6 wt           -13.1       4.16    -3.16   0.0511      -26.4 
-#>  8     6 am:wt         12.5       6.22     2.02   0.137        -7.26
-#>  9     8 (Intercept)   25.1       3.51     7.14   0.0000315    17.2 
-#> 10     8 am            -2.92     25.9     -0.113  0.912       -60.5 
-#> 11     8 wt            -2.44      0.842   -2.90   0.0159       -4.32
-#> 12     8 am:wt          0.439     7.63     0.0575 0.955       -16.6 
-#>    conf.high significance
-#>        <dbl> <chr>       
-#>  1    51.9   ns          
-#>  2    70.9   ns          
-#>  3    15.9   ns          
-#>  4     3.61  ns          
-#>  5   109.    *           
-#>  6    19.1   ns          
-#>  7     0.113 ns          
-#>  8    32.4   ns          
-#>  9    32.9   ***         
-#> 10    54.7   ns          
-#> 11    -0.563 *           
-#> 12    17.4   ns
+#>      cyl term        estimate std.error statistic   p.value conf.low conf.high
+#>    <dbl> <chr>          <dbl>     <dbl>     <dbl>     <dbl>    <dbl>     <dbl>
+#>  1     4 (Intercept)   13.9      16.1      0.865  0.416       -24.1     51.9  
+#>  2     4 am            30.3      17.2      1.77   0.121       -10.3     70.9  
+#>  3     4 wt             3.07      5.44     0.564  0.590        -9.79    15.9  
+#>  4     4 am:wt        -11.0       6.16    -1.78   0.118       -25.5      3.61 
+#>  5     6 (Intercept)   63.6      14.1      4.51   0.0204       18.7    109.   
+#>  6     6 am           -41.4      19.0     -2.18   0.117      -102.      19.1  
+#>  7     6 wt           -13.1       4.16    -3.16   0.0511      -26.4      0.113
+#>  8     6 am:wt         12.5       6.22     2.02   0.137        -7.26    32.4  
+#>  9     8 (Intercept)   25.1       3.51     7.14   0.0000315    17.2     32.9  
+#> 10     8 am            -2.92     25.9     -0.113  0.912       -60.5     54.7  
+#> 11     8 wt            -2.44      0.842   -2.90   0.0159       -4.32    -0.563
+#> 12     8 am:wt          0.439     7.63     0.0575 0.955       -16.6     17.4  
+#>    significance
+#>    <chr>       
+#>  1 ns          
+#>  2 ns          
+#>  3 ns          
+#>  4 ns          
+#>  5 *           
+#>  6 ns          
+#>  7 ns          
+#>  8 ns          
+#>  9 ***         
+#> 10 ns          
+#> 11 *           
+#> 12 ns
 ```
 
 The same function can also be used to get model summaries instead of a
@@ -684,30 +671,30 @@ groupedstats::grouped_lm(
   output = "glance" # dataframe with model summaries
 )
 #> # A tibble: 35 x 14
-#>    cut   color r.squared adj.r.squared sigma statistic   p.value    df
-#>    <ord> <ord>     <dbl>         <dbl> <dbl>     <dbl>     <dbl> <dbl>
-#>  1 Fair  D         0.915         0.906 1005.      106. 1.03e- 70    15
-#>  2 Fair  E         0.917         0.912  883.      179. 8.70e-106    13
-#>  3 Fair  F         0.917         0.912  954.      217. 9.37e-150    15
-#>  4 Fair  G         0.932         0.929  964.      273. 5.03e-164    15
-#>  5 Fair  H         0.932         0.929 1033.      332. 1.76e-161    12
-#>  6 Fair  I         0.958         0.955  794.      307. 1.14e-104    12
-#>  7 Fair  J         0.955         0.950  907.      204. 1.82e- 66    11
-#>  8 Good  D         0.933         0.931  831.      600. 0.           15
-#>  9 Good  E         0.927         0.926  905.      781. 0.           15
-#> 10 Good  F         0.915         0.914  939.      644. 0.           15
-#>    logLik    AIC    BIC   deviance df.residual  nobs
-#>     <dbl>  <dbl>  <dbl>      <dbl>       <int> <int>
-#>  1 -1350.  2733.  2786. 148463951.         147   163
-#>  2 -1830.  3690.  3741. 163677866.         210   224
-#>  3 -2575.  5184.  5248. 269389292.         296   312
-#>  4 -2595.  5224.  5288. 277025077.         298   314
-#>  5 -2526.  5081.  5133. 309753202.         290   303
-#>  6 -1410.  2848.  2892. 102049583.         162   175
-#>  7  -973.  1972.  2008.  88046170.         107   119
-#>  8 -5382. 10797. 10874. 446239835.         646   662
-#>  9 -7667. 15369. 15451. 750592238.         917   933
-#> 10 -7504. 15042. 15123. 787519475.         893   909
+#>    cut   color r.squared adj.r.squared sigma statistic   p.value    df logLik
+#>    <ord> <ord>     <dbl>         <dbl> <dbl>     <dbl>     <dbl> <dbl>  <dbl>
+#>  1 Fair  D         0.915         0.906 1005.      106. 1.03e- 70    15 -1350.
+#>  2 Fair  E         0.917         0.912  883.      179. 8.70e-106    13 -1830.
+#>  3 Fair  F         0.917         0.912  954.      217. 9.37e-150    15 -2575.
+#>  4 Fair  G         0.932         0.929  964.      273. 5.03e-164    15 -2595.
+#>  5 Fair  H         0.932         0.929 1033.      332. 1.76e-161    12 -2526.
+#>  6 Fair  I         0.958         0.955  794.      307. 1.14e-104    12 -1410.
+#>  7 Fair  J         0.955         0.950  907.      204. 1.82e- 66    11  -973.
+#>  8 Good  D         0.933         0.931  831.      600. 0.           15 -5382.
+#>  9 Good  E         0.927         0.926  905.      781. 0.           15 -7667.
+#> 10 Good  F         0.915         0.914  939.      644. 0.           15 -7504.
+#>       AIC    BIC   deviance df.residual  nobs
+#>     <dbl>  <dbl>      <dbl>       <int> <int>
+#>  1  2733.  2786. 148463951.         147   163
+#>  2  3690.  3741. 163677866.         210   224
+#>  3  5184.  5248. 269389292.         296   312
+#>  4  5224.  5288. 277025077.         298   314
+#>  5  5081.  5133. 309753202.         290   303
+#>  6  2848.  2892. 102049583.         162   175
+#>  7  1972.  2008.  88046170.         107   119
+#>  8 10797. 10874. 446239835.         646   662
+#>  9 15369. 15451. 750592238.         917   933
+#> 10 15042. 15123. 787519475.         893   909
 #> # ... with 25 more rows
 ```
 
@@ -823,26 +810,26 @@ groupedstats::grouped_glm(
   output = "tidy"
 )
 #> # A tibble: 8 x 9
-#>   Class term        estimate std.error statistic  p.value conf.low
-#>   <fct> <chr>          <dbl>     <dbl>     <dbl>    <dbl>    <dbl>
-#> 1 1st   (Intercept)    3.56      0.507      7.03 2.13e-12    2.70 
-#> 2 1st   SexMale       -4.21      0.531     -7.92 2.29e-15   -5.42 
-#> 3 2nd   (Intercept)    1.97      0.296      6.65 3.03e-11    1.43 
-#> 4 2nd   SexMale       -3.79      0.366    -10.3  4.88e-25   -4.54 
-#> 5 3rd   (Intercept)   -0.164     0.143     -1.14 2.54e- 1   -0.446
-#> 6 3rd   SexMale       -1.40      0.185     -7.58 3.36e-14   -1.77 
-#> 7 Crew  (Intercept)    1.90      0.619      3.06 2.18e- 3    0.827
-#> 8 Crew  SexMale       -3.15      0.625     -5.04 4.68e- 7   -4.60 
-#>   conf.high significance
-#>       <dbl> <chr>       
-#> 1     4.74  ***         
-#> 2    -3.29  ***         
-#> 3     2.60  ***         
-#> 4    -3.10  ***         
-#> 5     0.117 ns          
-#> 6    -1.04  ***         
-#> 7     3.34  **          
-#> 8    -2.06  ***
+#>   Class term        estimate std.error statistic  p.value conf.low conf.high
+#>   <fct> <chr>          <dbl>     <dbl>     <dbl>    <dbl>    <dbl>     <dbl>
+#> 1 1st   (Intercept)    3.56      0.507      7.03 2.13e-12    2.70      4.74 
+#> 2 1st   SexMale       -4.21      0.531     -7.92 2.29e-15   -5.42     -3.29 
+#> 3 2nd   (Intercept)    1.97      0.296      6.65 3.03e-11    1.43      2.60 
+#> 4 2nd   SexMale       -3.79      0.366    -10.3  4.88e-25   -4.54     -3.10 
+#> 5 3rd   (Intercept)   -0.164     0.143     -1.14 2.54e- 1   -0.446     0.117
+#> 6 3rd   SexMale       -1.40      0.185     -7.58 3.36e-14   -1.77     -1.04 
+#> 7 Crew  (Intercept)    1.90      0.619      3.06 2.18e- 3    0.827     3.34 
+#> 8 Crew  SexMale       -3.15      0.625     -5.04 4.68e- 7   -4.60     -2.06 
+#>   significance
+#>   <chr>       
+#> 1 ***         
+#> 2 ***         
+#> 3 ***         
+#> 4 ***         
+#> 5 ns          
+#> 6 ***         
+#> 7 **          
+#> 8 ***
 ```
 
 Note that the `statistic` will either be a `t` (gaussian, e.g.) or a `z`
@@ -903,30 +890,30 @@ groupedstats::grouped_lmer(
 #> Computing p-values via Wald-statistics approximation (treating t as Wald z).
 #> Computing p-values via Wald-statistics approximation (treating t as Wald z).
 #> # A tibble: 24 x 10
-#>     year effect term             estimate std.error t.value conf.low
-#>    <int> <chr>  <chr>               <dbl>     <dbl>   <dbl>    <dbl>
-#>  1  1952 fixed  (Intercept)         0.215     0.293   0.736   -0.358
-#>  2  1952 fixed  scale(gdpPercap)    0.930     0.302   3.07     0.337
-#>  3  1957 fixed  (Intercept)         0.254     0.342   0.743   -0.416
-#>  4  1957 fixed  scale(gdpPercap)    0.815     0.282   2.89     0.262
-#>  5  1962 fixed  (Intercept)         0.255     0.333   0.766   -0.397
-#>  6  1962 fixed  scale(gdpPercap)    0.591     0.210   2.82     0.180
-#>  7  1967 fixed  (Intercept)         0.249     0.361   0.689   -0.459
-#>  8  1967 fixed  scale(gdpPercap)    0.387     0.120   3.24     0.153
-#>  9  1972 fixed  (Intercept)         0.276     0.366   0.753   -0.442
-#> 10  1972 fixed  scale(gdpPercap)    0.431     0.150   2.88     0.137
-#>    conf.high p.value significance
-#>        <dbl>   <dbl> <chr>       
-#>  1     0.789 0.462   ns          
-#>  2     1.52  0.00211 **          
-#>  3     0.923 0.457   ns          
-#>  4     1.37  0.00389 **          
-#>  5     0.908 0.444   ns          
-#>  6     1.00  0.00479 **          
-#>  7     0.956 0.491   ns          
-#>  8     0.622 0.00120 **          
-#>  9     0.994 0.451   ns          
-#> 10     0.724 0.00402 **          
+#>     year effect term             estimate std.error t.value conf.low conf.high
+#>    <int> <chr>  <chr>               <dbl>     <dbl>   <dbl>    <dbl>     <dbl>
+#>  1  1952 fixed  (Intercept)         0.215     0.293   0.736   -0.358     0.789
+#>  2  1952 fixed  scale(gdpPercap)    0.930     0.302   3.07     0.337     1.52 
+#>  3  1957 fixed  (Intercept)         0.254     0.342   0.743   -0.416     0.923
+#>  4  1957 fixed  scale(gdpPercap)    0.815     0.282   2.89     0.262     1.37 
+#>  5  1962 fixed  (Intercept)         0.255     0.333   0.766   -0.397     0.908
+#>  6  1962 fixed  scale(gdpPercap)    0.591     0.210   2.82     0.180     1.00 
+#>  7  1967 fixed  (Intercept)         0.249     0.361   0.689   -0.459     0.956
+#>  8  1967 fixed  scale(gdpPercap)    0.387     0.120   3.24     0.153     0.622
+#>  9  1972 fixed  (Intercept)         0.276     0.366   0.753   -0.442     0.994
+#> 10  1972 fixed  scale(gdpPercap)    0.431     0.150   2.88     0.137     0.724
+#>    p.value significance
+#>      <dbl> <chr>       
+#>  1 0.462   ns          
+#>  2 0.00211 **          
+#>  3 0.457   ns          
+#>  4 0.00389 **          
+#>  5 0.444   ns          
+#>  6 0.00479 **          
+#>  7 0.491   ns          
+#>  8 0.00120 **          
+#>  9 0.451   ns          
+#> 10 0.00402 **          
 #> # ... with 14 more rows
 
 # getting tidy output of results
@@ -970,11 +957,11 @@ set.seed(123)
 dplyr::glimpse(groupedstats::Titanic_full)
 #> Observations: 2,201
 #> Variables: 5
-#> $ id       <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16...
-#> $ Class    <fct> 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd...
-#> $ Sex      <fct> Male, Male, Male, Male, Male, Male, Male, Male, Male,...
-#> $ Age      <fct> Child, Child, Child, Child, Child, Child, Child, Chil...
-#> $ Survived <fct> No, No, No, No, No, No, No, No, No, No, No, No, No, N...
+#> $ id       <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,...
+#> $ Class    <fct> 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd...
+#> $ Sex      <fct> Male, Male, Male, Male, Male, Male, Male, Male, Male, Male...
+#> $ Age      <fct> Child, Child, Child, Child, Child, Child, Child, Child, Ch...
+#> $ Survived <fct> No, No, No, No, No, No, No, No, No, No, No, No, No, No, No...
 
 # running glmer model to get tidy output
 groupedstats::grouped_glmer(
@@ -992,18 +979,18 @@ groupedstats::grouped_glmer(
   tidy.args = list(conf.int = TRUE, effects = "fixed")
 )
 #> # A tibble: 4 x 10
-#>   Sex    effect term        estimate std.error statistic      p.value
-#>   <fct>  <chr>  <chr>          <dbl>     <dbl>     <dbl>        <dbl>
-#> 1 Female fixed  (Intercept)    1.01      0.379      2.66 0.00789     
-#> 2 Female fixed  AgeChild       1.47      0.595      2.48 0.0133      
-#> 3 Male   fixed  (Intercept)   -0.888     0.162     -5.47 0.0000000453
-#> 4 Male   fixed  AgeChild       4.90      4.03       1.22 0.224       
-#>   conf.low conf.high significance
-#>      <dbl>     <dbl> <chr>       
-#> 1    0.264     1.75  **          
-#> 2    0.307     2.64  *           
-#> 3   -1.21     -0.570 ***         
-#> 4   -3.00     12.8   ns
+#>   Sex    effect term        estimate std.error statistic      p.value conf.low
+#>   <fct>  <chr>  <chr>          <dbl>     <dbl>     <dbl>        <dbl>    <dbl>
+#> 1 Female fixed  (Intercept)    1.01      0.379      2.66 0.00789         0.264
+#> 2 Female fixed  AgeChild       1.47      0.595      2.48 0.0133          0.307
+#> 3 Male   fixed  (Intercept)   -0.888     0.162     -5.47 0.0000000453   -1.21 
+#> 4 Male   fixed  AgeChild       4.90      4.03       1.22 0.224          -3.00 
+#>   conf.high significance
+#>       <dbl> <chr>       
+#> 1     1.75  **          
+#> 2     2.64  *           
+#> 3    -0.570 ***         
+#> 4    12.8   ns
 
 # getting glmer model summaries (let's use the default family and control values)
 groupedstats::grouped_glmer(
@@ -1203,58 +1190,58 @@ groupedstats::grouped_ttest(
   var.equal = FALSE
 )
 #> # A tibble: 24 x 10
-#>    clarity formula       method                   t.test   estimate
-#>    <ord>   <chr>         <chr>                     <dbl>      <dbl>
-#>  1 SI2     carat ~ color Welch Two Sample t-test -18.0      -0.503 
-#>  2 SI1     carat ~ color Welch Two Sample t-test -22.1      -0.462 
-#>  3 VS1     carat ~ color Welch Two Sample t-test -16.8      -0.444 
-#>  4 VVS2    carat ~ color Welch Two Sample t-test -12.0      -0.553 
-#>  5 VS2     carat ~ color Welch Two Sample t-test -24.6      -0.542 
-#>  6 I1      carat ~ color Welch Two Sample t-test  -4.48     -0.644 
-#>  7 VVS1    carat ~ color Welch Two Sample t-test  -6.53     -0.417 
-#>  8 IF      carat ~ color Welch Two Sample t-test  -2.38     -0.198 
-#>  9 SI2     price ~ color Welch Two Sample t-test -10.6   -2347.    
-#> 10 SI1     price ~ color Welch Two Sample t-test -12.6   -2024.    
-#> 11 VS1     price ~ color Welch Two Sample t-test  -9.26  -2028.    
-#> 12 VVS2    price ~ color Welch Two Sample t-test  -6.83  -2643.    
-#> 13 VS2     price ~ color Welch Two Sample t-test -14.3   -2560.    
-#> 14 I1      price ~ color Welch Two Sample t-test  -2.76  -1766.    
-#> 15 VVS1    price ~ color Welch Two Sample t-test  -3.35  -1814.    
-#> 16 IF      price ~ color Welch Two Sample t-test   0.378   305.    
-#> 17 SI2     depth ~ color Welch Two Sample t-test  -2.64     -0.231 
-#> 18 SI1     depth ~ color Welch Two Sample t-test   0.333     0.0208
-#> 19 VS1     depth ~ color Welch Two Sample t-test  -6.61     -0.417 
-#> 20 VVS2    depth ~ color Welch Two Sample t-test  -2.20     -0.277 
-#> 21 VS2     depth ~ color Welch Two Sample t-test  -2.28     -0.145 
-#> 22 I1      depth ~ color Welch Two Sample t-test  -3.96     -2.10  
-#> 23 VVS1    depth ~ color Welch Two Sample t-test  -2.53     -0.370 
-#> 24 IF      depth ~ color Welch Two Sample t-test  -2.16     -0.386 
-#>     conf.low  conf.high parameter   p.value significance
-#>        <dbl>      <dbl>     <dbl>     <dbl> <chr>       
-#>  1    -0.558    -0.448      634.  9.24e- 59 ***         
-#>  2    -0.503    -0.420      948.  2.47e- 87 ***         
-#>  3    -0.496    -0.392      663.  2.91e- 53 ***         
-#>  4    -0.644    -0.461      140.  3.81e- 23 ***         
-#>  5    -0.586    -0.499      856.  1.51e-101 ***         
-#>  6    -0.932    -0.357       60.6 3.34e-  5 ***         
-#>  7    -0.545    -0.290       76.1 6.68e-  9 ***         
-#>  8    -0.364    -0.0318      60.1 2.03e-  2 *           
-#>  9 -2782.    -1913.         676.  2.02e- 24 ***         
-#> 10 -2339.    -1709.        1031.  5.75e- 34 ***         
-#> 11 -2458.    -1598.         794.  1.86e- 19 ***         
-#> 12 -3407.    -1878.         151.  1.94e- 10 ***         
-#> 13 -2911.    -2209.         943.  3.07e- 42 ***         
-#> 14 -3044.     -487.          62.0 7.58e-  3 **          
-#> 15 -2893.     -735.          81.2 1.24e-  3 **          
-#> 16 -1299.     1909.          81.0 7.07e-  1 ns          
-#> 17    -0.402    -0.0588     772.  8.58e-  3 **          
-#> 18    -0.102     0.143     1245.  7.39e-  1 ns          
-#> 19    -0.541    -0.293     1040.  6.08e- 11 ***         
-#> 20    -0.526    -0.0279     158.  2.95e-  2 *           
-#> 21    -0.271    -0.0203    1084.  2.28e-  2 *           
-#> 22    -3.16     -1.05        81.6 1.61e-  4 ***         
-#> 23    -0.661    -0.0792      88.1 1.32e-  2 *           
-#> 24    -0.739    -0.0321     111.  3.28e-  2 *
+#>    clarity formula       method                   t.test   estimate  conf.low
+#>    <ord>   <chr>         <chr>                     <dbl>      <dbl>     <dbl>
+#>  1 SI2     carat ~ color Welch Two Sample t-test -18.0      -0.503     -0.558
+#>  2 SI1     carat ~ color Welch Two Sample t-test -22.1      -0.462     -0.503
+#>  3 VS1     carat ~ color Welch Two Sample t-test -16.8      -0.444     -0.496
+#>  4 VVS2    carat ~ color Welch Two Sample t-test -12.0      -0.553     -0.644
+#>  5 VS2     carat ~ color Welch Two Sample t-test -24.6      -0.542     -0.586
+#>  6 I1      carat ~ color Welch Two Sample t-test  -4.48     -0.644     -0.932
+#>  7 VVS1    carat ~ color Welch Two Sample t-test  -6.53     -0.417     -0.545
+#>  8 IF      carat ~ color Welch Two Sample t-test  -2.38     -0.198     -0.364
+#>  9 SI2     price ~ color Welch Two Sample t-test -10.6   -2347.     -2782.   
+#> 10 SI1     price ~ color Welch Two Sample t-test -12.6   -2024.     -2339.   
+#> 11 VS1     price ~ color Welch Two Sample t-test  -9.26  -2028.     -2458.   
+#> 12 VVS2    price ~ color Welch Two Sample t-test  -6.83  -2643.     -3407.   
+#> 13 VS2     price ~ color Welch Two Sample t-test -14.3   -2560.     -2911.   
+#> 14 I1      price ~ color Welch Two Sample t-test  -2.76  -1766.     -3044.   
+#> 15 VVS1    price ~ color Welch Two Sample t-test  -3.35  -1814.     -2893.   
+#> 16 IF      price ~ color Welch Two Sample t-test   0.378   305.     -1299.   
+#> 17 SI2     depth ~ color Welch Two Sample t-test  -2.64     -0.231     -0.402
+#> 18 SI1     depth ~ color Welch Two Sample t-test   0.333     0.0208    -0.102
+#> 19 VS1     depth ~ color Welch Two Sample t-test  -6.61     -0.417     -0.541
+#> 20 VVS2    depth ~ color Welch Two Sample t-test  -2.20     -0.277     -0.526
+#> 21 VS2     depth ~ color Welch Two Sample t-test  -2.28     -0.145     -0.271
+#> 22 I1      depth ~ color Welch Two Sample t-test  -3.96     -2.10      -3.16 
+#> 23 VVS1    depth ~ color Welch Two Sample t-test  -2.53     -0.370     -0.661
+#> 24 IF      depth ~ color Welch Two Sample t-test  -2.16     -0.386     -0.739
+#>     conf.high parameter   p.value significance
+#>         <dbl>     <dbl>     <dbl> <chr>       
+#>  1    -0.448      634.  9.24e- 59 ***         
+#>  2    -0.420      948.  2.47e- 87 ***         
+#>  3    -0.392      663.  2.91e- 53 ***         
+#>  4    -0.461      140.  3.81e- 23 ***         
+#>  5    -0.499      856.  1.51e-101 ***         
+#>  6    -0.357       60.6 3.34e-  5 ***         
+#>  7    -0.290       76.1 6.68e-  9 ***         
+#>  8    -0.0318      60.1 2.03e-  2 *           
+#>  9 -1913.         676.  2.02e- 24 ***         
+#> 10 -1709.        1031.  5.75e- 34 ***         
+#> 11 -1598.         794.  1.86e- 19 ***         
+#> 12 -1878.         151.  1.94e- 10 ***         
+#> 13 -2209.         943.  3.07e- 42 ***         
+#> 14  -487.          62.0 7.58e-  3 **          
+#> 15  -735.          81.2 1.24e-  3 **          
+#> 16  1909.          81.0 7.07e-  1 ns          
+#> 17    -0.0588     772.  8.58e-  3 **          
+#> 18     0.143     1245.  7.39e-  1 ns          
+#> 19    -0.293     1040.  6.08e- 11 ***         
+#> 20    -0.0279     158.  2.95e-  2 *           
+#> 21    -0.0203    1084.  2.28e-  2 *           
+#> 22    -1.05        81.6 1.61e-  4 ***         
+#> 23    -0.0792      88.1 1.32e-  2 *           
+#> 24    -0.0321     111.  3.28e-  2 *
 
 # wilcox test (aka Mann-Whitney U-test)
 groupedstats::grouped_wilcox(
@@ -1324,42 +1311,30 @@ groupedstats::grouped_wilcox(
   paired = FALSE
 )
 #> # A tibble: 10 x 9
-#>    cut       formula        
-#>    <ord>     <chr>          
-#>  1 Ideal     carat ~ color  
-#>  2 Premium   carat ~ color  
-#>  3 Good      carat ~ color  
-#>  4 Very Good carat ~ color  
-#>  5 Fair      carat ~ color  
-#>  6 Ideal     price ~ clarity
-#>  7 Premium   price ~ clarity
-#>  8 Good      price ~ clarity
-#>  9 Very Good price ~ clarity
-#> 10 Fair      price ~ clarity
-#>    method                                            statistic estimate
-#>    <chr>                                                 <dbl>    <dbl>
-#>  1 Wilcoxon rank sum test with continuity correction   103150.   -0.440
-#>  2 Wilcoxon rank sum test with continuity correction    91748    -0.540
-#>  3 Wilcoxon rank sum test with continuity correction    20752    -0.400
-#>  4 Wilcoxon rank sum test with continuity correction    87590    -0.390
-#>  5 Wilcoxon rank sum test with continuity correction     2356.   -0.230
-#>  6 Wilcoxon rank sum test with continuity correction   344274.  774.   
-#>  7 Wilcoxon rank sum test with continuity correction   329276.  876.   
-#>  8 Wilcoxon rank sum test with continuity correction    64082.  516.   
-#>  9 Wilcoxon rank sum test with continuity correction   272064   752.   
-#> 10 Wilcoxon rank sum test with continuity correction     5113   170.   
-#>    conf.low conf.high  p.value significance
-#>       <dbl>     <dbl>    <dbl> <chr>       
-#>  1   -0.500    -0.380 1.28e-51 ***         
-#>  2   -0.600    -0.490 1.82e-59 ***         
-#>  3   -0.500    -0.310 4.49e-18 ***         
-#>  4   -0.460    -0.320 7.06e-37 ***         
-#>  5   -0.370    -0.110 1.21e- 5 ***         
-#>  6  536.     1075.    3.00e- 9 ***         
-#>  7  538.     1278.    3.52e- 9 ***         
-#>  8  141.      921.    3.05e- 3 **          
-#>  9  486.     1098.    2.76e- 8 ***         
-#> 10 -411.      802.    5.68e- 1 ns
+#>    cut       formula         method                                           
+#>    <ord>     <chr>           <chr>                                            
+#>  1 Ideal     carat ~ color   Wilcoxon rank sum test with continuity correction
+#>  2 Premium   carat ~ color   Wilcoxon rank sum test with continuity correction
+#>  3 Good      carat ~ color   Wilcoxon rank sum test with continuity correction
+#>  4 Very Good carat ~ color   Wilcoxon rank sum test with continuity correction
+#>  5 Fair      carat ~ color   Wilcoxon rank sum test with continuity correction
+#>  6 Ideal     price ~ clarity Wilcoxon rank sum test with continuity correction
+#>  7 Premium   price ~ clarity Wilcoxon rank sum test with continuity correction
+#>  8 Good      price ~ clarity Wilcoxon rank sum test with continuity correction
+#>  9 Very Good price ~ clarity Wilcoxon rank sum test with continuity correction
+#> 10 Fair      price ~ clarity Wilcoxon rank sum test with continuity correction
+#>    statistic estimate conf.low conf.high  p.value significance
+#>        <dbl>    <dbl>    <dbl>     <dbl>    <dbl> <chr>       
+#>  1   103150.   -0.440   -0.500    -0.380 1.28e-51 ***         
+#>  2    91748    -0.540   -0.600    -0.490 1.82e-59 ***         
+#>  3    20752    -0.400   -0.500    -0.310 4.49e-18 ***         
+#>  4    87590    -0.390   -0.460    -0.320 7.06e-37 ***         
+#>  5     2356.   -0.230   -0.370    -0.110 1.21e- 5 ***         
+#>  6   344274.  774.     536.     1075.    3.00e- 9 ***         
+#>  7   329276.  876.     538.     1278.    3.52e- 9 ***         
+#>  8    64082.  516.     141.      921.    3.05e- 3 **          
+#>  9   272064   752.     486.     1098.    2.76e- 8 ***         
+#> 10     5113   170.    -411.      802.    5.68e- 1 ns
 ```
 
 In these examples, two things are worth noting that generalize to
@@ -1403,22 +1378,22 @@ results_df <-
 head(results_df)
 #> # A tibble: 6 x 15
 #> # Groups:   mpaa, genre [3]
-#>   model mpaa  genre       r.squared adj.r.squared  sigma statistic
-#>   <chr> <fct> <fct>           <dbl>         <dbl>  <dbl>     <dbl>
-#> 1 2     PG-13 Animation       0.474         0.369 0.824       4.51
-#> 2 4     PG-13 Animation       0.447         0.337 0.138       4.05
-#> 3 3     PG    Documentary     0.468         0.202 0.0532      1.76
-#> 4 1     PG    Documentary     0.449         0.174 0.386       1.63
-#> 5 4     R     Action          0.142         0.138 0.254      34.6 
-#> 6 2     R     Action          0.129         0.125 1.31       30.9 
-#>        p.value    df   logLik    AIC    BIC  deviance df.residual  nobs
-#>          <dbl> <dbl>    <dbl>  <dbl>  <dbl>     <dbl>       <int> <int>
-#> 1 0.0870           1   -7.40   20.8   20.6    3.39              5     7
-#> 2 0.100            1    5.09   -4.18  -4.35   0.0957            5     7
-#> 3 0.316            1    7.45   -8.90 -10.7    0.00565           2     4
-#> 4 0.330            1   -0.479   6.96   5.12   0.298             2     4
-#> 5 0.0000000162     1   -9.39   24.8   34.8   13.5             209   211
-#> 6 0.0000000825     1 -356.    718.   728.   361.              209   211
+#>   model mpaa  genre       r.squared adj.r.squared  sigma statistic      p.value
+#>   <chr> <fct> <fct>           <dbl>         <dbl>  <dbl>     <dbl>        <dbl>
+#> 1 2     PG-13 Animation       0.474         0.369 0.824       4.51 0.0870      
+#> 2 4     PG-13 Animation       0.447         0.337 0.138       4.05 0.100       
+#> 3 3     PG    Documentary     0.468         0.202 0.0532      1.76 0.316       
+#> 4 1     PG    Documentary     0.449         0.174 0.386       1.63 0.330       
+#> 5 4     R     Action          0.142         0.138 0.254      34.6  0.0000000162
+#> 6 2     R     Action          0.129         0.125 1.31       30.9  0.0000000825
+#>      df   logLik    AIC    BIC  deviance df.residual  nobs
+#>   <dbl>    <dbl>  <dbl>  <dbl>     <dbl>       <int> <int>
+#> 1     1   -7.40   20.8   20.6    3.39              5     7
+#> 2     1    5.09   -4.18  -4.35   0.0957            5     7
+#> 3     1    7.45   -8.90 -10.7    0.00565           2     4
+#> 4     1   -0.479   6.96   5.12   0.298             2     4
+#> 5     1   -9.39   24.8   34.8   13.5             209   211
+#> 6     1 -356.    718.   728.   361.              209   211
 ```
 
 # Current code coverage

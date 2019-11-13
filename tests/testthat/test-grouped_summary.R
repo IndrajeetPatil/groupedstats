@@ -40,10 +40,10 @@ testthat::test_that(
     testthat::expect_equal(dim(df4), c(16L, 16L))
 
     # testing few values
-    testthat::expect_equal(df1$mean[7], 5.94, tolerance = 0.001)
-    testthat::expect_equal(df2$mean[9], 2.97, tolerance = 0.001)
-    testthat::expect_equal(df3$mean[12], 9.51, tolerance = 0.001)
-    testthat::expect_equal(df4$mean[11], 3.52, tolerance = 0.001)
+    testthat::expect_equal(df1$mean[7], 4.26, tolerance = 0.001)
+    testthat::expect_equal(df2$mean[9], 5.552, tolerance = 0.001)
+    testthat::expect_equal(df3$mean[12], 366.8773, tolerance = 0.001)
+    testthat::expect_equal(df4$mean[11], 0.1611111, tolerance = 0.001)
   }
 )
 
@@ -81,10 +81,27 @@ testthat::test_that(
     # testing dimensions
     testthat::expect_equal(dim(df3), c(16L, 9L))
     testthat::expect_equal(dim(df4), c(8L, 9L))
-    testthat::expect_equal(dim(df5), c(32L, 4L))
+    testthat::expect_equal(dim(df5), c(32L, 3L))
 
     # testing few values
-    testthat::expect_identical(df3$n[12], "5")
-    testthat::expect_identical(df4$n[4], "32")
+    testthat::expect_identical(df3$n[12], 3L)
+    testthat::expect_identical(df4$n[4], 32L)
+
+    # testing counts
+    testthat::expect_identical(
+      df5$factor.level,
+      c(
+        "Pan", "Vul", "Aci", "Cal", "Car", "Cet", "Cin", "Did", "Spe",
+        "Equ", "Apl", "Bos", "Rod", "Art", "Per", "Hyr", "Ept", "Myo",
+        "Pri", "Sca", "Chi", "Cin", "Mon", "Sor", "Aot", "Bla", "Cer",
+        "Con", "Pri", "Sor", "Rod", "Afr"
+      )
+    )
+
+    testthat::expect_equal(df5$count, c(
+      3L, 2L, 1L, 1L, 12L, 3L, 1L, 1L, 3L, 2L, 1L, 1L, 16L, 5L, 3L,
+      2L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 10L, 3L,
+      2L, 1L
+    ))
   }
 )

@@ -21,16 +21,16 @@
 #' @inheritParams specify_decimal_p
 #' @param ... Currently ignored.
 #'
-#' @importFrom skimr skim skim_format
-#' @importFrom dplyr filter_at mutate_at mutate_if group_modify group_nest any_vars
+#' @importFrom skimr skim
+#' @importFrom dplyr filter_at mutate_at mutate_if any_vars tally
+#' @importFrom dplyr group_modify group_nest
 #' @importFrom purrr is_bare_numeric is_bare_character keep map map_lgl map_dfr
-#' @importFrom purrr flatten_lgl
+#' @importFrom purrr flatten_lgl set_names
 #' @importFrom tidyr unnest separate
 #' @importFrom crayon red blue
 #' @importFrom tibble as_tibble enframe
 #' @importFrom stats qt
 #' @importFrom sjlabelled is_labelled remove_all_labels
-#' @importFrom utils packageVersion
 #'
 #' @examples
 #' # for reproducibility
@@ -50,6 +50,15 @@
 #'   grouping.vars = vore,
 #'   measures.type = "factor"
 #' )
+#'
+#' # for factors, you can also convert the dataframe to long format with counts
+#' groupedstats::grouped_summary(
+#'   data = ggplot2::msleep,
+#'   grouping.vars = c(vore),
+#'   measures = c(genus:order),
+#'   measures.type = "factor",
+#'   topcount.long = TRUE
+#' )
 #' @export
 
 # function body
@@ -60,11 +69,6 @@ grouped_summary <- function(data,
                             topcount.long = FALSE,
                             k = 2L,
                             ...) {
-  # check -------------------------------------------------------------------
-
-  if (utils::packageVersion("skimr") >= "2.0") {
-    stop(message("This package is currently not compatible with `skimr 2.0` package."))
-  }
 
   # data -------------------------------------------------------------------
 
@@ -120,22 +124,26 @@ grouped_summary <- function(data,
   df_results <- dplyr::group_by(.data = df, !!!grouping.vars, .drop = TRUE)
 
   # format the number of digits in `skimr` output
-  skimr::skim_format(numeric = list(digits = k + 1L))
-  df_results %<>%
-    dplyr::group_modify(
-      .data = .,
-      .f = ~ tibble::as_tibble(skimr::skim_to_wide(
-        purrr::keep(.x = ., .p = ..f)
-      )),
-      keep = FALSE
+  df_skim <-
+    dplyr::left_join(
+      x = df_results %>%
+        dplyr::group_modify(
+          .f = ~ tibble::as_tibble(skimr::skim(purrr::keep(
+            .x = ., .p = ..f
+          ))),
+          keep = FALSE
+        ) %>%
+        dplyr::ungroup(x = .),
+      y = dplyr::tally(df_results)
     ) %>%
-    dplyr::ungroup(x = .)
+    dplyr::mutate(.data = ., n = n - n_missing) %>% # changing column names
+    purrr::set_names(x = ., nm = ~ sub("numeric.|factor.|^skim_|^n_|_rate$", "", .x))
 
   # factor long format conversion --------------------------------------------
 
   if (measures.type %in% c("factor", "character") && isTRUE(topcount.long)) {
     # converting to long format using the custom function
-    df_results %<>%
+    df_skim %<>%
       dplyr::group_nest(
         .tbl = .,
         !!!grouping.vars,
@@ -159,12 +167,7 @@ grouped_summary <- function(data,
   if (measures.type == "numeric") {
     # changing class of summary variables if these are numeric variables
     df_summary <-
-      df_results %>%
-      dplyr::mutate_at(
-        .tbl = .,
-        .vars = dplyr::vars(missing:p100),
-        .funs = ~ as.numeric(as.character(.)) # change summary variables to numeric
-      ) %>% # renaming variables to more common terminology
+      df_skim %>%
       dplyr::rename(
         .data = .,
         min = p0,
@@ -186,7 +189,7 @@ grouped_summary <- function(data,
         ) * std.error
       )
   } else {
-    df_summary <- df_results
+    df_summary <- df_skim
   }
 
   # remove the histogram column
@@ -214,5 +217,6 @@ count_long_format_fn <- function(top_counts) {
         sep = ":",
         convert = TRUE
       )
-  )
+  ) %>%
+    dplyr::select(.data = ., -name)
 }

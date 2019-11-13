@@ -228,7 +228,6 @@ argument provided for this function:
 set.seed(123)
 library(ggplot2)
 library(magrittr)
-library(ggstatsplot)
 
 options(tibble.width = Inf) # show me all columns
 

@@ -32,3 +32,5 @@ tests\^spelling
 ^\.circleci$
 ^\.github/ISSUE_TEMPLATE$
 ^API$
+^\.github/workflows/R\.yaml$
+^\.github/workflows/pr-commands\.yaml$
