@@ -6,7 +6,8 @@
 #'   sd, median, min, max)
 #'
 #' @param data Dataframe from which variables need to be taken.
-#' @param grouping.vars A list of grouping variables.
+#' @param grouping.vars A list of grouping variables. Please use unquoted
+#'   arguments (i.e., use `x` and not `"x"`).
 #' @param measures List variables for which summary needs to computed. If not
 #'   specified, all variables of type specified in the argument `measures.type`
 #'   will be used to calculate summaries. **Don't** explicitly set
@@ -94,14 +95,14 @@ grouped_summary <- function(data,
     df <- dplyr::select(.data = data, !!!grouping.vars, {{ measures }})
   }
 
+  # data cleanup -------------------------------------------------------------
+
   # clean up labeled columns, if present
   if (sum(purrr::flatten_lgl(purrr::map(df, sjlabelled::is_labelled))) > 0L) {
     df %<>% sjlabelled::remove_all_labels(.)
   }
 
-  # summary -------------------------------------------------------------------
-
-  # removing grouping levels that are NA
+  # removing grouping levels that are `NA`
   df %<>%
     dplyr::filter_at(
       .tbl = .,
@@ -114,15 +115,17 @@ grouped_summary <- function(data,
       .funs = as.factor
     )
 
+  # summary -------------------------------------------------------------------
+
+  # skimming across groups
+  df_results <- dplyr::group_by(.data = df, !!!grouping.vars, .drop = TRUE)
+
   # what to retain depends on the type of columns needed
   if (measures.type == "numeric") {
     ..f <- base::is.numeric
   } else {
     ..f <- base::is.factor
   }
-
-  # skimming across groups
-  df_results <- dplyr::group_by(.data = df, !!!grouping.vars, .drop = TRUE)
 
   # format the number of digits in `skimr` output
   df_skim <-
@@ -139,7 +142,8 @@ grouped_summary <- function(data,
       by = purrr::map_chr(.x = grouping.vars, .f = rlang::as_string)
     ) %>%
     dplyr::mutate(.data = ., n = n - n_missing) %>% # changing column names
-    purrr::set_names(x = ., nm = ~ sub("numeric.|factor.|^skim_|^n_|_rate$", "", .x))
+    purrr::set_names(x = ., nm = ~ sub("numeric.|factor.|^n_|_rate$", "", .x)) %>%
+    dplyr::rename(.data = ., variable = skim_variable)
 
   # factor long format conversion --------------------------------------------
 

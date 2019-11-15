@@ -18,7 +18,8 @@ grouped_summary(
 \arguments{
 \item{data}{Dataframe from which variables need to be taken.}
 
-\item{grouping.vars}{A list of grouping variables.}
+\item{grouping.vars}{A list of grouping variables. Please use unquoted
+arguments (i.e., use \code{x} and not \code{"x"}).}
 
 \item{measures}{List variables for which summary needs to computed. If not
 specified, all variables of type specified in the argument \code{measures.type}

@@ -136,7 +136,9 @@ utils::globalVariables(
     "long.counts",
     "percentage",
     "n_missing",
-    "name"
+    "name",
+    "skim_type",
+    "skim_variable"
   ),
   package = "groupedstats",
   add = FALSE

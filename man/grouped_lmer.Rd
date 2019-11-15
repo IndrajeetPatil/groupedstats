@@ -46,10 +46,6 @@ grouped_lmer(
     nonlinear optimizer, see the \code{*lmerControl} documentation for
     details.}
 
-\item{p.kr}{Logical, if \code{TRUE}, the computation of p-values is based on
-conditional F-tests with Kenward-Roger approximation for the df (see
-'Details').}
-
 \item{output}{A character describing what output is expected. Two possible
 options: \code{"tidy"} (default), which will return the results, or \code{"glance"},
 which will return model summaries.}
