@@ -25,7 +25,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--11--13-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--11--16-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
@@ -224,24 +224,24 @@ groupedstats::grouped_summary(
   measures.type = "numeric"
 )
 #> # A tibble: 16 x 16
-#>    vore    type    variable    missing complete   mean     sd   min    p25
-#>    <fct>   <chr>   <chr>         <int>    <dbl>  <dbl>  <dbl> <dbl>  <dbl>
-#>  1 carni   numeric sleep_total       0    1     10.4   4.67   2.7    6.25 
-#>  2 carni   numeric sleep_rem         9    0.526  2.29  1.86   0.1    1.33 
-#>  3 carni   numeric sleep_cycle      14    0.263  0.373 0.0325 0.333  0.35 
-#>  4 carni   numeric awake             0    1     13.6   4.68   4.6   11    
-#>  5 herbi   numeric sleep_total       0    1      9.51  4.88   1.9    4.3  
-#>  6 herbi   numeric sleep_rem         8    0.75   1.37  0.922  0.4    0.6  
-#>  7 herbi   numeric sleep_cycle      20    0.375  0.418 0.324  0.117  0.183
-#>  8 herbi   numeric awake             0    1     14.5   4.88   7.4    9.78 
-#>  9 insecti numeric sleep_total       0    1     14.9   5.92   8.4    8.6  
-#> 10 insecti numeric sleep_rem         1    0.8    3.52  1.93   2      2.08 
-#> 11 insecti numeric sleep_cycle       2    0.6    0.161 0.0419 0.117  0.142
-#> 12 insecti numeric awake             0    1      9.06  5.92   4.1    4.3  
-#> 13 omni    numeric sleep_total       0    1     10.9   2.95   8      9.1  
-#> 14 omni    numeric sleep_rem         2    0.9    1.96  1.01   0.7    1.25 
-#> 15 omni    numeric sleep_cycle       9    0.55   0.592 0.473  0.133  0.258
-#> 16 omni    numeric awake             0    1     13.1   2.95   6     13.1  
+#>    vore    skim_type variable    missing complete   mean     sd   min    p25
+#>    <fct>   <chr>     <chr>         <int>    <dbl>  <dbl>  <dbl> <dbl>  <dbl>
+#>  1 carni   numeric   sleep_total       0    1     10.4   4.67   2.7    6.25 
+#>  2 carni   numeric   sleep_rem         9    0.526  2.29  1.86   0.1    1.33 
+#>  3 carni   numeric   sleep_cycle      14    0.263  0.373 0.0325 0.333  0.35 
+#>  4 carni   numeric   awake             0    1     13.6   4.68   4.6   11    
+#>  5 herbi   numeric   sleep_total       0    1      9.51  4.88   1.9    4.3  
+#>  6 herbi   numeric   sleep_rem         8    0.75   1.37  0.922  0.4    0.6  
+#>  7 herbi   numeric   sleep_cycle      20    0.375  0.418 0.324  0.117  0.183
+#>  8 herbi   numeric   awake             0    1     14.5   4.88   7.4    9.78 
+#>  9 insecti numeric   sleep_total       0    1     14.9   5.92   8.4    8.6  
+#> 10 insecti numeric   sleep_rem         1    0.8    3.52  1.93   2      2.08 
+#> 11 insecti numeric   sleep_cycle       2    0.6    0.161 0.0419 0.117  0.142
+#> 12 insecti numeric   awake             0    1      9.06  5.92   4.1    4.3  
+#> 13 omni    numeric   sleep_total       0    1     10.9   2.95   8      9.1  
+#> 14 omni    numeric   sleep_rem         2    0.9    1.96  1.01   0.7    1.25 
+#> 15 omni    numeric   sleep_cycle       9    0.55   0.592 0.473  0.133  0.258
+#> 16 omni    numeric   awake             0    1     13.1   2.95   6     13.1  
 #>    median    p75    max     n std.error mean.conf.low mean.conf.high
 #>     <dbl>  <dbl>  <dbl> <int>     <dbl>         <dbl>          <dbl>
 #>  1 10.4   13     19.4      19    1.07          8.13           12.6  
@@ -282,18 +282,18 @@ groupedstats::grouped_summary(
   measures.type = "factor"
 )
 #> # A tibble: 40 x 10
-#>    cut   clarity type   variable missing complete ordered n_unique
-#>    <ord> <ord>   <chr>  <chr>      <int>    <dbl> <lgl>      <int>
-#>  1 Fair  I1      factor color          0        1 TRUE           7
-#>  2 Fair  SI2     factor color          0        1 TRUE           7
-#>  3 Fair  SI1     factor color          0        1 TRUE           7
-#>  4 Fair  VS2     factor color          0        1 TRUE           7
-#>  5 Fair  VS1     factor color          0        1 TRUE           7
-#>  6 Fair  VVS2    factor color          0        1 TRUE           7
-#>  7 Fair  VVS1    factor color          0        1 TRUE           7
-#>  8 Fair  IF      factor color          0        1 TRUE           3
-#>  9 Good  I1      factor color          0        1 TRUE           7
-#> 10 Good  SI2     factor color          0        1 TRUE           7
+#>    cut   clarity skim_type variable missing complete ordered n_unique
+#>    <ord> <ord>   <chr>     <chr>      <int>    <dbl> <lgl>      <int>
+#>  1 Fair  I1      factor    color          0        1 TRUE           7
+#>  2 Fair  SI2     factor    color          0        1 TRUE           7
+#>  3 Fair  SI1     factor    color          0        1 TRUE           7
+#>  4 Fair  VS2     factor    color          0        1 TRUE           7
+#>  5 Fair  VS1     factor    color          0        1 TRUE           7
+#>  6 Fair  VVS2    factor    color          0        1 TRUE           7
+#>  7 Fair  VVS1    factor    color          0        1 TRUE           7
+#>  8 Fair  IF      factor    color          0        1 TRUE           3
+#>  9 Good  I1      factor    color          0        1 TRUE           7
+#> 10 Good  SI2     factor    color          0        1 TRUE           7
 #>    top_counts                         n
 #>    <chr>                          <int>
 #>  1 G: 53, H: 52, F: 35, I: 34       210
@@ -393,18 +393,18 @@ groupedstats::grouped_summary(
   grouping.vars = c(cut, clarity)
 )
 #> # A tibble: 280 x 17
-#>    cut   clarity type    variable missing complete    mean       sd    min
-#>    <ord> <ord>   <chr>   <chr>      <int>    <dbl>   <dbl>    <dbl>  <dbl>
-#>  1 Fair  I1      numeric carat          0        1    1.36    0.745   0.34
-#>  2 Fair  I1      numeric depth          0        1   65.7     3.10   55.6 
-#>  3 Fair  I1      numeric table          0        1   58.1     2.87   52   
-#>  4 Fair  I1      numeric price          0        1 3704.   3099.    584   
-#>  5 Fair  I1      numeric x              0        1    6.72    1.11    4.72
-#>  6 Fair  I1      numeric y              0        1    6.62    1.13    4.6 
-#>  7 Fair  I1      numeric z              0        1    4.39    0.756   2.6 
-#>  8 Fair  SI2     numeric carat          0        1    1.20    0.501   0.25
-#>  9 Fair  SI2     numeric depth          0        1   64.4     3.16   53.1 
-#> 10 Fair  SI2     numeric table          0        1   58.8     3.68   50.1 
+#>    cut   clarity skim_type variable missing complete    mean       sd    min
+#>    <ord> <ord>   <chr>     <chr>      <int>    <dbl>   <dbl>    <dbl>  <dbl>
+#>  1 Fair  I1      numeric   carat          0        1    1.36    0.745   0.34
+#>  2 Fair  I1      numeric   depth          0        1   65.7     3.10   55.6 
+#>  3 Fair  I1      numeric   table          0        1   58.1     2.87   52   
+#>  4 Fair  I1      numeric   price          0        1 3704.   3099.    584   
+#>  5 Fair  I1      numeric   x              0        1    6.72    1.11    4.72
+#>  6 Fair  I1      numeric   y              0        1    6.62    1.13    4.6 
+#>  7 Fair  I1      numeric   z              0        1    4.39    0.756   2.6 
+#>  8 Fair  SI2     numeric   carat          0        1    1.20    0.501   0.25
+#>  9 Fair  SI2     numeric   depth          0        1   64.4     3.16   53.1 
+#> 10 Fair  SI2     numeric   table          0        1   58.8     3.68   50.1 
 #>        p25  median     p75      max     n std.error mean.conf.low mean.conf.high
 #>      <dbl>   <dbl>   <dbl>    <dbl> <int>     <dbl>         <dbl>          <dbl>
 #>  1    0.85    1.06    1.82     5.01   210    0.0514          1.26           1.46
@@ -456,10 +456,10 @@ df$y <- labelled(df$y, label = "Y variable", labels = c())
 # grouped summary
 groupedstats::grouped_summary(df, x, y)
 #> # A tibble: 2 x 16
-#>   x     type    variable missing complete   mean    sd   min    p25  median
-#>   <fct> <chr>   <chr>      <int>    <dbl>  <dbl> <dbl> <dbl>  <dbl>   <dbl>
-#> 1 A     numeric y              0        1 0.0344 0.926 -1.97 -0.559 -0.0726
-#> 2 B     numeric y              0        1 0.146  0.905 -2.31 -0.361  0.153 
+#>   x     skim_type variable missing complete   mean    sd   min    p25  median
+#>   <fct> <chr>     <chr>      <int>    <dbl>  <dbl> <dbl> <dbl>  <dbl>   <dbl>
+#> 1 A     numeric   y              0        1 0.0344 0.926 -1.97 -0.559 -0.0726
+#> 2 B     numeric   y              0        1 0.146  0.905 -2.31 -0.361  0.153 
 #>     p75   max     n std.error mean.conf.low mean.conf.high
 #>   <dbl> <dbl> <int>     <dbl>         <dbl>          <dbl>
 #> 1 0.698  2.17    50     0.131        -0.229          0.298
@@ -907,44 +907,54 @@ groupedstats::grouped_lmer(
   REML = FALSE,
   output = "tidy"
 )
-#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
-#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
-#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
-#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
-#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
-#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
-#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
-#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
-#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
-#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
-#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
-#> Computing p-values via Wald-statistics approximation (treating t as Wald z).
-#> # A tibble: 24 x 10
-#>     year effect term             estimate std.error t.value conf.low conf.high
-#>    <int> <chr>  <chr>               <dbl>     <dbl>   <dbl>    <dbl>     <dbl>
-#>  1  1952 fixed  (Intercept)         0.215     0.293   0.736   -0.358     0.789
-#>  2  1952 fixed  scale(gdpPercap)    0.930     0.302   3.07     0.337     1.52 
-#>  3  1957 fixed  (Intercept)         0.254     0.342   0.743   -0.416     0.923
-#>  4  1957 fixed  scale(gdpPercap)    0.815     0.282   2.89     0.262     1.37 
-#>  5  1962 fixed  (Intercept)         0.255     0.333   0.766   -0.397     0.908
-#>  6  1962 fixed  scale(gdpPercap)    0.591     0.210   2.82     0.180     1.00 
-#>  7  1967 fixed  (Intercept)         0.249     0.361   0.689   -0.459     0.956
-#>  8  1967 fixed  scale(gdpPercap)    0.387     0.120   3.24     0.153     0.622
-#>  9  1972 fixed  (Intercept)         0.276     0.366   0.753   -0.442     0.994
-#> 10  1972 fixed  scale(gdpPercap)    0.431     0.150   2.88     0.137     0.724
-#>    p.value significance
-#>      <dbl> <chr>       
-#>  1 0.462   ns          
-#>  2 0.00211 **          
-#>  3 0.457   ns          
-#>  4 0.00389 **          
-#>  5 0.444   ns          
-#>  6 0.00479 **          
-#>  7 0.491   ns          
-#>  8 0.00120 **          
-#>  9 0.451   ns          
-#> 10 0.00402 **          
-#> # ... with 14 more rows
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> # A tibble: 72 x 11
+#>     year effect   group     term                       estimate std.error
+#>    <int> <chr>    <chr>     <chr>                         <dbl>     <dbl>
+#>  1  1952 fixed    <NA>      (Intercept)                0.201        0.743
+#>  2  1952 fixed    <NA>      scale(gdpPercap)           0.900        0.742
+#>  3  1952 ran_pars continent sd__(Intercept)            1.05        NA    
+#>  4  1952 ran_pars continent cor__(Intercept).gdpPercap 0.897       NA    
+#>  5  1952 ran_pars continent sd__gdpPercap              0.000173    NA    
+#>  6  1952 ran_pars Residual  sd__Observation            0.524       NA    
+#>  7  1957 fixed    <NA>      (Intercept)                0.207        0.380
+#>  8  1957 fixed    <NA>      scale(gdpPercap)           0.424        0.261
+#>  9  1957 ran_pars continent sd__(Intercept)            0.593       NA    
+#> 10  1957 ran_pars continent cor__(Intercept).gdpPercap 1.          NA    
+#>    statistic conf.low conf.high p.value significance
+#>        <dbl>    <dbl>     <dbl>   <dbl> <chr>       
+#>  1     0.270  -1.26       1.66    0.787 ns          
+#>  2     1.21   -0.555      2.35    0.225 ns          
+#>  3    NA      NA         NA      NA     <NA>        
+#>  4    NA      NA         NA      NA     <NA>        
+#>  5    NA      NA         NA      NA     <NA>        
+#>  6    NA      NA         NA      NA     <NA>        
+#>  7     0.545  -0.538      0.952   0.586 ns          
+#>  8     1.62   -0.0878     0.936   0.104 ns          
+#>  9    NA      NA         NA      NA     <NA>        
+#> 10    NA      NA         NA      NA     <NA>        
+#> # ... with 62 more rows
 
 # getting tidy output of results
 groupedstats::grouped_lmer(
@@ -955,21 +965,32 @@ groupedstats::grouped_lmer(
   REML = FALSE,
   output = "glance"
 )
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
+#> boundary (singular) fit: see ?isSingular
 #> # A tibble: 12 x 7
 #>     year sigma logLik   AIC   BIC deviance df.residual
 #>    <int> <dbl>  <dbl> <dbl> <dbl>    <dbl>       <int>
-#>  1  1952 0.531  -124.  259.  277.     247.         136
-#>  2  1957 0.540  -127.  266.  284.     254.         136
-#>  3  1962 0.546  -128.  268.  285.     256.         136
-#>  4  1967 0.552  -128.  269.  287.     257.         136
-#>  5  1972 0.565  -132.  276.  294.     264.         136
-#>  6  1977 0.582  -132.  277.  294.     265.         136
-#>  7  1982 0.544  -121.  253.  271.     241.         136
-#>  8  1987 0.498  -110.  231.  249.     219.         136
-#>  9  1992 0.518  -117.  246.  264.     234.         136
-#> 10  1997 0.498  -109.  231.  248.     219.         136
-#> 11  2002 0.505  -113.  238.  255.     226.         136
-#> 12  2007 0.525  -116.  244.  262.     232.         136
+#>  1  1952 0.524  -127.  266.  283.     254.         136
+#>  2  1957 0.557  -129.  270.  287.     258.         136
+#>  3  1962 0.545  -129.  271.  288.     259.         136
+#>  4  1967 0.565  -129.  270.  288.     258.         136
+#>  5  1972 0.583  -133.  278.  296.     266.         136
+#>  6  1977 0.579  -133.  277.  295.     265.         136
+#>  7  1982 0.535  -122.  255.  273.     243.         136
+#>  8  1987 0.496  -111.  233.  251.     221.         136
+#>  9  1992 0.526  -117.  246.  264.     234.         136
+#> 10  1997 0.494  -110.  232.  250.     220.         136
+#> 11  2002 0.506  -113.  239.  257.     227.         136
+#> 12  2007 0.520  -117.  247.  265.     235.         136
 ```
 
 ## `grouped_glmer`

@@ -6,6 +6,7 @@
 #'   summaries.
 #'
 #' @inheritParams grouped_lm
+#' @inheritDotParams lme4::glmer
 #'
 #' @importFrom lme4 glmer
 #' @importFrom broomExtra tidy glance augment
@@ -22,26 +23,34 @@
 #'   formula = Survived ~ Age + (Age | Class),
 #'   family = stats::binomial(link = "probit"),
 #'   data = dplyr::sample_frac(groupedstats::Titanic_full, size = 0.3),
-#'   grouping.vars = Sex
+#'   grouping.vars = Sex,
+#'   REML = FALSE,
+#'   tidy.args = list(effects = "fixed", conf.int = TRUE, conf.level = 0.95)
 #' )
 #' @export
 
+# function body
 grouped_glmer <- function(data,
                           grouping.vars,
                           ...,
                           output = "tidy",
-                          tidy.args = list(conf.int = TRUE, conf.level = 0.95),
+                          tidy.args = list(
+                            conf.int = TRUE,
+                            conf.level = 0.95,
+                            conf.method = "Wald"
+                          ),
                           augment.args = list()) {
 
   # tidy results
   if (output == "tidy") {
-    combined_df <- broomExtra::grouped_tidy(
-      data = data,
-      grouping.vars = {{ grouping.vars }},
-      ..f = lme4::glmer,
-      ...,
-      tidy.args = tidy.args
-    )
+    combined_df <-
+      broomExtra::grouped_tidy(
+        data = data,
+        grouping.vars = {{ grouping.vars }},
+        ..f = lme4::glmer,
+        ...,
+        tidy.args = tidy.args
+      )
 
     # add a column with significance labels if p-values are present
     if ("p.value" %in% names(combined_df)) {
@@ -52,23 +61,25 @@ grouped_glmer <- function(data,
   # glance summary
   if (output == "glance") {
     # tidy results
-    combined_df <- broomExtra::grouped_glance(
-      data = data,
-      grouping.vars = {{ grouping.vars }},
-      ..f = lme4::glmer,
-      ...
-    )
+    combined_df <-
+      broomExtra::grouped_glance(
+        data = data,
+        grouping.vars = {{ grouping.vars }},
+        ..f = lme4::glmer,
+        ...
+      )
   }
 
   # augmented results
   if (output == "augment") {
-    combined_df <- broomExtra::grouped_augment(
-      data = data,
-      grouping.vars = {{ grouping.vars }},
-      ..f = lme4::glmer,
-      ...,
-      augment.args = augment.args
-    )
+    combined_df <-
+      broomExtra::grouped_augment(
+        data = data,
+        grouping.vars = {{ grouping.vars }},
+        ..f = lme4::glmer,
+        ...,
+        augment.args = augment.args
+      )
   }
 
   # return the final dataframe

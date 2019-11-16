@@ -10,7 +10,7 @@ grouped_glmer(
   grouping.vars,
   ...,
   output = "tidy",
-  tidy.args = list(conf.int = TRUE, conf.level = 0.95),
+  tidy.args = list(conf.int = TRUE, conf.level = 0.95, conf.method = "Wald"),
   augment.args = list()
 )
 }
@@ -19,8 +19,80 @@ grouped_glmer(
 
 \item{grouping.vars}{Grouping variables.}
 
-\item{...}{Additional arguments to \code{broom::tidy}, \code{broom::glance}, or
-\code{broom::augment} S3 method.}
+\item{...}{
+  Arguments passed on to \code{\link[lme4:glmer]{lme4::glmer}}
+  \describe{
+    \item{\code{formula}}{a two-sided linear formula object describing both the
+    fixed-effects and random-effects part of the model, with the response
+    on the left of a \code{~} operator and the terms, separated by
+    \code{+} operators, on the right.  Random-effects terms are
+    distinguished by vertical bars (\code{"|"}) separating expressions
+    for design matrices from grouping factors.}
+    \item{\code{family}}{a GLM family, see \code{\link[stats]{glm}} and
+    \code{\link[stats]{family}}.}
+    \item{\code{control}}{a list (of correct class, resulting from
+    \code{\link[lme4]{lmerControl}()} or \code{\link[lme4]{glmerControl}()}
+    respectively) containing control parameters, including the nonlinear
+    optimizer to be used and parameters to be passed through to the
+    nonlinear optimizer, see the \code{*lmerControl} documentation for
+    details.}
+    \item{\code{start}}{a named list of starting values for the parameters in the
+    model, or a numeric vector.  A numeric \code{start} argument will be
+    used as the starting value of \code{theta}.  If \code{start} is a
+    list, the \code{theta} element (a numeric vector) is used as the
+    starting value for the first optimization step (default=1 for
+    diagonal elements and 0 for off-diagonal elements of the lower
+    Cholesky factor); the fitted value of \code{theta} from the first
+    step, plus \code{start[["fixef"]]}, are used as starting values for
+    the second optimization step.  If \code{start} has both \code{fixef}
+    and \code{theta} elements, the first optimization step is skipped.
+    For more details or finer control of optimization, see
+    \code{\link[lme4]{modular}}.}
+    \item{\code{verbose}}{integer scalar.  If \code{> 0} verbose output is
+    generated during the optimization of the parameter estimates.  If
+    \code{> 1} verbose output is generated during the individual
+    penalized iteratively reweighted least squares (PIRLS) steps.}
+    \item{\code{nAGQ}}{integer scalar - the number of points per axis for
+    evaluating the adaptive Gauss-Hermite approximation to the
+    log-likelihood.  Defaults to 1, corresponding to the Laplace
+    approximation.  Values greater than 1 produce greater accuracy in
+    the evaluation of the log-likelihood at the expense of speed.  A
+    value of zero uses a faster but less exact form of parameter
+    estimation for GLMMs by optimizing the random effects and the
+    fixed-effects coefficients in the penalized iteratively reweighted
+    least squares step. (See Details.)}
+    \item{\code{subset}}{an optional expression indicating the subset of the rows
+    of \code{data} that should be used in the fit. This can be a logical
+    vector, or a numeric vector indicating which observation numbers are
+    to be included, or a character vector of the row names to be
+    included.  All observations are included by default.}
+    \item{\code{weights}}{an optional vector of \sQuote{prior weights} to be used
+      in the fitting process.  Should be \code{NULL} or a numeric
+      vector.}
+    \item{\code{na.action}}{a function that indicates what should happen when the
+    data contain \code{NA}s.  The default action (\code{na.omit},
+    inherited from the \sQuote{factory fresh} value of
+    \code{getOption("na.action")}) strips any observations with any
+    missing values in any variables.}
+    \item{\code{offset}}{this can be used to specify an \emph{a priori} known
+    component to be included in the linear predictor during
+    fitting. This should be \code{NULL} or a numeric vector of length
+    equal to the number of cases.  One or more \code{\link[lme4]{offset}}
+    terms can be included in the formula instead or as well, and if more
+    than one is specified their sum is used.  See \code{\link[lme4]{model.offset}}.}
+    \item{\code{contrasts}}{an optional list.  See the \code{contrasts.arg} of
+    \code{\link[lme4]{model.matrix.default}}.}
+    \item{\code{mustart}}{optional starting values on the scale of the
+    conditional mean, as in \code{\link[stats]{glm}}; see there for
+    details.}
+    \item{\code{etastart}}{optional starting values on the scale of the unbounded
+    predictor as in \code{\link[stats]{glm}}; see there for details.}
+    \item{\code{devFunOnly}}{logical - return only the deviance evaluation
+    function. Note that because the deviance function operates on
+    variables stored in its environment, it may not return
+    \emph{exactly} the same values on subsequent calls (but the results
+    should always be within machine tolerance).}
+  }}
 
 \item{output}{A character describing what output is expected. Two possible
 options: \code{"tidy"} (default), which will return the results, or \code{"glance"},
@@ -48,7 +120,9 @@ groupedstats::grouped_glmer(
   formula = Survived ~ Age + (Age | Class),
   family = stats::binomial(link = "probit"),
   data = dplyr::sample_frac(groupedstats::Titanic_full, size = 0.3),
-  grouping.vars = Sex
+  grouping.vars = Sex,
+  REML = FALSE,
+  tidy.args = list(effects = "fixed", conf.int = TRUE, conf.level = 0.95)
 )
 }
 \seealso{

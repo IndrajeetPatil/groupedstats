@@ -206,6 +206,19 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "parameters",
+      "name": "parameters",
+      "version": ">= 0.2.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=parameters"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "purrr",
       "name": "purrr",
       "version": ">= 0.3.3",
@@ -273,7 +286,7 @@
       "@type": "SoftwareApplication",
       "identifier": "sjstats",
       "name": "sjstats",
-      "version": ">= 0.17.6",
+      "version": ">= 0.17.7",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -328,7 +341,6 @@
     }
   ],
   "releaseNotes": "https://github.com/IndrajeetPatil/groupedstats/blob/master/NEWS.md",
-  "readme": "https://github.com/IndrajeetPatil/groupedstats/blob/master/README.md",
   "fileSize": "165.276KB",
   "contIntegration": [
     "https://travis-ci.org/IndrajeetPatil/groupedstats",
@@ -365,5 +377,6 @@
       "@id": "https://doi.org/10.5281/zenodo.2600159",
       "sameAs": "https://doi.org/10.5281/zenodo.2600159"
     }
-  ]
+  ],
+  "readme": "https://github.com/IndrajeetPatil/groupedstats/blob/master/README.md"
 }

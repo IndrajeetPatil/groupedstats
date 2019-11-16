@@ -2,26 +2,27 @@
 % Please edit documentation in R/grouped_lmer.R
 \name{grouped_lmer}
 \alias{grouped_lmer}
-\title{Running linear mixed-effects model (\code{lmer}) across multiple
-grouping variables.}
+\title{Linear mixed-effects model (\code{lmer}) across multiple grouping
+variables.}
 \usage{
 grouped_lmer(
   data,
   grouping.vars,
-  formula,
-  REML = TRUE,
-  control = lme4::lmerControl(optimizer = "bobyqa", restart_edge = TRUE, boundary.tol =
-    1e-07, calc.derivs = FALSE, use.last.params = FALSE, optCtrl = list(maxfun = 2e+09)),
-  p.kr = FALSE,
-  output = "tidy"
+  ...,
+  output = "tidy",
+  tidy.args = list(conf.int = TRUE, conf.level = 0.95, conf.method = "Wald"),
+  augment.args = list()
 )
 }
 \arguments{
-\item{data}{Dataframe from which variables are to be taken.}
+\item{data}{Dataframe (or tibble) from which variables are to be taken.}
 
-\item{grouping.vars}{List of grouping variables.}
+\item{grouping.vars}{Grouping variables.}
 
-\item{formula}{a two-sided linear formula object describing both the
+\item{...}{
+  Arguments passed on to \code{\link[lme4:lmer]{lme4::lmer}}
+  \describe{
+    \item{\code{formula}}{a two-sided linear formula object describing both the
     fixed-effects and random-effects part of the model, with the
     response on the left of a \code{~} operator and the terms, separated
     by \code{+} operators, on the right.  Random-effects terms are
@@ -35,28 +36,71 @@ grouped_lmer(
   categorical effects, see \code{\link[lme4]{dummy}} or the \code{lmer_alt}
   function from the \code{afex} package.) 
 }
-
-\item{REML}{logical scalar - Should the estimates be chosen to
+    \item{\code{REML}}{logical scalar - Should the estimates be chosen to
     optimize the REML criterion (as opposed to the log-likelihood)?}
-
-\item{control}{a list (of correct class, resulting from
+    \item{\code{control}}{a list (of correct class, resulting from
     \code{\link[lme4]{lmerControl}()} or \code{\link[lme4]{glmerControl}()}
     respectively) containing control parameters, including the nonlinear
     optimizer to be used and parameters to be passed through to the
     nonlinear optimizer, see the \code{*lmerControl} documentation for
     details.}
+    \item{\code{start}}{a named \code{\link[lme4]{list}} of starting values for the
+    parameters in the model.  For \code{lmer} this can be a numeric
+    vector or a list with one component named \code{"theta"}.}
+    \item{\code{verbose}}{integer scalar.  If \code{> 0} verbose output is
+    generated during the optimization of the parameter estimates.  If
+    \code{> 1} verbose output is generated during the individual
+    penalized iteratively reweighted least squares (PIRLS) steps.}
+    \item{\code{subset}}{an optional expression indicating the subset of the rows
+    of \code{data} that should be used in the fit. This can be a logical
+    vector, or a numeric vector indicating which observation numbers are
+    to be included, or a character vector of the row names to be
+    included.  All observations are included by default.}
+    \item{\code{weights}}{an optional vector of \sQuote{prior weights} to be used
+    in the fitting process.  Should be \code{NULL} or a numeric vector.
+    Prior \code{weights} are \emph{not} normalized or standardized in
+    any way.  In particular, the diagonal of the residual covariance
+    matrix is the squared residual standard deviation parameter
+    \code{\link[lme4]{sigma}} times the vector of inverse \code{weights}.
+    Therefore, if the \code{weights} have relatively large magnitudes,
+    then in order to compensate, the \code{\link[lme4]{sigma}} parameter will
+    also need to have a relatively large magnitude.}
+    \item{\code{na.action}}{a function that indicates what should happen when the
+    data contain \code{NA}s.  The default action (\code{na.omit},
+    inherited from the 'factory fresh' value of
+    \code{getOption("na.action")}) strips any observations with any
+    missing values in any variables.}
+    \item{\code{offset}}{this can be used to specify an \emph{a priori} known
+    component to be included in the linear predictor during
+    fitting. This should be \code{NULL} or a numeric vector of length
+    equal to the number of cases.  One or more \code{\link[lme4]{offset}}
+    terms can be included in the formula instead or as well, and if more
+    than one is specified their sum is used.  See
+    \code{\link[lme4]{model.offset}}.}
+    \item{\code{contrasts}}{an optional list. See the \code{contrasts.arg} of
+    \code{model.matrix.default}.}
+    \item{\code{devFunOnly}}{logical - return only the deviance evaluation
+    function. Note that because the deviance function operates on
+    variables stored in its environment, it may not return
+    \emph{exactly} the same values on subsequent calls (but the results
+    should always be within machine tolerance).}
+  }}
 
 \item{output}{A character describing what output is expected. Two possible
 options: \code{"tidy"} (default), which will return the results, or \code{"glance"},
 which will return model summaries.}
+
+\item{tidy.args}{A list of arguments to be used in the relevant \code{S3} method.}
+
+\item{augment.args}{A list of arguments to be used in the relevant \code{S3} method.}
 }
 \value{
 A tibble dataframe with tidy results from linear model or model
 summaries.
 }
 \description{
-Running linear mixed-effects model (\code{lmer}) across multiple
-grouping variables.
+Linear mixed-effects model (\code{lmer}) across multiple grouping
+variables.
 }
 \examples{
 \donttest{
@@ -70,9 +114,11 @@ library(gapminder)
 # getting tidy output of results
 # let's use only subset of the data
 groupedstats::grouped_lmer(
-  data = dplyr::sample_frac(gapminder, size = 0.5),
+  data = gapminder,
   formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap | continent),
   grouping.vars = year,
+  REML = FALSE,
+  tidy.args = list(effects = "fixed", conf.int = TRUE, conf.level = 0.95),
   output = "tidy"
 )
 
