@@ -138,7 +138,9 @@ utils::globalVariables(
     "n_missing",
     "name",
     "skim_type",
-    "skim_variable"
+    "skim_variable",
+    "Parameter",
+    "p"
   ),
   package = "groupedstats",
   add = FALSE

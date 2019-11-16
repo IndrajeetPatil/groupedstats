@@ -5,6 +5,8 @@ BREAKING CHANGES
   - To be consistent with other packages that `groupedstats` relies on or
     supports the confidence intervals columns for `grouped_summary` have been
     renamed to `mean.conf.high` and `mean.conf.low`.
+  - To be consistent with the rest of the functions, `grouped_lmer` and
+    `grouped_glmer` follow the same syntax as `grouped_lm`.
 
 MINOR CHANGES
 

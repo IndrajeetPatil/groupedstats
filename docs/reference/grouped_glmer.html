@@ -141,7 +141,7 @@ grouping variables.</p>
   <span class='no'>grouping.vars</span>,
   <span class='no'>...</span>,
   <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>,
-  <span class='kw'>tidy.args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>conf.int</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>),
+  <span class='kw'>tidy.args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>conf.int</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>, <span class='kw'>conf.method</span> <span class='kw'>=</span> <span class='st'>"Wald"</span>),
   <span class='kw'>augment.args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>()
 )</pre>
 
@@ -158,8 +158,79 @@ grouping variables.</p>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Additional arguments to <code><a href='http://broom.tidyverse.org/reference/reexports.html'>broom::tidy</a></code>, <code><a href='http://broom.tidyverse.org/reference/reexports.html'>broom::glance</a></code>, or
-<code><a href='http://broom.tidyverse.org/reference/reexports.html'>broom::augment</a></code> S3 method.</p></td>
+      <td><p>Arguments passed on to <code><a href='https://rdrr.io/pkg/lme4/man/glmer.html'>lme4::glmer</a></code></p><dl class='dl-horizontal'>
+    <dt><code>formula</code></dt><dd><p>a two-sided linear formula object describing both the
+    fixed-effects and random-effects part of the model, with the response
+    on the left of a <code>~</code> operator and the terms, separated by
+    <code>+</code> operators, on the right.  Random-effects terms are
+    distinguished by vertical bars (<code><a href='https://rdrr.io/r/base/Logic.html'>"|"</a></code>) separating expressions
+    for design matrices from grouping factors.</p></dd>
+    <dt><code>family</code></dt><dd><p>a GLM family, see <code><a href='https://rdrr.io/r/stats/glm.html'>glm</a></code> and
+    <code><a href='https://rdrr.io/r/stats/family.html'>family</a></code>.</p></dd>
+    <dt><code>control</code></dt><dd><p>a list (of correct class, resulting from
+    <code><a href='https://rdrr.io/pkg/lme4/man/lmerControl.html'>lmerControl</a>()</code> or <code><a href='https://rdrr.io/pkg/lme4/man/lmerControl.html'>glmerControl</a>()</code>
+    respectively) containing control parameters, including the nonlinear
+    optimizer to be used and parameters to be passed through to the
+    nonlinear optimizer, see the <code>*lmerControl</code> documentation for
+    details.</p></dd>
+    <dt><code>start</code></dt><dd><p>a named list of starting values for the parameters in the
+    model, or a numeric vector.  A numeric <code>start</code> argument will be
+    used as the starting value of <code>theta</code>.  If <code>start</code> is a
+    list, the <code>theta</code> element (a numeric vector) is used as the
+    starting value for the first optimization step (default=1 for
+    diagonal elements and 0 for off-diagonal elements of the lower
+    Cholesky factor); the fitted value of <code>theta</code> from the first
+    step, plus <code>start[["fixef"]]</code>, are used as starting values for
+    the second optimization step.  If <code>start</code> has both <code>fixef</code>
+    and <code>theta</code> elements, the first optimization step is skipped.
+    For more details or finer control of optimization, see
+    <code><a href='https://rdrr.io/pkg/lme4/man/modular.html'>modular</a></code>.</p></dd>
+    <dt><code>verbose</code></dt><dd><p>integer scalar.  If <code>&gt; 0</code> verbose output is
+    generated during the optimization of the parameter estimates.  If
+    <code>&gt; 1</code> verbose output is generated during the individual
+    penalized iteratively reweighted least squares (PIRLS) steps.</p></dd>
+    <dt><code>nAGQ</code></dt><dd><p>integer scalar - the number of points per axis for
+    evaluating the adaptive Gauss-Hermite approximation to the
+    log-likelihood.  Defaults to 1, corresponding to the Laplace
+    approximation.  Values greater than 1 produce greater accuracy in
+    the evaluation of the log-likelihood at the expense of speed.  A
+    value of zero uses a faster but less exact form of parameter
+    estimation for GLMMs by optimizing the random effects and the
+    fixed-effects coefficients in the penalized iteratively reweighted
+    least squares step. (See Details.)</p></dd>
+    <dt><code>subset</code></dt><dd><p>an optional expression indicating the subset of the rows
+    of <code>data</code> that should be used in the fit. This can be a logical
+    vector, or a numeric vector indicating which observation numbers are
+    to be included, or a character vector of the row names to be
+    included.  All observations are included by default.</p></dd>
+    <dt><code>weights</code></dt><dd><p>an optional vector of &#8216;prior weights&#8217; to be used
+      in the fitting process.  Should be <code>NULL</code> or a numeric
+      vector.</p></dd>
+    <dt><code>na.action</code></dt><dd><p>a function that indicates what should happen when the
+    data contain <code>NA</code>s.  The default action (<code>na.omit</code>,
+    inherited from the &#8216;factory fresh&#8217; value of
+    <code><a href='https://rdrr.io/r/base/options.html'>getOption("na.action")</a></code>) strips any observations with any
+    missing values in any variables.</p></dd>
+    <dt><code>offset</code></dt><dd><p>this can be used to specify an <em>a priori</em> known
+    component to be included in the linear predictor during
+    fitting. This should be <code>NULL</code> or a numeric vector of length
+    equal to the number of cases.  One or more <code>offset</code>
+    terms can be included in the formula instead or as well, and if more
+    than one is specified their sum is used.  See <code>model.offset</code>.</p></dd>
+    <dt><code>contrasts</code></dt><dd><p>an optional list.  See the <code>contrasts.arg</code> of
+    <code>model.matrix.default</code>.</p></dd>
+    <dt><code>mustart</code></dt><dd><p>optional starting values on the scale of the
+    conditional mean, as in <code><a href='https://rdrr.io/r/stats/glm.html'>glm</a></code>; see there for
+    details.</p></dd>
+    <dt><code>etastart</code></dt><dd><p>optional starting values on the scale of the unbounded
+    predictor as in <code><a href='https://rdrr.io/r/stats/glm.html'>glm</a></code>; see there for details.</p></dd>
+    <dt><code>devFunOnly</code></dt><dd><p>logical - return only the deviance evaluation
+    function. Note that because the deviance function operates on
+    variables stored in its environment, it may not return
+    <em>exactly</em> the same values on subsequent calls (but the results
+    should always be within machine tolerance).</p></dd>
+  
+</dl></td>
     </tr>
     <tr>
       <th>output</th>
@@ -195,21 +266,17 @@ summaries.</p>
   <span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>Survived</span> ~ <span class='no'>Age</span> + (<span class='no'>Age</span> <span class='kw'>|</span> <span class='no'>Class</span>),
   <span class='kw'>family</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/family.html'>binomial</a></span>(<span class='kw'>link</span> <span class='kw'>=</span> <span class='st'>"probit"</span>),
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/sample.html'>sample_frac</a></span>(<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='no'><a href='https://indrajeetpatil.github.io/groupedstats//reference/Titanic_full.html'>Titanic_full</a></span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>0.3</span>),
-  <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>Sex</span>
-)</div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 10 x 11</span><span>
-#&gt;    Sex   effect group term  estimate std.error statistic   p.value conf.low
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Fema~ fixed  </span><span style='color: #BB0000;'>NA</span><span>    (Int~    0.841     0.428     1.96   4.95</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 2</span><span>  0.001</span><span style='text-decoration: underline;'>88</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Fema~ fixed  </span><span style='color: #BB0000;'>NA</span><span>    AgeC~    0.687     1.41      0.488  6.26</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 1</span><span> -</span><span style='color: #BB0000;'>2.07</span><span>   
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Fema~ ran_p~ Class sd__~    0.790    </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>   </span><span style='color: #949494;'> </span><span>    </span><span style='color: #BB0000;'>NA</span><span>      
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Fema~ ran_p~ Class cor_~    1        </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>   </span><span style='color: #949494;'> </span><span>    </span><span style='color: #BB0000;'>NA</span><span>      
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Fema~ ran_p~ Class sd__~    0.647    </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>   </span><span style='color: #949494;'> </span><span>    </span><span style='color: #BB0000;'>NA</span><span>      
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Male  fixed  </span><span style='color: #BB0000;'>NA</span><span>    (Int~   -</span><span style='color: #BB0000;'>0.914</span><span>     0.148    -</span><span style='color: #BB0000;'>6.18</span><span>   6.50</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-10</span><span> -</span><span style='color: #BB0000;'>1.20</span><span>   
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Male  fixed  </span><span style='color: #BB0000;'>NA</span><span>    AgeC~    2.25      1.92      1.17   2.41</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 1</span><span> -</span><span style='color: #BB0000;'>1.51</span><span>   
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Male  ran_p~ Class sd__~    0.232    </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>   </span><span style='color: #949494;'> </span><span>    </span><span style='color: #BB0000;'>NA</span><span>      
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Male  ran_p~ Class cor_~    0.368    </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>   </span><span style='color: #949494;'> </span><span>    </span><span style='color: #BB0000;'>NA</span><span>      
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Male  ran_p~ Class sd__~    1.40     </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>   </span><span style='color: #949494;'> </span><span>    </span><span style='color: #BB0000;'>NA</span><span>      
-#&gt; </span><span style='color: #949494;'># ... with 2 more variables: conf.high </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, significance </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span></div></span></pre>
+  <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>Sex</span>,
+  <span class='kw'>REML</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>tidy.args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>effects</span> <span class='kw'>=</span> <span class='st'>"fixed"</span>, <span class='kw'>conf.int</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>)
+)</div><div class='output co'>#&gt; <span class='warning'>Warning: extra argument(s) ‘REML’ disregarded</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='warning'>Warning: extra argument(s) ‘REML’ disregarded</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 x 10</span><span>
+#&gt;   Sex   effect term  estimate std.error statistic  p.value conf.low conf.high
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Fema~ fixed  (Int~    0.841     0.428     1.96  4.95</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 2</span><span>  0.001</span><span style='text-decoration: underline;'>88</span><span>     1.68 
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Fema~ fixed  AgeC~    0.687     1.41      0.488 6.26</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 1</span><span> -</span><span style='color: #BB0000;'>2.07</span><span>        3.44 
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Male  fixed  (Int~   -</span><span style='color: #BB0000;'>0.914</span><span>     0.148    -</span><span style='color: #BB0000;'>6.18</span><span>  6.50</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-10</span><span> -</span><span style='color: #BB0000;'>1.20</span><span>       -</span><span style='color: #BB0000;'>0.624</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Male  fixed  AgeC~    2.25      1.92      1.17  2.41</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 1</span><span> -</span><span style='color: #BB0000;'>1.51</span><span>        6.00 
+#&gt; </span><span style='color: #949494;'># ... with 1 more variable: significance </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
