@@ -1,20 +1,18 @@
 #' @title Running analysis of variance (aov) across multiple grouping variables.
 #' @name grouped_aov
 #' @author Indrajeet Patil
-#' @return A tibble dataframe with tidy results from anova. No model summaries
-#'   available.
 #'
 #' @param output A character describing what output is expected. Two possible
 #'   options: `"tidy"` (default), which will return the results, or `"tukey"`,
 #'   which will return results from Tukey's Honest Significant Differences
 #'   method for *post hoc* comparisons. The `"glance"` method to get model
 #'   summary is currently not supported for this function.
+#' @param ... Currently ignored.
 #' @inheritParams stats::aov
 #' @inheritParams broomExtra::grouped_tidy
 #' @inheritParams lm_effsize_ci
 #'
-#' @importFrom glue glue
-#' @importFrom purrr map map2_dfr pmap
+#' @importFrom purrr map pmap
 #' @importFrom stats aov as.formula TukeyHSD
 #' @importFrom tidyr nest
 #' @importFrom rlang !! enquos enquo quo quo_squash
@@ -23,15 +21,24 @@
 #'
 #' @examples
 #'
-#' # uses dataset included in the groupedstats package
+#' # uses dataset included in the `groupedstats` package
 #' set.seed(123)
 #' library(groupedstats)
 #'
+#' # effect size
 #' groupedstats::grouped_aov(
 #'   formula = rating ~ belief * outcome * question,
 #'   data = intent_morality,
 #'   grouping.vars = item,
 #'   effsize = "eta"
+#' )
+#'
+#' # pairwise comparisons
+#' groupedstats::grouped_aov(
+#'   formula = rating ~ belief * outcome * question,
+#'   data = intent_morality,
+#'   grouping.vars = item,
+#'   output = "tukey"
 #' )
 #' @export
 
@@ -41,17 +48,15 @@ grouped_aov <- function(data,
                         formula,
                         effsize = "eta",
                         output = "tidy",
-                        nboot = 1000) {
+                        nboot = 1000,
+                        ...) {
 
   # glace is not supported for all models
   if (output == "glance") {
-    stop(message(cat(
-      crayon::green("Note:"),
-      crayon::blue(
-        "The glance model summary is currently not supported for this function.\n
+    stop(message(
+      "The glance model summary is currently not supported for this function.
         Use either 'tidy' or 'tukey'."
-      )
-    )))
+    ))
   }
 
   # check how many variables were entered for grouping variable vector
@@ -156,12 +161,8 @@ grouped_aov <- function(data,
     combined_df %<>% signif_column(data = ., p = adj.p.value)
 
     # display note about adjustment
-    message(cat(
-      crayon::green("Note:"),
-      crayon::blue(
-        "The p-value is adjusted for the number of tests conducted at each level of the grouping variable."
-      )
-    ))
+    message("Note: The p-value is adjusted for the number of tests conducted
+            at each level of the grouping variable.")
   }
 
   # return the final combined dataframe

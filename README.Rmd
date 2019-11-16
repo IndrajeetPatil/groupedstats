@@ -654,10 +654,10 @@ set.seed(123)
 
 # subset the dataframe with two colors of interest to us
 diamonds_short <-
-  dplyr::filter(.data = ggplot2::diamonds, color == "E" |
-    color == "J")
+  dplyr::filter(.data = ggplot2::diamonds, color == "E" | color == "J")
 
-options(tibble.width = Inf, tibble.print_max = Inf) # show me all rows and columns
+# show me all rows and columns
+options(tibble.width = Inf, tibble.print_max = Inf) 
 
 # t-test
 groupedstats::grouped_ttest(

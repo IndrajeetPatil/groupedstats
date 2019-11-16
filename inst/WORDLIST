@@ -6,7 +6,6 @@ broomExtra
 changedate
 CircleCI
 codecov
-df
 DOI
 dplyr
 ds
@@ -18,6 +17,7 @@ gh
 github
 glm
 glmer
+GLMMs
 hadley
 HSD
 http
@@ -28,7 +28,7 @@ img
 indrajeetpatil
 IndrajeetPatil
 io
-Kenward
+iteratively
 Licence
 lifecycle
 lmer
@@ -37,7 +37,9 @@ MPAA
 nd
 nz
 packageversion
+PIRLS
 pkgs
+priori
 README
 RStudio
 Satterthwaite

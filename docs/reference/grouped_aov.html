@@ -137,7 +137,8 @@
   <span class='no'>formula</span>,
   <span class='kw'>effsize</span> <span class='kw'>=</span> <span class='st'>"eta"</span>,
   <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>,
-  <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>1000</span>
+  <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>1000</span>,
+  <span class='no'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -175,19 +176,20 @@ summary is currently not supported for this function.</p></td>
       <td><p>Number of bootstrap samples for confidence intervals for partial
 eta-squared and omega-squared (Default: <code>500</code>).</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Currently ignored.</p></td>
+    </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A tibble dataframe with tidy results from anova. No model summaries
-available.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='co'># uses dataset included in the groupedstats package</span>
+<span class='co'># uses dataset included in the `groupedstats` package</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>groupedstats</span>)
 
+<span class='co'># effect size</span>
 <span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/grouped_aov.html'>grouped_aov</a></span>(
   <span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>rating</span> ~ <span class='no'>belief</span> * <span class='no'>outcome</span> * <span class='no'>question</span>,
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>intent_morality</span>,
@@ -206,13 +208,33 @@ available.</p>
 #&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Anna  beli~  331.       1   996 4.85</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 64</span><span>       0.249   0.205       0.292 
 #&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Anna  outc~   86.2      1   996 9.68</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 20</span><span>       0.079</span><span style='text-decoration: underline;'>7</span><span>  0.050</span><span style='text-decoration: underline;'>5</span><span>      0.113 
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span> Anna  ques~   47.7      1   996 8.76</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 12</span><span>       0.045</span><span style='text-decoration: underline;'>7</span><span>  0.023</span><span style='text-decoration: underline;'>7</span><span>      0.073</span><span style='text-decoration: underline;'>4</span><span>
-#&gt; </span><span style='color: #949494;'># ... with 18 more rows, and 1 more variable: significance </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span></div></span></pre>
+#&gt; </span><span style='color: #949494;'># ... with 18 more rows, and 1 more variable: significance </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
+<span class='co'># pairwise comparisons</span>
+<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/grouped_aov.html'>grouped_aov</a></span>(
+  <span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>rating</span> ~ <span class='no'>belief</span> * <span class='no'>outcome</span> * <span class='no'>question</span>,
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>intent_morality</span>,
+  <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>item</span>,
+  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tukey"</span>
+)</div><div class='output co'>#&gt; <span class='message'>Note: The p-value is adjusted for the number of tests conducted</span>
+#&gt; <span class='message'>            at each level of the grouping variable.</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 196 x 8</span><span>
+#&gt;    item  term   comparison  estimate conf.low conf.high adj.p.value significance
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Grace belief neutral-ne~   -</span><span style='color: #BB0000;'>4.37</span><span>    -</span><span style='color: #BB0000;'>4.55</span><span>     -</span><span style='color: #BB0000;'>4.19</span><span>     0.  </span><span style='color: #949494;'> </span><span>    ***         
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Grace outco~ neutral-ne~   -</span><span style='color: #BB0000;'>0.639</span><span>   -</span><span style='color: #BB0000;'>0.820</span><span>    -</span><span style='color: #BB0000;'>0.457</span><span>    8.48</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-12</span><span> ***         
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Grace quest~ wrongness-~    0.384    0.203     0.566    3.47</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 5</span><span> ***         
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Grace belie~ neutral:ne~   -</span><span style='color: #BB0000;'>4.86</span><span>    -</span><span style='color: #BB0000;'>5.20</span><span>     -</span><span style='color: #BB0000;'>4.53</span><span>     0.  </span><span style='color: #949494;'> </span><span>    ***         
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Grace belie~ negative:n~   -</span><span style='color: #BB0000;'>1.13</span><span>    -</span><span style='color: #BB0000;'>1.47</span><span>     -</span><span style='color: #BB0000;'>0.796</span><span>    0.  </span><span style='color: #949494;'> </span><span>    ***         
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Grace belie~ neutral:ne~   -</span><span style='color: #BB0000;'>5.01</span><span>    -</span><span style='color: #BB0000;'>5.35</span><span>     -</span><span style='color: #BB0000;'>4.67</span><span>     0.  </span><span style='color: #949494;'> </span><span>    ***         
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Grace belie~ negative:n~    3.73     3.40      4.07     0.  </span><span style='color: #949494;'> </span><span>    ***         
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Grace belie~ neutral:ne~   -</span><span style='color: #BB0000;'>0.145</span><span>   -</span><span style='color: #BB0000;'>0.482</span><span>     0.191    6.83</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 1</span><span> ns          
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Grace belie~ neutral:ne~   -</span><span style='color: #BB0000;'>3.88</span><span>    -</span><span style='color: #BB0000;'>4.21</span><span>     -</span><span style='color: #BB0000;'>3.54</span><span>     0.  </span><span style='color: #949494;'> </span><span>    ***         
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Grace belie~ neutral:pu~   -</span><span style='color: #BB0000;'>4.14</span><span>    -</span><span style='color: #BB0000;'>4.48</span><span>     -</span><span style='color: #BB0000;'>3.80</span><span>     0.  </span><span style='color: #949494;'> </span><span>    ***         
+#&gt; </span><span style='color: #949494;'># ... with 186 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 

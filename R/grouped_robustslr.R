@@ -16,7 +16,7 @@
 #'
 #' @importFrom robust lmRob
 #' @importFrom glue glue
-#' @importFrom purrr map map_lgl map2_dfr pmap
+#' @importFrom purrr map map_lgl pmap
 #' @importFrom stats wilcox.test as.formula lm
 #' @importFrom tidyr nest
 #' @importFrom rlang !! enquos enquo quo quo_squash

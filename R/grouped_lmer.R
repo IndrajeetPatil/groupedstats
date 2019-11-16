@@ -2,15 +2,14 @@
 #'   variables.
 #' @name grouped_lmer
 #' @author Indrajeet Patil
-#' @return A tibble dataframe with tidy results from linear model or model
-#'   summaries.
+#' @return A tibble dataframe with tidy results from a linear mixed-effects
+#'   model. Note that *p*-value is computed using `parameters::p_value`.
 #'
 #' @inheritParams grouped_lm
 #' @inheritDotParams lme4::lmer
 #' @inheritParams parameters::p_value
 #'
-#' @importFrom glue glue
-#' @importFrom purrr map map2_dfr pmap pmap
+#' @importFrom purrr map
 #' @importFrom lme4 lmer
 #' @importFrom parameters p_value
 #' @importFrom stats as.formula

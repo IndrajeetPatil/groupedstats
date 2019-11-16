@@ -17,7 +17,7 @@
 #'   *t*-test, i.e.).
 #'
 #' @importFrom glue glue
-#' @importFrom purrr map map2_dfr pmap map_lgl
+#' @importFrom purrr map pmap map_lgl
 #' @importFrom stats wilcox.test as.formula t.test
 #' @importFrom tidyr nest
 #' @importFrom rlang !! enquos enquo quo quo_squash

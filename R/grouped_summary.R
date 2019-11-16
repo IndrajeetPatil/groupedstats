@@ -28,7 +28,6 @@
 #' @importFrom purrr is_bare_numeric is_bare_character keep map map_lgl map_dfr
 #' @importFrom purrr flatten_lgl set_names map_chr
 #' @importFrom tidyr unnest separate
-#' @importFrom crayon red blue
 #' @importFrom tibble as_tibble enframe
 #' @importFrom stats qt
 #' @importFrom sjlabelled is_labelled remove_all_labels

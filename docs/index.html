@@ -700,8 +700,8 @@
 <a class="sourceLine" id="cb19-9" title="9">  <span class="dt">formula =</span> lifeExp <span class="op">~</span><span class="st"> </span>continent,</a>
 <a class="sourceLine" id="cb19-10" title="10">  <span class="dt">output =</span> <span class="st">"tukey"</span></a>
 <a class="sourceLine" id="cb19-11" title="11">)</a>
-<a class="sourceLine" id="cb19-12" title="12"><span class="co">#&gt; Note: The p-value is adjusted for the number of tests conducted at each level of the grouping variable.</span></a>
-<a class="sourceLine" id="cb19-13" title="13"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb19-12" title="12"><span class="co">#&gt; Note: The p-value is adjusted for the number of tests conducted</span></a>
+<a class="sourceLine" id="cb19-13" title="13"><span class="co">#&gt;             at each level of the grouping variable.</span></a>
 <a class="sourceLine" id="cb19-14" title="14"><span class="co">#&gt; # A tibble: 120 x 8</span></a>
 <a class="sourceLine" id="cb19-15" title="15"><span class="co">#&gt;     year term      comparison       estimate conf.low conf.high adj.p.value</span></a>
 <a class="sourceLine" id="cb19-16" title="16"><span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;               &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;</span></a>
@@ -1099,10 +1099,10 @@
 <a class="sourceLine" id="cb27-3" title="3"></a>
 <a class="sourceLine" id="cb27-4" title="4"><span class="co"># subset the dataframe with two colors of interest to us</span></a>
 <a class="sourceLine" id="cb27-5" title="5">diamonds_short &lt;-</a>
-<a class="sourceLine" id="cb27-6" title="6"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="dt">.data =</span> ggplot2<span class="op">::</span>diamonds, color <span class="op">==</span><span class="st"> "E"</span> <span class="op">|</span></a>
-<a class="sourceLine" id="cb27-7" title="7"><span class="st">    </span>color <span class="op">==</span><span class="st"> "J"</span>)</a>
-<a class="sourceLine" id="cb27-8" title="8"></a>
-<a class="sourceLine" id="cb27-9" title="9"><span class="kw"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>, <span class="dt">tibble.print_max =</span> <span class="ot">Inf</span>) <span class="co"># show me all rows and columns</span></a>
+<a class="sourceLine" id="cb27-6" title="6"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="dt">.data =</span> ggplot2<span class="op">::</span>diamonds, color <span class="op">==</span><span class="st"> "E"</span> <span class="op">|</span><span class="st"> </span>color <span class="op">==</span><span class="st"> "J"</span>)</a>
+<a class="sourceLine" id="cb27-7" title="7"></a>
+<a class="sourceLine" id="cb27-8" title="8"><span class="co"># show me all rows and columns</span></a>
+<a class="sourceLine" id="cb27-9" title="9"><span class="kw"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="dt">tibble.width =</span> <span class="ot">Inf</span>, <span class="dt">tibble.print_max =</span> <span class="ot">Inf</span>) </a>
 <a class="sourceLine" id="cb27-10" title="10"></a>
 <a class="sourceLine" id="cb27-11" title="11"><span class="co"># t-test</span></a>
 <a class="sourceLine" id="cb27-12" title="12">groupedstats<span class="op">::</span><span class="kw"><a href="https://indrajeetpatil.github.io/groupedstats//reference/grouped_ttest.html">grouped_ttest</a></span>(</a>

@@ -95,8 +95,8 @@ which will return model summaries.}
 \item{augment.args}{A list of arguments to be used in the relevant \code{S3} method.}
 }
 \value{
-A tibble dataframe with tidy results from linear model or model
-summaries.
+A tibble dataframe with tidy results from a linear mixed-effects
+model. Note that \emph{p}-value is computed using \code{parameters::p_value}.
 }
 \description{
 Linear mixed-effects model (\code{lmer}) across multiple grouping

@@ -14,7 +14,7 @@
 #'   linear model (`x` in `y ~ x`).
 #'
 #' @importFrom glue glue
-#' @importFrom purrr map map2_dfr pmap
+#' @importFrom purrr map pmap
 #' @importFrom stats wilcox.test as.formula lm
 #' @importFrom tidyr nest
 #' @importFrom rlang !! enquos enquo quo quo_squash

@@ -789,8 +789,8 @@ groupedstats::grouped_aov(
   formula = lifeExp ~ continent,
   output = "tukey"
 )
-#> Note: The p-value is adjusted for the number of tests conducted at each level of the grouping variable.
-#> 
+#> Note: The p-value is adjusted for the number of tests conducted
+#>             at each level of the grouping variable.
 #> # A tibble: 120 x 8
 #>     year term      comparison       estimate conf.low conf.high adj.p.value
 #>    <int> <chr>     <chr>               <dbl>    <dbl>     <dbl>       <dbl>
@@ -1226,10 +1226,10 @@ set.seed(123)
 
 # subset the dataframe with two colors of interest to us
 diamonds_short <-
-  dplyr::filter(.data = ggplot2::diamonds, color == "E" |
-    color == "J")
+  dplyr::filter(.data = ggplot2::diamonds, color == "E" | color == "J")
 
-options(tibble.width = Inf, tibble.print_max = Inf) # show me all rows and columns
+# show me all rows and columns
+options(tibble.width = Inf, tibble.print_max = Inf) 
 
 # t-test
 groupedstats::grouped_ttest(

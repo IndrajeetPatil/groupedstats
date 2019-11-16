@@ -13,7 +13,6 @@
 #'
 #' @importFrom dplyr group_by summarize n arrange pull
 #' @importFrom dplyr mutate mutate_at mutate_if
-#' @importFrom crayon red blue
 #' @importFrom rlang !! !!! enquo
 #' @importFrom stats lm
 #'

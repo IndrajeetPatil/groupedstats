@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Confidence intervals for partial eta-squared and omega-squared for
+<title>Confidence intervals for (partial) eta-squared and omega-squared for
 linear models. — lm_effsize_ci • groupedstats</title>
 
 
@@ -44,11 +44,12 @@ linear models. — lm_effsize_ci • groupedstats</title>
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Confidence intervals for partial eta-squared and omega-squared for
+<meta property="og:title" content="Confidence intervals for (partial) eta-squared and omega-squared for
 linear models. — lm_effsize_ci" />
 <meta property="og:description" content="This function will convert a linear model object to a dataframe
-containing statistical details for all effects along with partial
-eta-squared effect size and its confidence interval." />
+containing statistical details for all effects along with effect size
+measure and its confidence interval. For more details, see
+parameters::eta_squared and parameters::omega_squared." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -126,7 +127,7 @@ eta-squared effect size and its confidence interval." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Confidence intervals for partial eta-squared and omega-squared for
+    <h1>Confidence intervals for (partial) eta-squared and omega-squared for
 linear models.</h1>
     <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/groupedstats/blob/master/R/lm_effsize_ci.R'><code>R/lm_effsize_ci.R</code></a></small>
     <div class="hidden name"><code>lm_effsize_ci.Rd</code></div>
@@ -134,8 +135,9 @@ linear models.</h1>
 
     <div class="ref-description">
     <p>This function will convert a linear model object to a dataframe
-containing statistical details for all effects along with partial
-eta-squared effect size and its confidence interval.</p>
+containing statistical details for all effects along with effect size
+measure and its confidence interval. For more details, see
+<code><a href='https://rdrr.io/pkg/parameters/man/eta_squared.html'>parameters::eta_squared</a></code> and <code><a href='https://rdrr.io/pkg/parameters/man/eta_squared.html'>parameters::omega_squared</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>lm_effsize_ci</span>(
@@ -144,7 +146,8 @@ eta-squared effect size and its confidence interval.</p>
   <span class='kw'>partial</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
   <span class='kw'>nboot</span> <span class='kw'>=</span> <span class='fl'>500</span>,
-  <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"dist"</span>, <span class='st'>"quantile"</span>)
+  <span class='kw'>method</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"dist"</span>, <span class='st'>"quantile"</span>),
+  <span class='no'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -184,6 +187,10 @@ based on bootstrap standard error, multiplied by the value of the
 quantile function of the t-distribution (default), or on sample
 quantiles of the bootstrapped values. See 'Details' in <code>boot_ci()</code>.
 May be abbreviated.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Currently ignored.</p></td>
     </tr>
     </table>
 

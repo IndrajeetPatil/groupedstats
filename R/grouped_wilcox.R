@@ -19,7 +19,7 @@
 #'   the normal approximation for the p-value (Default: `correct = TRUE`).
 #'
 #' @importFrom glue glue
-#' @importFrom purrr map map2_dfr pmap
+#' @importFrom purrr map pmap
 #' @importFrom stats wilcox.test as.formula
 #' @importFrom tidyr nest
 #'

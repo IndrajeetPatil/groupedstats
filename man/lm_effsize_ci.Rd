@@ -2,7 +2,7 @@
 % Please edit documentation in R/lm_effsize_ci.R
 \name{lm_effsize_ci}
 \alias{lm_effsize_ci}
-\title{Confidence intervals for partial eta-squared and omega-squared for
+\title{Confidence intervals for (partial) eta-squared and omega-squared for
 linear models.}
 \usage{
 lm_effsize_ci(
@@ -11,7 +11,8 @@ lm_effsize_ci(
   partial = TRUE,
   conf.level = 0.95,
   nboot = 500,
-  method = c("dist", "quantile")
+  method = c("dist", "quantile"),
+  ...
 )
 }
 \arguments{
@@ -37,6 +38,8 @@ based on bootstrap standard error, multiplied by the value of the
 quantile function of the t-distribution (default), or on sample
 quantiles of the bootstrapped values. See 'Details' in \code{boot_ci()}.
 May be abbreviated.}
+
+\item{...}{Currently ignored.}
 }
 \value{
 A dataframe with results from \code{stats::lm()} with partial eta-squared,
@@ -44,8 +47,9 @@ omega-squared, and bootstrapped confidence interval for the same.
 }
 \description{
 This function will convert a linear model object to a dataframe
-containing statistical details for all effects along with partial
-eta-squared effect size and its confidence interval.
+containing statistical details for all effects along with effect size
+measure and its confidence interval. For more details, see
+\code{parameters::eta_squared} and \code{parameters::omega_squared}.
 }
 \examples{
 # for reproducibility

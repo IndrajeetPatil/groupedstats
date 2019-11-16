@@ -1,10 +1,11 @@
-#' @title Confidence intervals for partial eta-squared and omega-squared for
+#' @title Confidence intervals for (partial) eta-squared and omega-squared for
 #'   linear models.
 #' @name lm_effsize_ci
 #' @author Indrajeet Patil
 #' @description This function will convert a linear model object to a dataframe
-#'   containing statistical details for all effects along with partial
-#'   eta-squared effect size and its confidence interval.
+#'   containing statistical details for all effects along with effect size
+#'   measure and its confidence interval. For more details, see
+#'   `parameters::eta_squared` and `parameters::omega_squared`.
 #' @return A dataframe with results from `stats::lm()` with partial eta-squared,
 #'   omega-squared, and bootstrapped confidence interval for the same.
 #'
@@ -20,6 +21,7 @@
 #'   interval (Default: `0.95`).
 #' @param nboot Number of bootstrap samples for confidence intervals for partial
 #'   eta-squared and omega-squared (Default: `500`).
+#' @param ... Currently ignored.
 #' @inheritParams sjstats::omega_sq
 #'
 #' @importFrom sjstats eta_sq omega_sq
@@ -50,7 +52,8 @@ lm_effsize_ci <- function(object,
                           partial = TRUE,
                           conf.level = 0.95,
                           nboot = 500,
-                          method = c("dist", "quantile")) {
+                          method = c("dist", "quantile"),
+                          ...) {
 
   # based on the class, get the tidy output using broom
   if (class(object)[[1]] == "lm") {
@@ -87,14 +90,15 @@ lm_effsize_ci <- function(object,
   }
 
   # computing effect size
-  effsize_df <- rlang::exec(
-    .fn = .f,
-    model = object,
-    partial = partial,
-    ci.lvl = conf.level,
-    n = nboot,
-    method = method
-  )
+  effsize_df <-
+    rlang::exec(
+      .fn = .f,
+      model = object,
+      partial = partial,
+      ci.lvl = conf.level,
+      n = nboot,
+      method = method
+    )
 
   if (class(object)[[1]] == "aovlist") {
     if (dim(dplyr::filter(effsize_df, stratum == "Within"))[[1]] != 0L) {
