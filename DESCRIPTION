@@ -1,7 +1,7 @@
 Type: Package
 Package: groupedstats
 Title: Grouped Statistical Analyses in a Tidy Way
-Version: 0.0.9.9001
+Version: 0.1.0
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -42,8 +42,6 @@ Suggests:
     rmarkdown,
     spelling,
     testthat
-Remotes:
-    ropensci/skimr
 Encoding: UTF-8
 Language: en-US
 LazyData: true
