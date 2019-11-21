@@ -44,7 +44,7 @@ grouped_lmer(
     optimizer to be used and parameters to be passed through to the
     nonlinear optimizer, see the \code{*lmerControl} documentation for
     details.}
-    \item{\code{start}}{a named \code{\link[lme4]{list}} of starting values for the
+    \item{\code{start}}{a named \code{\link{list}} of starting values for the
     parameters in the model.  For \code{lmer} this can be a numeric
     vector or a list with one component named \code{"theta"}.}
     \item{\code{verbose}}{integer scalar.  If \code{> 0} verbose output is
@@ -73,10 +73,10 @@ grouped_lmer(
     \item{\code{offset}}{this can be used to specify an \emph{a priori} known
     component to be included in the linear predictor during
     fitting. This should be \code{NULL} or a numeric vector of length
-    equal to the number of cases.  One or more \code{\link[lme4]{offset}}
+    equal to the number of cases.  One or more \code{\link{offset}}
     terms can be included in the formula instead or as well, and if more
     than one is specified their sum is used.  See
-    \code{\link[lme4]{model.offset}}.}
+    \code{\link{model.offset}}.}
     \item{\code{contrasts}}{an optional list. See the \code{contrasts.arg} of
     \code{model.matrix.default}.}
     \item{\code{devFunOnly}}{logical - return only the deviance evaluation

@@ -214,11 +214,11 @@ grouping variables.</p>
     <dt><code>offset</code></dt><dd><p>this can be used to specify an <em>a priori</em> known
     component to be included in the linear predictor during
     fitting. This should be <code>NULL</code> or a numeric vector of length
-    equal to the number of cases.  One or more <code>offset</code>
+    equal to the number of cases.  One or more <code><a href='https://rdrr.io/r/stats/offset.html'>offset</a></code>
     terms can be included in the formula instead or as well, and if more
-    than one is specified their sum is used.  See <code>model.offset</code>.</p></dd>
+    than one is specified their sum is used.  See <code><a href='https://rdrr.io/r/stats/model.extract.html'>model.offset</a></code>.</p></dd>
     <dt><code>contrasts</code></dt><dd><p>an optional list.  See the <code>contrasts.arg</code> of
-    <code>model.matrix.default</code>.</p></dd>
+    <code><a href='https://rdrr.io/r/stats/model.matrix.html'>model.matrix.default</a></code>.</p></dd>
     <dt><code>mustart</code></dt><dd><p>optional starting values on the scale of the
     conditional mean, as in <code><a href='https://rdrr.io/r/stats/glm.html'>glm</a></code>; see there for
     details.</p></dd>

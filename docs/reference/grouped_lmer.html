@@ -180,7 +180,7 @@ variables.</p>
     optimizer to be used and parameters to be passed through to the
     nonlinear optimizer, see the <code>*lmerControl</code> documentation for
     details.</p></dd>
-    <dt><code>start</code></dt><dd><p>a named <code>list</code> of starting values for the
+    <dt><code>start</code></dt><dd><p>a named <code><a href='https://rdrr.io/r/base/list.html'>list</a></code> of starting values for the
     parameters in the model.  For <code>lmer</code> this can be a numeric
     vector or a list with one component named <code>"theta"</code>.</p></dd>
     <dt><code>verbose</code></dt><dd><p>integer scalar.  If <code>&gt; 0</code> verbose output is
@@ -209,10 +209,10 @@ variables.</p>
     <dt><code>offset</code></dt><dd><p>this can be used to specify an <em>a priori</em> known
     component to be included in the linear predictor during
     fitting. This should be <code>NULL</code> or a numeric vector of length
-    equal to the number of cases.  One or more <code>offset</code>
+    equal to the number of cases.  One or more <code><a href='https://rdrr.io/r/stats/offset.html'>offset</a></code>
     terms can be included in the formula instead or as well, and if more
     than one is specified their sum is used.  See
-    <code>model.offset</code>.</p></dd>
+    <code><a href='https://rdrr.io/r/stats/model.extract.html'>model.offset</a></code>.</p></dd>
     <dt><code>contrasts</code></dt><dd><p>an optional list. See the <code>contrasts.arg</code> of
     <code>model.matrix.default</code>.</p></dd>
     <dt><code>devFunOnly</code></dt><dd><p>logical - return only the deviance evaluation

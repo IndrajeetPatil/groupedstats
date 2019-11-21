@@ -77,11 +77,11 @@ grouped_glmer(
     \item{\code{offset}}{this can be used to specify an \emph{a priori} known
     component to be included in the linear predictor during
     fitting. This should be \code{NULL} or a numeric vector of length
-    equal to the number of cases.  One or more \code{\link[lme4]{offset}}
+    equal to the number of cases.  One or more \code{\link{offset}}
     terms can be included in the formula instead or as well, and if more
-    than one is specified their sum is used.  See \code{\link[lme4]{model.offset}}.}
+    than one is specified their sum is used.  See \code{\link{model.offset}}.}
     \item{\code{contrasts}}{an optional list.  See the \code{contrasts.arg} of
-    \code{\link[lme4]{model.matrix.default}}.}
+    \code{\link{model.matrix.default}}.}
     \item{\code{mustart}}{optional starting values on the scale of the
     conditional mean, as in \code{\link[stats]{glm}}; see there for
     details.}
