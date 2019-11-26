@@ -25,7 +25,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--11--21-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--11--26-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
@@ -281,32 +281,21 @@ groupedstats::grouped_summary(
   measures = color,
   measures.type = "factor"
 )
-#> # A tibble: 40 x 10
-#>    cut   clarity skim_type variable missing complete ordered n_unique
-#>    <ord> <ord>   <chr>     <chr>      <int>    <dbl> <lgl>      <int>
-#>  1 Fair  I1      factor    color          0        1 TRUE           7
-#>  2 Fair  SI2     factor    color          0        1 TRUE           7
-#>  3 Fair  SI1     factor    color          0        1 TRUE           7
-#>  4 Fair  VS2     factor    color          0        1 TRUE           7
-#>  5 Fair  VS1     factor    color          0        1 TRUE           7
-#>  6 Fair  VVS2    factor    color          0        1 TRUE           7
-#>  7 Fair  VVS1    factor    color          0        1 TRUE           7
-#>  8 Fair  IF      factor    color          0        1 TRUE           3
-#>  9 Good  I1      factor    color          0        1 TRUE           7
-#> 10 Good  SI2     factor    color          0        1 TRUE           7
-#>    top_counts                         n
-#>    <chr>                          <int>
-#>  1 G: 53, H: 52, F: 35, I: 34       210
-#>  2 H: 91, F: 89, G: 80, E: 78       466
-#>  3 F: 83, H: 75, G: 69, E: 65       408
-#>  4 F: 53, G: 45, E: 42, H: 41       261
-#>  5 G: 45, F: 33, H: 32, I: 25       170
-#>  6 G: 17, E: 13, H: 11, F: 10        69
-#>  7 F: 5, D: 3, E: 3, G: 3            17
-#>  8 F: 4, D: 3, G: 2, E: 0             9
-#>  9 E: 23, F: 19, G: 19, H: 14        96
-#> 10 D: 223, E: 202, F: 201, G: 163  1081
-#> # ... with 30 more rows
+#> # A tibble: 5 x 9
+#>   cut       skim_type variable missing complete ordered n_unique
+#>   <ord>     <chr>     <chr>      <int>    <dbl> <lgl>      <int>
+#> 1 Fair      factor    color          0        1 TRUE           7
+#> 2 Good      factor    color          0        1 TRUE           7
+#> 3 Very Good factor    color          0        1 TRUE           7
+#> 4 Premium   factor    color          0        1 TRUE           7
+#> 5 Ideal     factor    color          0        1 TRUE           7
+#>   top_counts                             n
+#>   <chr>                              <int>
+#> 1 G: 314, F: 312, H: 303, E: 224      1610
+#> 2 E: 933, F: 909, G: 871, H: 702      4906
+#> 3 E: 2400, G: 2299, F: 2164, H: 1824 12082
+#> 4 G: 2924, H: 2360, E: 2337, F: 2331 13791
+#> 5 G: 4884, E: 3903, F: 3826, H: 3115 21551
 ```
 
 Note that there is a column corresponding to `top_counts` which is
@@ -392,32 +381,32 @@ groupedstats::grouped_summary(
   data = ggplot2::diamonds,
   grouping.vars = c(cut, clarity)
 )
-#> # A tibble: 280 x 17
-#>    cut   clarity skim_type variable missing complete    mean       sd    min
-#>    <ord> <ord>   <chr>     <chr>      <int>    <dbl>   <dbl>    <dbl>  <dbl>
-#>  1 Fair  I1      numeric   carat          0        1    1.36    0.745   0.34
-#>  2 Fair  I1      numeric   depth          0        1   65.7     3.10   55.6 
-#>  3 Fair  I1      numeric   table          0        1   58.1     2.87   52   
-#>  4 Fair  I1      numeric   price          0        1 3704.   3099.    584   
-#>  5 Fair  I1      numeric   x              0        1    6.72    1.11    4.72
-#>  6 Fair  I1      numeric   y              0        1    6.62    1.13    4.6 
-#>  7 Fair  I1      numeric   z              0        1    4.39    0.756   2.6 
-#>  8 Fair  SI2     numeric   carat          0        1    1.20    0.501   0.25
-#>  9 Fair  SI2     numeric   depth          0        1   64.4     3.16   53.1 
-#> 10 Fair  SI2     numeric   table          0        1   58.8     3.68   50.1 
-#>        p25  median     p75      max     n std.error mean.conf.low mean.conf.high
-#>      <dbl>   <dbl>   <dbl>    <dbl> <int>     <dbl>         <dbl>          <dbl>
-#>  1    0.85    1.06    1.82     5.01   210    0.0514          1.26           1.46
-#>  2   64.7    66.0    67.3     78.2    210    0.214          65.3           66.1 
-#>  3   56      58      59       67      210    0.198          57.7           58.5 
-#>  4 1387.   2397    5614.   18531      210  214.           3282.          4125.  
-#>  5    5.96    6.56    7.46    10.7    210    0.0769          6.57           6.87
-#>  6    5.82    6.42    7.38    10.5    210    0.0777          6.47           6.78
-#>  7    3.77    4.22    4.86     6.98   210    0.0522          4.28           4.49
-#>  8    0.9     1.01    1.5      3.01   466    0.0232          1.16           1.25
-#>  9   64.5    65.1    65.9     72.2    466    0.147          64.1           64.7 
-#> 10   56      58      60       79      466    0.171          58.5           59.2 
-#> # ... with 270 more rows
+#> # A tibble: 35 x 16
+#>    cut   skim_type variable missing complete     mean       sd    min     p25
+#>    <ord> <chr>     <chr>      <int>    <dbl>    <dbl>    <dbl>  <dbl>   <dbl>
+#>  1 Fair  numeric   carat          0        1    1.05     0.516   0.22    0.7 
+#>  2 Fair  numeric   depth          0        1   64.0      3.64   43      64.4 
+#>  3 Fair  numeric   table          0        1   59.1      3.95   49      56   
+#>  4 Fair  numeric   price          0        1 4359.    3560.    337    2050.  
+#>  5 Fair  numeric   x              0        1    6.25     0.964   0       5.63
+#>  6 Fair  numeric   y              0        1    6.18     0.956   0       5.57
+#>  7 Fair  numeric   z              0        1    3.98     0.652   0       3.61
+#>  8 Good  numeric   carat          0        1    0.849    0.454   0.23    0.5 
+#>  9 Good  numeric   depth          0        1   62.4      2.17   54.3    61.3 
+#> 10 Good  numeric   table          0        1   58.7      2.85   51      56   
+#>     median     p75      max     n std.error mean.conf.low mean.conf.high
+#>      <dbl>   <dbl>    <dbl> <int>     <dbl>         <dbl>          <dbl>
+#>  1    1       1.2      5.01  1610   0.0129          1.02           1.07 
+#>  2   65      65.9     79     1610   0.0908         63.9           64.2  
+#>  3   58      61       95     1610   0.0983         58.9           59.2  
+#>  4 3282    5206.   18574     1610  88.7          4185.          4533.   
+#>  5    6.18    6.7     10.7   1610   0.0240          6.20           6.29 
+#>  6    6.1     6.64    10.5   1610   0.0238          6.14           6.23 
+#>  7    3.97    4.28     6.98  1610   0.0162          3.95           4.01 
+#>  8    0.82    1.01     3.01  4906   0.00648         0.836          0.862
+#>  9   63.4    63.8     67     4906   0.0310         62.3           62.4  
+#> 10   58      61       66     4906   0.0407         58.6           58.8  
+#> # ... with 25 more rows
 ```
 
 The function should also work with labeled data.
