@@ -81,7 +81,11 @@ grouped_summary <- function(data,
   # but if we pass just `cyl`, there is no `c`, this will take care of that
   # issue
   grouping.vars <-
-    ifelse(length(grouping.vars) == 1, grouping.vars, grouping.vars[-1])
+    if (length(grouping.vars) == 1) {
+      grouping.vars
+    } else {
+      grouping.vars[-1]
+    }
 
   # if no measures are provided, use the entire dataset
   if (missing(measures)) {
