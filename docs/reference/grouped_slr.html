@@ -181,17 +181,24 @@ analyses. The estimates are standardized, i.e. the <code>lm</code> model used is
   <span class='kw'>indep.vars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>Sepal.Width</span>, <span class='no'>Petal.Width</span>),
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>Species</span>
 )</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 9</span><span>
-#&gt;   Species formula t.value estimate conf.low conf.high std.error  p.value
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> setosa  Sepal.~    7.68    0.743   0.548      0.937    0.096</span><span style='text-decoration: underline;'>7</span><span> 6.71</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-10</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> versic~ Sepal.~    4.28    0.526   0.279      0.773    0.123  8.77</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 5</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> virgin~ Sepal.~    3.56    0.457   0.199      0.715    0.128  8.43</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 4</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> setosa  Petal.~    2.44    0.332   0.057</span><span style='text-decoration: underline;'>8</span><span>     0.605    0.136  1.86</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 2</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> versic~ Petal.~    8.83    0.787   0.607      0.966    0.089</span><span style='text-decoration: underline;'>1</span><span> 1.27</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-11</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> virgin~ Petal.~    2.36    0.322   0.047</span><span style='text-decoration: underline;'>4</span><span>     0.597    0.137  2.25</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 2</span><span>
-#&gt; </span><span style='color: #949494;'># ... with 1 more variable: significance </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span></div></span></pre>
+#&gt;   Species    formula                    t.value estimate conf.low conf.high
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> setosa     Sepal.Length ~ Sepal.Width    7.68    0.743   0.548      0.937
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> versicolor Sepal.Length ~ Sepal.Width    4.28    0.526   0.279      0.773
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> virginica  Sepal.Length ~ Sepal.Width    3.56    0.457   0.199      0.715
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> setosa     Petal.Length ~ Petal.Width    2.44    0.332   0.057</span><span style='text-decoration: underline;'>8</span><span>     0.605
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> versicolor Petal.Length ~ Petal.Width    8.83    0.787   0.607      0.966
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span> virginica  Petal.Length ~ Petal.Width    2.36    0.322   0.047</span><span style='text-decoration: underline;'>4</span><span>     0.597
+#&gt;   std.error  p.value significance
+#&gt;       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    0.096</span><span style='text-decoration: underline;'>7</span><span> 6.71</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-10</span><span> ***         
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>    0.123  8.77</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 5</span><span> ***         
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span>    0.128  8.43</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 4</span><span> ***         
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span>    0.136  1.86</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 2</span><span> *           
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span>    0.089</span><span style='text-decoration: underline;'>1</span><span> 1.27</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-11</span><span> ***         
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span>    0.137  2.25</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 2</span><span> *           </div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>

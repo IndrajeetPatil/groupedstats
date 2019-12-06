@@ -194,16 +194,24 @@ analyses. The estimates are standardized, i.e. the <code>lm</code> model used is
   <span class='kw'>indep.vars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>Sepal.Width</span>, <span class='no'>Petal.Width</span>),
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>Species</span>
 )</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 7</span><span>
-#&gt;   Species   formula            t.value estimate std.error   p.value significance
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> setosa    Sepal.Length ~ Se~    5.39    0.747     0.139   2.12</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-6</span><span> ***         
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> versicol~ Sepal.Length ~ Se~    3.41    0.526     0.154   1.31</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-3</span><span> **          
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> virginica Sepal.Length ~ Se~    3.62    0.521     0.144   6.98</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-4</span><span> ***         
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> setosa    Petal.Length ~ Pe~    2.18    0.301     0.138   3.40</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-2</span><span> *           
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> versicol~ Petal.Length ~ Pe~    6.75    0.749     0.111   1.77</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-8</span><span> ***         
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> virginica Petal.Length ~ Pe~    1.23    0.286     0.232   2.23</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-1</span><span> ns          </div></span></pre>
+#&gt;   Species    formula                    t.value estimate std.error      p.value
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> setosa     Sepal.Length ~ Sepal.Width    5.39    0.747     0.139 0.000</span><span style='text-decoration: underline;'>002</span><span>12  
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> versicolor Sepal.Length ~ Sepal.Width    3.41    0.526     0.154 0.001</span><span style='text-decoration: underline;'>31</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> virginica  Sepal.Length ~ Sepal.Width    3.62    0.521     0.144 0.000</span><span style='text-decoration: underline;'>698</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> setosa     Petal.Length ~ Petal.Width    2.18    0.301     0.138 0.034</span><span style='text-decoration: underline;'>0</span><span>      
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> versicolor Petal.Length ~ Petal.Width    6.75    0.749     0.111 0.000</span><span style='text-decoration: underline;'>000</span><span>017</span><span style='text-decoration: underline;'>7</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span> virginica  Petal.Length ~ Petal.Width    1.23    0.286     0.232 0.223       
+#&gt;   significance
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> ***         
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> **          
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> ***         
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> *           
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> ***         
+#&gt; </span><span style='color: #BCBCBC;'>6</span><span> ns          </div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
