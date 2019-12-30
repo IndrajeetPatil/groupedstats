@@ -5,6 +5,7 @@ context("grouped_glmer")
 testthat::test_that(
   desc = "grouped_glmer works",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
 
     # categorical outcome; binomial family
     set.seed(123)

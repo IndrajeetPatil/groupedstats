@@ -5,6 +5,8 @@ context("grouped_lm")
 testthat::test_that(
   desc = "grouped_lm works",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
+
     testthat::skip_on_cran()
     testthat::skip_on_travis()
     testthat::skip_on_appveyor()

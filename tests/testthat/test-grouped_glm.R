@@ -5,6 +5,7 @@ context("grouped_glm")
 testthat::test_that(
   desc = "grouped_glm works",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
     testthat::skip_on_cran()
     testthat::skip_on_travis()
     testthat::skip_on_appveyor()
@@ -74,6 +75,7 @@ testthat::test_that(
 testthat::test_that(
   desc = "grouped_glm works",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
     testthat::skip_on_cran()
 
     # getting tidy output of results

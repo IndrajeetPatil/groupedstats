@@ -5,6 +5,8 @@ context("signif column")
 test_that(
   desc = "signif_column works",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
+
     # for reproducibility
     set.seed(123)
 

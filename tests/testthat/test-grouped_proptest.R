@@ -5,6 +5,8 @@ context("grouped_proptest")
 testthat::test_that(
   desc = "grouped_proptest works",
   code = {
+    testthat::skip_if(getRversion() < "3.6")
+
     set.seed(123)
     df1 <- suppressWarnings(groupedstats::grouped_proptest(
       data = mtcars,

@@ -30,7 +30,7 @@
 #' @importFrom tidyr unnest separate
 #' @importFrom tibble as_tibble enframe
 #' @importFrom stats qt
-#' @importFrom sjlabelled is_labelled remove_all_labels
+#' @importFrom haven zap_labels
 #' @importFrom rlang !! !!! as_string
 #'
 #' @examples
@@ -97,9 +97,7 @@ grouped_summary <- function(data,
   # data cleanup -------------------------------------------------------------
 
   # clean up labeled columns, if present
-  if (sum(purrr::flatten_lgl(purrr::map(df, sjlabelled::is_labelled))) > 0L) {
-    df %<>% sjlabelled::remove_all_labels(.)
-  }
+  df %<>% haven::zap_labels(.)
 
   # removing grouping levels that are `NA`
   df %<>%
@@ -182,25 +180,15 @@ grouped_summary <- function(data,
       dplyr::mutate(
         .data = .,
         std.error = sd / sqrt(n),
-        mean.conf.low = mean - stats::qt(
-          p = 1 - (0.05 / 2),
-          df = n - 1,
-          lower.tail = TRUE
-        ) * std.error,
-        mean.conf.high = mean + stats::qt(
-          p = 1 - (0.05 / 2),
-          df = n - 1,
-          lower.tail = TRUE
-        ) * std.error
+        mean.conf.low = mean - stats::qt(p = 1 - (0.05 / 2), df = n - 1) * std.error,
+        mean.conf.high = mean + stats::qt(p = 1 - (0.05 / 2), df = n - 1) * std.error
       )
   } else {
     df_summary <- df_skim
   }
 
   # remove the histogram column
-  if ("hist" %in% names(df_summary)) {
-    df_summary %<>% dplyr::select(.data = ., -hist)
-  }
+  if ("hist" %in% names(df_summary)) df_summary %<>% dplyr::select(.data = ., -hist)
 
   # return the summary dataframe
   return(df_summary)

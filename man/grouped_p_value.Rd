@@ -13,9 +13,7 @@ grouped_p_value(data, grouping.vars, ..f, ...)
 
 \item{..f}{A function, or function name as a string.}
 
-\item{...}{Arguments to function.
-
-These dots support \link[rlang]{tidy-dots} features.}
+\item{...}{<\link[rlang:dyn-dots]{dynamic}> Arguments for \code{.fn}.}
 }
 \description{
 Extracting \emph{p}-values for models that don't produce them.
