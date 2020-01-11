@@ -13,7 +13,8 @@
 #' @importFrom broomExtra tidy
 #' @importFrom stats chisq.test
 #' @importFrom rlang enquos
-#' @importFrom dplyr group_by_at group_modify count ungroup count tibble
+#' @importFrom dplyr group_by_at group_modify ungroup group_vars
+#' @importFrom dplyr count tibble left_join
 #'
 #' @examples
 #' # for reproducibility
@@ -28,9 +29,15 @@
 
 # function body
 grouped_proptest <- function(data, grouping.vars, measure, ...) {
-  df_result <-
-    data %>%
-    dplyr::group_by_at(., rlang::enquos(grouping.vars), .drop = TRUE) %>%
+  # creating a grouped dataframe
+  df_grouped <- dplyr::group_by_at(data, rlang::enquos(grouping.vars))
+
+  # extracting grouping variables as a character
+  grouping_vars <- dplyr::group_vars(df_grouped)
+
+  # calculating percentages and running chi-squared test
+  df_results <-
+    df_grouped %>%
     {
       dplyr::left_join(
         x = (.) %>%
@@ -39,19 +46,21 @@ grouped_proptest <- function(data, grouping.vars, measure, ...) {
           dplyr::select(-n) %>%
           tidyr::spread(data = ., key = {{ measure }}, value = perc),
         y = (.) %>%
-          dplyr::group_modify(.f = ~ chisq_test_safe(., {{ measure }}))
+          dplyr::group_modify(.f = ~ chisq_test_safe(., {{ measure }})),
+        by = grouping_vars
       )
     } %>%
     dplyr::ungroup(.) %>%
     signif_column(data = ., p = p.value)
 
-  # need to explicitly return the dataframe here
-  return(df_result)
+  # the result must be returned explicitly here
+  return(df_results)
 }
 
 # safer version of chi-squared test that returns NAs
 # needed to work with `group_modify` since it will not work when NULL is returned
 # by `broomExtra::tidy`
+#' @noRd
 
 chisq_test_safe <- function(data, x) {
   # create a table

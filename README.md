@@ -25,7 +25,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--11--26-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2020--01--11-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
@@ -133,9 +133,20 @@ To see arguments for any of the functions, use `args`. For example-
 
 ``` r
 args(groupedstats::grouped_ttest)
-#> Registered S3 method overwritten by 'broom.mixed':
-#>   method      from 
-#>   tidy.gamlss broom
+#> Registered S3 methods overwritten by 'broom.mixed':
+#>   method         from 
+#>   augment.lme    broom
+#>   augment.merMod broom
+#>   glance.lme     broom
+#>   glance.merMod  broom
+#>   glance.stanreg broom
+#>   tidy.brmsfit   broom
+#>   tidy.gamlss    broom
+#>   tidy.lme       broom
+#>   tidy.merMod    broom
+#>   tidy.rjags     broom
+#>   tidy.stanfit   broom
+#>   tidy.stanreg   broom
 #> function (data, dep.vars, indep.vars, grouping.vars, paired = FALSE, 
 #>     var.equal = FALSE) 
 #> NULL
@@ -181,22 +192,22 @@ groupedstats::grouped_tidy(
   family = stats::binomial(link = "logit")
 )
 #> # A tibble: 14 x 7
-#>    Class Age   term         estimate  std.error statistic   p.value
-#>    <fct> <fct> <chr>           <dbl>      <dbl>     <dbl>     <dbl>
-#>  1 1st   Adult (Intercept)  3.56e+ 0      0.507  7.01e+ 0  2.36e-12
-#>  2 1st   Adult SexMale     -4.28e+ 0      0.532 -8.05e+ 0  8.36e-16
-#>  3 1st   Child (Intercept) -2.46e+ 1 131011.    -1.88e- 4 10.00e- 1
-#>  4 1st   Child SexMale     -1.74e-15 143515.    -1.21e-20  1.00e+ 0
-#>  5 2nd   Adult (Intercept)  1.82e+ 0      0.299  6.08e+ 0  1.23e- 9
-#>  6 2nd   Adult SexMale     -4.21e+ 0      0.409 -1.03e+ 1  6.79e-25
-#>  7 2nd   Child (Intercept) -2.56e+ 1  59908.    -4.27e- 4 10.00e- 1
-#>  8 2nd   Child SexMale     -7.14e-15  88489.    -8.07e-20  1.00e+ 0
-#>  9 3rd   Adult (Intercept) -1.58e- 1      0.156 -1.01e+ 0  3.12e- 1
-#> 10 3rd   Adult SexMale     -1.48e+ 0      0.201 -7.39e+ 0  1.51e-13
-#> 11 3rd   Child (Intercept) -1.94e- 1      0.361 -5.38e- 1  5.91e- 1
-#> 12 3rd   Child SexMale     -7.96e- 1      0.486 -1.64e+ 0  1.01e- 1
-#> 13 Crew  Adult (Intercept)  1.90e+ 0      0.619  3.06e+ 0  2.18e- 3
-#> 14 Crew  Adult SexMale     -3.15e+ 0      0.625 -5.04e+ 0  4.68e- 7
+#>    Class Age   term         estimate  std.error statistic  p.value
+#>    <fct> <fct> <chr>           <dbl>      <dbl>     <dbl>    <dbl>
+#>  1 1st   Adult (Intercept)  3.56e+ 0      0.507  7.01e+ 0 2.36e-12
+#>  2 1st   Adult SexMale     -4.28e+ 0      0.532 -8.05e+ 0 8.36e-16
+#>  3 1st   Child (Intercept) -2.46e+ 1 131011.    -1.88e- 4 1.00e+ 0
+#>  4 1st   Child SexMale     -1.74e-15 143515.    -1.21e-20 1.00e+ 0
+#>  5 2nd   Adult (Intercept)  1.82e+ 0      0.299  6.08e+ 0 1.23e- 9
+#>  6 2nd   Adult SexMale     -4.21e+ 0      0.409 -1.03e+ 1 6.79e-25
+#>  7 2nd   Child (Intercept) -2.56e+ 1  59908.    -4.27e- 4 1.00e+ 0
+#>  8 2nd   Child SexMale     -7.14e-15  88489.    -8.07e-20 1.00e+ 0
+#>  9 3rd   Adult (Intercept) -1.58e- 1      0.156 -1.01e+ 0 3.12e- 1
+#> 10 3rd   Adult SexMale     -1.48e+ 0      0.201 -7.39e+ 0 1.51e-13
+#> 11 3rd   Child (Intercept) -1.94e- 1      0.361 -5.38e- 1 5.91e- 1
+#> 12 3rd   Child SexMale     -7.96e- 1      0.486 -1.64e+ 0 1.01e- 1
+#> 13 Crew  Adult (Intercept)  1.90e+ 0      0.619  3.06e+ 0 2.18e- 3
+#> 14 Crew  Adult SexMale     -3.15e+ 0      0.625 -5.04e+ 0 4.68e- 7
 ```
 
 For more examples, see:
@@ -700,31 +711,31 @@ groupedstats::grouped_lm(
   formula = price ~ carat * clarity, # formula
   output = "glance" # dataframe with model summaries
 )
-#> # A tibble: 35 x 14
+#> # A tibble: 35 x 13
 #>    cut   color r.squared adj.r.squared sigma statistic   p.value    df logLik
-#>    <ord> <ord>     <dbl>         <dbl> <dbl>     <dbl>     <dbl> <dbl>  <dbl>
-#>  1 Fair  D         0.915         0.906 1005.      106. 1.03e- 70    15 -1350.
-#>  2 Fair  E         0.917         0.912  883.      179. 8.70e-106    13 -1830.
-#>  3 Fair  F         0.917         0.912  954.      217. 9.37e-150    15 -2575.
-#>  4 Fair  G         0.932         0.929  964.      273. 5.03e-164    15 -2595.
-#>  5 Fair  H         0.932         0.929 1033.      332. 1.76e-161    12 -2526.
-#>  6 Fair  I         0.958         0.955  794.      307. 1.14e-104    12 -1410.
-#>  7 Fair  J         0.955         0.950  907.      204. 1.82e- 66    11  -973.
-#>  8 Good  D         0.933         0.931  831.      600. 0.           15 -5382.
-#>  9 Good  E         0.927         0.926  905.      781. 0.           15 -7667.
-#> 10 Good  F         0.915         0.914  939.      644. 0.           15 -7504.
-#>       AIC    BIC   deviance df.residual  nobs
-#>     <dbl>  <dbl>      <dbl>       <int> <int>
-#>  1  2733.  2786. 148463951.         147   163
-#>  2  3690.  3741. 163677866.         210   224
-#>  3  5184.  5248. 269389292.         296   312
-#>  4  5224.  5288. 277025077.         298   314
-#>  5  5081.  5133. 309753202.         290   303
-#>  6  2848.  2892. 102049583.         162   175
-#>  7  1972.  2008.  88046170.         107   119
-#>  8 10797. 10874. 446239835.         646   662
-#>  9 15369. 15451. 750592238.         917   933
-#> 10 15042. 15123. 787519475.         893   909
+#>    <ord> <ord>     <dbl>         <dbl> <dbl>     <dbl>     <dbl> <int>  <dbl>
+#>  1 Fair  D         0.915         0.906 1005.      106. 1.03e- 70    16 -1350.
+#>  2 Fair  E         0.917         0.912  883.      179. 8.70e-106    14 -1830.
+#>  3 Fair  F         0.917         0.912  954.      217. 9.37e-150    16 -2575.
+#>  4 Fair  G         0.932         0.929  964.      273. 5.03e-164    16 -2595.
+#>  5 Fair  H         0.932         0.929 1033.      332. 1.76e-161    13 -2526.
+#>  6 Fair  I         0.958         0.955  794.      307. 1.14e-104    13 -1410.
+#>  7 Fair  J         0.955         0.950  907.      204. 1.82e- 66    12  -973.
+#>  8 Good  D         0.933         0.931  831.      600. 0.           16 -5382.
+#>  9 Good  E         0.927         0.926  905.      781. 0.           16 -7667.
+#> 10 Good  F         0.915         0.914  939.      644. 0.           16 -7504.
+#>       AIC    BIC   deviance df.residual
+#>     <dbl>  <dbl>      <dbl>       <int>
+#>  1  2733.  2786. 148463951.         147
+#>  2  3690.  3741. 163677866.         210
+#>  3  5184.  5248. 269389292.         296
+#>  4  5224.  5288. 277025077.         298
+#>  5  5081.  5133. 309753202.         290
+#>  6  2848.  2892. 102049583.         162
+#>  7  1972.  2008.  88046170.         107
+#>  8 10797. 10874. 446239835.         646
+#>  9 15369. 15451. 750592238.         917
+#> 10 15042. 15123. 787519475.         893
 #> # ... with 25 more rows
 ```
 
@@ -879,13 +890,13 @@ groupedstats::grouped_glm(
   family = stats::binomial(link = "logit"),
   output = "glance"
 )
-#> # A tibble: 4 x 9
-#>   Class null.deviance df.null logLik   AIC   BIC deviance df.residual  nobs
-#>   <fct>         <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>       <int> <int>
-#> 1 1st            430.     324  -134.  272.  280.     268.         323   325
-#> 2 2nd            387.     284  -112.  228.  235.     224.         283   285
-#> 3 3rd            797.     705  -370.  744.  753.     740.         704   706
-#> 4 Crew           974.     884  -466.  936.  946.     932.         883   885
+#> # A tibble: 4 x 8
+#>   Class null.deviance df.null logLik   AIC   BIC deviance df.residual
+#>   <fct>         <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>       <int>
+#> 1 1st            430.     324  -134.  272.  280.     268.         323
+#> 2 2nd            387.     284  -112.  228.  235.     224.         283
+#> 3 3rd            797.     705  -370.  744.  753.     740.         704
+#> 4 Crew           974.     884  -466.  936.  946.     932.         883
 ```
 
 ## `grouped_lmer`
@@ -1081,8 +1092,8 @@ groupedstats::grouped_proptest(
 #> # A tibble: 3 x 8
 #>     cyl `0`    `1`    statistic p.value parameter
 #>   <dbl> <chr>  <chr>      <dbl>   <dbl>     <dbl>
-#> 1     6 57.14% 42.86%     0.143 0.705           1
-#> 2     4 27.27% 72.73%     2.27  0.132           1
+#> 1     4 27.27% 72.73%     2.27  0.132           1
+#> 2     6 57.14% 42.86%     0.143 0.705           1
 #> 3     8 85.71% 14.29%     7.14  0.00753         1
 #>   method                                   significance
 #>   <chr>                                    <chr>       
@@ -1321,24 +1332,24 @@ groupedstats::grouped_wilcox(
 #> 14 I1      price ~ color Wilcoxon rank sum test with continuity correction
 #> 15 VVS1    price ~ color Wilcoxon rank sum test with continuity correction
 #> 16 IF      price ~ color Wilcoxon rank sum test with continuity correction
-#>    statistic      estimate   conf.low     conf.high  p.value significance
-#>        <dbl>         <dbl>      <dbl>         <dbl>    <dbl> <chr>       
-#>  1   380600     -0.200        -0.300     -0.0000364 1.54e- 2 *           
-#>  2   918892      0.0000393    -0.1000     0.100     6.77e- 1 ns          
-#>  3   276743     -0.400        -0.500     -0.300     7.03e-12 ***         
-#>  4    52618     -0.400        -0.600     -0.200     4.18e- 4 ***         
-#>  5   816784.    -0.200        -0.300     -0.1000    8.86e- 5 ***         
-#>  6     1570.    -2.00         -3.00      -1.000     1.21e- 4 ***         
-#>  7    19455     -0.300        -0.500     -0.1000    5.07e- 3 **          
-#>  8     3286     -0.300        -0.700     -0.0000251 4.79e- 2 *           
-#>  9   269016  -1844.        -2182.     -1505.        8.82e-31 ***         
-#> 10   608724. -1510.        -1789.     -1312.        8.20e-43 ***         
-#> 11   277389  -1095.        -1414.      -745.        1.11e-11 ***         
-#> 12    42795  -1764.        -2920.     -1205.        2.23e-10 ***         
-#> 13   560930  -1888.        -2228.     -1539.        1.08e-54 ***         
-#> 14     2017  -1150.        -1832.       -79.0       3.68e- 2 *           
-#> 15    19086   -362.         -859.      -107.        2.57e- 3 **          
-#> 16     5085    296.          125.       449.        4.94e- 3 **
+#>    statistic      estimate  conf.low     conf.high  p.value significance
+#>        <dbl>         <dbl>     <dbl>         <dbl>    <dbl> <chr>       
+#>  1   380600     -0.200        -0.300    -0.0000364 1.54e- 2 *           
+#>  2   918892      0.0000393    -0.100     0.100     6.77e- 1 ns          
+#>  3   276743     -0.400        -0.500    -0.300     7.03e-12 ***         
+#>  4    52618     -0.400        -0.600    -0.200     4.18e- 4 ***         
+#>  5   816784.    -0.200        -0.300    -0.100     8.86e- 5 ***         
+#>  6     1570.    -2.00         -3.00     -1.00      1.21e- 4 ***         
+#>  7    19455     -0.300        -0.500    -0.100     5.07e- 3 **          
+#>  8     3286     -0.300        -0.700    -0.0000251 4.79e- 2 *           
+#>  9   269016  -1844.        -2182.    -1505.        8.82e-31 ***         
+#> 10   608724. -1510.        -1789.    -1312.        8.20e-43 ***         
+#> 11   277389  -1095.        -1414.     -745.        1.11e-11 ***         
+#> 12    42795  -1764.        -2920.    -1205.        2.23e-10 ***         
+#> 13   560930  -1888.        -2228.    -1539.        1.08e-54 ***         
+#> 14     2017  -1150.        -1832.      -79.0       3.68e- 2 *           
+#> 15    19086   -362.         -859.     -107.        2.57e- 3 **          
+#> 16     5085    296.          125.      449.        4.94e- 3 **
 ```
 
 We can further focus just on two levels of clarity to further elucidate
@@ -1427,7 +1438,7 @@ results_df <-
   dplyr::arrange(.data = ., dplyr::desc(adj.r.squared))
 
 head(results_df)
-#> # A tibble: 6 x 15
+#> # A tibble: 6 x 14
 #> # Groups:   mpaa, genre [3]
 #>   model mpaa  genre       r.squared adj.r.squared  sigma statistic      p.value
 #>   <chr> <fct> <fct>           <dbl>         <dbl>  <dbl>     <dbl>        <dbl>
@@ -1437,14 +1448,14 @@ head(results_df)
 #> 4 1     PG    Documentary     0.449         0.174 0.386       1.63 0.330       
 #> 5 4     R     Action          0.142         0.138 0.254      34.6  0.0000000162
 #> 6 2     R     Action          0.129         0.125 1.31       30.9  0.0000000825
-#>      df   logLik    AIC    BIC  deviance df.residual  nobs
-#>   <dbl>    <dbl>  <dbl>  <dbl>     <dbl>       <int> <int>
-#> 1     1   -7.40   20.8   20.6    3.39              5     7
-#> 2     1    5.09   -4.18  -4.35   0.0957            5     7
-#> 3     1    7.45   -8.90 -10.7    0.00565           2     4
-#> 4     1   -0.479   6.96   5.12   0.298             2     4
-#> 5     1   -9.39   24.8   34.8   13.5             209   211
-#> 6     1 -356.    718.   728.   361.              209   211
+#>      df   logLik    AIC    BIC  deviance df.residual
+#>   <int>    <dbl>  <dbl>  <dbl>     <dbl>       <int>
+#> 1     2   -7.40   20.8   20.6    3.39              5
+#> 2     2    5.09   -4.18  -4.35   0.0957            5
+#> 3     2    7.45   -8.90 -10.7    0.00565           2
+#> 4     2   -0.479   6.96   5.12   0.298             2
+#> 5     2   -9.39   24.8   34.8   13.5             209
+#> 6     2 -356.    718.   728.   361.              209
 ```
 
 # Current code coverage

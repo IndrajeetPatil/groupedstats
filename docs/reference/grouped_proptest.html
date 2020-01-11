@@ -131,7 +131,7 @@
     <p>Function to run proportion test on grouped data.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>grouped_proptest</span>(<span class='no'>data</span>, <span class='no'>grouping.vars</span>, <span class='no'>measure</span>)</pre>
+    <pre class="usage"><span class='fu'>grouped_proptest</span>(<span class='no'>data</span>, <span class='no'>grouping.vars</span>, <span class='no'>measure</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -148,6 +148,10 @@
       <th>measure</th>
       <td><p>A variable for which proportion test needs to be carried out
 for each combination of levels of factors entered in <code>grouping.vars</code>.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Currently ignored.</p></td>
     </tr>
     </table>
 
@@ -167,8 +171,8 @@ test.</p>
 )</div><div class='output co'>#&gt; <span class='warning'>Warning: Chi-squared approximation may be incorrect</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 3 x 8</span><span>
 #&gt;     cyl `0`    `1`    statistic p.value parameter
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>     6 57.14% 42.86%     0.143 0.705           1
-#&gt; </span><span style='color: #555555;'>2</span><span>     4 27.27% 72.73%     2.27  0.132           1
+#&gt; </span><span style='color: #555555;'>1</span><span>     4 27.27% 72.73%     2.27  0.132           1
+#&gt; </span><span style='color: #555555;'>2</span><span>     6 57.14% 42.86%     0.143 0.705           1
 #&gt; </span><span style='color: #555555;'>3</span><span>     8 85.71% 14.29%     7.14  0.007</span><span style='text-decoration: underline;'>53</span><span>         1
 #&gt;   method                                   significance
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
