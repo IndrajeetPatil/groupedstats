@@ -4,7 +4,7 @@
 \alias{grouped_proptest}
 \title{Function to run proportion test on grouped data.}
 \usage{
-grouped_proptest(data, grouping.vars, measure)
+grouped_proptest(data, grouping.vars, measure, ...)
 }
 \arguments{
 \item{data}{Dataframe (or tibble) from which variables are to be taken.}
@@ -13,6 +13,8 @@ grouped_proptest(data, grouping.vars, measure)
 
 \item{measure}{A variable for which proportion test needs to be carried out
 for each combination of levels of factors entered in \code{grouping.vars}.}
+
+\item{...}{Currently ignored.}
 }
 \value{
 Dataframe with percentages and statistical details from a proportion

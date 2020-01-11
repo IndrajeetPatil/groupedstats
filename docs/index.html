@@ -175,22 +175,22 @@
 <span id="cb7-11"><a href="#cb7-11"></a>  <span class="dt">family =</span> stats<span class="op">::</span><span class="kw"><a href="https://rdrr.io/r/stats/family.html">binomial</a></span>(<span class="dt">link =</span> <span class="st">"logit"</span>)</span>
 <span id="cb7-12"><a href="#cb7-12"></a>)</span>
 <span id="cb7-13"><a href="#cb7-13"></a><span class="co">#&gt; # A tibble: 14 x 7</span></span>
-<span id="cb7-14"><a href="#cb7-14"></a><span class="co">#&gt;    Class Age   term         estimate  std.error statistic   p.value</span></span>
-<span id="cb7-15"><a href="#cb7-15"></a><span class="co">#&gt;    &lt;fct&gt; &lt;fct&gt; &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span></span>
-<span id="cb7-16"><a href="#cb7-16"></a><span class="co">#&gt;  1 1st   Adult (Intercept)  3.56e+ 0      0.507  7.01e+ 0  2.36e-12</span></span>
-<span id="cb7-17"><a href="#cb7-17"></a><span class="co">#&gt;  2 1st   Adult SexMale     -4.28e+ 0      0.532 -8.05e+ 0  8.36e-16</span></span>
-<span id="cb7-18"><a href="#cb7-18"></a><span class="co">#&gt;  3 1st   Child (Intercept) -2.46e+ 1 131011.    -1.88e- 4 10.00e- 1</span></span>
-<span id="cb7-19"><a href="#cb7-19"></a><span class="co">#&gt;  4 1st   Child SexMale     -1.74e-15 143515.    -1.21e-20  1.00e+ 0</span></span>
-<span id="cb7-20"><a href="#cb7-20"></a><span class="co">#&gt;  5 2nd   Adult (Intercept)  1.82e+ 0      0.299  6.08e+ 0  1.23e- 9</span></span>
-<span id="cb7-21"><a href="#cb7-21"></a><span class="co">#&gt;  6 2nd   Adult SexMale     -4.21e+ 0      0.409 -1.03e+ 1  6.79e-25</span></span>
-<span id="cb7-22"><a href="#cb7-22"></a><span class="co">#&gt;  7 2nd   Child (Intercept) -2.56e+ 1  59908.    -4.27e- 4 10.00e- 1</span></span>
-<span id="cb7-23"><a href="#cb7-23"></a><span class="co">#&gt;  8 2nd   Child SexMale     -7.14e-15  88489.    -8.07e-20  1.00e+ 0</span></span>
-<span id="cb7-24"><a href="#cb7-24"></a><span class="co">#&gt;  9 3rd   Adult (Intercept) -1.58e- 1      0.156 -1.01e+ 0  3.12e- 1</span></span>
-<span id="cb7-25"><a href="#cb7-25"></a><span class="co">#&gt; 10 3rd   Adult SexMale     -1.48e+ 0      0.201 -7.39e+ 0  1.51e-13</span></span>
-<span id="cb7-26"><a href="#cb7-26"></a><span class="co">#&gt; 11 3rd   Child (Intercept) -1.94e- 1      0.361 -5.38e- 1  5.91e- 1</span></span>
-<span id="cb7-27"><a href="#cb7-27"></a><span class="co">#&gt; 12 3rd   Child SexMale     -7.96e- 1      0.486 -1.64e+ 0  1.01e- 1</span></span>
-<span id="cb7-28"><a href="#cb7-28"></a><span class="co">#&gt; 13 Crew  Adult (Intercept)  1.90e+ 0      0.619  3.06e+ 0  2.18e- 3</span></span>
-<span id="cb7-29"><a href="#cb7-29"></a><span class="co">#&gt; 14 Crew  Adult SexMale     -3.15e+ 0      0.625 -5.04e+ 0  4.68e- 7</span></span></code></pre></div>
+<span id="cb7-14"><a href="#cb7-14"></a><span class="co">#&gt;    Class Age   term         estimate  std.error statistic  p.value</span></span>
+<span id="cb7-15"><a href="#cb7-15"></a><span class="co">#&gt;    &lt;fct&gt; &lt;fct&gt; &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb7-16"><a href="#cb7-16"></a><span class="co">#&gt;  1 1st   Adult (Intercept)  3.56e+ 0      0.507  7.01e+ 0 2.36e-12</span></span>
+<span id="cb7-17"><a href="#cb7-17"></a><span class="co">#&gt;  2 1st   Adult SexMale     -4.28e+ 0      0.532 -8.05e+ 0 8.36e-16</span></span>
+<span id="cb7-18"><a href="#cb7-18"></a><span class="co">#&gt;  3 1st   Child (Intercept) -2.46e+ 1 131011.    -1.88e- 4 1.00e+ 0</span></span>
+<span id="cb7-19"><a href="#cb7-19"></a><span class="co">#&gt;  4 1st   Child SexMale     -1.74e-15 143515.    -1.21e-20 1.00e+ 0</span></span>
+<span id="cb7-20"><a href="#cb7-20"></a><span class="co">#&gt;  5 2nd   Adult (Intercept)  1.82e+ 0      0.299  6.08e+ 0 1.23e- 9</span></span>
+<span id="cb7-21"><a href="#cb7-21"></a><span class="co">#&gt;  6 2nd   Adult SexMale     -4.21e+ 0      0.409 -1.03e+ 1 6.79e-25</span></span>
+<span id="cb7-22"><a href="#cb7-22"></a><span class="co">#&gt;  7 2nd   Child (Intercept) -2.56e+ 1  59908.    -4.27e- 4 1.00e+ 0</span></span>
+<span id="cb7-23"><a href="#cb7-23"></a><span class="co">#&gt;  8 2nd   Child SexMale     -7.14e-15  88489.    -8.07e-20 1.00e+ 0</span></span>
+<span id="cb7-24"><a href="#cb7-24"></a><span class="co">#&gt;  9 3rd   Adult (Intercept) -1.58e- 1      0.156 -1.01e+ 0 3.12e- 1</span></span>
+<span id="cb7-25"><a href="#cb7-25"></a><span class="co">#&gt; 10 3rd   Adult SexMale     -1.48e+ 0      0.201 -7.39e+ 0 1.51e-13</span></span>
+<span id="cb7-26"><a href="#cb7-26"></a><span class="co">#&gt; 11 3rd   Child (Intercept) -1.94e- 1      0.361 -5.38e- 1 5.91e- 1</span></span>
+<span id="cb7-27"><a href="#cb7-27"></a><span class="co">#&gt; 12 3rd   Child SexMale     -7.96e- 1      0.486 -1.64e+ 0 1.01e- 1</span></span>
+<span id="cb7-28"><a href="#cb7-28"></a><span class="co">#&gt; 13 Crew  Adult (Intercept)  1.90e+ 0      0.619  3.06e+ 0 2.18e- 3</span></span>
+<span id="cb7-29"><a href="#cb7-29"></a><span class="co">#&gt; 14 Crew  Adult SexMale     -3.15e+ 0      0.625 -5.04e+ 0 4.68e- 7</span></span></code></pre></div>
 <p>For more examples, see: <a href="https://indrajeetpatil.github.io/broomExtra/reference/index.html#section-grouped-variants-of-generics" class="uri">https://indrajeetpatil.github.io/broomExtra/reference/index.html#section-grouped-variants-of-generics</a></p>
 </div>
 <div id="grouped_summary" class="section level2">
@@ -798,12 +798,12 @@
 <span id="cb22-5"><a href="#cb22-5"></a><span class="co"># getting tidy output of results</span></span>
 <span id="cb22-6"><a href="#cb22-6"></a>groupedstats<span class="op">::</span><span class="kw"><a href="https://indrajeetpatil.github.io/groupedstats//reference/grouped_lmer.html">grouped_lmer</a></span>(</span>
 <span id="cb22-7"><a href="#cb22-7"></a>  <span class="dt">data =</span> gapminder,</span>
-<span id="cb22-8"><a href="#cb22-8"></a>  <span class="dt">formula =</span> <span class="kw"><a href="https://rdrr.io/r/base/scale.html">scale</a></span>(lifeExp) <span class="op">~</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/scale.html">scale</a></span>(gdpPercap) <span class="op">+</span><span class="st"> </span>(gdpPercap <span class="op">|</span></span>
-<span id="cb22-9"><a href="#cb22-9"></a><span class="st">    </span>continent),</span>
-<span id="cb22-10"><a href="#cb22-10"></a>  <span class="dt">grouping.vars =</span> year,</span>
-<span id="cb22-11"><a href="#cb22-11"></a>  <span class="dt">REML =</span> <span class="ot">FALSE</span>,</span>
-<span id="cb22-12"><a href="#cb22-12"></a>  <span class="dt">output =</span> <span class="st">"tidy"</span></span>
-<span id="cb22-13"><a href="#cb22-13"></a>)</span>
+<span id="cb22-8"><a href="#cb22-8"></a>  <span class="dt">formula =</span> <span class="kw"><a href="https://rdrr.io/r/base/scale.html">scale</a></span>(lifeExp) <span class="op">~</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/scale.html">scale</a></span>(gdpPercap) <span class="op">+</span><span class="st"> </span>(gdpPercap <span class="op">|</span><span class="st"> </span>continent),</span>
+<span id="cb22-9"><a href="#cb22-9"></a>  <span class="dt">grouping.vars =</span> year,</span>
+<span id="cb22-10"><a href="#cb22-10"></a>  <span class="dt">REML =</span> <span class="ot">FALSE</span>,</span>
+<span id="cb22-11"><a href="#cb22-11"></a>  <span class="dt">output =</span> <span class="st">"tidy"</span></span>
+<span id="cb22-12"><a href="#cb22-12"></a>)</span>
+<span id="cb22-13"><a href="#cb22-13"></a><span class="co">#&gt; boundary (singular) fit: see ?isSingular</span></span>
 <span id="cb22-14"><a href="#cb22-14"></a><span class="co">#&gt; boundary (singular) fit: see ?isSingular</span></span>
 <span id="cb22-15"><a href="#cb22-15"></a><span class="co">#&gt; boundary (singular) fit: see ?isSingular</span></span>
 <span id="cb22-16"><a href="#cb22-16"></a><span class="co">#&gt; boundary (singular) fit: see ?isSingular</span></span>
@@ -825,43 +825,43 @@
 <span id="cb22-32"><a href="#cb22-32"></a><span class="co">#&gt; boundary (singular) fit: see ?isSingular</span></span>
 <span id="cb22-33"><a href="#cb22-33"></a><span class="co">#&gt; boundary (singular) fit: see ?isSingular</span></span>
 <span id="cb22-34"><a href="#cb22-34"></a><span class="co">#&gt; boundary (singular) fit: see ?isSingular</span></span>
-<span id="cb22-35"><a href="#cb22-35"></a><span class="co">#&gt; boundary (singular) fit: see ?isSingular</span></span>
-<span id="cb22-36"><a href="#cb22-36"></a><span class="co">#&gt; # A tibble: 72 x 11</span></span>
-<span id="cb22-37"><a href="#cb22-37"></a><span class="co">#&gt;     year effect   group     term                       estimate std.error</span></span>
-<span id="cb22-38"><a href="#cb22-38"></a><span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;                         &lt;dbl&gt;     &lt;dbl&gt;</span></span>
-<span id="cb22-39"><a href="#cb22-39"></a><span class="co">#&gt;  1  1952 fixed    &lt;NA&gt;      (Intercept)                0.201        0.743</span></span>
-<span id="cb22-40"><a href="#cb22-40"></a><span class="co">#&gt;  2  1952 fixed    &lt;NA&gt;      scale(gdpPercap)           0.900        0.742</span></span>
-<span id="cb22-41"><a href="#cb22-41"></a><span class="co">#&gt;  3  1952 ran_pars continent sd__(Intercept)            1.05        NA    </span></span>
-<span id="cb22-42"><a href="#cb22-42"></a><span class="co">#&gt;  4  1952 ran_pars continent cor__(Intercept).gdpPercap 0.897       NA    </span></span>
-<span id="cb22-43"><a href="#cb22-43"></a><span class="co">#&gt;  5  1952 ran_pars continent sd__gdpPercap              0.000173    NA    </span></span>
-<span id="cb22-44"><a href="#cb22-44"></a><span class="co">#&gt;  6  1952 ran_pars Residual  sd__Observation            0.524       NA    </span></span>
-<span id="cb22-45"><a href="#cb22-45"></a><span class="co">#&gt;  7  1957 fixed    &lt;NA&gt;      (Intercept)                0.207        0.380</span></span>
-<span id="cb22-46"><a href="#cb22-46"></a><span class="co">#&gt;  8  1957 fixed    &lt;NA&gt;      scale(gdpPercap)           0.424        0.261</span></span>
-<span id="cb22-47"><a href="#cb22-47"></a><span class="co">#&gt;  9  1957 ran_pars continent sd__(Intercept)            0.593       NA    </span></span>
-<span id="cb22-48"><a href="#cb22-48"></a><span class="co">#&gt; 10  1957 ran_pars continent cor__(Intercept).gdpPercap 1.          NA    </span></span>
-<span id="cb22-49"><a href="#cb22-49"></a><span class="co">#&gt;    statistic conf.low conf.high p.value significance</span></span>
-<span id="cb22-50"><a href="#cb22-50"></a><span class="co">#&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       </span></span>
-<span id="cb22-51"><a href="#cb22-51"></a><span class="co">#&gt;  1     0.270  -1.26       1.66    0.787 ns          </span></span>
-<span id="cb22-52"><a href="#cb22-52"></a><span class="co">#&gt;  2     1.21   -0.555      2.35    0.225 ns          </span></span>
-<span id="cb22-53"><a href="#cb22-53"></a><span class="co">#&gt;  3    NA      NA         NA      NA     &lt;NA&gt;        </span></span>
-<span id="cb22-54"><a href="#cb22-54"></a><span class="co">#&gt;  4    NA      NA         NA      NA     &lt;NA&gt;        </span></span>
-<span id="cb22-55"><a href="#cb22-55"></a><span class="co">#&gt;  5    NA      NA         NA      NA     &lt;NA&gt;        </span></span>
-<span id="cb22-56"><a href="#cb22-56"></a><span class="co">#&gt;  6    NA      NA         NA      NA     &lt;NA&gt;        </span></span>
-<span id="cb22-57"><a href="#cb22-57"></a><span class="co">#&gt;  7     0.545  -0.538      0.952   0.586 ns          </span></span>
-<span id="cb22-58"><a href="#cb22-58"></a><span class="co">#&gt;  8     1.62   -0.0878     0.936   0.104 ns          </span></span>
-<span id="cb22-59"><a href="#cb22-59"></a><span class="co">#&gt;  9    NA      NA         NA      NA     &lt;NA&gt;        </span></span>
-<span id="cb22-60"><a href="#cb22-60"></a><span class="co">#&gt; 10    NA      NA         NA      NA     &lt;NA&gt;        </span></span>
-<span id="cb22-61"><a href="#cb22-61"></a><span class="co">#&gt; # ... with 62 more rows</span></span>
-<span id="cb22-62"><a href="#cb22-62"></a></span>
-<span id="cb22-63"><a href="#cb22-63"></a><span class="co"># getting tidy output of results</span></span>
-<span id="cb22-64"><a href="#cb22-64"></a>groupedstats<span class="op">::</span><span class="kw"><a href="https://indrajeetpatil.github.io/groupedstats//reference/grouped_lmer.html">grouped_lmer</a></span>(</span>
-<span id="cb22-65"><a href="#cb22-65"></a>  <span class="dt">data =</span> gapminder,</span>
-<span id="cb22-66"><a href="#cb22-66"></a>  <span class="dt">formula =</span> <span class="kw"><a href="https://rdrr.io/r/base/scale.html">scale</a></span>(lifeExp) <span class="op">~</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/scale.html">scale</a></span>(gdpPercap) <span class="op">+</span><span class="st"> </span>(gdpPercap <span class="op">|</span></span>
-<span id="cb22-67"><a href="#cb22-67"></a><span class="st">    </span>continent),</span>
-<span id="cb22-68"><a href="#cb22-68"></a>  <span class="dt">grouping.vars =</span> year,</span>
-<span id="cb22-69"><a href="#cb22-69"></a>  <span class="dt">REML =</span> <span class="ot">FALSE</span>,</span>
-<span id="cb22-70"><a href="#cb22-70"></a>  <span class="dt">output =</span> <span class="st">"glance"</span></span>
-<span id="cb22-71"><a href="#cb22-71"></a>)</span>
+<span id="cb22-35"><a href="#cb22-35"></a><span class="co">#&gt; # A tibble: 24 x 10</span></span>
+<span id="cb22-36"><a href="#cb22-36"></a><span class="co">#&gt;     year effect term             estimate std.error statistic conf.low conf.high</span></span>
+<span id="cb22-37"><a href="#cb22-37"></a><span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span id="cb22-38"><a href="#cb22-38"></a><span class="co">#&gt;  1  1952 fixed  (Intercept)         0.201    0.743      0.270  -1.26       1.66 </span></span>
+<span id="cb22-39"><a href="#cb22-39"></a><span class="co">#&gt;  2  1952 fixed  scale(gdpPercap)    0.900    0.742      1.21   -0.555      2.35 </span></span>
+<span id="cb22-40"><a href="#cb22-40"></a><span class="co">#&gt;  3  1957 fixed  (Intercept)         0.207    0.380      0.545  -0.538      0.952</span></span>
+<span id="cb22-41"><a href="#cb22-41"></a><span class="co">#&gt;  4  1957 fixed  scale(gdpPercap)    0.424    0.261      1.62   -0.0878     0.936</span></span>
+<span id="cb22-42"><a href="#cb22-42"></a><span class="co">#&gt;  5  1962 fixed  (Intercept)         0.226    0.505      0.447  -0.765      1.22 </span></span>
+<span id="cb22-43"><a href="#cb22-43"></a><span class="co">#&gt;  6  1962 fixed  scale(gdpPercap)    0.547    0.273      2.01    0.0130     1.08 </span></span>
+<span id="cb22-44"><a href="#cb22-44"></a><span class="co">#&gt;  7  1967 fixed  (Intercept)         0.233    0.308      0.757  -0.370      0.836</span></span>
+<span id="cb22-45"><a href="#cb22-45"></a><span class="co">#&gt;  8  1967 fixed  scale(gdpPercap)    0.271    0.0792     3.42    0.115      0.426</span></span>
+<span id="cb22-46"><a href="#cb22-46"></a><span class="co">#&gt;  9  1972 fixed  (Intercept)         0.268    0.312      0.859  -0.344      0.881</span></span>
+<span id="cb22-47"><a href="#cb22-47"></a><span class="co">#&gt; 10  1972 fixed  scale(gdpPercap)    0.236    0.0582     4.05    0.122      0.350</span></span>
+<span id="cb22-48"><a href="#cb22-48"></a><span class="co">#&gt;      p.value significance</span></span>
+<span id="cb22-49"><a href="#cb22-49"></a><span class="co">#&gt;        &lt;dbl&gt; &lt;chr&gt;       </span></span>
+<span id="cb22-50"><a href="#cb22-50"></a><span class="co">#&gt;  1 0.787     ns          </span></span>
+<span id="cb22-51"><a href="#cb22-51"></a><span class="co">#&gt;  2 0.225     ns          </span></span>
+<span id="cb22-52"><a href="#cb22-52"></a><span class="co">#&gt;  3 0.586     ns          </span></span>
+<span id="cb22-53"><a href="#cb22-53"></a><span class="co">#&gt;  4 0.104     ns          </span></span>
+<span id="cb22-54"><a href="#cb22-54"></a><span class="co">#&gt;  5 0.655     ns          </span></span>
+<span id="cb22-55"><a href="#cb22-55"></a><span class="co">#&gt;  6 0.0447    *           </span></span>
+<span id="cb22-56"><a href="#cb22-56"></a><span class="co">#&gt;  7 0.449     ns          </span></span>
+<span id="cb22-57"><a href="#cb22-57"></a><span class="co">#&gt;  8 0.000632  ***         </span></span>
+<span id="cb22-58"><a href="#cb22-58"></a><span class="co">#&gt;  9 0.390     ns          </span></span>
+<span id="cb22-59"><a href="#cb22-59"></a><span class="co">#&gt; 10 0.0000502 ***         </span></span>
+<span id="cb22-60"><a href="#cb22-60"></a><span class="co">#&gt; # ... with 14 more rows</span></span>
+<span id="cb22-61"><a href="#cb22-61"></a></span>
+<span id="cb22-62"><a href="#cb22-62"></a><span class="co"># getting tidy output of results</span></span>
+<span id="cb22-63"><a href="#cb22-63"></a>groupedstats<span class="op">::</span><span class="kw"><a href="https://indrajeetpatil.github.io/groupedstats//reference/grouped_lmer.html">grouped_lmer</a></span>(</span>
+<span id="cb22-64"><a href="#cb22-64"></a>  <span class="dt">data =</span> gapminder,</span>
+<span id="cb22-65"><a href="#cb22-65"></a>  <span class="dt">formula =</span> <span class="kw"><a href="https://rdrr.io/r/base/scale.html">scale</a></span>(lifeExp) <span class="op">~</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/scale.html">scale</a></span>(gdpPercap) <span class="op">+</span><span class="st"> </span>(gdpPercap <span class="op">|</span><span class="st"> </span>continent),</span>
+<span id="cb22-66"><a href="#cb22-66"></a>  <span class="dt">grouping.vars =</span> year,</span>
+<span id="cb22-67"><a href="#cb22-67"></a>  <span class="dt">REML =</span> <span class="ot">FALSE</span>,</span>
+<span id="cb22-68"><a href="#cb22-68"></a>  <span class="dt">output =</span> <span class="st">"glance"</span></span>
+<span id="cb22-69"><a href="#cb22-69"></a>)</span>
+<span id="cb22-70"><a href="#cb22-70"></a><span class="co">#&gt; boundary (singular) fit: see ?isSingular</span></span>
+<span id="cb22-71"><a href="#cb22-71"></a><span class="co">#&gt; boundary (singular) fit: see ?isSingular</span></span>
 <span id="cb22-72"><a href="#cb22-72"></a><span class="co">#&gt; boundary (singular) fit: see ?isSingular</span></span>
 <span id="cb22-73"><a href="#cb22-73"></a><span class="co">#&gt; boundary (singular) fit: see ?isSingular</span></span>
 <span id="cb22-74"><a href="#cb22-74"></a><span class="co">#&gt; boundary (singular) fit: see ?isSingular</span></span>
@@ -871,23 +871,21 @@
 <span id="cb22-78"><a href="#cb22-78"></a><span class="co">#&gt; boundary (singular) fit: see ?isSingular</span></span>
 <span id="cb22-79"><a href="#cb22-79"></a><span class="co">#&gt; boundary (singular) fit: see ?isSingular</span></span>
 <span id="cb22-80"><a href="#cb22-80"></a><span class="co">#&gt; boundary (singular) fit: see ?isSingular</span></span>
-<span id="cb22-81"><a href="#cb22-81"></a><span class="co">#&gt; boundary (singular) fit: see ?isSingular</span></span>
-<span id="cb22-82"><a href="#cb22-82"></a><span class="co">#&gt; boundary (singular) fit: see ?isSingular</span></span>
-<span id="cb22-83"><a href="#cb22-83"></a><span class="co">#&gt; # A tibble: 12 x 7</span></span>
-<span id="cb22-84"><a href="#cb22-84"></a><span class="co">#&gt;     year sigma logLik   AIC   BIC deviance df.residual</span></span>
-<span id="cb22-85"><a href="#cb22-85"></a><span class="co">#&gt;    &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt;</span></span>
-<span id="cb22-86"><a href="#cb22-86"></a><span class="co">#&gt;  1  1952 0.524  -127.  266.  283.     254.         136</span></span>
-<span id="cb22-87"><a href="#cb22-87"></a><span class="co">#&gt;  2  1957 0.557  -129.  270.  287.     258.         136</span></span>
-<span id="cb22-88"><a href="#cb22-88"></a><span class="co">#&gt;  3  1962 0.545  -129.  271.  288.     259.         136</span></span>
-<span id="cb22-89"><a href="#cb22-89"></a><span class="co">#&gt;  4  1967 0.565  -129.  270.  288.     258.         136</span></span>
-<span id="cb22-90"><a href="#cb22-90"></a><span class="co">#&gt;  5  1972 0.583  -133.  278.  296.     266.         136</span></span>
-<span id="cb22-91"><a href="#cb22-91"></a><span class="co">#&gt;  6  1977 0.579  -133.  277.  295.     265.         136</span></span>
-<span id="cb22-92"><a href="#cb22-92"></a><span class="co">#&gt;  7  1982 0.535  -122.  255.  273.     243.         136</span></span>
-<span id="cb22-93"><a href="#cb22-93"></a><span class="co">#&gt;  8  1987 0.496  -111.  233.  251.     221.         136</span></span>
-<span id="cb22-94"><a href="#cb22-94"></a><span class="co">#&gt;  9  1992 0.526  -117.  246.  264.     234.         136</span></span>
-<span id="cb22-95"><a href="#cb22-95"></a><span class="co">#&gt; 10  1997 0.494  -110.  232.  250.     220.         136</span></span>
-<span id="cb22-96"><a href="#cb22-96"></a><span class="co">#&gt; 11  2002 0.506  -113.  239.  257.     227.         136</span></span>
-<span id="cb22-97"><a href="#cb22-97"></a><span class="co">#&gt; 12  2007 0.520  -117.  247.  265.     235.         136</span></span></code></pre></div>
+<span id="cb22-81"><a href="#cb22-81"></a><span class="co">#&gt; # A tibble: 12 x 7</span></span>
+<span id="cb22-82"><a href="#cb22-82"></a><span class="co">#&gt;     year sigma logLik   AIC   BIC deviance df.residual</span></span>
+<span id="cb22-83"><a href="#cb22-83"></a><span class="co">#&gt;    &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt;</span></span>
+<span id="cb22-84"><a href="#cb22-84"></a><span class="co">#&gt;  1  1952 0.524  -127.  266.  283.     254.         136</span></span>
+<span id="cb22-85"><a href="#cb22-85"></a><span class="co">#&gt;  2  1957 0.557  -129.  270.  287.     258.         136</span></span>
+<span id="cb22-86"><a href="#cb22-86"></a><span class="co">#&gt;  3  1962 0.545  -129.  271.  288.     259.         136</span></span>
+<span id="cb22-87"><a href="#cb22-87"></a><span class="co">#&gt;  4  1967 0.565  -129.  270.  288.     258.         136</span></span>
+<span id="cb22-88"><a href="#cb22-88"></a><span class="co">#&gt;  5  1972 0.583  -133.  278.  296.     266.         136</span></span>
+<span id="cb22-89"><a href="#cb22-89"></a><span class="co">#&gt;  6  1977 0.579  -133.  277.  295.     265.         136</span></span>
+<span id="cb22-90"><a href="#cb22-90"></a><span class="co">#&gt;  7  1982 0.535  -122.  255.  273.     243.         136</span></span>
+<span id="cb22-91"><a href="#cb22-91"></a><span class="co">#&gt;  8  1987 0.496  -111.  233.  251.     221.         136</span></span>
+<span id="cb22-92"><a href="#cb22-92"></a><span class="co">#&gt;  9  1992 0.526  -117.  246.  264.     234.         136</span></span>
+<span id="cb22-93"><a href="#cb22-93"></a><span class="co">#&gt; 10  1997 0.494  -110.  232.  250.     220.         136</span></span>
+<span id="cb22-94"><a href="#cb22-94"></a><span class="co">#&gt; 11  2002 0.506  -113.  239.  257.     227.         136</span></span>
+<span id="cb22-95"><a href="#cb22-95"></a><span class="co">#&gt; 12  2007 0.520  -117.  247.  265.     235.         136</span></span></code></pre></div>
 </div>
 <div id="grouped_glmer" class="section level2">
 <h2 class="hasAnchor">
@@ -969,8 +967,8 @@
 <span id="cb24-10"><a href="#cb24-10"></a><span class="co">#&gt; # A tibble: 3 x 8</span></span>
 <span id="cb24-11"><a href="#cb24-11"></a><span class="co">#&gt;     cyl `0`    `1`    statistic p.value parameter</span></span>
 <span id="cb24-12"><a href="#cb24-12"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;</span></span>
-<span id="cb24-13"><a href="#cb24-13"></a><span class="co">#&gt; 1     6 57.14% 42.86%     0.143 0.705           1</span></span>
-<span id="cb24-14"><a href="#cb24-14"></a><span class="co">#&gt; 2     4 27.27% 72.73%     2.27  0.132           1</span></span>
+<span id="cb24-13"><a href="#cb24-13"></a><span class="co">#&gt; 1     4 27.27% 72.73%     2.27  0.132           1</span></span>
+<span id="cb24-14"><a href="#cb24-14"></a><span class="co">#&gt; 2     6 57.14% 42.86%     0.143 0.705           1</span></span>
 <span id="cb24-15"><a href="#cb24-15"></a><span class="co">#&gt; 3     8 85.71% 14.29%     7.14  0.00753         1</span></span>
 <span id="cb24-16"><a href="#cb24-16"></a><span class="co">#&gt;   method                                   significance</span></span>
 <span id="cb24-17"><a href="#cb24-17"></a><span class="co">#&gt;   &lt;chr&gt;                                    &lt;chr&gt;       </span></span>
@@ -1194,24 +1192,24 @@
 <span id="cb27-98"><a href="#cb27-98"></a><span class="co">#&gt; 14 I1      price ~ color Wilcoxon rank sum test with continuity correction</span></span>
 <span id="cb27-99"><a href="#cb27-99"></a><span class="co">#&gt; 15 VVS1    price ~ color Wilcoxon rank sum test with continuity correction</span></span>
 <span id="cb27-100"><a href="#cb27-100"></a><span class="co">#&gt; 16 IF      price ~ color Wilcoxon rank sum test with continuity correction</span></span>
-<span id="cb27-101"><a href="#cb27-101"></a><span class="co">#&gt;    statistic      estimate   conf.low     conf.high  p.value significance</span></span>
-<span id="cb27-102"><a href="#cb27-102"></a><span class="co">#&gt;        &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span></span>
-<span id="cb27-103"><a href="#cb27-103"></a><span class="co">#&gt;  1   380600     -0.200        -0.300     -0.0000364 1.54e- 2 *           </span></span>
-<span id="cb27-104"><a href="#cb27-104"></a><span class="co">#&gt;  2   918892      0.0000393    -0.1000     0.100     6.77e- 1 ns          </span></span>
-<span id="cb27-105"><a href="#cb27-105"></a><span class="co">#&gt;  3   276743     -0.400        -0.500     -0.300     7.03e-12 ***         </span></span>
-<span id="cb27-106"><a href="#cb27-106"></a><span class="co">#&gt;  4    52618     -0.400        -0.600     -0.200     4.18e- 4 ***         </span></span>
-<span id="cb27-107"><a href="#cb27-107"></a><span class="co">#&gt;  5   816784.    -0.200        -0.300     -0.1000    8.86e- 5 ***         </span></span>
-<span id="cb27-108"><a href="#cb27-108"></a><span class="co">#&gt;  6     1570.    -2.00         -3.00      -1.000     1.21e- 4 ***         </span></span>
-<span id="cb27-109"><a href="#cb27-109"></a><span class="co">#&gt;  7    19455     -0.300        -0.500     -0.1000    5.07e- 3 **          </span></span>
-<span id="cb27-110"><a href="#cb27-110"></a><span class="co">#&gt;  8     3286     -0.300        -0.700     -0.0000251 4.79e- 2 *           </span></span>
-<span id="cb27-111"><a href="#cb27-111"></a><span class="co">#&gt;  9   269016  -1844.        -2182.     -1505.        8.82e-31 ***         </span></span>
-<span id="cb27-112"><a href="#cb27-112"></a><span class="co">#&gt; 10   608724. -1510.        -1789.     -1312.        8.20e-43 ***         </span></span>
-<span id="cb27-113"><a href="#cb27-113"></a><span class="co">#&gt; 11   277389  -1095.        -1414.      -745.        1.11e-11 ***         </span></span>
-<span id="cb27-114"><a href="#cb27-114"></a><span class="co">#&gt; 12    42795  -1764.        -2920.     -1205.        2.23e-10 ***         </span></span>
-<span id="cb27-115"><a href="#cb27-115"></a><span class="co">#&gt; 13   560930  -1888.        -2228.     -1539.        1.08e-54 ***         </span></span>
-<span id="cb27-116"><a href="#cb27-116"></a><span class="co">#&gt; 14     2017  -1150.        -1832.       -79.0       3.68e- 2 *           </span></span>
-<span id="cb27-117"><a href="#cb27-117"></a><span class="co">#&gt; 15    19086   -362.         -859.      -107.        2.57e- 3 **          </span></span>
-<span id="cb27-118"><a href="#cb27-118"></a><span class="co">#&gt; 16     5085    296.          125.       449.        4.94e- 3 **</span></span></code></pre></div>
+<span id="cb27-101"><a href="#cb27-101"></a><span class="co">#&gt;    statistic      estimate  conf.low     conf.high  p.value significance</span></span>
+<span id="cb27-102"><a href="#cb27-102"></a><span class="co">#&gt;        &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span></span>
+<span id="cb27-103"><a href="#cb27-103"></a><span class="co">#&gt;  1   380600     -0.200        -0.300    -0.0000364 1.54e- 2 *           </span></span>
+<span id="cb27-104"><a href="#cb27-104"></a><span class="co">#&gt;  2   918892      0.0000393    -0.100     0.100     6.77e- 1 ns          </span></span>
+<span id="cb27-105"><a href="#cb27-105"></a><span class="co">#&gt;  3   276743     -0.400        -0.500    -0.300     7.03e-12 ***         </span></span>
+<span id="cb27-106"><a href="#cb27-106"></a><span class="co">#&gt;  4    52618     -0.400        -0.600    -0.200     4.18e- 4 ***         </span></span>
+<span id="cb27-107"><a href="#cb27-107"></a><span class="co">#&gt;  5   816784.    -0.200        -0.300    -0.100     8.86e- 5 ***         </span></span>
+<span id="cb27-108"><a href="#cb27-108"></a><span class="co">#&gt;  6     1570.    -2.00         -3.00     -1.00      1.21e- 4 ***         </span></span>
+<span id="cb27-109"><a href="#cb27-109"></a><span class="co">#&gt;  7    19455     -0.300        -0.500    -0.100     5.07e- 3 **          </span></span>
+<span id="cb27-110"><a href="#cb27-110"></a><span class="co">#&gt;  8     3286     -0.300        -0.700    -0.0000251 4.79e- 2 *           </span></span>
+<span id="cb27-111"><a href="#cb27-111"></a><span class="co">#&gt;  9   269016  -1844.        -2182.    -1505.        8.82e-31 ***         </span></span>
+<span id="cb27-112"><a href="#cb27-112"></a><span class="co">#&gt; 10   608724. -1510.        -1789.    -1312.        8.20e-43 ***         </span></span>
+<span id="cb27-113"><a href="#cb27-113"></a><span class="co">#&gt; 11   277389  -1095.        -1414.     -745.        1.11e-11 ***         </span></span>
+<span id="cb27-114"><a href="#cb27-114"></a><span class="co">#&gt; 12    42795  -1764.        -2920.    -1205.        2.23e-10 ***         </span></span>
+<span id="cb27-115"><a href="#cb27-115"></a><span class="co">#&gt; 13   560930  -1888.        -2228.    -1539.        1.08e-54 ***         </span></span>
+<span id="cb27-116"><a href="#cb27-116"></a><span class="co">#&gt; 14     2017  -1150.        -1832.      -79.0       3.68e- 2 *           </span></span>
+<span id="cb27-117"><a href="#cb27-117"></a><span class="co">#&gt; 15    19086   -362.         -859.     -107.        2.57e- 3 **          </span></span>
+<span id="cb27-118"><a href="#cb27-118"></a><span class="co">#&gt; 16     5085    296.          125.      449.        4.94e- 3 **</span></span></code></pre></div>
 <p>We can further focus just on two levels of clarity to further elucidate another aspect of entering the arguments-</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># for reproducibility</span></span>
 <span id="cb28-2"><a href="#cb28-2"></a><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">123</span>)</span>

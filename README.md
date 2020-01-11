@@ -25,7 +25,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--11--26-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2020--01--11-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
@@ -181,22 +181,22 @@ groupedstats::grouped_tidy(
   family = stats::binomial(link = "logit")
 )
 #> # A tibble: 14 x 7
-#>    Class Age   term         estimate  std.error statistic   p.value
-#>    <fct> <fct> <chr>           <dbl>      <dbl>     <dbl>     <dbl>
-#>  1 1st   Adult (Intercept)  3.56e+ 0      0.507  7.01e+ 0  2.36e-12
-#>  2 1st   Adult SexMale     -4.28e+ 0      0.532 -8.05e+ 0  8.36e-16
-#>  3 1st   Child (Intercept) -2.46e+ 1 131011.    -1.88e- 4 10.00e- 1
-#>  4 1st   Child SexMale     -1.74e-15 143515.    -1.21e-20  1.00e+ 0
-#>  5 2nd   Adult (Intercept)  1.82e+ 0      0.299  6.08e+ 0  1.23e- 9
-#>  6 2nd   Adult SexMale     -4.21e+ 0      0.409 -1.03e+ 1  6.79e-25
-#>  7 2nd   Child (Intercept) -2.56e+ 1  59908.    -4.27e- 4 10.00e- 1
-#>  8 2nd   Child SexMale     -7.14e-15  88489.    -8.07e-20  1.00e+ 0
-#>  9 3rd   Adult (Intercept) -1.58e- 1      0.156 -1.01e+ 0  3.12e- 1
-#> 10 3rd   Adult SexMale     -1.48e+ 0      0.201 -7.39e+ 0  1.51e-13
-#> 11 3rd   Child (Intercept) -1.94e- 1      0.361 -5.38e- 1  5.91e- 1
-#> 12 3rd   Child SexMale     -7.96e- 1      0.486 -1.64e+ 0  1.01e- 1
-#> 13 Crew  Adult (Intercept)  1.90e+ 0      0.619  3.06e+ 0  2.18e- 3
-#> 14 Crew  Adult SexMale     -3.15e+ 0      0.625 -5.04e+ 0  4.68e- 7
+#>    Class Age   term         estimate  std.error statistic  p.value
+#>    <fct> <fct> <chr>           <dbl>      <dbl>     <dbl>    <dbl>
+#>  1 1st   Adult (Intercept)  3.56e+ 0      0.507  7.01e+ 0 2.36e-12
+#>  2 1st   Adult SexMale     -4.28e+ 0      0.532 -8.05e+ 0 8.36e-16
+#>  3 1st   Child (Intercept) -2.46e+ 1 131011.    -1.88e- 4 1.00e+ 0
+#>  4 1st   Child SexMale     -1.74e-15 143515.    -1.21e-20 1.00e+ 0
+#>  5 2nd   Adult (Intercept)  1.82e+ 0      0.299  6.08e+ 0 1.23e- 9
+#>  6 2nd   Adult SexMale     -4.21e+ 0      0.409 -1.03e+ 1 6.79e-25
+#>  7 2nd   Child (Intercept) -2.56e+ 1  59908.    -4.27e- 4 1.00e+ 0
+#>  8 2nd   Child SexMale     -7.14e-15  88489.    -8.07e-20 1.00e+ 0
+#>  9 3rd   Adult (Intercept) -1.58e- 1      0.156 -1.01e+ 0 3.12e- 1
+#> 10 3rd   Adult SexMale     -1.48e+ 0      0.201 -7.39e+ 0 1.51e-13
+#> 11 3rd   Child (Intercept) -1.94e- 1      0.361 -5.38e- 1 5.91e- 1
+#> 12 3rd   Child SexMale     -7.96e- 1      0.486 -1.64e+ 0 1.01e- 1
+#> 13 Crew  Adult (Intercept)  1.90e+ 0      0.619  3.06e+ 0 2.18e- 3
+#> 14 Crew  Adult SexMale     -3.15e+ 0      0.625 -5.04e+ 0 4.68e- 7
 ```
 
 For more examples, see:
@@ -901,8 +901,7 @@ library(gapminder)
 # getting tidy output of results
 groupedstats::grouped_lmer(
   data = gapminder,
-  formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap |
-    continent),
+  formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap | continent),
   grouping.vars = year,
   REML = FALSE,
   output = "tidy"
@@ -929,38 +928,37 @@ groupedstats::grouped_lmer(
 #> boundary (singular) fit: see ?isSingular
 #> boundary (singular) fit: see ?isSingular
 #> boundary (singular) fit: see ?isSingular
-#> # A tibble: 72 x 11
-#>     year effect   group     term                       estimate std.error
-#>    <int> <chr>    <chr>     <chr>                         <dbl>     <dbl>
-#>  1  1952 fixed    <NA>      (Intercept)                0.201        0.743
-#>  2  1952 fixed    <NA>      scale(gdpPercap)           0.900        0.742
-#>  3  1952 ran_pars continent sd__(Intercept)            1.05        NA    
-#>  4  1952 ran_pars continent cor__(Intercept).gdpPercap 0.897       NA    
-#>  5  1952 ran_pars continent sd__gdpPercap              0.000173    NA    
-#>  6  1952 ran_pars Residual  sd__Observation            0.524       NA    
-#>  7  1957 fixed    <NA>      (Intercept)                0.207        0.380
-#>  8  1957 fixed    <NA>      scale(gdpPercap)           0.424        0.261
-#>  9  1957 ran_pars continent sd__(Intercept)            0.593       NA    
-#> 10  1957 ran_pars continent cor__(Intercept).gdpPercap 1.          NA    
-#>    statistic conf.low conf.high p.value significance
-#>        <dbl>    <dbl>     <dbl>   <dbl> <chr>       
-#>  1     0.270  -1.26       1.66    0.787 ns          
-#>  2     1.21   -0.555      2.35    0.225 ns          
-#>  3    NA      NA         NA      NA     <NA>        
-#>  4    NA      NA         NA      NA     <NA>        
-#>  5    NA      NA         NA      NA     <NA>        
-#>  6    NA      NA         NA      NA     <NA>        
-#>  7     0.545  -0.538      0.952   0.586 ns          
-#>  8     1.62   -0.0878     0.936   0.104 ns          
-#>  9    NA      NA         NA      NA     <NA>        
-#> 10    NA      NA         NA      NA     <NA>        
-#> # ... with 62 more rows
+#> # A tibble: 24 x 10
+#>     year effect term             estimate std.error statistic conf.low conf.high
+#>    <int> <chr>  <chr>               <dbl>     <dbl>     <dbl>    <dbl>     <dbl>
+#>  1  1952 fixed  (Intercept)         0.201    0.743      0.270  -1.26       1.66 
+#>  2  1952 fixed  scale(gdpPercap)    0.900    0.742      1.21   -0.555      2.35 
+#>  3  1957 fixed  (Intercept)         0.207    0.380      0.545  -0.538      0.952
+#>  4  1957 fixed  scale(gdpPercap)    0.424    0.261      1.62   -0.0878     0.936
+#>  5  1962 fixed  (Intercept)         0.226    0.505      0.447  -0.765      1.22 
+#>  6  1962 fixed  scale(gdpPercap)    0.547    0.273      2.01    0.0130     1.08 
+#>  7  1967 fixed  (Intercept)         0.233    0.308      0.757  -0.370      0.836
+#>  8  1967 fixed  scale(gdpPercap)    0.271    0.0792     3.42    0.115      0.426
+#>  9  1972 fixed  (Intercept)         0.268    0.312      0.859  -0.344      0.881
+#> 10  1972 fixed  scale(gdpPercap)    0.236    0.0582     4.05    0.122      0.350
+#>      p.value significance
+#>        <dbl> <chr>       
+#>  1 0.787     ns          
+#>  2 0.225     ns          
+#>  3 0.586     ns          
+#>  4 0.104     ns          
+#>  5 0.655     ns          
+#>  6 0.0447    *           
+#>  7 0.449     ns          
+#>  8 0.000632  ***         
+#>  9 0.390     ns          
+#> 10 0.0000502 ***         
+#> # ... with 14 more rows
 
 # getting tidy output of results
 groupedstats::grouped_lmer(
   data = gapminder,
-  formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap |
-    continent),
+  formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap | continent),
   grouping.vars = year,
   REML = FALSE,
   output = "glance"
@@ -1081,8 +1079,8 @@ groupedstats::grouped_proptest(
 #> # A tibble: 3 x 8
 #>     cyl `0`    `1`    statistic p.value parameter
 #>   <dbl> <chr>  <chr>      <dbl>   <dbl>     <dbl>
-#> 1     6 57.14% 42.86%     0.143 0.705           1
-#> 2     4 27.27% 72.73%     2.27  0.132           1
+#> 1     4 27.27% 72.73%     2.27  0.132           1
+#> 2     6 57.14% 42.86%     0.143 0.705           1
 #> 3     8 85.71% 14.29%     7.14  0.00753         1
 #>   method                                   significance
 #>   <chr>                                    <chr>       
@@ -1321,24 +1319,24 @@ groupedstats::grouped_wilcox(
 #> 14 I1      price ~ color Wilcoxon rank sum test with continuity correction
 #> 15 VVS1    price ~ color Wilcoxon rank sum test with continuity correction
 #> 16 IF      price ~ color Wilcoxon rank sum test with continuity correction
-#>    statistic      estimate   conf.low     conf.high  p.value significance
-#>        <dbl>         <dbl>      <dbl>         <dbl>    <dbl> <chr>       
-#>  1   380600     -0.200        -0.300     -0.0000364 1.54e- 2 *           
-#>  2   918892      0.0000393    -0.1000     0.100     6.77e- 1 ns          
-#>  3   276743     -0.400        -0.500     -0.300     7.03e-12 ***         
-#>  4    52618     -0.400        -0.600     -0.200     4.18e- 4 ***         
-#>  5   816784.    -0.200        -0.300     -0.1000    8.86e- 5 ***         
-#>  6     1570.    -2.00         -3.00      -1.000     1.21e- 4 ***         
-#>  7    19455     -0.300        -0.500     -0.1000    5.07e- 3 **          
-#>  8     3286     -0.300        -0.700     -0.0000251 4.79e- 2 *           
-#>  9   269016  -1844.        -2182.     -1505.        8.82e-31 ***         
-#> 10   608724. -1510.        -1789.     -1312.        8.20e-43 ***         
-#> 11   277389  -1095.        -1414.      -745.        1.11e-11 ***         
-#> 12    42795  -1764.        -2920.     -1205.        2.23e-10 ***         
-#> 13   560930  -1888.        -2228.     -1539.        1.08e-54 ***         
-#> 14     2017  -1150.        -1832.       -79.0       3.68e- 2 *           
-#> 15    19086   -362.         -859.      -107.        2.57e- 3 **          
-#> 16     5085    296.          125.       449.        4.94e- 3 **
+#>    statistic      estimate  conf.low     conf.high  p.value significance
+#>        <dbl>         <dbl>     <dbl>         <dbl>    <dbl> <chr>       
+#>  1   380600     -0.200        -0.300    -0.0000364 1.54e- 2 *           
+#>  2   918892      0.0000393    -0.100     0.100     6.77e- 1 ns          
+#>  3   276743     -0.400        -0.500    -0.300     7.03e-12 ***         
+#>  4    52618     -0.400        -0.600    -0.200     4.18e- 4 ***         
+#>  5   816784.    -0.200        -0.300    -0.100     8.86e- 5 ***         
+#>  6     1570.    -2.00         -3.00     -1.00      1.21e- 4 ***         
+#>  7    19455     -0.300        -0.500    -0.100     5.07e- 3 **          
+#>  8     3286     -0.300        -0.700    -0.0000251 4.79e- 2 *           
+#>  9   269016  -1844.        -2182.    -1505.        8.82e-31 ***         
+#> 10   608724. -1510.        -1789.    -1312.        8.20e-43 ***         
+#> 11   277389  -1095.        -1414.     -745.        1.11e-11 ***         
+#> 12    42795  -1764.        -2920.    -1205.        2.23e-10 ***         
+#> 13   560930  -1888.        -2228.    -1539.        1.08e-54 ***         
+#> 14     2017  -1150.        -1832.      -79.0       3.68e- 2 *           
+#> 15    19086   -362.         -859.     -107.        2.57e- 3 **          
+#> 16     5085    296.          125.      449.        4.94e- 3 **
 ```
 
 We can further focus just on two levels of clarity to further elucidate

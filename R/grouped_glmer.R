@@ -1,5 +1,5 @@
-#' @title Function to run generalized linear mixed-effects model (glmer) across multiple
-#'   grouping variables.
+#' @title Function to run generalized linear mixed-effects model (glmer) across
+#'   multiple grouping variables.
 #' @name grouped_glmer
 #' @author Indrajeet Patil
 #' @return A tibble dataframe with tidy results from linear model or model
@@ -37,6 +37,7 @@ grouped_glmer <- function(data,
                           tidy.args = list(
                             conf.int = TRUE,
                             conf.level = 0.95,
+                            effects = "fixed",
                             conf.method = "Wald"
                           ),
                           augment.args = list()) {

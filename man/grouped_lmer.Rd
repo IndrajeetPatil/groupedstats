@@ -10,7 +10,8 @@ grouped_lmer(
   grouping.vars,
   ...,
   output = "tidy",
-  tidy.args = list(conf.int = TRUE, conf.level = 0.95, conf.method = "Wald"),
+  tidy.args = list(conf.int = TRUE, conf.level = 0.95, effects = "fixed", conf.method =
+    "Wald"),
   augment.args = list()
 )
 }

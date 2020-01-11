@@ -499,8 +499,7 @@ library(gapminder)
 # getting tidy output of results
 groupedstats::grouped_lmer(
   data = gapminder,
-  formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap |
-    continent),
+  formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap | continent),
   grouping.vars = year,
   REML = FALSE,
   output = "tidy"
@@ -509,8 +508,7 @@ groupedstats::grouped_lmer(
 # getting tidy output of results
 groupedstats::grouped_lmer(
   data = gapminder,
-  formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap |
-    continent),
+  formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap | continent),
   grouping.vars = year,
   REML = FALSE,
   output = "glance"
@@ -688,8 +686,7 @@ set.seed(123)
 
 # subset the dataframe even further to just select two levels of clarity
 diamonds_short2 <-
-  dplyr::filter(.data = diamonds_short, clarity == "SI2" |
-    clarity == "SI1")
+  dplyr::filter(.data = diamonds_short, clarity == "SI2" | clarity == "SI1")
 
 # wilcox test (aka Mann-Whitney U-test)
 groupedstats::grouped_wilcox(

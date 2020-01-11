@@ -1,6 +1,6 @@
 Tests and Coverage
 ================
-30 December, 2019 22:19:33
+11 January, 2020 17:07:31
 
   - [Coverage](#coverage)
   - [Unit Tests](#unit-tests)
@@ -15,12 +15,11 @@ Coverage summary is created using the
 
 | Object                                             | Coverage (%) |
 | :------------------------------------------------- | :----------: |
-| groupedstats                                       |    27.57     |
+| groupedstats                                       |    27.39     |
 | [R/grouped\_aov.R](../R/grouped_aov.R)             |     0.00     |
 | [R/grouped\_glm.R](../R/grouped_glm.R)             |     0.00     |
 | [R/grouped\_lm.R](../R/grouped_lm.R)               |     0.00     |
 | [R/grouped\_lmer.R](../R/grouped_lmer.R)           |     0.00     |
-| [R/grouped\_p\_value.R](../R/grouped_p_value.R)    |     0.00     |
 | [R/grouped\_robustslr.R](../R/grouped_robustslr.R) |     0.00     |
 | [R/grouped\_slr.R](../R/grouped_slr.R)             |     0.00     |
 | [R/grouped\_ttest.R](../R/grouped_ttest.R)         |     0.00     |
@@ -29,6 +28,7 @@ Coverage summary is created using the
 | [R/grouped\_glmer.R](../R/grouped_glmer.R)         |    68.97     |
 | [R/lm\_effsize\_ci.R](../R/lm_effsize_ci.R)        |    84.48     |
 | [R/utils\_formatting.R](../R/utils_formatting.R)   |    93.33     |
+| [R/grouped\_p\_value.R](../R/grouped_p_value.R)    |    100.00    |
 | [R/grouped\_proptest.R](../R/grouped_proptest.R)   |    100.00    |
 | [R/grouped\_summary.R](../R/grouped_summary.R)     |    100.00    |
 
@@ -41,12 +41,13 @@ Unit Test summary is created using the
 
 | file                                                            |  n | time | error | failed | skipped | warning | icon |
 | :-------------------------------------------------------------- | -: | ---: | ----: | -----: | ------: | ------: | :--- |
-| [test-grouped\_glm.R](testthat/test-grouped_glm.R)              |  2 | 0.00 |     0 |      0 |       2 |       0 | \+   |
-| [test-grouped\_glmer.R](testthat/test-grouped_glmer.R)          |  4 | 5.81 |     0 |      0 |       0 |       0 |      |
+| [test-grouped\_glm.R](testthat/test-grouped_glm.R)              |  2 | 0.02 |     0 |      0 |       2 |       0 | \+   |
+| [test-grouped\_glmer.R](testthat/test-grouped_glmer.R)          |  4 | 6.20 |     0 |      0 |       0 |       0 |      |
 | [test-grouped\_lm.R](testthat/test-grouped_lm.R)                |  1 | 0.00 |     0 |      0 |       1 |       0 | \+   |
-| [test-grouped\_proptest.R](testthat/test-grouped_proptest.R)    | 12 | 1.25 |     0 |      0 |       0 |       0 |      |
-| [test-grouped\_summary.R](testthat/test-grouped_summary.R)      | 19 | 1.44 |     0 |      0 |       0 |       0 |      |
-| [test-lm\_effsize\_ci.R](testthat/test-lm_effsize_ci.R)         | 56 | 4.39 |     0 |      0 |       1 |       0 | \+   |
+| [test-grouped\_p\_value.R](testthat/test-grouped_p_value.R)     |  6 | 0.15 |     0 |      0 |       0 |       0 |      |
+| [test-grouped\_proptest.R](testthat/test-grouped_proptest.R)    | 19 | 0.35 |     0 |      0 |       0 |       0 |      |
+| [test-grouped\_summary.R](testthat/test-grouped_summary.R)      | 19 | 1.56 |     0 |      0 |       0 |       0 |      |
+| [test-lm\_effsize\_ci.R](testthat/test-lm_effsize_ci.R)         | 56 | 5.31 |     0 |      0 |       1 |       0 | \+   |
 | [test-signif\_column.R](testthat/test-signif_column.R)          |  9 | 0.02 |     0 |      0 |       0 |       0 |      |
 | [test-specify\_decimal\_p.R](testthat/test-specify_decimal_p.R) |  8 | 0.02 |     0 |      0 |       0 |       0 |      |
 
@@ -57,18 +58,20 @@ Unit Test summary is created using the
 | file                                                                | context           |                      test                      | status  |  n | time | icon |
 | :------------------------------------------------------------------ | :---------------- | :--------------------------------------------: | :------ | -: | ---: | :--- |
 | [test-grouped\_glm.R](testthat/test-grouped_glm.R#L9)               | grouped\_glm      |               grouped\_glm works               | SKIPPED |  1 | 0.00 | \+   |
-| [test-grouped\_glm.R](testthat/test-grouped_glm.R#L79)              | grouped\_glm      |               grouped\_glm works               | SKIPPED |  1 | 0.00 | \+   |
-| [test-grouped\_glmer.R](testthat/test-grouped_glmer.R#L40)          | grouped\_glmer    |              grouped\_glmer works              | PASS    |  4 | 5.81 |      |
+| [test-grouped\_glm.R](testthat/test-grouped_glm.R#L79)              | grouped\_glm      |               grouped\_glm works               | SKIPPED |  1 | 0.02 | \+   |
+| [test-grouped\_glmer.R](testthat/test-grouped_glmer.R#L40)          | grouped\_glmer    |              grouped\_glmer works              | PASS    |  4 | 6.20 |      |
 | [test-grouped\_lm.R](testthat/test-grouped_lm.R#L10)                | grouped\_lm       |               grouped\_lm works                | SKIPPED |  1 | 0.00 | \+   |
-| [test-grouped\_proptest.R](testthat/test-grouped_proptest.R#L32)    | grouped\_proptest |            grouped\_proptest works             | PASS    | 12 | 1.25 |      |
-| [test-grouped\_summary.R](testthat/test-grouped_summary.R#L45)      | grouped\_summary  |     grouped\_summary with numeric measures     | PASS    | 11 | 1.08 |      |
-| [test-grouped\_summary.R](testthat/test-grouped_summary.R#L111)     | grouped\_summary  |     grouped\_summary with factor measures      | PASS    |  8 | 0.36 |      |
-| [test-lm\_effsize\_ci.R](testthat/test-lm_effsize_ci.R#L66_L69)     | lm\_effsize\_ci   |  lm\_effsize\_ci works (eta, partial = FALSE)  | PASS    | 13 | 2.47 |      |
-| [test-lm\_effsize\_ci.R](testthat/test-lm_effsize_ci.R#L188_L191)   | lm\_effsize\_ci   |  lm\_effsize\_ci works (eta, partial = TRUE)   | PASS    | 10 | 0.14 |      |
-| [test-lm\_effsize\_ci.R](testthat/test-lm_effsize_ci.R#L291_L294)   | lm\_effsize\_ci   | lm\_effsize\_ci works (omega, partial = FALSE) | PASS    | 10 | 0.16 |      |
-| [test-lm\_effsize\_ci.R](testthat/test-lm_effsize_ci.R#L404_L407)   | lm\_effsize\_ci   | lm\_effsize\_ci works (omega, partial = TRUE)  | PASS    | 10 | 0.55 |      |
-| [test-lm\_effsize\_ci.R](testthat/test-lm_effsize_ci.R#L505)        | lm\_effsize\_ci   |       lm\_effsize\_ci works with ezANOVA       | PASS    | 12 | 1.07 |      |
-| [test-lm\_effsize\_ci.R](testthat/test-lm_effsize_ci.R#L532)        | lm\_effsize\_ci   |        lm\_effsize\_standardizer works         | SKIPPED |  1 | 0.00 | \+   |
+| [test-grouped\_p\_value.R](testthat/test-grouped_p_value.R#L19)     | grouped\_p\_value |            grouped\_p\_value works             | PASS    |  6 | 0.15 |      |
+| [test-grouped\_proptest.R](testthat/test-grouped_proptest.R#L32)    | grouped\_proptest |     grouped\_proptest works - without NAs      | PASS    | 11 | 0.28 |      |
+| [test-grouped\_proptest.R](testthat/test-grouped_proptest.R#L83)    | grouped\_proptest |       grouped\_proptest works - with NAs       | PASS    |  8 | 0.07 |      |
+| [test-grouped\_summary.R](testthat/test-grouped_summary.R#L45)      | grouped\_summary  |     grouped\_summary with numeric measures     | PASS    | 11 | 1.24 |      |
+| [test-grouped\_summary.R](testthat/test-grouped_summary.R#L111)     | grouped\_summary  |     grouped\_summary with factor measures      | PASS    |  8 | 0.32 |      |
+| [test-lm\_effsize\_ci.R](testthat/test-lm_effsize_ci.R#L66_L69)     | lm\_effsize\_ci   |  lm\_effsize\_ci works (eta, partial = FALSE)  | PASS    | 13 | 3.00 |      |
+| [test-lm\_effsize\_ci.R](testthat/test-lm_effsize_ci.R#L188_L191)   | lm\_effsize\_ci   |  lm\_effsize\_ci works (eta, partial = TRUE)   | PASS    | 10 | 0.16 |      |
+| [test-lm\_effsize\_ci.R](testthat/test-lm_effsize_ci.R#L291_L294)   | lm\_effsize\_ci   | lm\_effsize\_ci works (omega, partial = FALSE) | PASS    | 10 | 0.15 |      |
+| [test-lm\_effsize\_ci.R](testthat/test-lm_effsize_ci.R#L404_L407)   | lm\_effsize\_ci   | lm\_effsize\_ci works (omega, partial = TRUE)  | PASS    | 10 | 0.80 |      |
+| [test-lm\_effsize\_ci.R](testthat/test-lm_effsize_ci.R#L505)        | lm\_effsize\_ci   |       lm\_effsize\_ci works with ezANOVA       | PASS    | 12 | 1.19 |      |
+| [test-lm\_effsize\_ci.R](testthat/test-lm_effsize_ci.R#L532)        | lm\_effsize\_ci   |        lm\_effsize\_standardizer works         | SKIPPED |  1 | 0.01 | \+   |
 | [test-signif\_column.R](testthat/test-signif_column.R#L45)          | signif column     |              signif\_column works              | PASS    |  9 | 0.02 |      |
 | [test-specify\_decimal\_p.R](testthat/test-specify_decimal_p.R#L25) | Specify decimals  |           specify\_decimal\_p works            | PASS    |  8 | 0.02 |      |
 

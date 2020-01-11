@@ -28,7 +28,7 @@ testthat::test_that(
     set.seed(123)
     df2 <- groupedstats::grouped_lm(
       data = mtcars,
-      grouping.vars = cyl,
+      grouping.vars = "cyl",
       formula = mpg ~ am * wt,
       output = "augment"
     )
@@ -38,7 +38,7 @@ testthat::test_that(
     set.seed(123)
     df3 <- groupedstats::grouped_lm(
       data = diamonds,
-      grouping.vars = c(cut, color),
+      grouping.vars = c("cut", color),
       formula = price ~ carat * clarity,
       output = "glance"
     )
