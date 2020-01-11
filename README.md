@@ -133,20 +133,9 @@ To see arguments for any of the functions, use `args`. For example-
 
 ``` r
 args(groupedstats::grouped_ttest)
-#> Registered S3 methods overwritten by 'broom.mixed':
-#>   method         from 
-#>   augment.lme    broom
-#>   augment.merMod broom
-#>   glance.lme     broom
-#>   glance.merMod  broom
-#>   glance.stanreg broom
-#>   tidy.brmsfit   broom
-#>   tidy.gamlss    broom
-#>   tidy.lme       broom
-#>   tidy.merMod    broom
-#>   tidy.rjags     broom
-#>   tidy.stanfit   broom
-#>   tidy.stanreg   broom
+#> Registered S3 method overwritten by 'broom.mixed':
+#>   method      from 
+#>   tidy.gamlss broom
 #> function (data, dep.vars, indep.vars, grouping.vars, paired = FALSE, 
 #>     var.equal = FALSE) 
 #> NULL
@@ -711,31 +700,31 @@ groupedstats::grouped_lm(
   formula = price ~ carat * clarity, # formula
   output = "glance" # dataframe with model summaries
 )
-#> # A tibble: 35 x 13
+#> # A tibble: 35 x 14
 #>    cut   color r.squared adj.r.squared sigma statistic   p.value    df logLik
-#>    <ord> <ord>     <dbl>         <dbl> <dbl>     <dbl>     <dbl> <int>  <dbl>
-#>  1 Fair  D         0.915         0.906 1005.      106. 1.03e- 70    16 -1350.
-#>  2 Fair  E         0.917         0.912  883.      179. 8.70e-106    14 -1830.
-#>  3 Fair  F         0.917         0.912  954.      217. 9.37e-150    16 -2575.
-#>  4 Fair  G         0.932         0.929  964.      273. 5.03e-164    16 -2595.
-#>  5 Fair  H         0.932         0.929 1033.      332. 1.76e-161    13 -2526.
-#>  6 Fair  I         0.958         0.955  794.      307. 1.14e-104    13 -1410.
-#>  7 Fair  J         0.955         0.950  907.      204. 1.82e- 66    12  -973.
-#>  8 Good  D         0.933         0.931  831.      600. 0.           16 -5382.
-#>  9 Good  E         0.927         0.926  905.      781. 0.           16 -7667.
-#> 10 Good  F         0.915         0.914  939.      644. 0.           16 -7504.
-#>       AIC    BIC   deviance df.residual
-#>     <dbl>  <dbl>      <dbl>       <int>
-#>  1  2733.  2786. 148463951.         147
-#>  2  3690.  3741. 163677866.         210
-#>  3  5184.  5248. 269389292.         296
-#>  4  5224.  5288. 277025077.         298
-#>  5  5081.  5133. 309753202.         290
-#>  6  2848.  2892. 102049583.         162
-#>  7  1972.  2008.  88046170.         107
-#>  8 10797. 10874. 446239835.         646
-#>  9 15369. 15451. 750592238.         917
-#> 10 15042. 15123. 787519475.         893
+#>    <ord> <ord>     <dbl>         <dbl> <dbl>     <dbl>     <dbl> <dbl>  <dbl>
+#>  1 Fair  D         0.915         0.906 1005.      106. 1.03e- 70    15 -1350.
+#>  2 Fair  E         0.917         0.912  883.      179. 8.70e-106    13 -1830.
+#>  3 Fair  F         0.917         0.912  954.      217. 9.37e-150    15 -2575.
+#>  4 Fair  G         0.932         0.929  964.      273. 5.03e-164    15 -2595.
+#>  5 Fair  H         0.932         0.929 1033.      332. 1.76e-161    12 -2526.
+#>  6 Fair  I         0.958         0.955  794.      307. 1.14e-104    12 -1410.
+#>  7 Fair  J         0.955         0.950  907.      204. 1.82e- 66    11  -973.
+#>  8 Good  D         0.933         0.931  831.      600. 0.           15 -5382.
+#>  9 Good  E         0.927         0.926  905.      781. 0.           15 -7667.
+#> 10 Good  F         0.915         0.914  939.      644. 0.           15 -7504.
+#>       AIC    BIC   deviance df.residual  nobs
+#>     <dbl>  <dbl>      <dbl>       <int> <int>
+#>  1  2733.  2786. 148463951.         147   163
+#>  2  3690.  3741. 163677866.         210   224
+#>  3  5184.  5248. 269389292.         296   312
+#>  4  5224.  5288. 277025077.         298   314
+#>  5  5081.  5133. 309753202.         290   303
+#>  6  2848.  2892. 102049583.         162   175
+#>  7  1972.  2008.  88046170.         107   119
+#>  8 10797. 10874. 446239835.         646   662
+#>  9 15369. 15451. 750592238.         917   933
+#> 10 15042. 15123. 787519475.         893   909
 #> # ... with 25 more rows
 ```
 
@@ -890,13 +879,13 @@ groupedstats::grouped_glm(
   family = stats::binomial(link = "logit"),
   output = "glance"
 )
-#> # A tibble: 4 x 8
-#>   Class null.deviance df.null logLik   AIC   BIC deviance df.residual
-#>   <fct>         <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>       <int>
-#> 1 1st            430.     324  -134.  272.  280.     268.         323
-#> 2 2nd            387.     284  -112.  228.  235.     224.         283
-#> 3 3rd            797.     705  -370.  744.  753.     740.         704
-#> 4 Crew           974.     884  -466.  936.  946.     932.         883
+#> # A tibble: 4 x 9
+#>   Class null.deviance df.null logLik   AIC   BIC deviance df.residual  nobs
+#>   <fct>         <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>       <int> <int>
+#> 1 1st            430.     324  -134.  272.  280.     268.         323   325
+#> 2 2nd            387.     284  -112.  228.  235.     224.         283   285
+#> 3 3rd            797.     705  -370.  744.  753.     740.         704   706
+#> 4 Crew           974.     884  -466.  936.  946.     932.         883   885
 ```
 
 ## `grouped_lmer`
@@ -912,8 +901,7 @@ library(gapminder)
 # getting tidy output of results
 groupedstats::grouped_lmer(
   data = gapminder,
-  formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap |
-    continent),
+  formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap | continent),
   grouping.vars = year,
   REML = FALSE,
   output = "tidy"
@@ -940,38 +928,37 @@ groupedstats::grouped_lmer(
 #> boundary (singular) fit: see ?isSingular
 #> boundary (singular) fit: see ?isSingular
 #> boundary (singular) fit: see ?isSingular
-#> # A tibble: 72 x 11
-#>     year effect   group     term                       estimate std.error
-#>    <int> <chr>    <chr>     <chr>                         <dbl>     <dbl>
-#>  1  1952 fixed    <NA>      (Intercept)                0.201        0.743
-#>  2  1952 fixed    <NA>      scale(gdpPercap)           0.900        0.742
-#>  3  1952 ran_pars continent sd__(Intercept)            1.05        NA    
-#>  4  1952 ran_pars continent cor__(Intercept).gdpPercap 0.897       NA    
-#>  5  1952 ran_pars continent sd__gdpPercap              0.000173    NA    
-#>  6  1952 ran_pars Residual  sd__Observation            0.524       NA    
-#>  7  1957 fixed    <NA>      (Intercept)                0.207        0.380
-#>  8  1957 fixed    <NA>      scale(gdpPercap)           0.424        0.261
-#>  9  1957 ran_pars continent sd__(Intercept)            0.593       NA    
-#> 10  1957 ran_pars continent cor__(Intercept).gdpPercap 1.          NA    
-#>    statistic conf.low conf.high p.value significance
-#>        <dbl>    <dbl>     <dbl>   <dbl> <chr>       
-#>  1     0.270  -1.26       1.66    0.787 ns          
-#>  2     1.21   -0.555      2.35    0.225 ns          
-#>  3    NA      NA         NA      NA     <NA>        
-#>  4    NA      NA         NA      NA     <NA>        
-#>  5    NA      NA         NA      NA     <NA>        
-#>  6    NA      NA         NA      NA     <NA>        
-#>  7     0.545  -0.538      0.952   0.586 ns          
-#>  8     1.62   -0.0878     0.936   0.104 ns          
-#>  9    NA      NA         NA      NA     <NA>        
-#> 10    NA      NA         NA      NA     <NA>        
-#> # ... with 62 more rows
+#> # A tibble: 24 x 10
+#>     year effect term             estimate std.error statistic conf.low conf.high
+#>    <int> <chr>  <chr>               <dbl>     <dbl>     <dbl>    <dbl>     <dbl>
+#>  1  1952 fixed  (Intercept)         0.201    0.743      0.270  -1.26       1.66 
+#>  2  1952 fixed  scale(gdpPercap)    0.900    0.742      1.21   -0.555      2.35 
+#>  3  1957 fixed  (Intercept)         0.207    0.380      0.545  -0.538      0.952
+#>  4  1957 fixed  scale(gdpPercap)    0.424    0.261      1.62   -0.0878     0.936
+#>  5  1962 fixed  (Intercept)         0.226    0.505      0.447  -0.765      1.22 
+#>  6  1962 fixed  scale(gdpPercap)    0.547    0.273      2.01    0.0130     1.08 
+#>  7  1967 fixed  (Intercept)         0.233    0.308      0.757  -0.370      0.836
+#>  8  1967 fixed  scale(gdpPercap)    0.271    0.0792     3.42    0.115      0.426
+#>  9  1972 fixed  (Intercept)         0.268    0.312      0.859  -0.344      0.881
+#> 10  1972 fixed  scale(gdpPercap)    0.236    0.0582     4.05    0.122      0.350
+#>      p.value significance
+#>        <dbl> <chr>       
+#>  1 0.787     ns          
+#>  2 0.225     ns          
+#>  3 0.586     ns          
+#>  4 0.104     ns          
+#>  5 0.655     ns          
+#>  6 0.0447    *           
+#>  7 0.449     ns          
+#>  8 0.000632  ***         
+#>  9 0.390     ns          
+#> 10 0.0000502 ***         
+#> # ... with 14 more rows
 
 # getting tidy output of results
 groupedstats::grouped_lmer(
   data = gapminder,
-  formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap |
-    continent),
+  formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap | continent),
   grouping.vars = year,
   REML = FALSE,
   output = "glance"
@@ -1438,7 +1425,7 @@ results_df <-
   dplyr::arrange(.data = ., dplyr::desc(adj.r.squared))
 
 head(results_df)
-#> # A tibble: 6 x 14
+#> # A tibble: 6 x 15
 #> # Groups:   mpaa, genre [3]
 #>   model mpaa  genre       r.squared adj.r.squared  sigma statistic      p.value
 #>   <chr> <fct> <fct>           <dbl>         <dbl>  <dbl>     <dbl>        <dbl>
@@ -1448,14 +1435,14 @@ head(results_df)
 #> 4 1     PG    Documentary     0.449         0.174 0.386       1.63 0.330       
 #> 5 4     R     Action          0.142         0.138 0.254      34.6  0.0000000162
 #> 6 2     R     Action          0.129         0.125 1.31       30.9  0.0000000825
-#>      df   logLik    AIC    BIC  deviance df.residual
-#>   <int>    <dbl>  <dbl>  <dbl>     <dbl>       <int>
-#> 1     2   -7.40   20.8   20.6    3.39              5
-#> 2     2    5.09   -4.18  -4.35   0.0957            5
-#> 3     2    7.45   -8.90 -10.7    0.00565           2
-#> 4     2   -0.479   6.96   5.12   0.298             2
-#> 5     2   -9.39   24.8   34.8   13.5             209
-#> 6     2 -356.    718.   728.   361.              209
+#>      df   logLik    AIC    BIC  deviance df.residual  nobs
+#>   <dbl>    <dbl>  <dbl>  <dbl>     <dbl>       <int> <int>
+#> 1     1   -7.40   20.8   20.6    3.39              5     7
+#> 2     1    5.09   -4.18  -4.35   0.0957            5     7
+#> 3     1    7.45   -8.90 -10.7    0.00565           2     4
+#> 4     1   -0.479   6.96   5.12   0.298             2     4
+#> 5     1   -9.39   24.8   34.8   13.5             209   211
+#> 6     1 -356.    718.   728.   361.              209   211
 ```
 
 # Current code coverage

@@ -17,15 +17,7 @@ grouped_p_value <- function(data,
                             grouping.vars,
                             ..f,
                             ...) {
-  # check how many variables were entered for grouping variable vector
-  grouping.vars <- as.list(rlang::quo_squash(rlang::enquo(grouping.vars)))
-  grouping.vars <-
-    if (length(grouping.vars) == 1) {
-      grouping.vars
-    } else {
-      grouping.vars[-1]
-    }
-
+  # function to run
   tidy_group <- function(.x, .y) {
 
     # presumes `..f` will work with these args
@@ -37,7 +29,7 @@ grouped_p_value <- function(data,
 
   # dataframe with grouped analysis results
   data %>%
-    dplyr::group_by(.data = ., !!!grouping.vars, .drop = TRUE) %>%
+    dplyr::group_by_at(rlang::enquos(grouping.vars), .drop = TRUE) %>%
     dplyr::group_modify(.f = tidy_group, keep = TRUE) %>%
     dplyr::ungroup(x = .) %>%
     dplyr::rename(.data = ., term = Parameter, p.value = p)

@@ -37,6 +37,7 @@ grouped_glmer <- function(data,
                           tidy.args = list(
                             conf.int = TRUE,
                             conf.level = 0.95,
+                            effects = "fixed",
                             conf.method = "Wald"
                           ),
                           augment.args = list()) {
