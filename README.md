@@ -25,7 +25,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2020--01--11-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2020--01--13-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
@@ -587,57 +587,6 @@ groupedstats::grouped_slr(
 A more general version of this function (`grouped_lm`) will be
 implemented in future that will utilize the formula interface of
 `stats::lm`.
-
-## `grouped_robustslr`
-
-There is also robust variant of **simple linear regression** (as
-implemented in `robust::lmRob`)-
-
-``` r
-# for reproducibility
-set.seed(123)
-library(gapminder)
-library(dplyr)
-options(tibble.width = Inf) # show me all columns
-
-groupedstats::grouped_robustslr(
-  data = gapminder::gapminder,
-  dep.vars = c(lifeExp, pop),
-  indep.vars = c(gdpPercap, gdpPercap),
-  grouping.vars = c(continent, country)
-) %>%
-  dplyr::arrange(.data = ., continent, country)
-#> # A tibble: 284 x 8
-#>    continent country      formula             t.value estimate std.error
-#>    <fct>     <fct>        <chr>                 <dbl>    <dbl>     <dbl>
-#>  1 Africa    Algeria      lifeExp ~ gdpPercap   5.82     0.904    0.155 
-#>  2 Africa    Algeria      pop ~ gdpPercap       2.49     0.869    0.349 
-#>  3 Africa    Angola       lifeExp ~ gdpPercap  -0.734   -0.413    0.563 
-#>  4 Africa    Angola       pop ~ gdpPercap      -2.45    -0.541    0.221 
-#>  5 Africa    Benin        lifeExp ~ gdpPercap   2.46     0.773    0.315 
-#>  6 Africa    Benin        pop ~ gdpPercap       7.18     0.929    0.129 
-#>  7 Africa    Botswana     lifeExp ~ gdpPercap   4.42     1.47     0.332 
-#>  8 Africa    Botswana     pop ~ gdpPercap      15.3      1.08     0.0706
-#>  9 Africa    Burkina Faso lifeExp ~ gdpPercap   2.14     0.882    0.413 
-#> 10 Africa    Burkina Faso pop ~ gdpPercap       7.17     0.920    0.128 
-#>         p.value significance
-#>           <dbl> <chr>       
-#>  1 0.000168     ***         
-#>  2 0.0319       *           
-#>  3 0.480        ns          
-#>  4 0.0344       *           
-#>  5 0.0338       *           
-#>  6 0.0000299    ***         
-#>  7 0.00130      **          
-#>  8 0.0000000294 ***         
-#>  9 0.0583       ns          
-#> 10 0.0000304    ***         
-#> # ... with 274 more rows
-```
-
-A more general version of this function (`grouped_robustlm`) will be
-implemented in future that will utilize the formula interface of
-`robust::lmRob`.
 
 ## `grouped_lm`
 
@@ -1348,8 +1297,7 @@ set.seed(123)
 
 # subset the dataframe even further to just select two levels of clarity
 diamonds_short2 <-
-  dplyr::filter(.data = diamonds_short, clarity == "SI2" |
-    clarity == "SI1")
+  dplyr::filter(.data = diamonds_short, clarity == "SI2" | clarity == "SI1")
 
 # wilcox test (aka Mann-Whitney U-test)
 groupedstats::grouped_wilcox(

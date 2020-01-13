@@ -1,7 +1,7 @@
 Type: Package
 Package: groupedstats
 Title: Grouped Statistical Analyses in a Tidy Way
-Version: 0.1.0.9000
+Version: 0.1.1
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -27,7 +27,6 @@ Imports:
     parameters (>= 0.3.0),
     purrr (>= 0.3.3),
     rlang (>= 0.4.2),
-    robust (>= 0.4-18.1),
     rstudioapi (>= 0.10),
     sjstats (>= 0.17.7),
     skimr (>= 2.0.2),

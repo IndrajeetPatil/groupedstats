@@ -4,7 +4,6 @@ grouped_glmer(data, grouping.vars, ..., output = "tidy", tidy.args = list, TRUE,
 grouped_lm(data, grouping.vars, ..., output = "tidy", tidy.args = list, TRUE, 0.95, augment.args = list)
 grouped_lmer(data, grouping.vars, ..., output = "tidy", tidy.args = list, TRUE, 0.95, fixed, Wald, augment.args = list)
 grouped_proptest(data, grouping.vars, measure, ...)
-grouped_robustslr(data, dep.vars, indep.vars, grouping.vars, nrep = 1000, control = robust::lmRob.control, 1e-04, 1.5e-06, 1e-06, Final, Auto, MM)
 grouped_slr(data, dep.vars, indep.vars, grouping.vars)
 grouped_summary(data, grouping.vars, measures = NULL, measures.type = "numeric", topcount.long = FALSE, k = 2, ...)
 grouped_ttest(data, dep.vars, indep.vars, grouping.vars, paired = FALSE, var.equal = FALSE)

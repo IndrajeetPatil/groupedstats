@@ -42,7 +42,6 @@ reference:
     desc: The `grouped_` versions of functions from miscellaneous packages.
     contents:
       - groupedstats-package
-      - grouped_robustslr
       - grouped_slr
       - grouped_summary
       - grouped_proptest
