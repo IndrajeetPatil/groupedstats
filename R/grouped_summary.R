@@ -19,7 +19,7 @@
 #'   both numeric **and** variables simultaneously.
 #' @param topcount.long If `measures.type = factor`, you can get the top counts
 #'   in long format for plotting purposes. (Default: `topcount.long = FALSE`).
-#' @inheritParams specify_decimal_p
+#' @inheritParams ipmisc::specify_decimal_p
 #' @param ... Currently ignored.
 #'
 #' @importFrom skimr skim

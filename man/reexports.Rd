@@ -6,10 +6,17 @@
 \alias{grouped_tidy}
 \alias{grouped_glance}
 \alias{grouped_augment}
+\alias{specify_decimal_p}
+\alias{signif_column}
+\alias{set_cwd}
 \alias{\%>\%}
 \alias{\%<>\%}
 \alias{\%$\%}
+\alias{\%<-\%}
+\alias{\%||\%}
+\alias{\%|\%}
 \alias{tibble}
+\alias{as_tibble}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -17,8 +24,10 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{broomExtra}{\code{\link[broomExtra]{\%$\%}}, \code{\link[broomExtra]{\%<>\%}}, \code{\link[broomExtra]{\%>\%}}, \code{\link[broomExtra]{grouped_augment}}, \code{\link[broomExtra]{grouped_glance}}, \code{\link[broomExtra]{grouped_tidy}}}
+  \item{broomExtra}{\code{\link[broomExtra]{grouped_augment}}, \code{\link[broomExtra]{grouped_glance}}, \code{\link[broomExtra]{grouped_tidy}}}
 
-  \item{tibble}{\code{\link[tibble]{tibble}}}
+  \item{ipmisc}{\code{\link[ipmisc]{\%$\%}}, \code{\link[ipmisc]{\%<-\%}}, \code{\link[ipmisc]{\%<>\%}}, \code{\link[ipmisc]{\%>\%}}, \code{\link[ipmisc]{as_tibble}}, \code{\link[ipmisc]{set_cwd}}, \code{\link[ipmisc]{signif_column}}, \code{\link[ipmisc]{specify_decimal_p}}, \code{\link[ipmisc]{tibble}}}
+
+  \item{rlang}{\code{\link[rlang]{\%|\%}}, \code{\link[rlang]{\%||\%}}}
 }}
 

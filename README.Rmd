@@ -77,16 +77,16 @@ For more, see: <https://dplyr.tidyverse.org/reference/group_map.html>
 
 # Installation
 
-To get the latest, stable `CRAN` release (0.1.1):
+To get the latest, stable `CRAN` release:
 
 ```{r installation1, eval = FALSE, warning = FALSE, messsage = FALSE}
 utils::install.packages(pkgs = "groupedstats")
 ```
 
-You can get the **development** version of the package from `GitHub`
-(`0.1.1.9000`). To see what new changes (and bug fixes) have been made to the
-package since the last release on `CRAN`, you can check the detailed log of
-changes here: <https://indrajeetpatil.github.io/groupedstats/news/index.html> 
+You can get the **development** version of the package from `GitHub`. To see
+what new changes (and bug fixes) have been made to the package since the last
+release on `CRAN`, you can check the detailed log of changes here:
+<https://indrajeetpatil.github.io/groupedstats/news/index.html>
 
 If you are in hurry and want to reduce the time of installation, prefer-
 

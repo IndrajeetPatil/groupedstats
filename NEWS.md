@@ -1,4 +1,7 @@
-# groupedstats 0.1.1.9000
+# groupedstats 0.2.0
+
+  - This is a maintenance release that gets rid of some of the internal
+    functions by relying on `ipmisc` package.
  
 # groupedstats 0.1.1
 

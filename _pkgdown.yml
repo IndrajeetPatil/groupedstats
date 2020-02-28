@@ -51,9 +51,6 @@ reference:
     contents:
       - lm_effsize_ci
       - lm_effsize_standardizer
-      - signif_column
-      - specify_decimal_p
-      - set_cwd
 
   - title: Data
     desc:  Datasets included in the package.

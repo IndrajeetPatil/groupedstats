@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Formatting numeric (<em>p</em>-)values — specify_decimal_p • groupedstats</title>
+<title>Articles • groupedstats</title>
 
 
 <!-- jquery -->
@@ -43,15 +43,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Formatting numeric (<em>p</em>-)values — specify_decimal_p" />
-<meta property="og:description" content="Function to format an R object for pretty printing with a
-specified (k) number of decimal places. The function also allows really
-small p-values to be denoted as &quot;p &amp;lt; 0.001&quot; rather than &quot;p = 0.000&quot;.
-Note that if p.value is set to TRUE, the minimum value of k allowed
-is 3. If k is set to less than 3, the function will ignore entered k
-value and use k = 3 instead. Important: This function is not
-vectorized." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Articles" />
 
 
 
@@ -70,7 +62,7 @@ vectorized." />
   </head>
 
   <body>
-    <div class="container template-reference-topic">
+    <div class="container template-article-index">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -83,7 +75,7 @@ vectorized." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">groupedstats</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.1.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.2.0</span>
       </span>
     </div>
 
@@ -97,6 +89,18 @@ vectorized." />
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/tests_and_coverage.html">Tests and Coverage</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -128,59 +132,17 @@ vectorized." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Formatting numeric (<em>p</em>-)values</h1>
-    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/groupedstats/blob/master/R/utils_formatting.R'><code>R/utils_formatting.R</code></a></small>
-    <div class="hidden name"><code>specify_decimal_p.Rd</code></div>
+      <h1>Articles</h1>
     </div>
 
-    <div class="ref-description">
-    <p>Function to format an R object for pretty printing with a
-specified (<code>k</code>) number of decimal places. The function also allows really
-small <em>p</em>-values to be denoted as <code>"p &lt; 0.001"</code> rather than <code>"p = 0.000"</code>.
-Note that if <code>p.value</code> is set to <code>TRUE</code>, the minimum value of <code>k</code> allowed
-is <code>3</code>. If <code>k</code> is set to less than 3, the function will ignore entered <code>k</code>
-value and use <code>k = 3</code> instead. <strong>Important</strong>: This function is not
-vectorized.</p>
+    <div class="section ">
+      <h3>All vignettes</h3>
+      <p class="section-desc"></p>
+
+      <ul>
+        <li><a href="tests_and_coverage.html">Tests and Coverage</a></li>
+      </ul>
     </div>
-
-    <pre class="usage"><span class='fu'>specify_decimal_p</span>(<span class='no'>x</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>p.value</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>x</th>
-      <td><p>A numeric value.</p></td>
-    </tr>
-    <tr>
-      <th>k</th>
-      <td><p>Number of digits after decimal point (should be an integer)
-(Default: <code>k = 3</code>).</p></td>
-    </tr>
-    <tr>
-      <th>p.value</th>
-      <td><p>Decides whether the number is a <em>p</em>-value (Default: <code>FALSE</code>).</p></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Formatted numeric value.</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>groupedstats</span>)
-<span class='fu'>specify_decimal_p</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>0.00001</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>p.value</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "&lt; 0.001"</div><div class='input'><span class='fu'>specify_decimal_p</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>0.008</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>p.value</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "0.008"</div><div class='input'><span class='fu'>specify_decimal_p</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>0.008</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>p.value</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] "0.008"</div></pre>
-  </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Indrajeet Patil</p>
   </div>
 </div>
 

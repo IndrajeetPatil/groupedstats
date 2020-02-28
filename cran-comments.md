@@ -9,5 +9,5 @@
 
 ## Comments
 
-  - Gets rid of `robust` dependency as it was recently orphaned.
   - Minor refactoring.
+  - Fixes tests failing on development version of R.

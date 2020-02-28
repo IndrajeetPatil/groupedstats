@@ -10,6 +10,3 @@ grouped_ttest(data, dep.vars, indep.vars, grouping.vars, paired = FALSE, var.equ
 grouped_wilcox(data, dep.vars, indep.vars, grouping.vars, paired = FALSE, correct = TRUE)
 lm_effsize_ci(object, effsize = "eta", partial = TRUE, conf.level = 0.95, nboot = 500, method = c, dist, quantile, ...)
 lm_effsize_standardizer(object, effsize = "eta", partial = TRUE, conf.level = 0.95, nboot = 500, method = c, dist, quantile)
-set_cwd(NA)
-signif_column(data, p, messages = FALSE)
-specify_decimal_p(x, k = 3, p.value = FALSE)
