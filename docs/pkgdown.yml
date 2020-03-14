@@ -1,8 +1,9 @@
 pandoc: 2.9.2
 pkgdown: 1.4.1.9000
-pkgdown_sha: 5e873fd9e478dddd784c31d8c8f994fd4b341c2a
+pkgdown_sha: 17d069073e39a73cf09b54eb756a83d55f8fa96b
 articles:
   tests_and_coverage: tests_and_coverage.html
+last_built: 2020-03-14T22:07Z
 urls:
   reference: https://indrajeetpatil.github.io/groupedstats//reference
   article: https://indrajeetpatil.github.io/groupedstats//articles
