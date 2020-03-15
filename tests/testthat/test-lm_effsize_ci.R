@@ -1,5 +1,3 @@
-context("lm_effsize_ci")
-
 # lm_effsize_ci works (eta, partial = FALSE) --------------------------------
 
 testthat::test_that(
@@ -429,7 +427,8 @@ testthat::test_that(
     )
 
     # model-3
-    testthat::expect_equal(c(df3$partial.omegasq[[1]], df3$partial.omegasq[[2]]),
+    testthat::expect_equal(
+      c(df3$partial.omegasq[[1]], df3$partial.omegasq[[2]]),
       c(0.2565812, 0.1041597),
       tolerance = 0.001
     )
@@ -533,36 +532,40 @@ testthat::test_that(
 
     # creating lm object-1
     set.seed(123)
-    df1 <- groupedstats::lm_effsize_standardizer(
-      object = stats::lm(formula = brainwt ~ vore, data = ggplot2::msleep),
-      effsize = "eta",
-      partial = FALSE,
-      nboot = 20
-    )
+    df1 <-
+      groupedstats::lm_effsize_standardizer(
+        object = stats::lm(formula = brainwt ~ vore, data = ggplot2::msleep),
+        effsize = "eta",
+        partial = FALSE,
+        nboot = 20
+      )
 
     set.seed(123)
-    df2 <- groupedstats::lm_effsize_standardizer(
-      object = stats::lm(formula = brainwt ~ vore, data = ggplot2::msleep),
-      effsize = "eta",
-      partial = TRUE,
-      nboot = 20
-    )
+    df2 <-
+      groupedstats::lm_effsize_standardizer(
+        object = stats::lm(formula = brainwt ~ vore, data = ggplot2::msleep),
+        effsize = "eta",
+        partial = TRUE,
+        nboot = 20
+      )
 
     set.seed(123)
-    df3 <- groupedstats::lm_effsize_standardizer(
-      object = stats::lm(formula = brainwt ~ vore, data = ggplot2::msleep),
-      effsize = "omega",
-      partial = FALSE,
-      nboot = 20
-    )
+    df3 <-
+      groupedstats::lm_effsize_standardizer(
+        object = stats::lm(formula = brainwt ~ vore, data = ggplot2::msleep),
+        effsize = "omega",
+        partial = FALSE,
+        nboot = 20
+      )
 
     set.seed(123)
-    df4 <- groupedstats::lm_effsize_standardizer(
-      object = stats::lm(formula = brainwt ~ vore, data = ggplot2::msleep),
-      effsize = "omega",
-      partial = TRUE,
-      nboot = 20
-    )
+    df4 <-
+      groupedstats::lm_effsize_standardizer(
+        object = stats::lm(formula = brainwt ~ vore, data = ggplot2::msleep),
+        effsize = "omega",
+        partial = TRUE,
+        nboot = 20
+      )
 
     testthat::expect_equal(df1$F.value, df2$F.value, tolerance = 0.0001)
     testthat::expect_equal(df3$p.value, df4$p.value, tolerance = 0.0001)

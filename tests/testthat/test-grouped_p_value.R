@@ -1,5 +1,3 @@
-context("grouped_p_value")
-
 # grouped_p_value works --------------------------------------------------------
 
 testthat::test_that(

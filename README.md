@@ -25,7 +25,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2020--02--28-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2020--03--15-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
@@ -81,17 +81,16 @@ For more, see: <https://dplyr.tidyverse.org/reference/group_map.html>
 
 # Installation
 
-To get the latest, stable `CRAN` release (0.1.1):
+To get the latest, stable `CRAN` release:
 
 ``` r
 utils::install.packages(pkgs = "groupedstats")
 ```
 
-You can get the **development** version of the package from `GitHub`
-(`0.1.1.9000`). To see what new changes (and bug fixes) have been made
-to the package since the last release on `CRAN`, you can check the
-detailed log of changes here:
-<https://indrajeetpatil.github.io/groupedstats/news/index.html>
+You can get the **development** version of the package from `GitHub`. To
+see what new changes (and bug fixes) have been made to the package since
+the last release on `CRAN`, you can check the detailed log of changes
+here: <https://indrajeetpatil.github.io/groupedstats/news/index.html>
 
 If you are in hurry and want to reduce the time of installation, prefer-
 

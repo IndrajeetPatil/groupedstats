@@ -3,7 +3,7 @@ pkgdown: 1.4.1.9000
 pkgdown_sha: 17d069073e39a73cf09b54eb756a83d55f8fa96b
 articles:
   tests_and_coverage: tests_and_coverage.html
-last_built: 2020-03-14T22:07Z
+last_built: 2020-03-15T19:01Z
 urls:
   reference: https://indrajeetpatil.github.io/groupedstats//reference
   article: https://indrajeetpatil.github.io/groupedstats//articles
