@@ -79,7 +79,7 @@ variables." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">groupedstats</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.2.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.2.1</span>
       </span>
     </div>
 
@@ -287,28 +287,7 @@ model. Note that <em>p</em>-value is computed using <code><a href='https://rdrr.
 #&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 0.000</span><span style='text-decoration: underline;'>632</span><span>  ***         
 #&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 0.390     ns          
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span> 0.000</span><span style='text-decoration: underline;'>050</span><span>2 ***         
-#&gt; </span><span style='color: #949494;'># ... with 14 more rows</span><span></div><div class='input'>
-<span class='co'># getting model summaries</span>
-<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/grouped_lmer.html'>grouped_lmer</a></span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/diamonds.html'>diamonds</a></span>,
-  <span class='kw'>formula</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span>(<span class='no'>price</span>) ~ <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span>(<span class='no'>carat</span>) + (<span class='no'>carat</span> <span class='kw'>|</span> <span class='no'>color</span>),
-  <span class='kw'>REML</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>cut</span>, <span class='no'>clarity</span>),
-  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"glance"</span>
-)</div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Model failed to converge with max|grad| = 0.00541893 (tol = 0.002, component 1)</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Model failed to converge with max|grad| = 0.00236576 (tol = 0.002, component 1)</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Model failed to converge with max|grad| = 0.00318931 (tol = 0.002, component 1)</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Model failed to converge with max|grad| = 0.00978678 (tol = 0.002, component 1)</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Model failed to converge with max|grad| = 0.00486155 (tol = 0.002, component 1)</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 40 x 8</span><span>
-#&gt;    cut   clarity sigma  logLik    AIC    BIC deviance df.residual
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;ord&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;ord&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Fair  I1      0.219   12.7  -</span><span style='color: #BB0000;'>13.3</span><span>    6.76   -</span><span style='color: #BB0000;'>25.3</span><span>          204
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Fair  SI2     0.271  -</span><span style='color: #BB0000;'>62.6</span><span>  137.   162.     125.           460
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Fair  SI1     0.269  -</span><span style='color: #BB0000;'>58.7</span><span>  129.   153.     117.           402
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Fair  VS2     0.287  -</span><span style='color: #BB0000;'>59.8</span><span>  132.   153.     120.           255
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Fair  VS1     0.264  -</span><span style='color: #BB0000;'>25.6</span><span>   63.2   82.0     51.2          164
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Fair  VVS2    0.320  -</span><span style='color: #BB0000;'>29.6</span><span>   71.1   84.5     59.1           63
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Fair  VVS1    0.211   -</span><span style='color: #BB0000;'>4.82</span><span>  21.6   26.6      9.64          11
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Fair  IF      0.119    1.91   8.17   9.36    -</span><span style='color: #BB0000;'>3.83</span><span>           3
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Good  I1      0.303  -</span><span style='color: #BB0000;'>24.7</span><span>   61.5   76.8     49.5           90
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Good  SI2     0.273 -</span><span style='color: #BB0000;'>151.</span><span>   313.   343.     301.          </span><span style='text-decoration: underline;'>1</span><span>075
-#&gt; </span><span style='color: #949494;'># ... with 30 more rows</span><span></div><div class='input'># }
+#&gt; </span><span style='color: #949494;'># ... with 14 more rows</span><span></div><div class='input'># }
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

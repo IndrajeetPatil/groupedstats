@@ -122,15 +122,6 @@ groupedstats::grouped_lmer(
   tidy.args = list(effects = "fixed", conf.int = TRUE, conf.level = 0.95),
   output = "tidy"
 )
-
-# getting model summaries
-groupedstats::grouped_lmer(
-  data = ggplot2::diamonds,
-  formula = scale(price) ~ scale(carat) + (carat | color),
-  REML = FALSE,
-  grouping.vars = c(cut, clarity),
-  output = "glance"
-)
 }
 }
 \author{

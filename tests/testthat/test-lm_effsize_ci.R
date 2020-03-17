@@ -448,79 +448,81 @@ testthat::test_that(
 
 # lm_effsize_ci works with ezANOVA -----------------------------------
 
-testthat::test_that(
-  desc = "lm_effsize_ci works with ezANOVA",
-  code = {
-    testthat::skip_if(getRversion() < "3.6")
+if (require("ez")) {
+  testthat::test_that(
+    desc = "lm_effsize_ci works with ezANOVA",
+    code = {
+      testthat::skip_if(getRversion() < "3.6")
 
-    set.seed(123)
-    library(ez)
-    data(ANT)
+      set.seed(123)
+      library(ez)
+      data(ANT)
 
-    # run an ANOVA on the mean correct RT data.
-    rt_anova <- suppressWarnings(ez::ezANOVA(
-      data = ANT[ANT$error == 0, ],
-      dv = rt,
-      wid = subnum,
-      within = cue,
-      detailed = TRUE,
-      return_aov = TRUE
-    ))
+      # run an ANOVA on the mean correct RT data.
+      rt_anova <- suppressWarnings(ez::ezANOVA(
+        data = ANT[ANT$error == 0, ],
+        dv = rt,
+        wid = subnum,
+        within = cue,
+        detailed = TRUE,
+        return_aov = TRUE
+      ))
 
-    # dataframe with effect sizes
-    set.seed(123)
-    df1 <- groupedstats::lm_effsize_ci(
-      object = rt_anova$aov,
-      effsize = "eta",
-      partial = TRUE,
-      nboot = 25
-    )
+      # dataframe with effect sizes
+      set.seed(123)
+      df1 <- groupedstats::lm_effsize_ci(
+        object = rt_anova$aov,
+        effsize = "eta",
+        partial = TRUE,
+        nboot = 25
+      )
 
-    set.seed(123)
-    df2 <- suppressWarnings(groupedstats::lm_effsize_ci(
-      object = rt_anova$aov,
-      effsize = "eta",
-      partial = FALSE,
-      nboot = 25
-    ))
+      set.seed(123)
+      df2 <- suppressWarnings(groupedstats::lm_effsize_ci(
+        object = rt_anova$aov,
+        effsize = "eta",
+        partial = FALSE,
+        nboot = 25
+      ))
 
-    set.seed(123)
-    df3 <- suppressWarnings(groupedstats::lm_effsize_ci(
-      object = rt_anova$aov,
-      effsize = "omega",
-      partial = TRUE,
-      nboot = 25
-    ))
+      set.seed(123)
+      df3 <- suppressWarnings(groupedstats::lm_effsize_ci(
+        object = rt_anova$aov,
+        effsize = "omega",
+        partial = TRUE,
+        nboot = 25
+      ))
 
-    set.seed(123)
-    df4 <- groupedstats::lm_effsize_ci(
-      object = rt_anova$aov,
-      effsize = "omega",
-      partial = FALSE,
-      nboot = 25
-    )
+      set.seed(123)
+      df4 <- groupedstats::lm_effsize_ci(
+        object = rt_anova$aov,
+        effsize = "omega",
+        partial = FALSE,
+        nboot = 25
+      )
 
-    # df1
-    testthat::expect_equal(df1$partial.etasq[[1]], 0.9596874, tolerance = 0.001)
-    testthat::expect_equal(df1$conf.low[[1]], 0.9355735, tolerance = 0.001)
-    testthat::expect_equal(df1$conf.high[[1]], 0.9692072, tolerance = 0.001)
+      # df1
+      testthat::expect_equal(df1$partial.etasq[[1]], 0.9596874, tolerance = 0.001)
+      testthat::expect_equal(df1$conf.low[[1]], 0.9355735, tolerance = 0.001)
+      testthat::expect_equal(df1$conf.high[[1]], 0.9692072, tolerance = 0.001)
 
-    # df2
-    testthat::expect_equal(df2$etasq[[1]], 0.9401073, tolerance = 0.001)
-    testthat::expect_equal(df2$conf.low[[1]], 0.01308266, tolerance = 0.001)
-    testthat::expect_equal(df2$conf.high[[1]], 0.04279811, tolerance = 0.001)
+      # df2
+      testthat::expect_equal(df2$etasq[[1]], 0.9401073, tolerance = 0.001)
+      testthat::expect_equal(df2$conf.low[[1]], 0.01308266, tolerance = 0.001)
+      testthat::expect_equal(df2$conf.high[[1]], 0.04279811, tolerance = 0.001)
 
-    # df3
-    testthat::expect_equal(df3$partial.omegasq[[1]], 0.9442101, tolerance = 0.001)
-    testthat::expect_equal(df3$conf.low[[1]], 1, tolerance = 0.001)
-    testthat::expect_equal(df3$conf.high[[1]], 1, tolerance = 0.001)
+      # df3
+      testthat::expect_equal(df3$partial.omegasq[[1]], 0.9442101, tolerance = 0.001)
+      testthat::expect_equal(df3$conf.low[[1]], 1, tolerance = 0.001)
+      testthat::expect_equal(df3$conf.high[[1]], 1, tolerance = 0.001)
 
-    # df4
-    testthat::expect_equal(df4$omegasq[[1]], 0.9373795, tolerance = 0.001)
-    testthat::expect_equal(df4$conf.low[[1]], 0.9171685, tolerance = 0.001)
-    testthat::expect_equal(df4$conf.high[[1]], 0.9599996, tolerance = 0.001)
-  }
-)
+      # df4
+      testthat::expect_equal(df4$omegasq[[1]], 0.9373795, tolerance = 0.001)
+      testthat::expect_equal(df4$conf.low[[1]], 0.9171685, tolerance = 0.001)
+      testthat::expect_equal(df4$conf.high[[1]], 0.9599996, tolerance = 0.001)
+    }
+  )
+}
 
 # lm_effsize_standardizer works --------------------------------
 
