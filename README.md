@@ -6,7 +6,7 @@
 [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
 [![CRAN
 Checks](https://cranchecks.info/badges/summary/groupedstats)](https://cran.r-project.org/web/checks/check_results_groupedstats.html)
-[![packageversion](https://img.shields.io/badge/Package%20version-0.1.1.9000-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![packageversion](https://img.shields.io/badge/Package%20version-0.2.1.9000-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![Daily downloads
 badge](https://cranlogs.r-pkg.org/badges/last-day/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
 [![Weekly downloads
@@ -25,7 +25,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2020--03--15-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2020--03--17-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
@@ -84,7 +84,7 @@ For more, see: <https://dplyr.tidyverse.org/reference/group_map.html>
 To get the latest, stable `CRAN` release:
 
 ``` r
-utils::install.packages(pkgs = "groupedstats")
+install.packages("groupedstats")
 ```
 
 You can get the **development** version of the package from `GitHub`. To
@@ -96,7 +96,7 @@ If you are in hurry and want to reduce the time of installation, prefer-
 
 ``` r
 # needed package to download from GitHub repo
-utils::install.packages(pkgs = "remotes")
+# install.packages("remotes")
 
 remotes::install_github(
   repo = "IndrajeetPatil/groupedstats", # package path on GitHub
@@ -120,39 +120,23 @@ If you want to cite this package in a scientific journal or in any other
 context, run the following code in your `R` console:
 
 ``` r
-utils::citation(package = "groupedstats")
+citation("groupedstats")
+#> 
+#> Patil I (2018). _groupedstats: Grouped Statistical Analyses in a Tidy
+#> Way_. doi: 10.5281/zenodo.2600159 (URL:
+#> https://doi.org/10.5281/zenodo.2600159), <URL:
+#> https://CRAN.R-project.org/package=groupedstats>.
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Manual{,
+#>     title = {groupedstats: Grouped Statistical Analyses in a Tidy Way},
+#>     author = {Indrajeet Patil},
+#>     year = {2018},
+#>     url = {https://CRAN.R-project.org/package=groupedstats},
+#>     doi = {10.5281/zenodo.2600159},
+#>   }
 ```
-
-# Help
-
-There is a dedicated website to `groupedstats`, which is updated after
-every new commit: <https://indrajeetpatil.github.io/groupedstats/>.
-
-To see arguments for any of the functions, use `args`. For example-
-
-``` r
-args(groupedstats::grouped_ttest)
-#> Registered S3 method overwritten by 'broom.mixed':
-#>   method      from 
-#>   tidy.gamlss broom
-#> function (data, dep.vars, indep.vars, grouping.vars, paired = FALSE, 
-#>     var.equal = FALSE) 
-#> NULL
-```
-
-In case you want to look at the function body for any of the functions,
-just type the name of the function without the parentheses:
-
-``` r
-groupedstats::grouped_summary
-```
-
-If you are not familiar either with what the namespace `::` does or how
-to use pipe operator `%>%`, something this package and its documentation
-relies a lot on, you can check out these links-
-
-  - <http://r-pkgs.had.co.nz/namespace.html>
-  - <http://r4ds.had.co.nz/pipes.html>
 
 # Usage
 
@@ -179,6 +163,9 @@ groupedstats::grouped_tidy(
   formula = Survived ~ Sex,
   family = stats::binomial(link = "logit")
 )
+#> Registered S3 method overwritten by 'broom.mixed':
+#>   method      from 
+#>   tidy.gamlss broom
 #> # A tibble: 14 x 7
 #>    Class Age   term         estimate  std.error statistic  p.value
 #>    <fct> <fct> <chr>           <dbl>      <dbl>     <dbl>    <dbl>
@@ -223,24 +210,24 @@ groupedstats::grouped_summary(
   measures.type = "numeric"
 )
 #> # A tibble: 16 x 16
-#>    vore    skim_type variable    missing complete   mean     sd   min    p25
-#>    <fct>   <chr>     <chr>         <int>    <dbl>  <dbl>  <dbl> <dbl>  <dbl>
-#>  1 carni   numeric   sleep_total       0    1     10.4   4.67   2.7    6.25 
-#>  2 carni   numeric   sleep_rem         9    0.526  2.29  1.86   0.1    1.33 
-#>  3 carni   numeric   sleep_cycle      14    0.263  0.373 0.0325 0.333  0.35 
-#>  4 carni   numeric   awake             0    1     13.6   4.68   4.6   11    
-#>  5 herbi   numeric   sleep_total       0    1      9.51  4.88   1.9    4.3  
-#>  6 herbi   numeric   sleep_rem         8    0.75   1.37  0.922  0.4    0.6  
-#>  7 herbi   numeric   sleep_cycle      20    0.375  0.418 0.324  0.117  0.183
-#>  8 herbi   numeric   awake             0    1     14.5   4.88   7.4    9.78 
-#>  9 insecti numeric   sleep_total       0    1     14.9   5.92   8.4    8.6  
-#> 10 insecti numeric   sleep_rem         1    0.8    3.52  1.93   2      2.08 
-#> 11 insecti numeric   sleep_cycle       2    0.6    0.161 0.0419 0.117  0.142
-#> 12 insecti numeric   awake             0    1      9.06  5.92   4.1    4.3  
-#> 13 omni    numeric   sleep_total       0    1     10.9   2.95   8      9.1  
-#> 14 omni    numeric   sleep_rem         2    0.9    1.96  1.01   0.7    1.25 
-#> 15 omni    numeric   sleep_cycle       9    0.55   0.592 0.473  0.133  0.258
-#> 16 omni    numeric   awake             0    1     13.1   2.95   6     13.1  
+#>    vore    skim_type skim_variable missing complete   mean     sd   min    p25
+#>    <fct>   <chr>     <chr>           <int>    <dbl>  <dbl>  <dbl> <dbl>  <dbl>
+#>  1 carni   numeric   sleep_total         0    1     10.4   4.67   2.7    6.25 
+#>  2 carni   numeric   sleep_rem           9    0.526  2.29  1.86   0.1    1.33 
+#>  3 carni   numeric   sleep_cycle        14    0.263  0.373 0.0325 0.333  0.35 
+#>  4 carni   numeric   awake               0    1     13.6   4.68   4.6   11    
+#>  5 herbi   numeric   sleep_total         0    1      9.51  4.88   1.9    4.3  
+#>  6 herbi   numeric   sleep_rem           8    0.75   1.37  0.922  0.4    0.6  
+#>  7 herbi   numeric   sleep_cycle        20    0.375  0.418 0.324  0.117  0.183
+#>  8 herbi   numeric   awake               0    1     14.5   4.88   7.4    9.78 
+#>  9 insecti numeric   sleep_total         0    1     14.9   5.92   8.4    8.6  
+#> 10 insecti numeric   sleep_rem           1    0.8    3.52  1.93   2      2.08 
+#> 11 insecti numeric   sleep_cycle         2    0.6    0.161 0.0419 0.117  0.142
+#> 12 insecti numeric   awake               0    1      9.06  5.92   4.1    4.3  
+#> 13 omni    numeric   sleep_total         0    1     10.9   2.95   8      9.1  
+#> 14 omni    numeric   sleep_rem           2    0.9    1.96  1.01   0.7    1.25 
+#> 15 omni    numeric   sleep_cycle         9    0.55   0.592 0.473  0.133  0.258
+#> 16 omni    numeric   awake               0    1     13.1   2.95   6     13.1  
 #>    median    p75    max     n std.error mean.conf.low mean.conf.high
 #>     <dbl>  <dbl>  <dbl> <int>     <dbl>         <dbl>          <dbl>
 #>  1 10.4   13     19.4      19    1.07          8.13           12.6  
@@ -281,18 +268,18 @@ groupedstats::grouped_summary(
   measures.type = "factor"
 )
 #> # A tibble: 40 x 10
-#>    cut   clarity skim_type variable missing complete ordered n_unique
-#>    <ord> <ord>   <chr>     <chr>      <int>    <dbl> <lgl>      <int>
-#>  1 Fair  I1      factor    color          0        1 TRUE           7
-#>  2 Fair  SI2     factor    color          0        1 TRUE           7
-#>  3 Fair  SI1     factor    color          0        1 TRUE           7
-#>  4 Fair  VS2     factor    color          0        1 TRUE           7
-#>  5 Fair  VS1     factor    color          0        1 TRUE           7
-#>  6 Fair  VVS2    factor    color          0        1 TRUE           7
-#>  7 Fair  VVS1    factor    color          0        1 TRUE           7
-#>  8 Fair  IF      factor    color          0        1 TRUE           3
-#>  9 Good  I1      factor    color          0        1 TRUE           7
-#> 10 Good  SI2     factor    color          0        1 TRUE           7
+#>    cut   clarity skim_type skim_variable missing complete ordered n_unique
+#>    <ord> <ord>   <chr>     <chr>           <int>    <dbl> <lgl>      <int>
+#>  1 Fair  I1      factor    color               0        1 TRUE           7
+#>  2 Fair  SI2     factor    color               0        1 TRUE           7
+#>  3 Fair  SI1     factor    color               0        1 TRUE           7
+#>  4 Fair  VS2     factor    color               0        1 TRUE           7
+#>  5 Fair  VS1     factor    color               0        1 TRUE           7
+#>  6 Fair  VVS2    factor    color               0        1 TRUE           7
+#>  7 Fair  VVS1    factor    color               0        1 TRUE           7
+#>  8 Fair  IF      factor    color               0        1 TRUE           3
+#>  9 Good  I1      factor    color               0        1 TRUE           7
+#> 10 Good  SI2     factor    color               0        1 TRUE           7
 #>    top_counts                         n
 #>    <chr>                          <int>
 #>  1 G: 53, H: 52, F: 35, I: 34       210
@@ -392,30 +379,42 @@ groupedstats::grouped_summary(
   grouping.vars = c(cut, clarity)
 )
 #> # A tibble: 280 x 17
-#>    cut   clarity skim_type variable missing complete    mean       sd    min
-#>    <ord> <ord>   <chr>     <chr>      <int>    <dbl>   <dbl>    <dbl>  <dbl>
-#>  1 Fair  I1      numeric   carat          0        1    1.36    0.745   0.34
-#>  2 Fair  I1      numeric   depth          0        1   65.7     3.10   55.6 
-#>  3 Fair  I1      numeric   table          0        1   58.1     2.87   52   
-#>  4 Fair  I1      numeric   price          0        1 3704.   3099.    584   
-#>  5 Fair  I1      numeric   x              0        1    6.72    1.11    4.72
-#>  6 Fair  I1      numeric   y              0        1    6.62    1.13    4.6 
-#>  7 Fair  I1      numeric   z              0        1    4.39    0.756   2.6 
-#>  8 Fair  SI2     numeric   carat          0        1    1.20    0.501   0.25
-#>  9 Fair  SI2     numeric   depth          0        1   64.4     3.16   53.1 
-#> 10 Fair  SI2     numeric   table          0        1   58.8     3.68   50.1 
-#>        p25  median     p75      max     n std.error mean.conf.low mean.conf.high
-#>      <dbl>   <dbl>   <dbl>    <dbl> <int>     <dbl>         <dbl>          <dbl>
-#>  1    0.85    1.06    1.82     5.01   210    0.0514          1.26           1.46
-#>  2   64.7    66.0    67.3     78.2    210    0.214          65.3           66.1 
-#>  3   56      58      59       67      210    0.198          57.7           58.5 
-#>  4 1387.   2397    5614.   18531      210  214.           3282.          4125.  
-#>  5    5.96    6.56    7.46    10.7    210    0.0769          6.57           6.87
-#>  6    5.82    6.42    7.38    10.5    210    0.0777          6.47           6.78
-#>  7    3.77    4.22    4.86     6.98   210    0.0522          4.28           4.49
-#>  8    0.9     1.01    1.5      3.01   466    0.0232          1.16           1.25
-#>  9   64.5    65.1    65.9     72.2    466    0.147          64.1           64.7 
-#> 10   56      58      60       79      466    0.171          58.5           59.2 
+#>    cut   clarity skim_type skim_variable missing complete    mean       sd
+#>    <ord> <ord>   <chr>     <chr>           <int>    <dbl>   <dbl>    <dbl>
+#>  1 Fair  I1      numeric   carat               0        1    1.36    0.745
+#>  2 Fair  I1      numeric   depth               0        1   65.7     3.10 
+#>  3 Fair  I1      numeric   table               0        1   58.1     2.87 
+#>  4 Fair  I1      numeric   price               0        1 3704.   3099.   
+#>  5 Fair  I1      numeric   x                   0        1    6.72    1.11 
+#>  6 Fair  I1      numeric   y                   0        1    6.62    1.13 
+#>  7 Fair  I1      numeric   z                   0        1    4.39    0.756
+#>  8 Fair  SI2     numeric   carat               0        1    1.20    0.501
+#>  9 Fair  SI2     numeric   depth               0        1   64.4     3.16 
+#> 10 Fair  SI2     numeric   table               0        1   58.8     3.68 
+#>       min     p25  median     p75      max     n std.error mean.conf.low
+#>     <dbl>   <dbl>   <dbl>   <dbl>    <dbl> <int>     <dbl>         <dbl>
+#>  1   0.34    0.85    1.06    1.82     5.01   210    0.0514          1.26
+#>  2  55.6    64.7    66.0    67.3     78.2    210    0.214          65.3 
+#>  3  52      56      58      59       67      210    0.198          57.7 
+#>  4 584    1387.   2397    5614.   18531      210  214.           3282.  
+#>  5   4.72    5.96    6.56    7.46    10.7    210    0.0769          6.57
+#>  6   4.6     5.82    6.42    7.38    10.5    210    0.0777          6.47
+#>  7   2.6     3.77    4.22    4.86     6.98   210    0.0522          4.28
+#>  8   0.25    0.9     1.01    1.5      3.01   466    0.0232          1.16
+#>  9  53.1    64.5    65.1    65.9     72.2    466    0.147          64.1 
+#> 10  50.1    56      58      60       79      466    0.171          58.5 
+#>    mean.conf.high
+#>             <dbl>
+#>  1           1.46
+#>  2          66.1 
+#>  3          58.5 
+#>  4        4125.  
+#>  5           6.87
+#>  6           6.78
+#>  7           4.49
+#>  8           1.25
+#>  9          64.7 
+#> 10          59.2 
 #> # ... with 270 more rows
 ```
 
@@ -455,14 +454,14 @@ df$y <- labelled(df$y, label = "Y variable", labels = c())
 # grouped summary
 groupedstats::grouped_summary(df, x, y)
 #> # A tibble: 2 x 16
-#>   x     skim_type variable missing complete   mean    sd   min    p25  median
-#>   <fct> <chr>     <chr>      <int>    <dbl>  <dbl> <dbl> <dbl>  <dbl>   <dbl>
-#> 1 A     numeric   y              0        1 0.0344 0.926 -1.97 -0.559 -0.0726
-#> 2 B     numeric   y              0        1 0.146  0.905 -2.31 -0.361  0.153 
-#>     p75   max     n std.error mean.conf.low mean.conf.high
-#>   <dbl> <dbl> <int>     <dbl>         <dbl>          <dbl>
-#> 1 0.698  2.17    50     0.131        -0.229          0.298
-#> 2 0.629  2.19    50     0.128        -0.111          0.404
+#>   x     skim_type skim_variable missing complete   mean    sd   min    p25
+#>   <fct> <chr>     <chr>           <int>    <dbl>  <dbl> <dbl> <dbl>  <dbl>
+#> 1 A     numeric   y                   0        1 0.0344 0.926 -1.97 -0.559
+#> 2 B     numeric   y                   0        1 0.146  0.905 -2.31 -0.361
+#>    median   p75   max     n std.error mean.conf.low mean.conf.high
+#>     <dbl> <dbl> <dbl> <int>     <dbl>         <dbl>          <dbl>
+#> 1 -0.0726 0.698  2.17    50     0.131        -0.229          0.298
+#> 2  0.153  0.629  2.19    50     0.128        -0.111          0.404
 ```
 
 ## `grouped_slr`

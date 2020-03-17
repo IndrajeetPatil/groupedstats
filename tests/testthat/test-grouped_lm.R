@@ -40,13 +40,8 @@ testthat::test_that(
       )
 
     # testing dimensions of dataframe
-    testthat::expect_equal(dim(df1), c(12L, 9L))
-    testthat::expect_equal(dim(df2), c(32L, 10L))
-    testthat::expect_equal(dim(df3), c(35L, 14L))
-
-    # testing random values
-    # testthat::expect_equal(df1$estimate[2], 30.2986507, tolerance = 0.001)
-    # testthat::expect_equal(df2$.resid[3], 0.7595966, tolerance = 0.001)
-    # testthat::expect_equal(df3$adj.r.squared[5], 0.9292861, tolerance = 0.001)
+    testthat::expect_equal(dim(df1)[[1]], 12L)
+    testthat::expect_equal(dim(df2)[[1]], 32L)
+    testthat::expect_equal(dim(df3)[[1]], 35L)
   }
 )

@@ -37,7 +37,7 @@ testthat::test_that(
       ))
 
     # testing dimensions of dataframe
-    testthat::expect_equal(dim(df1), c(2L, 7L))
-    testthat::expect_equal(dim(df2), c(24L, 6L))
+    testthat::expect_equal(dim(df1)[[1]], 2L)
+    testthat::expect_equal(dim(df2)[[1]], 24L)
   }
 )

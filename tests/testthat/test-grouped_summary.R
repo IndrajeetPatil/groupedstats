@@ -1,5 +1,3 @@
-context("grouped_summary")
-
 # grouped_summary with numeric measures --------------------------------
 
 testthat::test_that(
@@ -53,7 +51,7 @@ testthat::test_that(
       5.006, 3.428, 1.462, 0.246, 5.936, 2.77, 4.26, 1.326, 6.588,
       2.974, 5.552, 2.026
     ), tolerance = 0.001)
-    testthat::expect_identical(df2$variable, c(
+    testthat::expect_identical(df2$skim_variable, c(
       "Sepal.Length", "Sepal.Width", "Petal.Length", "Sepal.Length",
       "Sepal.Width", "Petal.Length", "Sepal.Length", "Sepal.Width",
       "Petal.Length"
@@ -84,28 +82,31 @@ testthat::test_that(
     set.seed(123)
 
     # without measures specified (without NA)
-    df3 <- groupedstats::grouped_summary(
-      data = dplyr::mutate_if(ggplot2::msleep, is.character, as.factor),
-      grouping.vars = vore,
-      measures.type = "factor"
-    )
+    df3 <-
+      groupedstats::grouped_summary(
+        data = dplyr::mutate_if(ggplot2::msleep, is.character, as.factor),
+        grouping.vars = vore,
+        measures.type = "factor"
+      )
 
     # with measures specified (without NA)
-    df4 <- groupedstats::grouped_summary(
-      data = dplyr::mutate_if(ggplot2::msleep, is.character, as.factor),
-      grouping.vars = vore,
-      measures = c(genus:order),
-      measures.type = "factor"
-    )
+    df4 <-
+      groupedstats::grouped_summary(
+        data = dplyr::mutate_if(ggplot2::msleep, is.character, as.factor),
+        grouping.vars = vore,
+        measures = c(genus:order),
+        measures.type = "factor"
+      )
 
     # converting to long format
-    df5 <- groupedstats::grouped_summary(
-      data = ggplot2::msleep,
-      grouping.vars = c(vore),
-      measures = c(genus:order),
-      measures.type = "factor",
-      topcount.long = TRUE
-    )
+    df5 <-
+      groupedstats::grouped_summary(
+        data = ggplot2::msleep,
+        grouping.vars = c(vore),
+        measures = c(genus:order),
+        measures.type = "factor",
+        topcount.long = TRUE
+      )
 
     # testing dimensions
     testthat::expect_equal(dim(df3), c(16L, 9L))
@@ -139,5 +140,37 @@ testthat::test_that(
       2L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 10L, 3L,
       2L, 1L
     ))
+  }
+)
+
+
+# with `variable` as a column name --------------------------------
+
+testthat::test_that(
+  desc = "with `variable` as a column name",
+  code = {
+    testthat::skip_if(getRversion() < "3.6")
+    set.seed(123)
+
+    df <- read.table(
+      header = TRUE,
+      text = "  hubei self other province
+1 HuBei    7    10        5
+2 HuBei    2     0        0
+3 HuBei    0     0      -22
+4 HuBei    2     2        9
+5 HuBei   11    -1       -4
+6 HuBei    0     0        3
+"
+    )
+
+    # long form
+    long_df <-
+      tidyr::pivot_longer(df, 2:4, names_to = "variable", values_to = "y")
+
+    # summary dataframe
+    df_summary <- groupedstats::grouped_summary(long_df, variable, y)
+
+    testthat::expect_equal(dim(df_summary), c(3L, 16L))
   }
 )

@@ -1,7 +1,7 @@
 Type: Package
 Package: groupedstats
 Title: Grouped Statistical Analyses in a Tidy Way
-Version: 0.2.0
+Version: 0.2.1.9000
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -47,4 +47,4 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.0.2.9000
+RoxygenNote: 7.1.0.9000

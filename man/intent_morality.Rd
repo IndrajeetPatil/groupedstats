@@ -4,7 +4,8 @@
 \name{intent_morality}
 \alias{intent_morality}
 \title{Moral judgments about third-party moral behavior.}
-\format{A data frame with 4016 rows and 8 variables
+\format{
+A data frame with 4016 rows and 8 variables
 \itemize{
 \item id.  Participant id.
 \item gender.  Participant's gender.
@@ -15,7 +16,8 @@
 \item condition.  Type of harm, composed of \code{belif} and \code{outcome}.
 \item question. Type of moral judgment asked (\code{wrongess} or \code{punishment}).
 \item rating. Moral judgment rating on a scale of 1 to 7.
-}}
+}
+}
 \source{
 \url{https://www.nature.com/articles/s41598-017-05299-9}
 }

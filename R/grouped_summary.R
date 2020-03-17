@@ -139,8 +139,7 @@ grouped_summary <- function(data,
       by = purrr::map_chr(.x = grouping.vars, .f = rlang::as_string)
     ) %>%
     dplyr::mutate(.data = ., n = n - n_missing) %>% # changing column names
-    purrr::set_names(x = ., nm = ~ sub("numeric.|factor.|^n_|_rate$", "", .x)) %>%
-    dplyr::rename(.data = ., variable = skim_variable)
+    purrr::set_names(x = ., nm = ~ sub("numeric.|factor.|^n_|_rate$", "", .x))
 
   # factor long format conversion --------------------------------------------
 

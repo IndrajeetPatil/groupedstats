@@ -1,3 +1,8 @@
+# groupedstats 0.2.1.9000
+
+  - `grouped_summary` function failed when the dataframe contained a column
+    named `variable` (#24). This is fixed.
+
 # groupedstats 0.2.0
 
   - This is a maintenance release that gets rid of some of the internal

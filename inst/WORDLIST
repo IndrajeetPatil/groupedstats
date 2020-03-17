@@ -9,7 +9,6 @@ covr
 covrpage
 DOI
 dplyr
-ds
 effsize
 eval
 ezANOVA
@@ -22,7 +21,6 @@ glmer
 GLMMs
 hadley
 HSD
-http
 https
 imdb
 IMDB
@@ -42,7 +40,6 @@ nd
 nz
 packageversion
 PIRLS
-pkgs
 priori
 proptest
 README
