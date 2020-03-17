@@ -25,7 +25,6 @@ knitr::opts_chunk$set(
 [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
 [![Travis Build Status](https://travis-ci.org/IndrajeetPatil/groupedstats.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/groupedstats) 
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupedstats?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/groupedstats) 
-[![CircleCI](https://circleci.com/gh/IndrajeetPatil/groupedstats.svg?style=svg)](https://circleci.com/gh/IndrajeetPatil/groupedstats)
 [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 [![DOI](https://zenodo.org/badge/126624251.svg)](https://zenodo.org/badge/latestdoi/126624251)
 [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)

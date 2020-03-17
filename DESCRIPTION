@@ -41,8 +41,6 @@ Suggests:
     rmarkdown,
     spelling,
     testthat
-VignetteBuilder: 
-    knitr
 Encoding: UTF-8
 Language: en-US
 LazyData: true
