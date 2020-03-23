@@ -17,16 +17,20 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
+
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -62,7 +66,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -76,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">groupedstats</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.2.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.2.2</span>
       </span>
     </div>
 
@@ -97,7 +101,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/IndrajeetPatil/groupedstats">
+  <a href="https://github.com/IndrajeetPatil/groupedstats/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -155,35 +159,30 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw pkg'>groupedstats</span><span class='kw ns'>:::</span><span class='fu'><a href='https://indrajeetpatil.github.io/groupedstats//reference/grouped_p_value.html'>grouped_p_value</a></span>(
+    <pre class="examples"><div class='input'><span class='kw pkg'>groupedstats</span><span class='kw ns'>:::</span><span class='fu'>grouped_p_value</span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/diamonds.html'>diamonds</a></span>,
   <span class='kw'>formula</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span>(<span class='no'>price</span>) ~ <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span>(<span class='no'>carat</span>) + (<span class='no'>carat</span> <span class='kw'>|</span> <span class='no'>color</span>),
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>cut</span>, <span class='no'>clarity</span>),
   <span class='kw'>..f</span> <span class='kw'>=</span> <span class='kw pkg'>lme4</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lmer</a></span>
-)</div><div class='output co'>#&gt; <span class='warning'>Warning: Model failed to converge with max|grad| = 0.00315241 (tol = 0.002, component 1)</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Model failed to converge with max|grad| = 0.00248722 (tol = 0.002, component 1)</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Model failed to converge with max|grad| = 0.00410881 (tol = 0.002, component 1)</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Model failed to converge with max|grad| = 0.00467333 (tol = 0.002, component 1)</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Model failed to converge with max|grad| = 0.0121777 (tol = 0.002, component 1)</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Model failed to converge with max|grad| = 0.00589871 (tol = 0.002, component 1)</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Model failed to converge with max|grad| = 0.0067855 (tol = 0.002, component 1)</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Model failed to converge with max|grad| = 0.00547488 (tol = 0.002, component 1)</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Model failed to converge with max|grad| = 0.00322474 (tol = 0.002, component 1)</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Model failed to converge with max|grad| = 0.00415485 (tol = 0.002, component 1)</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Model failed to converge with max|grad| = 0.00210569 (tol = 0.002, component 1)</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Model failed to converge with max|grad| = 0.0229755 (tol = 0.002, component 1)</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Model failed to converge with max|grad| = 0.00224087 (tol = 0.002, component 1)</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 80 x 4</span><span>
+)</div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 80 x 4</span><span>
 #&gt;    cut   clarity term           p.value
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;ord&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;ord&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Fair  I1      (Intercept)  6.18</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-  1</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Fair  I1      scale(carat) 1.01</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 81</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Fair  I1      scale(carat) 9.46</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 82</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Fair  SI2     (Intercept)  7.74</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-  1</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Fair  SI2     scale(carat) 0.  </span><span style='color: #949494;'> </span><span>    
 #&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Fair  SI1     (Intercept)  5.91</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-  1</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Fair  SI1     scale(carat) 2.70</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-167</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Fair  SI1     scale(carat) 2.01</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-167</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Fair  VS2     (Intercept)  6.96</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-  1</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Fair  VS2     scale(carat) 2.84</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 69</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Fair  VS2     scale(carat) 2.81</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 69</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Fair  VS1     (Intercept)  6.18</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-  1</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Fair  VS1     scale(carat) 4.76</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-146</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Fair  VS1     scale(carat) 4.85</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-146</span><span>
 #&gt; </span><span style='color: #949494;'># ... with 70 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Indrajeet Patil</p>
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 

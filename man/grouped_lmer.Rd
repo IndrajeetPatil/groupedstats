@@ -30,12 +30,11 @@ grouped_lmer(
     distinguished by vertical bars (\code{|}) separating expressions
     for design matrices from grouping factors.  Two vertical bars
     (\code{||}) can be used to specify multiple uncorrelated random
-    effects for the same grouping variable. (Because of the way it is
-    implemented, the \code{||}-syntax \emph{works
-    only for design matrices containing
-    numeric (continuous) predictors}; to fit models with independent
-  categorical effects, see \code{\link[lme4]{dummy}} or the \code{lmer_alt}
-  function from the \code{afex} package.) 
+    effects for the same grouping variable. %----------
+    (Because of the way it is implemented, the \code{||}-syntax \emph{works
+       only for design matrices containing numeric (continuous) predictors};
+     to fit models with independent categorical effects, see \code{\link[lme4]{dummy}}
+     or the \code{lmer_alt} function from the \href{https://CRAN.R-project.org/package=afex}{\pkg{afex}} package.)
 }
     \item{\code{REML}}{logical scalar - Should the estimates be chosen to
     optimize the REML criterion (as opposed to the log-likelihood)?}

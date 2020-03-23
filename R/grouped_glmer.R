@@ -24,7 +24,6 @@
 #'   family = stats::binomial(link = "probit"),
 #'   data = dplyr::sample_frac(groupedstats::Titanic_full, size = 0.3),
 #'   grouping.vars = Sex,
-#'   REML = FALSE,
 #'   tidy.args = list(effects = "fixed", conf.int = TRUE, conf.level = 0.95)
 #' )
 #' @export

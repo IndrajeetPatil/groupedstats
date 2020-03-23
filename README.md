@@ -24,7 +24,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2020--03--17-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2020--03--23-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
@@ -162,9 +162,6 @@ groupedstats::grouped_tidy(
   formula = Survived ~ Sex,
   family = stats::binomial(link = "logit")
 )
-#> Registered S3 method overwritten by 'broom.mixed':
-#>   method      from 
-#>   tidy.gamlss broom
 #> # A tibble: 14 x 7
 #>    Class Age   term         estimate  std.error statistic  p.value
 #>    <fct> <fct> <chr>           <dbl>      <dbl>     <dbl>    <dbl>
@@ -353,12 +350,6 @@ ggplot2::ggplot(
   ggplot2::facet_grid(facets = ~cut) + # for each level of the factor level
   ggstatsplot::theme_ggstatsplot() +
   ggplot2::theme(legend.position = "none")
-#> Registered S3 methods overwritten by 'car':
-#>   method                          from
-#>   influence.merMod                lme4
-#>   cooks.distance.influence.merMod lme4
-#>   dfbeta.influence.merMod         lme4
-#>   dfbetas.influence.merMod        lme4
 ```
 
 <img src="man/figures/README-grouped_summary3-1.png" width="100%" />
@@ -536,14 +527,6 @@ cut-
 set.seed(123)
 library(ggplot2)
 library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
 options(tibble.width = Inf) # show me all columns
 
 groupedstats::grouped_slr(
@@ -735,8 +718,6 @@ groupedstats::grouped_aov(
   formula = lifeExp ~ continent,
   output = "tukey"
 )
-#> Note: The p-value is adjusted for the number of tests conducted
-#>             at each level of the grouping variable.
 #> # A tibble: 120 x 8
 #>     year term      comparison       estimate conf.low conf.high adj.p.value
 #>    <int> <chr>     <chr>               <dbl>    <dbl>     <dbl>       <dbl>
@@ -849,56 +830,33 @@ groupedstats::grouped_lmer(
   data = gapminder,
   formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap | continent),
   grouping.vars = year,
-  REML = FALSE,
   output = "tidy"
 )
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
 #> # A tibble: 24 x 10
 #>     year effect term             estimate std.error statistic conf.low conf.high
 #>    <int> <chr>  <chr>               <dbl>     <dbl>     <dbl>    <dbl>     <dbl>
-#>  1  1952 fixed  (Intercept)         0.201    0.743      0.270  -1.26       1.66 
-#>  2  1952 fixed  scale(gdpPercap)    0.900    0.742      1.21   -0.555      2.35 
-#>  3  1957 fixed  (Intercept)         0.207    0.380      0.545  -0.538      0.952
-#>  4  1957 fixed  scale(gdpPercap)    0.424    0.261      1.62   -0.0878     0.936
-#>  5  1962 fixed  (Intercept)         0.226    0.505      0.447  -0.765      1.22 
-#>  6  1962 fixed  scale(gdpPercap)    0.547    0.273      2.01    0.0130     1.08 
-#>  7  1967 fixed  (Intercept)         0.233    0.308      0.757  -0.370      0.836
-#>  8  1967 fixed  scale(gdpPercap)    0.271    0.0792     3.42    0.115      0.426
-#>  9  1972 fixed  (Intercept)         0.268    0.312      0.859  -0.344      0.881
-#> 10  1972 fixed  scale(gdpPercap)    0.236    0.0582     4.05    0.122      0.350
-#>      p.value significance
-#>        <dbl> <chr>       
-#>  1 0.787     ns          
-#>  2 0.225     ns          
-#>  3 0.586     ns          
-#>  4 0.104     ns          
-#>  5 0.655     ns          
-#>  6 0.0447    *           
-#>  7 0.449     ns          
-#>  8 0.000632  ***         
-#>  9 0.390     ns          
-#> 10 0.0000502 ***         
+#>  1  1952 fixed  (Intercept)         0.260    0.487      0.534  -0.694      1.21 
+#>  2  1952 fixed  scale(gdpPercap)    0.966    0.409      2.36    0.164      1.77 
+#>  3  1957 fixed  (Intercept)         0.252    0.441      0.573  -0.612      1.12 
+#>  4  1957 fixed  scale(gdpPercap)    0.839    0.355      2.36    0.143      1.53 
+#>  5  1962 fixed  (Intercept)         0.244    0.491      0.497  -0.719      1.21 
+#>  6  1962 fixed  scale(gdpPercap)    0.553    0.233      2.37    0.0965     1.01 
+#>  7  1967 fixed  (Intercept)         0.234    0.342      0.683  -0.437      0.904
+#>  8  1967 fixed  scale(gdpPercap)    0.296    0.0919     3.22    0.116      0.476
+#>  9  1972 fixed  (Intercept)         0.260    0.345      0.753  -0.417      0.936
+#> 10  1972 fixed  scale(gdpPercap)    0.250    0.0694     3.60    0.114      0.386
+#>     p.value significance
+#>       <dbl> <chr>       
+#>  1 0.593    ns          
+#>  2 0.0182   *           
+#>  3 0.567    ns          
+#>  4 0.0180   *           
+#>  5 0.619    ns          
+#>  6 0.0176   *           
+#>  7 0.494    ns          
+#>  8 0.00128  **          
+#>  9 0.452    ns          
+#> 10 0.000321 ***         
 #> # ... with 14 more rows
 
 # getting tidy output of results
@@ -906,35 +864,23 @@ groupedstats::grouped_lmer(
   data = gapminder,
   formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap | continent),
   grouping.vars = year,
-  REML = FALSE,
   output = "glance"
 )
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
-#> boundary (singular) fit: see ?isSingular
 #> # A tibble: 12 x 7
-#>     year sigma logLik   AIC   BIC deviance df.residual
+#>     year sigma logLik   AIC   BIC REMLcrit df.residual
 #>    <int> <dbl>  <dbl> <dbl> <dbl>    <dbl>       <int>
-#>  1  1952 0.524  -127.  266.  283.     254.         136
-#>  2  1957 0.557  -129.  270.  287.     258.         136
-#>  3  1962 0.545  -129.  271.  288.     259.         136
-#>  4  1967 0.565  -129.  270.  288.     258.         136
-#>  5  1972 0.583  -133.  278.  296.     266.         136
-#>  6  1977 0.579  -133.  277.  295.     265.         136
-#>  7  1982 0.535  -122.  255.  273.     243.         136
-#>  8  1987 0.496  -111.  233.  251.     221.         136
-#>  9  1992 0.526  -117.  246.  264.     234.         136
-#> 10  1997 0.494  -110.  232.  250.     220.         136
-#> 11  2002 0.506  -113.  239.  257.     227.         136
-#> 12  2007 0.520  -117.  247.  265.     235.         136
+#>  1  1952 0.527  -125.  263.  280.     251.         136
+#>  2  1957 0.539  -128.  268.  285.     256.         136
+#>  3  1962 0.547  -129.  271.  289.     259.         136
+#>  4  1967 0.565  -131.  274.  292.     262.         136
+#>  5  1972 0.585  -135.  283.  300.     271.         136
+#>  6  1977 0.585  -135.  281.  299.     269.         136
+#>  7  1982 0.538  -124.  260.  277.     248.         136
+#>  8  1987 0.502  -112.  236.  254.     224.         136
+#>  9  1992 0.526  -119.  251.  268.     239.         136
+#> 10  1997 0.500  -112.  236.  254.     224.         136
+#> 11  2002 0.509  -116.  243.  261.     231.         136
+#> 12  2007 0.524  -120.  251.  269.     239.         136
 ```
 
 ## `grouped_glmer`
@@ -995,7 +941,6 @@ groupedstats::grouped_glmer(
   family = stats::binomial(link = "probit"),
   output = "glance"
 )
-#> boundary (singular) fit: see ?isSingular
 #> # A tibble: 2 x 7
 #>   Sex    sigma logLik   AIC   BIC deviance df.residual
 #>   <fct>  <dbl>  <dbl> <dbl> <dbl>    <dbl>       <int>

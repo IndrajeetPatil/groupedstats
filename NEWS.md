@@ -1,3 +1,7 @@
+# groupedstats 0.2.2
+
+  - Adapts to changes made to `lme4`. 
+
 # groupedstats 0.2.1
 
   - `grouped_summary` function failed when the dataframe contained a column
