@@ -896,8 +896,8 @@ set.seed(123)
 
 # having a look at the data
 dplyr::glimpse(groupedstats::Titanic_full)
-#> Observations: 2,201
-#> Variables: 5
+#> Rows: 2,201
+#> Columns: 5
 #> $ id       <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,...
 #> $ Class    <fct> 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd...
 #> $ Sex      <fct> Male, Male, Male, Male, Male, Male, Male, Male, Male, Male...
