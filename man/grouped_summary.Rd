@@ -67,7 +67,7 @@ groupedstats::grouped_summary(
   measures.type = "factor"
 )
 
-# for factors, you can also convert the dataframe to long format with counts
+# for factors, you can also convert the dataframe to a long format with counts
 groupedstats::grouped_summary(
   data = ggplot2::msleep,
   grouping.vars = c(vore),

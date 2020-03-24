@@ -23,12 +23,12 @@
 #' @param ... Currently ignored.
 #'
 #' @importFrom skimr skim
-#' @importFrom dplyr filter_at mutate_at mutate_if any_vars n
+#' @importFrom dplyr filter_at mutate_at mutate_if n rename group_by ungroup
 #' @importFrom dplyr group_modify group_nest summarise
-#' @importFrom purrr is_bare_numeric is_bare_character keep map map_lgl map_dfr
-#' @importFrom purrr flatten_lgl set_names map_chr
+#' @importFrom purrr is_bare_numeric is_bare_character keep map map_dfr
+#' @importFrom purrr set_names map_chr
 #' @importFrom tidyr unnest separate
-#' @importFrom tibble as_tibble enframe
+#' @importFrom tibble enframe
 #' @importFrom stats qt
 #' @importFrom haven zap_labels
 #' @importFrom rlang !! !!! as_string
@@ -52,7 +52,7 @@
 #'   measures.type = "factor"
 #' )
 #'
-#' # for factors, you can also convert the dataframe to long format with counts
+#' # for factors, you can also convert the dataframe to a long format with counts
 #' groupedstats::grouped_summary(
 #'   data = ggplot2::msleep,
 #'   grouping.vars = c(vore),
