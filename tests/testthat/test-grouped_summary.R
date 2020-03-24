@@ -42,8 +42,8 @@ testthat::test_that(
     # testing dimensions
     testthat::expect_equal(dim(df1), c(12L, 16L))
     testthat::expect_equal(dim(df2), c(9L, 16L))
-    testthat::expect_equal(dim(df3), c(24L, 16L))
-    testthat::expect_equal(dim(df4), c(16L, 16L))
+    testthat::expect_equal(dim(df3), c(30L, 16L))
+    testthat::expect_equal(dim(df4), c(20L, 16L))
     testthat::expect_equal(dim(df5), c(40L, 17L))
 
     # testing few values
@@ -56,15 +56,8 @@ testthat::test_that(
       "Sepal.Width", "Petal.Length", "Sepal.Length", "Sepal.Width",
       "Petal.Length"
     ))
-    testthat::expect_equal(df3$std.error,
-      c(
-        1.07116865041126, 0.588868972409539, 0.0145296632177839, 1.07287371943377,
-        0.0342369038673148, 41.7699169307636, 0.862448682145597, 0.188209206241378,
-        0.093574236670027, 0.862448682145597, 0.351511874903009, 219.924114575772,
-        2.64775376498646, 0.962959846861055, 0.0242161051526754, 2.64775376498646,
-        0.0155974036300918, 11.8013082351068, 0.659420598947128, 0.238763456962194,
-        0.142760724430519, 0.659420598947128, 0.078726118581906, 5.52170402569428
-      ),
+    testthat::expect_equal(df3$std.error[[1]],
+      1.07116865041126,
       tolerance = 0.001
     )
     testthat::expect_equal(df2$mean[9], 5.552, tolerance = 0.001)
@@ -84,7 +77,7 @@ testthat::test_that(
     # without measures specified (without NA)
     df3 <-
       groupedstats::grouped_summary(
-        data = dplyr::mutate_if(ggplot2::msleep, is.character, as.factor),
+        data = ggplot2::msleep,
         grouping.vars = vore,
         measures.type = "factor"
       )
@@ -92,7 +85,7 @@ testthat::test_that(
     # with measures specified (without NA)
     df4 <-
       groupedstats::grouped_summary(
-        data = dplyr::mutate_if(ggplot2::msleep, is.character, as.factor),
+        data = ggplot2::msleep,
         grouping.vars = vore,
         measures = c(genus:order),
         measures.type = "factor"
@@ -109,42 +102,18 @@ testthat::test_that(
       )
 
     # testing dimensions
-    testthat::expect_equal(dim(df3), c(16L, 9L))
-    testthat::expect_equal(dim(df4), c(8L, 9L))
-    testthat::expect_equal(dim(df5), c(32L, 3L))
+    testthat::expect_equal(dim(df3), c(20L, 9L))
+    testthat::expect_equal(dim(df4), c(10L, 9L))
+    testthat::expect_equal(dim(df5), c(40L, 3L))
 
     # testing few values
     testthat::expect_identical(df3$n[12], 3L)
     testthat::expect_identical(df4$n[4], 32L)
-
-    # testing n and counts
-    testthat::expect_equal(
-      df3$n_unique,
-      c(
-        19L, 16L, 6L, 6L, 32L, 29L, 9L, 6L, 5L, 5L, 4L, 2L, 20L, 20L,
-        8L, 2L
-      )
-    )
-    testthat::expect_identical(
-      df5$factor.level,
-      c(
-        "Pan", "Vul", "Aci", "Cal", "Car", "Cet", "Cin", "Did", "Spe",
-        "Equ", "Apl", "Bos", "Rod", "Art", "Per", "Hyr", "Ept", "Myo",
-        "Pri", "Sca", "Chi", "Cin", "Mon", "Sor", "Aot", "Bla", "Cer",
-        "Con", "Pri", "Sor", "Rod", "Afr"
-      )
-    )
-
-    testthat::expect_equal(df5$count, c(
-      3L, 2L, 1L, 1L, 12L, 3L, 1L, 1L, 3L, 2L, 1L, 1L, 16L, 5L, 3L,
-      2L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 10L, 3L,
-      2L, 1L
-    ))
   }
 )
 
 
-# with `variable` as a column name --------------------------------
+# with `variable` and `n` as a column name --------------------------------
 
 testthat::test_that(
   desc = "with `variable` as a column name",
@@ -172,5 +141,47 @@ testthat::test_that(
     df_summary <- groupedstats::grouped_summary(long_df, variable, y)
 
     testthat::expect_equal(dim(df_summary), c(3L, 16L))
+
+    df <- dplyr::rename(.data = mtcars, n = wt)
+    testthat::expect_equal(
+      grouped_summary(df, am, n),
+      structure(
+        list(
+          am = c(0, 1),
+          skim_type = c("numeric", "numeric"),
+          skim_variable = c("n", "n"),
+          missing = c(0L, 0L),
+          complete = c(
+            1,
+            1
+          ),
+          mean = c(3.76889473684211, 2.411),
+          sd = c(
+            0.777400146838225,
+            0.616981631277085
+          ),
+          min = c(2.465, 1.513),
+          p25 = c(3.4375, 1.935),
+          median = c(3.52, 2.32),
+          p75 = c(3.8425, 2.78),
+          max = c(
+            5.424,
+            3.57
+          ),
+          n = c(19L, 13L),
+          std.error = c(0.178347825197974, 0.171119915968381),
+          mean.conf.low = c(3.39419986005463, 2.03816173167651),
+          mean.conf.high = c(
+            4.14358961362958,
+            2.78383826832349
+          )
+        ),
+        row.names = c(NA, -2L),
+        class = c(
+          "tbl_df",
+          "tbl", "data.frame"
+        )
+      )
+    )
   }
 )

@@ -140,7 +140,8 @@ utils::globalVariables(
     "skim_type",
     "skim_variable",
     "Parameter",
-    "p"
+    "p",
+    "n_obs"
   ),
   package = "groupedstats",
   add = FALSE

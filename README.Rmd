@@ -608,7 +608,7 @@ diamonds_short <-
   dplyr::filter(.data = ggplot2::diamonds, color == "E" | color == "J")
 
 # show me all rows and columns
-options(tibble.width = Inf, tibble.print_max = Inf) 
+options(tibble.width = Inf, tibble.print_max = Inf)
 
 # t-test
 groupedstats::grouped_ttest(
@@ -687,8 +687,10 @@ results_df <-
     .id = "model"
   ) %>% # for each combination of mpaa rating and movie genre
   dplyr::group_by(.data = ., mpaa, genre) %>% # arrange by best to worst fits
-  dplyr::arrange(.data = ., dplyr::desc(adj.r.squared))
+  dplyr::arrange(.data = ., dplyr::desc(adj.r.squared)) %>%
+  dplyr::ungroup(.)
 
+# looking at the results
 head(results_df)
 ```
 

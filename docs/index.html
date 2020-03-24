@@ -204,25 +204,29 @@ groupedstats::grouped_summary(
   measures = sleep_total:awake,
   measures.type = "numeric"
 )
-#&gt; # A tibble: 16 x 16
-#&gt;    vore    skim_type skim_variable missing complete   mean     sd   min    p25
+#&gt; # A tibble: 20 x 16
+#&gt;    vore    skim_type skim_variable missing complete   mean      sd    min    p25
 #&gt;    <fct><chr><chr><int><dbl><dbl><dbl><dbl><dbl>
-#&gt;  1 carni   numeric   sleep_total         0    1     10.4   4.67   2.7    6.25 
-#&gt;  2 carni   numeric   sleep_rem           9    0.526  2.29  1.86   0.1    1.33 
-#&gt;  3 carni   numeric   sleep_cycle        14    0.263  0.373 0.0325 0.333  0.35 
-#&gt;  4 carni   numeric   awake               0    1     13.6   4.68   4.6   11    
-#&gt;  5 herbi   numeric   sleep_total         0    1      9.51  4.88   1.9    4.3  
-#&gt;  6 herbi   numeric   sleep_rem           8    0.75   1.37  0.922  0.4    0.6  
-#&gt;  7 herbi   numeric   sleep_cycle        20    0.375  0.418 0.324  0.117  0.183
-#&gt;  8 herbi   numeric   awake               0    1     14.5   4.88   7.4    9.78 
-#&gt;  9 insecti numeric   sleep_total         0    1     14.9   5.92   8.4    8.6  
-#&gt; 10 insecti numeric   sleep_rem           1    0.8    3.52  1.93   2      2.08 
-#&gt; 11 insecti numeric   sleep_cycle         2    0.6    0.161 0.0419 0.117  0.142
-#&gt; 12 insecti numeric   awake               0    1      9.06  5.92   4.1    4.3  
-#&gt; 13 omni    numeric   sleep_total         0    1     10.9   2.95   8      9.1  
-#&gt; 14 omni    numeric   sleep_rem           2    0.9    1.96  1.01   0.7    1.25 
-#&gt; 15 omni    numeric   sleep_cycle         9    0.55   0.592 0.473  0.133  0.258
-#&gt; 16 omni    numeric   awake               0    1     13.1   2.95   6     13.1  
+#&gt;  1 carni   numeric   sleep_total         0    1     10.4    4.67    2.7    6.25 
+#&gt;  2 carni   numeric   sleep_rem           9    0.526  2.29   1.86    0.1    1.33 
+#&gt;  3 carni   numeric   sleep_cycle        14    0.263  0.373  0.0325  0.333  0.35 
+#&gt;  4 carni   numeric   awake               0    1     13.6    4.68    4.6   11    
+#&gt;  5 herbi   numeric   sleep_total         0    1      9.51   4.88    1.9    4.3  
+#&gt;  6 herbi   numeric   sleep_rem           8    0.75   1.37   0.922   0.4    0.6  
+#&gt;  7 herbi   numeric   sleep_cycle        20    0.375  0.418  0.324   0.117  0.183
+#&gt;  8 herbi   numeric   awake               0    1     14.5    4.88    7.4    9.78 
+#&gt;  9 insecti numeric   sleep_total         0    1     14.9    5.92    8.4    8.6  
+#&gt; 10 insecti numeric   sleep_rem           1    0.8    3.52   1.93    2      2.08 
+#&gt; 11 insecti numeric   sleep_cycle         2    0.6    0.161  0.0419  0.117  0.142
+#&gt; 12 insecti numeric   awake               0    1      9.06   5.92    4.1    4.3  
+#&gt; 13 omni    numeric   sleep_total         0    1     10.9    2.95    8      9.1  
+#&gt; 14 omni    numeric   sleep_rem           2    0.9    1.96   1.01    0.7    1.25 
+#&gt; 15 omni    numeric   sleep_cycle         9    0.55   0.592  0.473   0.133  0.258
+#&gt; 16 omni    numeric   awake               0    1     13.1    2.95    6     13.1  
+#&gt; 17 <na>    numeric   sleep_total         0    1     10.2    3.00    5.4    8.65 
+#&gt; 18 <na>    numeric   sleep_rem           2    0.714  1.88   0.847   0.5    1.8  
+#&gt; 19 <na>    numeric   sleep_cycle         6    0.143  0.183 NA       0.183  0.183
+#&gt; 20 <na>    numeric   awake               0    1     13.8    3.00   10.3   11.8  
 #&gt;    median    p75    max     n std.error mean.conf.low mean.conf.high
 #&gt;     <dbl><dbl><dbl><int><dbl><dbl><dbl>
 #&gt;  1 10.4   13     19.4      19    1.07          8.13           12.6  
@@ -240,7 +244,11 @@ groupedstats::grouped_summary(
 #&gt; 13  9.9   10.9   18        20    0.659         9.54           12.3  
 #&gt; 14  1.85   2.3    4.9      18    0.239         1.45            2.46 
 #&gt; 15  0.5    0.708  1.5      11    0.143         0.274           0.911
-#&gt; 16 14.1   14.9   16        20    0.659        11.7            14.5</dbl></dbl></dbl></int></dbl></dbl></dbl></dbl></dbl></dbl></dbl></dbl></int></chr></chr></fct></pre></div>
+#&gt; 16 14.1   14.9   16        20    0.659        11.7            14.5  
+#&gt; 17 10.6   12.2   13.7       7    1.14          7.41           13.0  
+#&gt; 18  2      2.4    2.7       5    0.379         0.829           2.93 
+#&gt; 19  0.183  0.183  0.183     1   NA           NaN             NaN    
+#&gt; 20 13.4   15.4   18.6       7    1.14         11.0            16.6</dbl></dbl></dbl></int></dbl></dbl></dbl></na></na></na></na></dbl></dbl></dbl></dbl></dbl></int></chr></chr></fct></pre></div>
 <p>This function can be used to get summary of either numeric <strong>or</strong> factor variables, but <strong>not</strong> both. This is by design. If no <code>measures</code> are specified, the function will compute summary for all variables of the specified type (<code>numeric</code> or <code>factor</code>).</p>
 <p>If you want summary of variables of <code>factor</code> type-</p>
 <div class="sourceCode" id="cb7"><pre class="r"># for reproducibility
@@ -1134,11 +1142,12 @@ library(groupedstats)
 
 results_df % # for each combination of mpaa rating and movie genre
   dplyr::group_by(.data = ., mpaa, genre) %&gt;% # arrange by best to worst fits
-  dplyr::arrange(.data = ., dplyr::desc(adj.r.squared))
+  dplyr::arrange(.data = ., dplyr::desc(adj.r.squared)) %&gt;%
+  dplyr::ungroup(.)
 
+# looking at the results
 head(results_df)
 #&gt; # A tibble: 6 x 15
-#&gt; # Groups:   mpaa, genre [3]
 #&gt;   model mpaa  genre       r.squared adj.r.squared  sigma statistic      p.value
 #&gt;   <chr><fct><fct><dbl><dbl><dbl><dbl><dbl>
 #&gt; 1 2     PG-13 Animation       0.474         0.369 0.824       4.51 0.0870      
@@ -1239,7 +1248,7 @@ head(results_df)
 <li><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></li>
 <li><a href="https://zenodo.org/badge/latestdoi/126624251"><img src="https://zenodo.org/badge/126624251.svg" alt="DOI"></a></li>
 <li><a href="http://www.repostatus.org/#active"><img src="http://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active - The project has reached a stable, usable state and is being actively developed."></a></li>
-<li><a href="https://github.com/IndrajeetPatil/groupedstats/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--03--23-yellowgreen.svg" alt="Last-changedate"></a></li>
+<li><a href="https://github.com/IndrajeetPatil/groupedstats/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--03--24-yellowgreen.svg" alt="Last-changedate"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#retired"><img src="https://img.shields.io/badge/lifecycle-retired-orange.svg" alt="lifecycle"></a></li>
 <li><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg" alt="minimal R version"></a></li>
 <li><a href="https://codecov.io/github/IndrajeetPatil/groupedstats?branch=master"><img src="https://img.shields.io/codecov/c/github/IndrajeetPatil/groupedstats/master.svg" alt="Coverage Status"></a></li>

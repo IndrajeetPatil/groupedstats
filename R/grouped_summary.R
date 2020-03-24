@@ -23,8 +23,8 @@
 #' @param ... Currently ignored.
 #'
 #' @importFrom skimr skim
-#' @importFrom dplyr filter_at mutate_at mutate_if any_vars tally
-#' @importFrom dplyr group_modify group_nest
+#' @importFrom dplyr filter_at mutate_at mutate_if any_vars n
+#' @importFrom dplyr group_modify group_nest summarise
 #' @importFrom purrr is_bare_numeric is_bare_character keep map map_lgl map_dfr
 #' @importFrom purrr flatten_lgl set_names map_chr
 #' @importFrom tidyr unnest separate
@@ -101,11 +101,6 @@ grouped_summary <- function(data,
 
   # removing grouping levels that are `NA`
   df %<>%
-    dplyr::filter_at(
-      .tbl = .,
-      .vars = dplyr::vars(!!!grouping.vars),
-      .vars_predicate = dplyr::any_vars(!is.na(.))
-    ) %>%
     dplyr::mutate_if(
       .tbl = .,
       .predicate = purrr::is_bare_character,
@@ -134,11 +129,12 @@ grouped_summary <- function(data,
           ))),
           keep = FALSE
         ) %>%
-        dplyr::ungroup(x = .),
-      y = dplyr::tally(df_results),
+        dplyr::ungroup(.),
+      y = dplyr::summarise(df_results, n_obs = dplyr::n()),
       by = purrr::map_chr(.x = grouping.vars, .f = rlang::as_string)
     ) %>%
-    dplyr::mutate(.data = ., n = n - n_missing) %>% # changing column names
+    dplyr::mutate(.data = ., n = n_obs - n_missing) %>% # changing column names
+    dplyr::select(.data = ., -n_obs) %>%
     purrr::set_names(x = ., nm = ~ sub("numeric.|factor.|^n_|_rate$", "", .x))
 
   # factor long format conversion --------------------------------------------

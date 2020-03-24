@@ -241,7 +241,7 @@ sd, median, min, max)</p>
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>vore</span>,
   <span class='kw'>measures.type</span> <span class='kw'>=</span> <span class='st'>"factor"</span>
-)</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 16 x 9</span><span>
+)</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 20 x 9</span><span>
 #&gt;    vore    skim_type skim_variable missing complete ordered n_unique
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span> carni   factor    name                0    1     FALSE         19
@@ -260,6 +260,10 @@ sd, median, min, max)</p>
 #&gt; </span><span style='color: #BCBCBC;'>14</span><span> omni    factor    genus               0    1     FALSE         20
 #&gt; </span><span style='color: #BCBCBC;'>15</span><span> omni    factor    order               0    1     FALSE          8
 #&gt; </span><span style='color: #BCBCBC;'>16</span><span> omni    factor    conservation       11    0.450 FALSE          2
+#&gt; </span><span style='color: #BCBCBC;'>17</span><span> </span><span style='color: #BB0000;'>NA</span><span>      factor    name                0    1     FALSE          7
+#&gt; </span><span style='color: #BCBCBC;'>18</span><span> </span><span style='color: #BB0000;'>NA</span><span>      factor    genus               0    1     FALSE          7
+#&gt; </span><span style='color: #BCBCBC;'>19</span><span> </span><span style='color: #BB0000;'>NA</span><span>      factor    order               0    1     FALSE          5
+#&gt; </span><span style='color: #BCBCBC;'>20</span><span> </span><span style='color: #BB0000;'>NA</span><span>      factor    conservation        5    0.286 FALSE          1
 #&gt;    top_counts                          n
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                           </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Arc: 1, Bot: 1, Cas: 1, Che: 1     19
@@ -277,7 +281,11 @@ sd, median, min, max)</p>
 #&gt; </span><span style='color: #BCBCBC;'>13</span><span> Afr: 1, Afr: 1, Bab: 1, Chi: 1     20
 #&gt; </span><span style='color: #BCBCBC;'>14</span><span> Aot: 1, Bla: 1, Cer: 1, Con: 1     20
 #&gt; </span><span style='color: #BCBCBC;'>15</span><span> Pri: 10, Sor: 3, Rod: 2, Afr: 1    20
-#&gt; </span><span style='color: #BCBCBC;'>16</span><span> lc: 8, dom: 1, cd: 0, en: 0         9</div><div class='input'>
+#&gt; </span><span style='color: #BCBCBC;'>16</span><span> lc: 8, dom: 1, cd: 0, en: 0         9
+#&gt; </span><span style='color: #BCBCBC;'>17</span><span> Dee: 1, Des: 1, Mol: 1, Mus: 1      7
+#&gt; </span><span style='color: #BCBCBC;'>18</span><span> Cal: 1, Par: 1, Per: 1, Pha: 1      7
+#&gt; </span><span style='color: #BCBCBC;'>19</span><span> Rod: 3, Dip: 1, Eri: 1, Hyr: 1      7
+#&gt; </span><span style='color: #BCBCBC;'>20</span><span> lc: 2, cd: 0, dom: 0, en: 0         2</div><div class='input'>
 <span class='co'># for factors, you can also convert the dataframe to long format with counts</span>
 <span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'>grouped_summary</span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='no'><a href='https://ggplot2.tidyverse.org/reference/msleep.html'>msleep</a></span>,
@@ -285,7 +293,7 @@ sd, median, min, max)</p>
   <span class='kw'>measures</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>genus</span>:<span class='no'>order</span>),
   <span class='kw'>measures.type</span> <span class='kw'>=</span> <span class='st'>"factor"</span>,
   <span class='kw'>topcount.long</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
-)</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 32 x 3</span><span>
+)</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 40 x 3</span><span>
 #&gt;    vore  factor.level count
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span> carni Pan              3
@@ -298,7 +306,7 @@ sd, median, min, max)</p>
 #&gt; </span><span style='color: #BCBCBC;'> 8</span><span> carni Did              1
 #&gt; </span><span style='color: #BCBCBC;'> 9</span><span> herbi Spe              3
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span> herbi Equ              2
-#&gt; </span><span style='color: #949494;'># ... with 22 more rows</span><span></div></span></pre>
+#&gt; </span><span style='color: #949494;'># ... with 30 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

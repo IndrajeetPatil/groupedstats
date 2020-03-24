@@ -24,7 +24,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2020--03--23-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2020--03--24-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
@@ -205,25 +205,29 @@ groupedstats::grouped_summary(
   measures = sleep_total:awake,
   measures.type = "numeric"
 )
-#> # A tibble: 16 x 16
-#>    vore    skim_type skim_variable missing complete   mean     sd   min    p25
-#>    <fct>   <chr>     <chr>           <int>    <dbl>  <dbl>  <dbl> <dbl>  <dbl>
-#>  1 carni   numeric   sleep_total         0    1     10.4   4.67   2.7    6.25 
-#>  2 carni   numeric   sleep_rem           9    0.526  2.29  1.86   0.1    1.33 
-#>  3 carni   numeric   sleep_cycle        14    0.263  0.373 0.0325 0.333  0.35 
-#>  4 carni   numeric   awake               0    1     13.6   4.68   4.6   11    
-#>  5 herbi   numeric   sleep_total         0    1      9.51  4.88   1.9    4.3  
-#>  6 herbi   numeric   sleep_rem           8    0.75   1.37  0.922  0.4    0.6  
-#>  7 herbi   numeric   sleep_cycle        20    0.375  0.418 0.324  0.117  0.183
-#>  8 herbi   numeric   awake               0    1     14.5   4.88   7.4    9.78 
-#>  9 insecti numeric   sleep_total         0    1     14.9   5.92   8.4    8.6  
-#> 10 insecti numeric   sleep_rem           1    0.8    3.52  1.93   2      2.08 
-#> 11 insecti numeric   sleep_cycle         2    0.6    0.161 0.0419 0.117  0.142
-#> 12 insecti numeric   awake               0    1      9.06  5.92   4.1    4.3  
-#> 13 omni    numeric   sleep_total         0    1     10.9   2.95   8      9.1  
-#> 14 omni    numeric   sleep_rem           2    0.9    1.96  1.01   0.7    1.25 
-#> 15 omni    numeric   sleep_cycle         9    0.55   0.592 0.473  0.133  0.258
-#> 16 omni    numeric   awake               0    1     13.1   2.95   6     13.1  
+#> # A tibble: 20 x 16
+#>    vore    skim_type skim_variable missing complete   mean      sd    min    p25
+#>    <fct>   <chr>     <chr>           <int>    <dbl>  <dbl>   <dbl>  <dbl>  <dbl>
+#>  1 carni   numeric   sleep_total         0    1     10.4    4.67    2.7    6.25 
+#>  2 carni   numeric   sleep_rem           9    0.526  2.29   1.86    0.1    1.33 
+#>  3 carni   numeric   sleep_cycle        14    0.263  0.373  0.0325  0.333  0.35 
+#>  4 carni   numeric   awake               0    1     13.6    4.68    4.6   11    
+#>  5 herbi   numeric   sleep_total         0    1      9.51   4.88    1.9    4.3  
+#>  6 herbi   numeric   sleep_rem           8    0.75   1.37   0.922   0.4    0.6  
+#>  7 herbi   numeric   sleep_cycle        20    0.375  0.418  0.324   0.117  0.183
+#>  8 herbi   numeric   awake               0    1     14.5    4.88    7.4    9.78 
+#>  9 insecti numeric   sleep_total         0    1     14.9    5.92    8.4    8.6  
+#> 10 insecti numeric   sleep_rem           1    0.8    3.52   1.93    2      2.08 
+#> 11 insecti numeric   sleep_cycle         2    0.6    0.161  0.0419  0.117  0.142
+#> 12 insecti numeric   awake               0    1      9.06   5.92    4.1    4.3  
+#> 13 omni    numeric   sleep_total         0    1     10.9    2.95    8      9.1  
+#> 14 omni    numeric   sleep_rem           2    0.9    1.96   1.01    0.7    1.25 
+#> 15 omni    numeric   sleep_cycle         9    0.55   0.592  0.473   0.133  0.258
+#> 16 omni    numeric   awake               0    1     13.1    2.95    6     13.1  
+#> 17 <NA>    numeric   sleep_total         0    1     10.2    3.00    5.4    8.65 
+#> 18 <NA>    numeric   sleep_rem           2    0.714  1.88   0.847   0.5    1.8  
+#> 19 <NA>    numeric   sleep_cycle         6    0.143  0.183 NA       0.183  0.183
+#> 20 <NA>    numeric   awake               0    1     13.8    3.00   10.3   11.8  
 #>    median    p75    max     n std.error mean.conf.low mean.conf.high
 #>     <dbl>  <dbl>  <dbl> <int>     <dbl>         <dbl>          <dbl>
 #>  1 10.4   13     19.4      19    1.07          8.13           12.6  
@@ -241,7 +245,11 @@ groupedstats::grouped_summary(
 #> 13  9.9   10.9   18        20    0.659         9.54           12.3  
 #> 14  1.85   2.3    4.9      18    0.239         1.45            2.46 
 #> 15  0.5    0.708  1.5      11    0.143         0.274           0.911
-#> 16 14.1   14.9   16        20    0.659        11.7            14.5
+#> 16 14.1   14.9   16        20    0.659        11.7            14.5  
+#> 17 10.6   12.2   13.7       7    1.14          7.41           13.0  
+#> 18  2      2.4    2.7       5    0.379         0.829           2.93 
+#> 19  0.183  0.183  0.183     1   NA           NaN             NaN    
+#> 20 13.4   15.4   18.6       7    1.14         11.0            16.6
 ```
 
 This function can be used to get summary of either numeric **or** factor
@@ -1118,7 +1126,7 @@ diamonds_short <-
   dplyr::filter(.data = ggplot2::diamonds, color == "E" | color == "J")
 
 # show me all rows and columns
-options(tibble.width = Inf, tibble.print_max = Inf) 
+options(tibble.width = Inf, tibble.print_max = Inf)
 
 # t-test
 groupedstats::grouped_ttest(
@@ -1312,11 +1320,12 @@ results_df <-
     .id = "model"
   ) %>% # for each combination of mpaa rating and movie genre
   dplyr::group_by(.data = ., mpaa, genre) %>% # arrange by best to worst fits
-  dplyr::arrange(.data = ., dplyr::desc(adj.r.squared))
+  dplyr::arrange(.data = ., dplyr::desc(adj.r.squared)) %>%
+  dplyr::ungroup(.)
 
+# looking at the results
 head(results_df)
 #> # A tibble: 6 x 15
-#> # Groups:   mpaa, genre [3]
 #>   model mpaa  genre       r.squared adj.r.squared  sigma statistic      p.value
 #>   <chr> <fct> <fct>           <dbl>         <dbl>  <dbl>     <dbl>        <dbl>
 #> 1 2     PG-13 Animation       0.474         0.369 0.824       4.51 0.0870      

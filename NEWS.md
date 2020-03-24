@@ -1,6 +1,6 @@
 # groupedstats 0.2.2
 
-  - Adapts to changes made to `lme4`. 
+  - Adapts to upcoming releases of `lme4` and `dplyr 1.0.0`
 
 # groupedstats 0.2.1
 
