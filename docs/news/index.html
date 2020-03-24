@@ -133,8 +133,8 @@
 <a href="#groupedstats-022" class="anchor"></a>groupedstats 0.2.2<small> Unreleased </small>
 </h1>
 <ul>
-<li>Adapts to upcoming releases of <code>lme4</code> and <code>dplyr 1.0.0</code>
-</li>
+<li><p>Adapts to upcoming releases of <code>lme4</code> and <code>dplyr 1.0.0</code></p></li>
+<li><p><code>grouped_summary</code> no longer removes <code>NA</code>s in a grouping variable.</p></li>
 </ul>
 </div>
     <div id="groupedstats-021" class="section level1">
@@ -142,9 +142,8 @@
 <a href="#groupedstats-021" class="anchor"></a>groupedstats 0.2.1<small> 2020-03-17 </small>
 </h1>
 <ul>
-<li>
-<code>grouped_summary</code> function failed when the dataframe contained a column named <code>variable</code> (<a href='https://github.com/IndrajeetPatil/groupedstats/issues/24'>#24</a>). This is fixed.</li>
-<li>Makes package compatible with the new releases of <code>rlang</code> and <code>tidyselect</code>.</li>
+<li><p><code>grouped_summary</code> function failed when the dataframe contained a column named <code>variable</code> (<a href='https://github.com/IndrajeetPatil/groupedstats/issues/24'>#24</a>). This is fixed.</p></li>
+<li><p>Makes package compatible with the new releases of <code>rlang</code> and <code>tidyselect</code>.</p></li>
 </ul>
 </div>
     <div id="groupedstats-020" class="section level1">
@@ -170,15 +169,13 @@
 </h1>
 <p>BREAKING CHANGES</p>
 <ul>
-<li>To be consistent with other packages that <code>groupedstats</code> relies on or supports the confidence intervals columns for <code>grouped_summary</code> have been renamed to <code>mean.conf.high</code> and <code>mean.conf.low</code>.</li>
-<li>To be consistent with the rest of the functions, <code>grouped_lmer</code> and <code>grouped_glmer</code> follow the same syntax as <code>grouped_lm</code>.</li>
+<li><p>To be consistent with other packages that <code>groupedstats</code> relies on or supports the confidence intervals columns for <code>grouped_summary</code> have been renamed to <code>mean.conf.high</code> and <code>mean.conf.low</code>.</p></li>
+<li><p>To be consistent with the rest of the functions, <code>grouped_lmer</code> and <code>grouped_glmer</code> follow the same syntax as <code>grouped_lm</code>.</p></li>
 </ul>
 <p>MINOR CHANGES</p>
 <ul>
-<li>
-<code>grouped_summary</code> can now work with labeled data (<a href='https://github.com/IndrajeetPatil/groupedstats/issues/14'>#14</a>).</li>
-<li>
-<code>grouped_summary</code> outputs might differ slightly with <code>skimr 2.0</code>.</li>
+<li><p><code>grouped_summary</code> can now work with labeled data (<a href='https://github.com/IndrajeetPatil/groupedstats/issues/14'>#14</a>).</p></li>
+<li><p><code>grouped_summary</code> outputs might differ slightly with <code>skimr 2.0</code>.</p></li>
 </ul>
 </div>
     <div id="groupedstats-009" class="section level1">
@@ -201,8 +198,8 @@
 </ul>
 <p>MAJOR CHANGES</p>
 <ul>
-<li>Flags in <code>README</code> that this package is retired and future releases will focus only on maintenance and bug fixes.</li>
-<li>Code refactoring of all utility functions.</li>
+<li><p>Flags in <code>README</code> that this package is retired and future releases will focus only on maintenance and bug fixes.</p></li>
+<li><p>Code refactoring of all utility functions.</p></li>
 </ul>
 </div>
     <div id="groupedstats-007" class="section level1">
@@ -237,12 +234,9 @@
 </h1>
 <p>MAJOR CHANGES</p>
 <ul>
-<li>New functions exported: <code><a href="https://indrajeetpatil.github.io/ipmisc//reference/set_cwd.html">set_cwd()</a></code>
-</li>
-<li>
-<code>specify_decimal_p</code> has been modified because it produced incorrect results when <code>k &lt; 3</code> and <code>p.value = TRUE</code> (e.g., <code>0.002</code> was printed as <code>&lt; 0.001</code>).</li>
-<li>
-<code>groupedstats</code> now depends on <code>R 3.5.0</code>. This is because some of its dependencies require <code>3.5.0</code> to work (e.g., <code>broom.mixed</code>).</li>
+<li><p>New functions exported: <code><a href="https://indrajeetpatil.github.io/ipmisc//reference/set_cwd.html">set_cwd()</a></code></p></li>
+<li><p><code>specify_decimal_p</code> has been modified because it produced incorrect results when <code>k &lt; 3</code> and <code>p.value = TRUE</code> (e.g., <code>0.002</code> was printed as <code>&lt; 0.001</code>).</p></li>
+<li><p><code>groupedstats</code> now depends on <code>R 3.5.0</code>. This is because some of its dependencies require <code>3.5.0</code> to work (e.g., <code>broom.mixed</code>).</p></li>
 </ul>
 </div>
     <div id="groupedstats-003" class="section level1">
@@ -260,14 +254,14 @@
 </h1>
 <p>MAJOR CHANGES</p>
 <ul>
-<li>New functions added: <code><a href="../reference/grouped_lm.html">grouped_lm()</a></code>, <code><a href="../reference/grouped_aov.html">grouped_aov()</a></code>, <code><a href="../reference/grouped_lmer.html">grouped_lmer()</a></code>, <code><a href="../reference/grouped_glmer.html">grouped_glmer()</a></code>.</li>
-<li>To be consistent with the rest of the regression model functions, <code>grouped_glm</code> now takes a <code>formula</code> argument rather than <code>dep.vars</code> and <code>indep.vars</code> arguments.</li>
-<li>The package no longer <strong>exports</strong> tidy eval functions; it’s not part of the tidyverse.</li>
+<li><p>New functions added: <code><a href="../reference/grouped_lm.html">grouped_lm()</a></code>, <code><a href="../reference/grouped_aov.html">grouped_aov()</a></code>, <code><a href="../reference/grouped_lmer.html">grouped_lmer()</a></code>, <code><a href="../reference/grouped_glmer.html">grouped_glmer()</a></code>.</p></li>
+<li><p>To be consistent with the rest of the regression model functions, <code>grouped_glm</code> now takes a <code>formula</code> argument rather than <code>dep.vars</code> and <code>indep.vars</code> arguments.</p></li>
+<li><p>The package no longer <strong>exports</strong> tidy eval functions; it’s not part of the tidyverse.</p></li>
 </ul>
 <p>MINOR CHANGES</p>
 <ul>
-<li>For numeric variables, <code>grouped_summary</code> now also outputs standard error of mean and 95% confidence intervals for the mean.</li>
-<li>Added datasets (<code>Titanic_full</code>, <code>movies_long</code>).</li>
+<li><p>For numeric variables, <code>grouped_summary</code> now also outputs standard error of mean and 95% confidence intervals for the mean.</p></li>
+<li><p>Added datasets (<code>Titanic_full</code>, <code>movies_long</code>).</p></li>
 </ul>
 <p>BUG FUXES</p>
 <ul>

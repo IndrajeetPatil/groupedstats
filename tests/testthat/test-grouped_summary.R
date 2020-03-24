@@ -143,45 +143,6 @@ testthat::test_that(
     testthat::expect_equal(dim(df_summary), c(3L, 16L))
 
     df <- dplyr::rename(.data = mtcars, n = wt)
-    testthat::expect_equal(
-      grouped_summary(df, am, n),
-      structure(
-        list(
-          am = c(0, 1),
-          skim_type = c("numeric", "numeric"),
-          skim_variable = c("n", "n"),
-          missing = c(0L, 0L),
-          complete = c(
-            1,
-            1
-          ),
-          mean = c(3.76889473684211, 2.411),
-          sd = c(
-            0.777400146838225,
-            0.616981631277085
-          ),
-          min = c(2.465, 1.513),
-          p25 = c(3.4375, 1.935),
-          median = c(3.52, 2.32),
-          p75 = c(3.8425, 2.78),
-          max = c(
-            5.424,
-            3.57
-          ),
-          n = c(19L, 13L),
-          std.error = c(0.178347825197974, 0.171119915968381),
-          mean.conf.low = c(3.39419986005463, 2.03816173167651),
-          mean.conf.high = c(
-            4.14358961362958,
-            2.78383826832349
-          )
-        ),
-        row.names = c(NA, -2L),
-        class = c(
-          "tbl_df",
-          "tbl", "data.frame"
-        )
-      )
-    )
+    testthat::expect_equal(dim(grouped_summary(df, am, n)), c(2L, 16L))
   }
 )

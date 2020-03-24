@@ -1,11 +1,14 @@
 # groupedstats 0.2.2
 
   - Adapts to upcoming releases of `lme4` and `dplyr 1.0.0`
+  
+  - `grouped_summary` no longer removes `NA`s in a grouping variable.
 
 # groupedstats 0.2.1
 
   - `grouped_summary` function failed when the dataframe contained a column
     named `variable` (#24). This is fixed.
+  
   - Makes package compatible with the new releases of `rlang` and `tidyselect`.
 
 # groupedstats 0.2.0
@@ -27,12 +30,14 @@ BREAKING CHANGES
   - To be consistent with other packages that `groupedstats` relies on or
     supports the confidence intervals columns for `grouped_summary` have been
     renamed to `mean.conf.high` and `mean.conf.low`.
+  
   - To be consistent with the rest of the functions, `grouped_lmer` and
     `grouped_glmer` follow the same syntax as `grouped_lm`.
 
 MINOR CHANGES
 
   - `grouped_summary` can now work with labeled data (#14).
+  
   - `grouped_summary` outputs might differ slightly with `skimr 2.0`.
 
 # groupedstats 0.0.9
@@ -54,6 +59,7 @@ MAJOR CHANGES
 
   - Flags in `README` that this package is retired and future releases will
     focus only on maintenance and bug fixes. 
+  
   - Code refactoring of all utility functions.
 
 # groupedstats 0.0.7
@@ -80,8 +86,10 @@ NEW FUNCTIONS
 MAJOR CHANGES
 
   - New functions exported: `set_cwd()`
+  
   - `specify_decimal_p` has been modified because it produced incorrect results
     when `k < 3` and `p.value = TRUE` (e.g., `0.002` was printed as `< 0.001`).
+  
   - `groupedstats` now depends on `R 3.5.0`. This is because some of its
     dependencies require `3.5.0` to work (e.g., `broom.mixed`).
 
@@ -98,9 +106,11 @@ MAJOR CHANGES
 
   - New functions added: `grouped_lm()`, `grouped_aov()`, `grouped_lmer()`,
    `grouped_glmer()`.
+  
   - To be consistent with the rest of the regression model functions,
     `grouped_glm` now takes a `formula` argument rather than `dep.vars` and
     `indep.vars` arguments.
+  
   - The package no longer **exports** tidy eval functions; it's not part of the
     tidyverse.
 
@@ -108,6 +118,7 @@ MINOR CHANGES
 
   - For numeric variables, `grouped_summary` now also outputs standard error of
     mean and 95% confidence intervals for the mean.
+  
   - Added datasets (`Titanic_full`, `movies_long`).
   
 BUG FUXES
