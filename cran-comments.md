@@ -9,4 +9,4 @@
 
 ## Comments
 
-  - Maintenance release to fix bugs and internal code refactoring.
+  - Adapts to upcoming releases of `lme4` and `dplyr 1.0.0`
