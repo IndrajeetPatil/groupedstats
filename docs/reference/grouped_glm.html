@@ -83,7 +83,7 @@ grouping variables." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">groupedstats</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.2.2</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.0</span>
       </span>
     </div>
 
@@ -196,27 +196,27 @@ which will return model summaries.</p></td>
   <span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>Survived</span> ~ <span class='no'>Sex</span>,
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>Class</span>,
   <span class='kw'>family</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/family.html'>binomial</a></span>(<span class='kw'>link</span> <span class='kw'>=</span> <span class='st'>"logit"</span>)
-)</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 8 x 9</span><span>
+)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 8 x 9</span><span>
 #&gt;   Class term        estimate std.error statistic  p.value conf.low conf.high
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 1st   (Intercept)    3.56      0.507      7.03 2.13</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-12</span><span>    2.70      4.74 
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> 1st   SexMale       -</span><span style='color: #BB0000;'>4.21</span><span>      0.531     -</span><span style='color: #BB0000;'>7.92</span><span> 2.29</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-15</span><span>   -</span><span style='color: #BB0000;'>5.42</span><span>     -</span><span style='color: #BB0000;'>3.29</span><span> 
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> 2nd   (Intercept)    1.97      0.296      6.65 3.03</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-11</span><span>    1.43      2.60 
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> 2nd   SexMale       -</span><span style='color: #BB0000;'>3.79</span><span>      0.366    -</span><span style='color: #BB0000;'>10.3</span><span>  4.88</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-25</span><span>   -</span><span style='color: #BB0000;'>4.54</span><span>     -</span><span style='color: #BB0000;'>3.10</span><span> 
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> 3rd   (Intercept)   -</span><span style='color: #BB0000;'>0.164</span><span>     0.143     -</span><span style='color: #BB0000;'>1.14</span><span> 2.54</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 1</span><span>   -</span><span style='color: #BB0000;'>0.446</span><span>     0.117
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> 3rd   SexMale       -</span><span style='color: #BB0000;'>1.40</span><span>      0.185     -</span><span style='color: #BB0000;'>7.58</span><span> 3.36</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-14</span><span>   -</span><span style='color: #BB0000;'>1.77</span><span>     -</span><span style='color: #BB0000;'>1.04</span><span> 
-#&gt; </span><span style='color: #BCBCBC;'>7</span><span> Crew  (Intercept)    1.90      0.619      3.06 2.18</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 3</span><span>    0.827     3.34 
-#&gt; </span><span style='color: #BCBCBC;'>8</span><span> Crew  SexMale       -</span><span style='color: #BB0000;'>3.15</span><span>      0.625     -</span><span style='color: #BB0000;'>5.04</span><span> 4.68</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 7</span><span>   -</span><span style='color: #BB0000;'>4.60</span><span>     -</span><span style='color: #BB0000;'>2.06</span><span> 
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> 1st   (Intercept)    3.56      0.507      7.03 2.13</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-12</span><span>    2.70      4.74 
+#&gt; </span><span style='color: #555555;'>2</span><span> 1st   SexMale       -</span><span style='color: #BB0000;'>4.21</span><span>      0.531     -</span><span style='color: #BB0000;'>7.92</span><span> 2.29</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-15</span><span>   -</span><span style='color: #BB0000;'>5.42</span><span>     -</span><span style='color: #BB0000;'>3.29</span><span> 
+#&gt; </span><span style='color: #555555;'>3</span><span> 2nd   (Intercept)    1.97      0.296      6.65 3.03</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-11</span><span>    1.43      2.60 
+#&gt; </span><span style='color: #555555;'>4</span><span> 2nd   SexMale       -</span><span style='color: #BB0000;'>3.79</span><span>      0.366    -</span><span style='color: #BB0000;'>10.3</span><span>  4.88</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-25</span><span>   -</span><span style='color: #BB0000;'>4.54</span><span>     -</span><span style='color: #BB0000;'>3.10</span><span> 
+#&gt; </span><span style='color: #555555;'>5</span><span> 3rd   (Intercept)   -</span><span style='color: #BB0000;'>0.164</span><span>     0.143     -</span><span style='color: #BB0000;'>1.14</span><span> 2.54</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 1</span><span>   -</span><span style='color: #BB0000;'>0.446</span><span>     0.117
+#&gt; </span><span style='color: #555555;'>6</span><span> 3rd   SexMale       -</span><span style='color: #BB0000;'>1.40</span><span>      0.185     -</span><span style='color: #BB0000;'>7.58</span><span> 3.36</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-14</span><span>   -</span><span style='color: #BB0000;'>1.77</span><span>     -</span><span style='color: #BB0000;'>1.04</span><span> 
+#&gt; </span><span style='color: #555555;'>7</span><span> Crew  (Intercept)    1.90      0.619      3.06 2.18</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 3</span><span>    0.827     3.34 
+#&gt; </span><span style='color: #555555;'>8</span><span> Crew  SexMale       -</span><span style='color: #BB0000;'>3.15</span><span>      0.625     -</span><span style='color: #BB0000;'>5.04</span><span> 4.68</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 7</span><span>   -</span><span style='color: #BB0000;'>4.60</span><span>     -</span><span style='color: #BB0000;'>2.06</span><span> 
 #&gt;   significance
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> ***         
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> ***         
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> ***         
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> ***         
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> ns          
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> ***         
-#&gt; </span><span style='color: #BCBCBC;'>7</span><span> **          
-#&gt; </span><span style='color: #BCBCBC;'>8</span><span> ***         </div><div class='input'>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
+#&gt; </span><span style='color: #555555;'>1</span><span> ***         
+#&gt; </span><span style='color: #555555;'>2</span><span> ***         
+#&gt; </span><span style='color: #555555;'>3</span><span> ***         
+#&gt; </span><span style='color: #555555;'>4</span><span> ***         
+#&gt; </span><span style='color: #555555;'>5</span><span> ns          
+#&gt; </span><span style='color: #555555;'>6</span><span> ***         
+#&gt; </span><span style='color: #555555;'>7</span><span> **          
+#&gt; </span><span style='color: #555555;'>8</span><span> ***         </div><div class='input'>
 <span class='co'># to get glance output</span>
 <span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'>grouped_glm</span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='no'><a href='Titanic_full.html'>Titanic_full</a></span>,
@@ -224,13 +224,13 @@ which will return model summaries.</p></td>
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>Class</span>,
   <span class='kw'>family</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/family.html'>binomial</a></span>(<span class='kw'>link</span> <span class='kw'>=</span> <span class='st'>"logit"</span>),
   <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"glance"</span>
-)</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 4 x 9</span><span>
+)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 4 x 9</span><span>
 #&gt;   Class null.deviance df.null logLik   AIC   BIC deviance df.residual  nobs
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 1st            430.     324  -</span><span style='color: #BB0000;'>134.</span><span>  272.  280.     268.         323   325
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> 2nd            387.     284  -</span><span style='color: #BB0000;'>112.</span><span>  228.  235.     224.         283   285
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> 3rd            797.     705  -</span><span style='color: #BB0000;'>370.</span><span>  744.  753.     740.         704   706
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Crew           974.     884  -</span><span style='color: #BB0000;'>466.</span><span>  936.  946.     932.         883   885</div></span></pre>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> 1st            430.     324  -</span><span style='color: #BB0000;'>134.</span><span>  272.  280.     268.         323   325
+#&gt; </span><span style='color: #555555;'>2</span><span> 2nd            387.     284  -</span><span style='color: #BB0000;'>112.</span><span>  228.  235.     224.         283   285
+#&gt; </span><span style='color: #555555;'>3</span><span> 3rd            797.     705  -</span><span style='color: #BB0000;'>370.</span><span>  744.  753.     740.         704   706
+#&gt; </span><span style='color: #555555;'>4</span><span> Crew           974.     884  -</span><span style='color: #BB0000;'>466.</span><span>  936.  946.     932.         883   885</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -246,7 +246,7 @@ which will return model summaries.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

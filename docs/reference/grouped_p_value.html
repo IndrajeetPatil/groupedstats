@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">groupedstats</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.2.2</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.0</span>
       </span>
     </div>
 
@@ -164,20 +164,20 @@
   <span class='kw'>formula</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span>(<span class='no'>price</span>) ~ <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span>(<span class='no'>carat</span>) + (<span class='no'>carat</span> <span class='kw'>|</span> <span class='no'>color</span>),
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>cut</span>, <span class='no'>clarity</span>),
   <span class='kw'>..f</span> <span class='kw'>=</span> <span class='kw pkg'>lme4</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lmer</a></span>
-)</div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 80 x 4</span><span>
+)</div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 80 x 4</span><span>
 #&gt;    cut   clarity term           p.value
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;ord&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;ord&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Fair  I1      (Intercept)  6.18</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-  1</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Fair  I1      scale(carat) 9.46</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 82</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Fair  SI2     (Intercept)  7.74</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-  1</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Fair  SI2     scale(carat) 0.  </span><span style='color: #949494;'> </span><span>    
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Fair  SI1     (Intercept)  5.91</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-  1</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Fair  SI1     scale(carat) 2.01</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-167</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Fair  VS2     (Intercept)  6.96</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-  1</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Fair  VS2     scale(carat) 2.81</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 69</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Fair  VS1     (Intercept)  6.18</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-  1</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Fair  VS1     scale(carat) 4.85</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-146</span><span>
-#&gt; </span><span style='color: #949494;'># ... with 70 more rows</span><span></div></span></pre>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;ord&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;ord&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> Fair  I1      (Intercept)  6.18</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-  1</span><span>
+#&gt; </span><span style='color: #555555;'> 2</span><span> Fair  I1      scale(carat) 9.46</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 82</span><span>
+#&gt; </span><span style='color: #555555;'> 3</span><span> Fair  SI2     (Intercept)  7.74</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-  1</span><span>
+#&gt; </span><span style='color: #555555;'> 4</span><span> Fair  SI2     scale(carat) 0.  </span><span style='color: #555555;'> </span><span>    
+#&gt; </span><span style='color: #555555;'> 5</span><span> Fair  SI1     (Intercept)  5.91</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-  1</span><span>
+#&gt; </span><span style='color: #555555;'> 6</span><span> Fair  SI1     scale(carat) 2.01</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-167</span><span>
+#&gt; </span><span style='color: #555555;'> 7</span><span> Fair  VS2     (Intercept)  6.96</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-  1</span><span>
+#&gt; </span><span style='color: #555555;'> 8</span><span> Fair  VS2     scale(carat) 2.81</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 69</span><span>
+#&gt; </span><span style='color: #555555;'> 9</span><span> Fair  VS1     (Intercept)  6.18</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-  1</span><span>
+#&gt; </span><span style='color: #555555;'>10</span><span> Fair  VS1     scale(carat) 4.85</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-146</span><span>
+#&gt; </span><span style='color: #555555;'># ... with 70 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -193,7 +193,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

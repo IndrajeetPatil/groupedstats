@@ -10,7 +10,6 @@ grouped_aov(
   formula,
   effsize = "eta",
   output = "tidy",
-  nboot = 1000,
   ...
 )
 }
@@ -31,9 +30,6 @@ options: \code{"tidy"} (default), which will return the results, or \code{"tukey
 which will return results from Tukey's Honest Significant Differences
 method for \emph{post hoc} comparisons. The \code{"glance"} method to get model
 summary is currently not supported for this function.}
-
-\item{nboot}{Number of bootstrap samples for confidence intervals for partial
-eta-squared and omega-squared (Default: \code{500}).}
 
 \item{...}{Currently ignored.}
 }

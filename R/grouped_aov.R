@@ -48,7 +48,6 @@ grouped_aov <- function(data,
                         formula,
                         effsize = "eta",
                         output = "tidy",
-                        nboot = 1000,
                         ...) {
 
   # glace is not supported for all models
@@ -82,7 +81,6 @@ grouped_aov <- function(data,
   fnlisted <- function(list.col,
                        formula,
                        effsize,
-                       nboot,
                        output) {
     if (output == "tidy") {
       # getting tidy dataframe with results
@@ -98,7 +96,6 @@ grouped_aov <- function(data,
             ),
             effsize = effsize,
             partial = TRUE,
-            nboot = nboot,
             conf.level = 0.95
           ),
           .id = "..group"
@@ -137,16 +134,16 @@ grouped_aov <- function(data,
   df %<>% tibble::rownames_to_column(., var = "..group")
 
   # running the custom function and cleaning the dataframe
-  combined_df <- purrr::pmap(
-    .l = list(
-      list.col = list(df$data),
-      formula = list(formula),
-      effsize = list(effsize),
-      nboot = list(nboot),
-      output = list(output)
-    ),
-    .f = fnlisted
-  ) %>%
+  combined_df <-
+    purrr::pmap(
+      .l = list(
+        list.col = list(df$data),
+        formula = list(formula),
+        effsize = list(effsize),
+        output = list(output)
+      ),
+      .f = fnlisted
+    ) %>%
     dplyr::bind_rows(.) %>%
     dplyr::left_join(x = ., y = df, by = "..group") %>%
     dplyr::select(.data = ., !!!grouping.vars, dplyr::everything()) %>%

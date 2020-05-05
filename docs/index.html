@@ -35,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">groupedstats</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.2.2</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.0</span>
       </span>
     </div>
 
@@ -85,6 +85,15 @@
 <a href="#groupedstats-grouped-statistical-analysis-in-a-tidy-way" class="anchor"></a>groupedstats: Grouped statistical analysis in a tidy way</h1></div>
 
 </div>
+<div id="retirement" class="section level1">
+<h1 class="hasAnchor">
+<a href="#retirement" class="anchor"></a>Retirement</h1>
+<p>This package is no longer under active development and no new functionality will be added. The package will continue to be available on <code>CRAN</code> and all releases will primarily be focused on maintenance and bug fixes. This is for two reasons-</p>
+<ol>
+<li><p><code>dplyr 0.8.1</code> introduced <code><a href="https://dplyr.tidyverse.org/reference/group_map.html">group_map()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/group_map.html">group_modify()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/group_map.html">group_walk()</a></code> functions that can be used to iterate on grouped dataframes. So if you want to do <code>grouped_</code> operations, I would highly recommend using these functions over <code>groupedstats</code> functions since the former are much more general, efficient, and faster than the latter. For more, see: <a href="https://dplyr.tidyverse.org/reference/group_map.html" class="uri">https://dplyr.tidyverse.org/reference/group_map.html</a></p></li>
+<li><p>There are more general versions of these functions introduced in <code>broomExtra</code> package:<br><code>grouped_tidy</code>, <code>grouped_augment</code>, <code>grouped_glance</code>. For more, see: <a href="https://indrajeetpatil.github.io/broomExtra/reference/index.html#section-grouped-variants-of-generics" class="uri">https://indrajeetpatil.github.io/broomExtra/reference/index.html#section-grouped-variants-of-generics</a></p></li>
+</ol>
+</div>
 <div id="overview" class="section level1">
 <h1 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h1>
@@ -96,16 +105,6 @@
 <li>Combination of all of the above.</li>
 </ol>
 </div>
-<div id="retirement" class="section level1">
-<h1 class="hasAnchor">
-<a href="#retirement" class="anchor"></a>Retirement</h1>
-<p>This package is no longer under active development and no new functionality will be added. The package will continue to be available on <code>CRAN</code> and all releases will primarily be focused on maintenance and bug fixes. This is for two reasons-</p>
-<ol>
-<li><p>There are more general versions of these functions introduced in <code>broomExtra</code> package:<br><code>grouped_tidy</code>, <code>grouped_augment</code>, <code>grouped_glance</code>. For more, see: <a href="https://indrajeetpatil.github.io/broomExtra/reference/index.html#section-grouped-variants-of-generics" class="uri">https://indrajeetpatil.github.io/broomExtra/reference/index.html#section-grouped-variants-of-generics</a></p></li>
-<li><p><code>dplyr 0.8.1</code> introduced <code>group_map()</code>, <code>group_modify()</code> and <code>group_walk()</code> functions that can be used to iterate on grouped dataframes. So if you want to do <code>grouped_</code> operations, I would highly recommend using these functions over <code>groupedstats</code> functions since the former are much more general, efficient, and faster than the latter.</p></li>
-</ol>
-<p>For more, see: <a href="https://dplyr.tidyverse.org/reference/group_map.html" class="uri">https://dplyr.tidyverse.org/reference/group_map.html</a></p>
-</div>
 <div id="installation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h1>
@@ -113,39 +112,40 @@
 <div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"groupedstats"</span>)</pre></div>
 <p>You can get the <strong>development</strong> version of the package from <code>GitHub</code>. To see what new changes (and bug fixes) have been made to the package since the last release on <code>CRAN</code>, you can check the detailed log of changes here: <a href="https://indrajeetpatil.github.io/groupedstats/news/index.html" class="uri">https://indrajeetpatil.github.io/groupedstats/news/index.html</a></p>
 <p>If you are in hurry and want to reduce the time of installation, prefer-</p>
-<div class="sourceCode" id="cb2"><pre class="r"># needed package to download from GitHub repo
-# install.packages("remotes")
+<div class="sourceCode" id="cb2"><pre class="r"><span class="co"># needed package to download from GitHub repo</span>
+<span class="co"># install.packages("remotes")</span>
 
-remotes::install_github(
-  repo = "IndrajeetPatil/groupedstats", # package path on GitHub
-  quick = TRUE
-) # skips docs, demos, and vignettes</pre></div>
+<span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(
+  <span class="kw">repo</span> <span class="kw">=</span> <span class="st">"IndrajeetPatil/groupedstats"</span>, <span class="co"># package path on GitHub</span>
+  <span class="kw">quick</span> <span class="kw">=</span> <span class="fl">TRUE</span>
+) <span class="co"># skips docs, demos, and vignettes</span></pre></div>
 <p>If time is not a constraint-</p>
-<div class="sourceCode" id="cb3"><pre class="r">remotes::install_github(
-  repo = "IndrajeetPatil/groupedstats", # package path on GitHub
-  dependencies = TRUE, # installs packages which groupedstats depends on
-  upgrade_dependencies = TRUE # updates any out of date dependencies
+<div class="sourceCode" id="cb3"><pre class="r"><span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(
+  <span class="kw">repo</span> <span class="kw">=</span> <span class="st">"IndrajeetPatil/groupedstats"</span>, <span class="co"># package path on GitHub</span>
+  <span class="kw">dependencies</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="co"># installs packages which groupedstats depends on</span>
+  <span class="kw">upgrade_dependencies</span> <span class="kw">=</span> <span class="fl">TRUE</span> <span class="co"># updates any out of date dependencies</span>
 )</pre></div>
 </div>
 <div id="citation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#citation" class="anchor"></a>Citation</h1>
 <p>If you want to cite this package in a scientific journal or in any other context, run the following code in your <code>R</code> console:</p>
-<div class="sourceCode" id="cb4"><pre class="r">citation("groupedstats")
-#&gt; 
-#&gt; Patil I (2018). _groupedstats: Grouped Statistical Analyses in a Tidy
-#&gt; Way_. doi: 10.5281/zenodo.2600159 (URL:
-#&gt; https://doi.org/10.5281/zenodo.2600159), <url:> https://CRAN.R-project.org/package=groupedstats&gt;.
-#&gt; 
-#&gt; A BibTeX entry for LaTeX users is
-#&gt; 
-#&gt;   @Manual{,
-#&gt;     title = {groupedstats: Grouped Statistical Analyses in a Tidy Way},
-#&gt;     author = {Indrajeet Patil},
-#&gt;     year = {2018},
-#&gt;     url = {https://CRAN.R-project.org/package=groupedstats},
-#&gt;     doi = {10.5281/zenodo.2600159},
-#&gt;   }</url:></pre></div>
+<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span>(<span class="st">"groupedstats"</span>)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Patil I (2018). _groupedstats: Grouped Statistical Analyses in a Tidy</span>
+<span class="co">#&gt; Way_. doi: 10.5281/zenodo.2600159 (URL:</span>
+<span class="co">#&gt; https://doi.org/10.5281/zenodo.2600159), &lt;URL:</span>
+<span class="co">#&gt; https://CRAN.R-project.org/package=groupedstats&gt;.</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; A BibTeX entry for LaTeX users is</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;   @Manual{,</span>
+<span class="co">#&gt;     title = {groupedstats: Grouped Statistical Analyses in a Tidy Way},</span>
+<span class="co">#&gt;     author = {Indrajeet Patil},</span>
+<span class="co">#&gt;     year = {2018},</span>
+<span class="co">#&gt;     url = {https://CRAN.R-project.org/package=groupedstats},</span>
+<span class="co">#&gt;     doi = {10.5281/zenodo.2600159},</span>
+<span class="co">#&gt;   }</span></pre></div>
 </div>
 <div id="usage" class="section level1">
 <h1 class="hasAnchor">
@@ -156,35 +156,35 @@ remotes::install_github(
 <a href="#grouped_-versions-of-broom-generic-functions" class="anchor"></a><code>grouped_</code> versions of <code>broom</code> generic functions</h2>
 <p>These functions are re-exported from <code>broomExtra</code> package and provide the most general versions of <code>grouped_</code> functions.</p>
 <p>Here is an example</p>
-<div class="sourceCode" id="cb5"><pre class="r"># for reproducibility
-set.seed(123)
+<div class="sourceCode" id="cb5"><pre class="r"><span class="co"># for reproducibility</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
 
-# running glm across two all combinations of two grouping variables
-groupedstats::grouped_tidy(
-  data = groupedstats::Titanic_full, # dataframe
-  grouping.vars = c(Class, Age), # grouping variables
-  ..f = stats::glm, # function to execute
-  # additional arguments passed to `..f`
-  formula = Survived ~ Sex,
-  family = stats::binomial(link = "logit")
+<span class="co"># running glm across two all combinations of two grouping variables</span>
+<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="https://indrajeetpatil.github.io/broomExtra//reference/grouped_tidy.html">grouped_tidy</a></span>(
+  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="no"><a href="reference/Titanic_full.html">Titanic_full</a></span>, <span class="co"># dataframe</span>
+  <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">Class</span>, <span class="no">Age</span>), <span class="co"># grouping variables</span>
+  <span class="kw">..f</span> <span class="kw">=</span> <span class="kw pkg">stats</span><span class="kw ns">::</span><span class="no"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span>, <span class="co"># function to execute</span>
+  <span class="co"># additional arguments passed to `..f`</span>
+  <span class="kw">formula</span> <span class="kw">=</span> <span class="no">Survived</span> ~ <span class="no">Sex</span>,
+  <span class="kw">family</span> <span class="kw">=</span> <span class="kw pkg">stats</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/r/stats/family.html">binomial</a></span>(<span class="kw">link</span> <span class="kw">=</span> <span class="st">"logit"</span>)
 )
-#&gt; # A tibble: 14 x 7
-#&gt;    Class Age   term         estimate  std.error statistic  p.value
-#&gt;    <fct><fct><chr><dbl><dbl><dbl><dbl>
-#&gt;  1 1st   Adult (Intercept)  3.56e+ 0      0.507  7.01e+ 0 2.36e-12
-#&gt;  2 1st   Adult SexMale     -4.28e+ 0      0.532 -8.05e+ 0 8.36e-16
-#&gt;  3 1st   Child (Intercept) -2.46e+ 1 131011.    -1.88e- 4 1.00e+ 0
-#&gt;  4 1st   Child SexMale     -1.74e-15 143515.    -1.21e-20 1.00e+ 0
-#&gt;  5 2nd   Adult (Intercept)  1.82e+ 0      0.299  6.08e+ 0 1.23e- 9
-#&gt;  6 2nd   Adult SexMale     -4.21e+ 0      0.409 -1.03e+ 1 6.79e-25
-#&gt;  7 2nd   Child (Intercept) -2.56e+ 1  59908.    -4.27e- 4 1.00e+ 0
-#&gt;  8 2nd   Child SexMale     -7.14e-15  88489.    -8.07e-20 1.00e+ 0
-#&gt;  9 3rd   Adult (Intercept) -1.58e- 1      0.156 -1.01e+ 0 3.12e- 1
-#&gt; 10 3rd   Adult SexMale     -1.48e+ 0      0.201 -7.39e+ 0 1.51e-13
-#&gt; 11 3rd   Child (Intercept) -1.94e- 1      0.361 -5.38e- 1 5.91e- 1
-#&gt; 12 3rd   Child SexMale     -7.96e- 1      0.486 -1.64e+ 0 1.01e- 1
-#&gt; 13 Crew  Adult (Intercept)  1.90e+ 0      0.619  3.06e+ 0 2.18e- 3
-#&gt; 14 Crew  Adult SexMale     -3.15e+ 0      0.625 -5.04e+ 0 4.68e- 7</dbl></dbl></dbl></dbl></chr></fct></fct></pre></div>
+<span class="co">#&gt; # A tibble: 14 x 7</span>
+<span class="co">#&gt;    Class Age   term         estimate  std.error statistic  p.value</span>
+<span class="co">#&gt;    &lt;fct&gt; &lt;fct&gt; &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 1st   Adult (Intercept)  3.56e+ 0      0.507  7.01e+ 0 2.36e-12</span>
+<span class="co">#&gt;  2 1st   Adult SexMale     -4.28e+ 0      0.532 -8.05e+ 0 8.36e-16</span>
+<span class="co">#&gt;  3 1st   Child (Intercept) -2.46e+ 1 131011.    -1.88e- 4 1.00e+ 0</span>
+<span class="co">#&gt;  4 1st   Child SexMale     -1.74e-15 143515.    -1.21e-20 1.00e+ 0</span>
+<span class="co">#&gt;  5 2nd   Adult (Intercept)  1.82e+ 0      0.299  6.08e+ 0 1.23e- 9</span>
+<span class="co">#&gt;  6 2nd   Adult SexMale     -4.21e+ 0      0.409 -1.03e+ 1 6.79e-25</span>
+<span class="co">#&gt;  7 2nd   Child (Intercept) -2.56e+ 1  59908.    -4.27e- 4 1.00e+ 0</span>
+<span class="co">#&gt;  8 2nd   Child SexMale     -7.14e-15  88489.    -8.07e-20 1.00e+ 0</span>
+<span class="co">#&gt;  9 3rd   Adult (Intercept) -1.58e- 1      0.156 -1.01e+ 0 3.12e- 1</span>
+<span class="co">#&gt; 10 3rd   Adult SexMale     -1.48e+ 0      0.201 -7.39e+ 0 1.51e-13</span>
+<span class="co">#&gt; 11 3rd   Child (Intercept) -1.94e- 1      0.361 -5.38e- 1 5.91e- 1</span>
+<span class="co">#&gt; 12 3rd   Child SexMale     -7.96e- 1      0.486 -1.64e+ 0 1.01e- 1</span>
+<span class="co">#&gt; 13 Crew  Adult (Intercept)  1.90e+ 0      0.619  3.06e+ 0 2.18e- 3</span>
+<span class="co">#&gt; 14 Crew  Adult SexMale     -3.15e+ 0      0.625 -5.04e+ 0 4.68e- 7</span></pre></div>
 <p>For more examples, see: <a href="https://indrajeetpatil.github.io/broomExtra/reference/index.html#section-grouped-variants-of-generics" class="uri">https://indrajeetpatil.github.io/broomExtra/reference/index.html#section-grouped-variants-of-generics</a></p>
 </div>
 <div id="grouped_summary" class="section level2">
@@ -192,229 +192,246 @@ groupedstats::grouped_tidy(
 <a href="#grouped_summary" class="anchor"></a><code>grouped_summary</code>
 </h2>
 <p>Getting summary for multiple variables across multiple grouping variables. This function is a wrapper around <code><a href="https://docs.ropensci.org/skimr/reference/deprecated-v1.html">skimr::skim_to_wide()</a></code>. It is supposed to be a handy summarizing tool if you have multiple grouping variables and multiple variables for which summary statistics are to be computed-</p>
-<div class="sourceCode" id="cb6"><pre class="r"># for reproducibility
-set.seed(123)
-library(datasets)
-options(tibble.width = Inf) # show me all columns
+<div class="sourceCode" id="cb6"><pre class="r"><span class="co"># for reproducibility</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">datasets</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">tibble.width</span> <span class="kw">=</span> <span class="fl">Inf</span>) <span class="co"># show me all columns</span>
 
-# note that this dataset has NAs
-groupedstats::grouped_summary(
-  data = ggplot2::msleep,
-  grouping.vars = vore,
-  measures = sleep_total:awake,
-  measures.type = "numeric"
+<span class="co"># note that this dataset has NAs</span>
+<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_summary.html">grouped_summary</a></span>(
+  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="no"><a href="https://ggplot2.tidyverse.org/reference/msleep.html">msleep</a></span>,
+  <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="no">vore</span>,
+  <span class="kw">measures</span> <span class="kw">=</span> <span class="no">sleep_total</span>:<span class="no">awake</span>,
+  <span class="kw">measures.type</span> <span class="kw">=</span> <span class="st">"numeric"</span>
 )
-#&gt; # A tibble: 20 x 16
-#&gt;    vore    skim_type skim_variable missing complete   mean      sd    min    p25
-#&gt;    <fct><chr><chr><int><dbl><dbl><dbl><dbl><dbl>
-#&gt;  1 carni   numeric   sleep_total         0    1     10.4    4.67    2.7    6.25 
-#&gt;  2 carni   numeric   sleep_rem           9    0.526  2.29   1.86    0.1    1.33 
-#&gt;  3 carni   numeric   sleep_cycle        14    0.263  0.373  0.0325  0.333  0.35 
-#&gt;  4 carni   numeric   awake               0    1     13.6    4.68    4.6   11    
-#&gt;  5 herbi   numeric   sleep_total         0    1      9.51   4.88    1.9    4.3  
-#&gt;  6 herbi   numeric   sleep_rem           8    0.75   1.37   0.922   0.4    0.6  
-#&gt;  7 herbi   numeric   sleep_cycle        20    0.375  0.418  0.324   0.117  0.183
-#&gt;  8 herbi   numeric   awake               0    1     14.5    4.88    7.4    9.78 
-#&gt;  9 insecti numeric   sleep_total         0    1     14.9    5.92    8.4    8.6  
-#&gt; 10 insecti numeric   sleep_rem           1    0.8    3.52   1.93    2      2.08 
-#&gt; 11 insecti numeric   sleep_cycle         2    0.6    0.161  0.0419  0.117  0.142
-#&gt; 12 insecti numeric   awake               0    1      9.06   5.92    4.1    4.3  
-#&gt; 13 omni    numeric   sleep_total         0    1     10.9    2.95    8      9.1  
-#&gt; 14 omni    numeric   sleep_rem           2    0.9    1.96   1.01    0.7    1.25 
-#&gt; 15 omni    numeric   sleep_cycle         9    0.55   0.592  0.473   0.133  0.258
-#&gt; 16 omni    numeric   awake               0    1     13.1    2.95    6     13.1  
-#&gt; 17 <na>    numeric   sleep_total         0    1     10.2    3.00    5.4    8.65 
-#&gt; 18 <na>    numeric   sleep_rem           2    0.714  1.88   0.847   0.5    1.8  
-#&gt; 19 <na>    numeric   sleep_cycle         6    0.143  0.183 NA       0.183  0.183
-#&gt; 20 <na>    numeric   awake               0    1     13.8    3.00   10.3   11.8  
-#&gt;    median    p75    max     n std.error mean.conf.low mean.conf.high
-#&gt;     <dbl><dbl><dbl><int><dbl><dbl><dbl>
-#&gt;  1 10.4   13     19.4      19    1.07          8.13           12.6  
-#&gt;  2  1.95   3.05   6.6      10    0.589         0.958           3.62 
-#&gt;  3  0.383  0.383  0.417     5    0.0145        0.333           0.414
-#&gt;  4 13.6   17.8   21.4      19    1.07         11.4            15.9  
-#&gt;  5 10.3   14.2   16.6      32    0.862         7.75           11.3  
-#&gt;  6  0.95   1.98   3.4      24    0.188         0.977           1.76 
-#&gt;  7  0.217  0.692  1        12    0.0936        0.212           0.624
-#&gt;  8 13.7   19.7   22.1      32    0.862        12.7            16.2  
-#&gt;  9 18.1   19.7   19.9       5    2.65          7.59           22.3  
-#&gt; 10  3      4.45   6.1       4    0.963         0.460           6.59 
-#&gt; 11  0.167  0.183  0.2       3    0.0242        0.0569          0.265
-#&gt; 12  5.9   15.4   15.6       5    2.65          1.71           16.4  
-#&gt; 13  9.9   10.9   18        20    0.659         9.54           12.3  
-#&gt; 14  1.85   2.3    4.9      18    0.239         1.45            2.46 
-#&gt; 15  0.5    0.708  1.5      11    0.143         0.274           0.911
-#&gt; 16 14.1   14.9   16        20    0.659        11.7            14.5  
-#&gt; 17 10.6   12.2   13.7       7    1.14          7.41           13.0  
-#&gt; 18  2      2.4    2.7       5    0.379         0.829           2.93 
-#&gt; 19  0.183  0.183  0.183     1   NA           NaN             NaN    
-#&gt; 20 13.4   15.4   18.6       7    1.14         11.0            16.6</dbl></dbl></dbl></int></dbl></dbl></dbl></na></na></na></na></dbl></dbl></dbl></dbl></dbl></int></chr></chr></fct></pre></div>
+<span class="co">#&gt; # A tibble: 20 x 16</span>
+<span class="co">#&gt;    vore    skim_type skim_variable missing complete   mean       sd    min</span>
+<span class="co">#&gt;    &lt;fct&gt;   &lt;chr&gt;     &lt;chr&gt;           &lt;int&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 carni   numeric   sleep_total         0    1     10.4     4.67    2.7  </span>
+<span class="co">#&gt;  2 carni   numeric   sleep_rem           9    0.526  2.29    1.86    0.1  </span>
+<span class="co">#&gt;  3 carni   numeric   sleep_cycle        14    0.263  0.373   0.0325  0.333</span>
+<span class="co">#&gt;  4 carni   numeric   awake               0    1     13.6     4.68    4.6  </span>
+<span class="co">#&gt;  5 herbi   numeric   sleep_total         0    1      9.51    4.88    1.9  </span>
+<span class="co">#&gt;  6 herbi   numeric   sleep_rem           8    0.75   1.37    0.922   0.4  </span>
+<span class="co">#&gt;  7 herbi   numeric   sleep_cycle        20    0.375  0.418   0.324   0.117</span>
+<span class="co">#&gt;  8 herbi   numeric   awake               0    1     14.5     4.88    7.4  </span>
+<span class="co">#&gt;  9 insecti numeric   sleep_total         0    1     14.9     5.92    8.4  </span>
+<span class="co">#&gt; 10 insecti numeric   sleep_rem           1    0.8    3.52    1.93    2    </span>
+<span class="co">#&gt; 11 insecti numeric   sleep_cycle         2    0.6    0.161   0.0419  0.117</span>
+<span class="co">#&gt; 12 insecti numeric   awake               0    1      9.06    5.92    4.1  </span>
+<span class="co">#&gt; 13 omni    numeric   sleep_total         0    1     10.9     2.95    8    </span>
+<span class="co">#&gt; 14 omni    numeric   sleep_rem           2    0.9    1.96    1.01    0.7  </span>
+<span class="co">#&gt; 15 omni    numeric   sleep_cycle         9    0.55   0.592   0.473   0.133</span>
+<span class="co">#&gt; 16 omni    numeric   awake               0    1     13.1     2.95    6    </span>
+<span class="co">#&gt; 17 &lt;NA&gt;    numeric   sleep_total         0    1     10.2     3.00    5.4  </span>
+<span class="co">#&gt; 18 &lt;NA&gt;    numeric   sleep_rem           2    0.714  1.88    0.847   0.5  </span>
+<span class="co">#&gt; 19 &lt;NA&gt;    numeric   sleep_cycle         6    0.143  0.183 NaN       0.183</span>
+<span class="co">#&gt; 20 &lt;NA&gt;    numeric   awake               0    1     13.8     3.00   10.3  </span>
+<span class="co">#&gt;       p25 median    p75    max     n std.error mean.conf.low mean.conf.high</span>
+<span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;</span>
+<span class="co">#&gt;  1  6.25  10.4   13     19.4      19    1.07          8.13           12.6  </span>
+<span class="co">#&gt;  2  1.33   1.95   3.05   6.6      10    0.589         0.958           3.62 </span>
+<span class="co">#&gt;  3  0.35   0.383  0.383  0.417     5    0.0145        0.333           0.414</span>
+<span class="co">#&gt;  4 11     13.6   17.8   21.4      19    1.07         11.4            15.9  </span>
+<span class="co">#&gt;  5  4.3   10.3   14.2   16.6      32    0.862         7.75           11.3  </span>
+<span class="co">#&gt;  6  0.6    0.95   1.98   3.4      24    0.188         0.977           1.76 </span>
+<span class="co">#&gt;  7  0.183  0.217  0.692  1        12    0.0936        0.212           0.624</span>
+<span class="co">#&gt;  8  9.78  13.7   19.7   22.1      32    0.862        12.7            16.2  </span>
+<span class="co">#&gt;  9  8.6   18.1   19.7   19.9       5    2.65          7.59           22.3  </span>
+<span class="co">#&gt; 10  2.08   3      4.45   6.1       4    0.963         0.460           6.59 </span>
+<span class="co">#&gt; 11  0.142  0.167  0.183  0.2       3    0.0242        0.0569          0.265</span>
+<span class="co">#&gt; 12  4.3    5.9   15.4   15.6       5    2.65          1.71           16.4  </span>
+<span class="co">#&gt; 13  9.1    9.9   10.9   18        20    0.659         9.54           12.3  </span>
+<span class="co">#&gt; 14  1.25   1.85   2.3    4.9      18    0.239         1.45            2.46 </span>
+<span class="co">#&gt; 15  0.258  0.5    0.708  1.5      11    0.143         0.274           0.911</span>
+<span class="co">#&gt; 16 13.1   14.1   14.9   16        20    0.659        11.7            14.5  </span>
+<span class="co">#&gt; 17  8.65  10.6   12.2   13.7       7    1.14          7.41           13.0  </span>
+<span class="co">#&gt; 18  1.8    2      2.4    2.7       5    0.379         0.829           2.93 </span>
+<span class="co">#&gt; 19  0.183  0.183  0.183  0.183     1  NaN           NaN             NaN    </span>
+<span class="co">#&gt; 20 11.8   13.4   15.4   18.6       7    1.14         11.0            16.6</span></pre></div>
 <p>This function can be used to get summary of either numeric <strong>or</strong> factor variables, but <strong>not</strong> both. This is by design. If no <code>measures</code> are specified, the function will compute summary for all variables of the specified type (<code>numeric</code> or <code>factor</code>).</p>
 <p>If you want summary of variables of <code>factor</code> type-</p>
-<div class="sourceCode" id="cb7"><pre class="r"># for reproducibility
-set.seed(123)
-library(ggplot2)
-options(tibble.width = Inf) # show me all columns
+<div class="sourceCode" id="cb7"><pre class="r"><span class="co"># for reproducibility</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">tibble.width</span> <span class="kw">=</span> <span class="fl">Inf</span>) <span class="co"># show me all columns</span>
 
-groupedstats::grouped_summary(
-  data = ggplot2::diamonds,
-  grouping.vars = c(cut, clarity),
-  measures = color,
-  measures.type = "factor"
+<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_summary.html">grouped_summary</a></span>(
+  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="no"><a href="https://ggplot2.tidyverse.org/reference/diamonds.html">diamonds</a></span>,
+  <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">cut</span>, <span class="no">clarity</span>),
+  <span class="kw">measures</span> <span class="kw">=</span> <span class="no">color</span>,
+  <span class="kw">measures.type</span> <span class="kw">=</span> <span class="st">"factor"</span>
 )
-#&gt; # A tibble: 40 x 10
-#&gt;    cut   clarity skim_type skim_variable missing complete ordered n_unique
-#&gt;    <ord><ord><chr><chr><int><dbl><lgl><int>
-#&gt;  1 Fair  I1      factor    color               0        1 TRUE           7
-#&gt;  2 Fair  SI2     factor    color               0        1 TRUE           7
-#&gt;  3 Fair  SI1     factor    color               0        1 TRUE           7
-#&gt;  4 Fair  VS2     factor    color               0        1 TRUE           7
-#&gt;  5 Fair  VS1     factor    color               0        1 TRUE           7
-#&gt;  6 Fair  VVS2    factor    color               0        1 TRUE           7
-#&gt;  7 Fair  VVS1    factor    color               0        1 TRUE           7
-#&gt;  8 Fair  IF      factor    color               0        1 TRUE           3
-#&gt;  9 Good  I1      factor    color               0        1 TRUE           7
-#&gt; 10 Good  SI2     factor    color               0        1 TRUE           7
-#&gt;    top_counts                         n
-#&gt;    <chr><int>
-#&gt;  1 G: 53, H: 52, F: 35, I: 34       210
-#&gt;  2 H: 91, F: 89, G: 80, E: 78       466
-#&gt;  3 F: 83, H: 75, G: 69, E: 65       408
-#&gt;  4 F: 53, G: 45, E: 42, H: 41       261
-#&gt;  5 G: 45, F: 33, H: 32, I: 25       170
-#&gt;  6 G: 17, E: 13, H: 11, F: 10        69
-#&gt;  7 F: 5, D: 3, E: 3, G: 3            17
-#&gt;  8 F: 4, D: 3, G: 2, E: 0             9
-#&gt;  9 E: 23, F: 19, G: 19, H: 14        96
-#&gt; 10 D: 223, E: 202, F: 201, G: 163  1081
-#&gt; # ... with 30 more rows</int></chr></int></lgl></dbl></int></chr></chr></ord></ord></pre></div>
+<span class="co">#&gt; # A tibble: 40 x 10</span>
+<span class="co">#&gt;    cut   clarity skim_type skim_variable missing complete ordered n_unique</span>
+<span class="co">#&gt;    &lt;ord&gt; &lt;ord&gt;   &lt;chr&gt;     &lt;chr&gt;           &lt;int&gt;    &lt;dbl&gt; &lt;lgl&gt;      &lt;int&gt;</span>
+<span class="co">#&gt;  1 Fair  I1      factor    color               0        1 TRUE           7</span>
+<span class="co">#&gt;  2 Fair  SI2     factor    color               0        1 TRUE           7</span>
+<span class="co">#&gt;  3 Fair  SI1     factor    color               0        1 TRUE           7</span>
+<span class="co">#&gt;  4 Fair  VS2     factor    color               0        1 TRUE           7</span>
+<span class="co">#&gt;  5 Fair  VS1     factor    color               0        1 TRUE           7</span>
+<span class="co">#&gt;  6 Fair  VVS2    factor    color               0        1 TRUE           7</span>
+<span class="co">#&gt;  7 Fair  VVS1    factor    color               0        1 TRUE           7</span>
+<span class="co">#&gt;  8 Fair  IF      factor    color               0        1 TRUE           3</span>
+<span class="co">#&gt;  9 Good  I1      factor    color               0        1 TRUE           7</span>
+<span class="co">#&gt; 10 Good  SI2     factor    color               0        1 TRUE           7</span>
+<span class="co">#&gt;    top_counts                         n</span>
+<span class="co">#&gt;    &lt;chr&gt;                          &lt;int&gt;</span>
+<span class="co">#&gt;  1 G: 53, H: 52, F: 35, I: 34       210</span>
+<span class="co">#&gt;  2 H: 91, F: 89, G: 80, E: 78       466</span>
+<span class="co">#&gt;  3 F: 83, H: 75, G: 69, E: 65       408</span>
+<span class="co">#&gt;  4 F: 53, G: 45, E: 42, H: 41       261</span>
+<span class="co">#&gt;  5 G: 45, F: 33, H: 32, I: 25       170</span>
+<span class="co">#&gt;  6 G: 17, E: 13, H: 11, F: 10        69</span>
+<span class="co">#&gt;  7 F: 5, D: 3, E: 3, G: 3            17</span>
+<span class="co">#&gt;  8 F: 4, D: 3, G: 2, E: 0             9</span>
+<span class="co">#&gt;  9 E: 23, F: 19, G: 19, H: 14        96</span>
+<span class="co">#&gt; 10 D: 223, E: 202, F: 201, G: 163  1081</span>
+<span class="co">#&gt; # ... with 30 more rows</span></pre></div>
 <p>Note that there is a column corresponding to <code>top_counts</code> which is really useful in case you, let’s say, want to plot these counts. But this column is of <code>character</code> type and in wide format. The solution is to use an additional argument provided for this function:</p>
-<div class="sourceCode" id="cb8"><pre class="r"># for reproducibility
-set.seed(123)
-library(ggplot2)
-library(magrittr)
+<div class="sourceCode" id="cb8"><pre class="r"><span class="co"># for reproducibility</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">magrittr</span>)
 
-options(tibble.width = Inf) # show me all columns
+<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">tibble.width</span> <span class="kw">=</span> <span class="fl">Inf</span>) <span class="co"># show me all columns</span>
 
-# dataframe with counts
-(df  # A tibble: 20 x 3
-#&gt;    cut       factor.level count
-#&gt;    <ord><chr><int>
-#&gt;  1 Fair      G              314
-#&gt;  2 Fair      F              312
-#&gt;  3 Fair      H              303
-#&gt;  4 Fair      E              224
-#&gt;  5 Good      E              933
-#&gt;  6 Good      F              909
-#&gt;  7 Good      G              871
-#&gt;  8 Good      H              702
-#&gt;  9 Very Good E             2400
-#&gt; 10 Very Good G             2299
-#&gt; 11 Very Good F             2164
-#&gt; 12 Very Good H             1824
-#&gt; 13 Premium   G             2924
-#&gt; 14 Premium   H             2360
-#&gt; 15 Premium   E             2337
-#&gt; 16 Premium   F             2331
-#&gt; 17 Ideal     G             4884
-#&gt; 18 Ideal     E             3903
-#&gt; 19 Ideal     F             3826
-#&gt; 20 Ideal     H             3115
+<span class="co"># dataframe with counts</span>
+(<span class="no">df</span> <span class="kw">&lt;-</span> <span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_summary.html">grouped_summary</a></span>(
+  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="no"><a href="https://ggplot2.tidyverse.org/reference/diamonds.html">diamonds</a></span>,
+  <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="no">cut</span>, <span class="co"># for simplicity, let's just use one grouping variable</span>
+  <span class="kw">measures</span> <span class="kw">=</span> <span class="no">color</span>,
+  <span class="kw">measures.type</span> <span class="kw">=</span> <span class="st">"factor"</span>,
+  <span class="kw">topcount.long</span> <span class="kw">=</span> <span class="fl">TRUE</span>
+))
+<span class="co">#&gt; # A tibble: 20 x 3</span>
+<span class="co">#&gt;    cut       factor.level count</span>
+<span class="co">#&gt;    &lt;ord&gt;     &lt;chr&gt;        &lt;int&gt;</span>
+<span class="co">#&gt;  1 Fair      G              314</span>
+<span class="co">#&gt;  2 Fair      F              312</span>
+<span class="co">#&gt;  3 Fair      H              303</span>
+<span class="co">#&gt;  4 Fair      E              224</span>
+<span class="co">#&gt;  5 Good      E              933</span>
+<span class="co">#&gt;  6 Good      F              909</span>
+<span class="co">#&gt;  7 Good      G              871</span>
+<span class="co">#&gt;  8 Good      H              702</span>
+<span class="co">#&gt;  9 Very Good E             2400</span>
+<span class="co">#&gt; 10 Very Good G             2299</span>
+<span class="co">#&gt; 11 Very Good F             2164</span>
+<span class="co">#&gt; 12 Very Good H             1824</span>
+<span class="co">#&gt; 13 Premium   G             2924</span>
+<span class="co">#&gt; 14 Premium   H             2360</span>
+<span class="co">#&gt; 15 Premium   E             2337</span>
+<span class="co">#&gt; 16 Premium   F             2331</span>
+<span class="co">#&gt; 17 Ideal     G             4884</span>
+<span class="co">#&gt; 18 Ideal     E             3903</span>
+<span class="co">#&gt; 19 Ideal     F             3826</span>
+<span class="co">#&gt; 20 Ideal     H             3115</span>
 
-# plot
-ggplot2::ggplot(
-  data = df,
-  mapping = ggplot2::aes(
-    x = forcats::fct_inorder(f = factor.level),
-    y = count,
-    fill = factor.level
+<span class="co"># plot</span>
+<span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(
+  <span class="kw">data</span> <span class="kw">=</span> <span class="no">df</span>,
+  <span class="kw">mapping</span> <span class="kw">=</span> <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(
+    <span class="kw">x</span> <span class="kw">=</span> <span class="kw pkg">forcats</span><span class="kw ns">::</span><span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_inorder.html">fct_inorder</a></span>(<span class="kw">f</span> <span class="kw">=</span> <span class="no">factor.level</span>),
+    <span class="kw">y</span> <span class="kw">=</span> <span class="no">count</span>,
+    <span class="kw">fill</span> <span class="kw">=</span> <span class="no">factor.level</span>
   )
 ) +
-  ggplot2::geom_bar(stat = "identity") +
-  ggplot2::labs(x = "color", y = "count") +
-  ggplot2::facet_grid(facets = ~cut) + # for each level of the factor level
-  ggstatsplot::theme_ggstatsplot() +
-  ggplot2::theme(legend.position = "none")</int></chr></ord></pre></div>
+  <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span>(<span class="kw">stat</span> <span class="kw">=</span> <span class="st">"identity"</span>) +
+  <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="st">"color"</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="st">"count"</span>) +
+  <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span>(<span class="kw">facets</span> <span class="kw">=</span> ~<span class="no">cut</span>) + <span class="co"># for each level of the factor level</span>
+  <span class="kw pkg">ggstatsplot</span><span class="kw ns">::</span><span class="fu"><a href="https://indrajeetpatil.github.io/ggstatsplot//reference/theme_ggstatsplot.html">theme_ggstatsplot</a></span>() +
+  <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="kw">legend.position</span> <span class="kw">=</span> <span class="st">"none"</span>)</pre></div>
 <p><img src="reference/figures/README-grouped_summary3-1.png" width="100%"></p>
 <p>This produces a long format table with two new columns <code>factor.level</code> and its corresponding <code>count</code>, which can then be immediately fed into other pipelines, e.g., preparing a plot of <code>mean</code> and <code>sd</code> values in <code>ggplot2</code>).</p>
-<div class="sourceCode" id="cb9"><pre class="r"># for reproducibility
-set.seed(123)
-options(tibble.width = Inf) # show me all columns
+<div class="sourceCode" id="cb9"><pre class="r"><span class="co"># for reproducibility</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">tibble.width</span> <span class="kw">=</span> <span class="fl">Inf</span>) <span class="co"># show me all columns</span>
 
-groupedstats::grouped_summary(
-  data = ggplot2::diamonds,
-  grouping.vars = c(cut, clarity)
+<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_summary.html">grouped_summary</a></span>(
+  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="no"><a href="https://ggplot2.tidyverse.org/reference/diamonds.html">diamonds</a></span>,
+  <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">cut</span>, <span class="no">clarity</span>)
 )
-#&gt; # A tibble: 280 x 17
-#&gt;    cut   clarity skim_type skim_variable missing complete    mean       sd
-#&gt;    <ord><ord><chr><chr><int><dbl><dbl><dbl>
-#&gt;  1 Fair  I1      numeric   carat               0        1    1.36    0.745
-#&gt;  2 Fair  I1      numeric   depth               0        1   65.7     3.10 
-#&gt;  3 Fair  I1      numeric   table               0        1   58.1     2.87 
-#&gt;  4 Fair  I1      numeric   price               0        1 3704.   3099.   
-#&gt;  5 Fair  I1      numeric   x                   0        1    6.72    1.11 
-#&gt;  6 Fair  I1      numeric   y                   0        1    6.62    1.13 
-#&gt;  7 Fair  I1      numeric   z                   0        1    4.39    0.756
-#&gt;  8 Fair  SI2     numeric   carat               0        1    1.20    0.501
-#&gt;  9 Fair  SI2     numeric   depth               0        1   64.4     3.16 
-#&gt; 10 Fair  SI2     numeric   table               0        1   58.8     3.68 
-#&gt;       min     p25  median     p75      max     n std.error mean.conf.low
-#&gt;     <dbl><dbl><dbl><dbl><dbl><int><dbl><dbl>
-#&gt;  1   0.34    0.85    1.06    1.82     5.01   210    0.0514          1.26
-#&gt;  2  55.6    64.7    66.0    67.3     78.2    210    0.214          65.3 
-#&gt;  3  52      56      58      59       67      210    0.198          57.7 
-#&gt;  4 584    1387.   2397    5614.   18531      210  214.           3282.  
-#&gt;  5   4.72    5.96    6.56    7.46    10.7    210    0.0769          6.57
-#&gt;  6   4.6     5.82    6.42    7.38    10.5    210    0.0777          6.47
-#&gt;  7   2.6     3.77    4.22    4.86     6.98   210    0.0522          4.28
-#&gt;  8   0.25    0.9     1.01    1.5      3.01   466    0.0232          1.16
-#&gt;  9  53.1    64.5    65.1    65.9     72.2    466    0.147          64.1 
-#&gt; 10  50.1    56      58      60       79      466    0.171          58.5 
-#&gt;    mean.conf.high
-#&gt;             <dbl>
-#&gt;  1           1.46
-#&gt;  2          66.1 
-#&gt;  3          58.5 
-#&gt;  4        4125.  
-#&gt;  5           6.87
-#&gt;  6           6.78
-#&gt;  7           4.49
-#&gt;  8           1.25
-#&gt;  9          64.7 
-#&gt; 10          59.2 
-#&gt; # ... with 270 more rows</dbl></dbl></dbl></int></dbl></dbl></dbl></dbl></dbl></dbl></dbl></dbl></int></chr></chr></ord></ord></pre></div>
+<span class="co">#&gt; # A tibble: 280 x 17</span>
+<span class="co">#&gt;    cut   clarity skim_type skim_variable missing complete    mean       sd</span>
+<span class="co">#&gt;    &lt;ord&gt; &lt;ord&gt;   &lt;chr&gt;     &lt;chr&gt;           &lt;int&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Fair  I1      numeric   carat               0        1    1.36    0.745</span>
+<span class="co">#&gt;  2 Fair  I1      numeric   depth               0        1   65.7     3.10 </span>
+<span class="co">#&gt;  3 Fair  I1      numeric   table               0        1   58.1     2.87 </span>
+<span class="co">#&gt;  4 Fair  I1      numeric   price               0        1 3704.   3099.   </span>
+<span class="co">#&gt;  5 Fair  I1      numeric   x                   0        1    6.72    1.11 </span>
+<span class="co">#&gt;  6 Fair  I1      numeric   y                   0        1    6.62    1.13 </span>
+<span class="co">#&gt;  7 Fair  I1      numeric   z                   0        1    4.39    0.756</span>
+<span class="co">#&gt;  8 Fair  SI2     numeric   carat               0        1    1.20    0.501</span>
+<span class="co">#&gt;  9 Fair  SI2     numeric   depth               0        1   64.4     3.16 </span>
+<span class="co">#&gt; 10 Fair  SI2     numeric   table               0        1   58.8     3.68 </span>
+<span class="co">#&gt;       min     p25  median     p75      max     n std.error mean.conf.low</span>
+<span class="co">#&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt;         &lt;dbl&gt;</span>
+<span class="co">#&gt;  1   0.34    0.85    1.06    1.82     5.01   210    0.0514          1.26</span>
+<span class="co">#&gt;  2  55.6    64.7    66.0    67.3     78.2    210    0.214          65.3 </span>
+<span class="co">#&gt;  3  52      56      58      59       67      210    0.198          57.7 </span>
+<span class="co">#&gt;  4 584    1387.   2397    5614.   18531      210  214.           3282.  </span>
+<span class="co">#&gt;  5   4.72    5.96    6.56    7.46    10.7    210    0.0769          6.57</span>
+<span class="co">#&gt;  6   4.6     5.82    6.42    7.38    10.5    210    0.0777          6.47</span>
+<span class="co">#&gt;  7   2.6     3.77    4.22    4.86     6.98   210    0.0522          4.28</span>
+<span class="co">#&gt;  8   0.25    0.9     1.01    1.5      3.01   466    0.0232          1.16</span>
+<span class="co">#&gt;  9  53.1    64.5    65.1    65.9     72.2    466    0.147          64.1 </span>
+<span class="co">#&gt; 10  50.1    56      58      60       79      466    0.171          58.5 </span>
+<span class="co">#&gt;    mean.conf.high</span>
+<span class="co">#&gt;             &lt;dbl&gt;</span>
+<span class="co">#&gt;  1           1.46</span>
+<span class="co">#&gt;  2          66.1 </span>
+<span class="co">#&gt;  3          58.5 </span>
+<span class="co">#&gt;  4        4125.  </span>
+<span class="co">#&gt;  5           6.87</span>
+<span class="co">#&gt;  6           6.78</span>
+<span class="co">#&gt;  7           4.49</span>
+<span class="co">#&gt;  8           1.25</span>
+<span class="co">#&gt;  9          64.7 </span>
+<span class="co">#&gt; 10          59.2 </span>
+<span class="co">#&gt; # ... with 270 more rows</span></pre></div>
 <p>The function should also work with labeled data.</p>
-<div class="sourceCode" id="cb10"><pre class="r"># for reproducibility
-set.seed(123)
-library(labelled)
+<div class="sourceCode" id="cb10"><pre class="r"><span class="co"># for reproducibility</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">labelled</span>)
 
-# dataframe
-df  # A tibble: 100 x 2
-#&gt;    x             y
-#&gt;    <chr><dbl>
-#&gt;  1 A       -0.560 
-#&gt;  2 A       -0.230 
-#&gt;  3 A        1.56  
-#&gt;  4 A        0.0705
-#&gt;  5 A        0.129 
-#&gt;  6 A        1.72  
-#&gt;  7 A        0.461 
-#&gt;  8 A       -1.27  
-#&gt;  9 A       -0.687 
-#&gt; 10 A       -0.446 
-#&gt; # ... with 90 more rows
+<span class="co"># dataframe</span>
+<span class="no">df</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(
+  <span class="kw">x</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="kw">each</span> <span class="kw">=</span> <span class="fl">50</span>),
+  <span class="kw">y</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="fl">100</span>), <span class="kw">stringsAsFactors</span> <span class="kw">=</span> <span class="fl">FALSE</span>
+)
 
-# grouped summary
-groupedstats::grouped_summary(df, x, y)
-#&gt; # A tibble: 2 x 16
-#&gt;   x     skim_type skim_variable missing complete   mean    sd   min    p25
-#&gt;   <fct><chr><chr><int><dbl><dbl><dbl><dbl><dbl>
-#&gt; 1 A     numeric   y                   0        1 0.0344 0.926 -1.97 -0.559
-#&gt; 2 B     numeric   y                   0        1 0.146  0.905 -2.31 -0.361
-#&gt;    median   p75   max     n std.error mean.conf.low mean.conf.high
-#&gt;     <dbl><dbl><dbl><int><dbl><dbl><dbl>
-#&gt; 1 -0.0726 0.698  2.17    50     0.131        -0.229          0.298
-#&gt; 2  0.153  0.629  2.19    50     0.128        -0.111          0.404</dbl></dbl></dbl></int></dbl></dbl></dbl></dbl></dbl></dbl></dbl></dbl></int></chr></chr></fct></dbl></chr></pre></div>
+<span class="co"># labelled</span>
+<span class="no">df</span>$<span class="no">y</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/labelled/man/labelled.html">labelled</a></span>(<span class="no">df</span>$<span class="no">y</span>, <span class="kw">label</span> <span class="kw">=</span> <span class="st">"Y variable"</span>, <span class="kw">labels</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>())
+
+<span class="co"># convert to a tibble</span>
+(<span class="no">df</span> <span class="kw">&lt;-</span> <span class="kw pkg">tibble</span><span class="kw ns">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span>(<span class="no">df</span>))
+<span class="co">#&gt; # A tibble: 100 x 2</span>
+<span class="co">#&gt;    x             y</span>
+<span class="co">#&gt;    &lt;chr&gt; &lt;dbl+lbl&gt;</span>
+<span class="co">#&gt;  1 A       -0.560 </span>
+<span class="co">#&gt;  2 A       -0.230 </span>
+<span class="co">#&gt;  3 A        1.56  </span>
+<span class="co">#&gt;  4 A        0.0705</span>
+<span class="co">#&gt;  5 A        0.129 </span>
+<span class="co">#&gt;  6 A        1.72  </span>
+<span class="co">#&gt;  7 A        0.461 </span>
+<span class="co">#&gt;  8 A       -1.27  </span>
+<span class="co">#&gt;  9 A       -0.687 </span>
+<span class="co">#&gt; 10 A       -0.446 </span>
+<span class="co">#&gt; # ... with 90 more rows</span>
+
+<span class="co"># grouped summary</span>
+<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_summary.html">grouped_summary</a></span>(<span class="no">df</span>, <span class="no">x</span>, <span class="no">y</span>)
+<span class="co">#&gt; # A tibble: 2 x 16</span>
+<span class="co">#&gt;   x     skim_type skim_variable missing complete   mean    sd   min    p25</span>
+<span class="co">#&gt;   &lt;fct&gt; &lt;chr&gt;     &lt;chr&gt;           &lt;int&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 A     numeric   y                   0        1 0.0344 0.926 -1.97 -0.559</span>
+<span class="co">#&gt; 2 B     numeric   y                   0        1 0.146  0.905 -2.31 -0.361</span>
+<span class="co">#&gt;    median   p75   max     n std.error mean.conf.low mean.conf.high</span>
+<span class="co">#&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 -0.0726 0.698  2.17    50     0.131        -0.229          0.298</span>
+<span class="co">#&gt; 2  0.153  0.629  2.19    50     0.128        -0.111          0.404</span></pre></div>
 </div>
 <div id="grouped_slr" class="section level2">
 <h2 class="hasAnchor">
@@ -425,84 +442,84 @@ groupedstats::grouped_summary(df, x, y)
 <li>life expectancy and GDP (per capita)</li>
 <li>population GDP (per capita) Thus, in this case we have two regression models and one grouping variable with 142 levels (countries)</li>
 </ol>
-<!-- end list --><div class="sourceCode" id="cb11"><pre class="r"># for reproducibility
-set.seed(123)
-library(gapminder)
-options(tibble.width = Inf) # show me all columns
+<!-- end list --><div class="sourceCode" id="cb11"><pre class="r"><span class="co"># for reproducibility</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">gapminder</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">tibble.width</span> <span class="kw">=</span> <span class="fl">Inf</span>) <span class="co"># show me all columns</span>
 
-groupedstats::grouped_slr(
-  data = gapminder::gapminder,
-  dep.vars = c(lifeExp, pop),
-  indep.vars = c(gdpPercap, gdpPercap),
-  grouping.vars = country
+<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_slr.html">grouped_slr</a></span>(
+  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">gapminder</span><span class="kw ns">::</span><span class="no"><a href="https://rdrr.io/pkg/gapminder/man/gapminder.html">gapminder</a></span>,
+  <span class="kw">dep.vars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">lifeExp</span>, <span class="no">pop</span>),
+  <span class="kw">indep.vars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">gdpPercap</span>, <span class="no">gdpPercap</span>),
+  <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="no">country</span>
 )
-#&gt; # A tibble: 284 x 9
-#&gt;    country     formula             t.value estimate conf.low conf.high std.error
-#&gt;    <fct><chr><dbl><dbl><dbl><dbl><dbl>
-#&gt;  1 Afghanistan lifeExp ~ gdpPercap  -0.151  -0.0475   -0.751     0.656    0.316 
-#&gt;  2 Albania     lifeExp ~ gdpPercap   4.84    0.837     0.452     1.22     0.173 
-#&gt;  3 Algeria     lifeExp ~ gdpPercap   6.71    0.904     0.604     1.21     0.135 
-#&gt;  4 Angola      lifeExp ~ gdpPercap  -0.998  -0.301    -0.973     0.371    0.302 
-#&gt;  5 Argentina   lifeExp ~ gdpPercap   4.74    0.832     0.440     1.22     0.176 
-#&gt;  6 Australia   lifeExp ~ gdpPercap  19.0     0.986     0.871     1.10     0.0519
-#&gt;  7 Austria     lifeExp ~ gdpPercap  26.5     0.993     0.910     1.08     0.0374
-#&gt;  8 Bahrain     lifeExp ~ gdpPercap   6.45    0.898     0.587     1.21     0.139 
-#&gt;  9 Bangladesh  lifeExp ~ gdpPercap   5.05    0.847     0.473     1.22     0.168 
-#&gt; 10 Belgium     lifeExp ~ gdpPercap  26.1     0.993     0.908     1.08     0.0380
-#&gt;     p.value significance
-#&gt;       <dbl><chr>       
-#&gt;  1 8.83e- 1 ns          
-#&gt;  2 6.82e- 4 ***         
-#&gt;  3 5.33e- 5 ***         
-#&gt;  4 3.42e- 1 ns          
-#&gt;  5 7.97e- 4 ***         
-#&gt;  6 3.52e- 9 ***         
-#&gt;  7 1.34e-10 ***         
-#&gt;  8 7.38e- 5 ***         
-#&gt;  9 5.03e- 4 ***         
-#&gt; 10 1.56e-10 ***         
-#&gt; # ... with 274 more rows</chr></dbl></dbl></dbl></dbl></dbl></dbl></chr></fct></pre></div>
+<span class="co">#&gt; # A tibble: 284 x 9</span>
+<span class="co">#&gt;    country     formula             t.value estimate conf.low conf.high std.error</span>
+<span class="co">#&gt;    &lt;fct&gt;       &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Afghanistan lifeExp ~ gdpPercap  -0.151  -0.0475   -0.751     0.656    0.316 </span>
+<span class="co">#&gt;  2 Albania     lifeExp ~ gdpPercap   4.84    0.837     0.452     1.22     0.173 </span>
+<span class="co">#&gt;  3 Algeria     lifeExp ~ gdpPercap   6.71    0.904     0.604     1.21     0.135 </span>
+<span class="co">#&gt;  4 Angola      lifeExp ~ gdpPercap  -0.998  -0.301    -0.973     0.371    0.302 </span>
+<span class="co">#&gt;  5 Argentina   lifeExp ~ gdpPercap   4.74    0.832     0.440     1.22     0.176 </span>
+<span class="co">#&gt;  6 Australia   lifeExp ~ gdpPercap  19.0     0.986     0.871     1.10     0.0519</span>
+<span class="co">#&gt;  7 Austria     lifeExp ~ gdpPercap  26.5     0.993     0.910     1.08     0.0374</span>
+<span class="co">#&gt;  8 Bahrain     lifeExp ~ gdpPercap   6.45    0.898     0.587     1.21     0.139 </span>
+<span class="co">#&gt;  9 Bangladesh  lifeExp ~ gdpPercap   5.05    0.847     0.473     1.22     0.168 </span>
+<span class="co">#&gt; 10 Belgium     lifeExp ~ gdpPercap  26.1     0.993     0.908     1.08     0.0380</span>
+<span class="co">#&gt;     p.value significance</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt;  1 8.83e- 1 ns          </span>
+<span class="co">#&gt;  2 6.82e- 4 ***         </span>
+<span class="co">#&gt;  3 5.33e- 5 ***         </span>
+<span class="co">#&gt;  4 3.42e- 1 ns          </span>
+<span class="co">#&gt;  5 7.97e- 4 ***         </span>
+<span class="co">#&gt;  6 3.52e- 9 ***         </span>
+<span class="co">#&gt;  7 1.34e-10 ***         </span>
+<span class="co">#&gt;  8 7.38e- 5 ***         </span>
+<span class="co">#&gt;  9 5.03e- 4 ***         </span>
+<span class="co">#&gt; 10 1.56e-10 ***         </span>
+<span class="co">#&gt; # ... with 274 more rows</span></pre></div>
 <p>Notice the order in which the dependent and independent variables are entered; there are two separate regression models being run here: <code>lifeExp ~ gdpPercap</code> and <code>pop ~ gdpPercap</code> If this order is incorrect, the result will also be incorrect. So it is always a good idea to check the <em>formula</em> column to see if you have run the correct linear models. Also, note that the estimates are already standardized, i.e. estimates are standardized regression coefficients (betas, i.e.).</p>
 <p>The prior example was with just one grouping variable. This can be done with multiple grouping variables as well. For example, with the <code>diamonds</code> dataset from <code>ggplot2</code> library, let’s assess the relation between carat <em>and</em> price of a diamond for each type of clarity <em>and</em> cut-</p>
-<div class="sourceCode" id="cb12"><pre class="r"># for reproducibility
-set.seed(123)
-library(ggplot2)
-library(dplyr)
-options(tibble.width = Inf) # show me all columns
+<div class="sourceCode" id="cb12"><pre class="r"><span class="co"># for reproducibility</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">tibble.width</span> <span class="kw">=</span> <span class="fl">Inf</span>) <span class="co"># show me all columns</span>
 
-groupedstats::grouped_slr(
-  data = ggplot2::diamonds,
-  dep.vars = price,
-  indep.vars = carat,
-  grouping.vars = c(cut, clarity)
-) %&gt;%
-  dplyr::arrange(.data = ., cut)
-#&gt; # A tibble: 40 x 10
-#&gt;    cut   clarity formula       t.value estimate conf.low conf.high std.error
-#&gt;    <ord><ord><chr><dbl><dbl><dbl><dbl><dbl>
-#&gt;  1 Fair  VS2     price ~ carat   42.0     0.934    0.890     0.978   0.0222 
-#&gt;  2 Fair  SI2     price ~ carat   69.1     0.955    0.928     0.982   0.0138 
-#&gt;  3 Fair  SI1     price ~ carat   58.9     0.946    0.915     0.978   0.0161 
-#&gt;  4 Fair  I1      price ~ carat   58.7     0.971    0.939     1.00    0.0165 
-#&gt;  5 Fair  VVS1    price ~ carat    8.58    0.911    0.685     1.14    0.106  
-#&gt;  6 Fair  VS1     price ~ carat   36.6     0.943    0.892     0.994   0.0257 
-#&gt;  7 Fair  IF      price ~ carat    8.22    0.952    0.678     1.23    0.116  
-#&gt;  8 Fair  VVS2    price ~ carat   13.6     0.857    0.732     0.983   0.0629 
-#&gt;  9 Good  VS1     price ~ carat   74.0     0.946    0.921     0.971   0.0128 
-#&gt; 10 Good  SI2     price ~ carat  103.      0.953    0.934     0.971   0.00926
-#&gt;      p.value significance
-#&gt;        <dbl><chr>       
-#&gt;  1 1.55e-117 ***         
-#&gt;  2 1.96e-246 ***         
-#&gt;  3 4.58e-201 ***         
-#&gt;  4 1.86e-131 ***         
-#&gt;  5 3.59e-  7 ***         
-#&gt;  6 5.40e- 82 ***         
-#&gt;  7 7.67e-  5 ***         
-#&gt;  8 5.54e- 21 ***         
-#&gt;  9 9.62e-318 ***         
-#&gt; 10 0.        ***         
-#&gt; # ... with 30 more rows</chr></dbl></dbl></dbl></dbl></dbl></dbl></chr></ord></ord></pre></div>
+<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_slr.html">grouped_slr</a></span>(
+  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="no"><a href="https://ggplot2.tidyverse.org/reference/diamonds.html">diamonds</a></span>,
+  <span class="kw">dep.vars</span> <span class="kw">=</span> <span class="no">price</span>,
+  <span class="kw">indep.vars</span> <span class="kw">=</span> <span class="no">carat</span>,
+  <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">cut</span>, <span class="no">clarity</span>)
+) <span class="kw">%&gt;%</span>
+  <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw">.data</span> <span class="kw">=</span> <span class="no">.</span>, <span class="no">cut</span>)
+<span class="co">#&gt; # A tibble: 40 x 10</span>
+<span class="co">#&gt;    cut   clarity formula       t.value estimate conf.low conf.high std.error</span>
+<span class="co">#&gt;    &lt;ord&gt; &lt;ord&gt;   &lt;chr&gt;           &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Fair  VS2     price ~ carat   42.0     0.934    0.890     0.978   0.0222 </span>
+<span class="co">#&gt;  2 Fair  SI2     price ~ carat   69.1     0.955    0.928     0.982   0.0138 </span>
+<span class="co">#&gt;  3 Fair  SI1     price ~ carat   58.9     0.946    0.915     0.978   0.0161 </span>
+<span class="co">#&gt;  4 Fair  I1      price ~ carat   58.7     0.971    0.939     1.00    0.0165 </span>
+<span class="co">#&gt;  5 Fair  VVS1    price ~ carat    8.58    0.911    0.685     1.14    0.106  </span>
+<span class="co">#&gt;  6 Fair  VS1     price ~ carat   36.6     0.943    0.892     0.994   0.0257 </span>
+<span class="co">#&gt;  7 Fair  IF      price ~ carat    8.22    0.952    0.678     1.23    0.116  </span>
+<span class="co">#&gt;  8 Fair  VVS2    price ~ carat   13.6     0.857    0.732     0.983   0.0629 </span>
+<span class="co">#&gt;  9 Good  VS1     price ~ carat   74.0     0.946    0.921     0.971   0.0128 </span>
+<span class="co">#&gt; 10 Good  SI2     price ~ carat  103.      0.953    0.934     0.971   0.00926</span>
+<span class="co">#&gt;      p.value significance</span>
+<span class="co">#&gt;        &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt;  1 1.55e-117 ***         </span>
+<span class="co">#&gt;  2 1.96e-246 ***         </span>
+<span class="co">#&gt;  3 4.58e-201 ***         </span>
+<span class="co">#&gt;  4 1.86e-131 ***         </span>
+<span class="co">#&gt;  5 3.59e-  7 ***         </span>
+<span class="co">#&gt;  6 5.40e- 82 ***         </span>
+<span class="co">#&gt;  7 7.67e-  5 ***         </span>
+<span class="co">#&gt;  8 5.54e- 21 ***         </span>
+<span class="co">#&gt;  9 9.62e-318 ***         </span>
+<span class="co">#&gt; 10 0.        ***         </span>
+<span class="co">#&gt; # ... with 30 more rows</span></pre></div>
 <p>A more general version of this function (<code>grouped_lm</code>) will be implemented in future that will utilize the formula interface of <code><a href="https://rdrr.io/r/stats/lm.html">stats::lm</a></code>.</p>
 </div>
 <div id="grouped_lm" class="section level2">
@@ -510,159 +527,159 @@ groupedstats::grouped_slr(
 <a href="#grouped_lm" class="anchor"></a><code>grouped_lm</code>
 </h2>
 <p>A more general version of simple linear regression is <code><a href="https://rdrr.io/r/stats/lm.html">stats::lm</a></code>, implemented in <code>grouped_lm</code>:</p>
-<div class="sourceCode" id="cb13"><pre class="r"># for reproducibility
-set.seed(123)
-library(groupedstats)
+<div class="sourceCode" id="cb13"><pre class="r"><span class="co"># for reproducibility</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">groupedstats</span>)
 
-groupedstats::grouped_lm(
-  data = mtcars,
-  grouping.vars = cyl, # grouping variable (just one in this case)
-  formula = mpg ~ am * wt, # note that this function takes a formula
-  output = "tidy" # tidy dataframe containing results
+<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_lm.html">grouped_lm</a></span>(
+  <span class="kw">data</span> <span class="kw">=</span> <span class="no">mtcars</span>,
+  <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="no">cyl</span>, <span class="co"># grouping variable (just one in this case)</span>
+  <span class="kw">formula</span> <span class="kw">=</span> <span class="no">mpg</span> ~ <span class="no">am</span> * <span class="no">wt</span>, <span class="co"># note that this function takes a formula</span>
+  <span class="kw">output</span> <span class="kw">=</span> <span class="st">"tidy"</span> <span class="co"># tidy dataframe containing results</span>
 )
-#&gt; # A tibble: 12 x 9
-#&gt;      cyl term        estimate std.error statistic   p.value conf.low conf.high
-#&gt;    <dbl><chr><dbl><dbl><dbl><dbl><dbl><dbl>
-#&gt;  1     4 (Intercept)   13.9      16.1      0.865  0.416       -24.1     51.9  
-#&gt;  2     4 am            30.3      17.2      1.77   0.121       -10.3     70.9  
-#&gt;  3     4 wt             3.07      5.44     0.564  0.590        -9.79    15.9  
-#&gt;  4     4 am:wt        -11.0       6.16    -1.78   0.118       -25.5      3.61 
-#&gt;  5     6 (Intercept)   63.6      14.1      4.51   0.0204       18.7    109.   
-#&gt;  6     6 am           -41.4      19.0     -2.18   0.117      -102.      19.1  
-#&gt;  7     6 wt           -13.1       4.16    -3.16   0.0511      -26.4      0.113
-#&gt;  8     6 am:wt         12.5       6.22     2.02   0.137        -7.26    32.4  
-#&gt;  9     8 (Intercept)   25.1       3.51     7.14   0.0000315    17.2     32.9  
-#&gt; 10     8 am            -2.92     25.9     -0.113  0.912       -60.5     54.7  
-#&gt; 11     8 wt            -2.44      0.842   -2.90   0.0159       -4.32    -0.563
-#&gt; 12     8 am:wt          0.439     7.63     0.0575 0.955       -16.6     17.4  
-#&gt;    significance
-#&gt;    <chr>       
-#&gt;  1 ns          
-#&gt;  2 ns          
-#&gt;  3 ns          
-#&gt;  4 ns          
-#&gt;  5 *           
-#&gt;  6 ns          
-#&gt;  7 ns          
-#&gt;  8 ns          
-#&gt;  9 ***         
-#&gt; 10 ns          
-#&gt; 11 *           
-#&gt; 12 ns</chr></dbl></dbl></dbl></dbl></dbl></dbl></chr></dbl></pre></div>
+<span class="co">#&gt; # A tibble: 12 x 9</span>
+<span class="co">#&gt;      cyl term        estimate std.error statistic   p.value conf.low conf.high</span>
+<span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt;  1     4 (Intercept)   13.9      16.1      0.865  0.416       -24.1     51.9  </span>
+<span class="co">#&gt;  2     4 am            30.3      17.2      1.77   0.121       -10.3     70.9  </span>
+<span class="co">#&gt;  3     4 wt             3.07      5.44     0.564  0.590        -9.79    15.9  </span>
+<span class="co">#&gt;  4     4 am:wt        -11.0       6.16    -1.78   0.118       -25.5      3.61 </span>
+<span class="co">#&gt;  5     6 (Intercept)   63.6      14.1      4.51   0.0204       18.7    109.   </span>
+<span class="co">#&gt;  6     6 am           -41.4      19.0     -2.18   0.117      -102.      19.1  </span>
+<span class="co">#&gt;  7     6 wt           -13.1       4.16    -3.16   0.0511      -26.4      0.113</span>
+<span class="co">#&gt;  8     6 am:wt         12.5       6.22     2.02   0.137        -7.26    32.4  </span>
+<span class="co">#&gt;  9     8 (Intercept)   25.1       3.51     7.14   0.0000315    17.2     32.9  </span>
+<span class="co">#&gt; 10     8 am            -2.92     25.9     -0.113  0.912       -60.5     54.7  </span>
+<span class="co">#&gt; 11     8 wt            -2.44      0.842   -2.90   0.0159       -4.32    -0.563</span>
+<span class="co">#&gt; 12     8 am:wt          0.439     7.63     0.0575 0.955       -16.6     17.4  </span>
+<span class="co">#&gt;    significance</span>
+<span class="co">#&gt;    &lt;chr&gt;       </span>
+<span class="co">#&gt;  1 ns          </span>
+<span class="co">#&gt;  2 ns          </span>
+<span class="co">#&gt;  3 ns          </span>
+<span class="co">#&gt;  4 ns          </span>
+<span class="co">#&gt;  5 *           </span>
+<span class="co">#&gt;  6 ns          </span>
+<span class="co">#&gt;  7 ns          </span>
+<span class="co">#&gt;  8 ns          </span>
+<span class="co">#&gt;  9 ***         </span>
+<span class="co">#&gt; 10 ns          </span>
+<span class="co">#&gt; 11 *           </span>
+<span class="co">#&gt; 12 ns</span></pre></div>
 <p>The same function can also be used to get model summaries instead of a tidy dataframe containing results-</p>
-<div class="sourceCode" id="cb14"><pre class="r"># for reproducibility
-set.seed(123)
-library(groupedstats)
+<div class="sourceCode" id="cb14"><pre class="r"><span class="co"># for reproducibility</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">groupedstats</span>)
 
-groupedstats::grouped_lm(
-  data = ggplot2::diamonds,
-  grouping.vars = c(cut, color), # grouping variables
-  formula = price ~ carat * clarity, # formula
-  output = "glance" # dataframe with model summaries
+<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_lm.html">grouped_lm</a></span>(
+  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="no"><a href="https://ggplot2.tidyverse.org/reference/diamonds.html">diamonds</a></span>,
+  <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">cut</span>, <span class="no">color</span>), <span class="co"># grouping variables</span>
+  <span class="kw">formula</span> <span class="kw">=</span> <span class="no">price</span> ~ <span class="no">carat</span> * <span class="no">clarity</span>, <span class="co"># formula</span>
+  <span class="kw">output</span> <span class="kw">=</span> <span class="st">"glance"</span> <span class="co"># dataframe with model summaries</span>
 )
-#&gt; # A tibble: 35 x 14
-#&gt;    cut   color r.squared adj.r.squared sigma statistic   p.value    df logLik
-#&gt;    <ord><ord><dbl><dbl><dbl><dbl><dbl><dbl><dbl>
-#&gt;  1 Fair  D         0.915         0.906 1005.      106. 1.03e- 70    15 -1350.
-#&gt;  2 Fair  E         0.917         0.912  883.      179. 8.70e-106    13 -1830.
-#&gt;  3 Fair  F         0.917         0.912  954.      217. 9.37e-150    15 -2575.
-#&gt;  4 Fair  G         0.932         0.929  964.      273. 5.03e-164    15 -2595.
-#&gt;  5 Fair  H         0.932         0.929 1033.      332. 1.76e-161    12 -2526.
-#&gt;  6 Fair  I         0.958         0.955  794.      307. 1.14e-104    12 -1410.
-#&gt;  7 Fair  J         0.955         0.950  907.      204. 1.82e- 66    11  -973.
-#&gt;  8 Good  D         0.933         0.931  831.      600. 0.           15 -5382.
-#&gt;  9 Good  E         0.927         0.926  905.      781. 0.           15 -7667.
-#&gt; 10 Good  F         0.915         0.914  939.      644. 0.           15 -7504.
-#&gt;       AIC    BIC   deviance df.residual  nobs
-#&gt;     <dbl><dbl><dbl><int><int>
-#&gt;  1  2733.  2786. 148463951.         147   163
-#&gt;  2  3690.  3741. 163677866.         210   224
-#&gt;  3  5184.  5248. 269389292.         296   312
-#&gt;  4  5224.  5288. 277025077.         298   314
-#&gt;  5  5081.  5133. 309753202.         290   303
-#&gt;  6  2848.  2892. 102049583.         162   175
-#&gt;  7  1972.  2008.  88046170.         107   119
-#&gt;  8 10797. 10874. 446239835.         646   662
-#&gt;  9 15369. 15451. 750592238.         917   933
-#&gt; 10 15042. 15123. 787519475.         893   909
-#&gt; # ... with 25 more rows</int></int></dbl></dbl></dbl></dbl></dbl></dbl></dbl></dbl></dbl></dbl></ord></ord></pre></div>
+<span class="co">#&gt; # A tibble: 35 x 14</span>
+<span class="co">#&gt;    cut   color r.squared adj.r.squared sigma statistic   p.value    df logLik</span>
+<span class="co">#&gt;    &lt;ord&gt; &lt;ord&gt;     &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Fair  D         0.915         0.906 1005.      106. 1.03e- 70    15 -1350.</span>
+<span class="co">#&gt;  2 Fair  E         0.917         0.912  883.      179. 8.70e-106    13 -1830.</span>
+<span class="co">#&gt;  3 Fair  F         0.917         0.912  954.      217. 9.37e-150    15 -2575.</span>
+<span class="co">#&gt;  4 Fair  G         0.932         0.929  964.      273. 5.03e-164    15 -2595.</span>
+<span class="co">#&gt;  5 Fair  H         0.932         0.929 1033.      332. 1.76e-161    12 -2526.</span>
+<span class="co">#&gt;  6 Fair  I         0.958         0.955  794.      307. 1.14e-104    12 -1410.</span>
+<span class="co">#&gt;  7 Fair  J         0.955         0.950  907.      204. 1.82e- 66    11  -973.</span>
+<span class="co">#&gt;  8 Good  D         0.933         0.931  831.      600. 0.           15 -5382.</span>
+<span class="co">#&gt;  9 Good  E         0.927         0.926  905.      781. 0.           15 -7667.</span>
+<span class="co">#&gt; 10 Good  F         0.915         0.914  939.      644. 0.           15 -7504.</span>
+<span class="co">#&gt;       AIC    BIC   deviance df.residual  nobs</span>
+<span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;       &lt;int&gt; &lt;int&gt;</span>
+<span class="co">#&gt;  1  2733.  2786. 148463951.         147   163</span>
+<span class="co">#&gt;  2  3690.  3741. 163677866.         210   224</span>
+<span class="co">#&gt;  3  5184.  5248. 269389292.         296   312</span>
+<span class="co">#&gt;  4  5224.  5288. 277025077.         298   314</span>
+<span class="co">#&gt;  5  5081.  5133. 309753202.         290   303</span>
+<span class="co">#&gt;  6  2848.  2892. 102049583.         162   175</span>
+<span class="co">#&gt;  7  1972.  2008.  88046170.         107   119</span>
+<span class="co">#&gt;  8 10797. 10874. 446239835.         646   662</span>
+<span class="co">#&gt;  9 15369. 15451. 750592238.         917   933</span>
+<span class="co">#&gt; 10 15042. 15123. 787519475.         893   909</span>
+<span class="co">#&gt; # ... with 25 more rows</span></pre></div>
 </div>
 <div id="grouped_aov" class="section level2">
 <h2 class="hasAnchor">
 <a href="#grouped_aov" class="anchor"></a><code>grouped_aov</code>
 </h2>
 <p>A related function to <code><a href="https://rdrr.io/r/stats/lm.html">stats::lm</a></code> is <code><a href="https://rdrr.io/r/stats/aov.html">stats::aov</a></code>, which fits an analysis of variance model for each group. Contrast the output you get here with the previous output for the same model from <code>grouped_lm</code> function. The estimate in this case with be an effect size (either partial eta-squared or partial omega-squared).</p>
-<div class="sourceCode" id="cb15"><pre class="r"># for reproducibility
-set.seed(123)
-library(groupedstats)
+<div class="sourceCode" id="cb15"><pre class="r"><span class="co"># for reproducibility</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">groupedstats</span>)
 
-groupedstats::grouped_aov(
-  data = mtcars,
-  grouping.vars = cyl, # grouping variable (just one in this case)
-  formula = mpg ~ am * wt, # note that this function takes a formula
-  output = "tidy" # tidy dataframe with results
+<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_aov.html">grouped_aov</a></span>(
+  <span class="kw">data</span> <span class="kw">=</span> <span class="no">mtcars</span>,
+  <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="no">cyl</span>, <span class="co"># grouping variable (just one in this case)</span>
+  <span class="kw">formula</span> <span class="kw">=</span> <span class="no">mpg</span> ~ <span class="no">am</span> * <span class="no">wt</span>, <span class="co"># note that this function takes a formula</span>
+  <span class="kw">output</span> <span class="kw">=</span> <span class="st">"tidy"</span> <span class="co"># tidy dataframe with results</span>
 )
-#&gt; # A tibble: 9 x 10
-#&gt;     cyl term  F.value   df1   df2 p.value partial.etasq conf.low conf.high
-#&gt;   <dbl><chr><dbl><dbl><dbl><dbl><dbl><dbl><dbl>
-#&gt; 1     6 am    5.07        1     3  0.110       0.628      0         0.820 
-#&gt; 2     6 wt    5.91        1     3  0.0933      0.663      0         0.835 
-#&gt; 3     6 am:wt 4.06        1     3  0.137       0.575      0         0.796 
-#&gt; 4     4 am    5.95        1     7  0.0448      0.459      0         0.711 
-#&gt; 5     4 wt    4.59        1     7  0.0693      0.396      0         0.676 
-#&gt; 6     4 am:wt 3.17        1     7  0.118       0.311      0         0.627 
-#&gt; 7     8 am    0.0456      1    10  0.835       0.00454    0         0.242 
-#&gt; 8     8 wt    8.45        1    10  0.0156      0.458      0.0190    0.691 
-#&gt; 9     8 am:wt 0.00331     1    10  0.955       0.000330   0         0.0885
-#&gt;   significance
-#&gt;   <chr>       
-#&gt; 1 ns          
-#&gt; 2 ns          
-#&gt; 3 ns          
-#&gt; 4 *           
-#&gt; 5 ns          
-#&gt; 6 ns          
-#&gt; 7 ns          
-#&gt; 8 *           
-#&gt; 9 ns</chr></dbl></dbl></dbl></dbl></dbl></dbl></dbl></chr></dbl></pre></div>
+<span class="co">#&gt; # A tibble: 9 x 11</span>
+<span class="co">#&gt;     cyl term  F.value   df1   df2 p.value eta.sq.partial conf.level conf.low</span>
+<span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;          &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1     6 am    5.07        1     3  0.110        0.628          0.95   0     </span>
+<span class="co">#&gt; 2     6 wt    5.91        1     3  0.0933       0.663          0.95   0     </span>
+<span class="co">#&gt; 3     6 am:wt 4.06        1     3  0.137        0.575          0.95   0     </span>
+<span class="co">#&gt; 4     4 am    5.95        1     7  0.0448       0.459          0.95   0     </span>
+<span class="co">#&gt; 5     4 wt    4.59        1     7  0.0693       0.396          0.95   0     </span>
+<span class="co">#&gt; 6     4 am:wt 3.17        1     7  0.118        0.311          0.95   0     </span>
+<span class="co">#&gt; 7     8 am    0.0456      1    10  0.835        0.00454        0.95   0     </span>
+<span class="co">#&gt; 8     8 wt    8.45        1    10  0.0156       0.458          0.95   0.0227</span>
+<span class="co">#&gt; 9     8 am:wt 0.00331     1    10  0.955        0.000330       0.95   0     </span>
+<span class="co">#&gt;   conf.high significance</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt; 1     0.883 ns          </span>
+<span class="co">#&gt; 2     0.894 ns          </span>
+<span class="co">#&gt; 3     0.867 ns          </span>
+<span class="co">#&gt; 4     0.760 *           </span>
+<span class="co">#&gt; 5     0.729 ns          </span>
+<span class="co">#&gt; 6     0.684 ns          </span>
+<span class="co">#&gt; 7     0.277 ns          </span>
+<span class="co">#&gt; 8     0.729 *           </span>
+<span class="co">#&gt; 9     0.104 ns</span></pre></div>
 <p>The same function can also be used to compute Tukey’s test of Honest Significant Differences (HSD). For example, we can check for differences in life expectancy between different continents for all years for which the gapminder survey was conducted:</p>
-<div class="sourceCode" id="cb16"><pre class="r"># for reproducibility
-set.seed(123)
-library(groupedstats)
-library(gapminder)
+<div class="sourceCode" id="cb16"><pre class="r"><span class="co"># for reproducibility</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">groupedstats</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">gapminder</span>)
 
-groupedstats::grouped_aov(
-  data = gapminder::gapminder,
-  grouping.vars = year,
-  formula = lifeExp ~ continent,
-  output = "tukey"
+<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_aov.html">grouped_aov</a></span>(
+  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">gapminder</span><span class="kw ns">::</span><span class="no"><a href="https://rdrr.io/pkg/gapminder/man/gapminder.html">gapminder</a></span>,
+  <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="no">year</span>,
+  <span class="kw">formula</span> <span class="kw">=</span> <span class="no">lifeExp</span> ~ <span class="no">continent</span>,
+  <span class="kw">output</span> <span class="kw">=</span> <span class="st">"tukey"</span>
 )
-#&gt; # A tibble: 120 x 8
-#&gt;     year term      comparison       estimate conf.low conf.high adj.p.value
-#&gt;    <int><chr><chr><dbl><dbl><dbl><dbl>
-#&gt;  1  1952 continent Americas-Africa     14.1      9.21     19.1     7.35e-12
-#&gt;  2  1952 continent Asia-Africa          7.18     2.66     11.7     2.11e- 4
-#&gt;  3  1952 continent Europe-Africa       25.3     20.6      29.9     1.01e-14
-#&gt;  4  1952 continent Oceania-Africa      30.1     15.5      44.7     7.12e- 7
-#&gt;  5  1952 continent Asia-Americas       -6.97   -12.3      -1.59    4.28e- 3
-#&gt;  6  1952 continent Europe-Americas     11.1      5.64     16.6     1.12e- 6
-#&gt;  7  1952 continent Oceania-Americas    16.0      1.07     30.9     2.91e- 2
-#&gt;  8  1952 continent Europe-Asia         18.1     13.0      23.2     5.87e-14
-#&gt;  9  1952 continent Oceania-Asia        22.9      8.17     37.7     3.16e- 4
-#&gt; 10  1952 continent Oceania-Europe       4.85    -9.97     19.7     8.95e- 1
-#&gt;    significance
-#&gt;    <chr>       
-#&gt;  1 ***         
-#&gt;  2 ***         
-#&gt;  3 ***         
-#&gt;  4 ***         
-#&gt;  5 **          
-#&gt;  6 ***         
-#&gt;  7 *           
-#&gt;  8 ***         
-#&gt;  9 ***         
-#&gt; 10 ns          
-#&gt; # ... with 110 more rows</chr></dbl></dbl></dbl></dbl></chr></chr></int></pre></div>
+<span class="co">#&gt; # A tibble: 120 x 8</span>
+<span class="co">#&gt;     year term      comparison       estimate conf.low conf.high adj.p.value</span>
+<span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;               &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;</span>
+<span class="co">#&gt;  1  1952 continent Americas-Africa     14.1      9.21     19.1     7.35e-12</span>
+<span class="co">#&gt;  2  1952 continent Asia-Africa          7.18     2.66     11.7     2.11e- 4</span>
+<span class="co">#&gt;  3  1952 continent Europe-Africa       25.3     20.6      29.9     1.01e-14</span>
+<span class="co">#&gt;  4  1952 continent Oceania-Africa      30.1     15.5      44.7     7.12e- 7</span>
+<span class="co">#&gt;  5  1952 continent Asia-Americas       -6.97   -12.3      -1.59    4.28e- 3</span>
+<span class="co">#&gt;  6  1952 continent Europe-Americas     11.1      5.64     16.6     1.12e- 6</span>
+<span class="co">#&gt;  7  1952 continent Oceania-Americas    16.0      1.07     30.9     2.91e- 2</span>
+<span class="co">#&gt;  8  1952 continent Europe-Asia         18.1     13.0      23.2     5.87e-14</span>
+<span class="co">#&gt;  9  1952 continent Oceania-Asia        22.9      8.17     37.7     3.16e- 4</span>
+<span class="co">#&gt; 10  1952 continent Oceania-Europe       4.85    -9.97     19.7     8.95e- 1</span>
+<span class="co">#&gt;    significance</span>
+<span class="co">#&gt;    &lt;chr&gt;       </span>
+<span class="co">#&gt;  1 ***         </span>
+<span class="co">#&gt;  2 ***         </span>
+<span class="co">#&gt;  3 ***         </span>
+<span class="co">#&gt;  4 ***         </span>
+<span class="co">#&gt;  5 **          </span>
+<span class="co">#&gt;  6 ***         </span>
+<span class="co">#&gt;  7 *           </span>
+<span class="co">#&gt;  8 ***         </span>
+<span class="co">#&gt;  9 ***         </span>
+<span class="co">#&gt; 10 ns          </span>
+<span class="co">#&gt; # ... with 110 more rows</span></pre></div>
 <p>Note that the p-value is adjusted adjusted for the number of tests conducted at each level of the grouping variable, and not across all tests conducted.</p>
 </div>
 <div id="grouped_glm" class="section level2">
@@ -670,183 +687,183 @@ groupedstats::grouped_aov(
 <a href="#grouped_glm" class="anchor"></a><code>grouped_glm</code>
 </h2>
 <p>The option to run generalized linear model (<code><a href="https://rdrr.io/r/stats/glm.html">stats::glm</a></code>) across different levels of the grouping variable is also implemented similarly-</p>
-<div class="sourceCode" id="cb17"><pre class="r"># for reproducibility
-set.seed(123)
+<div class="sourceCode" id="cb17"><pre class="r"><span class="co"># for reproducibility</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
 
-groupedstats::grouped_glm(
-  data = ggstatsplot::Titanic_full,
-  formula = Survived ~ Sex,
-  grouping.vars = Class,
-  family = stats::binomial(link = "logit"),
-  output = "tidy"
+<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_glm.html">grouped_glm</a></span>(
+  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">ggstatsplot</span><span class="kw ns">::</span><span class="no"><a href="https://indrajeetpatil.github.io/ggstatsplot//reference/Titanic_full.html">Titanic_full</a></span>,
+  <span class="kw">formula</span> <span class="kw">=</span> <span class="no">Survived</span> ~ <span class="no">Sex</span>,
+  <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="no">Class</span>,
+  <span class="kw">family</span> <span class="kw">=</span> <span class="kw pkg">stats</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/r/stats/family.html">binomial</a></span>(<span class="kw">link</span> <span class="kw">=</span> <span class="st">"logit"</span>),
+  <span class="kw">output</span> <span class="kw">=</span> <span class="st">"tidy"</span>
 )
-#&gt; # A tibble: 8 x 9
-#&gt;   Class term        estimate std.error statistic  p.value conf.low conf.high
-#&gt;   <fct><chr><dbl><dbl><dbl><dbl><dbl><dbl>
-#&gt; 1 1st   (Intercept)    3.56      0.507      7.03 2.13e-12    2.70      4.74 
-#&gt; 2 1st   SexMale       -4.21      0.531     -7.92 2.29e-15   -5.42     -3.29 
-#&gt; 3 2nd   (Intercept)    1.97      0.296      6.65 3.03e-11    1.43      2.60 
-#&gt; 4 2nd   SexMale       -3.79      0.366    -10.3  4.88e-25   -4.54     -3.10 
-#&gt; 5 3rd   (Intercept)   -0.164     0.143     -1.14 2.54e- 1   -0.446     0.117
-#&gt; 6 3rd   SexMale       -1.40      0.185     -7.58 3.36e-14   -1.77     -1.04 
-#&gt; 7 Crew  (Intercept)    1.90      0.619      3.06 2.18e- 3    0.827     3.34 
-#&gt; 8 Crew  SexMale       -3.15      0.625     -5.04 4.68e- 7   -4.60     -2.06 
-#&gt;   significance
-#&gt;   <chr>       
-#&gt; 1 ***         
-#&gt; 2 ***         
-#&gt; 3 ***         
-#&gt; 4 ***         
-#&gt; 5 ns          
-#&gt; 6 ***         
-#&gt; 7 **          
-#&gt; 8 ***</chr></dbl></dbl></dbl></dbl></dbl></dbl></chr></fct></pre></div>
+<span class="co">#&gt; # A tibble: 8 x 9</span>
+<span class="co">#&gt;   Class term        estimate std.error statistic  p.value conf.low conf.high</span>
+<span class="co">#&gt;   &lt;fct&gt; &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 1st   (Intercept)    3.56      0.507      7.03 2.13e-12    2.70      4.74 </span>
+<span class="co">#&gt; 2 1st   SexMale       -4.21      0.531     -7.92 2.29e-15   -5.42     -3.29 </span>
+<span class="co">#&gt; 3 2nd   (Intercept)    1.97      0.296      6.65 3.03e-11    1.43      2.60 </span>
+<span class="co">#&gt; 4 2nd   SexMale       -3.79      0.366    -10.3  4.88e-25   -4.54     -3.10 </span>
+<span class="co">#&gt; 5 3rd   (Intercept)   -0.164     0.143     -1.14 2.54e- 1   -0.446     0.117</span>
+<span class="co">#&gt; 6 3rd   SexMale       -1.40      0.185     -7.58 3.36e-14   -1.77     -1.04 </span>
+<span class="co">#&gt; 7 Crew  (Intercept)    1.90      0.619      3.06 2.18e- 3    0.827     3.34 </span>
+<span class="co">#&gt; 8 Crew  SexMale       -3.15      0.625     -5.04 4.68e- 7   -4.60     -2.06 </span>
+<span class="co">#&gt;   significance</span>
+<span class="co">#&gt;   &lt;chr&gt;       </span>
+<span class="co">#&gt; 1 ***         </span>
+<span class="co">#&gt; 2 ***         </span>
+<span class="co">#&gt; 3 ***         </span>
+<span class="co">#&gt; 4 ***         </span>
+<span class="co">#&gt; 5 ns          </span>
+<span class="co">#&gt; 6 ***         </span>
+<span class="co">#&gt; 7 **          </span>
+<span class="co">#&gt; 8 ***</span></pre></div>
 <p>Note that the <code>statistic</code> will either be a <code>t</code> (gaussian, e.g.) or a <code>z</code> (binomial, e.g.) value, based on the family of models used.</p>
 <p>You can also get a model summary across all models with <code><a href="http://broom.tidyverse.org/reference/reexports.html">broom::glance</a></code> methods-</p>
-<div class="sourceCode" id="cb18"><pre class="r"># for reproducibility
-set.seed(123)
+<div class="sourceCode" id="cb18"><pre class="r"><span class="co"># for reproducibility</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
 
-groupedstats::grouped_glm(
-  data = ggstatsplot::Titanic_full,
-  formula = Survived ~ Sex,
-  grouping.vars = Class,
-  family = stats::binomial(link = "logit"),
-  output = "glance"
+<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_glm.html">grouped_glm</a></span>(
+  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">ggstatsplot</span><span class="kw ns">::</span><span class="no"><a href="https://indrajeetpatil.github.io/ggstatsplot//reference/Titanic_full.html">Titanic_full</a></span>,
+  <span class="kw">formula</span> <span class="kw">=</span> <span class="no">Survived</span> ~ <span class="no">Sex</span>,
+  <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="no">Class</span>,
+  <span class="kw">family</span> <span class="kw">=</span> <span class="kw pkg">stats</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/r/stats/family.html">binomial</a></span>(<span class="kw">link</span> <span class="kw">=</span> <span class="st">"logit"</span>),
+  <span class="kw">output</span> <span class="kw">=</span> <span class="st">"glance"</span>
 )
-#&gt; # A tibble: 4 x 9
-#&gt;   Class null.deviance df.null logLik   AIC   BIC deviance df.residual  nobs
-#&gt;   <fct><dbl><int><dbl><dbl><dbl><dbl><int><int>
-#&gt; 1 1st            430.     324  -134.  272.  280.     268.         323   325
-#&gt; 2 2nd            387.     284  -112.  228.  235.     224.         283   285
-#&gt; 3 3rd            797.     705  -370.  744.  753.     740.         704   706
-#&gt; 4 Crew           974.     884  -466.  936.  946.     932.         883   885</int></int></dbl></dbl></dbl></dbl></int></dbl></fct></pre></div>
+<span class="co">#&gt; # A tibble: 4 x 9</span>
+<span class="co">#&gt;   Class null.deviance df.null logLik   AIC   BIC deviance df.residual  nobs</span>
+<span class="co">#&gt;   &lt;fct&gt;         &lt;dbl&gt;   &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt; &lt;int&gt;</span>
+<span class="co">#&gt; 1 1st            430.     324  -134.  272.  280.     268.         323   325</span>
+<span class="co">#&gt; 2 2nd            387.     284  -112.  228.  235.     224.         283   285</span>
+<span class="co">#&gt; 3 3rd            797.     705  -370.  744.  753.     740.         704   706</span>
+<span class="co">#&gt; 4 Crew           974.     884  -466.  936.  946.     932.         883   885</span></pre></div>
 </div>
 <div id="grouped_lmer" class="section level2">
 <h2 class="hasAnchor">
 <a href="#grouped_lmer" class="anchor"></a><code>grouped_lmer</code>
 </h2>
 <p>Linear mixed effects analyses (<code><a href="https://rdrr.io/pkg/lme4/man/lmer.html">lme4::lmer</a></code>) for all combinations of grouping variable levels can be carried out using <code>grouped_lmer</code>:</p>
-<div class="sourceCode" id="cb19"><pre class="r"># for reproducibility
-set.seed(123)
-library(gapminder)
+<div class="sourceCode" id="cb19"><pre class="r"><span class="co"># for reproducibility</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">gapminder</span>)
 
-# getting tidy output of results
-groupedstats::grouped_lmer(
-  data = gapminder,
-  formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap | continent),
-  grouping.vars = year,
-  output = "tidy"
+<span class="co"># getting tidy output of results</span>
+<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_lmer.html">grouped_lmer</a></span>(
+  <span class="kw">data</span> <span class="kw">=</span> <span class="no">gapminder</span>,
+  <span class="kw">formula</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span>(<span class="no">lifeExp</span>) ~ <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span>(<span class="no">gdpPercap</span>) + (<span class="no">gdpPercap</span> <span class="kw">|</span> <span class="no">continent</span>),
+  <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="no">year</span>,
+  <span class="kw">output</span> <span class="kw">=</span> <span class="st">"tidy"</span>
 )
-#&gt; # A tibble: 24 x 10
-#&gt;     year effect term             estimate std.error statistic conf.low conf.high
-#&gt;    <int><chr><chr><dbl><dbl><dbl><dbl><dbl>
-#&gt;  1  1952 fixed  (Intercept)         0.260    0.487      0.534  -0.694      1.21 
-#&gt;  2  1952 fixed  scale(gdpPercap)    0.966    0.409      2.36    0.164      1.77 
-#&gt;  3  1957 fixed  (Intercept)         0.252    0.441      0.573  -0.612      1.12 
-#&gt;  4  1957 fixed  scale(gdpPercap)    0.839    0.355      2.36    0.143      1.53 
-#&gt;  5  1962 fixed  (Intercept)         0.244    0.491      0.497  -0.719      1.21 
-#&gt;  6  1962 fixed  scale(gdpPercap)    0.553    0.233      2.37    0.0965     1.01 
-#&gt;  7  1967 fixed  (Intercept)         0.234    0.342      0.683  -0.437      0.904
-#&gt;  8  1967 fixed  scale(gdpPercap)    0.296    0.0919     3.22    0.116      0.476
-#&gt;  9  1972 fixed  (Intercept)         0.260    0.345      0.753  -0.417      0.936
-#&gt; 10  1972 fixed  scale(gdpPercap)    0.250    0.0694     3.60    0.114      0.386
-#&gt;     p.value significance
-#&gt;       <dbl><chr>       
-#&gt;  1 0.593    ns          
-#&gt;  2 0.0182   *           
-#&gt;  3 0.567    ns          
-#&gt;  4 0.0180   *           
-#&gt;  5 0.619    ns          
-#&gt;  6 0.0176   *           
-#&gt;  7 0.494    ns          
-#&gt;  8 0.00128  **          
-#&gt;  9 0.452    ns          
-#&gt; 10 0.000321 ***         
-#&gt; # ... with 14 more rows
+<span class="co">#&gt; # A tibble: 24 x 10</span>
+<span class="co">#&gt;     year effect term             estimate std.error statistic conf.low conf.high</span>
+<span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt;  1  1952 fixed  (Intercept)         0.260    0.487      0.534  -0.694      1.21 </span>
+<span class="co">#&gt;  2  1952 fixed  scale(gdpPercap)    0.966    0.409      2.36    0.164      1.77 </span>
+<span class="co">#&gt;  3  1957 fixed  (Intercept)         0.252    0.441      0.573  -0.612      1.12 </span>
+<span class="co">#&gt;  4  1957 fixed  scale(gdpPercap)    0.839    0.355      2.36    0.143      1.53 </span>
+<span class="co">#&gt;  5  1962 fixed  (Intercept)         0.244    0.491      0.497  -0.719      1.21 </span>
+<span class="co">#&gt;  6  1962 fixed  scale(gdpPercap)    0.553    0.233      2.37    0.0965     1.01 </span>
+<span class="co">#&gt;  7  1967 fixed  (Intercept)         0.234    0.342      0.683  -0.437      0.904</span>
+<span class="co">#&gt;  8  1967 fixed  scale(gdpPercap)    0.296    0.0919     3.22    0.116      0.476</span>
+<span class="co">#&gt;  9  1972 fixed  (Intercept)         0.260    0.345      0.753  -0.417      0.936</span>
+<span class="co">#&gt; 10  1972 fixed  scale(gdpPercap)    0.250    0.0694     3.60    0.114      0.386</span>
+<span class="co">#&gt;     p.value significance</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt;  1 0.593    ns          </span>
+<span class="co">#&gt;  2 0.0182   *           </span>
+<span class="co">#&gt;  3 0.567    ns          </span>
+<span class="co">#&gt;  4 0.0180   *           </span>
+<span class="co">#&gt;  5 0.619    ns          </span>
+<span class="co">#&gt;  6 0.0176   *           </span>
+<span class="co">#&gt;  7 0.494    ns          </span>
+<span class="co">#&gt;  8 0.00128  **          </span>
+<span class="co">#&gt;  9 0.452    ns          </span>
+<span class="co">#&gt; 10 0.000321 ***         </span>
+<span class="co">#&gt; # ... with 14 more rows</span>
 
-# getting tidy output of results
-groupedstats::grouped_lmer(
-  data = gapminder,
-  formula = scale(lifeExp) ~ scale(gdpPercap) + (gdpPercap | continent),
-  grouping.vars = year,
-  output = "glance"
+<span class="co"># getting tidy output of results</span>
+<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_lmer.html">grouped_lmer</a></span>(
+  <span class="kw">data</span> <span class="kw">=</span> <span class="no">gapminder</span>,
+  <span class="kw">formula</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span>(<span class="no">lifeExp</span>) ~ <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span>(<span class="no">gdpPercap</span>) + (<span class="no">gdpPercap</span> <span class="kw">|</span> <span class="no">continent</span>),
+  <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="no">year</span>,
+  <span class="kw">output</span> <span class="kw">=</span> <span class="st">"glance"</span>
 )
-#&gt; # A tibble: 12 x 7
-#&gt;     year sigma logLik   AIC   BIC REMLcrit df.residual
-#&gt;    <int><dbl><dbl><dbl><dbl><dbl><int>
-#&gt;  1  1952 0.527  -125.  263.  280.     251.         136
-#&gt;  2  1957 0.539  -128.  268.  285.     256.         136
-#&gt;  3  1962 0.547  -129.  271.  289.     259.         136
-#&gt;  4  1967 0.565  -131.  274.  292.     262.         136
-#&gt;  5  1972 0.585  -135.  283.  300.     271.         136
-#&gt;  6  1977 0.585  -135.  281.  299.     269.         136
-#&gt;  7  1982 0.538  -124.  260.  277.     248.         136
-#&gt;  8  1987 0.502  -112.  236.  254.     224.         136
-#&gt;  9  1992 0.526  -119.  251.  268.     239.         136
-#&gt; 10  1997 0.500  -112.  236.  254.     224.         136
-#&gt; 11  2002 0.509  -116.  243.  261.     231.         136
-#&gt; 12  2007 0.524  -120.  251.  269.     239.         136</int></dbl></dbl></dbl></dbl></dbl></int></chr></dbl></dbl></dbl></dbl></dbl></dbl></chr></chr></int></pre></div>
+<span class="co">#&gt; # A tibble: 12 x 7</span>
+<span class="co">#&gt;     year sigma logLik   AIC   BIC REMLcrit df.residual</span>
+<span class="co">#&gt;    &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt;</span>
+<span class="co">#&gt;  1  1952 0.527  -125.  263.  280.     251.         136</span>
+<span class="co">#&gt;  2  1957 0.539  -128.  268.  285.     256.         136</span>
+<span class="co">#&gt;  3  1962 0.547  -129.  271.  289.     259.         136</span>
+<span class="co">#&gt;  4  1967 0.565  -131.  274.  292.     262.         136</span>
+<span class="co">#&gt;  5  1972 0.585  -135.  283.  300.     271.         136</span>
+<span class="co">#&gt;  6  1977 0.585  -135.  281.  299.     269.         136</span>
+<span class="co">#&gt;  7  1982 0.538  -124.  260.  277.     248.         136</span>
+<span class="co">#&gt;  8  1987 0.502  -112.  236.  254.     224.         136</span>
+<span class="co">#&gt;  9  1992 0.526  -119.  251.  268.     239.         136</span>
+<span class="co">#&gt; 10  1997 0.500  -112.  236.  254.     224.         136</span>
+<span class="co">#&gt; 11  2002 0.509  -116.  243.  261.     231.         136</span>
+<span class="co">#&gt; 12  2007 0.524  -120.  251.  269.     239.         136</span></pre></div>
 </div>
 <div id="grouped_glmer" class="section level2">
 <h2 class="hasAnchor">
 <a href="#grouped_glmer" class="anchor"></a><code>grouped_glmer</code>
 </h2>
 <p>A more generalized version of <code>lmer</code> is implemented in <code><a href="https://rdrr.io/pkg/lme4/man/glmer.html">lme4::glmer</a></code>, which can also handle categorical/nominal data. For example, let’s say we want to see if sex of a person was predictive of whether they survived the Titanic tragedy.</p>
-<div class="sourceCode" id="cb20"><pre class="r"># for reproducibility
-set.seed(123)
+<div class="sourceCode" id="cb20"><pre class="r"><span class="co"># for reproducibility</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
 
-# having a look at the data
-dplyr::glimpse(groupedstats::Titanic_full)
-#&gt; Rows: 2,201
-#&gt; Columns: 5
-#&gt; $ id       <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,...
-#&gt; $ Class    <fct> 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd...
-#&gt; $ Sex      <fct> Male, Male, Male, Male, Male, Male, Male, Male, Male, Male...
-#&gt; $ Age      <fct> Child, Child, Child, Child, Child, Child, Child, Child, Ch...
-#&gt; $ Survived <fct> No, No, No, No, No, No, No, No, No, No, No, No, No, No, No...
+<span class="co"># having a look at the data</span>
+<span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="no"><a href="reference/Titanic_full.html">Titanic_full</a></span>)
+<span class="co">#&gt; Rows: 2,201</span>
+<span class="co">#&gt; Columns: 5</span>
+<span class="co">#&gt; $ id       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,...</span>
+<span class="co">#&gt; $ Class    &lt;fct&gt; 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd...</span>
+<span class="co">#&gt; $ Sex      &lt;fct&gt; Male, Male, Male, Male, Male, Male, Male, Male, Male, Male...</span>
+<span class="co">#&gt; $ Age      &lt;fct&gt; Child, Child, Child, Child, Child, Child, Child, Child, Ch...</span>
+<span class="co">#&gt; $ Survived &lt;fct&gt; No, No, No, No, No, No, No, No, No, No, No, No, No, No, No...</span>
 
-# running glmer model to get tidy output
-groupedstats::grouped_glmer(
-  formula = Survived ~ Age + (Age | Class),
-  data = groupedstats::Titanic_full,
-  family = stats::binomial(link = "probit"), # choosing the appropriate GLM family
-  control = lme4::glmerControl( # choosing appropriate control
-    optimizer = "Nelder_Mead",
-    boundary.tol = 1e-07,
-    calc.derivs = FALSE,
-    optCtrl = list(maxfun = 2e9)
+<span class="co"># running glmer model to get tidy output</span>
+<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_glmer.html">grouped_glmer</a></span>(
+  <span class="kw">formula</span> <span class="kw">=</span> <span class="no">Survived</span> ~ <span class="no">Age</span> + (<span class="no">Age</span> <span class="kw">|</span> <span class="no">Class</span>),
+  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="no"><a href="reference/Titanic_full.html">Titanic_full</a></span>,
+  <span class="kw">family</span> <span class="kw">=</span> <span class="kw pkg">stats</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/r/stats/family.html">binomial</a></span>(<span class="kw">link</span> <span class="kw">=</span> <span class="st">"probit"</span>), <span class="co"># choosing the appropriate GLM family</span>
+  <span class="kw">control</span> <span class="kw">=</span> <span class="kw pkg">lme4</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmerControl.html">glmerControl</a></span>( <span class="co"># choosing appropriate control</span>
+    <span class="kw">optimizer</span> <span class="kw">=</span> <span class="st">"Nelder_Mead"</span>,
+    <span class="kw">boundary.tol</span> <span class="kw">=</span> <span class="fl">1e-07</span>,
+    <span class="kw">calc.derivs</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
+    <span class="kw">optCtrl</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">maxfun</span> <span class="kw">=</span> <span class="fl">2e9</span>)
   ),
-  grouping.vars = Sex, # grouping variables (just one in this case)
-  output = "tidy",
-  tidy.args = list(conf.int = TRUE, effects = "fixed")
+  <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="no">Sex</span>, <span class="co"># grouping variables (just one in this case)</span>
+  <span class="kw">output</span> <span class="kw">=</span> <span class="st">"tidy"</span>,
+  <span class="kw">tidy.args</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">conf.int</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">effects</span> <span class="kw">=</span> <span class="st">"fixed"</span>)
 )
-#&gt; # A tibble: 4 x 10
-#&gt;   Sex    effect term        estimate std.error statistic      p.value conf.low
-#&gt;   <fct><chr><chr><dbl><dbl><dbl><dbl><dbl>
-#&gt; 1 Female fixed  (Intercept)    1.01      0.379      2.66 0.00789         0.264
-#&gt; 2 Female fixed  AgeChild       1.47      0.595      2.48 0.0133          0.307
-#&gt; 3 Male   fixed  (Intercept)   -0.888     0.162     -5.47 0.0000000453   -1.21 
-#&gt; 4 Male   fixed  AgeChild       4.90      4.03       1.22 0.224          -3.00 
-#&gt;   conf.high significance
-#&gt;       <dbl><chr>       
-#&gt; 1     1.75  **          
-#&gt; 2     2.64  *           
-#&gt; 3    -0.570 ***         
-#&gt; 4    12.8   ns
+<span class="co">#&gt; # A tibble: 4 x 10</span>
+<span class="co">#&gt;   Sex    effect term        estimate std.error statistic      p.value conf.low</span>
+<span class="co">#&gt;   &lt;fct&gt;  &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Female fixed  (Intercept)    1.01      0.379      2.66 0.00789         0.264</span>
+<span class="co">#&gt; 2 Female fixed  AgeChild       1.47      0.595      2.48 0.0133          0.307</span>
+<span class="co">#&gt; 3 Male   fixed  (Intercept)   -0.888     0.162     -5.47 0.0000000453   -1.21 </span>
+<span class="co">#&gt; 4 Male   fixed  AgeChild       4.90      4.03       1.22 0.224          -3.00 </span>
+<span class="co">#&gt;   conf.high significance</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt; 1     1.75  **          </span>
+<span class="co">#&gt; 2     2.64  *           </span>
+<span class="co">#&gt; 3    -0.570 ***         </span>
+<span class="co">#&gt; 4    12.8   ns</span>
 
-# getting glmer model summaries (let's use the default family and control values)
-groupedstats::grouped_glmer(
-  data = groupedstats::Titanic_full,
-  grouping.vars = Sex,
-  formula = Survived ~ Age + (Age | Class),
-  family = stats::binomial(link = "probit"),
-  output = "glance"
+<span class="co"># getting glmer model summaries (let's use the default family and control values)</span>
+<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_glmer.html">grouped_glmer</a></span>(
+  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="no"><a href="reference/Titanic_full.html">Titanic_full</a></span>,
+  <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="no">Sex</span>,
+  <span class="kw">formula</span> <span class="kw">=</span> <span class="no">Survived</span> ~ <span class="no">Age</span> + (<span class="no">Age</span> <span class="kw">|</span> <span class="no">Class</span>),
+  <span class="kw">family</span> <span class="kw">=</span> <span class="kw pkg">stats</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/r/stats/family.html">binomial</a></span>(<span class="kw">link</span> <span class="kw">=</span> <span class="st">"probit"</span>),
+  <span class="kw">output</span> <span class="kw">=</span> <span class="st">"glance"</span>
 )
-#&gt; # A tibble: 2 x 7
-#&gt;   Sex    sigma logLik   AIC   BIC deviance df.residual
-#&gt;   <fct><dbl><dbl><dbl><dbl><dbl><int>
-#&gt; 1 Female     1  -208.  426.  447.     400.         465
-#&gt; 2 Male       1  -860. 1730. 1757.    1698.        1726</int></dbl></dbl></dbl></dbl></dbl></fct></chr></dbl></dbl></dbl></dbl></dbl></dbl></chr></chr></fct></fct></fct></fct></fct></dbl></pre></div>
+<span class="co">#&gt; # A tibble: 2 x 7</span>
+<span class="co">#&gt;   Sex    sigma logLik   AIC   BIC deviance df.residual</span>
+<span class="co">#&gt;   &lt;fct&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt;</span>
+<span class="co">#&gt; 1 Female     1  -208.  426.  447.     400.         465</span>
+<span class="co">#&gt; 2 Male       1  -860. 1730. 1757.    1698.        1726</span></pre></div>
 <p>Note that the <code>statistic</code> will either be a <code>t</code> (gaussian, e.g.) or a <code>z</code> (binomial, e.g.) value, based on the family of models used.</p>
 </div>
 <div id="grouped_proptest" class="section level2">
@@ -854,276 +871,302 @@ groupedstats::grouped_glmer(
 <a href="#grouped_proptest" class="anchor"></a><code>grouped_proptest</code>
 </h2>
 <p>This function helps carry out one-sample proportion tests (<code><a href="https://rdrr.io/r/stats/chisq.test.html">stats::chisq.test</a></code>) with a unique variable for multiple grouping variables-</p>
-<div class="sourceCode" id="cb21"><pre class="r"># for reproducibility
-set.seed(123)
-options(tibble.width = Inf) # show me all columns
+<div class="sourceCode" id="cb21"><pre class="r"><span class="co"># for reproducibility</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">tibble.width</span> <span class="kw">=</span> <span class="fl">Inf</span>) <span class="co"># show me all columns</span>
 
-groupedstats::grouped_proptest(
-  data = mtcars,
-  grouping.vars = cyl,
-  measure = am
+<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_proptest.html">grouped_proptest</a></span>(
+  <span class="kw">data</span> <span class="kw">=</span> <span class="no">mtcars</span>,
+  <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="no">cyl</span>,
+  <span class="kw">measure</span> <span class="kw">=</span> <span class="no">am</span>
 )
-#&gt; # A tibble: 3 x 8
-#&gt;     cyl `0`    `1`    statistic p.value parameter
-#&gt;   <dbl><chr><chr><dbl><dbl><dbl>
-#&gt; 1     4 27.27% 72.73%     2.27  0.132           1
-#&gt; 2     6 57.14% 42.86%     0.143 0.705           1
-#&gt; 3     8 85.71% 14.29%     7.14  0.00753         1
-#&gt;   method                                   significance
-#&gt;   <chr><chr>       
-#&gt; 1 Chi-squared test for given probabilities ns          
-#&gt; 2 Chi-squared test for given probabilities ns          
-#&gt; 3 Chi-squared test for given probabilities **</chr></chr></dbl></dbl></dbl></chr></chr></dbl></pre></div>
+<span class="co">#&gt; # A tibble: 3 x 8</span>
+<span class="co">#&gt;     cyl `0`    `1`    statistic p.value parameter</span>
+<span class="co">#&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1     4 27.27% 72.73%     2.27  0.132           1</span>
+<span class="co">#&gt; 2     6 57.14% 42.86%     0.143 0.705           1</span>
+<span class="co">#&gt; 3     8 85.71% 14.29%     7.14  0.00753         1</span>
+<span class="co">#&gt;   method                                   significance</span>
+<span class="co">#&gt;   &lt;chr&gt;                                    &lt;chr&gt;       </span>
+<span class="co">#&gt; 1 Chi-squared test for given probabilities ns          </span>
+<span class="co">#&gt; 2 Chi-squared test for given probabilities ns          </span>
+<span class="co">#&gt; 3 Chi-squared test for given probabilities **</span></pre></div>
 </div>
 <div id="grouped_ttest" class="section level2">
 <h2 class="hasAnchor">
 <a href="#grouped_ttest" class="anchor"></a><code>grouped_ttest</code>
 </h2>
 <p>This function can help you carry out t-tests, paired or independent, on multiple variables across multiple groups. Demonstrating how to use this function is going to first require getting the <code>iris</code> dataset into long format. Let’s say we want to investigate if <code>Sepal</code> part of the flower has greater measurement (length or width) than <code>Petal</code> part of the flower for <strong>each</strong> <em>Iris</em> species.</p>
-<div class="sourceCode" id="cb22"><pre class="r"># for reproducibility
-set.seed(123)
+<div class="sourceCode" id="cb22"><pre class="r"><span class="co"># for reproducibility</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
 
-# converting the iris dataset to long format
-iris_long %
-  dplyr::mutate(.data = ., id = dplyr::row_number(x = Species)) %&gt;%
-  tidyr::gather(
-    data = .,
-    key = "condition",
-    value = "value",
-    Sepal.Length:Petal.Width,
-    convert = TRUE,
-    factor_key = TRUE
-  ) %&gt;%
-  tidyr::separate(
-    col = "condition",
-    into = c("part", "measure"),
-    sep = "\\.",
-    convert = TRUE
-  ) %&gt;%
-  tibble::as_data_frame(x = .)
+<span class="co"># converting the iris dataset to long format</span>
+<span class="no">iris_long</span> <span class="kw">&lt;-</span> <span class="no">iris</span> <span class="kw">%&gt;%</span>
+  <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">.data</span> <span class="kw">=</span> <span class="no">.</span>, <span class="kw">id</span> <span class="kw">=</span> <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/ranking.html">row_number</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">Species</span>)) <span class="kw">%&gt;%</span>
+  <span class="kw pkg">tidyr</span><span class="kw ns">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/gather.html">gather</a></span>(
+    <span class="kw">data</span> <span class="kw">=</span> <span class="no">.</span>,
+    <span class="kw">key</span> <span class="kw">=</span> <span class="st">"condition"</span>,
+    <span class="kw">value</span> <span class="kw">=</span> <span class="st">"value"</span>,
+    <span class="no">Sepal.Length</span>:<span class="no">Petal.Width</span>,
+    <span class="kw">convert</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
+    <span class="kw">factor_key</span> <span class="kw">=</span> <span class="fl">TRUE</span>
+  ) <span class="kw">%&gt;%</span>
+  <span class="kw pkg">tidyr</span><span class="kw ns">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span>(
+    <span class="kw">col</span> <span class="kw">=</span> <span class="st">"condition"</span>,
+    <span class="kw">into</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"part"</span>, <span class="st">"measure"</span>),
+    <span class="kw">sep</span> <span class="kw">=</span> <span class="st">"\\."</span>,
+    <span class="kw">convert</span> <span class="kw">=</span> <span class="fl">TRUE</span>
+  ) <span class="kw">%&gt;%</span>
+  <span class="kw pkg">tibble</span><span class="kw ns">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/deprecated.html">as_data_frame</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">.</span>)
 
-# check the long format iris dataset
-iris_long
-#&gt; # A tibble: 600 x 5
-#&gt;    Species    id part  measure value
-#&gt;    <fct><int><chr><chr><dbl>
-#&gt;  1 setosa      1 Sepal Length    5.1
-#&gt;  2 setosa      2 Sepal Length    4.9
-#&gt;  3 setosa      3 Sepal Length    4.7
-#&gt;  4 setosa      4 Sepal Length    4.6
-#&gt;  5 setosa      5 Sepal Length    5  
-#&gt;  6 setosa      6 Sepal Length    5.4
-#&gt;  7 setosa      7 Sepal Length    4.6
-#&gt;  8 setosa      8 Sepal Length    5  
-#&gt;  9 setosa      9 Sepal Length    4.4
-#&gt; 10 setosa     10 Sepal Length    4.9
-#&gt; # ... with 590 more rows
+<span class="co"># check the long format iris dataset</span>
+<span class="no">iris_long</span>
+<span class="co">#&gt; # A tibble: 600 x 5</span>
+<span class="co">#&gt;    Species    id part  measure value</span>
+<span class="co">#&gt;    &lt;fct&gt;   &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 setosa      1 Sepal Length    5.1</span>
+<span class="co">#&gt;  2 setosa      2 Sepal Length    4.9</span>
+<span class="co">#&gt;  3 setosa      3 Sepal Length    4.7</span>
+<span class="co">#&gt;  4 setosa      4 Sepal Length    4.6</span>
+<span class="co">#&gt;  5 setosa      5 Sepal Length    5  </span>
+<span class="co">#&gt;  6 setosa      6 Sepal Length    5.4</span>
+<span class="co">#&gt;  7 setosa      7 Sepal Length    4.6</span>
+<span class="co">#&gt;  8 setosa      8 Sepal Length    5  </span>
+<span class="co">#&gt;  9 setosa      9 Sepal Length    4.4</span>
+<span class="co">#&gt; 10 setosa     10 Sepal Length    4.9</span>
+<span class="co">#&gt; # ... with 590 more rows</span>
 
-# checking if the Sepal part has different dimentions (value) than Petal part
-# for each Species and for each type of measurement (Length and Width)
-options(tibble.width = Inf) # show me all columns
+<span class="co"># checking if the Sepal part has different dimentions (value) than Petal part</span>
+<span class="co"># for each Species and for each type of measurement (Length and Width)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">tibble.width</span> <span class="kw">=</span> <span class="fl">Inf</span>) <span class="co"># show me all columns</span>
 
-groupedstats::grouped_ttest(
-  data = iris_long,
-  dep.vars = value, # dependent variable
-  indep.vars = part, # independent variable
-  grouping.vars = c(Species, measure), # for each Species and for each measurement
-  paired = TRUE # paired t-test
+<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_ttest.html">grouped_ttest</a></span>(
+  <span class="kw">data</span> <span class="kw">=</span> <span class="no">iris_long</span>,
+  <span class="kw">dep.vars</span> <span class="kw">=</span> <span class="no">value</span>, <span class="co"># dependent variable</span>
+  <span class="kw">indep.vars</span> <span class="kw">=</span> <span class="no">part</span>, <span class="co"># independent variable</span>
+  <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">Species</span>, <span class="no">measure</span>), <span class="co"># for each Species and for each measurement</span>
+  <span class="kw">paired</span> <span class="kw">=</span> <span class="fl">TRUE</span> <span class="co"># paired t-test</span>
 )
-#&gt; # A tibble: 6 x 11
-#&gt;   Species    measure formula      method        t.test estimate conf.low
-#&gt;   <fct><chr><chr><chr><dbl><dbl><dbl>
-#&gt; 1 setosa     Length  value ~ part Paired t-test  -71.8   -3.54     -3.64
-#&gt; 2 versicolor Length  value ~ part Paired t-test  -34.0   -1.68     -1.78
-#&gt; 3 virginica  Length  value ~ part Paired t-test  -22.9   -1.04     -1.13
-#&gt; 4 setosa     Width   value ~ part Paired t-test  -61.0   -3.18     -3.29
-#&gt; 5 versicolor Width   value ~ part Paired t-test  -43.5   -1.44     -1.51
-#&gt; 6 virginica  Width   value ~ part Paired t-test  -23.1   -0.948    -1.03
-#&gt;   conf.high parameter  p.value significance
-#&gt;       <dbl><dbl><dbl><chr>       
-#&gt; 1    -3.44         49 2.54e-51 ***         
-#&gt; 2    -1.58         49 9.67e-36 ***         
-#&gt; 3    -0.945        49 7.99e-28 ***         
-#&gt; 4    -3.08         49 7.21e-48 ***         
-#&gt; 5    -1.38         49 8.42e-41 ***         
-#&gt; 6    -0.866        49 5.34e-28 ***</chr></dbl></dbl></dbl></dbl></dbl></dbl></chr></chr></chr></fct></dbl></chr></chr></int></fct></pre></div>
+<span class="co">#&gt; # A tibble: 6 x 11</span>
+<span class="co">#&gt;   Species    measure formula      method        t.test estimate conf.low</span>
+<span class="co">#&gt;   &lt;fct&gt;      &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 setosa     Length  value ~ part Paired t-test  -71.8   -3.54     -3.64</span>
+<span class="co">#&gt; 2 versicolor Length  value ~ part Paired t-test  -34.0   -1.68     -1.78</span>
+<span class="co">#&gt; 3 virginica  Length  value ~ part Paired t-test  -22.9   -1.04     -1.13</span>
+<span class="co">#&gt; 4 setosa     Width   value ~ part Paired t-test  -61.0   -3.18     -3.29</span>
+<span class="co">#&gt; 5 versicolor Width   value ~ part Paired t-test  -43.5   -1.44     -1.51</span>
+<span class="co">#&gt; 6 virginica  Width   value ~ part Paired t-test  -23.1   -0.948    -1.03</span>
+<span class="co">#&gt;   conf.high parameter  p.value significance</span>
+<span class="co">#&gt;       &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt; 1    -3.44         49 2.54e-51 ***         </span>
+<span class="co">#&gt; 2    -1.58         49 9.67e-36 ***         </span>
+<span class="co">#&gt; 3    -0.945        49 7.99e-28 ***         </span>
+<span class="co">#&gt; 4    -3.08         49 7.21e-48 ***         </span>
+<span class="co">#&gt; 5    -1.38         49 8.42e-41 ***         </span>
+<span class="co">#&gt; 6    -0.866        49 5.34e-28 ***</span></pre></div>
 </div>
 <div id="grouped_wilcox" class="section level2">
 <h2 class="hasAnchor">
 <a href="#grouped_wilcox" class="anchor"></a><code>grouped_wilcox</code>
 </h2>
 <p>This function is just a non-parametric variant of the <code>grouped_ttest</code>:</p>
-<div class="sourceCode" id="cb23"><pre class="r"># for reproducibility
-set.seed(123)
-options(tibble.width = Inf) # show me all columns
+<div class="sourceCode" id="cb23"><pre class="r"><span class="co"># for reproducibility</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">tibble.width</span> <span class="kw">=</span> <span class="fl">Inf</span>) <span class="co"># show me all columns</span>
 
-groupedstats::grouped_wilcox(
-  data = iris_long,
-  dep.vars = value, # dependent variable
-  indep.vars = part, # independent variable
-  grouping.vars = c(Species, measure), # for each Species and for each measurement
-  paired = TRUE # paired Wilcoxon signed rank test with continuity correction
+<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_wilcox.html">grouped_wilcox</a></span>(
+  <span class="kw">data</span> <span class="kw">=</span> <span class="no">iris_long</span>,
+  <span class="kw">dep.vars</span> <span class="kw">=</span> <span class="no">value</span>, <span class="co"># dependent variable</span>
+  <span class="kw">indep.vars</span> <span class="kw">=</span> <span class="no">part</span>, <span class="co"># independent variable</span>
+  <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">Species</span>, <span class="no">measure</span>), <span class="co"># for each Species and for each measurement</span>
+  <span class="kw">paired</span> <span class="kw">=</span> <span class="fl">TRUE</span> <span class="co"># paired Wilcoxon signed rank test with continuity correction</span>
 )
-#&gt; # A tibble: 6 x 10
-#&gt;   Species    measure formula     
-#&gt;   <fct><chr><chr>       
-#&gt; 1 setosa     Length  value ~ part
-#&gt; 2 versicolor Length  value ~ part
-#&gt; 3 virginica  Length  value ~ part
-#&gt; 4 setosa     Width   value ~ part
-#&gt; 5 versicolor Width   value ~ part
-#&gt; 6 virginica  Width   value ~ part
-#&gt;   method                                               statistic estimate
-#&gt;   <chr><dbl><dbl>
-#&gt; 1 Wilcoxon signed rank test with continuity correction         0   -3.55 
-#&gt; 2 Wilcoxon signed rank test with continuity correction         0   -1.70 
-#&gt; 3 Wilcoxon signed rank test with continuity correction         0   -1.05 
-#&gt; 4 Wilcoxon signed rank test with continuity correction         0   -3.15 
-#&gt; 5 Wilcoxon signed rank test with continuity correction         0   -1.45 
-#&gt; 6 Wilcoxon signed rank test with continuity correction         0   -0.950
-#&gt;   conf.low conf.high  p.value significance
-#&gt;      <dbl><dbl><dbl><chr>       
-#&gt; 1    -3.65    -3.45  7.62e-10 ***         
-#&gt; 2    -1.80    -1.60  7.45e-10 ***         
-#&gt; 3    -1.15    -0.950 7.48e-10 ***         
-#&gt; 4    -3.25    -3.10  7.40e-10 ***         
-#&gt; 5    -1.55    -1.40  7.58e-10 ***         
-#&gt; 6    -1.00    -0.850 7.67e-10 ***</chr></dbl></dbl></dbl></dbl></dbl></chr></chr></chr></fct></pre></div>
+<span class="co">#&gt; # A tibble: 6 x 10</span>
+<span class="co">#&gt;   Species    measure formula     </span>
+<span class="co">#&gt;   &lt;fct&gt;      &lt;chr&gt;   &lt;chr&gt;       </span>
+<span class="co">#&gt; 1 setosa     Length  value ~ part</span>
+<span class="co">#&gt; 2 versicolor Length  value ~ part</span>
+<span class="co">#&gt; 3 virginica  Length  value ~ part</span>
+<span class="co">#&gt; 4 setosa     Width   value ~ part</span>
+<span class="co">#&gt; 5 versicolor Width   value ~ part</span>
+<span class="co">#&gt; 6 virginica  Width   value ~ part</span>
+<span class="co">#&gt;   method                                               statistic estimate</span>
+<span class="co">#&gt;   &lt;chr&gt;                                                    &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Wilcoxon signed rank test with continuity correction         0   -3.55 </span>
+<span class="co">#&gt; 2 Wilcoxon signed rank test with continuity correction         0   -1.70 </span>
+<span class="co">#&gt; 3 Wilcoxon signed rank test with continuity correction         0   -1.05 </span>
+<span class="co">#&gt; 4 Wilcoxon signed rank test with continuity correction         0   -3.15 </span>
+<span class="co">#&gt; 5 Wilcoxon signed rank test with continuity correction         0   -1.45 </span>
+<span class="co">#&gt; 6 Wilcoxon signed rank test with continuity correction         0   -0.950</span>
+<span class="co">#&gt;   conf.low conf.high  p.value significance</span>
+<span class="co">#&gt;      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt; 1    -3.65    -3.45  7.62e-10 ***         </span>
+<span class="co">#&gt; 2    -1.80    -1.60  7.45e-10 ***         </span>
+<span class="co">#&gt; 3    -1.15    -0.950 7.48e-10 ***         </span>
+<span class="co">#&gt; 4    -3.25    -3.10  7.40e-10 ***         </span>
+<span class="co">#&gt; 5    -1.55    -1.40  7.58e-10 ***         </span>
+<span class="co">#&gt; 6    -1.00    -0.850 7.67e-10 ***</span></pre></div>
 <p>While we are at it, let’s also check out examples for <code>t-test</code> and <code>Wilcox test</code> in case of between-subjects designs.</p>
 <p>We will use <code>diamonds</code> dataset from <code>ggplot2</code> and will see if the price and depth of a diamond is different for two of our favorite colors (say <code>E</code> and <code>J</code>) for each type of clarity.</p>
-<div class="sourceCode" id="cb24"><pre class="r"># for reproducibility
-set.seed(123)
+<div class="sourceCode" id="cb24"><pre class="r"><span class="co"># for reproducibility</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
 
-# subset the dataframe with two colors of interest to us
-diamonds_short  # A tibble: 24 x 10
-#&gt;    clarity formula       method                   t.test   estimate  conf.low
-#&gt;    <ord><chr><chr><dbl><dbl><dbl>
-#&gt;  1 SI2     carat ~ color Welch Two Sample t-test -18.0      -0.503     -0.558
-#&gt;  2 SI1     carat ~ color Welch Two Sample t-test -22.1      -0.462     -0.503
-#&gt;  3 VS1     carat ~ color Welch Two Sample t-test -16.8      -0.444     -0.496
-#&gt;  4 VVS2    carat ~ color Welch Two Sample t-test -12.0      -0.553     -0.644
-#&gt;  5 VS2     carat ~ color Welch Two Sample t-test -24.6      -0.542     -0.586
-#&gt;  6 I1      carat ~ color Welch Two Sample t-test  -4.48     -0.644     -0.932
-#&gt;  7 VVS1    carat ~ color Welch Two Sample t-test  -6.53     -0.417     -0.545
-#&gt;  8 IF      carat ~ color Welch Two Sample t-test  -2.38     -0.198     -0.364
-#&gt;  9 SI2     price ~ color Welch Two Sample t-test -10.6   -2347.     -2782.   
-#&gt; 10 SI1     price ~ color Welch Two Sample t-test -12.6   -2024.     -2339.   
-#&gt; 11 VS1     price ~ color Welch Two Sample t-test  -9.26  -2028.     -2458.   
-#&gt; 12 VVS2    price ~ color Welch Two Sample t-test  -6.83  -2643.     -3407.   
-#&gt; 13 VS2     price ~ color Welch Two Sample t-test -14.3   -2560.     -2911.   
-#&gt; 14 I1      price ~ color Welch Two Sample t-test  -2.76  -1766.     -3044.   
-#&gt; 15 VVS1    price ~ color Welch Two Sample t-test  -3.35  -1814.     -2893.   
-#&gt; 16 IF      price ~ color Welch Two Sample t-test   0.378   305.     -1299.   
-#&gt; 17 SI2     depth ~ color Welch Two Sample t-test  -2.64     -0.231     -0.402
-#&gt; 18 SI1     depth ~ color Welch Two Sample t-test   0.333     0.0208    -0.102
-#&gt; 19 VS1     depth ~ color Welch Two Sample t-test  -6.61     -0.417     -0.541
-#&gt; 20 VVS2    depth ~ color Welch Two Sample t-test  -2.20     -0.277     -0.526
-#&gt; 21 VS2     depth ~ color Welch Two Sample t-test  -2.28     -0.145     -0.271
-#&gt; 22 I1      depth ~ color Welch Two Sample t-test  -3.96     -2.10      -3.16 
-#&gt; 23 VVS1    depth ~ color Welch Two Sample t-test  -2.53     -0.370     -0.661
-#&gt; 24 IF      depth ~ color Welch Two Sample t-test  -2.16     -0.386     -0.739
-#&gt;     conf.high parameter   p.value significance
-#&gt;         <dbl><dbl><dbl><chr>       
-#&gt;  1    -0.448      634.  9.24e- 59 ***         
-#&gt;  2    -0.420      948.  2.47e- 87 ***         
-#&gt;  3    -0.392      663.  2.91e- 53 ***         
-#&gt;  4    -0.461      140.  3.81e- 23 ***         
-#&gt;  5    -0.499      856.  1.51e-101 ***         
-#&gt;  6    -0.357       60.6 3.34e-  5 ***         
-#&gt;  7    -0.290       76.1 6.68e-  9 ***         
-#&gt;  8    -0.0318      60.1 2.03e-  2 *           
-#&gt;  9 -1913.         676.  2.02e- 24 ***         
-#&gt; 10 -1709.        1031.  5.75e- 34 ***         
-#&gt; 11 -1598.         794.  1.86e- 19 ***         
-#&gt; 12 -1878.         151.  1.94e- 10 ***         
-#&gt; 13 -2209.         943.  3.07e- 42 ***         
-#&gt; 14  -487.          62.0 7.58e-  3 **          
-#&gt; 15  -735.          81.2 1.24e-  3 **          
-#&gt; 16  1909.          81.0 7.07e-  1 ns          
-#&gt; 17    -0.0588     772.  8.58e-  3 **          
-#&gt; 18     0.143     1245.  7.39e-  1 ns          
-#&gt; 19    -0.293     1040.  6.08e- 11 ***         
-#&gt; 20    -0.0279     158.  2.95e-  2 *           
-#&gt; 21    -0.0203    1084.  2.28e-  2 *           
-#&gt; 22    -1.05        81.6 1.61e-  4 ***         
-#&gt; 23    -0.0792      88.1 1.32e-  2 *           
-#&gt; 24    -0.0321     111.  3.28e-  2 *
+<span class="co"># subset the dataframe with two colors of interest to us</span>
+<span class="no">diamonds_short</span> <span class="kw">&lt;-</span>
+  <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">.data</span> <span class="kw">=</span> <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="no"><a href="https://ggplot2.tidyverse.org/reference/diamonds.html">diamonds</a></span>, <span class="no">color</span> <span class="kw">==</span> <span class="st">"E"</span> <span class="kw">|</span> <span class="no">color</span> <span class="kw">==</span> <span class="st">"J"</span>)
 
-# wilcox test (aka Mann-Whitney U-test)
-groupedstats::grouped_wilcox(
-  data = diamonds_short,
-  dep.vars = depth:price, # note that you can select variables in range with `:`
-  indep.vars = color, # again, just one independent, multiple dependent variables case
-  grouping.vars = clarity, # one grouping variable
-  paired = FALSE
+<span class="co"># show me all rows and columns</span>
+<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span>(<span class="kw">tibble.width</span> <span class="kw">=</span> <span class="fl">Inf</span>, <span class="kw">tibble.print_max</span> <span class="kw">=</span> <span class="fl">Inf</span>)
+
+<span class="co"># t-test</span>
+<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_ttest.html">grouped_ttest</a></span>(
+  <span class="kw">data</span> <span class="kw">=</span> <span class="no">diamonds_short</span>,
+  <span class="kw">dep.vars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">carat</span>, <span class="no">price</span>, <span class="no">depth</span>), <span class="co"># note that there three dependent variables</span>
+  <span class="kw">indep.vars</span> <span class="kw">=</span> <span class="no">color</span>, <span class="co"># and just one independent variable</span>
+  <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="no">clarity</span>, <span class="co"># one grouping variable</span>
+  <span class="kw">paired</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
+  <span class="kw">var.equal</span> <span class="kw">=</span> <span class="fl">FALSE</span>
 )
-#&gt; # A tibble: 16 x 9
-#&gt;    clarity formula       method                                           
-#&gt;    <ord><chr><chr>                                            
-#&gt;  1 SI2     depth ~ color Wilcoxon rank sum test with continuity correction
-#&gt;  2 SI1     depth ~ color Wilcoxon rank sum test with continuity correction
-#&gt;  3 VS1     depth ~ color Wilcoxon rank sum test with continuity correction
-#&gt;  4 VVS2    depth ~ color Wilcoxon rank sum test with continuity correction
-#&gt;  5 VS2     depth ~ color Wilcoxon rank sum test with continuity correction
-#&gt;  6 I1      depth ~ color Wilcoxon rank sum test with continuity correction
-#&gt;  7 VVS1    depth ~ color Wilcoxon rank sum test with continuity correction
-#&gt;  8 IF      depth ~ color Wilcoxon rank sum test with continuity correction
-#&gt;  9 SI2     price ~ color Wilcoxon rank sum test with continuity correction
-#&gt; 10 SI1     price ~ color Wilcoxon rank sum test with continuity correction
-#&gt; 11 VS1     price ~ color Wilcoxon rank sum test with continuity correction
-#&gt; 12 VVS2    price ~ color Wilcoxon rank sum test with continuity correction
-#&gt; 13 VS2     price ~ color Wilcoxon rank sum test with continuity correction
-#&gt; 14 I1      price ~ color Wilcoxon rank sum test with continuity correction
-#&gt; 15 VVS1    price ~ color Wilcoxon rank sum test with continuity correction
-#&gt; 16 IF      price ~ color Wilcoxon rank sum test with continuity correction
-#&gt;    statistic      estimate  conf.low     conf.high  p.value significance
-#&gt;        <dbl><dbl><dbl><dbl><dbl><chr>       
-#&gt;  1   380600     -0.200        -0.300    -0.0000364 1.54e- 2 *           
-#&gt;  2   918892      0.0000393    -0.100     0.100     6.77e- 1 ns          
-#&gt;  3   276743     -0.400        -0.500    -0.300     7.03e-12 ***         
-#&gt;  4    52618     -0.400        -0.600    -0.200     4.18e- 4 ***         
-#&gt;  5   816784.    -0.200        -0.300    -0.100     8.86e- 5 ***         
-#&gt;  6     1570.    -2.00         -3.00     -1.00      1.21e- 4 ***         
-#&gt;  7    19455     -0.300        -0.500    -0.100     5.07e- 3 **          
-#&gt;  8     3286     -0.300        -0.700    -0.0000251 4.79e- 2 *           
-#&gt;  9   269016  -1844.        -2182.    -1505.        8.82e-31 ***         
-#&gt; 10   608724. -1510.        -1789.    -1312.        8.20e-43 ***         
-#&gt; 11   277389  -1095.        -1414.     -745.        1.11e-11 ***         
-#&gt; 12    42795  -1764.        -2920.    -1205.        2.23e-10 ***         
-#&gt; 13   560930  -1888.        -2228.    -1539.        1.08e-54 ***         
-#&gt; 14     2017  -1150.        -1832.      -79.0       3.68e- 2 *           
-#&gt; 15    19086   -362.         -859.     -107.        2.57e- 3 **          
-#&gt; 16     5085    296.          125.      449.        4.94e- 3 **</chr></dbl></dbl></dbl></dbl></dbl></chr></chr></ord></chr></dbl></dbl></dbl></dbl></dbl></dbl></chr></chr></ord></pre></div>
-<p>We can further focus just on two levels of clarity to further elucidate another aspect of entering the arguments-</p>
-<div class="sourceCode" id="cb25"><pre class="r"># for reproducibility
-set.seed(123)
+<span class="co">#&gt; # A tibble: 24 x 10</span>
+<span class="co">#&gt;    clarity formula       method                   t.test   estimate  conf.low</span>
+<span class="co">#&gt;    &lt;ord&gt;   &lt;chr&gt;         &lt;chr&gt;                     &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 SI2     carat ~ color Welch Two Sample t-test -18.0      -0.503     -0.558</span>
+<span class="co">#&gt;  2 SI1     carat ~ color Welch Two Sample t-test -22.1      -0.462     -0.503</span>
+<span class="co">#&gt;  3 VS1     carat ~ color Welch Two Sample t-test -16.8      -0.444     -0.496</span>
+<span class="co">#&gt;  4 VVS2    carat ~ color Welch Two Sample t-test -12.0      -0.553     -0.644</span>
+<span class="co">#&gt;  5 VS2     carat ~ color Welch Two Sample t-test -24.6      -0.542     -0.586</span>
+<span class="co">#&gt;  6 I1      carat ~ color Welch Two Sample t-test  -4.48     -0.644     -0.932</span>
+<span class="co">#&gt;  7 VVS1    carat ~ color Welch Two Sample t-test  -6.53     -0.417     -0.545</span>
+<span class="co">#&gt;  8 IF      carat ~ color Welch Two Sample t-test  -2.38     -0.198     -0.364</span>
+<span class="co">#&gt;  9 SI2     price ~ color Welch Two Sample t-test -10.6   -2347.     -2782.   </span>
+<span class="co">#&gt; 10 SI1     price ~ color Welch Two Sample t-test -12.6   -2024.     -2339.   </span>
+<span class="co">#&gt; 11 VS1     price ~ color Welch Two Sample t-test  -9.26  -2028.     -2458.   </span>
+<span class="co">#&gt; 12 VVS2    price ~ color Welch Two Sample t-test  -6.83  -2643.     -3407.   </span>
+<span class="co">#&gt; 13 VS2     price ~ color Welch Two Sample t-test -14.3   -2560.     -2911.   </span>
+<span class="co">#&gt; 14 I1      price ~ color Welch Two Sample t-test  -2.76  -1766.     -3044.   </span>
+<span class="co">#&gt; 15 VVS1    price ~ color Welch Two Sample t-test  -3.35  -1814.     -2893.   </span>
+<span class="co">#&gt; 16 IF      price ~ color Welch Two Sample t-test   0.378   305.     -1299.   </span>
+<span class="co">#&gt; 17 SI2     depth ~ color Welch Two Sample t-test  -2.64     -0.231     -0.402</span>
+<span class="co">#&gt; 18 SI1     depth ~ color Welch Two Sample t-test   0.333     0.0208    -0.102</span>
+<span class="co">#&gt; 19 VS1     depth ~ color Welch Two Sample t-test  -6.61     -0.417     -0.541</span>
+<span class="co">#&gt; 20 VVS2    depth ~ color Welch Two Sample t-test  -2.20     -0.277     -0.526</span>
+<span class="co">#&gt; 21 VS2     depth ~ color Welch Two Sample t-test  -2.28     -0.145     -0.271</span>
+<span class="co">#&gt; 22 I1      depth ~ color Welch Two Sample t-test  -3.96     -2.10      -3.16 </span>
+<span class="co">#&gt; 23 VVS1    depth ~ color Welch Two Sample t-test  -2.53     -0.370     -0.661</span>
+<span class="co">#&gt; 24 IF      depth ~ color Welch Two Sample t-test  -2.16     -0.386     -0.739</span>
+<span class="co">#&gt;     conf.high parameter   p.value significance</span>
+<span class="co">#&gt;         &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt;  1    -0.448      634.  9.24e- 59 ***         </span>
+<span class="co">#&gt;  2    -0.420      948.  2.47e- 87 ***         </span>
+<span class="co">#&gt;  3    -0.392      663.  2.91e- 53 ***         </span>
+<span class="co">#&gt;  4    -0.461      140.  3.81e- 23 ***         </span>
+<span class="co">#&gt;  5    -0.499      856.  1.51e-101 ***         </span>
+<span class="co">#&gt;  6    -0.357       60.6 3.34e-  5 ***         </span>
+<span class="co">#&gt;  7    -0.290       76.1 6.68e-  9 ***         </span>
+<span class="co">#&gt;  8    -0.0318      60.1 2.03e-  2 *           </span>
+<span class="co">#&gt;  9 -1913.         676.  2.02e- 24 ***         </span>
+<span class="co">#&gt; 10 -1709.        1031.  5.75e- 34 ***         </span>
+<span class="co">#&gt; 11 -1598.         794.  1.86e- 19 ***         </span>
+<span class="co">#&gt; 12 -1878.         151.  1.94e- 10 ***         </span>
+<span class="co">#&gt; 13 -2209.         943.  3.07e- 42 ***         </span>
+<span class="co">#&gt; 14  -487.          62.0 7.58e-  3 **          </span>
+<span class="co">#&gt; 15  -735.          81.2 1.24e-  3 **          </span>
+<span class="co">#&gt; 16  1909.          81.0 7.07e-  1 ns          </span>
+<span class="co">#&gt; 17    -0.0588     772.  8.58e-  3 **          </span>
+<span class="co">#&gt; 18     0.143     1245.  7.39e-  1 ns          </span>
+<span class="co">#&gt; 19    -0.293     1040.  6.08e- 11 ***         </span>
+<span class="co">#&gt; 20    -0.0279     158.  2.95e-  2 *           </span>
+<span class="co">#&gt; 21    -0.0203    1084.  2.28e-  2 *           </span>
+<span class="co">#&gt; 22    -1.05        81.6 1.61e-  4 ***         </span>
+<span class="co">#&gt; 23    -0.0792      88.1 1.32e-  2 *           </span>
+<span class="co">#&gt; 24    -0.0321     111.  3.28e-  2 *</span>
 
-# subset the dataframe even further to just select two levels of clarity
-diamonds_short2  # A tibble: 10 x 9
-#&gt;    cut       formula         method                                           
-#&gt;    <ord><chr><chr>                                            
-#&gt;  1 Ideal     carat ~ color   Wilcoxon rank sum test with continuity correction
-#&gt;  2 Premium   carat ~ color   Wilcoxon rank sum test with continuity correction
-#&gt;  3 Good      carat ~ color   Wilcoxon rank sum test with continuity correction
-#&gt;  4 Very Good carat ~ color   Wilcoxon rank sum test with continuity correction
-#&gt;  5 Fair      carat ~ color   Wilcoxon rank sum test with continuity correction
-#&gt;  6 Ideal     price ~ clarity Wilcoxon rank sum test with continuity correction
-#&gt;  7 Premium   price ~ clarity Wilcoxon rank sum test with continuity correction
-#&gt;  8 Good      price ~ clarity Wilcoxon rank sum test with continuity correction
-#&gt;  9 Very Good price ~ clarity Wilcoxon rank sum test with continuity correction
-#&gt; 10 Fair      price ~ clarity Wilcoxon rank sum test with continuity correction
-#&gt;    statistic estimate conf.low conf.high  p.value significance
-#&gt;        <dbl><dbl><dbl><dbl><dbl><chr>       
-#&gt;  1   103150.   -0.440   -0.500    -0.380 1.28e-51 ***         
-#&gt;  2    91748    -0.540   -0.600    -0.490 1.82e-59 ***         
-#&gt;  3    20752    -0.400   -0.500    -0.310 4.49e-18 ***         
-#&gt;  4    87590    -0.390   -0.460    -0.320 7.06e-37 ***         
-#&gt;  5     2356.   -0.230   -0.370    -0.110 1.21e- 5 ***         
-#&gt;  6   344274.  774.     536.     1075.    3.00e- 9 ***         
-#&gt;  7   329276.  876.     538.     1278.    3.52e- 9 ***         
-#&gt;  8    64082.  516.     141.      921.    3.05e- 3 **          
-#&gt;  9   272064   752.     486.     1098.    2.76e- 8 ***         
-#&gt; 10     5113   170.    -411.      802.    5.68e- 1 ns</chr></dbl></dbl></dbl></dbl></dbl></chr></chr></ord></pre></div>
+<span class="co"># wilcox test (aka Mann-Whitney U-test)</span>
+<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_wilcox.html">grouped_wilcox</a></span>(
+  <span class="kw">data</span> <span class="kw">=</span> <span class="no">diamonds_short</span>,
+  <span class="kw">dep.vars</span> <span class="kw">=</span> <span class="no">depth</span>:<span class="no">price</span>, <span class="co"># note that you can select variables in range with `:`</span>
+  <span class="kw">indep.vars</span> <span class="kw">=</span> <span class="no">color</span>, <span class="co"># again, just one independent, multiple dependent variables case</span>
+  <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="no">clarity</span>, <span class="co"># one grouping variable</span>
+  <span class="kw">paired</span> <span class="kw">=</span> <span class="fl">FALSE</span>
+)
+<span class="co">#&gt; # A tibble: 16 x 9</span>
+<span class="co">#&gt;    clarity formula       method                                           </span>
+<span class="co">#&gt;    &lt;ord&gt;   &lt;chr&gt;         &lt;chr&gt;                                            </span>
+<span class="co">#&gt;  1 SI2     depth ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  2 SI1     depth ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  3 VS1     depth ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  4 VVS2    depth ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  5 VS2     depth ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  6 I1      depth ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  7 VVS1    depth ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  8 IF      depth ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  9 SI2     price ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt; 10 SI1     price ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt; 11 VS1     price ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt; 12 VVS2    price ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt; 13 VS2     price ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt; 14 I1      price ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt; 15 VVS1    price ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt; 16 IF      price ~ color Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;    statistic      estimate  conf.low     conf.high  p.value significance</span>
+<span class="co">#&gt;        &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt;  1   380600     -0.200        -0.300    -0.0000364 1.54e- 2 *           </span>
+<span class="co">#&gt;  2   918892      0.0000393    -0.100     0.100     6.77e- 1 ns          </span>
+<span class="co">#&gt;  3   276743     -0.400        -0.500    -0.300     7.03e-12 ***         </span>
+<span class="co">#&gt;  4    52618     -0.400        -0.600    -0.200     4.18e- 4 ***         </span>
+<span class="co">#&gt;  5   816784.    -0.200        -0.300    -0.100     8.86e- 5 ***         </span>
+<span class="co">#&gt;  6     1570.    -2.00         -3.00     -1.00      1.21e- 4 ***         </span>
+<span class="co">#&gt;  7    19455     -0.300        -0.500    -0.100     5.07e- 3 **          </span>
+<span class="co">#&gt;  8     3286     -0.300        -0.700    -0.0000251 4.79e- 2 *           </span>
+<span class="co">#&gt;  9   269016  -1844.        -2182.    -1505.        8.82e-31 ***         </span>
+<span class="co">#&gt; 10   608724. -1510.        -1789.    -1312.        8.20e-43 ***         </span>
+<span class="co">#&gt; 11   277389  -1095.        -1414.     -745.        1.11e-11 ***         </span>
+<span class="co">#&gt; 12    42795  -1764.        -2920.    -1205.        2.23e-10 ***         </span>
+<span class="co">#&gt; 13   560930  -1888.        -2228.    -1539.        1.08e-54 ***         </span>
+<span class="co">#&gt; 14     2017  -1150.        -1832.      -79.0       3.68e- 2 *           </span>
+<span class="co">#&gt; 15    19086   -362.         -859.     -107.        2.57e- 3 **          </span>
+<span class="co">#&gt; 16     5085    296.          125.      449.        4.94e- 3 **</span></pre></div>
+<p>We can further focus just on two levels of clarity to further elucidate another aspect of entering the arguments-</p>
+<div class="sourceCode" id="cb25"><pre class="r"><span class="co"># for reproducibility</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
+
+<span class="co"># subset the dataframe even further to just select two levels of clarity</span>
+<span class="no">diamonds_short2</span> <span class="kw">&lt;-</span>
+  <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">.data</span> <span class="kw">=</span> <span class="no">diamonds_short</span>, <span class="no">clarity</span> <span class="kw">==</span> <span class="st">"SI2"</span> <span class="kw">|</span> <span class="no">clarity</span> <span class="kw">==</span> <span class="st">"SI1"</span>)
+
+<span class="co"># wilcox test (aka Mann-Whitney U-test)</span>
+<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_wilcox.html">grouped_wilcox</a></span>(
+  <span class="kw">data</span> <span class="kw">=</span> <span class="no">diamonds_short2</span>,
+  <span class="kw">dep.vars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">carat</span>, <span class="no">price</span>), <span class="co"># two dependent variables</span>
+  <span class="kw">indep.vars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">color</span>, <span class="no">clarity</span>), <span class="co"># two independent variables</span>
+  <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="no">cut</span>, <span class="co"># one grouping variable</span>
+  <span class="kw">paired</span> <span class="kw">=</span> <span class="fl">FALSE</span>
+)
+<span class="co">#&gt; # A tibble: 10 x 9</span>
+<span class="co">#&gt;    cut       formula         method                                           </span>
+<span class="co">#&gt;    &lt;ord&gt;     &lt;chr&gt;           &lt;chr&gt;                                            </span>
+<span class="co">#&gt;  1 Ideal     carat ~ color   Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  2 Premium   carat ~ color   Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  3 Good      carat ~ color   Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  4 Very Good carat ~ color   Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  5 Fair      carat ~ color   Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  6 Ideal     price ~ clarity Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  7 Premium   price ~ clarity Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  8 Good      price ~ clarity Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;  9 Very Good price ~ clarity Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt; 10 Fair      price ~ clarity Wilcoxon rank sum test with continuity correction</span>
+<span class="co">#&gt;    statistic estimate conf.low conf.high  p.value significance</span>
+<span class="co">#&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt;  1   103150.   -0.440   -0.500    -0.380 1.28e-51 ***         </span>
+<span class="co">#&gt;  2    91748    -0.540   -0.600    -0.490 1.82e-59 ***         </span>
+<span class="co">#&gt;  3    20752    -0.400   -0.500    -0.310 4.49e-18 ***         </span>
+<span class="co">#&gt;  4    87590    -0.390   -0.460    -0.320 7.06e-37 ***         </span>
+<span class="co">#&gt;  5     2356.   -0.230   -0.370    -0.110 1.21e- 5 ***         </span>
+<span class="co">#&gt;  6   344274.  774.     536.     1075.    3.00e- 9 ***         </span>
+<span class="co">#&gt;  7   329276.  876.     538.     1278.    3.52e- 9 ***         </span>
+<span class="co">#&gt;  8    64082.  516.     141.      921.    3.05e- 3 **          </span>
+<span class="co">#&gt;  9   272064   752.     486.     1098.    2.76e- 8 ***         </span>
+<span class="co">#&gt; 10     5113   170.    -411.      802.    5.68e- 1 ns</span></pre></div>
 <p>In these examples, two things are worth noting that generalize to <strong>all</strong> functions in this package and stem from how tidy evaluation (<a href="https://adv-r.hadley.nz/evaluation.html" class="uri">https://adv-r.hadley.nz/evaluation.html</a>) works:</p>
 <ul>
 <li>If just one independent variable is provided for multiple dependent variables, it will be used as a common variable.</li>
@@ -1136,34 +1179,49 @@ diamonds_short2  # A tibble: 10 x 9
 <a href="#extending-with-purrr" class="anchor"></a>Extending with <code>purrr</code>
 </h1>
 <p><code>groupedstats</code> functions can be further extended with <code>purrr</code> package. For example, let’s say we want to run the same linear regression across multiple grouping variables but want to use different formulas-</p>
-<div class="sourceCode" id="cb26"><pre class="r"># for reproducibility
-set.seed(123)
-library(groupedstats)
+<div class="sourceCode" id="cb26"><pre class="r"><span class="co"># for reproducibility</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">groupedstats</span>)
 
-results_df % # for each combination of mpaa rating and movie genre
-  dplyr::group_by(.data = ., mpaa, genre) %&gt;% # arrange by best to worst fits
-  dplyr::arrange(.data = ., dplyr::desc(adj.r.squared)) %&gt;%
-  dplyr::ungroup(.)
+<span class="no">results_df</span> <span class="kw">&lt;-</span>
+  <span class="kw pkg">purrr</span><span class="kw ns">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">pmap_dfr</a></span>(
+    <span class="kw">.l</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
+      <span class="kw">data</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="no"><a href="reference/movies_long.html">movies_long</a></span>),
+      <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">alist</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">mpaa</span>, <span class="no">genre</span>)), <span class="co"># note it's `alist` and not `list`</span>
+      <span class="kw">formula</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
+        <span class="no">rating</span> ~ <span class="no">budget</span>, <span class="co"># model 1</span>
+        <span class="no">rating</span> ~ <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span>(<span class="no">budget</span>), <span class="co"># model 2</span>
+        <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span>(<span class="no">rating</span>) ~ <span class="no">budget</span>, <span class="co"># model 3</span>
+        <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span>(<span class="no">rating</span>) ~ <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span>(<span class="no">budget</span>) <span class="co"># model 4</span>
+      ),
+      <span class="kw">output</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">"glance"</span>) <span class="co"># return model diagnostics</span>
+    ),
+    <span class="kw">.f</span> <span class="kw">=</span> <span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="no"><a href="reference/grouped_lm.html">grouped_lm</a></span>, <span class="co"># regression model</span>
+    <span class="kw">.id</span> <span class="kw">=</span> <span class="st">"model"</span>
+  ) <span class="kw">%&gt;%</span> <span class="co"># for each combination of mpaa rating and movie genre</span>
+  <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="kw">.data</span> <span class="kw">=</span> <span class="no">.</span>, <span class="no">mpaa</span>, <span class="no">genre</span>) <span class="kw">%&gt;%</span> <span class="co"># arrange by best to worst fits</span>
+  <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw">.data</span> <span class="kw">=</span> <span class="no">.</span>, <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="no">adj.r.squared</span>)) <span class="kw">%&gt;%</span>
+  <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>(<span class="no">.</span>)
 
-# looking at the results
-head(results_df)
-#&gt; # A tibble: 6 x 15
-#&gt;   model mpaa  genre       r.squared adj.r.squared  sigma statistic      p.value
-#&gt;   <chr><fct><fct><dbl><dbl><dbl><dbl><dbl>
-#&gt; 1 2     PG-13 Animation       0.474         0.369 0.824       4.51 0.0870      
-#&gt; 2 4     PG-13 Animation       0.447         0.337 0.138       4.05 0.100       
-#&gt; 3 3     PG    Documentary     0.468         0.202 0.0532      1.76 0.316       
-#&gt; 4 1     PG    Documentary     0.449         0.174 0.386       1.63 0.330       
-#&gt; 5 4     R     Action          0.142         0.138 0.254      34.6  0.0000000162
-#&gt; 6 2     R     Action          0.129         0.125 1.31       30.9  0.0000000825
-#&gt;      df   logLik    AIC    BIC  deviance df.residual  nobs
-#&gt;   <dbl><dbl><dbl><dbl><dbl><int><int>
-#&gt; 1     1   -7.40   20.8   20.6    3.39              5     7
-#&gt; 2     1    5.09   -4.18  -4.35   0.0957            5     7
-#&gt; 3     1    7.45   -8.90 -10.7    0.00565           2     4
-#&gt; 4     1   -0.479   6.96   5.12   0.298             2     4
-#&gt; 5     1   -9.39   24.8   34.8   13.5             209   211
-#&gt; 6     1 -356.    718.   728.   361.              209   211</int></int></dbl></dbl></dbl></dbl></dbl></dbl></dbl></dbl></dbl></dbl></fct></fct></chr></pre></div>
+<span class="co"># looking at the results</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">results_df</span>)
+<span class="co">#&gt; # A tibble: 6 x 15</span>
+<span class="co">#&gt;   model mpaa  genre       r.squared adj.r.squared  sigma statistic      p.value</span>
+<span class="co">#&gt;   &lt;chr&gt; &lt;fct&gt; &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 2     PG-13 Animation       0.474         0.369 0.824       4.51 0.0870      </span>
+<span class="co">#&gt; 2 4     PG-13 Animation       0.447         0.337 0.138       4.05 0.100       </span>
+<span class="co">#&gt; 3 3     PG    Documentary     0.468         0.202 0.0532      1.76 0.316       </span>
+<span class="co">#&gt; 4 1     PG    Documentary     0.449         0.174 0.386       1.63 0.330       </span>
+<span class="co">#&gt; 5 4     R     Action          0.142         0.138 0.254      34.6  0.0000000162</span>
+<span class="co">#&gt; 6 2     R     Action          0.129         0.125 1.31       30.9  0.0000000825</span>
+<span class="co">#&gt;      df   logLik    AIC    BIC  deviance df.residual  nobs</span>
+<span class="co">#&gt;   &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;       &lt;int&gt; &lt;int&gt;</span>
+<span class="co">#&gt; 1     1   -7.40   20.8   20.6    3.39              5     7</span>
+<span class="co">#&gt; 2     1    5.09   -4.18  -4.35   0.0957            5     7</span>
+<span class="co">#&gt; 3     1    7.45   -8.90 -10.7    0.00565           2     4</span>
+<span class="co">#&gt; 4     1   -0.479   6.96   5.12   0.298             2     4</span>
+<span class="co">#&gt; 5     1   -9.39   24.8   34.8   13.5             209   211</span>
+<span class="co">#&gt; 6     1 -356.    718.   728.   361.              209   211</span></pre></div>
 </div>
 <div id="current-code-coverage" class="section level1">
 <h1 class="hasAnchor">
@@ -1229,7 +1287,7 @@ head(results_df)
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://sites.google.com/site/indrajeetspatilmorality/">Indrajeet Patil</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-1995-6531" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<a href="https://sites.google.com/site/indrajeetspatilmorality/">Indrajeet Patil</a> <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0003-1995-6531" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
 
@@ -1248,7 +1306,7 @@ head(results_df)
 <li><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></li>
 <li><a href="https://zenodo.org/badge/latestdoi/126624251"><img src="https://zenodo.org/badge/126624251.svg" alt="DOI"></a></li>
 <li><a href="http://www.repostatus.org/#active"><img src="http://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active - The project has reached a stable, usable state and is being actively developed."></a></li>
-<li><a href="https://github.com/IndrajeetPatil/groupedstats/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--03--24-yellowgreen.svg" alt="Last-changedate"></a></li>
+<li><a href="https://github.com/IndrajeetPatil/groupedstats/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--05--05-yellowgreen.svg" alt="Last-changedate"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#retired"><img src="https://img.shields.io/badge/lifecycle-retired-orange.svg" alt="lifecycle"></a></li>
 <li><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg" alt="minimal R version"></a></li>
 <li><a href="https://codecov.io/github/IndrajeetPatil/groupedstats?branch=master"><img src="https://img.shields.io/codecov/c/github/IndrajeetPatil/groupedstats/master.svg" alt="Coverage Status"></a></li>
@@ -1265,7 +1323,7 @@ head(results_df)
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

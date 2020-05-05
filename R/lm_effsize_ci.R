@@ -5,7 +5,7 @@
 #' @description This function will convert a linear model object to a dataframe
 #'   containing statistical details for all effects along with effect size
 #'   measure and its confidence interval. For more details, see
-#'   `parameters::eta_squared` and `parameters::omega_squared`.
+#'   `effectsize::eta_squared` and `effectsize::omega_squared`.
 #' @return A dataframe with results from `stats::lm()` with partial eta-squared,
 #'   omega-squared, and bootstrapped confidence interval for the same.
 #'
@@ -19,17 +19,13 @@
 #'   `aovlist`.
 #' @param conf.level Numeric specifying Level of confidence for the confidence
 #'   interval (Default: `0.95`).
-#' @param nboot Number of bootstrap samples for confidence intervals for partial
-#'   eta-squared and omega-squared (Default: `500`).
-#' @param ... Currently ignored.
-#' @inheritParams sjstats::omega_sq
+#' @param ... Ignored.
 #'
-#' @importFrom sjstats eta_sq omega_sq
+#' @importFrom effectsize eta_squared omega_squared
+#' @importFrom broomExtra tidy_parameters
 #' @importFrom stats anova na.omit lm
-#' @importFrom tibble as_tibble
 #' @importFrom rlang exec
-#' @importFrom tidyr drop_na
-#' @importFrom dplyr matches everything
+#' @importFrom dplyr matches everything contains
 #'
 #' @examples
 #' # for reproducibility
@@ -51,42 +47,25 @@ lm_effsize_ci <- function(object,
                           effsize = "eta",
                           partial = TRUE,
                           conf.level = 0.95,
-                          nboot = 500,
-                          method = c("dist", "quantile"),
                           ...) {
+  # for `lm` objects, `anova` object should be created
+  if (class(object)[[1]] == "lm") object <- stats::anova(object)
 
-  # based on the class, get the tidy output using broom
-  if (class(object)[[1]] == "lm") {
-    aov_df <- broomExtra::tidy(stats::anova(object))
-  } else if (class(object)[[1]] == "aovlist") {
-    if (dim(dplyr::filter(broomExtra::tidy(object), stratum == "Within"))[[1]] != 0L) {
-      aov_df <- dplyr::filter(.data = broomExtra::tidy(object), stratum == "Within")
-    } else {
-      aov_df <- broomExtra::tidy(object)
-    }
-  } else {
-    aov_df <- broomExtra::tidy(object)
-  }
+  # stats details
+  stats_df <- broomExtra::tidy_parameters(object, ...)
 
   # creating numerator and denominator degrees of freedom
-  if (dim(dplyr::filter(aov_df, term == "Residuals"))[[1]] == 1L) {
+  if (dim(dplyr::filter(stats_df, term == "Residuals"))[[1]] > 0L) {
     # create a new column for residual degrees of freedom
-    aov_df$df2 <- aov_df$df[aov_df$term == "Residuals"]
+    # always going to be the last column
+    stats_df$df2 <- stats_df$df[nrow(stats_df)]
   }
-
-  # remove NAs, which would remove the row containing Residuals
-  # (redundant at this point)
-  aov_df %<>%
-    dplyr::select(.data = ., -c(grep(pattern = "sq", x = names(.)))) %>%
-    dplyr::rename(.data = ., df1 = df) %>%
-    tidyr::drop_na(.) %>%
-    tibble::as_tibble(x = .)
 
   # function to compute effect sizes
   if (effsize == "eta") {
-    .f <- sjstats::eta_sq
+    .f <- effectsize::eta_squared
   } else {
-    .f <- sjstats::omega_sq
+    .f <- effectsize::omega_squared
   }
 
   # computing effect size
@@ -95,44 +74,33 @@ lm_effsize_ci <- function(object,
       .fn = .f,
       model = object,
       partial = partial,
-      ci.lvl = conf.level,
-      n = nboot,
-      method = method
-    )
+      ci = conf.level
+    ) %>%
+    broomExtra::easystats_to_tidy_names(.) %>%
+    dplyr::filter(.data = ., !grepl(pattern = "Residuals", x = term, ignore.case = TRUE)) %>%
+    dplyr::select(.data = ., -dplyr::matches("group"))
 
-  if (class(object)[[1]] == "aovlist") {
-    if (dim(dplyr::filter(effsize_df, stratum == "Within"))[[1]] != 0L) {
-      effsize_df %<>% dplyr::filter(.data = ., stratum == "Within")
-    }
-  }
-
-  # combining the dataframes
-  # merge the two preceding pieces of information by the common element of Effect
-  combined_df <-
-    dplyr::left_join(
-      x = aov_df,
-      y = effsize_df,
-      by = "term"
-    ) %>% # reordering columns
+  # combine them in the same place
+  dplyr::right_join(
+    x = dplyr::filter(.data = stats_df, !is.na(statistic)), # for `aovlist` objects
+    y = effsize_df,
+    by = "term"
+  ) %>% # renaming to standard term 'estimate'
+    dplyr::rename(
+      .data = .,
+      "df1" = "df",
+      "conf.level" = "ci",
+      "F.value" = "statistic"
+    ) %>%
     dplyr::select(
       .data = .,
       term,
-      F.value = statistic,
-      dplyr::matches("^df"),
+      F.value,
+      dplyr::contains("df"),
       p.value,
-      dplyr::everything()
-    ) %>%
-    tibble::as_tibble(x = .)
-
-  # in case of within-subjects design, the stratum columns will be unnecessarily added
-  if ("stratum.x" %in% names(combined_df)) {
-    combined_df %<>%
-      dplyr::select(.data = ., -c(grep(pattern = "stratum", x = names(.)))) %>%
-      dplyr::mutate(.data = ., stratum = "Within")
-  }
-
-  # returning the final dataframe
-  return(combined_df)
+      dplyr::everything(),
+      -dplyr::contains("square")
+    )
 }
 
 #' @title Standardize a dataframe with effect sizes for `aov`, `lm`, `aovlist`,
@@ -151,8 +119,7 @@ lm_effsize_ci <- function(object,
 #'   object = stats::lm(formula = brainwt ~ vore, data = ggplot2::msleep),
 #'   effsize = "eta",
 #'   partial = FALSE,
-#'   conf.level = 0.99,
-#'   nboot = 20
+#'   conf.level = 0.99
 #' )
 #' @export
 
@@ -161,17 +128,14 @@ lm_effsize_standardizer <- function(object,
                                     effsize = "eta",
                                     partial = TRUE,
                                     conf.level = 0.95,
-                                    nboot = 500,
-                                    method = c("dist", "quantile")) {
+                                    ...) {
 
   # creating a dataframe with effect size and its CI
   groupedstats::lm_effsize_ci(
     object = object,
     effsize = effsize,
     partial = partial,
-    conf.level = conf.level,
-    nboot = nboot,
-    method = method
+    conf.level = conf.level
   ) %>% # renaming the effect size to standard term 'estimate'
-    dplyr::rename(.data = ., estimate = dplyr::matches("etasq$|omegasq$"))
+    dplyr::rename(.data = ., estimate = dplyr::matches("eta|omega"))
 }

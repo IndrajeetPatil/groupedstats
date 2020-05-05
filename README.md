@@ -24,7 +24,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2020--03--24-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2020--05--05-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
@@ -33,6 +33,26 @@ Status](https://img.shields.io/codecov/c/github/IndrajeetPatil/groupedstats/mast
 [![Coverage
 Status](https://coveralls.io/repos/github/IndrajeetPatil/groupedstats/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/groupedstats?branch=master)
 [![status](https://tinyverse.netlify.com/badge/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
+
+# Retirement
+
+This package is no longer under active development and no new
+functionality will be added. The package will continue to be available
+on `CRAN` and all releases will primarily be focused on maintenance and
+bug fixes. This is for two reasons-
+
+1.  `dplyr 0.8.1` introduced `group_map()`, `group_modify()` and
+    `group_walk()` functions that can be used to iterate on grouped
+    dataframes. So if you want to do `grouped_` operations, I would
+    highly recommend using these functions over `groupedstats` functions
+    since the former are much more general, efficient, and faster than
+    the latter. For more, see:
+    <https://dplyr.tidyverse.org/reference/group_map.html>
+
+2.  There are more general versions of these functions introduced in
+    `broomExtra` package:<br> `grouped_tidy`, `grouped_augment`,
+    `grouped_glance`. For more, see:
+    <https://indrajeetpatil.github.io/broomExtra/reference/index.html#section-grouped-variants-of-generics>
 
 # Overview
 
@@ -56,27 +76,6 @@ few example cases-
     correlation between subjective rating of emotional intensity and
     reaction time).
 4.  Combination of all of the above.
-
-# Retirement
-
-This package is no longer under active development and no new
-functionality will be added. The package will continue to be available
-on `CRAN` and all releases will primarily be focused on maintenance and
-bug fixes. This is for two reasons-
-
-1.  There are more general versions of these functions introduced in
-    `broomExtra` package:<br> `grouped_tidy`, `grouped_augment`,
-    `grouped_glance`. For more, see:
-    <https://indrajeetpatil.github.io/broomExtra/reference/index.html#section-grouped-variants-of-generics>
-
-2.  `dplyr 0.8.1` introduced `group_map()`, `group_modify()` and
-    `group_walk()` functions that can be used to iterate on grouped
-    dataframes. So if you want to do `grouped_` operations, I would
-    highly recommend using these functions over `groupedstats` functions
-    since the former are much more general, efficient, and faster than
-    the latter.
-
-For more, see: <https://dplyr.tidyverse.org/reference/group_map.html>
 
 # Installation
 
@@ -206,50 +205,50 @@ groupedstats::grouped_summary(
   measures.type = "numeric"
 )
 #> # A tibble: 20 x 16
-#>    vore    skim_type skim_variable missing complete   mean      sd    min    p25
-#>    <fct>   <chr>     <chr>           <int>    <dbl>  <dbl>   <dbl>  <dbl>  <dbl>
-#>  1 carni   numeric   sleep_total         0    1     10.4    4.67    2.7    6.25 
-#>  2 carni   numeric   sleep_rem           9    0.526  2.29   1.86    0.1    1.33 
-#>  3 carni   numeric   sleep_cycle        14    0.263  0.373  0.0325  0.333  0.35 
-#>  4 carni   numeric   awake               0    1     13.6    4.68    4.6   11    
-#>  5 herbi   numeric   sleep_total         0    1      9.51   4.88    1.9    4.3  
-#>  6 herbi   numeric   sleep_rem           8    0.75   1.37   0.922   0.4    0.6  
-#>  7 herbi   numeric   sleep_cycle        20    0.375  0.418  0.324   0.117  0.183
-#>  8 herbi   numeric   awake               0    1     14.5    4.88    7.4    9.78 
-#>  9 insecti numeric   sleep_total         0    1     14.9    5.92    8.4    8.6  
-#> 10 insecti numeric   sleep_rem           1    0.8    3.52   1.93    2      2.08 
-#> 11 insecti numeric   sleep_cycle         2    0.6    0.161  0.0419  0.117  0.142
-#> 12 insecti numeric   awake               0    1      9.06   5.92    4.1    4.3  
-#> 13 omni    numeric   sleep_total         0    1     10.9    2.95    8      9.1  
-#> 14 omni    numeric   sleep_rem           2    0.9    1.96   1.01    0.7    1.25 
-#> 15 omni    numeric   sleep_cycle         9    0.55   0.592  0.473   0.133  0.258
-#> 16 omni    numeric   awake               0    1     13.1    2.95    6     13.1  
-#> 17 <NA>    numeric   sleep_total         0    1     10.2    3.00    5.4    8.65 
-#> 18 <NA>    numeric   sleep_rem           2    0.714  1.88   0.847   0.5    1.8  
-#> 19 <NA>    numeric   sleep_cycle         6    0.143  0.183 NA       0.183  0.183
-#> 20 <NA>    numeric   awake               0    1     13.8    3.00   10.3   11.8  
-#>    median    p75    max     n std.error mean.conf.low mean.conf.high
-#>     <dbl>  <dbl>  <dbl> <int>     <dbl>         <dbl>          <dbl>
-#>  1 10.4   13     19.4      19    1.07          8.13           12.6  
-#>  2  1.95   3.05   6.6      10    0.589         0.958           3.62 
-#>  3  0.383  0.383  0.417     5    0.0145        0.333           0.414
-#>  4 13.6   17.8   21.4      19    1.07         11.4            15.9  
-#>  5 10.3   14.2   16.6      32    0.862         7.75           11.3  
-#>  6  0.95   1.98   3.4      24    0.188         0.977           1.76 
-#>  7  0.217  0.692  1        12    0.0936        0.212           0.624
-#>  8 13.7   19.7   22.1      32    0.862        12.7            16.2  
-#>  9 18.1   19.7   19.9       5    2.65          7.59           22.3  
-#> 10  3      4.45   6.1       4    0.963         0.460           6.59 
-#> 11  0.167  0.183  0.2       3    0.0242        0.0569          0.265
-#> 12  5.9   15.4   15.6       5    2.65          1.71           16.4  
-#> 13  9.9   10.9   18        20    0.659         9.54           12.3  
-#> 14  1.85   2.3    4.9      18    0.239         1.45            2.46 
-#> 15  0.5    0.708  1.5      11    0.143         0.274           0.911
-#> 16 14.1   14.9   16        20    0.659        11.7            14.5  
-#> 17 10.6   12.2   13.7       7    1.14          7.41           13.0  
-#> 18  2      2.4    2.7       5    0.379         0.829           2.93 
-#> 19  0.183  0.183  0.183     1   NA           NaN             NaN    
-#> 20 13.4   15.4   18.6       7    1.14         11.0            16.6
+#>    vore    skim_type skim_variable missing complete   mean       sd    min
+#>    <fct>   <chr>     <chr>           <int>    <dbl>  <dbl>    <dbl>  <dbl>
+#>  1 carni   numeric   sleep_total         0    1     10.4     4.67    2.7  
+#>  2 carni   numeric   sleep_rem           9    0.526  2.29    1.86    0.1  
+#>  3 carni   numeric   sleep_cycle        14    0.263  0.373   0.0325  0.333
+#>  4 carni   numeric   awake               0    1     13.6     4.68    4.6  
+#>  5 herbi   numeric   sleep_total         0    1      9.51    4.88    1.9  
+#>  6 herbi   numeric   sleep_rem           8    0.75   1.37    0.922   0.4  
+#>  7 herbi   numeric   sleep_cycle        20    0.375  0.418   0.324   0.117
+#>  8 herbi   numeric   awake               0    1     14.5     4.88    7.4  
+#>  9 insecti numeric   sleep_total         0    1     14.9     5.92    8.4  
+#> 10 insecti numeric   sleep_rem           1    0.8    3.52    1.93    2    
+#> 11 insecti numeric   sleep_cycle         2    0.6    0.161   0.0419  0.117
+#> 12 insecti numeric   awake               0    1      9.06    5.92    4.1  
+#> 13 omni    numeric   sleep_total         0    1     10.9     2.95    8    
+#> 14 omni    numeric   sleep_rem           2    0.9    1.96    1.01    0.7  
+#> 15 omni    numeric   sleep_cycle         9    0.55   0.592   0.473   0.133
+#> 16 omni    numeric   awake               0    1     13.1     2.95    6    
+#> 17 <NA>    numeric   sleep_total         0    1     10.2     3.00    5.4  
+#> 18 <NA>    numeric   sleep_rem           2    0.714  1.88    0.847   0.5  
+#> 19 <NA>    numeric   sleep_cycle         6    0.143  0.183 NaN       0.183
+#> 20 <NA>    numeric   awake               0    1     13.8     3.00   10.3  
+#>       p25 median    p75    max     n std.error mean.conf.low mean.conf.high
+#>     <dbl>  <dbl>  <dbl>  <dbl> <int>     <dbl>         <dbl>          <dbl>
+#>  1  6.25  10.4   13     19.4      19    1.07          8.13           12.6  
+#>  2  1.33   1.95   3.05   6.6      10    0.589         0.958           3.62 
+#>  3  0.35   0.383  0.383  0.417     5    0.0145        0.333           0.414
+#>  4 11     13.6   17.8   21.4      19    1.07         11.4            15.9  
+#>  5  4.3   10.3   14.2   16.6      32    0.862         7.75           11.3  
+#>  6  0.6    0.95   1.98   3.4      24    0.188         0.977           1.76 
+#>  7  0.183  0.217  0.692  1        12    0.0936        0.212           0.624
+#>  8  9.78  13.7   19.7   22.1      32    0.862        12.7            16.2  
+#>  9  8.6   18.1   19.7   19.9       5    2.65          7.59           22.3  
+#> 10  2.08   3      4.45   6.1       4    0.963         0.460           6.59 
+#> 11  0.142  0.167  0.183  0.2       3    0.0242        0.0569          0.265
+#> 12  4.3    5.9   15.4   15.6       5    2.65          1.71           16.4  
+#> 13  9.1    9.9   10.9   18        20    0.659         9.54           12.3  
+#> 14  1.25   1.85   2.3    4.9      18    0.239         1.45            2.46 
+#> 15  0.258  0.5    0.708  1.5      11    0.143         0.274           0.911
+#> 16 13.1   14.1   14.9   16        20    0.659        11.7            14.5  
+#> 17  8.65  10.6   12.2   13.7       7    1.14          7.41           13.0  
+#> 18  1.8    2      2.4    2.7       5    0.379         0.829           2.93 
+#> 19  0.183  0.183  0.183  0.183     1  NaN           NaN             NaN    
+#> 20 11.8   13.4   15.4   18.6       7    1.14         11.0            16.6
 ```
 
 This function can be used to get summary of either numeric **or** factor
@@ -684,29 +683,29 @@ groupedstats::grouped_aov(
   formula = mpg ~ am * wt, # note that this function takes a formula
   output = "tidy" # tidy dataframe with results
 )
-#> # A tibble: 9 x 10
-#>     cyl term  F.value   df1   df2 p.value partial.etasq conf.low conf.high
-#>   <dbl> <chr>   <dbl> <dbl> <dbl>   <dbl>         <dbl>    <dbl>     <dbl>
-#> 1     6 am    5.07        1     3  0.110       0.628      0         0.820 
-#> 2     6 wt    5.91        1     3  0.0933      0.663      0         0.835 
-#> 3     6 am:wt 4.06        1     3  0.137       0.575      0         0.796 
-#> 4     4 am    5.95        1     7  0.0448      0.459      0         0.711 
-#> 5     4 wt    4.59        1     7  0.0693      0.396      0         0.676 
-#> 6     4 am:wt 3.17        1     7  0.118       0.311      0         0.627 
-#> 7     8 am    0.0456      1    10  0.835       0.00454    0         0.242 
-#> 8     8 wt    8.45        1    10  0.0156      0.458      0.0190    0.691 
-#> 9     8 am:wt 0.00331     1    10  0.955       0.000330   0         0.0885
-#>   significance
-#>   <chr>       
-#> 1 ns          
-#> 2 ns          
-#> 3 ns          
-#> 4 *           
-#> 5 ns          
-#> 6 ns          
-#> 7 ns          
-#> 8 *           
-#> 9 ns
+#> # A tibble: 9 x 11
+#>     cyl term  F.value   df1   df2 p.value eta.sq.partial conf.level conf.low
+#>   <dbl> <chr>   <dbl> <dbl> <dbl>   <dbl>          <dbl>      <dbl>    <dbl>
+#> 1     6 am    5.07        1     3  0.110        0.628          0.95   0     
+#> 2     6 wt    5.91        1     3  0.0933       0.663          0.95   0     
+#> 3     6 am:wt 4.06        1     3  0.137        0.575          0.95   0     
+#> 4     4 am    5.95        1     7  0.0448       0.459          0.95   0     
+#> 5     4 wt    4.59        1     7  0.0693       0.396          0.95   0     
+#> 6     4 am:wt 3.17        1     7  0.118        0.311          0.95   0     
+#> 7     8 am    0.0456      1    10  0.835        0.00454        0.95   0     
+#> 8     8 wt    8.45        1    10  0.0156       0.458          0.95   0.0227
+#> 9     8 am:wt 0.00331     1    10  0.955        0.000330       0.95   0     
+#>   conf.high significance
+#>       <dbl> <chr>       
+#> 1     0.883 ns          
+#> 2     0.894 ns          
+#> 3     0.867 ns          
+#> 4     0.760 *           
+#> 5     0.729 ns          
+#> 6     0.684 ns          
+#> 7     0.277 ns          
+#> 8     0.729 *           
+#> 9     0.104 ns
 ```
 
 The same function can also be used to compute Tukey’s test of Honest

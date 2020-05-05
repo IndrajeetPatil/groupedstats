@@ -9,4 +9,4 @@
 
 ## Comments
 
-  - Adapts to upcoming releases of `lme4` and `dplyr 1.0.0`
+  - Internal refactoring to rely on `effectsize` package instead of `sjstats`.

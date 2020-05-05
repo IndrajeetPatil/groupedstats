@@ -5,15 +5,7 @@
 \title{Confidence intervals for (partial) eta-squared and omega-squared for
 linear models.}
 \usage{
-lm_effsize_ci(
-  object,
-  effsize = "eta",
-  partial = TRUE,
-  conf.level = 0.95,
-  nboot = 500,
-  method = c("dist", "quantile"),
-  ...
-)
+lm_effsize_ci(object, effsize = "eta", partial = TRUE, conf.level = 0.95, ...)
 }
 \arguments{
 \item{object}{The linear model object (can be of class \code{lm}, \code{aov}, \code{anova}, or
@@ -30,16 +22,7 @@ will be returned. Valid only for objects of class \code{lm}, \code{aov}, \code{a
 \item{conf.level}{Numeric specifying Level of confidence for the confidence
 interval (Default: \code{0.95}).}
 
-\item{nboot}{Number of bootstrap samples for confidence intervals for partial
-eta-squared and omega-squared (Default: \code{500}).}
-
-\item{method}{Character vector, indicating if confidence intervals should be
-based on bootstrap standard error, multiplied by the value of the
-quantile function of the t-distribution (default), or on sample
-quantiles of the bootstrapped values. See 'Details' in \code{boot_ci()}.
-May be abbreviated.}
-
-\item{...}{Currently ignored.}
+\item{...}{Ignored.}
 }
 \value{
 A dataframe with results from \code{stats::lm()} with partial eta-squared,
@@ -49,7 +32,7 @@ omega-squared, and bootstrapped confidence interval for the same.
 This function will convert a linear model object to a dataframe
 containing statistical details for all effects along with effect size
 measure and its confidence interval. For more details, see
-\code{parameters::eta_squared} and \code{parameters::omega_squared}.
+\code{effectsize::eta_squared} and \code{effectsize::omega_squared}.
 }
 \examples{
 # for reproducibility

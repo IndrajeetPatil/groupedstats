@@ -1,3 +1,10 @@
+# groupedstats 1.0.0
+
+  - Relies on `effectsize` package instead of `sjstats` to compute eta and omega
+    squared effect sizes in `lm_effsize_ci` function. This is a breaking change
+    because the effect size names are slightly different (e.g., what `sjstats`
+    stored in a column `etasq` is not renamed to `eta.sq`).
+
 # groupedstats 0.2.2
 
   - Adapts to upcoming releases of `lme4` and `dplyr 1.0.0`

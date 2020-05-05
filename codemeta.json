@@ -14,11 +14,10 @@
   ],
   "issueTracker": "\n    https://github.com/IndrajeetPatil/groupedstats/issues/",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "4.0.0",
     "url": "https://r-project.org"
   },
   "runtimePlatform": "R Under development (unstable) (2020-02-28 r77874)",
@@ -165,6 +164,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "effectsize",
+      "name": "effectsize",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=effectsize"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "glue",
       "name": "glue",
       "provider": {
@@ -249,18 +260,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "sjstats",
-      "name": "sjstats",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=sjstats"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "skimr",
       "name": "skimr",
       "provider": {
@@ -302,14 +301,9 @@
     }
   ],
   "releaseNotes": "https://github.com/IndrajeetPatil/groupedstats/blob/master/NEWS.md",
-  "fileSize": "165.276KB",
-  "contIntegration": [
-    "https://travis-ci.org/IndrajeetPatil/groupedstats",
-    "https://ci.appveyor.com/project/IndrajeetPatil/groupedstats",
-    "https://circleci.com/gh/IndrajeetPatil/groupedstats",
-    "https://codecov.io/github/IndrajeetPatil/groupedstats?branch=master"
-  ],
-  "developmentStatus": "http://www.repostatus.org/#active",
+  "fileSize": "1900.671KB",
+  "contIntegration": ["https://travis-ci.org/IndrajeetPatil/groupedstats", "https://ci.appveyor.com/project/IndrajeetPatil/groupedstats", "https://codecov.io/github/IndrajeetPatil/groupedstats?branch=master", "https://coveralls.io/github/IndrajeetPatil/groupedstats?branch=master"],
+  "developmentStatus": ["http://www.repostatus.org/#active", "https://www.tidyverse.org/lifecycle/#retired"],
   "keywords": [
     "statistics",
     "r",

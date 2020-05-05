@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">groupedstats</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.2.2</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.0</span>
       </span>
     </div>
 
@@ -128,9 +128,17 @@
       <small>Source: <a href='https://github.com/IndrajeetPatil/groupedstats/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="groupedstats-100" class="section level1">
+<h1 class="page-header" data-toc-text="1.0.0">
+<a href="#groupedstats-100" class="anchor"></a>groupedstats 1.0.0<small> Unreleased </small>
+</h1>
+<ul>
+<li>Relies on <code>effectsize</code> package instead of <code>sjstats</code> to compute eta and omega squared effect sizes in <code>lm_effsize_ci</code> function. This is a breaking change because the effect size names are slightly different (e.g., what <code>sjstats</code> stored in a column <code>etasq</code> is not renamed to <code>eta.sq</code>).</li>
+</ul>
+</div>
     <div id="groupedstats-022" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.2">
-<a href="#groupedstats-022" class="anchor"></a>groupedstats 0.2.2<small> Unreleased </small>
+<a href="#groupedstats-022" class="anchor"></a>groupedstats 0.2.2<small> 2020-04-05 </small>
 </h1>
 <ul>
 <li><p>Adapts to upcoming releases of <code>lme4</code> and <code>dplyr 1.0.0</code></p></li>
@@ -293,7 +301,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

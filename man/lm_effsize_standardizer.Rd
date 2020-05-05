@@ -10,8 +10,7 @@ lm_effsize_standardizer(
   effsize = "eta",
   partial = TRUE,
   conf.level = 0.95,
-  nboot = 500,
-  method = c("dist", "quantile")
+  ...
 )
 }
 \arguments{
@@ -29,14 +28,7 @@ will be returned. Valid only for objects of class \code{lm}, \code{aov}, \code{a
 \item{conf.level}{Numeric specifying Level of confidence for the confidence
 interval (Default: \code{0.95}).}
 
-\item{nboot}{Number of bootstrap samples for confidence intervals for partial
-eta-squared and omega-squared (Default: \code{500}).}
-
-\item{method}{Character vector, indicating if confidence intervals should be
-based on bootstrap standard error, multiplied by the value of the
-quantile function of the t-distribution (default), or on sample
-quantiles of the bootstrapped values. See 'Details' in \code{boot_ci()}.
-May be abbreviated.}
+\item{...}{Ignored.}
 }
 \description{
 The difference between \code{lm_effsize_ci} and
@@ -50,7 +42,6 @@ groupedstats::lm_effsize_standardizer(
   object = stats::lm(formula = brainwt ~ vore, data = ggplot2::msleep),
   effsize = "eta",
   partial = FALSE,
-  conf.level = 0.99,
-  nboot = 20
+  conf.level = 0.99
 )
 }
