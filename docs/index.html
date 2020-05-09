@@ -35,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">groupedstats</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.0</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.1</span>
       </span>
     </div>
 
@@ -205,50 +205,50 @@
   <span class="kw">measures.type</span> <span class="kw">=</span> <span class="st">"numeric"</span>
 )
 <span class="co">#&gt; # A tibble: 20 x 16</span>
-<span class="co">#&gt;    vore    skim_type skim_variable missing complete   mean       sd    min</span>
-<span class="co">#&gt;    &lt;fct&gt;   &lt;chr&gt;     &lt;chr&gt;           &lt;int&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 carni   numeric   sleep_total         0    1     10.4     4.67    2.7  </span>
-<span class="co">#&gt;  2 carni   numeric   sleep_rem           9    0.526  2.29    1.86    0.1  </span>
-<span class="co">#&gt;  3 carni   numeric   sleep_cycle        14    0.263  0.373   0.0325  0.333</span>
-<span class="co">#&gt;  4 carni   numeric   awake               0    1     13.6     4.68    4.6  </span>
-<span class="co">#&gt;  5 herbi   numeric   sleep_total         0    1      9.51    4.88    1.9  </span>
-<span class="co">#&gt;  6 herbi   numeric   sleep_rem           8    0.75   1.37    0.922   0.4  </span>
-<span class="co">#&gt;  7 herbi   numeric   sleep_cycle        20    0.375  0.418   0.324   0.117</span>
-<span class="co">#&gt;  8 herbi   numeric   awake               0    1     14.5     4.88    7.4  </span>
-<span class="co">#&gt;  9 insecti numeric   sleep_total         0    1     14.9     5.92    8.4  </span>
-<span class="co">#&gt; 10 insecti numeric   sleep_rem           1    0.8    3.52    1.93    2    </span>
-<span class="co">#&gt; 11 insecti numeric   sleep_cycle         2    0.6    0.161   0.0419  0.117</span>
-<span class="co">#&gt; 12 insecti numeric   awake               0    1      9.06    5.92    4.1  </span>
-<span class="co">#&gt; 13 omni    numeric   sleep_total         0    1     10.9     2.95    8    </span>
-<span class="co">#&gt; 14 omni    numeric   sleep_rem           2    0.9    1.96    1.01    0.7  </span>
-<span class="co">#&gt; 15 omni    numeric   sleep_cycle         9    0.55   0.592   0.473   0.133</span>
-<span class="co">#&gt; 16 omni    numeric   awake               0    1     13.1     2.95    6    </span>
-<span class="co">#&gt; 17 &lt;NA&gt;    numeric   sleep_total         0    1     10.2     3.00    5.4  </span>
-<span class="co">#&gt; 18 &lt;NA&gt;    numeric   sleep_rem           2    0.714  1.88    0.847   0.5  </span>
-<span class="co">#&gt; 19 &lt;NA&gt;    numeric   sleep_cycle         6    0.143  0.183 NaN       0.183</span>
-<span class="co">#&gt; 20 &lt;NA&gt;    numeric   awake               0    1     13.8     3.00   10.3  </span>
-<span class="co">#&gt;       p25 median    p75    max     n std.error mean.conf.low mean.conf.high</span>
-<span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;</span>
-<span class="co">#&gt;  1  6.25  10.4   13     19.4      19    1.07          8.13           12.6  </span>
-<span class="co">#&gt;  2  1.33   1.95   3.05   6.6      10    0.589         0.958           3.62 </span>
-<span class="co">#&gt;  3  0.35   0.383  0.383  0.417     5    0.0145        0.333           0.414</span>
-<span class="co">#&gt;  4 11     13.6   17.8   21.4      19    1.07         11.4            15.9  </span>
-<span class="co">#&gt;  5  4.3   10.3   14.2   16.6      32    0.862         7.75           11.3  </span>
-<span class="co">#&gt;  6  0.6    0.95   1.98   3.4      24    0.188         0.977           1.76 </span>
-<span class="co">#&gt;  7  0.183  0.217  0.692  1        12    0.0936        0.212           0.624</span>
-<span class="co">#&gt;  8  9.78  13.7   19.7   22.1      32    0.862        12.7            16.2  </span>
-<span class="co">#&gt;  9  8.6   18.1   19.7   19.9       5    2.65          7.59           22.3  </span>
-<span class="co">#&gt; 10  2.08   3      4.45   6.1       4    0.963         0.460           6.59 </span>
-<span class="co">#&gt; 11  0.142  0.167  0.183  0.2       3    0.0242        0.0569          0.265</span>
-<span class="co">#&gt; 12  4.3    5.9   15.4   15.6       5    2.65          1.71           16.4  </span>
-<span class="co">#&gt; 13  9.1    9.9   10.9   18        20    0.659         9.54           12.3  </span>
-<span class="co">#&gt; 14  1.25   1.85   2.3    4.9      18    0.239         1.45            2.46 </span>
-<span class="co">#&gt; 15  0.258  0.5    0.708  1.5      11    0.143         0.274           0.911</span>
-<span class="co">#&gt; 16 13.1   14.1   14.9   16        20    0.659        11.7            14.5  </span>
-<span class="co">#&gt; 17  8.65  10.6   12.2   13.7       7    1.14          7.41           13.0  </span>
-<span class="co">#&gt; 18  1.8    2      2.4    2.7       5    0.379         0.829           2.93 </span>
-<span class="co">#&gt; 19  0.183  0.183  0.183  0.183     1  NaN           NaN             NaN    </span>
-<span class="co">#&gt; 20 11.8   13.4   15.4   18.6       7    1.14         11.0            16.6</span></pre></div>
+<span class="co">#&gt;    vore    skim_type skim_variable missing complete   mean      sd    min    p25</span>
+<span class="co">#&gt;    &lt;fct&gt;   &lt;chr&gt;     &lt;chr&gt;           &lt;int&gt;    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 carni   numeric   sleep_total         0    1     10.4    4.67    2.7    6.25 </span>
+<span class="co">#&gt;  2 carni   numeric   sleep_rem           9    0.526  2.29   1.86    0.1    1.33 </span>
+<span class="co">#&gt;  3 carni   numeric   sleep_cycle        14    0.263  0.373  0.0325  0.333  0.35 </span>
+<span class="co">#&gt;  4 carni   numeric   awake               0    1     13.6    4.68    4.6   11    </span>
+<span class="co">#&gt;  5 herbi   numeric   sleep_total         0    1      9.51   4.88    1.9    4.3  </span>
+<span class="co">#&gt;  6 herbi   numeric   sleep_rem           8    0.75   1.37   0.922   0.4    0.6  </span>
+<span class="co">#&gt;  7 herbi   numeric   sleep_cycle        20    0.375  0.418  0.324   0.117  0.183</span>
+<span class="co">#&gt;  8 herbi   numeric   awake               0    1     14.5    4.88    7.4    9.78 </span>
+<span class="co">#&gt;  9 insecti numeric   sleep_total         0    1     14.9    5.92    8.4    8.6  </span>
+<span class="co">#&gt; 10 insecti numeric   sleep_rem           1    0.8    3.52   1.93    2      2.08 </span>
+<span class="co">#&gt; 11 insecti numeric   sleep_cycle         2    0.6    0.161  0.0419  0.117  0.142</span>
+<span class="co">#&gt; 12 insecti numeric   awake               0    1      9.06   5.92    4.1    4.3  </span>
+<span class="co">#&gt; 13 omni    numeric   sleep_total         0    1     10.9    2.95    8      9.1  </span>
+<span class="co">#&gt; 14 omni    numeric   sleep_rem           2    0.9    1.96   1.01    0.7    1.25 </span>
+<span class="co">#&gt; 15 omni    numeric   sleep_cycle         9    0.55   0.592  0.473   0.133  0.258</span>
+<span class="co">#&gt; 16 omni    numeric   awake               0    1     13.1    2.95    6     13.1  </span>
+<span class="co">#&gt; 17 &lt;NA&gt;    numeric   sleep_total         0    1     10.2    3.00    5.4    8.65 </span>
+<span class="co">#&gt; 18 &lt;NA&gt;    numeric   sleep_rem           2    0.714  1.88   0.847   0.5    1.8  </span>
+<span class="co">#&gt; 19 &lt;NA&gt;    numeric   sleep_cycle         6    0.143  0.183 NA       0.183  0.183</span>
+<span class="co">#&gt; 20 &lt;NA&gt;    numeric   awake               0    1     13.8    3.00   10.3   11.8  </span>
+<span class="co">#&gt;    median    p75    max     n std.error mean.conf.low mean.conf.high</span>
+<span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 10.4   13     19.4      19    1.07          8.13           12.6  </span>
+<span class="co">#&gt;  2  1.95   3.05   6.6      10    0.589         0.958           3.62 </span>
+<span class="co">#&gt;  3  0.383  0.383  0.417     5    0.0145        0.333           0.414</span>
+<span class="co">#&gt;  4 13.6   17.8   21.4      19    1.07         11.4            15.9  </span>
+<span class="co">#&gt;  5 10.3   14.2   16.6      32    0.862         7.75           11.3  </span>
+<span class="co">#&gt;  6  0.95   1.98   3.4      24    0.188         0.977           1.76 </span>
+<span class="co">#&gt;  7  0.217  0.692  1        12    0.0936        0.212           0.624</span>
+<span class="co">#&gt;  8 13.7   19.7   22.1      32    0.862        12.7            16.2  </span>
+<span class="co">#&gt;  9 18.1   19.7   19.9       5    2.65          7.59           22.3  </span>
+<span class="co">#&gt; 10  3      4.45   6.1       4    0.963         0.460           6.59 </span>
+<span class="co">#&gt; 11  0.167  0.183  0.2       3    0.0242        0.0569          0.265</span>
+<span class="co">#&gt; 12  5.9   15.4   15.6       5    2.65          1.71           16.4  </span>
+<span class="co">#&gt; 13  9.9   10.9   18        20    0.659         9.54           12.3  </span>
+<span class="co">#&gt; 14  1.85   2.3    4.9      18    0.239         1.45            2.46 </span>
+<span class="co">#&gt; 15  0.5    0.708  1.5      11    0.143         0.274           0.911</span>
+<span class="co">#&gt; 16 14.1   14.9   16        20    0.659        11.7            14.5  </span>
+<span class="co">#&gt; 17 10.6   12.2   13.7       7    1.14          7.41           13.0  </span>
+<span class="co">#&gt; 18  2      2.4    2.7       5    0.379         0.829           2.93 </span>
+<span class="co">#&gt; 19  0.183  0.183  0.183     1   NA           NaN             NaN    </span>
+<span class="co">#&gt; 20 13.4   15.4   18.6       7    1.14         11.0            16.6</span></pre></div>
 <p>This function can be used to get summary of either numeric <strong>or</strong> factor variables, but <strong>not</strong> both. This is by design. If no <code>measures</code> are specified, the function will compute summary for all variables of the specified type (<code>numeric</code> or <code>factor</code>).</p>
 <p>If you want summary of variables of <code>factor</code> type-</p>
 <div class="sourceCode" id="cb7"><pre class="r"><span class="co"># for reproducibility</span>
@@ -1296,7 +1296,7 @@
 <ul class="list-unstyled">
 <li><a href="https://CRAN.R-project.org/package=groupedstats"><img src="http://www.r-pkg.org/badges/version-ago/groupedstats" alt="CRAN_Release_Badge"></a></li>
 <li><a href="https://cran.r-project.org/web/checks/check_results_groupedstats.html"><img src="https://cranchecks.info/badges/summary/groupedstats" alt="CRAN Checks"></a></li>
-<li><a href="https://github.com/IndrajeetPatil/groupedstats/commits/master"><img src="https://img.shields.io/badge/Package%20version-0.2.1.9000-orange.svg?style=flat-square" alt="packageversion"></a></li>
+<li><a href="https://github.com/IndrajeetPatil/groupedstats/commits/master"><img src="https://img.shields.io/badge/Package%20version-1.0.1.9000-orange.svg?style=flat-square" alt="packageversion"></a></li>
 <li><a href="https://CRAN.R-project.org/package=groupedstats"><img src="https://cranlogs.r-pkg.org/badges/last-day/groupedstats?color=blue" alt="Daily downloads badge"></a></li>
 <li><a href="https://CRAN.R-project.org/package=groupedstats"><img src="https://cranlogs.r-pkg.org/badges/last-week/groupedstats?color=blue" alt="Weekly downloads badge"></a></li>
 <li><a href="https://CRAN.R-project.org/package=groupedstats"><img src="https://cranlogs.r-pkg.org/badges/last-month/groupedstats?color=blue" alt="Monthly downloads badge"></a></li>
@@ -1306,11 +1306,9 @@
 <li><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></li>
 <li><a href="https://zenodo.org/badge/latestdoi/126624251"><img src="https://zenodo.org/badge/126624251.svg" alt="DOI"></a></li>
 <li><a href="http://www.repostatus.org/#active"><img src="http://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active - The project has reached a stable, usable state and is being actively developed."></a></li>
-<li><a href="https://github.com/IndrajeetPatil/groupedstats/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--05--05-yellowgreen.svg" alt="Last-changedate"></a></li>
+<li><a href="https://github.com/IndrajeetPatil/groupedstats/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--05--09-yellowgreen.svg" alt="Last-changedate"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#retired"><img src="https://img.shields.io/badge/lifecycle-retired-orange.svg" alt="lifecycle"></a></li>
 <li><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg" alt="minimal R version"></a></li>
-<li><a href="https://codecov.io/github/IndrajeetPatil/groupedstats?branch=master"><img src="https://img.shields.io/codecov/c/github/IndrajeetPatil/groupedstats/master.svg" alt="Coverage Status"></a></li>
-<li><a href="https://coveralls.io/github/IndrajeetPatil/groupedstats?branch=master"><img src="https://coveralls.io/repos/github/IndrajeetPatil/groupedstats/badge.svg?branch=master" alt="Coverage Status"></a></li>
 <li><a href="https://CRAN.R-project.org/package=groupedstats"><img src="https://tinyverse.netlify.com/badge/groupedstats" alt="status"></a></li>
 </ul>
 </div>

@@ -40,13 +40,14 @@ grouped_glm <- function(data,
                         augment.args = list()) {
   if (output == "tidy") {
     # tidy results
-    combined_df <- broomExtra::grouped_tidy(
-      data = data,
-      grouping.vars = {{ grouping.vars }},
-      ..f = stats::glm,
-      ...,
-      tidy.args = tidy.args
-    )
+    combined_df <-
+      broomExtra::grouped_tidy(
+        data = data,
+        grouping.vars = {{ grouping.vars }},
+        ..f = stats::glm,
+        ...,
+        tidy.args = tidy.args
+      )
 
     # add a column with significance labels if p-values are present
     if ("p.value" %in% names(combined_df)) {
@@ -56,23 +57,25 @@ grouped_glm <- function(data,
 
   if (output == "glance") {
     # tidy results
-    combined_df <- broomExtra::grouped_glance(
-      data = data,
-      grouping.vars = {{ grouping.vars }},
-      ..f = stats::glm,
-      ...
-    )
+    combined_df <-
+      broomExtra::grouped_glance(
+        data = data,
+        grouping.vars = {{ grouping.vars }},
+        ..f = stats::glm,
+        ...
+      )
   }
 
   if (output == "augment") {
     # tidy results
-    combined_df <- broomExtra::grouped_augment(
-      data = data,
-      grouping.vars = {{ grouping.vars }},
-      ..f = stats::glm,
-      ...,
-      augment.args = augment.args
-    )
+    combined_df <-
+      broomExtra::grouped_augment(
+        data = data,
+        grouping.vars = {{ grouping.vars }},
+        ..f = stats::glm,
+        ...,
+        augment.args = augment.args
+      )
   }
 
   return(combined_df)

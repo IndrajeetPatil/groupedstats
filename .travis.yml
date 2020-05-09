@@ -47,11 +47,6 @@ r_binary_packages:
   - bindrcpp
   - purrr
 
-r_packages:
-  - tidyr
-  - readr
-  - covr
-
 r_github_packages:
   - jimhester/lintr
   - r-lib/covr

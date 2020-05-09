@@ -1,3 +1,7 @@
+# groupedstats 1.0.1
+
+  - Fixes failing tests and warnings with the upcoming release of `dplyr 1.0.0`.
+
 # groupedstats 1.0.0
 
   - Relies on `effectsize` package instead of `sjstats` to compute eta and omega

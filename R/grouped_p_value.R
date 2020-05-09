@@ -30,7 +30,7 @@ grouped_p_value <- function(data,
   # dataframe with grouped analysis results
   data %>%
     dplyr::group_by_at(rlang::enquos(grouping.vars), .drop = TRUE) %>%
-    dplyr::group_modify(.f = tidy_group, keep = TRUE) %>%
+    dplyr::group_modify(.f = tidy_group, .keep = TRUE) %>%
     dplyr::ungroup(x = .) %>%
     dplyr::rename(.data = ., term = Parameter, p.value = p)
 }

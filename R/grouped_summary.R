@@ -127,7 +127,7 @@ grouped_summary <- function(data,
           .f = ~ tibble::as_tibble(skimr::skim(purrr::keep(
             .x = ., .p = ..f
           ))),
-          keep = FALSE
+          .keep = FALSE
         ) %>%
         dplyr::ungroup(.),
       y = dplyr::summarise(df_results, n_obs = dplyr::n()),

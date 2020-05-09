@@ -5,8 +5,10 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 0 note
+0 errors | 0 warnings | 1 note
 
 ## Comments
 
-  - Internal refactoring to rely on `effectsize` package instead of `sjstats`.
+  - I am getting one NOTE: "Days since last update: 4".
+  - This is a hotfix release to correct tests that will fail with the upcoming
+    release of `dplyr 1.0.0`.
