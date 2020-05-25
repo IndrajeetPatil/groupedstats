@@ -136,7 +136,7 @@ set.seed(123)
 
 # running glm across two all combinations of two grouping variables
 groupedstats::grouped_tidy(
-  data = groupedstats::Titanic_full, # dataframe
+  data = ggstatsplot::Titanic_full, # dataframe
   grouping.vars = c(Class, Age), # grouping variables
   ..f = stats::glm, # function to execute
   # additional arguments passed to `..f`
@@ -475,12 +475,12 @@ sex of a person was predictive of whether they survived the Titanic tragedy.
 set.seed(123)
 
 # having a look at the data
-dplyr::glimpse(groupedstats::Titanic_full)
+dplyr::glimpse(ggstatsplot::Titanic_full)
 
 # running glmer model to get tidy output
 groupedstats::grouped_glmer(
   formula = Survived ~ Age + (Age | Class),
-  data = groupedstats::Titanic_full,
+  data = ggstatsplot::Titanic_full,
   family = stats::binomial(link = "probit"), # choosing the appropriate GLM family
   control = lme4::glmerControl( # choosing appropriate control
     optimizer = "Nelder_Mead",
@@ -495,7 +495,7 @@ groupedstats::grouped_glmer(
 
 # getting glmer model summaries (let's use the default family and control values)
 groupedstats::grouped_glmer(
-  data = groupedstats::Titanic_full,
+  data = ggstatsplot::Titanic_full,
   grouping.vars = Sex,
   formula = Survived ~ Age + (Age | Class),
   family = stats::binomial(link = "probit"),
@@ -669,7 +669,7 @@ library(groupedstats)
 results_df <-
   purrr::pmap_dfr(
     .l = list(
-      data = list(groupedstats::movies_long),
+      data = list(ggstatsplot::movies_long),
       grouping.vars = alist(c(mpaa, genre)), # note it's `alist` and not `list`
       formula = list(
         rating ~ budget, # model 1
@@ -689,12 +689,6 @@ results_df <-
 # looking at the results
 head(results_df)
 ```
-
-# Current code coverage
-
-As the code stands right now, here is the code coverage for all primary
-functions involved:
-<https://codecov.io/gh/IndrajeetPatil/groupedstats/tree/master/R>
 
 # Contributing
 

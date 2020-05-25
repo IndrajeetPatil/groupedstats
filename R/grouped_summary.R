@@ -24,13 +24,12 @@
 #' @importFrom skimr skim
 #' @importFrom dplyr filter_at mutate_at mutate_if n rename group_by ungroup
 #' @importFrom dplyr group_modify group_nest summarise
-#' @importFrom purrr is_bare_numeric is_bare_character keep map map_dfr
-#' @importFrom purrr set_names map_chr
+#' @importFrom purrr keep map map_dfr set_names map_chr
 #' @importFrom tidyr unnest separate
 #' @importFrom tibble enframe
 #' @importFrom stats qt
 #' @importFrom haven zap_labels
-#' @importFrom rlang !! !!! as_string
+#' @importFrom rlang !!! as_string quo_squash enquo
 #'
 #' @examples
 #' # for reproducibility
@@ -123,10 +122,7 @@ grouped_summary <- function(data,
     dplyr::left_join(
       x = df_results %>%
         dplyr::group_modify(
-          .f = ~ tibble::as_tibble(skimr::skim(purrr::keep(
-            .x = ., .p = ..f
-          ))),
-          .keep = FALSE
+          .f = ~ as_tibble(skimr::skim(purrr::keep(.x = ., .p = ..f)))
         ) %>%
         dplyr::ungroup(.),
       y = dplyr::summarise(df_results, n_obs = dplyr::n()),

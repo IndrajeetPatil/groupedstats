@@ -4,6 +4,10 @@
 #'
 #' @inheritParams broomExtra::grouped_tidy
 #'
+#' @importFrom parameters p_value
+#' @importFrom dplyr rename group_by_at group_modify ungroup
+#' @importFrom rlang enquos exec
+#'
 #' @examples
 #' groupedstats:::grouped_p_value(
 #'   data = ggplot2::diamonds,
@@ -19,11 +23,7 @@ grouped_p_value <- function(data,
                             ...) {
   # function to run
   tidy_group <- function(.x, .y) {
-
-    # presumes `..f` will work with these args
     model <- ..f(.y = ..., data = .x)
-
-    # variation on `do.call` to call function with list of arguments
     rlang::exec(.fn = parameters::p_value, model)
   }
 
@@ -31,6 +31,6 @@ grouped_p_value <- function(data,
   data %>%
     dplyr::group_by_at(rlang::enquos(grouping.vars), .drop = TRUE) %>%
     dplyr::group_modify(.f = tidy_group, .keep = TRUE) %>%
-    dplyr::ungroup(x = .) %>%
+    dplyr::ungroup(.) %>%
     dplyr::rename(.data = ., term = Parameter, p.value = p)
 }

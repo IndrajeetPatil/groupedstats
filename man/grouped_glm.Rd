@@ -38,22 +38,11 @@ Function to run generalized linear model (\code{glm}) across multiple
 grouping variables.
 }
 \examples{
-
-# to get tidy output
 groupedstats::grouped_glm(
-  data = groupedstats::Titanic_full,
-  formula = Survived ~ Sex,
-  grouping.vars = Class,
+  data = mtcars,
+  formula = am ~ wt,
+  grouping.vars = cyl,
   family = stats::binomial(link = "logit")
-)
-
-# to get glance output
-groupedstats::grouped_glm(
-  data = groupedstats::Titanic_full,
-  formula = Survived ~ Sex,
-  grouping.vars = Class,
-  family = stats::binomial(link = "logit"),
-  output = "glance"
 )
 }
 \seealso{

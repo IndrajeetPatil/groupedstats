@@ -108,7 +108,6 @@ variables.
 set.seed(123)
 
 # loading libraries containing data
-library(ggplot2)
 library(gapminder)
 
 # getting tidy output of results

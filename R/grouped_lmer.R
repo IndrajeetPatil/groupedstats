@@ -8,13 +8,8 @@
 #' @inheritDotParams lme4::lmer
 #' @inheritParams parameters::p_value
 #'
-#' @importFrom purrr map
-#' @importFrom parameters p_value
-#' @importFrom stats as.formula
-#' @importFrom tidyr nest
-#' @importFrom rlang !! enquos enquo quo quo_squash
-#' @importFrom dplyr select group_by arrange mutate mutate_at left_join
-#' @importFrom broomExtra tidy glance augment
+#' @importFrom dplyr left_join
+#' @importFrom broomExtra grouped_tidy grouped_glance grouped_augment
 #'
 #' @examples
 #' \donttest{
@@ -22,7 +17,6 @@
 #' set.seed(123)
 #'
 #' # loading libraries containing data
-#' library(ggplot2)
 #' library(gapminder)
 #'
 #' # getting tidy output of results

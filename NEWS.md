@@ -1,6 +1,7 @@
 # groupedstats 1.0.1
 
   - Fixes failing tests and warnings with the upcoming release of `dplyr 1.0.0`.
+  - Removes datasets since all of them are already present in `ggstatsplot`.
 
 # groupedstats 1.0.0
 

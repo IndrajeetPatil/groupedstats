@@ -41,7 +41,6 @@ reference:
   - title: Miscellaneous functions
     desc: The `grouped_` versions of functions from miscellaneous packages.
     contents:
-      - groupedstats-package
       - grouped_slr
       - grouped_summary
       - grouped_proptest
@@ -51,11 +50,3 @@ reference:
     contents:
       - lm_effsize_ci
       - lm_effsize_standardizer
-
-  - title: Data
-    desc:  Datasets included in the package.
-    contents:
-      - movies_wide
-      - movies_long
-      - Titanic_full
-      - intent_morality

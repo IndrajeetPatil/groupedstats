@@ -150,7 +150,7 @@ set.seed(123)
 
 # running glm across two all combinations of two grouping variables
 groupedstats::grouped_tidy(
-  data = groupedstats::Titanic_full, # dataframe
+  data = ggstatsplot::Titanic_full, # dataframe
   grouping.vars = c(Class, Age), # grouping variables
   ..f = stats::glm, # function to execute
   # additional arguments passed to `..f`
@@ -898,7 +898,7 @@ survived the Titanic tragedy.
 set.seed(123)
 
 # having a look at the data
-dplyr::glimpse(groupedstats::Titanic_full)
+dplyr::glimpse(ggstatsplot::Titanic_full)
 #> Rows: 2,201
 #> Columns: 5
 #> $ id       <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,...
@@ -910,7 +910,7 @@ dplyr::glimpse(groupedstats::Titanic_full)
 # running glmer model to get tidy output
 groupedstats::grouped_glmer(
   formula = Survived ~ Age + (Age | Class),
-  data = groupedstats::Titanic_full,
+  data = ggstatsplot::Titanic_full,
   family = stats::binomial(link = "probit"), # choosing the appropriate GLM family
   control = lme4::glmerControl( # choosing appropriate control
     optimizer = "Nelder_Mead",
@@ -938,7 +938,7 @@ groupedstats::grouped_glmer(
 
 # getting glmer model summaries (let's use the default family and control values)
 groupedstats::grouped_glmer(
-  data = groupedstats::Titanic_full,
+  data = ggstatsplot::Titanic_full,
   grouping.vars = Sex,
   formula = Survived ~ Age + (Age | Class),
   family = stats::binomial(link = "probit"),
@@ -1301,7 +1301,7 @@ library(groupedstats)
 results_df <-
   purrr::pmap_dfr(
     .l = list(
-      data = list(groupedstats::movies_long),
+      data = list(ggstatsplot::movies_long),
       grouping.vars = alist(c(mpaa, genre)), # note it's `alist` and not `list`
       formula = list(
         rating ~ budget, # model 1
@@ -1321,29 +1321,23 @@ results_df <-
 # looking at the results
 head(results_df)
 #> # A tibble: 6 x 15
-#>   model mpaa  genre       r.squared adj.r.squared  sigma statistic      p.value
-#>   <chr> <fct> <fct>           <dbl>         <dbl>  <dbl>     <dbl>        <dbl>
-#> 1 2     PG-13 Animation       0.474         0.369 0.824       4.51 0.0870      
-#> 2 4     PG-13 Animation       0.447         0.337 0.138       4.05 0.100       
-#> 3 3     PG    Documentary     0.468         0.202 0.0532      1.76 0.316       
-#> 4 1     PG    Documentary     0.449         0.174 0.386       1.63 0.330       
-#> 5 4     R     Action          0.142         0.138 0.254      34.6  0.0000000162
-#> 6 2     R     Action          0.129         0.125 1.31       30.9  0.0000000825
-#>      df   logLik    AIC    BIC  deviance df.residual  nobs
-#>   <dbl>    <dbl>  <dbl>  <dbl>     <dbl>       <int> <int>
-#> 1     1   -7.40   20.8   20.6    3.39              5     7
-#> 2     1    5.09   -4.18  -4.35   0.0957            5     7
-#> 3     1    7.45   -8.90 -10.7    0.00565           2     4
-#> 4     1   -0.479   6.96   5.12   0.298             2     4
-#> 5     1   -9.39   24.8   34.8   13.5             209   211
-#> 6     1 -356.    718.   728.   361.              209   211
+#>   model mpaa  genre        r.squared adj.r.squared sigma statistic    p.value
+#>   <chr> <fct> <fct>            <dbl>         <dbl> <dbl>     <dbl>      <dbl>
+#> 1 4     R     Action Drama     0.252         0.242 0.194     26.6  0.00000183
+#> 2 4     PG    Animated         0.256         0.230 0.177      9.64 0.00432   
+#> 3 2     PG-13 Animated         0.377         0.221 0.919      2.42 0.195     
+#> 4 4     PG-13 Animated         0.359         0.199 0.155      2.24 0.209     
+#> 5 2     PG    Animated         0.220         0.192 1.04       7.88 0.00900   
+#> 6 2     R     Action Drama     0.195         0.185 1.13      19.2  0.0000366 
+#>      df  logLik    AIC    BIC deviance df.residual  nobs
+#>   <dbl>   <dbl>  <dbl>  <dbl>    <dbl>       <int> <int>
+#> 1     1   18.8  -31.5  -24.3    2.99            79    81
+#> 2     1   10.4  -14.9  -10.7    0.876           28    30
+#> 3     1   -6.79  19.6   19.0    3.38             4     6
+#> 4     1    3.91  -1.82  -2.44   0.0955           4     6
+#> 5     1  -42.8   91.5   95.7   30.4             28    30
+#> 6     1 -124.   254.   261.   102.              79    81
 ```
-
-# Current code coverage
-
-As the code stands right now, here is the code coverage for all primary
-functions involved:
-<https://codecov.io/gh/IndrajeetPatil/groupedstats/tree/master/R>
 
 # Contributing
 

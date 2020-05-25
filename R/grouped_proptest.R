@@ -1,6 +1,5 @@
 #' @title Function to run proportion test on grouped data.
 #' @name grouped_proptest
-#' @author Indrajeet Patil
 #' @return Dataframe with percentages and statistical details from a proportion
 #'  test.
 #'
@@ -13,8 +12,8 @@
 #' @importFrom broomExtra tidy
 #' @importFrom stats chisq.test
 #' @importFrom rlang enquos
-#' @importFrom dplyr group_by_at group_modify ungroup group_vars
-#' @importFrom dplyr count tibble left_join
+#' @importFrom dplyr group_by_at group_modify ungroup group_vars select
+#' @importFrom dplyr count left_join
 #'
 #' @examples
 #' # for reproducibility
@@ -62,7 +61,7 @@ grouped_proptest <- function(data, grouping.vars, measure, ...) {
 # by `broomExtra::tidy`
 #' @noRd
 
-chisq_test_safe <- function(data, x) {
+chisq_test_safe <- function(data, x, ...) {
   # create a table
   xtab <- table(data %>% dplyr::pull({{ x }}))
 
@@ -73,7 +72,7 @@ chisq_test_safe <- function(data, x) {
   if (!is.null(chi_result)) {
     chi_result
   } else {
-    dplyr::tibble(
+    tibble(
       statistic = NA_real_,
       p.value = NA_real_,
       parameter = NA_real_,

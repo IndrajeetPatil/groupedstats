@@ -26,18 +26,10 @@
 #'
 #' # effect size
 #' groupedstats::grouped_aov(
-#'   formula = rating ~ belief * outcome * question,
-#'   data = intent_morality,
-#'   grouping.vars = item,
+#'   formula = wt ~ mpg,
+#'   data = mtcars,
+#'   grouping.vars = am,
 #'   effsize = "eta"
-#' )
-#'
-#' # pairwise comparisons
-#' groupedstats::grouped_aov(
-#'   formula = rating ~ belief * outcome * question,
-#'   data = intent_morality,
-#'   grouping.vars = item,
-#'   output = "tukey"
 #' )
 #' @export
 

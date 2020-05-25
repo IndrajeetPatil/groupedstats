@@ -33,14 +33,11 @@ Imports:
     stats,
     tibble,
     tidyr
-Suggests: 
-    ez,
+Suggests:
     gapminder,
     ggplot2,
     knitr,
-    rmarkdown,
-    spelling,
-    testthat
+    rmarkdown
 Remotes:
     tidyverse/dplyr
 Encoding: UTF-8

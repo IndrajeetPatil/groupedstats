@@ -4,9 +4,6 @@
     <loc>https://indrajeetpatil.github.io/groupedstats//index.html</loc>
   </url>
   <url>
-    <loc>https://indrajeetpatil.github.io/groupedstats//reference/groupedstats-package.html</loc>
-  </url>
-  <url>
     <loc>https://indrajeetpatil.github.io/groupedstats//reference/grouped_aov.html</loc>
   </url>
   <url>
@@ -40,24 +37,12 @@
     <loc>https://indrajeetpatil.github.io/groupedstats//reference/grouped_wilcox.html</loc>
   </url>
   <url>
-    <loc>https://indrajeetpatil.github.io/groupedstats//reference/intent_morality.html</loc>
-  </url>
-  <url>
     <loc>https://indrajeetpatil.github.io/groupedstats//reference/lm_effsize_ci.html</loc>
   </url>
   <url>
     <loc>https://indrajeetpatil.github.io/groupedstats//reference/lm_effsize_standardizer.html</loc>
   </url>
   <url>
-    <loc>https://indrajeetpatil.github.io/groupedstats//reference/movies_long.html</loc>
-  </url>
-  <url>
-    <loc>https://indrajeetpatil.github.io/groupedstats//reference/movies_wide.html</loc>
-  </url>
-  <url>
     <loc>https://indrajeetpatil.github.io/groupedstats//reference/reexports.html</loc>
-  </url>
-  <url>
-    <loc>https://indrajeetpatil.github.io/groupedstats//reference/Titanic_full.html</loc>
   </url>
 </urlset>

@@ -33,6 +33,3 @@ groupedstats::grouped_proptest(
   measure = am
 )
 }
-\author{
-Indrajeet Patil
-}

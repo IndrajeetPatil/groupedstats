@@ -111,20 +111,3 @@ summaries.
 Function to run generalized linear mixed-effects model (\code{glmer})
 across multiple grouping variables.
 }
-\examples{
-
-# for reproducibility
-set.seed(123)
-
-# categorical outcome; binomial family
-groupedstats::grouped_glmer(
-  formula = Survived ~ Age + (Age | Class),
-  family = stats::binomial(link = "probit"),
-  data = dplyr::sample_frac(groupedstats::Titanic_full, size = 0.3),
-  grouping.vars = Sex,
-  tidy.args = list(effects = "fixed", conf.int = TRUE, conf.level = 0.95)
-)
-}
-\seealso{
-grouped_lmer
-}

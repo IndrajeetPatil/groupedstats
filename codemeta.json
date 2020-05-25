@@ -48,18 +48,6 @@
   "softwareSuggestions": [
     {
       "@type": "SoftwareApplication",
-      "identifier": "ez",
-      "name": "ez",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=ez"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "gapminder",
       "name": "gapminder",
       "provider": {
@@ -105,30 +93,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "spelling",
-      "name": "spelling",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=spelling"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "testthat",
-      "name": "testthat",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=testthat"
     }
   ],
   "softwareRequirements": [
@@ -302,7 +266,7 @@
     }
   ],
   "releaseNotes": "https://github.com/IndrajeetPatil/groupedstats/blob/master/NEWS.md",
-  "fileSize": "1864.748KB",
+  "fileSize": "1192.342KB",
   "contIntegration": ["https://travis-ci.org/IndrajeetPatil/groupedstats", "https://ci.appveyor.com/project/IndrajeetPatil/groupedstats"],
   "developmentStatus": ["http://www.repostatus.org/#active", "https://www.tidyverse.org/lifecycle/#retired"],
   "keywords": [

@@ -161,7 +161,7 @@
 
 <span class="co"># running glm across two all combinations of two grouping variables</span>
 <span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="https://indrajeetpatil.github.io/broomExtra//reference/grouped_tidy.html">grouped_tidy</a></span>(
-  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="no"><a href="reference/Titanic_full.html">Titanic_full</a></span>, <span class="co"># dataframe</span>
+  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">ggstatsplot</span><span class="kw ns">::</span><span class="no"><a href="https://indrajeetpatil.github.io/ggstatsplot//reference/Titanic_full.html">Titanic_full</a></span>, <span class="co"># dataframe</span>
   <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">Class</span>, <span class="no">Age</span>), <span class="co"># grouping variables</span>
   <span class="kw">..f</span> <span class="kw">=</span> <span class="kw pkg">stats</span><span class="kw ns">::</span><span class="no"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span>, <span class="co"># function to execute</span>
   <span class="co"># additional arguments passed to `..f`</span>
@@ -719,7 +719,7 @@
 <span class="co">#&gt; 7 **          </span>
 <span class="co">#&gt; 8 ***</span></pre></div>
 <p>Note that the <code>statistic</code> will either be a <code>t</code> (gaussian, e.g.) or a <code>z</code> (binomial, e.g.) value, based on the family of models used.</p>
-<p>You can also get a model summary across all models with <code><a href="https://rdrr.io/pkg/broom/man/reexports.html">broom::glance</a></code> methods-</p>
+<p>You can also get a model summary across all models with <code><a href="http://broom.tidyverse.org/reference/reexports.html">broom::glance</a></code> methods-</p>
 <div class="sourceCode" id="cb18"><pre class="r"><span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
 
@@ -813,7 +813,7 @@
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
 
 <span class="co"># having a look at the data</span>
-<span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="no"><a href="reference/Titanic_full.html">Titanic_full</a></span>)
+<span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="kw pkg">ggstatsplot</span><span class="kw ns">::</span><span class="no"><a href="https://indrajeetpatil.github.io/ggstatsplot//reference/Titanic_full.html">Titanic_full</a></span>)
 <span class="co">#&gt; Rows: 2,201</span>
 <span class="co">#&gt; Columns: 5</span>
 <span class="co">#&gt; $ id       &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,...</span>
@@ -825,7 +825,7 @@
 <span class="co"># running glmer model to get tidy output</span>
 <span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_glmer.html">grouped_glmer</a></span>(
   <span class="kw">formula</span> <span class="kw">=</span> <span class="no">Survived</span> ~ <span class="no">Age</span> + (<span class="no">Age</span> <span class="kw">|</span> <span class="no">Class</span>),
-  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="no"><a href="reference/Titanic_full.html">Titanic_full</a></span>,
+  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">ggstatsplot</span><span class="kw ns">::</span><span class="no"><a href="https://indrajeetpatil.github.io/ggstatsplot//reference/Titanic_full.html">Titanic_full</a></span>,
   <span class="kw">family</span> <span class="kw">=</span> <span class="kw pkg">stats</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/r/stats/family.html">binomial</a></span>(<span class="kw">link</span> <span class="kw">=</span> <span class="st">"probit"</span>), <span class="co"># choosing the appropriate GLM family</span>
   <span class="kw">control</span> <span class="kw">=</span> <span class="kw pkg">lme4</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmerControl.html">glmerControl</a></span>( <span class="co"># choosing appropriate control</span>
     <span class="kw">optimizer</span> <span class="kw">=</span> <span class="st">"Nelder_Mead"</span>,
@@ -853,7 +853,7 @@
 
 <span class="co"># getting glmer model summaries (let's use the default family and control values)</span>
 <span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="fu"><a href="reference/grouped_glmer.html">grouped_glmer</a></span>(
-  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="no"><a href="reference/Titanic_full.html">Titanic_full</a></span>,
+  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">ggstatsplot</span><span class="kw ns">::</span><span class="no"><a href="https://indrajeetpatil.github.io/ggstatsplot//reference/Titanic_full.html">Titanic_full</a></span>,
   <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="no">Sex</span>,
   <span class="kw">formula</span> <span class="kw">=</span> <span class="no">Survived</span> ~ <span class="no">Age</span> + (<span class="no">Age</span> <span class="kw">|</span> <span class="no">Class</span>),
   <span class="kw">family</span> <span class="kw">=</span> <span class="kw pkg">stats</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/r/stats/family.html">binomial</a></span>(<span class="kw">link</span> <span class="kw">=</span> <span class="st">"probit"</span>),
@@ -1186,7 +1186,7 @@
 <span class="no">results_df</span> <span class="kw">&lt;-</span>
   <span class="kw pkg">purrr</span><span class="kw ns">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">pmap_dfr</a></span>(
     <span class="kw">.l</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
-      <span class="kw">data</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw pkg">groupedstats</span><span class="kw ns">::</span><span class="no"><a href="reference/movies_long.html">movies_long</a></span>),
+      <span class="kw">data</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw pkg">ggstatsplot</span><span class="kw ns">::</span><span class="no"><a href="https://indrajeetpatil.github.io/ggstatsplot//reference/movies_long.html">movies_long</a></span>),
       <span class="kw">grouping.vars</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">alist</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="no">mpaa</span>, <span class="no">genre</span>)), <span class="co"># note it's `alist` and not `list`</span>
       <span class="kw">formula</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
         <span class="no">rating</span> ~ <span class="no">budget</span>, <span class="co"># model 1</span>
@@ -1206,27 +1206,22 @@
 <span class="co"># looking at the results</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">results_df</span>)
 <span class="co">#&gt; # A tibble: 6 x 15</span>
-<span class="co">#&gt;   model mpaa  genre       r.squared adj.r.squared  sigma statistic      p.value</span>
-<span class="co">#&gt;   &lt;chr&gt; &lt;fct&gt; &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 2     PG-13 Animation       0.474         0.369 0.824       4.51 0.0870      </span>
-<span class="co">#&gt; 2 4     PG-13 Animation       0.447         0.337 0.138       4.05 0.100       </span>
-<span class="co">#&gt; 3 3     PG    Documentary     0.468         0.202 0.0532      1.76 0.316       </span>
-<span class="co">#&gt; 4 1     PG    Documentary     0.449         0.174 0.386       1.63 0.330       </span>
-<span class="co">#&gt; 5 4     R     Action          0.142         0.138 0.254      34.6  0.0000000162</span>
-<span class="co">#&gt; 6 2     R     Action          0.129         0.125 1.31       30.9  0.0000000825</span>
-<span class="co">#&gt;      df   logLik    AIC    BIC  deviance df.residual  nobs</span>
-<span class="co">#&gt;   &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;       &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt; 1     1   -7.40   20.8   20.6    3.39              5     7</span>
-<span class="co">#&gt; 2     1    5.09   -4.18  -4.35   0.0957            5     7</span>
-<span class="co">#&gt; 3     1    7.45   -8.90 -10.7    0.00565           2     4</span>
-<span class="co">#&gt; 4     1   -0.479   6.96   5.12   0.298             2     4</span>
-<span class="co">#&gt; 5     1   -9.39   24.8   34.8   13.5             209   211</span>
-<span class="co">#&gt; 6     1 -356.    718.   728.   361.              209   211</span></pre></div>
-</div>
-<div id="current-code-coverage" class="section level1">
-<h1 class="hasAnchor">
-<a href="#current-code-coverage" class="anchor"></a>Current code coverage</h1>
-<p>As the code stands right now, here is the code coverage for all primary functions involved: <a href="https://codecov.io/gh/IndrajeetPatil/groupedstats/tree/master/R" class="uri">https://codecov.io/gh/IndrajeetPatil/groupedstats/tree/master/R</a></p>
+<span class="co">#&gt;   model mpaa  genre        r.squared adj.r.squared sigma statistic    p.value</span>
+<span class="co">#&gt;   &lt;chr&gt; &lt;fct&gt; &lt;fct&gt;            &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 4     R     Action Drama     0.252         0.242 0.194     26.6  0.00000183</span>
+<span class="co">#&gt; 2 4     PG    Animated         0.256         0.230 0.177      9.64 0.00432   </span>
+<span class="co">#&gt; 3 2     PG-13 Animated         0.377         0.221 0.919      2.42 0.195     </span>
+<span class="co">#&gt; 4 4     PG-13 Animated         0.359         0.199 0.155      2.24 0.209     </span>
+<span class="co">#&gt; 5 2     PG    Animated         0.220         0.192 1.04       7.88 0.00900   </span>
+<span class="co">#&gt; 6 2     R     Action Drama     0.195         0.185 1.13      19.2  0.0000366 </span>
+<span class="co">#&gt;      df  logLik    AIC    BIC deviance df.residual  nobs</span>
+<span class="co">#&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt; &lt;int&gt;</span>
+<span class="co">#&gt; 1     1   18.8  -31.5  -24.3    2.99            79    81</span>
+<span class="co">#&gt; 2     1   10.4  -14.9  -10.7    0.876           28    30</span>
+<span class="co">#&gt; 3     1   -6.79  19.6   19.0    3.38             4     6</span>
+<span class="co">#&gt; 4     1    3.91  -1.82  -2.44   0.0955           4     6</span>
+<span class="co">#&gt; 5     1  -42.8   91.5   95.7   30.4             28    30</span>
+<span class="co">#&gt; 6     1 -124.   254.   261.   102.              79    81</span></pre></div>
 </div>
 <div id="contributing" class="section level1">
 <h1 class="hasAnchor">
@@ -1306,7 +1301,7 @@
 <li><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></li>
 <li><a href="https://zenodo.org/badge/latestdoi/126624251"><img src="https://zenodo.org/badge/126624251.svg" alt="DOI"></a></li>
 <li><a href="http://www.repostatus.org/#active"><img src="http://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active - The project has reached a stable, usable state and is being actively developed."></a></li>
-<li><a href="https://github.com/IndrajeetPatil/groupedstats/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--05--09-yellowgreen.svg" alt="Last-changedate"></a></li>
+<li><a href="https://github.com/IndrajeetPatil/groupedstats/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--05--25-yellowgreen.svg" alt="Last-changedate"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#retired"><img src="https://img.shields.io/badge/lifecycle-retired-orange.svg" alt="lifecycle"></a></li>
 <li><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg" alt="minimal R version"></a></li>
 <li><a href="https://CRAN.R-project.org/package=groupedstats"><img src="https://tinyverse.netlify.com/badge/groupedstats" alt="status"></a></li>
