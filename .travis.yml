@@ -3,7 +3,7 @@
 language: r
 r:
   - release
-#  - devel
+  - devel
 latex: true
 warnings_are_errors: TRUE
 
@@ -16,36 +16,36 @@ env:
 #   - packages
 #   - ccache
 
-r_binary_packages:
-  - stringi
-  - magrittr
-  - curl
-  - jsonlite
-  - Rcpp
-  - RcppEigen
-  - openssl
-  - utf8
-  - gss
-  - haven
-  - minqa
-  - mvtnorm
-  - nloptr
-  - SparseM
-  - httpuv
-  - markdown
-  - sem
-  - readxl
-  - openxlsx
-  - pander
-  - lme4
-  - psych
-  - git2r
-  - data.table
-  - ez
-  - broom.mixed
-  - rlang
-  - bindrcpp
-  - purrr
+# r_binary_packages:
+#   - stringi
+#   - magrittr
+#   - curl
+#   - jsonlite
+#   - Rcpp
+#   - RcppEigen
+#   - openssl
+#   - utf8
+#   - gss
+#   - haven
+#   - minqa
+#   - mvtnorm
+#   - nloptr
+#   - SparseM
+#   - httpuv
+#   - markdown
+#   - sem
+#   - readxl
+#   - openxlsx
+#   - pander
+#   - lme4
+#   - psych
+#   - git2r
+#   - data.table
+#   - ez
+#   - broom.mixed
+#   - rlang
+#   - bindrcpp
+#   - purrr
 
 r_github_packages:
   - jimhester/lintr
