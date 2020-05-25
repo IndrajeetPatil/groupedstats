@@ -42,6 +42,3 @@ groupedstats::grouped_slr(
 \seealso{
 \code{\link{grouped_lm}}, \code{\link{grouped_tidy}}
 }
-\author{
-Indrajeet Patil
-}

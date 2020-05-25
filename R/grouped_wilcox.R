@@ -2,7 +2,6 @@
 #'   multiple grouping variables.
 #' @title Running Wilcox test across multiple grouping variables.
 #' @name grouped_wilcox
-#' @author Indrajeet Patil
 #' @return A tibble dataframe with tidy results from two-sample Wilcoxon tests
 #'   analyses.
 #'

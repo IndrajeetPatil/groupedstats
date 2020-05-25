@@ -60,6 +60,3 @@ grouped_lm(
 \seealso{
 \code{\link{grouped_slr}}, \code{\link{grouped_tidy}}
 }
-\author{
-Indrajeet Patil
-}

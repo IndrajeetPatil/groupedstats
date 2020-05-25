@@ -1,9 +1,8 @@
 #' @title Descriptive statistics for multiple variables for all grouping
 #'   variable levels
 #' @name grouped_summary
-#' @author Indrajeet Patil
 #' @return Dataframe with descriptive statistics for numeric variables (n, mean,
-#'   sd, median, min, max)
+#'   sd, median, min, max).
 #'
 #' @param data Dataframe from which variables need to be taken.
 #' @param grouping.vars A list of grouping variables. Please use unquoted

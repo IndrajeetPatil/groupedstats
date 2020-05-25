@@ -2,7 +2,7 @@
 % Please edit documentation in R/grouped_glm.R
 \name{grouped_glm}
 \alias{grouped_glm}
-\title{Function to run generalized linear model (glm) across multiple
+\title{Function to run generalized linear model (\code{glm}) across multiple
 grouping variables.}
 \usage{
 grouped_glm(
@@ -34,7 +34,7 @@ which will return model summaries.}
 A tibble dataframe with tidy results from linear model.
 }
 \description{
-Function to run generalized linear model (glm) across multiple
+Function to run generalized linear model (\code{glm}) across multiple
 grouping variables.
 }
 \examples{
@@ -59,7 +59,4 @@ groupedstats::grouped_glm(
 \seealso{
 \code{\link{grouped_lm}}, \code{\link{grouped_lmer}},
 \code{\link{grouped_glmer}}
-}
-\author{
-Indrajeet Patil
 }

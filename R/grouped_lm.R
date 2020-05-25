@@ -1,6 +1,5 @@
 #' @title Running linear model (`lm`) across multiple grouping variables.
 #' @name grouped_lm
-#' @author Indrajeet Patil
 #' @return A tibble dataframe with tidy results from linear model.
 #'
 #' @param output A character describing what output is expected. Two possible

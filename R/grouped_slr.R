@@ -1,7 +1,6 @@
 #' @title Running simple linear regression (slr) on multiple variables across
 #'   multiple grouping variables.
 #' @name grouped_slr
-#' @author Indrajeet Patil
 #' @return A tibble dataframe with tidy results from simple linear regression
 #'   analyses. The estimates are standardized, i.e. the `lm` model used is
 #'   `scale(y) ~ scale(x)`, and not `y ~ x`.

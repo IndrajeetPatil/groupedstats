@@ -58,6 +58,3 @@ groupedstats::grouped_wilcox(
 \seealso{
 \code{\link{grouped_tidy}}
 }
-\author{
-Indrajeet Patil
-}

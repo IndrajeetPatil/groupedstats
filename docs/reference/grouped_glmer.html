@@ -6,8 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function to run generalized linear mixed-effects model (glmer) across
-multiple grouping variables. — grouped_glmer • groupedstats</title>
+<title>Function to run generalized linear mixed-effects model (<code>glmer</code>)
+across multiple grouping variables. — grouped_glmer • groupedstats</title>
 
 
 <!-- jquery -->
@@ -48,10 +48,10 @@ multiple grouping variables. — grouped_glmer • groupedstats</title>
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Function to run generalized linear mixed-effects model (glmer) across
-multiple grouping variables. — grouped_glmer" />
-<meta property="og:description" content="Function to run generalized linear mixed-effects model (glmer) across
-multiple grouping variables." />
+<meta property="og:title" content="Function to run generalized linear mixed-effects model (<code>glmer</code>)
+across multiple grouping variables. — grouped_glmer" />
+<meta property="og:description" content="Function to run generalized linear mixed-effects model (glmer)
+across multiple grouping variables." />
 
 
 
@@ -128,15 +128,15 @@ multiple grouping variables." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Function to run generalized linear mixed-effects model (glmer) across
-multiple grouping variables.</h1>
+    <h1>Function to run generalized linear mixed-effects model (<code>glmer</code>)
+across multiple grouping variables.</h1>
     <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/groupedstats/blob/master/R/grouped_glmer.R'><code>R/grouped_glmer.R</code></a></small>
     <div class="hidden name"><code>grouped_glmer.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Function to run generalized linear mixed-effects model (glmer) across
-multiple grouping variables.</p>
+    <p>Function to run generalized linear mixed-effects model (<code>glmer</code>)
+across multiple grouping variables.</p>
     </div>
 
     <pre class="usage"><span class='fu'>grouped_glmer</span>(
@@ -162,7 +162,7 @@ multiple grouping variables.</p>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Arguments passed on to <code><a href='https://rdrr.io/pkg/lme4/man/glmer.html'>lme4::glmer</a></code></p><dl'>
+      <td><p>Arguments passed on to <code><a href='https://rdrr.io/pkg/lme4/man/glmer.html'>lme4::glmer</a></code></p><dl>
     <dt><code>formula</code></dt><dd><p>a two-sided linear formula object describing both the
     fixed-effects and random-effects part of the model, with the response
     on the left of a <code>~</code> operator and the terms, separated by
@@ -272,19 +272,19 @@ summaries.</p>
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/sample_n.html'>sample_frac</a></span>(<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='no'><a href='Titanic_full.html'>Titanic_full</a></span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>0.3</span>),
   <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>Sex</span>,
   <span class='kw'>tidy.args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>effects</span> <span class='kw'>=</span> <span class='st'>"fixed"</span>, <span class='kw'>conf.int</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>)
-)</div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 4 x 10</span><span>
+)</div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 x 10</span><span>
 #&gt;   Sex    effect term        estimate std.error statistic  p.value conf.low
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> Female fixed  (Intercept)    0.841     0.428     1.96  4.95</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 2</span><span>  0.001</span><span style='text-decoration: underline;'>88</span><span>
-#&gt; </span><span style='color: #555555;'>2</span><span> Female fixed  AgeChild       0.687     1.41      0.488 6.26</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 1</span><span> -</span><span style='color: #BB0000;'>2.07</span><span>   
-#&gt; </span><span style='color: #555555;'>3</span><span> Male   fixed  (Intercept)   -</span><span style='color: #BB0000;'>0.914</span><span>     0.148    -</span><span style='color: #BB0000;'>6.18</span><span>  6.50</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-10</span><span> -</span><span style='color: #BB0000;'>1.20</span><span>   
-#&gt; </span><span style='color: #555555;'>4</span><span> Male   fixed  AgeChild       2.25      1.92      1.17  2.41</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 1</span><span> -</span><span style='color: #BB0000;'>1.51</span><span>   
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Female fixed  (Intercept)    0.841     0.428     1.96  4.95</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 2</span><span>  0.001</span><span style='text-decoration: underline;'>88</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Female fixed  AgeChild       0.687     1.41      0.488 6.26</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 1</span><span> -</span><span style='color: #BB0000;'>2.07</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Male   fixed  (Intercept)   -</span><span style='color: #BB0000;'>0.914</span><span>     0.148    -</span><span style='color: #BB0000;'>6.18</span><span>  6.50</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-10</span><span> -</span><span style='color: #BB0000;'>1.20</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Male   fixed  AgeChild       2.25      1.92      1.17  2.41</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 1</span><span> -</span><span style='color: #BB0000;'>1.51</span><span>   
 #&gt;   conf.high significance
-#&gt;       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
-#&gt; </span><span style='color: #555555;'>1</span><span>     1.68  *           
-#&gt; </span><span style='color: #555555;'>2</span><span>     3.44  ns          
-#&gt; </span><span style='color: #555555;'>3</span><span>    -</span><span style='color: #BB0000;'>0.624</span><span> ***         
-#&gt; </span><span style='color: #555555;'>4</span><span>     6.00  ns          </div></span></pre>
+#&gt;       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>     1.68  *           
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>     3.44  ns          
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span>    -</span><span style='color: #BB0000;'>0.624</span><span> ***         
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span>     6.00  ns          </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

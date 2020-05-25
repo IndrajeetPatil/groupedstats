@@ -42,7 +42,7 @@ in long format for plotting purposes. (Default: \code{topcount.long = FALSE}).}
 }
 \value{
 Dataframe with descriptive statistics for numeric variables (n, mean,
-sd, median, min, max)
+sd, median, min, max).
 }
 \description{
 Descriptive statistics for multiple variables for all grouping
@@ -75,7 +75,4 @@ groupedstats::grouped_summary(
   measures.type = "factor",
   topcount.long = TRUE
 )
-}
-\author{
-Indrajeet Patil
 }

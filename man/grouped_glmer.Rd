@@ -2,8 +2,8 @@
 % Please edit documentation in R/grouped_glmer.R
 \name{grouped_glmer}
 \alias{grouped_glmer}
-\title{Function to run generalized linear mixed-effects model (glmer) across
-multiple grouping variables.}
+\title{Function to run generalized linear mixed-effects model (\code{glmer})
+across multiple grouping variables.}
 \usage{
 grouped_glmer(
   data,
@@ -108,8 +108,8 @@ A tibble dataframe with tidy results from linear model or model
 summaries.
 }
 \description{
-Function to run generalized linear mixed-effects model (glmer) across
-multiple grouping variables.
+Function to run generalized linear mixed-effects model (\code{glmer})
+across multiple grouping variables.
 }
 \examples{
 
@@ -127,7 +127,4 @@ groupedstats::grouped_glmer(
 }
 \seealso{
 grouped_lmer
-}
-\author{
-Indrajeet Patil
 }

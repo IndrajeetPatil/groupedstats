@@ -52,6 +52,3 @@ groupedstats::grouped_ttest(
   var.equal = FALSE
 )
 }
-\author{
-Indrajeet Patil
-}

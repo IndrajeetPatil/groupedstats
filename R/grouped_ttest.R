@@ -1,7 +1,6 @@
 #' @title Function to run *t*-test on multiple variables across multiple
 #'   grouping variables.
 #' @name grouped_ttest
-#' @author Indrajeet Patil
 #' @return A tibble dataframe with tidy results from *t*-test analyses.
 #'
 #' @param data Dataframe from which variables are to be taken.

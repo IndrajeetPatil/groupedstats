@@ -123,6 +123,3 @@ groupedstats::grouped_lmer(
 )
 }
 }
-\author{
-Indrajeet Patil
-}

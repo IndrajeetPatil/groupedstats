@@ -58,6 +58,3 @@ groupedstats::grouped_aov(
   output = "tukey"
 )
 }
-\author{
-Indrajeet Patil
-}

@@ -1,6 +1,5 @@
 #' @title Running analysis of variance (aov) across multiple grouping variables.
 #' @name grouped_aov
-#' @author Indrajeet Patil
 #'
 #' @param output A character describing what output is expected. Two possible
 #'   options: `"tidy"` (default), which will return the results, or `"tukey"`,

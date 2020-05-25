@@ -1,7 +1,6 @@
-#' @title Function to run generalized linear model (glm) across multiple
+#' @title Function to run generalized linear model (`glm`) across multiple
 #'   grouping variables.
 #' @name grouped_glm
-#' @author Indrajeet Patil
 #' @return A tibble dataframe with tidy results from linear model.
 #'
 #' @inheritParams grouped_lm

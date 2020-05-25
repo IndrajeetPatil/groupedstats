@@ -20,7 +20,7 @@ Depends:
     R (>= 3.5.0)
 Imports: 
     broomExtra,
-    dplyr,
+    dplyr (>= 0.8.99.9003),
     effectsize,
     glue,
     haven,
@@ -41,6 +41,8 @@ Suggests:
     rmarkdown,
     spelling,
     testthat
+Remotes:
+    tidyverse/dplyr
 Encoding: UTF-8
 Language: en-US
 LazyData: true
