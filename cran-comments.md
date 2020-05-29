@@ -9,6 +9,4 @@
 
 ## Comments
 
-  - I am getting one NOTE: "Days since last update: 4".
-  - This is a hotfix release to correct tests that will fail with the upcoming
-    release of `dplyr 1.0.0`.
+  - This is a release to correct tests that fail with new release of `dplyr 1.0.0`.

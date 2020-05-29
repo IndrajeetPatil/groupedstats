@@ -93,6 +93,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "spelling",
+      "name": "spelling",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=spelling"
     }
   ],
   "softwareRequirements": [
@@ -118,14 +130,14 @@
       "@type": "SoftwareApplication",
       "identifier": "dplyr",
       "name": "dplyr",
-      "version": ">= 0.8.99.9003",
+      "version": ">= 1.0.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://github.com/tidyverse/dplyr"
+      "sameAs": "https://CRAN.R-project.org/package=dplyr"
     },
     {
       "@type": "SoftwareApplication",
@@ -266,7 +278,7 @@
     }
   ],
   "releaseNotes": "https://github.com/IndrajeetPatil/groupedstats/blob/master/NEWS.md",
-  "fileSize": "1192.342KB",
+  "fileSize": "1192.233KB",
   "contIntegration": ["https://travis-ci.org/IndrajeetPatil/groupedstats", "https://ci.appveyor.com/project/IndrajeetPatil/groupedstats"],
   "developmentStatus": ["http://www.repostatus.org/#active", "https://www.tidyverse.org/lifecycle/#retired"],
   "keywords": [

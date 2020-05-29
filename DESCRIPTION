@@ -20,7 +20,7 @@ Depends:
     R (>= 3.5.0)
 Imports: 
     broomExtra,
-    dplyr (>= 0.8.99.9003),
+    dplyr (>= 1.0.0),
     effectsize,
     glue,
     haven,
@@ -37,9 +37,8 @@ Suggests:
     gapminder,
     ggplot2,
     knitr,
-    rmarkdown
-Remotes:
-    tidyverse/dplyr
+    rmarkdown,
+    spelling
 Encoding: UTF-8
 Language: en-US
 LazyData: true
