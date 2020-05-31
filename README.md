@@ -24,10 +24,10 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2020--05--25-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2020--05--31-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
 [![minimal R
-version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
+version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)
 [![status](https://tinyverse.netlify.com/badge/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
 
 # Retirement
@@ -721,31 +721,31 @@ groupedstats::grouped_aov(
   formula = lifeExp ~ continent,
   output = "tukey"
 )
-#> # A tibble: 120 x 8
-#>     year term      comparison       estimate conf.low conf.high adj.p.value
-#>    <int> <chr>     <chr>               <dbl>    <dbl>     <dbl>       <dbl>
-#>  1  1952 continent Americas-Africa     14.1      9.21     19.1     7.35e-12
-#>  2  1952 continent Asia-Africa          7.18     2.66     11.7     2.11e- 4
-#>  3  1952 continent Europe-Africa       25.3     20.6      29.9     1.01e-14
-#>  4  1952 continent Oceania-Africa      30.1     15.5      44.7     7.12e- 7
-#>  5  1952 continent Asia-Americas       -6.97   -12.3      -1.59    4.28e- 3
-#>  6  1952 continent Europe-Americas     11.1      5.64     16.6     1.12e- 6
-#>  7  1952 continent Oceania-Americas    16.0      1.07     30.9     2.91e- 2
-#>  8  1952 continent Europe-Asia         18.1     13.0      23.2     5.87e-14
-#>  9  1952 continent Oceania-Asia        22.9      8.17     37.7     3.16e- 4
-#> 10  1952 continent Oceania-Europe       4.85    -9.97     19.7     8.95e- 1
-#>    significance
-#>    <chr>       
-#>  1 ***         
-#>  2 ***         
-#>  3 ***         
-#>  4 ***         
-#>  5 **          
-#>  6 ***         
-#>  7 *           
-#>  8 ***         
-#>  9 ***         
-#> 10 ns          
+#> # A tibble: 120 x 9
+#>     year term      contrast         null.value estimate conf.low conf.high
+#>    <int> <chr>     <chr>                 <dbl>    <dbl>    <dbl>     <dbl>
+#>  1  1952 continent Americas-Africa           0    14.1      9.21     19.1 
+#>  2  1952 continent Asia-Africa               0     7.18     2.66     11.7 
+#>  3  1952 continent Europe-Africa             0    25.3     20.6      29.9 
+#>  4  1952 continent Oceania-Africa            0    30.1     15.5      44.7 
+#>  5  1952 continent Asia-Americas             0    -6.97   -12.3      -1.59
+#>  6  1952 continent Europe-Americas           0    11.1      5.64     16.6 
+#>  7  1952 continent Oceania-Americas          0    16.0      1.07     30.9 
+#>  8  1952 continent Europe-Asia               0    18.1     13.0      23.2 
+#>  9  1952 continent Oceania-Asia              0    22.9      8.17     37.7 
+#> 10  1952 continent Oceania-Europe            0     4.85    -9.97     19.7 
+#>    adj.p.value significance
+#>          <dbl> <chr>       
+#>  1    7.35e-12 ***         
+#>  2    2.11e- 4 ***         
+#>  3    1.01e-14 ***         
+#>  4    7.12e- 7 ***         
+#>  5    4.28e- 3 **          
+#>  6    1.12e- 6 ***         
+#>  7    2.91e- 2 *           
+#>  8    5.87e-14 ***         
+#>  9    3.16e- 4 ***         
+#> 10    8.95e- 1 ns          
 #> # ... with 110 more rows
 ```
 

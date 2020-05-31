@@ -35,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">groupedstats</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.1.9000</span>
       </span>
     </div>
 
@@ -402,7 +402,7 @@
 )
 
 <span class="co"># labelled</span>
-<span class="no">df</span>$<span class="no">y</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/labelled/man/labelled.html">labelled</a></span>(<span class="no">df</span>$<span class="no">y</span>, <span class="kw">label</span> <span class="kw">=</span> <span class="st">"Y variable"</span>, <span class="kw">labels</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>())
+<span class="no">df</span>$<span class="no">y</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/labelled/man/reexports.html">labelled</a></span>(<span class="no">df</span>$<span class="no">y</span>, <span class="kw">label</span> <span class="kw">=</span> <span class="st">"Y variable"</span>, <span class="kw">labels</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>())
 
 <span class="co"># convert to a tibble</span>
 (<span class="no">df</span> <span class="kw">&lt;-</span> <span class="kw pkg">tibble</span><span class="kw ns">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span>(<span class="no">df</span>))
@@ -654,31 +654,31 @@
   <span class="kw">formula</span> <span class="kw">=</span> <span class="no">lifeExp</span> ~ <span class="no">continent</span>,
   <span class="kw">output</span> <span class="kw">=</span> <span class="st">"tukey"</span>
 )
-<span class="co">#&gt; # A tibble: 120 x 8</span>
-<span class="co">#&gt;     year term      comparison       estimate conf.low conf.high adj.p.value</span>
-<span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;               &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;</span>
-<span class="co">#&gt;  1  1952 continent Americas-Africa     14.1      9.21     19.1     7.35e-12</span>
-<span class="co">#&gt;  2  1952 continent Asia-Africa          7.18     2.66     11.7     2.11e- 4</span>
-<span class="co">#&gt;  3  1952 continent Europe-Africa       25.3     20.6      29.9     1.01e-14</span>
-<span class="co">#&gt;  4  1952 continent Oceania-Africa      30.1     15.5      44.7     7.12e- 7</span>
-<span class="co">#&gt;  5  1952 continent Asia-Americas       -6.97   -12.3      -1.59    4.28e- 3</span>
-<span class="co">#&gt;  6  1952 continent Europe-Americas     11.1      5.64     16.6     1.12e- 6</span>
-<span class="co">#&gt;  7  1952 continent Oceania-Americas    16.0      1.07     30.9     2.91e- 2</span>
-<span class="co">#&gt;  8  1952 continent Europe-Asia         18.1     13.0      23.2     5.87e-14</span>
-<span class="co">#&gt;  9  1952 continent Oceania-Asia        22.9      8.17     37.7     3.16e- 4</span>
-<span class="co">#&gt; 10  1952 continent Oceania-Europe       4.85    -9.97     19.7     8.95e- 1</span>
-<span class="co">#&gt;    significance</span>
-<span class="co">#&gt;    &lt;chr&gt;       </span>
-<span class="co">#&gt;  1 ***         </span>
-<span class="co">#&gt;  2 ***         </span>
-<span class="co">#&gt;  3 ***         </span>
-<span class="co">#&gt;  4 ***         </span>
-<span class="co">#&gt;  5 **          </span>
-<span class="co">#&gt;  6 ***         </span>
-<span class="co">#&gt;  7 *           </span>
-<span class="co">#&gt;  8 ***         </span>
-<span class="co">#&gt;  9 ***         </span>
-<span class="co">#&gt; 10 ns          </span>
+<span class="co">#&gt; # A tibble: 120 x 9</span>
+<span class="co">#&gt;     year term      contrast         null.value estimate conf.low conf.high</span>
+<span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt;  1  1952 continent Americas-Africa           0    14.1      9.21     19.1 </span>
+<span class="co">#&gt;  2  1952 continent Asia-Africa               0     7.18     2.66     11.7 </span>
+<span class="co">#&gt;  3  1952 continent Europe-Africa             0    25.3     20.6      29.9 </span>
+<span class="co">#&gt;  4  1952 continent Oceania-Africa            0    30.1     15.5      44.7 </span>
+<span class="co">#&gt;  5  1952 continent Asia-Americas             0    -6.97   -12.3      -1.59</span>
+<span class="co">#&gt;  6  1952 continent Europe-Americas           0    11.1      5.64     16.6 </span>
+<span class="co">#&gt;  7  1952 continent Oceania-Americas          0    16.0      1.07     30.9 </span>
+<span class="co">#&gt;  8  1952 continent Europe-Asia               0    18.1     13.0      23.2 </span>
+<span class="co">#&gt;  9  1952 continent Oceania-Asia              0    22.9      8.17     37.7 </span>
+<span class="co">#&gt; 10  1952 continent Oceania-Europe            0     4.85    -9.97     19.7 </span>
+<span class="co">#&gt;    adj.p.value significance</span>
+<span class="co">#&gt;          &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt;  1    7.35e-12 ***         </span>
+<span class="co">#&gt;  2    2.11e- 4 ***         </span>
+<span class="co">#&gt;  3    1.01e-14 ***         </span>
+<span class="co">#&gt;  4    7.12e- 7 ***         </span>
+<span class="co">#&gt;  5    4.28e- 3 **          </span>
+<span class="co">#&gt;  6    1.12e- 6 ***         </span>
+<span class="co">#&gt;  7    2.91e- 2 *           </span>
+<span class="co">#&gt;  8    5.87e-14 ***         </span>
+<span class="co">#&gt;  9    3.16e- 4 ***         </span>
+<span class="co">#&gt; 10    8.95e- 1 ns          </span>
 <span class="co">#&gt; # ... with 110 more rows</span></pre></div>
 <p>Note that the p-value is adjusted adjusted for the number of tests conducted at each level of the grouping variable, and not across all tests conducted.</p>
 </div>
@@ -719,7 +719,7 @@
 <span class="co">#&gt; 7 **          </span>
 <span class="co">#&gt; 8 ***</span></pre></div>
 <p>Note that the <code>statistic</code> will either be a <code>t</code> (gaussian, e.g.) or a <code>z</code> (binomial, e.g.) value, based on the family of models used.</p>
-<p>You can also get a model summary across all models with <code><a href="http://broom.tidyverse.org/reference/reexports.html">broom::glance</a></code> methods-</p>
+<p>You can also get a model summary across all models with <code><a href="https://broom.tidymodels.org/reference/reexports.html">broom::glance</a></code> methods-</p>
 <div class="sourceCode" id="cb18"><pre class="r"><span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
 
@@ -1301,9 +1301,9 @@
 <li><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></li>
 <li><a href="https://zenodo.org/badge/latestdoi/126624251"><img src="https://zenodo.org/badge/126624251.svg" alt="DOI"></a></li>
 <li><a href="http://www.repostatus.org/#active"><img src="http://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active - The project has reached a stable, usable state and is being actively developed."></a></li>
-<li><a href="https://github.com/IndrajeetPatil/groupedstats/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--05--25-yellowgreen.svg" alt="Last-changedate"></a></li>
+<li><a href="https://github.com/IndrajeetPatil/groupedstats/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--05--31-yellowgreen.svg" alt="Last-changedate"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#retired"><img src="https://img.shields.io/badge/lifecycle-retired-orange.svg" alt="lifecycle"></a></li>
-<li><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg" alt="minimal R version"></a></li>
+<li><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg" alt="minimal R version"></a></li>
 <li><a href="https://CRAN.R-project.org/package=groupedstats"><img src="https://tinyverse.netlify.com/badge/groupedstats" alt="status"></a></li>
 </ul>
 </div>
