@@ -20,7 +20,7 @@ Depends:
     R (>= 3.6.0)
 Imports: 
     broomExtra,
-    dplyr (>= 1.0.0),
+    dplyr,
     effectsize,
     glue,
     haven,
