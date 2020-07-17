@@ -128,7 +128,8 @@ grouped_summary <- function(data,
       y = dplyr::summarise(df_results, n_obs = dplyr::n()),
       by = purrr::map_chr(.x = grouping.vars, .f = rlang::as_string)
     ) %>%
-    dplyr::mutate(.data = ., n = n_obs - n_missing) %>% # changing column names
+    dplyr::mutate(.data = ., n = n_obs - n_missing) %>%
+    # changing column names
     dplyr::select(.data = ., -n_obs) %>%
     purrr::set_names(x = ., nm = ~ sub("numeric.|factor.|^n_|_rate$", "", .x))
 

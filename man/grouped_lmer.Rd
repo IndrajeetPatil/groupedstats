@@ -38,12 +38,6 @@ grouped_lmer(
 }
     \item{\code{REML}}{logical scalar - Should the estimates be chosen to
     optimize the REML criterion (as opposed to the log-likelihood)?}
-    \item{\code{control}}{a list (of correct class, resulting from
-    \code{\link[lme4]{lmerControl}()} or \code{\link[lme4]{glmerControl}()}
-    respectively) containing control parameters, including the nonlinear
-    optimizer to be used and parameters to be passed through to the
-    nonlinear optimizer, see the \code{*lmerControl} documentation for
-    details.}
     \item{\code{start}}{a named \code{\link{list}} of starting values for the
     parameters in the model.  For \code{lmer} this can be a numeric
     vector or a list with one component named \code{"theta"}.}

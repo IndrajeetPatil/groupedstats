@@ -36,7 +36,7 @@ both numeric \strong{and} variables simultaneously.}
 in long format for plotting purposes. (Default: \code{topcount.long = FALSE}).}
 
 \item{k}{Number of digits after decimal point (should be an integer)
-(Default: \code{k = 3}).}
+(Default: \code{k = 3L}).}
 
 \item{...}{Currently ignored.}
 }

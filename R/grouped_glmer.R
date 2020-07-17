@@ -5,7 +5,7 @@
 #'   summaries.
 #'
 #' @inheritParams grouped_lm
-#' @inheritDotParams lme4::glmer
+#' @inheritDotParams lme4::glmer -control
 #'
 #' @importFrom broomExtra grouped_tidy grouped_glance grouped_augment
 #' @export

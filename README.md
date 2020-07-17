@@ -24,7 +24,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2020--05--31-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2020--07--17-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)
@@ -243,7 +243,7 @@ groupedstats::grouped_summary(
 #> 16 14.1   14.9   16        20    0.659        11.7            14.5  
 #> 17 10.6   12.2   13.7       7    1.14          7.41           13.0  
 #> 18  2      2.4    2.7       5    0.379         0.829           2.93 
-#> 19  0.183  0.183  0.183     1   NA           NaN             NaN    
+#> 19  0.183  0.183  0.183     1   NA            NA              NA    
 #> 20 13.4   15.4   18.6       7    1.14         11.0            16.6
 ```
 

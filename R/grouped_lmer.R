@@ -5,7 +5,7 @@
 #'   model. Note that *p*-value is computed using `parameters::p_value`.
 #'
 #' @inheritParams grouped_lm
-#' @inheritDotParams lme4::lmer
+#' @inheritDotParams lme4::lmer -control
 #' @inheritParams parameters::p_value
 #'
 #' @importFrom dplyr left_join

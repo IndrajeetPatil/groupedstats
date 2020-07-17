@@ -31,12 +31,6 @@ grouped_glmer(
     for design matrices from grouping factors.}
     \item{\code{family}}{a GLM family, see \code{\link[stats]{glm}} and
     \code{\link[stats]{family}}.}
-    \item{\code{control}}{a list (of correct class, resulting from
-    \code{\link[lme4]{lmerControl}()} or \code{\link[lme4]{glmerControl}()}
-    respectively) containing control parameters, including the nonlinear
-    optimizer to be used and parameters to be passed through to the
-    nonlinear optimizer, see the \code{*lmerControl} documentation for
-    details.}
     \item{\code{start}}{a named list of starting values for the parameters in the
     model, or a numeric vector.  A numeric \code{start} argument will be
     used as the starting value of \code{theta}.  If \code{start} is a
