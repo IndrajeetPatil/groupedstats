@@ -8,14 +8,16 @@ init:
         Import-Module '..\appveyor-tool.ps1'
 install:
   - ps: Bootstrap
+  - ps: (new-object net.webclient).DownloadFile('https://sourceforge.net/projects/mcmc-jags/files/JAGS/4.x/Windows/JAGS-4.2.0-Rtools33.exe', 'C:\projects\JAGS-4.2.0.exe')
+  - cmd: C:\projects\JAGS-4.2.0.exe /S
 
 # Do not build feature branch with open Pull Requests
 skip_branch_with_pr: true
 
 # Adapt as necessary starting from here
 
-cache:
-  - C:\RLibrary
+# cache:
+#   - C:\RLibrary
 
 # Adapt as necessary starting from here
 before_test:
@@ -29,15 +31,16 @@ environment:
     NOT_CRAN: true
     _R_CHECK_FORCE_SUGGESTS: true
     _R_CHECK_CRAN_INCOMING_: true
+    R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
 
   matrix:
   - R_VERSION: release
     R_ARCH: x64
     GCC_PATH: mingw_64
 
-  - R_VERSION: devel
-    R_ARCH: x64
-    GCC_PATH: mingw_64
+  # - R_VERSION: devel
+  #   R_ARCH: x64
+  #   GCC_PATH: mingw_64
 
   - R_VERSION: oldrel
     R_ARCH: x64
