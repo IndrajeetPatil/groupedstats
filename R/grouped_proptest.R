@@ -35,8 +35,7 @@ grouped_proptest <- function(data, grouping.vars, measure, ...) {
   grouping_vars <- dplyr::group_vars(df_grouped)
 
   # calculating percentages and running chi-squared test
-  df_results <-
-    df_grouped %>%
+  df_grouped %>%
     {
       dplyr::left_join(
         x = (.) %>%
@@ -51,9 +50,6 @@ grouped_proptest <- function(data, grouping.vars, measure, ...) {
     } %>%
     dplyr::ungroup(.) %>%
     signif_column(data = ., p = p.value)
-
-  # the result must be returned explicitly here
-  return(df_results)
 }
 
 # safer version of chi-squared test that returns NAs
