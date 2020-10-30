@@ -3,7 +3,7 @@
 
 # groupedstats: Grouped statistical analysis in a tidy way
 
-[![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
+[![CRAN\_Release\_Badge](https://www.r-pkg.org/badges/version-ago/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
 [![CRAN
 Checks](https://cranchecks.info/badges/summary/groupedstats)](https://cran.r-project.org/web/checks/check_results_groupedstats.html)
 [![packageversion](https://img.shields.io/badge/Package%20version-1.0.1.9000-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
@@ -23,8 +23,8 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![DOI](https://zenodo.org/badge/126624251.svg)](https://zenodo.org/badge/latestdoi/126624251)
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
-developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2020--07--17-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2020--10--30-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)
@@ -469,8 +469,6 @@ two relationships of interest for **each country** across years:
     regression models and one grouping variable with 142 levels
     (countries)
 
-<!-- end list -->
-
 ``` r
 # for reproducibility
 set.seed(123)
@@ -679,29 +677,29 @@ groupedstats::grouped_aov(
   formula = mpg ~ am * wt, # note that this function takes a formula
   output = "tidy" # tidy dataframe with results
 )
-#> # A tibble: 9 x 11
-#>     cyl term  F.value   df1   df2 p.value eta.sq.partial conf.level conf.low
-#>   <dbl> <chr>   <dbl> <dbl> <dbl>   <dbl>          <dbl>      <dbl>    <dbl>
-#> 1     6 am    5.07        1     3  0.110        0.628          0.95   0     
-#> 2     6 wt    5.91        1     3  0.0933       0.663          0.95   0     
-#> 3     6 am:wt 4.06        1     3  0.137        0.575          0.95   0     
-#> 4     4 am    5.95        1     7  0.0448       0.459          0.95   0     
-#> 5     4 wt    4.59        1     7  0.0693       0.396          0.95   0     
-#> 6     4 am:wt 3.17        1     7  0.118        0.311          0.95   0     
-#> 7     8 am    0.0456      1    10  0.835        0.00454        0.95   0     
-#> 8     8 wt    8.45        1    10  0.0156       0.458          0.95   0.0227
-#> 9     8 am:wt 0.00331     1    10  0.955        0.000330       0.95   0     
-#>   conf.high significance
-#>       <dbl> <chr>       
-#> 1     0.883 ns          
-#> 2     0.894 ns          
-#> 3     0.867 ns          
-#> 4     0.760 *           
-#> 5     0.729 ns          
-#> 6     0.684 ns          
-#> 7     0.277 ns          
-#> 8     0.729 *           
-#> 9     0.104 ns
+#> # A tibble: 9 x 13
+#>     cyl term    sumsq   df1  meansq F.value p.value   df2 estimate ci.width
+#>   <dbl> <chr>   <dbl> <dbl>   <dbl>   <dbl>   <dbl> <dbl>    <dbl>    <dbl>
+#> 1     6 am     3.56       1  3.56   5.07     0.110      3 0.628        0.95
+#> 2     6 wt     4.15       1  4.15   5.91     0.0933     3 0.663        0.95
+#> 3     6 am:wt  2.86       1  2.86   4.06     0.137      3 0.575        0.95
+#> 4     4 am    58.4        1 58.4    5.95     0.0448     7 0.459        0.95
+#> 5     4 wt    45.1        1 45.1    4.59     0.0693     7 0.396        0.95
+#> 6     4 am:wt 31.1        1 31.1    3.17     0.118      7 0.311        0.95
+#> 7     8 am     0.21       1  0.21   0.0456   0.835     10 0.00454      0.95
+#> 8     8 wt    38.9        1 38.9    8.45     0.0156    10 0.458        0.95
+#> 9     8 am:wt  0.0152     1  0.0152 0.00331  0.955     10 0.000330     0.95
+#>   conf.low conf.high significance
+#>      <dbl>     <dbl> <chr>       
+#> 1   0          0.883 ns          
+#> 2   0          0.894 ns          
+#> 3   0          0.867 ns          
+#> 4   0          0.760 *           
+#> 5   0          0.729 ns          
+#> 6   0          0.684 ns          
+#> 7   0          0.277 ns          
+#> 8   0.0227     0.729 *           
+#> 9   0          0.104 ns
 ```
 
 The same function can also be used to compute Tukey’s test of Honest
@@ -1283,9 +1281,9 @@ In these examples, two things are worth noting that generalize to
 **all** functions in this package and stem from how tidy evaluation
 (<https://adv-r.hadley.nz/evaluation.html>) works:
 
-  - If just one independent variable is provided for multiple dependent
+-   If just one independent variable is provided for multiple dependent
     variables, it will be used as a common variable.
-  - If you want to use a selection of variables, you need not use `c()`.
+-   If you want to use a selection of variables, you need not use `c()`.
 
 # Extending with `purrr`
 
@@ -1350,14 +1348,14 @@ are encouraged.
 Here are some simple ways in which you can contribute (in the increasing
 order of commitment):
 
-  - Read and correct any inconsistencies in the
+-   Read and correct any inconsistencies in the
     [documentation](https://indrajeetpatil.github.io/groupedstats/)
 
-  - Raise issues about bugs or wanted features
+-   Raise issues about bugs or wanted features
 
-  - Review code
+-   Review code
 
-  - Add new functionality (in the form of new plotting functions or
+-   Add new functionality (in the form of new plotting functions or
     helpers for preparing subtitles)
 
 Please note that this project is released with a [Contributor Code of

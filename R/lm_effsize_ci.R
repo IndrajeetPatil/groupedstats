@@ -23,6 +23,7 @@
 #'
 #' @importFrom effectsize eta_squared omega_squared
 #' @importFrom broomExtra tidy_parameters
+#' @importFrom parameters standardize_names
 #' @importFrom stats anova na.omit lm
 #' @importFrom rlang exec
 #' @importFrom dplyr matches everything contains
@@ -76,7 +77,7 @@ lm_effsize_ci <- function(object,
       partial = partial,
       ci = conf.level
     ) %>%
-    broomExtra::easystats_to_tidy_names(.) %>%
+    parameters::standardize_names(data = ., style = "broom") %>%
     dplyr::filter(.data = ., !grepl(pattern = "Residuals", x = term, ignore.case = TRUE)) %>%
     dplyr::select(.data = ., -dplyr::matches("group"))
 
@@ -86,21 +87,7 @@ lm_effsize_ci <- function(object,
     y = effsize_df,
     by = "term"
   ) %>% # renaming to standard term 'estimate'
-    dplyr::rename(
-      .data = .,
-      "df1" = "df",
-      "conf.level" = "ci",
-      "F.value" = "statistic"
-    ) %>%
-    dplyr::select(
-      .data = .,
-      term,
-      F.value,
-      dplyr::contains("df"),
-      p.value,
-      dplyr::everything(),
-      -dplyr::contains("square")
-    )
+    dplyr::rename("df1" = "df", "F.value" = "statistic")
 }
 
 #' @title Standardize a dataframe with effect sizes for `aov`, `lm`, `aovlist`,

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function to run generalized linear model (<code>glm</code>) across multiple
+<title>Function to run generalized linear model (glm) across multiple
 grouping variables. — grouped_glm • groupedstats</title>
 
 
@@ -48,7 +48,7 @@ grouping variables. — grouped_glm • groupedstats</title>
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Function to run generalized linear model (<code>glm</code>) across multiple
+<meta property="og:title" content="Function to run generalized linear model (glm) across multiple
 grouping variables. — grouped_glm" />
 <meta property="og:description" content="Function to run generalized linear model (glm) across multiple
 grouping variables." />
@@ -83,7 +83,7 @@ grouping variables." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">groupedstats</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.2</span>
       </span>
     </div>
 
@@ -139,14 +139,14 @@ grouping variables.</h1>
 grouping variables.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>grouped_glm</span>(
-  <span class='no'>data</span>,
-  <span class='no'>grouping.vars</span>,
-  <span class='no'>...</span>,
-  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>,
-  <span class='kw'>tidy.args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>conf.int</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>),
-  <span class='kw'>augment.args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>()
-)</pre>
+    <pre class="usage"><span class='fu'>grouped_glm</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  <span class='va'>grouping.vars</span>,
+  <span class='va'>...</span>,
+  output <span class='op'>=</span> <span class='st'>"tidy"</span>,
+  tidy.args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>conf.int <span class='op'>=</span> <span class='cn'>TRUE</span>, conf.level <span class='op'>=</span> <span class='fl'>0.95</span><span class='op'>)</span>,
+  augment.args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -161,8 +161,8 @@ grouping variables.</p>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Additional arguments to <code><a href='https://broom.tidymodels.org/reference/reexports.html'>broom::tidy</a></code>, <code><a href='https://broom.tidymodels.org/reference/reexports.html'>broom::glance</a></code>, or
-<code><a href='https://broom.tidymodels.org/reference/reexports.html'>broom::augment</a></code> S3 method.</p></td>
+      <td><p>Additional arguments to <code><a href='https://rdrr.io/pkg/generics/man/tidy.html'>broom::tidy</a></code>, <code><a href='https://rdrr.io/pkg/generics/man/glance.html'>broom::glance</a></code>, or
+<code><a href='https://rdrr.io/pkg/generics/man/augment.html'>broom::augment</a></code> S3 method.</p></td>
     </tr>
     <tr>
       <th>output</th>
@@ -189,28 +189,29 @@ which will return model summaries.</p></td>
 <code><a href='grouped_glmer.html'>grouped_glmer</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'>grouped_glm</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>,
-  <span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>am</span> ~ <span class='no'>wt</span>,
-  <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>cyl</span>,
-  <span class='kw'>family</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/family.html'>binomial</a></span>(<span class='kw'>link</span> <span class='kw'>=</span> <span class='st'>"logit"</span>)
-)</div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: algorithm did not converge</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: collapsing to unique 'x' values</span></div><div class='output co'>#&gt; <span class='warning'>Warning: collapsing to unique 'x' values</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 9</span><span>
-#&gt;     cyl term        estimate std.error statistic p.value      conf.low conf.high
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span>     4 (Intercept)    13.8       7.79  1.77      0.077</span><span style='text-decoration: underline;'>3</span><span>       3.30       38.4  
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span>     4 wt             -</span><span style='color: #BB0000;'>5.12</span><span>      2.98 -</span><span style='color: #BB0000;'>1.71</span><span>      0.086</span><span style='text-decoration: underline;'>5</span><span>     -</span><span style='color: #BB0000;'>14.5</span><span>        -</span><span style='color: #BB0000;'>1.04</span><span> 
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span>     6 (Intercept)   417.   </span><span style='text-decoration: underline;'>871</span><span>566.    0.000</span><span style='text-decoration: underline;'>478</span><span>  1.00   -</span><span style='color: #BB0000;text-decoration: underline;'>113</span><span style='color: #BB0000;'>315.</span><span>         </span><span style='color: #BB0000;'>NA</span><span>    
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span>     6 wt           -</span><span style='color: #BB0000;'>137.</span><span>   </span><span style='text-decoration: underline;'>284</span><span>315.   -</span><span style='color: #BB0000;'>0.000</span><span style='color: #BB0000;text-decoration: underline;'>481</span><span>  1.00        </span><span style='color: #BB0000;'>NA</span><span>       </span><span style='text-decoration: underline;'>25</span><span>376.   
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span>     8 (Intercept)    28.3      21.4   1.32      0.187        0.005</span><span style='text-decoration: underline;'>42</span><span>    99.8  
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span>     8 wt             -</span><span style='color: #BB0000;'>8.46</span><span>      6.17 -</span><span style='color: #BB0000;'>1.37</span><span>      0.171      -</span><span style='color: #BB0000;'>29.1</span><span>        -</span><span style='color: #BB0000;'>0.563</span><span>
-#&gt;   significance
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> ns          
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> ns          
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> ns          
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> ns          
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> ns          
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> ns          </div></span></pre>
+    <pre class="examples"><div class='input'><span class='fu'>groupedstats</span><span class='fu'>::</span><span class='fu'>grouped_glm</span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='va'>mtcars</span>,
+  formula <span class='op'>=</span> <span class='va'>am</span> <span class='op'>~</span> <span class='va'>wt</span>,
+  grouping.vars <span class='op'>=</span> <span class='va'>cyl</span>,
+  family <span class='op'>=</span> <span class='fu'>stats</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/family.html'>binomial</a></span><span class='op'>(</span>link <span class='op'>=</span> <span class='st'>"logit"</span><span class='op'>)</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: algorithm did not converge</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: collapsing to unique 'x' values</span></div><div class='output co'>#&gt; <span class='warning'>Warning: collapsing to unique 'x' values</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span class='warning'>Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6 x 9</span><span>
+#&gt;     </span><span style='font-weight: bold;'>cyl</span><span> </span><span style='font-weight: bold;'>term</span><span>        </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>std.error</span><span> </span><span style='font-weight: bold;'>statistic</span><span> </span><span style='font-weight: bold;'>p.value</span><span>      </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>     4 (Intercept)    13.8       7.79  1.77      </span><span style='color: #555555;'>0.0</span><span>77</span><span style='text-decoration: underline;'>3</span><span>       3.30       38.4  
+#&gt; </span><span style='color: #555555;'>2</span><span>     4 wt             -</span><span style='color: #BB0000;'>5.12</span><span>      2.98 -</span><span style='color: #BB0000;'>1.71</span><span>      </span><span style='color: #555555;'>0.0</span><span>86</span><span style='text-decoration: underline;'>5</span><span>     -</span><span style='color: #BB0000;'>14.5</span><span>        -</span><span style='color: #BB0000;'>1.04</span><span> 
+#&gt; </span><span style='color: #555555;'>3</span><span>     6 (Intercept)   417.   </span><span style='text-decoration: underline;'>871</span><span style='color: #555555;'>566</span><span>.    </span><span style='color: #555555;'>0.000</span><span style='text-decoration: underline;'>478</span><span>  1.00   -</span><span style='color: #BB0000;text-decoration: underline;'>113</span><span style='color: #555555;'>315</span><span style='color: #BB0000;'>.</span><span>         </span><span style='color: #BB0000;'>NA</span><span>    
+#&gt; </span><span style='color: #555555;'>4</span><span>     6 wt           -</span><span style='color: #BB0000;'>137.</span><span>   </span><span style='text-decoration: underline;'>284</span><span style='color: #555555;'>315</span><span>.   -</span><span style='color: #555555;'>0.000</span><span style='color: #BB0000;text-decoration: underline;'>481</span><span>  1.00        </span><span style='color: #BB0000;'>NA</span><span>       </span><span style='text-decoration: underline;'>25</span><span>3</span><span style='color: #555555;'>76</span><span>.   
+#&gt; </span><span style='color: #555555;'>5</span><span>     8 (Intercept)    28.3      21.4   1.32      </span><span style='color: #555555;'>0.</span><span>187        </span><span style='color: #555555;'>0.00</span><span>5</span><span style='text-decoration: underline;'>42</span><span>    99.8  
+#&gt; </span><span style='color: #555555;'>6</span><span>     8 wt             -</span><span style='color: #BB0000;'>8.46</span><span>      6.17 -</span><span style='color: #BB0000;'>1.37</span><span>      </span><span style='color: #555555;'>0.</span><span>171      -</span><span style='color: #BB0000;'>29.1</span><span>        -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>563</span><span>
+#&gt;   </span><span style='font-weight: bold;'>significance</span><span>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
+#&gt; </span><span style='color: #555555;'>1</span><span> ns          
+#&gt; </span><span style='color: #555555;'>2</span><span> ns          
+#&gt; </span><span style='color: #555555;'>3</span><span> ns          
+#&gt; </span><span style='color: #555555;'>4</span><span> ns          
+#&gt; </span><span style='color: #555555;'>5</span><span> ns          
+#&gt; </span><span style='color: #555555;'>6</span><span> ns          </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -226,7 +227,7 @@ which will return model summaries.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

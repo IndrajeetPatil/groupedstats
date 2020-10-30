@@ -1,13 +1,13 @@
 Type: Package
 Package: groupedstats
 Title: Grouped Statistical Analyses in a Tidy Way
-Version: 1.0.1.9000
+Version: 1.0.2
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
            role = c("aut", "cre", "cph"),
            email = "patilindrajeet.science@gmail.com",
-           comment = c(ORCID = "0000-0003-1995-6531"))
+           comment = c(ORCID = "0000-0003-1995-6531", Twitter = "@patilindrajeets"))
 Maintainer: Indrajeet Patil <patilindrajeet.science@gmail.com>
 Description: Collection of functions to run statistical tests
     across all combinations of multiple grouping variables.

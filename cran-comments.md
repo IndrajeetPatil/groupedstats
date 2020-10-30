@@ -9,4 +9,4 @@
 
 ## Comments
 
-  - This is a release to correct tests that fail with new release of `dplyr 1.0.0`.
+  - Fixes breakage caused by `broomExtra` update.

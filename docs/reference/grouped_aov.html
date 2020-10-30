@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">groupedstats</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.2</span>
       </span>
     </div>
 
@@ -134,14 +134,14 @@
     <p>Running analysis of variance (aov) across multiple grouping variables.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>grouped_aov</span>(
-  <span class='no'>data</span>,
-  <span class='no'>grouping.vars</span>,
-  <span class='no'>formula</span>,
-  <span class='kw'>effsize</span> <span class='kw'>=</span> <span class='st'>"eta"</span>,
-  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>,
-  <span class='no'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>grouped_aov</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  <span class='va'>grouping.vars</span>,
+  <span class='va'>formula</span>,
+  effsize <span class='op'>=</span> <span class='st'>"eta"</span>,
+  output <span class='op'>=</span> <span class='st'>"tidy"</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -183,24 +183,25 @@ summary is currently not supported for this function.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'># uses dataset included in the `groupedstats` package</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>groupedstats</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://indrajeetpatil.github.io/groupedstats/'>groupedstats</a></span><span class='op'>)</span>
 
 <span class='co'># effect size</span>
-<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'>grouped_aov</span>(
-  <span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>wt</span> ~ <span class='no'>mpg</span>,
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>,
-  <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>am</span>,
-  <span class='kw'>effsize</span> <span class='kw'>=</span> <span class='st'>"eta"</span>
-)</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 11</span><span>
-#&gt;      am term  F.value   df1   df2   p.value eta.sq.partial conf.level conf.low
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span>     1 mpg      52.3     1    11 0.000</span><span style='text-decoration: underline;'>016</span><span>9          0.826       0.95    0.543
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span>     0 mpg      24.4     1    17 0.000</span><span style='text-decoration: underline;'>125</span><span>           0.589       0.95    0.243
-#&gt;   conf.high significance
-#&gt;       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span>     0.913 ***         
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span>     0.766 ***         </div></span></pre>
+<span class='fu'>groupedstats</span><span class='fu'>::</span><span class='fu'>grouped_aov</span><span class='op'>(</span>
+  formula <span class='op'>=</span> <span class='va'>wt</span> <span class='op'>~</span> <span class='va'>mpg</span>,
+  data <span class='op'>=</span> <span class='va'>mtcars</span>,
+  grouping.vars <span class='op'>=</span> <span class='va'>am</span>,
+  effsize <span class='op'>=</span> <span class='st'>"eta"</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 2 x 13</span><span>
+#&gt;      </span><span style='font-weight: bold;'>am</span><span> </span><span style='font-weight: bold;'>term</span><span>  </span><span style='font-weight: bold;'>sumsq</span><span>   </span><span style='font-weight: bold;'>df1</span><span> </span><span style='font-weight: bold;'>meansq</span><span> </span><span style='font-weight: bold;'>F.value</span><span>   </span><span style='font-weight: bold;'>p.value</span><span>   </span><span style='font-weight: bold;'>df2</span><span> </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>ci.width</span><span>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>     1 mpg    3.77     1   3.77    52.3 </span><span style='color: #555555;'>0.000</span><span style='color: #555555;text-decoration: underline;'>0</span><span style='text-decoration: underline;'>16</span><span>9    11    </span><span style='color: #555555;'>0.</span><span>826     </span><span style='color: #555555;'>0.</span><span>95
+#&gt; </span><span style='color: #555555;'>2</span><span>     </span><span style='color: #555555;'>0</span><span> mpg    6.41     1   6.41    24.4 </span><span style='color: #555555;'>0.000</span><span style='text-decoration: underline;'>125</span><span>     17    </span><span style='color: #555555;'>0.</span><span>589     </span><span style='color: #555555;'>0.</span><span>95
+#&gt;   </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>significance</span><span>
+#&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
+#&gt; </span><span style='color: #555555;'>1</span><span>    </span><span style='color: #555555;'>0.</span><span>543     </span><span style='color: #555555;'>0.</span><span>913 ***         
+#&gt; </span><span style='color: #555555;'>2</span><span>    </span><span style='color: #555555;'>0.</span><span>243     </span><span style='color: #555555;'>0.</span><span>766 ***         </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -216,7 +217,7 @@ summary is currently not supported for this function.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Linear mixed-effects model (<code>lmer</code>) across multiple grouping
+<title>Linear mixed-effects model (lmer) across multiple grouping
 variables. — grouped_lmer • groupedstats</title>
 
 
@@ -48,7 +48,7 @@ variables. — grouped_lmer • groupedstats</title>
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Linear mixed-effects model (<code>lmer</code>) across multiple grouping
+<meta property="og:title" content="Linear mixed-effects model (lmer) across multiple grouping
 variables. — grouped_lmer" />
 <meta property="og:description" content="Linear mixed-effects model (lmer) across multiple grouping
 variables." />
@@ -83,7 +83,7 @@ variables." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">groupedstats</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.2</span>
       </span>
     </div>
 
@@ -139,15 +139,15 @@ variables.</h1>
 variables.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>grouped_lmer</span>(
-  <span class='no'>data</span>,
-  <span class='no'>grouping.vars</span>,
-  <span class='no'>...</span>,
-  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>,
-  <span class='kw'>tidy.args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>conf.int</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>, <span class='kw'>effects</span> <span class='kw'>=</span> <span class='st'>"fixed"</span>, <span class='kw'>conf.method</span> <span class='kw'>=</span>
-    <span class='st'>"Wald"</span>),
-  <span class='kw'>augment.args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>()
-)</pre>
+    <pre class="usage"><span class='fu'>grouped_lmer</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  <span class='va'>grouping.vars</span>,
+  <span class='va'>...</span>,
+  output <span class='op'>=</span> <span class='st'>"tidy"</span>,
+  tidy.args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>conf.int <span class='op'>=</span> <span class='cn'>TRUE</span>, conf.level <span class='op'>=</span> <span class='fl'>0.95</span>, effects <span class='op'>=</span> <span class='st'>"fixed"</span>, conf.method <span class='op'>=</span>
+    <span class='st'>"Wald"</span><span class='op'>)</span>,
+  augment.args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -162,16 +162,16 @@ variables.</p>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Arguments passed on to <code><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lme4::lmer</a></code></p><dl'>
+      <td><p>Arguments passed on to <code><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lme4::lmer</a></code></p><dl>
     <dt><code>formula</code></dt><dd><p>a two-sided linear formula object describing both the
     fixed-effects and random-effects part of the model, with the
-    response on the left of a <code>~</code> operator and the terms, separated
-    by <code>+</code> operators, on the right.  Random-effects terms are
-    distinguished by vertical bars (<code>|</code>) separating expressions
+    response on the left of a <code><a href='https://rdrr.io/r/base/tilde.html'>~</a></code> operator and the terms, separated
+    by <code><a href='https://rdrr.io/r/base/Arithmetic.html'>+</a></code> operators, on the right.  Random-effects terms are
+    distinguished by vertical bars (<code><a href='https://rdrr.io/r/base/Logic.html'>|</a></code>) separating expressions
     for design matrices from grouping factors.  Two vertical bars
-    (<code>||</code>) can be used to specify multiple uncorrelated random
+    (<code><a href='https://rdrr.io/r/base/Logic.html'>||</a></code>) can be used to specify multiple uncorrelated random
     effects for the same grouping variable. <!-- %---------- -->
-    (Because of the way it is implemented, the <code>||</code>-syntax <em>works
+    (Because of the way it is implemented, the <code><a href='https://rdrr.io/r/base/Logic.html'>||</a></code>-syntax <em>works
        only for design matrices containing numeric (continuous) predictors</em>;
      to fit models with independent categorical effects, see <code><a href='https://rdrr.io/pkg/lme4/man/dummy.html'>dummy</a></code>
      or the <code>lmer_alt</code> function from the <a href='https://CRAN.R-project.org/package=afex'><span class="pkg">afex</span></a> package.)</p></dd>
@@ -239,51 +239,52 @@ which will return model summaries.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A tibble dataframe with tidy results from a linear mixed-effects
-model. Note that <em>p</em>-value is computed using <code><a href='https://rdrr.io/pkg/parameters/man/p_value.html'>parameters::p_value</a></code>.</p>
+model. Note that <em>p</em>-value is computed using <code><a href='https://easystats.github.io/parameters/reference/p_value.html'>parameters::p_value</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='co'># for reproducibility</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
 
 <span class='co'># loading libraries containing data</span>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>gapminder</span>)
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/jennybc/gapminder'>gapminder</a></span><span class='op'>)</span>
 
 <span class='co'># getting tidy output of results</span>
 <span class='co'># let's use only subset of the data</span>
-<span class='kw pkg'>groupedstats</span><span class='kw ns'>::</span><span class='fu'>grouped_lmer</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>gapminder</span>,
-  <span class='kw'>formula</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span>(<span class='no'>lifeExp</span>) ~ <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span>(<span class='no'>gdpPercap</span>) + (<span class='no'>gdpPercap</span> <span class='kw'>|</span> <span class='no'>continent</span>),
-  <span class='kw'>grouping.vars</span> <span class='kw'>=</span> <span class='no'>year</span>,
-  <span class='kw'>REML</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>tidy.args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>effects</span> <span class='kw'>=</span> <span class='st'>"fixed"</span>, <span class='kw'>conf.int</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>conf.level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>),
-  <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"tidy"</span>
-)</div><div class='output co'>#&gt; <span class='warning'>Warning: unable to evaluate scaled gradient</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Model failed to converge: degenerate  Hessian with 1 negative eigenvalues</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='warning'>Warning: unable to evaluate scaled gradient</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Model failed to converge: degenerate  Hessian with 1 negative eigenvalues</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 24 x 10</span><span>
-#&gt;     year effect term             estimate std.error statistic conf.low conf.high
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>               </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>  </span><span style='text-decoration: underline;'>1</span><span>952 fixed  (Intercept)         0.201    0.743      0.270 -</span><span style='color: #BB0000;'>1.26</span><span>        1.66 
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>  </span><span style='text-decoration: underline;'>1</span><span>952 fixed  scale(gdpPercap)    0.900    0.742      1.21  -</span><span style='color: #BB0000;'>0.555</span><span>       2.35 
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>  </span><span style='text-decoration: underline;'>1</span><span>957 fixed  (Intercept)         0.190    0.377      0.504 -</span><span style='color: #BB0000;'>0.548</span><span>       0.928
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>  </span><span style='text-decoration: underline;'>1</span><span>957 fixed  scale(gdpPercap)    0.756    0.384      1.97   0.002</span><span style='text-decoration: underline;'>55</span><span>     1.51 
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>  </span><span style='text-decoration: underline;'>1</span><span>962 fixed  (Intercept)         0.226    0.505      0.447 -</span><span style='color: #BB0000;'>0.765</span><span>       1.22 
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>  </span><span style='text-decoration: underline;'>1</span><span>962 fixed  scale(gdpPercap)    0.547    0.273      2.01   0.013</span><span style='text-decoration: underline;'>0</span><span>      1.08 
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>  </span><span style='text-decoration: underline;'>1</span><span>967 fixed  (Intercept)         0.234    0.307      0.764 -</span><span style='color: #BB0000;'>0.367</span><span>       0.836
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>  </span><span style='text-decoration: underline;'>1</span><span>967 fixed  scale(gdpPercap)    0.269    0.077</span><span style='text-decoration: underline;'>9</span><span>     3.46   0.117       0.422
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>  </span><span style='text-decoration: underline;'>1</span><span>972 fixed  (Intercept)         0.241    0.307      0.783 -</span><span style='color: #BB0000;'>0.362</span><span>       0.843
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span>  </span><span style='text-decoration: underline;'>1</span><span>972 fixed  scale(gdpPercap)    0.378    0.109      3.45   0.163       0.593
-#&gt;     p.value significance
-#&gt;       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 0.787    ns          
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 0.225    ns          
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 0.615    ns          
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 0.049</span><span style='text-decoration: underline;'>2</span><span>   *           
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 0.655    ns          
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 0.044</span><span style='text-decoration: underline;'>7</span><span>   *           
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 0.445    ns          
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 0.000</span><span style='text-decoration: underline;'>548</span><span> ***         
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> 0.434    ns          
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 0.000</span><span style='text-decoration: underline;'>556</span><span> ***         
-#&gt; </span><span style='color: #949494;'># ... with 14 more rows</span><span></div><div class='input'># }
+<span class='fu'>groupedstats</span><span class='fu'>::</span><span class='fu'>grouped_lmer</span><span class='op'>(</span>
+  data <span class='op'>=</span> <span class='va'>gapminder</span>,
+  formula <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='va'>lifeExp</span><span class='op'>)</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='va'>gdpPercap</span><span class='op'>)</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>gdpPercap</span> <span class='op'>|</span> <span class='va'>continent</span><span class='op'>)</span>,
+  grouping.vars <span class='op'>=</span> <span class='va'>year</span>,
+  REML <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  tidy.args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>effects <span class='op'>=</span> <span class='st'>"fixed"</span>, conf.int <span class='op'>=</span> <span class='cn'>TRUE</span>, conf.level <span class='op'>=</span> <span class='fl'>0.95</span><span class='op'>)</span>,
+  output <span class='op'>=</span> <span class='st'>"tidy"</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: unable to evaluate scaled gradient</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Model failed to converge: degenerate  Hessian with 1 negative eigenvalues</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='warning'>Warning: unable to evaluate scaled gradient</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Model failed to converge: degenerate  Hessian with 1 negative eigenvalues</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 24 x 10</span><span>
+#&gt;     </span><span style='font-weight: bold;'>year</span><span> </span><span style='font-weight: bold;'>effect</span><span> </span><span style='font-weight: bold;'>term</span><span>             </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>std.error</span><span> </span><span style='font-weight: bold;'>statistic</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>               </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span>  </span><span style='text-decoration: underline;'>1</span><span>95</span><span style='color: #555555;'>2</span><span> fixed  (Intercept)         </span><span style='color: #555555;'>0.</span><span>201    </span><span style='color: #555555;'>0.</span><span>743      </span><span style='color: #555555;'>0.</span><span>270 -</span><span style='color: #BB0000;'>1.26</span><span>        1.66 
+#&gt; </span><span style='color: #555555;'> 2</span><span>  </span><span style='text-decoration: underline;'>1</span><span>95</span><span style='color: #555555;'>2</span><span> fixed  scale(gdpPercap)    </span><span style='color: #555555;'>0.</span><span>900    </span><span style='color: #555555;'>0.</span><span>742      1.21  -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>555</span><span>       2.35 
+#&gt; </span><span style='color: #555555;'> 3</span><span>  </span><span style='text-decoration: underline;'>1</span><span>95</span><span style='color: #555555;'>7</span><span> fixed  (Intercept)         </span><span style='color: #555555;'>0.</span><span>190    </span><span style='color: #555555;'>0.</span><span>377      </span><span style='color: #555555;'>0.</span><span>504 -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>548</span><span>       </span><span style='color: #555555;'>0.</span><span>928
+#&gt; </span><span style='color: #555555;'> 4</span><span>  </span><span style='text-decoration: underline;'>1</span><span>95</span><span style='color: #555555;'>7</span><span> fixed  scale(gdpPercap)    </span><span style='color: #555555;'>0.</span><span>756    </span><span style='color: #555555;'>0.</span><span>384      1.97   </span><span style='color: #555555;'>0.00</span><span>2</span><span style='text-decoration: underline;'>55</span><span>     1.51 
+#&gt; </span><span style='color: #555555;'> 5</span><span>  </span><span style='text-decoration: underline;'>1</span><span>96</span><span style='color: #555555;'>2</span><span> fixed  (Intercept)         </span><span style='color: #555555;'>0.</span><span>226    </span><span style='color: #555555;'>0.</span><span>505      </span><span style='color: #555555;'>0.</span><span>447 -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>765</span><span>       1.22 
+#&gt; </span><span style='color: #555555;'> 6</span><span>  </span><span style='text-decoration: underline;'>1</span><span>96</span><span style='color: #555555;'>2</span><span> fixed  scale(gdpPercap)    </span><span style='color: #555555;'>0.</span><span>547    </span><span style='color: #555555;'>0.</span><span>273      2.01   </span><span style='color: #555555;'>0.0</span><span>13</span><span style='text-decoration: underline;'>0</span><span>      1.08 
+#&gt; </span><span style='color: #555555;'> 7</span><span>  </span><span style='text-decoration: underline;'>1</span><span>96</span><span style='color: #555555;'>7</span><span> fixed  (Intercept)         </span><span style='color: #555555;'>0.</span><span>234    </span><span style='color: #555555;'>0.</span><span>307      </span><span style='color: #555555;'>0.</span><span>764 -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>367</span><span>       </span><span style='color: #555555;'>0.</span><span>836
+#&gt; </span><span style='color: #555555;'> 8</span><span>  </span><span style='text-decoration: underline;'>1</span><span>96</span><span style='color: #555555;'>7</span><span> fixed  scale(gdpPercap)    </span><span style='color: #555555;'>0.</span><span>269    </span><span style='color: #555555;'>0.0</span><span>77</span><span style='text-decoration: underline;'>9</span><span>     3.46   </span><span style='color: #555555;'>0.</span><span>117       </span><span style='color: #555555;'>0.</span><span>422
+#&gt; </span><span style='color: #555555;'> 9</span><span>  </span><span style='text-decoration: underline;'>1</span><span>97</span><span style='color: #555555;'>2</span><span> fixed  (Intercept)         </span><span style='color: #555555;'>0.</span><span>241    </span><span style='color: #555555;'>0.</span><span>307      </span><span style='color: #555555;'>0.</span><span>783 -</span><span style='color: #555555;'>0.</span><span style='color: #BB0000;'>362</span><span>       </span><span style='color: #555555;'>0.</span><span>843
+#&gt; </span><span style='color: #555555;'>10</span><span>  </span><span style='text-decoration: underline;'>1</span><span>97</span><span style='color: #555555;'>2</span><span> fixed  scale(gdpPercap)    </span><span style='color: #555555;'>0.</span><span>378    </span><span style='color: #555555;'>0.</span><span>109      3.45   </span><span style='color: #555555;'>0.</span><span>163       </span><span style='color: #555555;'>0.</span><span>593
+#&gt;     </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>significance</span><span>
+#&gt;       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
+#&gt; </span><span style='color: #555555;'> 1</span><span> </span><span style='color: #555555;'>0.</span><span>787    ns          
+#&gt; </span><span style='color: #555555;'> 2</span><span> </span><span style='color: #555555;'>0.</span><span>225    ns          
+#&gt; </span><span style='color: #555555;'> 3</span><span> </span><span style='color: #555555;'>0.</span><span>615    ns          
+#&gt; </span><span style='color: #555555;'> 4</span><span> </span><span style='color: #555555;'>0.0</span><span>49</span><span style='text-decoration: underline;'>2</span><span>   *           
+#&gt; </span><span style='color: #555555;'> 5</span><span> </span><span style='color: #555555;'>0.</span><span>655    ns          
+#&gt; </span><span style='color: #555555;'> 6</span><span> </span><span style='color: #555555;'>0.0</span><span>44</span><span style='text-decoration: underline;'>7</span><span>   *           
+#&gt; </span><span style='color: #555555;'> 7</span><span> </span><span style='color: #555555;'>0.</span><span>445    ns          
+#&gt; </span><span style='color: #555555;'> 8</span><span> </span><span style='color: #555555;'>0.000</span><span style='text-decoration: underline;'>548</span><span> ***         
+#&gt; </span><span style='color: #555555;'> 9</span><span> </span><span style='color: #555555;'>0.</span><span>434    ns          
+#&gt; </span><span style='color: #555555;'>10</span><span> </span><span style='color: #555555;'>0.000</span><span style='text-decoration: underline;'>556</span><span> ***         
+#&gt; </span><span style='color: #555555;'># ... with 14 more rows</span><span></div><div class='input'><span class='co'># }</span>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -300,7 +301,7 @@ model. Note that <em>p</em>-value is computed using <code><a href='https://rdrr.
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
