@@ -14,13 +14,13 @@
   ],
   "issueTracker": "\n    https://github.com/IndrajeetPatil/groupedstats/issues/",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R Under development (unstable) (2020-10-07 r79310)",
+  "runtimePlatform": "R Under development (unstable) (2020-11-23 r79474)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -152,30 +152,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "haven",
-      "name": "haven",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=haven"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "ipmisc",
-      "name": "ipmisc",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=ipmisc"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "lme4",
       "name": "lme4",
       "provider": {
@@ -185,6 +161,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=lme4"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "magrittr",
+      "name": "magrittr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=magrittr"
     },
     {
       "@type": "SoftwareApplication",
@@ -265,9 +253,9 @@
     }
   ],
   "releaseNotes": "https://github.com/IndrajeetPatil/groupedstats/blob/master/NEWS.md",
-  "fileSize": "1224.247KB",
+  "fileSize": "1222.129KB",
   "contIntegration": ["https://travis-ci.org/IndrajeetPatil/groupedstats", "https://ci.appveyor.com/project/IndrajeetPatil/groupedstats"],
-  "developmentStatus": ["http://www.repostatus.org/#active", "https://www.tidyverse.org/lifecycle/#retired"],
+  "developmentStatus": ["https://www.repostatus.org/#active", "https://www.tidyverse.org/lifecycle/#retired"],
   "keywords": [
     "statistics",
     "r",

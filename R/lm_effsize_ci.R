@@ -27,6 +27,7 @@
 #' @importFrom stats anova na.omit lm
 #' @importFrom rlang exec
 #' @importFrom dplyr matches everything contains
+#' @importFrom magrittr "%>%" "%<>%"
 #'
 #' @examples
 #' # for reproducibility

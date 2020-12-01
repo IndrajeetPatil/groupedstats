@@ -9,4 +9,4 @@
 
 ## Comments
 
-  - Fixes breakage caused by `broomExtra` update.
+  - Removes `ipmisc` from dependencies.

@@ -28,7 +28,6 @@
 #' @importFrom tidyr unnest separate
 #' @importFrom tibble enframe
 #' @importFrom stats qt
-#' @importFrom haven zap_labels
 #' @importFrom rlang !!! as_string quo_squash enquo
 #'
 #' @examples
@@ -93,9 +92,6 @@ grouped_summary <- function(data,
   }
 
   # data cleanup -------------------------------------------------------------
-
-  # clean up labeled columns, if present
-  df %<>% haven::zap_labels(.)
 
   # removing grouping levels that are `NA`
   df %<>%

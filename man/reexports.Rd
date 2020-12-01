@@ -6,17 +6,6 @@
 \alias{grouped_tidy}
 \alias{grouped_glance}
 \alias{grouped_augment}
-\alias{specify_decimal_p}
-\alias{signif_column}
-\alias{set_cwd}
-\alias{\%>\%}
-\alias{\%<>\%}
-\alias{\%$\%}
-\alias{\%<-\%}
-\alias{\%||\%}
-\alias{\%|\%}
-\alias{tibble}
-\alias{as_tibble}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -25,9 +14,5 @@ below to see their documentation.
 
 \describe{
   \item{broomExtra}{\code{\link[broomExtra]{grouped_augment}}, \code{\link[broomExtra]{grouped_glance}}, \code{\link[broomExtra]{grouped_tidy}}}
-
-  \item{ipmisc}{\code{\link[ipmisc:reexports]{\%$\%}}, \code{\link[ipmisc:reexports]{\%<-\%}}, \code{\link[ipmisc:reexports]{\%<>\%}}, \code{\link[ipmisc:reexports]{\%>\%}}, \code{\link[ipmisc:reexports]{as_tibble}}, \code{\link[ipmisc]{set_cwd}}, \code{\link[ipmisc]{signif_column}}, \code{\link[ipmisc]{specify_decimal_p}}, \code{\link[ipmisc:reexports]{tibble}}}
-
-  \item{rlang}{\code{\link[rlang:op-na-default]{\%|\%}}, \code{\link[rlang:op-null-default]{\%||\%}}}
 }}
 

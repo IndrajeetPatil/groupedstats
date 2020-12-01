@@ -1,8 +1,8 @@
-pandoc: 2.11.0.4
-pkgdown: 1.6.1
-pkgdown_sha: ~
+pandoc: 2.11.2
+pkgdown: 1.6.1.9000
+pkgdown_sha: e5847476d79f08b4cdca0ed5cc55bf55fc18a161
 articles: {}
-last_built: 2020-10-30T14:17Z
+last_built: 2020-12-01T22:33Z
 urls:
   reference: https://indrajeetpatil.github.io/groupedstats//reference
   article: https://indrajeetpatil.github.io/groupedstats//articles

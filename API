@@ -17,17 +17,6 @@ lm_effsize_standardizer(object, effsize = "eta", partial = TRUE, conf.level = 0.
 
 ## Reexported objects
 
-magrittr::%$%
-zeallot::%<-%
-magrittr::%<>%
-magrittr::%>%
-rlang::%|%
-rlang::%||%
-tibble::as_tibble
 broomExtra::grouped_augment
 broomExtra::grouped_glance
 broomExtra::grouped_tidy
-ipmisc::set_cwd
-ipmisc::signif_column
-ipmisc::specify_decimal_p
-tibble::tibble

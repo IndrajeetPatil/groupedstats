@@ -24,7 +24,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2020--10--30-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2020--12--01-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)
@@ -409,52 +409,6 @@ groupedstats::grouped_summary(
 #>  9          64.7 
 #> 10          59.2 
 #> # ... with 270 more rows
-```
-
-The function should also work with labeled data.
-
-``` r
-# for reproducibility
-set.seed(123)
-library(labelled)
-
-# dataframe
-df <- data.frame(
-  x = rep(c("A", "B"), each = 50),
-  y = rnorm(100), stringsAsFactors = FALSE
-)
-
-# labelled
-df$y <- labelled(df$y, label = "Y variable", labels = c())
-
-# convert to a tibble
-(df <- tibble::as_tibble(df))
-#> # A tibble: 100 x 2
-#>    x             y
-#>    <chr> <dbl+lbl>
-#>  1 A       -0.560 
-#>  2 A       -0.230 
-#>  3 A        1.56  
-#>  4 A        0.0705
-#>  5 A        0.129 
-#>  6 A        1.72  
-#>  7 A        0.461 
-#>  8 A       -1.27  
-#>  9 A       -0.687 
-#> 10 A       -0.446 
-#> # ... with 90 more rows
-
-# grouped summary
-groupedstats::grouped_summary(df, x, y)
-#> # A tibble: 2 x 16
-#>   x     skim_type skim_variable missing complete   mean    sd   min    p25
-#>   <fct> <chr>     <chr>           <int>    <dbl>  <dbl> <dbl> <dbl>  <dbl>
-#> 1 A     numeric   y                   0        1 0.0344 0.926 -1.97 -0.559
-#> 2 B     numeric   y                   0        1 0.146  0.905 -2.31 -0.361
-#>    median   p75   max     n std.error mean.conf.low mean.conf.high
-#>     <dbl> <dbl> <dbl> <int>     <dbl>         <dbl>          <dbl>
-#> 1 -0.0726 0.698  2.17    50     0.131        -0.229          0.298
-#> 2  0.153  0.629  2.19    50     0.128        -0.111          0.404
 ```
 
 ## `grouped_slr`

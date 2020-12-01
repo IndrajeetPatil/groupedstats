@@ -1,7 +1,7 @@
 Type: Package
 Package: groupedstats
 Title: Grouped Statistical Analyses in a Tidy Way
-Version: 1.0.2
+Version: 2.0.0
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -23,9 +23,8 @@ Imports:
     dplyr,
     effectsize,
     glue,
-    haven,
-    ipmisc,
     lme4,
+    magrittr,
     parameters,
     purrr,
     rlang,

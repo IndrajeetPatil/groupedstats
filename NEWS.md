@@ -1,4 +1,6 @@
-# groupedstats 1.0.1.9000
+# groupedstats 2.0.0
+
+  - Removes all re-exported functions and removes `ipmisc` from dependencies.
 
 # groupedstats 1.0.1
 
