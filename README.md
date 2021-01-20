@@ -24,7 +24,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupe
 [![Project Status: Active - The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2020--12--01-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2021--01--20-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)
@@ -33,9 +33,7 @@ version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-
 # Retirement
 
 This package is no longer under active development and no new
-functionality will be added. The package will continue to be available
-on `CRAN` and all releases will primarily be focused on maintenance and
-bug fixes. This is for two reasons-
+functionality will be added. This is for two reasons-
 
 1.  `dplyr 0.8.1` introduced `group_map()`, `group_modify()` and
     `group_walk()` functions that can be used to iterate on grouped
@@ -61,16 +59,19 @@ few example cases-
     to run a common operation (e.g., linear regression) on **each
     study**. In this case, column corresponding to `study` will be the
     grouping variable.
+
 2.  If you have multiple groups in your dataframe (e.g., clinical
     disorder groups and controls group) and you want to carry out the
     same operation for **each group** (e.g., planned t-test to check for
     differences in reaction time in condition 1 versus condition 2 for
     both groups). In this case, `group` will be the grouping variable.
+
 3.  If you have multiple conditions in a given study (e.g., six types of
     videos participants saw) and want to run a common operation between
     different measures of interest for **each condition** (e.g.,
     correlation between subjective rating of emotional intensity and
     reaction time).
+
 4.  Combination of all of the above.
 
 # Installation
