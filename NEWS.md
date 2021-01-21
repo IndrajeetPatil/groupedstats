@@ -1,8 +1,6 @@
-# groupedstats 2.0.0
+# groupedstats 2.0.1
 
-  - As per requested by the maintainer, the package is removed from `CRAN`. If
-    anyone else would like to get back on CRAN and maintain it, please contact
-    me.
+  - Resubmitting package to address script breakage complaints from the users.
 
 # groupedstats 2.0.0
 
