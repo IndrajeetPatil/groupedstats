@@ -2,9 +2,9 @@
 output: github_document
 ---
 
-  <!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, echo = FALSE, warning = FALSE, messsage = FALSE}
+```{r, echo=FALSE, warning=FALSE, messsage=FALSE}
 options(tibble.width = Inf)
 
 knitr::opts_chunk$set(
@@ -21,37 +21,41 @@ knitr::opts_chunk$set(
 # groupedstats: Grouped statistical analysis in a tidy way
 
 [![CRAN_Release_Badge](https://www.r-pkg.org/badges/version-ago/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
-[![CRAN Checks](https://cranchecks.info/badges/summary/groupedstats)](https://cran.r-project.org/web/checks/check_results_groupedstats.html)
+[![CRAN
+Checks](https://cranchecks.info/badges/summary/groupedstats)](https://cran.r-project.org/web/checks/check_results_groupedstats.html)
 [![packageversion](https://img.shields.io/badge/Package%20version-1.0.1.9000-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
 [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
-[![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
 [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
-[![Travis Build Status](https://travis-ci.org/IndrajeetPatil/groupedstats.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/groupedstats) 
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupedstats?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/groupedstats) 
-[![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
-[![DOI](https://zenodo.org/badge/126624251.svg)](https://zenodo.org/badge/latestdoi/126624251)
-[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![Travis Build Status](https://travis-ci.org/IndrajeetPatil/groupedstats.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/groupedstats)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupedstats?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/groupedstats)
 [![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
-[![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)
 [![status](https://tinyverse.netlify.com/badge/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
 
 # Retirement
 
+---
+
 This package is no longer under active development and no new functionality will
-be added. This is for two reasons-
+be added. You should instead be using `group_map()`, `group_modify()` and
+`group_walk()` functions from `dplyr`. See:
+<https://dplyr.tidyverse.org/reference/group_map.html>
 
-1.  `dplyr 0.8.1` introduced `group_map()`, `group_modify()` and `group_walk()`
-    functions that can be used to iterate on grouped dataframes. So if you want
-    to do `grouped_` operations, I would highly recommend using these functions
-    over `groupedstats` functions since the former are much more general,
-    efficient, and faster than the latter. For more, see: <https://dplyr.tidyverse.org/reference/group_map.html>
+This is for two reasons-
 
-2.  There are more general versions of these functions introduced in
-    `broomExtra` package:<br> `grouped_tidy`, `grouped_augment`,
-    `grouped_glance`. For more, see:
-    <https://indrajeetpatil.github.io/broomExtra/reference/index.html#section-grouped-variants-of-generics>
+1. `dplyr 0.8.1` introduced `group_map()`, `group_modify()` and `group_walk()`
+   functions that can be used to iterate on grouped dataframes. So if you want
+   to do `grouped_` operations, I would highly recommend using these functions
+   over `groupedstats` functions since the former are much more general,
+   efficient, and faster than the latter. For more, see:
+   <https://dplyr.tidyverse.org/reference/group_map.html>
+
+2. There are more general versions of these functions introduced in `broomExtra`
+   package:<br> `grouped_tidy`, `grouped_augment`, `grouped_glance`. For more,
+   see:
+   <https://indrajeetpatil.github.io/broomExtra/reference/index.html#section-grouped-variants-of-generics>
+
+---
 
 # Overview
 
@@ -59,28 +63,28 @@ be added. This is for two reasons-
 operations on multiple variables across multiple grouping variables in a
 dataframe. This is a common situation, as illustrated by few example cases-
 
-1.  If you have combined multiple studies in a single dataframe and want to run
-    a common operation (e.g., linear regression) on **each study**. In this
-    case, column corresponding to `study` will be the grouping variable.
-    
-2.  If you have multiple groups in your dataframe (e.g., clinical disorder
-    groups and controls group) and you want to carry out the same operation for
-    **each group** (e.g., planned t-test to check for differences in reaction
-    time in condition 1 versus condition 2 for both groups). In this case,
-    `group` will be the grouping variable.
-    
-3.  If you have multiple conditions in a given study (e.g., six types of videos
-    participants saw) and want to run a common operation between different
-    measures of interest for **each condition** (e.g., correlation between
-    subjective rating of emotional intensity and reaction time).
-    
+1. If you have combined multiple studies in a single dataframe and want to run a
+   common operation (e.g., linear regression) on **each study**. In this case,
+   column corresponding to `study` will be the grouping variable.
+
+2. If you have multiple groups in your dataframe (e.g., clinical disorder groups
+   and controls group) and you want to carry out the same operation for **each
+   group** (e.g., planned t-test to check for differences in reaction time in
+   condition 1 versus condition 2 for both groups). In this case, `group` will
+   be the grouping variable.
+
+3. If you have multiple conditions in a given study (e.g., six types of videos
+   participants saw) and want to run a common operation between different
+   measures of interest for **each condition** (e.g., correlation between
+   subjective rating of emotional intensity and reaction time).
+
 4. Combination of all of the above.
 
 # Installation
 
 To get the latest, stable `CRAN` release:
 
-```{r installation1, eval = FALSE, warning = FALSE, messsage = FALSE}
+```{r installation1, eval=FALSE, warning=FALSE, messsage=FALSE}
 install.packages("groupedstats")
 ```
 
@@ -91,7 +95,7 @@ release on `CRAN`, you can check the detailed log of changes here:
 
 If you are in hurry and want to reduce the time of installation, prefer-
 
-```{r installation2, eval = FALSE, warning = FALSE, messsage = FALSE}
+```{r installation2, eval=FALSE, warning=FALSE, messsage=FALSE}
 # needed package to download from GitHub repo
 # install.packages("remotes")
 
@@ -103,7 +107,7 @@ remotes::install_github(
 
 If time is not a constraint-
 
-```{r installation3, eval = FALSE, warning = FALSE, messsage = FALSE}
+```{r installation3, eval=FALSE, warning=FALSE, messsage=FALSE}
 remotes::install_github(
   repo = "IndrajeetPatil/groupedstats", # package path on GitHub
   dependencies = TRUE, # installs packages which groupedstats depends on
@@ -132,7 +136,7 @@ general versions of `grouped_` functions.
 
 Here is an example
 
-```{r broomExtra_example, warning = FALSE, messsage = FALSE}
+```{r broomExtra_example, warning=FALSE, messsage=FALSE}
 # for reproducibility
 set.seed(123)
 
@@ -157,7 +161,7 @@ function is a wrapper around `skimr::skim_to_wide()`. It is supposed to be a
 handy summarizing tool if you have multiple grouping variables and multiple
 variables for which summary statistics are to be computed-
 
-```{r grouped_summary1, warning = FALSE, messsage = FALSE}
+```{r grouped_summary1, warning=FALSE, messsage=FALSE}
 # for reproducibility
 set.seed(123)
 library(datasets)
@@ -179,7 +183,7 @@ the function will compute summary for all variables of the specified type
 
 If you want summary of variables of `factor` type-
 
-```{r grouped_summary2, warning = FALSE, messsage = FALSE}
+```{r grouped_summary2, warning=FALSE, messsage=FALSE}
 # for reproducibility
 set.seed(123)
 library(ggplot2)
@@ -198,7 +202,7 @@ in case you, let's say, want to plot these counts. But this column is of
 `character` type and in wide format. The solution is to use an additional
 argument provided for this function:
 
-```{r grouped_summary3, fig.width = 8, warning = FALSE, messsage = FALSE}
+```{r grouped_summary3, fig.width=8, warning=FALSE, messsage=FALSE}
 # for reproducibility
 set.seed(123)
 library(ggplot2)
@@ -233,9 +237,10 @@ ggplot2::ggplot(
 
 This produces a long format table with two new columns `factor.level` and its
 corresponding `count`, which can then be immediately fed into other pipelines,
+
 e.g., preparing a plot of `mean` and `sd` values in `ggplot2`).
 
-```{r grouped_summary4, warning = FALSE, messsage = FALSE}
+```{r grouped_summary4, warning=FALSE, messsage=FALSE}
 # for reproducibility
 set.seed(123)
 options(tibble.width = Inf) # show me all columns
@@ -253,11 +258,12 @@ different pairs of variables across multiple levels of grouping variable(s). For
 example, we can use the `gapminder` dataset to study two relationships of
 interest for **each country** across years:
 
-1.  life expectancy and GDP (per capita)
-2.  population GDP (per capita) Thus, in this case we have two regression models
-    and one grouping variable with 142 levels (countries)
+1. life expectancy and GDP (per capita)
 
-```{r grouped_slr1, warning = FALSE, messsage = FALSE}
+2. population GDP (per capita) Thus, in this case we have two regression models
+   and one grouping variable with 142 levels (countries)
+
+```{r grouped_slr1, warning=FALSE, messsage=FALSE}
 # for reproducibility
 set.seed(123)
 library(gapminder)
@@ -277,14 +283,14 @@ and `pop ~ gdpPercap` If this order is incorrect, the result will also be
 incorrect. So it is always a good idea to check the *formula* column to see if
 you have run the correct linear models. Also, note that the estimates are
 already standardized, i.e. estimates are standardized regression coefficients
-(betas, i.e.). 
+(betas, i.e.).
 
 The prior example was with just one grouping variable. This can be done with
 multiple grouping variables as well. For example, with the `diamonds` dataset
 from `ggplot2` library, let's assess the relation between carat *and* price of a
 diamond for each type of clarity *and* cut-
 
-```{r grouped_slr2, warning = FALSE, messsage = FALSE}
+```{r grouped_slr2, warning=FALSE, messsage=FALSE}
 # for reproducibility
 set.seed(123)
 library(ggplot2)
@@ -297,7 +303,7 @@ groupedstats::grouped_slr(
   indep.vars = carat,
   grouping.vars = c(cut, clarity)
 ) %>%
-  dplyr::arrange(.data = ., cut)
+  dplyr::arrange(cut)
 ```
 
 A more general version of this function (`grouped_lm`) will be implemented in
@@ -308,7 +314,7 @@ future that will utilize the formula interface of `stats::lm`.
 A more general version of simple linear regression is `stats::lm`, implemented
 in `grouped_lm`:
 
-```{r grouped_lm1, warning = FALSE, messsage = FALSE}
+```{r grouped_lm1, warning=FALSE, messsage=FALSE}
 # for reproducibility
 set.seed(123)
 library(groupedstats)
@@ -324,7 +330,7 @@ groupedstats::grouped_lm(
 The same function can also be used to get model summaries instead of a tidy
 dataframe containing results-
 
-```{r grouped_lm2, warning = FALSE, messsage = FALSE}
+```{r grouped_lm2, warning=FALSE, messsage=FALSE}
 # for reproducibility
 set.seed(123)
 library(groupedstats)
@@ -345,7 +351,7 @@ previous output for the same model from `grouped_lm` function. The estimate in
 this case with be an effect size (either partial eta-squared or partial
 omega-squared).
 
-```{r grouped_aov1, warning = FALSE, messsage = FALSE}
+```{r grouped_aov1, warning=FALSE, messsage=FALSE}
 # for reproducibility
 set.seed(123)
 library(groupedstats)
@@ -363,7 +369,7 @@ Differences (HSD). For example, we can check for differences in life expectancy
 between different continents for all years for which the gapminder survey was
 conducted:
 
-```{r grouped_aov2, warning = FALSE, messsage = FALSE}
+```{r grouped_aov2, warning=FALSE, messsage=FALSE}
 # for reproducibility
 set.seed(123)
 library(groupedstats)
@@ -385,7 +391,7 @@ each level of the grouping variable, and not across all tests conducted.
 The option to run generalized linear model (`stats::glm`) across different
 levels of the grouping variable is also implemented similarly-
 
-```{r grouped_glm1, warning = FALSE, messsage = FALSE}
+```{r grouped_glm1, warning=FALSE, messsage=FALSE}
 # for reproducibility
 set.seed(123)
 
@@ -401,9 +407,10 @@ groupedstats::grouped_glm(
 Note that the `statistic` will either be a `t` (gaussian, e.g.) or a `z`
 (binomial, e.g.) value, based on the family of models used.
 
-You can also get a model summary across all models with `broom::glance` methods-
+You can also get a model summary across all models with `broom::glance`
+methods-
 
-```{r grouped_glm2, warning = FALSE, messsage = FALSE}
+```{r grouped_glm2, warning=FALSE, messsage=FALSE}
 # for reproducibility
 set.seed(123)
 
@@ -421,7 +428,7 @@ groupedstats::grouped_glm(
 Linear mixed effects analyses (`lme4::lmer`) for all combinations of grouping
 variable levels can be carried out using `grouped_lmer`:
 
-```{r grouped_lmer1, warning = FALSE, messsage = FALSE}
+```{r grouped_lmer1, warning=FALSE, messsage=FALSE}
 # for reproducibility
 set.seed(123)
 library(gapminder)
@@ -449,7 +456,7 @@ A more generalized version of `lmer` is implemented in `lme4::glmer`, which can
 also handle categorical/nominal data. For example, let's say we want to see if
 sex of a person was predictive of whether they survived the Titanic tragedy.
 
-```{r grouped_glmer1, warning = FALSE, messsage = FALSE}
+```{r grouped_glmer1, warning=FALSE, messsage=FALSE}
 # for reproducibility
 set.seed(123)
 
@@ -490,7 +497,7 @@ Note that the `statistic` will either be a `t` (gaussian, e.g.) or a `z`
 This function helps carry out one-sample proportion tests (`stats::chisq.test`)
 with a unique variable for multiple grouping variables-
 
-```{r grouped_proptest, warning = FALSE, messsage = FALSE}
+```{r grouped_proptest, warning=FALSE, messsage=FALSE}
 # for reproducibility
 set.seed(123)
 options(tibble.width = Inf) # show me all columns
@@ -510,13 +517,13 @@ going to first require getting the `iris` dataset into long format. Let's say we
 want to investigate if `Sepal` part of the flower has greater measurement
 (length or width) than `Petal` part of the flower for **each** *Iris* species.
 
-```{r grouped_ttest1, warning = FALSE, messsage = FALSE}
+```{r grouped_ttest1, warning=FALSE, messsage=FALSE}
 # for reproducibility
 set.seed(123)
 
 # converting the iris dataset to long format
 iris_long <- iris %>%
-  dplyr::mutate(.data = ., id = dplyr::row_number(x = Species)) %>%
+  dplyr::mutate(id = dplyr::row_number(x = Species)) %>%
   tidyr::gather(
     data = .,
     key = "condition",
@@ -553,7 +560,7 @@ groupedstats::grouped_ttest(
 
 This function is just a non-parametric variant of the `grouped_ttest`:
 
-```{r grouped_wilcox, warning = FALSE, messsage = FALSE}
+```{r grouped_wilcox, warning=FALSE, messsage=FALSE}
 # for reproducibility
 set.seed(123)
 options(tibble.width = Inf) # show me all columns
@@ -574,7 +581,7 @@ We will use `diamonds` dataset from `ggplot2` and will see if the price and
 depth of a diamond is different for two of our favorite colors (say `E` and `J`)
 for each type of clarity.
 
-```{r grouped_wilcox2, warning = FALSE, messsage = FALSE}
+```{r grouped_wilcox2, warning=FALSE, messsage=FALSE}
 # for reproducibility
 set.seed(123)
 
@@ -608,7 +615,7 @@ groupedstats::grouped_wilcox(
 We can further focus just on two levels of clarity to further elucidate another
 aspect of entering the arguments-
 
-```{r grouped_wilcox3, warning = FALSE, messsage = FALSE}
+```{r grouped_wilcox3, warning=FALSE, messsage=FALSE}
 # for reproducibility
 set.seed(123)
 
@@ -632,6 +639,7 @@ functions in this package and stem from how tidy evaluation
 
   - If just one independent variable is provided for multiple dependent
     variables, it will be used as a common variable.
+
   - If you want to use a selection of variables, you need not use `c()`.
 
 # Extending with `purrr`
@@ -661,39 +669,10 @@ results_df <-
     .f = groupedstats::grouped_lm, # regression model
     .id = "model"
   ) %>% # for each combination of mpaa rating and movie genre
-  dplyr::group_by(.data = ., mpaa, genre) %>% # arrange by best to worst fits
-  dplyr::arrange(.data = ., dplyr::desc(adj.r.squared)) %>%
+  dplyr::group_by(mpaa, genre) %>% # arrange by best to worst fits
+  dplyr::arrange(dplyr::desc(adj.r.squared)) %>%
   dplyr::ungroup(.)
 
 # looking at the results
 head(results_df)
 ```
-
-# Contributing
-
-I'm happy to receive bug reports, suggestions, questions, and (most of all)
-contributions to fix problems and add features. I personally prefer using the
-`GitHub` issues system over trying to reach out to me in other ways (personal
-e-mail, Twitter, etc.). Pull Requests for contributions are encouraged.
-
-Here are some simple ways in which you can contribute (in the increasing order
-of commitment):
-
-  - Read and correct any inconsistencies in the
-    [documentation](https://indrajeetpatil.github.io/groupedstats/)
-
-  - Raise issues about bugs or wanted features
-
-  - Review code
-
-  - Add new functionality (in the form of new plotting functions or helpers for
-    preparing subtitles)
-
-Please note that this project is released with a 
-[Contributor Code of Conduct](https://github.com/IndrajeetPatil/groupedstats/blob/master/CODE_OF_CONDUCT.md). 
-By participating in this project you agree to abide by its terms.
- 
-## Suggestions
-
-If you find any bugs or have any suggestions/remarks, please file an issue on
-`GitHub`: <https://github.com/IndrajeetPatil/groupedstats/issues>

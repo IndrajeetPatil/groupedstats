@@ -11,29 +11,25 @@ Checks](https://cranchecks.info/badges/summary/groupedstats)](https://cran.r-pro
 badge](https://cranlogs.r-pkg.org/badges/last-day/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
 [![Weekly downloads
 badge](https://cranlogs.r-pkg.org/badges/last-week/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
-[![Monthly downloads
-badge](https://cranlogs.r-pkg.org/badges/last-month/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
 [![Total downloads
 badge](https://cranlogs.r-pkg.org/badges/grand-total/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
 [![Travis Build
 Status](https://travis-ci.org/IndrajeetPatil/groupedstats.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/groupedstats)
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupedstats?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/groupedstats)
-[![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
-[![DOI](https://zenodo.org/badge/126624251.svg)](https://zenodo.org/badge/latestdoi/126624251)
-[![Project Status: Active - The project has reached a stable, usable
-state and is being actively
-developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2021--01--20-yellowgreen.svg)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
-[![minimal R
-version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)
 [![status](https://tinyverse.netlify.com/badge/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
 
 # Retirement
 
+------------------------------------------------------------------------
+
 This package is no longer under active development and no new
-functionality will be added. This is for two reasons-
+functionality will be added. You should instead be using `group_map()`,
+`group_modify()` and `group_walk()` functions from `dplyr`. See:
+<https://dplyr.tidyverse.org/reference/group_map.html>
+
+This is for two reasons-
 
 1.  `dplyr 0.8.1` introduced `group_map()`, `group_modify()` and
     `group_walk()` functions that can be used to iterate on grouped
@@ -47,6 +43,8 @@ functionality will be added. This is for two reasons-
     `broomExtra` package:<br> `grouped_tidy`, `grouped_augment`,
     `grouped_glance`. For more, see:
     <https://indrajeetpatil.github.io/broomExtra/reference/index.html#section-grouped-variants-of-generics>
+
+------------------------------------------------------------------------
 
 # Overview
 
@@ -164,11 +162,11 @@ groupedstats::grouped_tidy(
 #>  1 1st   Adult (Intercept)  3.56e+ 0      0.507  7.01e+ 0 2.36e-12
 #>  2 1st   Adult SexMale     -4.28e+ 0      0.532 -8.05e+ 0 8.36e-16
 #>  3 1st   Child (Intercept) -2.46e+ 1 131011.    -1.88e- 4 1.00e+ 0
-#>  4 1st   Child SexMale     -1.74e-15 143515.    -1.21e-20 1.00e+ 0
+#>  4 1st   Child SexMale     -1.74e-15 143515.    -1.21e-20 1   e+ 0
 #>  5 2nd   Adult (Intercept)  1.82e+ 0      0.299  6.08e+ 0 1.23e- 9
 #>  6 2nd   Adult SexMale     -4.21e+ 0      0.409 -1.03e+ 1 6.79e-25
 #>  7 2nd   Child (Intercept) -2.56e+ 1  59908.    -4.27e- 4 1.00e+ 0
-#>  8 2nd   Child SexMale     -7.14e-15  88489.    -8.07e-20 1.00e+ 0
+#>  8 2nd   Child SexMale     -7.14e-15  88489.    -8.07e-20 1   e+ 0
 #>  9 3rd   Adult (Intercept) -1.58e- 1      0.156 -1.01e+ 0 3.12e- 1
 #> 10 3rd   Adult SexMale     -1.48e+ 0      0.201 -7.39e+ 0 1.51e-13
 #> 11 3rd   Child (Intercept) -1.94e- 1      0.361 -5.38e- 1 5.91e- 1
@@ -244,7 +242,7 @@ groupedstats::grouped_summary(
 #> 16 14.1   14.9   16        20    0.659        11.7            14.5  
 #> 17 10.6   12.2   13.7       7    1.14          7.41           13.0  
 #> 18  2      2.4    2.7       5    0.379         0.829           2.93 
-#> 19  0.183  0.183  0.183     1   NA            NA              NA    
+#> 19  0.183  0.183  0.183     1   NA           NaN             NaN    
 #> 20 13.4   15.4   18.6       7    1.14         11.0            16.6
 ```
 
@@ -292,7 +290,7 @@ groupedstats::grouped_summary(
 #>  8 F: 4, D: 3, G: 2, E: 0             9
 #>  9 E: 23, F: 19, G: 19, H: 14        96
 #> 10 D: 223, E: 202, F: 201, G: 163  1081
-#> # ... with 30 more rows
+#> # … with 30 more rows
 ```
 
 Note that there is a column corresponding to `top_counts` which is
@@ -360,8 +358,9 @@ ggplot2::ggplot(
 
 This produces a long format table with two new columns `factor.level`
 and its corresponding `count`, which can then be immediately fed into
-other pipelines, e.g., preparing a plot of `mean` and `sd` values in
-`ggplot2`).
+other pipelines,
+
+e.g., preparing a plot of `mean` and `sd` values in `ggplot2`).
 
 ``` r
 # for reproducibility
@@ -409,7 +408,7 @@ groupedstats::grouped_summary(
 #>  8           1.25
 #>  9          64.7 
 #> 10          59.2 
-#> # ... with 270 more rows
+#> # … with 270 more rows
 ```
 
 ## `grouped_slr`
@@ -420,6 +419,7 @@ variable(s). For example, we can use the `gapminder` dataset to study
 two relationships of interest for **each country** across years:
 
 1.  life expectancy and GDP (per capita)
+
 2.  population GDP (per capita) Thus, in this case we have two
     regression models and one grouping variable with 142 levels
     (countries)
@@ -461,7 +461,7 @@ groupedstats::grouped_slr(
 #>  8 7.38e- 5 ***         
 #>  9 5.03e- 4 ***         
 #> 10 1.56e-10 ***         
-#> # ... with 274 more rows
+#> # … with 274 more rows
 ```
 
 Notice the order in which the dependent and independent variables are
@@ -491,7 +491,7 @@ groupedstats::grouped_slr(
   indep.vars = carat,
   grouping.vars = c(cut, clarity)
 ) %>%
-  dplyr::arrange(.data = ., cut)
+  dplyr::arrange(cut)
 #> # A tibble: 40 x 10
 #>    cut   clarity formula       t.value estimate conf.low conf.high std.error
 #>    <ord> <ord>   <chr>           <dbl>    <dbl>    <dbl>     <dbl>     <dbl>
@@ -516,8 +516,8 @@ groupedstats::grouped_slr(
 #>  7 7.67e-  5 ***         
 #>  8 5.54e- 21 ***         
 #>  9 9.62e-318 ***         
-#> 10 0.        ***         
-#> # ... with 30 more rows
+#> 10 0         ***         
+#> # … with 30 more rows
 ```
 
 A more general version of this function (`grouped_lm`) will be
@@ -595,9 +595,9 @@ groupedstats::grouped_lm(
 #>  5 Fair  H         0.932         0.929 1033.      332. 1.76e-161    12 -2526.
 #>  6 Fair  I         0.958         0.955  794.      307. 1.14e-104    12 -1410.
 #>  7 Fair  J         0.955         0.950  907.      204. 1.82e- 66    11  -973.
-#>  8 Good  D         0.933         0.931  831.      600. 0.           15 -5382.
-#>  9 Good  E         0.927         0.926  905.      781. 0.           15 -7667.
-#> 10 Good  F         0.915         0.914  939.      644. 0.           15 -7504.
+#>  8 Good  D         0.933         0.931  831.      600. 0            15 -5382.
+#>  9 Good  E         0.927         0.926  905.      781. 0            15 -7667.
+#> 10 Good  F         0.915         0.914  939.      644. 0            15 -7504.
 #>       AIC    BIC   deviance df.residual  nobs
 #>     <dbl>  <dbl>      <dbl>       <int> <int>
 #>  1  2733.  2786. 148463951.         147   163
@@ -610,7 +610,7 @@ groupedstats::grouped_lm(
 #>  8 10797. 10874. 446239835.         646   662
 #>  9 15369. 15451. 750592238.         917   933
 #> 10 15042. 15123. 787519475.         893   909
-#> # ... with 25 more rows
+#> # … with 25 more rows
 ```
 
 ## `grouped_aov`
@@ -633,17 +633,17 @@ groupedstats::grouped_aov(
   output = "tidy" # tidy dataframe with results
 )
 #> # A tibble: 9 x 13
-#>     cyl term    sumsq   df1  meansq F.value p.value   df2 estimate ci.width
-#>   <dbl> <chr>   <dbl> <dbl>   <dbl>   <dbl>   <dbl> <dbl>    <dbl>    <dbl>
-#> 1     6 am     3.56       1  3.56   5.07     0.110      3 0.628        0.95
-#> 2     6 wt     4.15       1  4.15   5.91     0.0933     3 0.663        0.95
-#> 3     6 am:wt  2.86       1  2.86   4.06     0.137      3 0.575        0.95
-#> 4     4 am    58.4        1 58.4    5.95     0.0448     7 0.459        0.95
-#> 5     4 wt    45.1        1 45.1    4.59     0.0693     7 0.396        0.95
-#> 6     4 am:wt 31.1        1 31.1    3.17     0.118      7 0.311        0.95
-#> 7     8 am     0.21       1  0.21   0.0456   0.835     10 0.00454      0.95
-#> 8     8 wt    38.9        1 38.9    8.45     0.0156    10 0.458        0.95
-#> 9     8 am:wt  0.0152     1  0.0152 0.00331  0.955     10 0.000330     0.95
+#>     cyl term    sumsq   df1  meansq F.value p.value   df2 estimate conf.level
+#>   <dbl> <chr>   <dbl> <dbl>   <dbl>   <dbl>   <dbl> <dbl>    <dbl>      <dbl>
+#> 1     6 am     3.56       1  3.56   5.07     0.110      3 0.628          0.95
+#> 2     6 wt     4.15       1  4.15   5.91     0.0933     3 0.663          0.95
+#> 3     6 am:wt  2.86       1  2.86   4.06     0.137      3 0.575          0.95
+#> 4     4 am    58.4        1 58.4    5.95     0.0448     7 0.459          0.95
+#> 5     4 wt    45.1        1 45.1    4.59     0.0693     7 0.396          0.95
+#> 6     4 am:wt 31.1        1 31.1    3.17     0.118      7 0.311          0.95
+#> 7     8 am     0.210      1  0.210  0.0456   0.835     10 0.00454        0.95
+#> 8     8 wt    38.9        1 38.9    8.45     0.0156    10 0.458          0.95
+#> 9     8 am:wt  0.0152     1  0.0152 0.00331  0.955     10 0.000330       0.95
 #>   conf.low conf.high significance
 #>      <dbl>     <dbl> <chr>       
 #> 1   0          0.883 ns          
@@ -699,7 +699,7 @@ groupedstats::grouped_aov(
 #>  8    5.87e-14 ***         
 #>  9    3.16e- 4 ***         
 #> 10    8.95e- 1 ns          
-#> # ... with 110 more rows
+#> # … with 110 more rows
 ```
 
 Note that the p-value is adjusted adjusted for the number of tests
@@ -813,7 +813,7 @@ groupedstats::grouped_lmer(
 #>  8 0.00128  **          
 #>  9 0.452    ns          
 #> 10 0.000321 ***         
-#> # ... with 14 more rows
+#> # … with 14 more rows
 
 # getting tidy output of results
 groupedstats::grouped_lmer(
@@ -834,7 +834,7 @@ groupedstats::grouped_lmer(
 #>  7  1982 0.538  -124.  260.  277.     248.         136
 #>  8  1987 0.502  -112.  236.  254.     224.         136
 #>  9  1992 0.526  -119.  251.  268.     239.         136
-#> 10  1997 0.500  -112.  236.  254.     224.         136
+#> 10  1997 0.496  -112.  237.  255.     225.         136
 #> 11  2002 0.509  -116.  243.  261.     231.         136
 #> 12  2007 0.524  -120.  251.  269.     239.         136
 ```
@@ -854,11 +854,11 @@ set.seed(123)
 dplyr::glimpse(ggstatsplot::Titanic_full)
 #> Rows: 2,201
 #> Columns: 5
-#> $ id       <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,...
-#> $ Class    <fct> 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd...
-#> $ Sex      <fct> Male, Male, Male, Male, Male, Male, Male, Male, Male, Male...
-#> $ Age      <fct> Child, Child, Child, Child, Child, Child, Child, Child, Ch...
-#> $ Survived <fct> No, No, No, No, No, No, No, No, No, No, No, No, No, No, No...
+#> $ id       <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18…
+#> $ Class    <fct> 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3rd, 3…
+#> $ Sex      <fct> Male, Male, Male, Male, Male, Male, Male, Male, Male, Male, M…
+#> $ Age      <fct> Child, Child, Child, Child, Child, Child, Child, Child, Child…
+#> $ Survived <fct> No, No, No, No, No, No, No, No, No, No, No, No, No, No, No, N…
 
 # running glmer model to get tidy output
 groupedstats::grouped_glmer(
@@ -951,7 +951,7 @@ set.seed(123)
 
 # converting the iris dataset to long format
 iris_long <- iris %>%
-  dplyr::mutate(.data = ., id = dplyr::row_number(x = Species)) %>%
+  dplyr::mutate(id = dplyr::row_number(x = Species)) %>%
   tidyr::gather(
     data = .,
     key = "condition",
@@ -983,7 +983,7 @@ iris_long
 #>  8 setosa      8 Sepal Length    5  
 #>  9 setosa      9 Sepal Length    4.4
 #> 10 setosa     10 Sepal Length    4.9
-#> # ... with 590 more rows
+#> # … with 590 more rows
 
 # checking if the Sepal part has different dimentions (value) than Petal part
 # for each Species and for each type of measurement (Length and Width)
@@ -1238,6 +1238,7 @@ In these examples, two things are worth noting that generalize to
 
 -   If just one independent variable is provided for multiple dependent
     variables, it will be used as a common variable.
+
 -   If you want to use a selection of variables, you need not use `c()`.
 
 # Extending with `purrr`
@@ -1267,8 +1268,8 @@ results_df <-
     .f = groupedstats::grouped_lm, # regression model
     .id = "model"
   ) %>% # for each combination of mpaa rating and movie genre
-  dplyr::group_by(.data = ., mpaa, genre) %>% # arrange by best to worst fits
-  dplyr::arrange(.data = ., dplyr::desc(adj.r.squared)) %>%
+  dplyr::group_by(mpaa, genre) %>% # arrange by best to worst fits
+  dplyr::arrange(dplyr::desc(adj.r.squared)) %>%
   dplyr::ungroup(.)
 
 # looking at the results
@@ -1291,34 +1292,3 @@ head(results_df)
 #> 5     1  -42.8   91.5   95.7   30.4             28    30
 #> 6     1 -124.   254.   261.   102.              79    81
 ```
-
-# Contributing
-
-I’m happy to receive bug reports, suggestions, questions, and (most of
-all) contributions to fix problems and add features. I personally prefer
-using the `GitHub` issues system over trying to reach out to me in other
-ways (personal e-mail, Twitter, etc.). Pull Requests for contributions
-are encouraged.
-
-Here are some simple ways in which you can contribute (in the increasing
-order of commitment):
-
--   Read and correct any inconsistencies in the
-    [documentation](https://indrajeetpatil.github.io/groupedstats/)
-
--   Raise issues about bugs or wanted features
-
--   Review code
-
--   Add new functionality (in the form of new plotting functions or
-    helpers for preparing subtitles)
-
-Please note that this project is released with a [Contributor Code of
-Conduct](https://github.com/IndrajeetPatil/groupedstats/blob/master/CODE_OF_CONDUCT.md).
-By participating in this project you agree to abide by its terms.
-
-## Suggestions
-
-If you find any bugs or have any suggestions/remarks, please file an
-issue on `GitHub`:
-<https://github.com/IndrajeetPatil/groupedstats/issues>

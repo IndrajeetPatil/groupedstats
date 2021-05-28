@@ -14,13 +14,13 @@
   ],
   "issueTracker": "\n    https://github.com/IndrajeetPatil/groupedstats/issues/",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R Under development (unstable) (2021-01-13 r79826)",
+  "runtimePlatform": "R version 4.0.5 (2021-03-31)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -253,9 +253,9 @@
     }
   ],
   "releaseNotes": "https://github.com/IndrajeetPatil/groupedstats/blob/master/NEWS.md",
-  "fileSize": "1216.205KB",
+  "fileSize": "240.331KB",
   "contIntegration": ["https://travis-ci.org/IndrajeetPatil/groupedstats", "https://ci.appveyor.com/project/IndrajeetPatil/groupedstats"],
-  "developmentStatus": ["https://www.repostatus.org/#active", "https://www.tidyverse.org/lifecycle/#retired"],
+  "developmentStatus": "https://www.tidyverse.org/lifecycle/#retired",
   "keywords": [
     "statistics",
     "r",

@@ -1,3 +1,7 @@
+# groupedstats 2.0.2
+
+  - Gets rid of a `NOTE` in CRAN's daily checks.
+
 # groupedstats 2.0.1
 
   - Resubmitting package to address script breakage complaints from the users.
