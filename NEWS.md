@@ -1,4 +1,4 @@
-# groupedstats 2.0.2
+# groupedstats 2.1.0
 
   - Gets rid of a `NOTE` in CRAN's daily checks.
   

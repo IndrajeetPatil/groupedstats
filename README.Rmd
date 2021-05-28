@@ -24,10 +24,8 @@ knitr::opts_chunk$set(
 [![CRAN Checks](https://cranchecks.info/badges/summary/groupedstats)](https://cran.r-project.org/web/checks/check_results_groupedstats.html)
 [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
 [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
-[![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
-[![Travis Build Status](https://travis-ci.org/IndrajeetPatil/groupedstats.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/groupedstats)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/groupedstats?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/groupedstats)
-[![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://www.tidyverse.org/lifecycle/#retired)
+[![R build status](https://github.com/IndrajeetPatil/groupedstats/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/groupedstats)
+[![pkgdown](https://github.com/IndrajeetPatil/groupedstats/workflows/pkgdown/badge.svg)](https://github.com/IndrajeetPatil/groupedstats/actions)
 [![status](https://tinyverse.netlify.com/badge/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
 
 # Retirement
