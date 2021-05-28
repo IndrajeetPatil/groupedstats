@@ -6,7 +6,6 @@
 [![CRAN\_Release\_Badge](https://www.r-pkg.org/badges/version-ago/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
 [![CRAN
 Checks](https://cranchecks.info/badges/summary/groupedstats)](https://cran.r-project.org/web/checks/check_results_groupedstats.html)
-[![packageversion](https://img.shields.io/badge/Package%20version-1.0.1.9000-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
 [![Daily downloads
 badge](https://cranlogs.r-pkg.org/badges/last-day/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
 [![Weekly downloads
@@ -1241,54 +1240,33 @@ In these examples, two things are worth noting that generalize to
 
 -   If you want to use a selection of variables, you need not use `c()`.
 
-# Extending with `purrr`
-
-`groupedstats` functions can be further extended with `purrr` package.
-For example, let’s say we want to run the same linear regression across
-multiple grouping variables but want to use different formulas-
-
-``` r
-# for reproducibility
-set.seed(123)
-library(groupedstats)
-
-results_df <-
-  purrr::pmap_dfr(
-    .l = list(
-      data = list(ggstatsplot::movies_long),
-      grouping.vars = alist(c(mpaa, genre)), # note it's `alist` and not `list`
-      formula = list(
-        rating ~ budget, # model 1
-        rating ~ log(budget), # model 2
-        log(rating) ~ budget, # model 3
-        log(rating) ~ log(budget) # model 4
-      ),
-      output = list("glance") # return model diagnostics
-    ),
-    .f = groupedstats::grouped_lm, # regression model
-    .id = "model"
-  ) %>% # for each combination of mpaa rating and movie genre
-  dplyr::group_by(mpaa, genre) %>% # arrange by best to worst fits
-  dplyr::arrange(dplyr::desc(adj.r.squared)) %>%
-  dplyr::ungroup(.)
-
-# looking at the results
-head(results_df)
-#> # A tibble: 6 x 15
-#>   model mpaa  genre        r.squared adj.r.squared sigma statistic    p.value
-#>   <chr> <fct> <fct>            <dbl>         <dbl> <dbl>     <dbl>      <dbl>
-#> 1 4     R     Action Drama     0.252         0.242 0.194     26.6  0.00000183
-#> 2 4     PG    Animated         0.256         0.230 0.177      9.64 0.00432   
-#> 3 2     PG-13 Animated         0.377         0.221 0.919      2.42 0.195     
-#> 4 4     PG-13 Animated         0.359         0.199 0.155      2.24 0.209     
-#> 5 2     PG    Animated         0.220         0.192 1.04       7.88 0.00900   
-#> 6 2     R     Action Drama     0.195         0.185 1.13      19.2  0.0000366 
-#>      df  logLik    AIC    BIC deviance df.residual  nobs
-#>   <dbl>   <dbl>  <dbl>  <dbl>    <dbl>       <int> <int>
-#> 1     1   18.8  -31.5  -24.3    2.99            79    81
-#> 2     1   10.4  -14.9  -10.7    0.876           28    30
-#> 3     1   -6.79  19.6   19.0    3.38             4     6
-#> 4     1    3.91  -1.82  -2.44   0.0955           4     6
-#> 5     1  -42.8   91.5   95.7   30.4             28    30
-#> 6     1 -124.   254.   261.   102.              79    81
-```
+<!-- # Extending with `purrr` -->
+<!-- `groupedstats` functions can be further extended with `purrr` package. For -->
+<!-- example, let's say we want to run the same linear regression across multiple -->
+<!-- grouping variables but want to use different formulas- -->
+<!-- ```{r purrr1} -->
+<!-- # for reproducibility -->
+<!-- set.seed(123) -->
+<!-- library(groupedstats) -->
+<!-- results_df <- -->
+<!--   purrr::pmap_dfr( -->
+<!--     .l = list( -->
+<!--       data = list(ggstatsplot::movies_long), -->
+<!--       grouping.vars = alist(c(mpaa, genre)), # note it's `alist` and not `list` -->
+<!--       formula = list( -->
+<!--         rating ~ budget, # model 1 -->
+<!--         rating ~ log(budget), # model 2 -->
+<!--         log(rating) ~ budget, # model 3 -->
+<!--         log(rating) ~ log(budget) # model 4 -->
+<!--       ), -->
+<!--       output = list("glance") # return model diagnostics -->
+<!--     ), -->
+<!--     .f = groupedstats::grouped_lm, # regression model -->
+<!--     .id = "model" -->
+<!--   ) %>% # for each combination of mpaa rating and movie genre -->
+<!--   dplyr::group_by(mpaa, genre) %>% # arrange by best to worst fits -->
+<!--   dplyr::arrange(dplyr::desc(adj.r.squared)) %>% -->
+<!--   dplyr::ungroup(.) -->
+<!-- # looking at the results -->
+<!-- head(results_df) -->
+<!-- ``` -->

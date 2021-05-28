@@ -21,9 +21,7 @@ knitr::opts_chunk$set(
 # groupedstats: Grouped statistical analysis in a tidy way
 
 [![CRAN_Release_Badge](https://www.r-pkg.org/badges/version-ago/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
-[![CRAN
-Checks](https://cranchecks.info/badges/summary/groupedstats)](https://cran.r-project.org/web/checks/check_results_groupedstats.html)
-[![packageversion](https://img.shields.io/badge/Package%20version-1.0.1.9000-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/groupedstats/commits/master)
+[![CRAN Checks](https://cranchecks.info/badges/summary/groupedstats)](https://cran.r-project.org/web/checks/check_results_groupedstats.html)
 [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
 [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
 [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/groupedstats?color=blue)](https://CRAN.R-project.org/package=groupedstats)
@@ -642,37 +640,37 @@ functions in this package and stem from how tidy evaluation
 
   - If you want to use a selection of variables, you need not use `c()`.
 
-# Extending with `purrr`
+<!-- # Extending with `purrr` -->
 
-`groupedstats` functions can be further extended with `purrr` package. For
-example, let's say we want to run the same linear regression across multiple
-grouping variables but want to use different formulas-
+<!-- `groupedstats` functions can be further extended with `purrr` package. For -->
+<!-- example, let's say we want to run the same linear regression across multiple -->
+<!-- grouping variables but want to use different formulas- -->
 
-```{r purrr1}
-# for reproducibility
-set.seed(123)
-library(groupedstats)
+<!-- ```{r purrr1} -->
+<!-- # for reproducibility -->
+<!-- set.seed(123) -->
+<!-- library(groupedstats) -->
 
-results_df <-
-  purrr::pmap_dfr(
-    .l = list(
-      data = list(ggstatsplot::movies_long),
-      grouping.vars = alist(c(mpaa, genre)), # note it's `alist` and not `list`
-      formula = list(
-        rating ~ budget, # model 1
-        rating ~ log(budget), # model 2
-        log(rating) ~ budget, # model 3
-        log(rating) ~ log(budget) # model 4
-      ),
-      output = list("glance") # return model diagnostics
-    ),
-    .f = groupedstats::grouped_lm, # regression model
-    .id = "model"
-  ) %>% # for each combination of mpaa rating and movie genre
-  dplyr::group_by(mpaa, genre) %>% # arrange by best to worst fits
-  dplyr::arrange(dplyr::desc(adj.r.squared)) %>%
-  dplyr::ungroup(.)
+<!-- results_df <- -->
+<!--   purrr::pmap_dfr( -->
+<!--     .l = list( -->
+<!--       data = list(ggstatsplot::movies_long), -->
+<!--       grouping.vars = alist(c(mpaa, genre)), # note it's `alist` and not `list` -->
+<!--       formula = list( -->
+<!--         rating ~ budget, # model 1 -->
+<!--         rating ~ log(budget), # model 2 -->
+<!--         log(rating) ~ budget, # model 3 -->
+<!--         log(rating) ~ log(budget) # model 4 -->
+<!--       ), -->
+<!--       output = list("glance") # return model diagnostics -->
+<!--     ), -->
+<!--     .f = groupedstats::grouped_lm, # regression model -->
+<!--     .id = "model" -->
+<!--   ) %>% # for each combination of mpaa rating and movie genre -->
+<!--   dplyr::group_by(mpaa, genre) %>% # arrange by best to worst fits -->
+<!--   dplyr::arrange(dplyr::desc(adj.r.squared)) %>% -->
+<!--   dplyr::ungroup(.) -->
 
-# looking at the results
-head(results_df)
-```
+<!-- # looking at the results -->
+<!-- head(results_df) -->
+<!-- ``` -->
