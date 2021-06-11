@@ -33,6 +33,7 @@ Imports:
     tibble,
     tidyr
 Suggests:
+    spelling,
     gapminder,
     ggplot2,
     knitr,
