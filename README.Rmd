@@ -50,29 +50,6 @@ This is for two reasons-
 
 ---
 
-# Overview
-
-`groupedstats` package provides a collection of functions to run statistical
-operations on multiple variables across multiple grouping variables in a
-dataframe. This is a common situation, as illustrated by few example cases-
-
-1. If you have combined multiple studies in a single dataframe and want to run a
-   common operation (e.g., linear regression) on **each study**. In this case,
-   column corresponding to `study` will be the grouping variable.
-
-2. If you have multiple groups in your dataframe (e.g., clinical disorder groups
-   and controls group) and you want to carry out the same operation for **each
-   group** (e.g., planned t-test to check for differences in reaction time in
-   condition 1 versus condition 2 for both groups). In this case, `group` will
-   be the grouping variable.
-
-3. If you have multiple conditions in a given study (e.g., six types of videos
-   participants saw) and want to run a common operation between different
-   measures of interest for **each condition** (e.g., correlation between
-   subjective rating of emotional intensity and reaction time).
-
-4. Combination of all of the above.
-
 # Installation
 
 Type | Source | Command
