@@ -3,9 +3,7 @@
 
 # groupedstats: Grouped statistical analysis in a tidy way
 
-[![CRAN\_Release\_Badge](https://www.r-pkg.org/badges/version-ago/groupedstats)](https://CRAN.R-project.org/package=groupedstats)
-[![CRAN
-Checks](https://cranchecks.info/badges/summary/groupedstats)](https://cran.r-project.org/web/checks/check_results_groupedstats.html)
+[![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![R build
 status](https://github.com/IndrajeetPatil/groupedstats/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/groupedstats)
 [![pkgdown](https://github.com/IndrajeetPatil/groupedstats/workflows/pkgdown/badge.svg)](https://github.com/IndrajeetPatil/groupedstats/actions)
